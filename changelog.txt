@@ -1,0 +1,7 @@
+## Change log
+
+### 1.1.0
+* Dev - Removed the LSX API Classes
+
+### 1.0.0
+* First Version
