@@ -31,6 +31,7 @@ class Meal {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ) );
 	}
 
 	/**
@@ -101,4 +102,34 @@ class Meal {
 		$post_types[] = $this->slug;
 		return $post_types;
 	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function meal_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_connections_metabox',
+			'title'         => __( 'Recipes', 'lsx-health-plan' ),
+			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
+			'object_types'  => array( 'recipe' ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => false,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Meals', 'lsx-health-plan' ),
+			'id'        	=> 'connected_meals',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( $this->slug ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
+		) );		
+	}		
 }

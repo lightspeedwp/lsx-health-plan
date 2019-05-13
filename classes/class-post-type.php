@@ -24,6 +24,13 @@ class Post_Type {
 	public $post_types = array();
 
 	/**
+	 * The related post type connections
+	 *
+	 * @var array
+	 */
+	public $connections = array();	
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {

@@ -37,6 +37,7 @@ class Recipe {
 
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ) );
 	}
 
 	/**
@@ -197,6 +198,36 @@ class Recipe {
 			'id'         => $this->slug . '_portion',
 			'type'       => 'text',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );		
+	}	
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function recipes_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_connections_metabox',
+			'title'         => __( 'Recipes', 'lsx-health-plan' ),
+			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
+			'object_types'  => array( 'meal' ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => false,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Recipes', 'lsx-health-plan' ),
+			'id'        	=> 'connected_recipes',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( $this->slug ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
 		) );		
 	}	
 }
