@@ -30,8 +30,13 @@ class Recipe {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 	}
 
 	/**
@@ -97,6 +102,36 @@ class Recipe {
 	}
 
 	/**
+	 * Register the Week taxonomy.
+	 */
+	public function taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Types', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Types', 'lsx-health-plan' ),
+		);
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'recipe-type',
+			),
+		);
+		register_taxonomy( 'recipe-type', array( $this->slug ), $args );
+	}	
+
+	/**
 	 * Adds the post type to the different arrays.
 	 *
 	 * @param array $post_types
@@ -106,4 +141,62 @@ class Recipe {
 		$post_types[] = $this->slug;
 		return $post_types;
 	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	function featured_metabox() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_featured_metabox',
+			'title'         => __( 'Featured', 'lsx-health-plan' ),
+			'object_types'  => array( $this->slug, ), // Post type
+			'context'       => 'side',
+			'priority'      => 'high',
+			'show_names'    => true,
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Featured', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_featured',
+			'type'       => 'checkbox',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );		
+	}	
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	function details_metaboxes() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_details_metabox',
+			'title'         => __( 'Recipe Details', 'lsx-health-plan' ),
+			'object_types'  => array( $this->slug, ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => true,
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Prep Time', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_prep_time',
+			'type'       => 'text',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Cooking Time', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_cooking_time',
+			'type'       => 'text',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Serves', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_serves',
+			'type'       => 'text',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Portion', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_portion',
+			'type'       => 'text',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );		
+	}	
 }
