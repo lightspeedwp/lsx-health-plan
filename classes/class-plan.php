@@ -23,7 +23,7 @@ class Plan {
 	 *
 	 * @var      string
 	 */
-	public $slug = 'plan';	
+	public $slug = 'plan';
 
 	/**
 	 * Contructor
@@ -90,8 +90,8 @@ class Plan {
 			),
 		);
 		register_post_type( 'plan', $args );
-	}	
-	
+	}
+
 	/**
 	 * Register the Week taxonomy.
 	 */
@@ -122,7 +122,7 @@ class Plan {
 		);
 
 		register_taxonomy( 'week', array( 'plan' ), $args );
-	}	
+	}
 
 	/**
 	 * Adds the post type to the different arrays.
@@ -133,5 +133,5 @@ class Plan {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}		
+	}	
 }

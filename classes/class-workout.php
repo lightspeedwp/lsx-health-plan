@@ -23,7 +23,7 @@ class Workout {
 	 *
 	 * @var      string
 	 */
-	public $slug = 'workout';	
+	public $slug = 'workout';
 
 	/**
 	 * Contructor
@@ -89,7 +89,7 @@ class Workout {
 			),
 		);
 		register_post_type( 'workout', $args );
-	}	
+	}
 
 	/**
 	 * Adds the post type to the different arrays.
@@ -100,5 +100,5 @@ class Workout {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}	
+	}
 }

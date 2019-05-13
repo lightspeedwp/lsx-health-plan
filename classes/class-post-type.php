@@ -15,13 +15,13 @@ class Post_Type {
 	 * @var      object \lsx_health_plan\classes\Post_Type()
 	 */
 	protected static $instance = null;
-	
+
 	/**
 	 * The post types available
 	 *
 	 * @var array
 	 */
-	public $post_types = array();	
+	public $post_types = array();
 
 	/**
 	 * Contructor

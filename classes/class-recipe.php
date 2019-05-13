@@ -23,7 +23,7 @@ class Recipe {
 	 *
 	 * @var      string
 	 */
-	public $slug = 'recipe';	
+	public $slug = 'recipe';
 
 	/**
 	 * Contructor
@@ -95,7 +95,7 @@ class Recipe {
 		);
 		register_post_type( 'recipe', $args );
 	}
-	
+
 	/**
 	 * Adds the post type to the different arrays.
 	 *

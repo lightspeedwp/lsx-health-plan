@@ -77,5 +77,5 @@ class Tip {
 			),
 		);
 		register_post_type( 'tip', $args );
-	}	
+	}
 }
