@@ -21,13 +21,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-					if ( is_singular( 'post' ) ) {
-						get_template_part( 'partials/content', 'post' );
-					} else {
-						get_template_part( 'partials/content', 'custom' );
-					}
-				?>
+				<?php include( LSX_HEALTH_PLAN_PATH . '/templates/content-plan.php' ); ?>
 
 			<?php endwhile; ?>
 
