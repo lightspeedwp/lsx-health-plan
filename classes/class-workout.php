@@ -31,6 +31,8 @@ class Workout {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
 	}
 
 	/**
@@ -100,5 +102,78 @@ class Workout {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	function details_metaboxes() {
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $this->slug . '_excercises_metabox',
+			'title'        => esc_html__( 'Excercises', 'lsx-health-plan' ),
+			'object_types' => array( $this->slug ),
+		) );
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb_group->add_field( array(
+			'id'          => $this->slug . '_excercises',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'    => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
+				'add_button'     => esc_html__( 'Add New', 'lsx-health-plan' ),
+				'remove_button'  => esc_html__( 'Delete', 'lsx-health-plan' ),
+				'sortable'       => true,
+			),
+		) );
+		/**
+		 * Group fields works the same, except ids only need
+		 * to be unique to the group. Prefix is not needed.
+		 *
+		 * The parent field's id needs to be passed as the first argument.
+		 */
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => esc_html__( 'Workout Name', 'lsx-health-plan' ),
+			'id'         => 'name',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+			'id'         => 'reps',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );		
+	}	
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function workout_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_connections_metabox',
+			'title'         => __( 'Workouts', 'lsx-health-plan' ),
+			'desc'			=> __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+			'object_types'  => array( 'plan' ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => false,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Workouts', 'lsx-health-plan' ),
+			'id'        	=> 'connected_workouts',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( 'workout' ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
+		) );		
 	}
 }
