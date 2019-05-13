@@ -76,7 +76,7 @@ class Core {
 	private function load_classes() {
 
 		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-setup.php' );
-		$this->setup = Setup::get_instance();	
+		$this->setup = Setup::get_instance();
 
 		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-admin.php' );
 		$this->admin = Admin::get_instance();

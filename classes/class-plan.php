@@ -133,5 +133,5 @@ class Plan {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}	
+	}
 }
