@@ -13,3 +13,10 @@ License: GPLv3
 
 * 'lsx_health_plan_post_types'
 * 
+
+
+== Template Filters ==
+
+* lsx_health_plan_archive_template
+* lsx_health_plan_single_template
+* lsx_health_plan_taxonomies_template

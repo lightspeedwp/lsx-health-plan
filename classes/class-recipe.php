@@ -17,10 +17,21 @@ class Recipe {
 	protected static $instance = null;
 
 	/**
+	 * Holds post_type slug used as an index
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $slug = 'recipe';	
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
 	/**
@@ -83,5 +94,16 @@ class Recipe {
 			),
 		);
 		register_post_type( 'recipe', $args );
-	}	
+	}
+	
+	/**
+	 * Adds the post type to the different arrays.
+	 *
+	 * @param array $post_types
+	 * @return array
+	 */
+	public function enable_post_type( $post_types = array() ) {
+		$post_types[] = $this->slug;
+		return $post_types;
+	}
 }
