@@ -5,14 +5,14 @@ namespace lsx_health_plan\classes;
  *
  * @package lsx-health-plan
  */
-class Day {
+class Meal {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Day()
+	 * @var      object \lsx_health_plan\classes\Meal()
 	 */
 	protected static $instance = null;
 
@@ -23,14 +23,13 @@ class Day {
 	 *
 	 * @var      string
 	 */
-	public $slug = 'plan';
+	public $slug = 'meal';
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
@@ -53,8 +52,8 @@ class Day {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Day', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Days', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Meal', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Meals', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
@@ -65,7 +64,7 @@ class Day {
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Days', 'lsx-health-plan' ),
+			'menu_name'          => esc_html__( 'Meals', 'lsx-health-plan' ),
 		);
 		$args = array(
 			'labels'             => $labels,
@@ -73,7 +72,7 @@ class Day {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
-			'menu_icon'          => 'dashicons-welcome-write-blog',
+			'menu_icon'          => 'dashicons-carrot',
 			'query_var'          => true,
 			'rewrite'            => array(
 				'slug' => 'day',
@@ -89,39 +88,7 @@ class Day {
 				'excerpt',
 			),
 		);
-		register_post_type( 'day', $args );
-	}
-
-	/**
-	 * Register the Week taxonomy.
-	 */
-	public function taxonomy_setup() {
-		$labels = array(
-			'name'              => esc_html_x( 'Week', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Week', 'taxonomy singular name', 'lsx-health-plan' ),
-			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
-			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
-			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
-			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
-			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
-			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
-			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
-			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
-			'menu_name'         => esc_html__( 'Weeks', 'lsx-health-plan' ),
-		);
-
-		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'query_var'         => true,
-			'rewrite'           => array(
-				'slug' => 'week',
-			),
-		);
-
-		register_taxonomy( 'week', array( 'day' ), $args );
+		register_post_type( 'meal', $args );
 	}
 
 	/**

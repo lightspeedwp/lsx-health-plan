@@ -58,9 +58,9 @@ class Post_Type {
 	 */
 	public function enable_post_types() {
 		$this->post_types = array(
-			'day',
 			'plan',
 			'workout',
+			'meal',
 			'recipe',
 			'tip',
 		);
