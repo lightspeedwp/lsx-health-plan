@@ -1,32 +1,25 @@
 <?php
 namespace lsx_health_plan\classes;
 /**
- * LSX Health Plan Admin Class.
+ * Contains the tip post type
  *
  * @package lsx-health-plan
  */
-class Setup {
+class Tip {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Setup()
+	 * @var      object \lsx_health_plan\classes\Tip()
 	 */
 	protected static $instance = null;
-	
-	/**
-	 * @var object \lsx_health_plan\classes\Post_Type();
-	 */
-	public $post_types;	
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
-		$this->post_types = Post_Type::get_instance();
 	}
 
 	/**
@@ -34,7 +27,7 @@ class Setup {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Setup()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\Tip()    A single instance of this class.
 	 */
 	public static function get_instance() {
 
