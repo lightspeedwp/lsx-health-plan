@@ -135,7 +135,7 @@ class Workout {
 						'textarea_rows' => 5,
 					),		
 				) );	
-							
+
 				/**
 				 * Repeatable Field Groups
 				 */
@@ -169,10 +169,56 @@ class Workout {
 					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 				) );
 
+				if ( class_exists( 'LSX_Videos' ) ) {
+					$cmb_group->add_group_field( $group_field_id, array(
+						'name'      	=> __( 'Video', 'lsx-health-plan' ),
+						'id'        	=> 'connected_video',
+						'type'      	=> 'post_search_ajax',
+						// Optional :
+						'limit'      	=> 1, 		// Limit selection to X items only (default 1)
+						'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+						'query_args'	=> array(
+							'post_type'			=> array( 'video' ),
+							'post_status'		=> array( 'publish' ),
+							'posts_per_page'	=> -1
+						)
+					) );					
+				}
+
 				$i++;
 			};
 		}		
 	}	
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function recipes_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_connections_metabox',
+			'title'         => __( 'Recipes', 'lsx-health-plan' ),
+			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
+			'object_types'  => array( 'meal' ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => false,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Recipes', 'lsx-health-plan' ),
+			'id'        	=> 'connected_recipes',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( $this->slug ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
+		) );		
+	}		
 
 	/**
 	 * Registers the workout connections on the plan post type.
