@@ -21,13 +21,21 @@ class Admin {
 	 *
 	 * @var array
 	 */
-	public $connections = array();	
+	public $connections = array();
+	
+	/**
+	 * Stores the previous values needed to remove the post relations
+	 *
+	 * @var array
+	 */
+	public $previous_values = array();
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
+		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 4, 20 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 4, 20 );
 	}
 
@@ -69,18 +77,33 @@ class Admin {
 	}
 
 	/**
+	 * Saves the previous values before they are overwritten by the new ones.
+	 *
+	 * @param [type] $value_to_save
+	 * @param [type] $a
+	 * @param [type] $args
+	 * @param [type] $cmb2
+	 * @return void
+	 */
+	public function save_previous_values( $value_to_save, $a, $args, $cmb2 ) {		
+		if ( array_key_exists( $a['field_id'], $connections ) ) {
+			//Get the previous values if the field, so we can run through them and remove the current ID from them later.
+			$this->previous_values = get_post_meta( $a['id'], $a['field_id'] );
+		}
+		return $value_to_save;
+	}
+
+	/**
 	 * Sets up the "post relations"
 	 *
 	 * @return    void
 	 */
-
-	//$field_id, $updated, $action, $this
 	public function post_relations( $field_id, $updated, $action, $cmb2 ) {
 		//If the connections are empty then skip this function
 		$connections = $this->get_connections();
-		if ( empty( $connections ) || empty( $updated ) ) {
+		if ( empty( $connections ) ) {
 			return;
-		}			
+		}	
 	
 		//If the field has been updated.
 		if ( array_key_exists( $field_id, $connections ) ) {
@@ -88,7 +111,8 @@ class Admin {
 			if ( 'updated' === $action ) {
 				$this->add_connected_posts( $saved_values, $cmb2->data_to_save['ID'], $connections[ $field_id ] );
 			} else if ( 'removed' === $action ) {
-
+				$posts_to_remove = array_intersect( $saved_values, $this->previous_values );
+				$this->remove_connected_posts( $posts_to_remove, $cmb2->data_to_save['ID'], $connections[ $field_id ] );
 			}
 		}
 	}
@@ -128,37 +152,26 @@ class Admin {
 	 * @return void
 	 */
 	public function remove_connected_posts( $values, $current_ID, $connected_key ) {
-		
-	}	
 
-	/**
-	 * Save the reverse post relation.
-	 *
-	 * @return    null
-	 */
-	public function save_related_post( $post_id, $field, $value, $previous_values = false ) {
-		$ids = explode( '_to_', $field['id'] );
-		$relation = $ids[1] . '_to_' . $ids[0];
+		foreach ( $values as $value ) {
+			$current_post_array = get_post_meta( $value, $connected_key, true );		
+			$new_array = array();
 
-		if ( in_array( $relation, $this->connections ) ) {
-			if ( false === $previous_values ) {
-				$previous_values = get_post_meta( $post_id, $field['id'], false );
-			}
-
-			if ( false !== $previous_values && ! empty( $previous_values ) ) {
-				foreach ( $previous_values as $tr ) {
-					delete_post_meta( $tr, $relation, $post_id );
-				}
-			}
-
-			if ( is_array( $value ) ) {
-				foreach ( $value as $v ) {
-					if ( '' !== $v && null !== $v && false !== $v ) {
-						add_post_meta( $v, $relation, $post_id );
+			//Loop through only if the current ID has been saved against the post.
+			if ( in_array( $current_ID, $current_post_array ) ) {
+				
+				//Loop through all the connected saved IDS and 
+				foreach ( $current_post_array as $cpa ) {
+					if ( $cpa !== $current_ID ) {
+						$new_array[] = $cpa;
 					}
+				}				
+				if ( ! empty( $new_array ) ) {			
+					update_post_meta( $value, $connected_key, $new_array, $current_post_array );
+				} else {
+					delete_post_meta( $value, $connected_key );
 				}
 			}
-		}
-	}	
-
+		}	
+	}
 }
