@@ -31,6 +31,7 @@ class Meal {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ) );
 	}
 
@@ -75,9 +76,7 @@ class Meal {
 			'show_in_menu'       => true,
 			'menu_icon'          => 'dashicons-carrot',
 			'query_var'          => true,
-			'rewrite'            => array(
-				'slug' => 'day',
-			),
+			'rewrite'            => false,
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,
@@ -104,6 +103,65 @@ class Meal {
 	}
 
 	/**
+	 * Define the metabox and field configurations.
+	 */
+	function details_metaboxes() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_details_metabox',
+			'title'         => __( 'Meal Details', 'lsx-health-plan' ),
+			'object_types'  => array( $this->slug, ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => true,
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Breakfast', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_breakfast',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options' => array(
+				'textarea_rows' => 5,
+			),		
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Breakfast Snack', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_breakfast_snack',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options' => array(
+				'textarea_rows' => 5,
+			),				
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Lunch', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_lunch',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options' => array(
+				'textarea_rows' => 5,
+			),			
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Lunch Snack', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_lunch_snack',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options' => array(
+				'textarea_rows' => 5,
+			),		
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Dinner', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_dinner',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options' => array(
+				'textarea_rows' => 5,
+			),			
+		) );			
+	}	
+
+	/**
 	 * Registers the workout connections on the plan post type.
 	 *
 	 * @return void
@@ -111,7 +169,7 @@ class Meal {
 	public function meal_connections() {
 		$cmb = new_cmb2_box( array(
 			'id'            => $this->slug . '_connections_metabox',
-			'title'         => __( 'Recipes', 'lsx-health-plan' ),
+			'title'         => __( 'Meal Plan', 'lsx-health-plan' ),
 			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
 			'object_types'  => array( 'recipe' ), // Post type
 			'context'       => 'normal',
