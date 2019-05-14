@@ -34,10 +34,11 @@ class Recipe {
 
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 15 );
 	}
 
 	/**
@@ -141,6 +142,17 @@ class Recipe {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
+	}
+
+	/**
+	 * Enables the Bi Directional relationships
+	 *
+	 * @param array $connections
+	 * @return void
+	 */
+	public function enable_connections( $connections = array() ) {
+		$connections['connected_recipes'] = 'connected_meals';
+		return $connections;
 	}
 
 	/**

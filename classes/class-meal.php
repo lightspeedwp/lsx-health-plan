@@ -30,9 +30,12 @@ class Meal {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ), 15 );
 	}
 
 	/**
@@ -103,9 +106,20 @@ class Meal {
 	}
 
 	/**
+	 * Enables the Bi Directional relationships
+	 *
+	 * @param array $connections
+	 * @return void
+	 */
+	public function enable_connections( $connections = array() ) {
+		$connections['connected_meals'] = 'connected_recipes';
+		return $connections;
+	}	
+
+	/**
 	 * Define the metabox and field configurations.
 	 */
-	function details_metaboxes() {
+	public function details_metaboxes() {
 		$cmb = new_cmb2_box( array(
 			'id'            => $this->slug . '_details_metabox',
 			'title'         => __( 'Meal Details', 'lsx-health-plan' ),

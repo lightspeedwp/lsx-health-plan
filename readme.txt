@@ -9,10 +9,10 @@ Stable tag: 1.0.0
 License: GPLv3
 
 
-== Available Filter ==
+== Setup Filters ==
 
-* 'lsx_health_plan_post_types'
-* 
+* lsx_health_plan_post_types - > an array of all of the post types available.
+* lsx_health_plan_connections ->  stores the keys of the connected posts.
 
 
 == Template Filters ==
