@@ -28,7 +28,7 @@ class Admin {
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
-		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 3, 20 );
+		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 4, 20 );
 	}
 
 	/**
@@ -78,83 +78,58 @@ class Admin {
 	public function post_relations( $field_id, $updated, $action, $cmb2 ) {
 		//If the connections are empty then skip this function
 		$connections = $this->get_connections();
-		if ( empty( $connections ) ) {
+		if ( empty( $connections ) || empty( $updated ) ) {
 			return;
-		}
-
+		}			
+	
 		//If the field has been updated.
-		if ( ( 1 === $updated || true === $updated ) && ( 'updated' === $action ) ) {
-			
+		if ( array_key_exists( $field_id, $connections ) ) {
+			$saved_values = get_post_meta( $cmb2->data_to_save['ID'], $field_id, true );
+			if ( 'updated' === $action ) {
+				$this->add_connected_posts( $saved_values, $cmb2->data_to_save['ID'], $connections[ $field_id ] );
+			} else if ( 'removed' === $action ) {
+
+			}
 		}
-
-		print_r('<pre>');
-		print_r($field_id);
-		print_r($updated);
-		print_r($action);
-		print_r($cmb2);
-		print_r('</pre>');
-		
-		/*if ( 'group' === $field['type'] && isset( $this->single_fields ) && array_key_exists( $field['id'], $this->single_fields ) ) {
-			$delete_counter = array();
-
-			foreach ( $this->single_fields[ $field['id'] ] as $fields_to_save ) {
-				$delete_counter[ $fields_to_save ] = 0;
-			}
-
-			//Loop through each group in case of repeatable fields
-			$relations          = false;
-			$previous_relations = false;
-
-			foreach ( $value as $group ) {
-				//loop through each of the fields in the group that need to be saved and grab their values.
-				foreach ( $this->single_fields[ $field['id'] ] as $fields_to_save ) {
-					//Check if its an empty group
-					if ( isset( $group[ $fields_to_save ] ) && ! empty( $group[ $fields_to_save ] ) ) {
-						if ( $delete_counter[ $fields_to_save ] < 1 ) {
-							//If this is a relation field, then we need to save the previous relations to remove any items if need be.
-							if ( in_array( $fields_to_save, $this->connections ) ) {
-								$previous_relations[ $fields_to_save ] = get_post_meta( $post_id, $fields_to_save, false );
-							}
-
-							delete_post_meta( $post_id, $fields_to_save );
-							$delete_counter[ $fields_to_save ] ++;
-						}
-
-						//Run through each group
-						foreach ( $group[ $fields_to_save ] as $field_value ) {
-							if ( null !== $field_value ) {
-								if ( 1 === $field_value ) {
-									$field_value = true;
-								}
-
-								add_post_meta( $post_id, $fields_to_save, $field_value );
-
-								//If its a related connection the save that
-								if ( in_array( $fields_to_save, $this->connections ) ) {
-									$relations[ $fields_to_save ][ $field_value ] = $field_value;
-								}
-							}
-						}
-					}
-				}
-			}//end of the repeatable group foreach
-
-			//If we have relations, loop through them and save the meta
-			if ( false !== $relations ) {
-				foreach ( $relations as $relation_key => $relation_values ) {
-					$temp_field = array(
-						'id' => $relation_key,
-					);
-
-					$this->save_related_post( $post_id, $temp_field, $relation_values, $previous_relations[ $relation_key ] );
-				}
-			}
-		} else {
-			if ( in_array( $field['id'], $this->connections ) ) {
-				$this->save_related_post( $post_id, $field, $value );
-			}
-		}*/
 	}
+
+	/**
+	 * Updates the connected posts witht he current post ID
+	 *
+	 * @param [type] $values
+	 * @param [type] $current_ID
+	 * @param [type] $connected_key
+	 * @return void
+	 */
+	public function add_connected_posts( $values, $current_ID, $connected_key ) {
+		foreach ( $values as $value ) {
+			$current_post_array = get_post_meta( $value, $connected_key, true );
+			$previous_values = $current_post_array;
+			//If the current connected post has no saved connections then we create it.
+			if ( false === $current_post_array || empty( $current_post_array ) ) {
+				$current_post_array = array( $current_ID );
+			} else if ( ! in_array( $current_ID, $current_post_array ) ) {
+				$current_post_array[] = $current_ID;
+			}
+
+			//Check if the values are empty, if not update them.
+			if ( ! empty( $current_post_array ) ) {
+				update_post_meta( $value, $connected_key, $current_post_array, $previous_values );
+			}
+		}
+	}
+
+	/**
+	 * Removes the post ID from the connected posts.
+	 *
+	 * @param [type] $values
+	 * @param [type] $current_ID
+	 * @param [type] $connected_key
+	 * @return void
+	 */
+	public function remove_connected_posts( $values, $current_ID, $connected_key ) {
+		
+	}	
 
 	/**
 	 * Save the reverse post relation.

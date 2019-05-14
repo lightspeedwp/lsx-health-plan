@@ -38,7 +38,7 @@ class Recipe {
 
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 15 );
+		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 5 );
 	}
 
 	/**
