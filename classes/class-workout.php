@@ -112,14 +112,33 @@ class Workout {
 		if ( false !== $workout_sections && null !== $workout_sections ) {
 			$i = 1;
 			while ( $i <= $workout_sections ) {
-				/**
-				 * Repeatable Field Groups
-				 */
+
 				$cmb_group = new_cmb2_box( array(
 					'id'           => $this->slug . '_section_' . $i . '_metabox',
 					'title'        => esc_html__( 'Section ', 'lsx-health-plan' ) . $i,
 					'object_types' => array( $this->slug ),
 				) );
+
+				$cmb_group->add_field( array(
+					'name'       => __( 'Title', 'lsx-health-plan' ),
+					'id'         => $this->slug . '_section_' . $i . '_title',
+					'type'       => 'text',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',		
+				) );				
+
+				$cmb_group->add_field( array(
+					'name'       => __( 'Description', 'lsx-health-plan' ),
+					'id'         => $this->slug . '_section_' . $i . '_description',
+					'type'       => 'wysiwyg',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+					'options' => array(
+						'textarea_rows' => 5,
+					),		
+				) );	
+							
+				/**
+				 * Repeatable Field Groups
+				 */
 				// $group_field_id is the field id string, so in this case: $prefix . 'demo'
 				$group_field_id = $cmb_group->add_field( array(
 					'id'          => $this->slug . '_section_' . $i,
