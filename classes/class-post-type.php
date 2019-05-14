@@ -63,14 +63,15 @@ class Post_Type {
 	 *
 	 * @return void
 	 */
-	public function enable_post_types() {
-		$this->post_types = array(
+	public function enable_post_types( $post_types = array() ) {
+		$post_types = array(
 			'plan',
 			'workout',
 			'meal',
 			'recipe',
 			'tip',
 		);
+		$this->post_types = $post_types;
 		return $post_types;
 	}
 }

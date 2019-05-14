@@ -108,43 +108,51 @@ class Workout {
 	 * Define the metabox and field configurations.
 	 */
 	function details_metaboxes() {
-		/**
-		 * Repeatable Field Groups
-		 */
-		$cmb_group = new_cmb2_box( array(
-			'id'           => $this->slug . '_excercises_metabox',
-			'title'        => esc_html__( 'Excercises', 'lsx-health-plan' ),
-			'object_types' => array( $this->slug ),
-		) );
-		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-		$group_field_id = $cmb_group->add_field( array(
-			'id'          => $this->slug . '_excercises',
-			'type'        => 'group',
-			'options'     => array(
-				'group_title'    => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
-				'add_button'     => esc_html__( 'Add New', 'lsx-health-plan' ),
-				'remove_button'  => esc_html__( 'Delete', 'lsx-health-plan' ),
-				'sortable'       => true,
-			),
-		) );
-		/**
-		 * Group fields works the same, except ids only need
-		 * to be unique to the group. Prefix is not needed.
-		 *
-		 * The parent field's id needs to be passed as the first argument.
-		 */
-		$cmb_group->add_group_field( $group_field_id, array(
-			'name'       => esc_html__( 'Workout Name', 'lsx-health-plan' ),
-			'id'         => 'name',
-			'type'       => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-		) );
-		$cmb_group->add_group_field( $group_field_id, array(
-			'name'       => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
-			'id'         => 'reps',
-			'type'       => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-		) );		
+		$workout_sections = apply_filters( 'lsx_health_plan_workout_sections_amount', 6 );
+		if ( false !== $workout_sections && null !== $workout_sections ) {
+			$i = 1;
+			while ( $i <= $workout_sections ) {
+				/**
+				 * Repeatable Field Groups
+				 */
+				$cmb_group = new_cmb2_box( array(
+					'id'           => $this->slug . '_section_' . $i . '_metabox',
+					'title'        => esc_html__( 'Section ', 'lsx-health-plan' ) . $i,
+					'object_types' => array( $this->slug ),
+				) );
+				// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+				$group_field_id = $cmb_group->add_field( array(
+					'id'          => $this->slug . '_section_' . $i,
+					'type'        => 'group',
+					'options'     => array(
+						'group_title'    => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
+						'add_button'     => esc_html__( 'Add New', 'lsx-health-plan' ),
+						'remove_button'  => esc_html__( 'Delete', 'lsx-health-plan' ),
+						'sortable'       => true,
+					),
+				) );
+				/**
+				 * Group fields works the same, except ids only need
+				 * to be unique to the group. Prefix is not needed.
+				 *
+				 * The parent field's id needs to be passed as the first argument.
+				 */
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'       => esc_html__( 'Workout Name', 'lsx-health-plan' ),
+					'id'         => 'name',
+					'type'       => 'text',
+					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				) );
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'       => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+					'id'         => 'reps',
+					'type'       => 'text',
+					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				) );
+
+				$i++;
+			};
+		}		
 	}	
 
 	/**
@@ -174,6 +182,6 @@ class Workout {
 				'post_status'		=> array( 'publish' ),
 				'posts_per_page'	=> -1
 			)
-		) );		
+		) );	
 	}
 }
