@@ -112,7 +112,7 @@ class Meal {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['connected_meals'] = 'connected_recipes';
+		$connections['connected_meals'] = 'connected_plans';
 		return $connections;
 	}	
 
@@ -182,10 +182,10 @@ class Meal {
 	 */
 	public function meal_connections() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_connections_metabox',
+			'id'            => $this->slug . '_meals_connections_metabox',
 			'title'         => __( 'Meal Plan', 'lsx-health-plan' ),
 			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
-			'object_types'  => array( 'recipe' ), // Post type
+			'object_types'  => array( 'plan' ), // Post type
 			'context'       => 'normal',
 			'priority'      => 'high',
 			'show_names'    => false,

@@ -54,8 +54,8 @@ class Integrations {
 	 */
 	public function cmb2_post_search_ajax() {
 		if ( class_exists( 'CMB2_Bootstrap_260' ) ) {
-			require_once( LSX_HEALTH_PLAN_PATH . 'vendor/cmb2-field-post-search-ajax/cmb-field-post-search-ajax.php' );
-			$mag_cmb2_field_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();
+			require_once( LSX_HEALTH_PLAN_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php' );
+			$mag_cmb2_field_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();	
 		}
 	}
 }

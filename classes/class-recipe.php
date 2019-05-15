@@ -220,10 +220,10 @@ class Recipe {
 	 */
 	public function recipes_connections() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_connections_metabox',
+			'id'            => $this->slug . '_recipes_connections_metabox',
 			'title'         => __( 'Recipes', 'lsx-health-plan' ),
 			'desc'			=> __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
-			'object_types'  => array( 'meal' ), // Post type
+			'object_types'  => array( 'plan' ), // Post type
 			'context'       => 'normal',
 			'priority'      => 'high',
 			'show_names'    => false,

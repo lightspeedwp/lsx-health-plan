@@ -21,6 +21,7 @@ class Tip {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'tips_connections' ), 15 );
 	}
 
 	/**
@@ -77,5 +78,35 @@ class Tip {
 			),
 		);
 		register_post_type( 'tip', $args );
+	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function tips_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_tips_connections_metabox',
+			'title'         => __( 'Tips', 'lsx-health-plan' ),
+			'desc'			=> __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+			'object_types'  => array( 'plan' ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => false,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Tips', 'lsx-health-plan' ),
+			'id'        	=> 'connected_tips',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( 'tip' ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
+		) );
 	}
 }

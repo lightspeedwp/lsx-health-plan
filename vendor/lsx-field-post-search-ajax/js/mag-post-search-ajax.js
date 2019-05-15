@@ -47,6 +47,7 @@
 				onSelect: function (suggestion) {
 					$(this).devbridgeAutocomplete('clearCache');
 					var lid 	 = $(this).attr('id') + '_results';
+					var name  = $(this).attr('id');
 					var limit 	 = $(this).attr('data-limit');
 					var sortable = $(this).attr('data-sortable');
 					if( limit > 1 ){
@@ -61,7 +62,11 @@
 						}
 					}
 					else{
-						$('input[name='+lid+']').val(suggestion.data);
+						name = name.replace( "][", "_" );
+						name = name.replace( "]", "" );
+						name = name.replace( "[", "_" );
+						console.log(name);
+						$('input#'+name).val(suggestion.data);
 					}
 				}
 			});			

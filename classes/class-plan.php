@@ -32,6 +32,7 @@ class Plan {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 	}
 
 	/**
@@ -134,4 +135,31 @@ class Plan {
 		$post_types[] = $this->slug;
 		return $post_types;
 	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	function details_metaboxes() {
+		$cmb = new_cmb2_box( array(
+			'id'            => $this->slug . '_details_metabox',
+			'title'         => __( 'Details', 'lsx-health-plan' ),
+			'object_types'  => array( $this->slug, ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => true,
+		) );
+		$cmb->add_field( array(
+			'name'      	=> __( 'Warmup', 'lsx-health-plan' ),
+			'id'        	=> $this->slug . '_warmup',
+			'type'      	=> 'post_search_ajax',
+			// Optional :
+			'limit'      	=> 3, 		// Limit selection to X items only (default 1)
+			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
+			'query_args'	=> array(
+				'post_type'			=> array( 'page' ),
+				'post_status'		=> array( 'publish' ),
+				'posts_per_page'	=> -1
+			)
+		) );		
+	}	
 }
