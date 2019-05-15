@@ -148,6 +148,13 @@ class Plan {
 			'priority'      => 'high',
 			'show_names'    => true,
 		) );
+		/*$cmb->add_field( array(
+			'name'       => __( 'Box Description', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_warm_up_box_description',
+			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
+			'type'       => 'textarea_small',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',	
+		) );*/		
 		$cmb->add_field( array(
 			'name'      	=> __( 'Warmup', 'lsx-health-plan' ),
 			'id'        	=> $this->slug . '_warmup',

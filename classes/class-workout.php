@@ -201,8 +201,15 @@ class Workout {
 			'object_types'  => array( 'plan' ), // Post type
 			'context'       => 'normal',
 			'priority'      => 'high',
-			'show_names'    => false,
+			'show_names'    => true,
 		) );
+		/*$cmb->add_field( array(
+			'name'       => __( 'Box Description', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_box_description',
+			'desc'			=> __( 'This discription displays on the single plan page.', 'lsx-health-plan' ),
+			'type'       => 'textarea_small',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',	
+		) );*/		
 		$cmb->add_field( array(
 			'name'      	=> __( 'Workouts', 'lsx-health-plan' ),
 			'id'        	=> 'connected_workouts',

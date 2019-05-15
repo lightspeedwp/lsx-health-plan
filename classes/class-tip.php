@@ -17,6 +17,15 @@ class Tip {
 	protected static $instance = null;
 
 	/**
+	 * Holds post_type slug used as an index
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $slug = 'tip';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
