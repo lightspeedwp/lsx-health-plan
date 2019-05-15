@@ -25,11 +25,10 @@ function lsx_health_plan_has_warmup( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_workout( $post_id = '' ) {
-    $has_workout = false;
     if ( '' === $post_id ) {
         $post_id = get_the_ID();
     }
-    return $has_workout;
+    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' );
 }
 
 /**
@@ -39,25 +38,23 @@ function lsx_health_plan_has_workout( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_meal( $post_id = '' ) {
-    $has_meal = false;
     if ( '' === $post_id ) {
         $post_id = get_the_ID();
     }
-    return $has_meal;
+    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
 }
 
 /**
- * Checks if the current post or supplied $post_ID has a workout attached.
+ * Checks if the current post or supplied $post_ID has a recipes attached.
  *
  * @param string $post_id
  * @return boolean
  */
-function lsx_health_plan_has_recipes( $post_id = '' ) {
-    $has_workout = false;
+function lsx_health_plan_has_recipe( $post_id = '' ) {
     if ( '' === $post_id ) {
         $post_id = get_the_ID();
     }
-    return $has_workout;
+    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_recipes' );
 }
 
 /**
@@ -67,9 +64,21 @@ function lsx_health_plan_has_recipes( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_downloads( $post_id = '' ) {
-    $has_downloads = false;
     if ( '' === $post_id ) {
         $post_id = get_the_ID();
     }
-    return $has_downloads;
+    return true;
+}
+
+/**
+ * Checks if the current post or supplied $post_ID has a tips attached.
+ *
+ * @param string $post_id
+ * @return boolean
+ */
+function lsx_health_plan_has_tip( $post_id = '' ) {
+    if ( '' === $post_id ) {
+        $post_id = get_the_ID();
+    }
+    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_tips' );
 }

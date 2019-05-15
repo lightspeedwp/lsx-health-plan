@@ -31,6 +31,22 @@ get_header(); ?>
 			<?php if ( lsx_health_plan_has_warmup() ) { 
 				lsx_health_plan_warmup_box();
 			} ?>
+
+			<?php if ( lsx_health_plan_has_workout() ) { 
+				lsx_health_plan_workout_box();
+			} ?>
+
+			<?php if ( lsx_health_plan_has_meal() ) { 
+				lsx_health_plan_meal_box();
+			} ?>
+
+			<?php if ( lsx_health_plan_has_recipe() ) { 
+				lsx_health_plan_recipe_box();
+			} ?>
+
+			<?php if ( lsx_health_plan_has_downloads() ) { 
+				lsx_health_plan_downloads_box();
+			} ?>												
 		</div>
 
 		<?php lsx_content_bottom(); ?>
