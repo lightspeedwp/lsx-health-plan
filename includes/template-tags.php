@@ -18,7 +18,16 @@ function lsx_health_plan_warmup_box() { ?>
             <div class="excerpt">
                 <p>Dont underestimate sdfsdsdsdf</p>
             </div>
-            <a href="#" class="btn"><?php esc_html_e( 'Start your warmup', 'lsx-health-plan' ); ?></a>
+            <?php 
+            $warm_ups = get_post_meta( get_the_ID(), 'plan_warmup', true );
+
+            if ( ! empty( $warm_ups ) ) {
+                foreach( $warm_ups as $warm_up ) {
+                    ?>
+                        <a href="<?php echo wp_kses_post( get_the_permalink( $warm_up ) ); ?>" class="btn"><?php esc_html_e( 'Start your warmup', 'lsx-health-plan' ); ?></a>
+                    <?php
+                }
+            }?>
         </div>
     </div>
 <?php
@@ -37,7 +46,7 @@ function lsx_health_plan_warmup_box() { ?>
             <div class="excerpt">
                 <p>Dont underestimate sdfsdsdsdf</p>
             </div>
-            <a href="#" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
+            <a href="<?php the_permalink(); ?>workout/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
         </div>
     </div>
 <?php
