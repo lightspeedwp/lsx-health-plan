@@ -16,7 +16,7 @@ function lsx_health_plan_warmup_box() { ?>
             <h3 class="title"><?php esc_html_e( 'Your Warmup', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
-                <p>Dont underestimate sdfsdsdsdf</p>
+                <p>Pellentesque non scelerisque dui.</p>
             </div>
             <?php 
             $warm_ups = get_post_meta( get_the_ID(), 'plan_warmup', true );
@@ -44,7 +44,7 @@ function lsx_health_plan_warmup_box() { ?>
             <h3 class="title"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
-                <p>Dont underestimate sdfsdsdsdf</p>
+                <p>Vestibulum quis mi eu nisl eleifend maximus.</p>
             </div>
             <a href="<?php the_permalink(); ?>workout/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
         </div>
@@ -63,7 +63,7 @@ function lsx_health_plan_warmup_box() { ?>
             <h3 class="title"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
-                <p>Dont underestimate sdfsdsdsdf</p>
+                <p>Nam vestibulum augue id condimentum consectetur.</p>
             </div>
             <a href="#" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
         </div>
