@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
- /**
+/**
   * Outputs the warmup box on the single plan page.
   *
   * @return void
@@ -33,7 +33,7 @@ function lsx_health_plan_warmup_box() { ?>
 <?php
 }
 
- /**
+/**
   * Outputs the workout box on the single plan page.
   *
   * @return void
@@ -52,7 +52,7 @@ function lsx_health_plan_warmup_box() { ?>
 <?php
 }
 
- /**
+/**
   * Outputs the meal plan box on the single plan page.
   *
   * @return void
@@ -65,13 +65,13 @@ function lsx_health_plan_warmup_box() { ?>
             <div class="excerpt">
                 <p>Nam vestibulum augue id condimentum consectetur.</p>
             </div>
-            <a href="#" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
+            <a href="<?php the_permalink(); ?>meal/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
         </div>
     </div>
 <?php
 }
 
- /**
+/**
   * Outputs the recipe box on the single plan page.
   *
   * @return void
@@ -81,13 +81,14 @@ function lsx_health_plan_warmup_box() { ?>
         <div class="lsx-health-plan-box">
             <h3 class="title"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
-            <a href="#" class="btn"><?php esc_html_e( 'Recipe 1', 'lsx-health-plan' ); ?></a>
+            <a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'Recipe 1', 'lsx-health-plan' ); ?></a>
+            <a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all', 'lsx-health-plan' ); ?></a>
         </div>
     </div>
 <?php
 }
 
- /**
+/**
   * Outputs the downloads box on the single plan page.
   *
   * @return void

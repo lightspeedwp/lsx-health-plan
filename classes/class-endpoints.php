@@ -50,15 +50,10 @@ class Endpoints {
 	 */
 	public function add_rewrite_rules() {
 		// Here is where we add in the rewrite rules above the normal WP ones.
+		add_rewrite_tag( '%endpoint%', '([^&]+)' );
 
-		add_rewrite_tag( '%endpoint%',   '([^&]+)' );
-		add_rewrite_tag( '%num%', '([^&]+)' );
-		add_rewrite_tag( '%day%', '([^&]+)' );
-
-		add_rewrite_rule( 'plan/([^/]+)/workout/([^/]+)/?$', 'index.php?plan=$matches[1]&endpoint=workout&num=$matches[2]', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/meal/([^/]+)/?$', 'index.php?plan=$matches[1]&endpoint=meal&num=$matches[2]', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/warm-up/([^/]+)/?$', 'index.php?plan=$matches[1]&endpoint=warm-up&num=$matches[2]', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/recipes/([^/]+)/?$', 'index.php?plan=$matches[1]&endpoint=recipe&num=$matches[2]', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/downloads/([^/]+)/?$', 'index.php?plan=$matches[1]&endpoint=downloads&num=$matches[2]', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/workout/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/meal/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/recipes/?$', 'index.php?plan=$matches[1]&endpoint=recipe', 'top' );
 	}	
 }
