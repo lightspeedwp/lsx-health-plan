@@ -76,11 +76,9 @@ class Workout {
 			'show_in_menu'       => true,
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
-			'rewrite'            => array(
-				'slug' => 'workout',
-			),
+			'rewrite'            => false,
 			'capability_type'    => 'post',
-			'has_archive'        => 'workouts',
+			'has_archive'        => false,
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(

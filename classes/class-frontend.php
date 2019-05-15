@@ -18,10 +18,18 @@ class Frontend {
 	protected static $instance = null;
 
 	/**
+	 * @var object \lsx_health_plan\classes\Endpoints();
+	 */
+	public $endpoints;	
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 999 );
+
+		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php' );
+		$this->endpoints = Endpoints::get_instance();		
 
 		//Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );

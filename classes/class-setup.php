@@ -25,6 +25,8 @@ class Setup {
 	 * Contructor
 	 */
 	public function __construct() {
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
 		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
 		$this->post_types = Post_Type::get_instance();
 	}
@@ -46,4 +48,11 @@ class Setup {
 		return self::$instance;
 
 	}
+
+	/**
+	 * Adds text domain.
+	 */
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'lsx-health-plan', false, basename( LSX_HEALTH_PLAN_PATH ) . '/languages' );
+	}	
 }
