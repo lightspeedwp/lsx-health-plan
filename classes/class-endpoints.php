@@ -54,6 +54,6 @@ class Endpoints {
 
 		add_rewrite_rule( 'plan/([^/]+)/workout/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
 		add_rewrite_rule( 'plan/([^/]+)/meal/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/recipes/?$', 'index.php?plan=$matches[1]&endpoint=recipe', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/recipes/?$', 'index.php?plan=$matches[1]&endpoint=recipes', 'top' );
 	}	
 }

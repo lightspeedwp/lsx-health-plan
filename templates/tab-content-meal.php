@@ -7,9 +7,8 @@
 ?>
 
 <?php lsx_entry_before(); ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	Meal
 	<?php lsx_entry_top(); ?>
 
 	<div class="entry-meta">
