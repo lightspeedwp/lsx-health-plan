@@ -27,6 +27,12 @@ get_header(); ?>
 
 		<?php endif; ?>
 
+		<div class="row">
+			<?php if ( lsx_health_plan_has_warmup() ) { 
+				lsx_health_plan_warmup_box();
+			} ?>
+		</div>
+
 		<?php lsx_content_bottom(); ?>
 
 	</main><!-- #main -->
