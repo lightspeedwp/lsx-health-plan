@@ -100,9 +100,14 @@ function lsx_health_plan_warmup_box() { ?>
             <div class="spacer"></div>
             <div class="download-list">
                 <ul>
-                    <li><a href=""><i class="fa fa-file-pdf"></i> Workout PDF</a></li>
-                    <li><a href=""><i class="fa fa-file-pdf"></i> Recipe PDF</a></li>
-                    <li><a href=""><i class="fa fa-file-pdf"></i> Download PDF</a></li>
+                    <?php
+                        $downloads = \lsx_health_plan\functions\get_downloads();
+                        if ( ! empty( $downloads ) ) {
+                            foreach( $downloads as $download ) {
+                                echo wp_kses_post( '<li><a href=""><i class="fa fa-file-pdf"></i>' . do_shortcode( '[download id="' . $download . '"]') . '</li>' );
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
