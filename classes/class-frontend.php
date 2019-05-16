@@ -129,5 +129,11 @@ class Frontend {
 			wp_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
 			die;
 		}
+
+		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );		
+		if ( false !== $product_id && lsx_health_plan_user_has_purchase() && is_page( $product_id ) ) {
+			wp_redirect( home_url() );
+			die;
+		}		
 	}
 }
