@@ -122,7 +122,7 @@ class Frontend {
 	 * @return void
 	 */
 	public function redirect() {
-		if ( ! function_exists( 'wc_get_page_id' ) ) {
+		if ( ! function_exists( 'wc_get_page_id' ) || is_home() ) {
 			return;
 		}
 		if ( lsx_health_plan_user_has_purchase() && ( wc_get_page_id( 'cart' ) || wc_get_page_id( 'checkout' ) ) ) {
