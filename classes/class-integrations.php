@@ -30,7 +30,7 @@ class Integrations {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'cmb2_post_search_ajax' ) );
-		//add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
+		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 	}
 
 	/**
