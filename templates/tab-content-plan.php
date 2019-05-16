@@ -12,7 +12,7 @@ if ( have_posts() ) :
 endif;
 ?>
 
-<div class="row">
+<div class="row tab-content-plan">
 	<?php if ( lsx_health_plan_has_warmup() ) { 
 		lsx_health_plan_warmup_box();
 	} ?>
