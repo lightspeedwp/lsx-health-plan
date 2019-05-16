@@ -30,6 +30,7 @@ class Tip {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'tips_connections' ), 15 );
 	}
 
@@ -88,6 +89,18 @@ class Tip {
 		);
 		register_post_type( 'tip', $args );
 	}
+
+	/**
+	 * Enables the Bi Directional relationships
+	 *
+	 * @param array $connections
+	 * @return void
+	 */
+	public function enable_connections( $connections = array() ) {
+		$connections['tip']['connected_plans'] = 'connected_tips';
+		$connections['plan']['connected_tips'] = 'connected_plans';
+		return $connections;
+	}		
 
 	/**
 	 * Registers the workout connections on the plan post type.

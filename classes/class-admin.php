@@ -114,13 +114,14 @@ class Admin {
 		}	
 	
 		//If the field has been updated.
-		if ( array_key_exists( $field_id, $connections ) ) {
+		$post_type = get_post_type( $cmb2->data_to_save['ID'] );
+		if ( isset( $connections[ $post_type ] ) && array_key_exists( $field_id, $connections[ $post_type ] ) ) {
 			$saved_values = get_post_meta( $cmb2->data_to_save['ID'], $field_id, true );
 			if ( 'updated' === $action ) {
-				$this->add_connected_posts( $saved_values, $cmb2->data_to_save['ID'], $connections[ $field_id ] );
+				$this->add_connected_posts( $saved_values, $cmb2->data_to_save['ID'], $connections[ $post_type ][ $field_id ] );
 			} else if ( 'removed' === $action ) {
 				$posts_to_remove = array_intersect( $saved_values, $this->previous_values );
-				$this->remove_connected_posts( $posts_to_remove, $cmb2->data_to_save['ID'], $connections[ $field_id ] );
+				$this->remove_connected_posts( $posts_to_remove, $cmb2->data_to_save['ID'], $connections[ $post_type ][ $field_id ] );
 			}
 		}
 	}

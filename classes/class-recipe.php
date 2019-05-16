@@ -151,7 +151,8 @@ class Recipe {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['connected_recipes'] = 'connected_meals';
+		$connections['recipe']['connected_plans'] = 'connected_recipes';
+		$connections['plan']['connected_recipes'] = 'connected_plans';
 		return $connections;
 	}
 
@@ -227,14 +228,7 @@ class Recipe {
 			'context'       => 'normal',
 			'priority'      => 'high',
 			'show_names'    => true,
-		) );
-		/*$cmb->add_field( array(
-			'name'       => __( 'Box Description', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_box_description',
-			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
-			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',	
-		) );*/		
+		) );	
 		$cmb->add_field( array(
 			'name'      	=> __( 'Recipes', 'lsx-health-plan' ),
 			'id'        	=> 'connected_recipes',
