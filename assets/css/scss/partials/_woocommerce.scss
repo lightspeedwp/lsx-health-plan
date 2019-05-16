@@ -1,0 +1,36 @@
+.vertical-align {
+	@media (min-width:768px) {
+		display: flex;
+    	align-items: center;
+	}
+	
+}
+
+// Checkout
+
+#payment {
+	&.woocommerce-checkout-payment {
+		.form-row.place-order {
+			background: #fff;
+			padding: 0px 20px 20px 20px !important;
+			.woocommerce-terms-and-conditions-wrapper {
+				background: #f6f6f6;
+				margin-left: -20px;
+				margin-right: -20px;
+				.validate-required {
+					padding-bottom: 20px !important;
+				}
+			}
+			button#place_order {
+				margin-top: 5px;
+				float: initial;
+				width: 100%;
+				background-color: #F7AE00;
+				box-shadow: 2px 2px 0 0 #CE9100;
+				&:hover {
+					background-color: #CE9100;
+				}
+			}
+		}
+	}
+}
