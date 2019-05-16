@@ -20,7 +20,7 @@ class Frontend {
 	/**
 	 * @var object \lsx_health_plan\classes\Endpoints();
 	 */
-	public $endpoints;	
+	public $endpoints;
 
 	/**
 	 * Contructor
@@ -35,6 +35,7 @@ class Frontend {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+		add_action( 'template_redirect', array( $this, 'redirect' ) );
 	}
 
 	/**
@@ -113,5 +114,20 @@ class Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Redirect the user from the cart or checkout page if they have purchased the product already.
+	 *
+	 * @return void
+	 */
+	public function redirect() {
+		if ( ! function_exists( 'wc_get_page_id' ) ) {
+			return;
+		}
+		if ( lsx_health_plan_user_has_purchase() && ( wc_get_page_id( 'cart' ) || wc_get_page_id( 'checkout' ) ) ) {
+			wp_redirect( home_url() );
+			die;
+		}
 	}
 }

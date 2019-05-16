@@ -36,11 +36,10 @@ function has_attached_post( $post_id = '', $meta_key = '', $single = true ){
  */
 function get_option( $key = '', $default = false ) {
 	if ( function_exists( 'cmb2_get_option' ) ) {
-		// Use cmb2_get_option as it passes through some key filters.
-		return cmb2_get_option( 'lsx_health_plan_settings', $key, $default );
+		return cmb2_get_option( 'lsx_health_plan_options', $key, $default );
 	}
 	// Fallback to get_option if CMB2 is not loaded yet.
-	$opts = get_option( 'lsx_health_plan_settings', $default );
+	$opts = get_option( 'lsx_health_plan_options', $default );
 	$val = $default;
 	if ( 'all' == $key ) {
 		$val = $opts;

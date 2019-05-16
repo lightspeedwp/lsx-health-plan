@@ -90,10 +90,12 @@ function lsx_health_plan_has_tip( $post_id = '' ) {
  */
 function lsx_health_plan_user_has_purchase() {
     $valid_order = false;
-    if ( is_user_logged_in() ) {
-        $current_user = wp_get_current_user();
-        if ( wc_customer_bought_product( $customer_email, $user_id, $product_id ) ) {
-            
+    $product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );        
+
+    if ( is_user_logged_in() && false !== $product_id ) {
+        $current_user = wp_get_current_user();     
+        if ( wc_customer_bought_product( $current_user->user_email, $current_user->ID, $product_id ) ) {
+            $valid_order = true;
         }
     }
     return $valid_order;
