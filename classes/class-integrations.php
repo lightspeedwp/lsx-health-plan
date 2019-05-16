@@ -30,6 +30,7 @@ class Integrations {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'cmb2_post_search_ajax' ) );
+		//add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 	}
 
 	/**
@@ -57,5 +58,17 @@ class Integrations {
 			require_once( LSX_HEALTH_PLAN_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php' );
 			$mag_cmb2_field_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();	
 		}
+	}
+
+	/**
+	 * Empties the cart before a product is added
+	 *
+	 * @param [type] $passed
+	 * @param [type] $added_product_id
+	 * @return void
+	 */
+	public function only_one_in_cart( $passed, $added_product_id ) {
+		wc_empty_cart();
+		return $passed;
 	}
 }
