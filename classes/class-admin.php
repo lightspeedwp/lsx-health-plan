@@ -31,9 +31,17 @@ class Admin {
 	public $previous_values = array();
 
 	/**
+	 * @var object \lsx_health_plan\classes\Settings();
+	 */
+	public $settings;	
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
+		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-settings.php' );
+		$this->settings = Settings::get_instance();
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 4, 20 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 4, 20 );

@@ -82,3 +82,19 @@ function lsx_health_plan_has_tip( $post_id = '' ) {
     }
     return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_tips' );
 }
+
+/**
+ * Checks to see if the current user has a valid purchase.
+ *
+ * @return boolean
+ */
+function lsx_health_plan_user_has_purchase() {
+    $valid_order = false;
+    if ( is_user_logged_in() ) {
+        $current_user = wp_get_current_user();
+        if ( wc_customer_bought_product( $customer_email, $user_id, $product_id ) ) {
+            
+        }
+    }
+    return $valid_order;
+}
