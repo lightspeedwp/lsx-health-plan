@@ -58,6 +58,7 @@ function get_option( $key = '', $default = false ) {
  */
 function get_downloads( $type = 'all', $post_id = '' ) {
 	$post_types = array(
+		'page',
 		'meal',
 		'workout',
 		'recipe'
@@ -68,7 +69,14 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 	$downloads = array();
 	foreach( $post_types as $post_type ) {
 		if ( 'all' === $type || in_array( $type, $post_types ) ) {
-			$connected_items = get_post_meta( $post_id, 'connected_' . $post_type . 's', true );
+
+			if ( 'page' === $post_type ) {
+				$key = 'plan_warmup';
+			} else {
+				$key = 'connected_' . $post_type . 's';
+			}
+
+			$connected_items = get_post_meta( $post_id, $key , true );
 			if ( ! empty( $connected_items ) ) {
 				foreach( $connected_items as $connected_item ) {
 					$current_downloads = get_post_meta( $connected_item, 'connected_downloads', true );
