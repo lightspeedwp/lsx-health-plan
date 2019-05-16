@@ -64,10 +64,15 @@ function lsx_health_plan_has_recipe( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_downloads( $post_id = '' ) {
+    $has_downloads = false;
     if ( '' === $post_id ) {
         $post_id = get_the_ID();
     }
-    return true;
+    $downloads = \lsx_health_plan\functions\get_downloads( 'all', $post_id );
+    if ( ! empty( $downloads ) ) {
+        $has_downloads = true;
+    }
+    return $has_downloads;
 }
 
 /**

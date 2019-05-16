@@ -49,7 +49,6 @@ function get_option( $key = '', $default = false ) {
 	return $val;
 }
 
-
 /**
  * Add Lets Enrypt and Peach Payments logos to cart
  **/
@@ -68,3 +67,36 @@ add_action( 'woocommerce_checkout_after_order_review', function() {
 	</div>
 	<?php
 });
+
+/**
+ * Returns the downloads attached to the items
+ * @since  0.1.0
+ * @param  string $key     Options array key
+ * @param  mixed  $default Optional default value
+ * @return mixed           Option value
+ */
+function get_downloads( $type = 'all', $post_id = '' ) {
+	$post_types = array(
+		'meal',
+		'workout',
+		'recipe'
+	);
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	$downloads = array();
+	foreach( $post_types as $post_type ) {
+		if ( 'all' === $type || in_array( $type, $post_types ) ) {
+			$connected_items = get_post_meta( $post_id, 'connected_' . $post_type . 's', true );
+			if ( ! empty( $connected_items ) ) {
+				foreach( $connected_items as $connected_item ) {
+					$current_downloads = get_post_meta( $connected_item, 'connected_downloads', true );
+					if ( false !== $current_downloads && ! empty( $current_downloads ) ) {
+						$downloads = array_merge( $downloads, $current_downloads );
+					}
+				}
+			}
+		}
+	}
+	return $downloads;
+}

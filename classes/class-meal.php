@@ -112,7 +112,8 @@ class Meal {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['connected_meals'] = 'connected_plans';
+		$connections['meal']['connected_plans'] = 'connected_meals';
+		$connections['plan']['connected_meals'] = 'connected_plans';
 		return $connections;
 	}	
 
