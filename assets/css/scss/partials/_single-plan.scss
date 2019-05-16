@@ -4,6 +4,9 @@
 	margin-bottom: 15px;
 	.nav.nav-pills {
 		li {
+			@media (max-width:600px) {
+				width: 100%;
+			}
 			a {
 				border-radius: 0;
 				background: #ffffff;
@@ -123,9 +126,74 @@
 						width: 55px;
 					}
 				}
+				&.downloads-title {
+					&::after {
+						background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/downloads.svg);
+						width: 55px;
+					}
+				}
 			}
 			.btn {
 				width: 100%;
+			}
+		}
+	}
+	.single-plan-inner {
+		&.workout-content {
+			max-width: 900px;
+			.workout-content-box {
+				margin: 30px 0;
+				background: #f6f6f6;
+				padding: 12px 16px;
+			}
+			.set {
+				.set-title {
+					font-family: "Noto Sans";
+					text-transform: uppercase;
+					color: #418AD0;
+				}
+				.set-content, .set-table {
+					font-size: 16px;
+					color: #222222;
+				}
+				.set-table {
+					.workout-table {
+						width: 100%;
+    					table-layout: fixed;
+						tr {
+							th {
+								border-bottom: 2px solid #418AD0;
+								padding: 5px 0;
+							}
+							td {
+								border-bottom: 1px solid #E1E1E1;
+								padding: 20px 0;
+								&.video-button-item  {
+									.fa {
+										font-size: 40px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.single-plan-inner-buttons {
+		padding: 45px 0;
+		@media (min-width:600px) {
+			display: flex;
+			.complete-plan-btn {
+				margin-right: 40px;
+			}
+		}
+		@media (max-width:600px) {
+			.complete-plan-btn, .back-plan-btn {
+				margin-bottom: 40px;
+				.btn {
+					width: 100%;
+				}
 			}
 		}
 	}

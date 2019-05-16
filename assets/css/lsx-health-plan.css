@@ -13,6 +13,8 @@
 
 #single-plan-nav { margin-bottom: 15px; }
 
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; } }
+
 #single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
 
 #single-plan-nav .nav.nav-pills li a::before { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
@@ -52,6 +54,32 @@
 
 .single-plan .tab-content-plan .lsx-health-plan-box .title.recipes-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg); width: 55px; }
 
+.single-plan .tab-content-plan .lsx-health-plan-box .title.downloads-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/downloads.svg); width: 55px; }
+
 .single-plan .tab-content-plan .lsx-health-plan-box .btn { width: 100%; }
+
+.single-plan .single-plan-inner.workout-content { max-width: 900px; }
+
+.single-plan .single-plan-inner.workout-content .workout-content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
+
+.single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418AD0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-content, .single-plan .single-plan-inner.workout-content .set .set-table { font-size: 16px; color: #222222; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table { width: 100%; table-layout: fixed; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr th { border-bottom: 2px solid #418AD0; padding: 5px 0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td { border-bottom: 1px solid #E1E1E1; padding: 20px 0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td.video-button-item .fa { font-size: 40px; }
+
+.single-plan .single-plan-inner-buttons { padding: 45px 0; }
+
+@media (min-width: 600px) { .single-plan .single-plan-inner-buttons { display: -ms-flexbox; display: flex; }
+  .single-plan .single-plan-inner-buttons .complete-plan-btn { margin-right: 40px; } }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 40px; }
+  .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
 /*# sourceMappingURL=maps/lsx-health-plan.css.map */
