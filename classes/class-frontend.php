@@ -122,11 +122,11 @@ class Frontend {
 	 * @return void
 	 */
 	public function redirect() {
-		if ( ! function_exists( 'wc_get_page_id' ) || is_home() ) {
+		if ( ! is_user_logged_in() || ! function_exists( 'wc_get_page_id' ) || is_home() ) {
 			return;
 		}
-		if ( lsx_health_plan_user_has_purchase() && ( wc_get_page_id( 'cart' ) || wc_get_page_id( 'checkout' ) ) ) {
-			wp_redirect( home_url() );
+		if ( lsx_health_plan_user_has_purchase() && ( is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) ) ) ) {
+			wp_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
 			die;
 		}
 	}
