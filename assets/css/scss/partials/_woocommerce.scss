@@ -43,6 +43,17 @@ body:not(.logged-in).woocommerce-account.my-plan {
 	}
 }
 
+// Banners 
+
+.page-banner-wrap {
+	.page-banner {
+		>.page-banner-image {
+			bottom: 0;
+			background-color: #2b3840;
+		}
+	}
+}
+
 // Checkout
 
 #payment {

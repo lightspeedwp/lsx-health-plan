@@ -13,6 +13,8 @@ body:not(.logged-in).woocommerce-account.my-plan .woocommerce .woocommerce-Reset
 
 body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.woocommerce-button.button.woocommerce-form-login__submit { padding: 10px 40px; }
 
+.page-banner-wrap .page-banner > .page-banner-image { bottom: 0; background-color: #2b3840; }
+
 #payment.woocommerce-checkout-payment .form-row.place-order { background: #fff; padding: 0px 20px 20px 20px !important; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order .woocommerce-terms-and-conditions-wrapper { background: #f6f6f6; margin-left: -20px; margin-right: -20px; }
