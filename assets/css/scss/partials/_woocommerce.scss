@@ -13,6 +13,33 @@ body:not(.logged-in).woocommerce-account.my-plan {
 		max-width: 600px;
 		margin-left: auto;
 		margin-right: auto;
+		p.woocommerce-LostPassword.lost_password {
+			a {
+				color: #f7ae00;
+			}
+		}
+		.woocommerce-ResetPassword.lost_reset_password {
+			p {
+				&:first-child {
+					&:before {
+						content: 'Lost your password?';
+						font-size: 30px;
+						display: block;
+						font-family: 'Lora', serif;
+						margin-bottom: 20px;
+					}
+				}
+			}
+			.woocommerce-form-row.form-row.form-row-first {
+				width: 100%;
+				label {
+					font-weight: 400;
+				}
+			}
+		}
+	}
+	#main .woocommerce button.woocommerce-button.button.woocommerce-form-login__submit {
+		padding: 10px 40px;
 	}
 }
 
