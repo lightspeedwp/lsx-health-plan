@@ -96,6 +96,8 @@
 
 .single-plan .single-plan-section-title.workout::before { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/work.svg); width: 80px; }
 
+.single-plan .single-plan-section-title.recipes-plan::before { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg); }
+
 .single-plan .single-plan-inner.workout-content { max-width: 1000px; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions { padding-right: 10px; padding-left: 10px; }
@@ -137,6 +139,12 @@
 .single-plan .single-plan-inner .tip-row .tip-right #quick-tip .carousel-indicators li { margin-right: 5px; margin-left: 5px; display: inline-block; width: 10px; height: 10px; text-indent: -999px; cursor: pointer; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 10px; }
 
 @media (max-width: 600px) { .single-plan .single-plan-inner .tip-row .tip-right { margin-top: 30px; } }
+
+.single-plan .single-plan-inner.recipes-content .recipe-column .recipe-title { font-size: 22px; font-family: 'Noto Sans', sans-serif; }
+
+.single-plan .single-plan-inner.recipes-content .recipe-column .recipe-table { width: 100%; margin-bottom: 25px; table-layout: fixed; }
+
+.single-plan .single-plan-inner.recipes-content .recipe-column .btn { margin-bottom: 25px; }
 
 .single-plan .single-plan-inner-buttons { padding: 45px 0; }
 

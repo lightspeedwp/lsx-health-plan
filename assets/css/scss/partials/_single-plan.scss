@@ -235,6 +235,11 @@
 				width: 80px;
 			}
 		}
+		&.recipes-plan {
+			&::before {
+				background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg);
+			}
+		}
 	}
 	.single-plan-inner {
 		&.workout-content {
@@ -349,6 +354,22 @@
 				}
 				@media (max-width:600px) {
 					margin-top: 30px;
+				}
+			}
+		}
+		&.recipes-content {
+			.recipe-column {
+				.recipe-title {
+					font-size: 22px;
+    				font-family: 'Noto Sans', sans-serif;
+				}
+				.recipe-table {
+					width: 100%;
+					margin-bottom: 25px;
+					table-layout: fixed;
+				}
+				.btn {
+					margin-bottom: 25px;
 				}
 			}
 		}
