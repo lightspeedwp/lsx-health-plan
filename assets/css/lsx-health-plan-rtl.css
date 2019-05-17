@@ -15,25 +15,51 @@
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; } }
 
+#single-plan-nav .nav.nav-pills li.active .overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li.active .warm-up-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/warm-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li.active .workout-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/work-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li.active .meal-plan-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/meal-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li.active .recipes-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/recipes-w.svg"); }
+
 #single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
 
 #single-plan-nav .nav.nav-pills li a::before { content: ''; margin-left: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
 
-#single-plan-nav .nav.nav-pills li a.overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+#single-plan-nav .nav.nav-pills li a.overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye.svg"); }
 
-#single-plan-nav .nav.nav-pills li a.warp-up-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/warm.svg"); }
+#single-plan-nav .nav.nav-pills li a.overview-tab:hover::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.warm-up-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/warm.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.warm-up-tab:hover::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/warm-w.svg"); }
 
 #single-plan-nav .nav.nav-pills li a.workout-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/work.svg"); }
 
+#single-plan-nav .nav.nav-pills li a.workout-tab:hover::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/work-w.svg"); }
+
 #single-plan-nav .nav.nav-pills li a.meal-plan-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/meal.svg"); }
 
+#single-plan-nav .nav.nav-pills li a.meal-plan-tab:hover::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/meal-w.svg"); }
+
 #single-plan-nav .nav.nav-pills li a.recipes-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.recipes-tab:hover::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/recipes-w.svg"); }
 
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
 
 .single-plan .title-lined { padding-bottom: 20px; border-bottom: 2px solid #418ad0; }
+
+.single-plan .extra-title span { color: #418ad0; font-weight: bold; }
+
+.single-plan .box-shadow { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26); }
+
+.single-plan .btn-full { width: 100%; }
 
 .single-plan .tab-content-plan { margin-left: 0; margin-right: 0; }
 
@@ -62,6 +88,12 @@
 
 .single-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
 
+.single-plan .blue-title { color: #418ad0; font-weight: bold; }
+
+.single-plan .single-plan-section-title::before { content: ''; margin-bottom: 15px; background-size: contain; display: inline-block; width: 50px; height: 50px; background-repeat: no-repeat; background-position: center; }
+
+.single-plan .single-plan-section-title.meal-plan::before { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/meal.svg); }
+
 .single-plan .single-plan-inner.workout-content { max-width: 900px; }
 
 .single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418AD0; }
@@ -76,21 +108,25 @@
 
 .single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td.video-button-item .fa { font-size: 40px; }
 
-.single-plan .single-plan-inner .eating-row, .single-plan .single-plan-inner .tip-row { max-width: 900px; }
-
 .single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; }
 
 @media (min-width: 600px) { .single-plan .single-plan-inner .tip-row { display: -ms-flexbox; display: flex; } }
 
-.single-plan .single-plan-inner .tip-row .tip-left { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
+.single-plan .single-plan-inner .tip-row .tip-left, .single-plan .single-plan-inner .tip-row .tip-middle, .single-plan .single-plan-inner .tip-row .tip-right { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; min-height: 240px; }
 
-.single-plan .single-plan-inner .tip-row .eating-title, .single-plan .single-plan-inner .tip-row h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; text-transform: uppercase; }
+.single-plan .single-plan-inner .tip-row .eating-title, .single-plan .single-plan-inner .tip-row h3 { font-family: "Noto Sans"; font-size: 22px; }
 
-.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h3 { color: #418AD0; }
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip { margin: 0; }
+
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h3 { color: #418AD0; text-transform: uppercase; font-weight: bold; }
 
 .single-plan .single-plan-inner .tip-row .tip-right .quick-tip h4 { font-family: "Noto Sans"; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
 
 .single-plan .single-plan-inner .tip-row .tip-right .quick-tip .tip-item { font-size: 16px; }
+
+.single-plan .single-plan-inner .tip-row .tip-right #quick-tip .carousel-indicators { clear: both; text-align: center; }
+
+.single-plan .single-plan-inner .tip-row .tip-right #quick-tip .carousel-indicators li { margin-right: 5px; margin-left: 5px; display: inline-block; width: 10px; height: 10px; text-indent: -999px; cursor: pointer; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 10px; }
 
 @media (max-width: 600px) { .single-plan .single-plan-inner .tip-row .tip-right { margin-top: 30px; } }
 

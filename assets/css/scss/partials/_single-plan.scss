@@ -7,6 +7,33 @@
 			@media (max-width:600px) {
 				width: 100%;
 			}
+			&.active {
+				.overview-tab {
+					&::before {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+					}
+				}
+				.warm-up-tab {
+					&::before {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/warm-w.svg');
+					}
+				}
+				.workout-tab {
+					&::before {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/work-w.svg');
+					}
+				}
+				.meal-plan-tab {
+					&::before {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/meal-w.svg');
+					}
+				}
+				.recipes-tab {
+					&::before {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/recipes-w.svg');
+					}
+				}
+			}
 			a {
 				border-radius: 0;
 				background: #ffffff;
@@ -28,27 +55,52 @@
 				}
 				&.overview-tab {
 					&::before {
-						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye.svg');
+					}
+					&:hover {
+						&::before {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+						}
 					}
 				}
-				&.warp-up-tab {
+				&.warm-up-tab {
 					&::before {
 						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/warm.svg');
+					}
+					&:hover {
+						&::before {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/warm-w.svg');
+						}
 					}
 				}
 				&.workout-tab {
 					&::before {
 						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/work.svg');
 					}
+					&:hover {
+						&::before {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/work-w.svg');
+						}
+					}
 				}
 				&.meal-plan-tab {
 					&::before {
 						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/meal.svg');
 					}
+					&:hover {
+						&::before {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/meal-w.svg');
+						}
+					}
 				}
 				&.recipes-tab {
 					&::before {
 						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg');
+					}
+					&:hover {
+						&::before {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/recipes-w.svg');
+						}
 					}
 				}
 			}
@@ -70,6 +122,18 @@
 	.title-lined {
 		padding-bottom: 20px;
     	border-bottom: 2px solid #418ad0;
+	}
+	.extra-title {
+		span {
+			color: #418ad0;
+			font-weight: bold;
+		}
+	}
+	.box-shadow {
+		box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+	}
+	.btn-full {
+		width: 100%;
 	}
 	.tab-content-plan {
 		margin-right: 0;
@@ -145,6 +209,27 @@
 		background: #f6f6f6;
 		padding: 12px 16px;
 	}
+	.blue-title {
+		color: #418ad0;
+		font-weight: bold;
+	}
+	.single-plan-section-title {
+		&::before {
+			content: '';
+			margin-bottom: 15px;
+			background-size: contain;
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		&.meal-plan {
+			&::before {
+				background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/meal.svg);
+			}
+		}
+	}
 	.single-plan-inner {
 		&.workout-content {
 			max-width: 900px;
@@ -181,9 +266,6 @@
 				}
 			}
 		}
-		.eating-row, .tip-row {
-			max-width: 900px;
-		}
 		.eating-row {
 			.eating-column {
 				.content-box {
@@ -199,21 +281,23 @@
 			@media (min-width:600px) {
 				display: flex;
 			}
-			.tip-left {
+			.tip-left, .tip-middle, .tip-right {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
+				min-height: 240px;
 			}
 			.eating-title, h3 {
 				font-family: "Noto Sans";
 				font-size: 22px;
-				font-weight: bold;
-				text-transform: uppercase;
 			}
 			.tip-right {
 				.quick-tip {
+					margin: 0;
 					h3 {
 						color: #418AD0;
+						text-transform: uppercase;
+						font-weight: bold;
 					}
 					h4 {
 						font-family: "Noto Sans";
@@ -224,6 +308,24 @@
 					}
 					.tip-item {
 						font-size: 16px;
+					}
+				}
+				#quick-tip {
+					.carousel-indicators {
+						clear: both;
+						text-align: center;
+						li {
+							margin-left: 5px;
+							margin-right: 5px;
+							display: inline-block;
+							width: 10px;
+							height: 10px;
+							text-indent: -999px;
+							cursor: pointer;
+							background-color: transparent;
+							border: 2px solid #cdd0d7;
+							border-radius: 10px;
+						}
 					}
 				}
 				@media (max-width:600px) {

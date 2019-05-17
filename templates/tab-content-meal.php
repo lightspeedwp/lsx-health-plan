@@ -25,6 +25,9 @@
 				'link_after'  => '</span>',
 			) );
 		?>
+		<div class="single-plan-section-title meal-plan">
+			<h2 class="title-lined">My Meal Plan <span class="blue-title">Day 1</span></h2>
+		</div>
 		<div class="single-plan-inner meal-content">
 			<div class="meals">
 				<div class="row eating-row">
@@ -77,24 +80,62 @@
 						</div>
 					</div>
 				</div>
-				<div class="row tip-row content-box">
-					<div class="col-md-4 tip-left">
-						<h3 class="eating-title">Todays Recipe</h3>
-						<p>Click to view the delicious and easy recipe of the day.</p>
-						<a class="btn" href="#" target="_blank">Todays Recipe</a>
+				<div class="extra-title">
+					<h2 class="title-lined">Meal Plan <span>Extras</span></h2>
+				</div>
+				<div class="row tip-row extras-box">
+					<div class="col-md-4">
+						<div class="content-box tip-left box-shadow">
+							<h3 class="eating-title title-lined">Recipes</h3>
+							<p>If theres a recipe for the day you can find it here or under the recipes tab.</p>
+							<a class="btn border-btn btn-full" href="#" target="_blank">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+						</div>	
 					</div>
-					<div class="col-md-6 col-md-push-2 tip-right">
-						<div class="diet-tip-wrapper">
-							<div class="row quick-tip">
-								<div class="col-md-6 col-sm-6">
-									<h3>Tip of the day:</h3>
-									<p class="tip-item"><h4>AXE DIET FATIGUE:</h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-								</div>
-								<div class="col-md-6 col-sm-6">
-									<div class="tipimage">
-										<img src="https://lsx-health-plan.feedmybeta.com/wp-content/uploads/2019/05/bolognaise.jpg" class="attachment-thumbnail size-thumbnail" alt="tip">
+					<div class="col-md-4">
+						<div class="content-box tip-middle box-shadow">
+							<h3 class="eating-title title-lined">Shopping List</h3>
+							<p>Checkout the shopping list and make sure you have all the goodies you need!</p>
+							<a class="btn border-btn btn-full" href="#" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+						</div>	
+					</div>
+					<div class="col-md-4">
+						<div class="content-box tip-right box-shadow">
+							<div class="diet-tip-wrapper">
+								<div class="row quick-tip">
+									<h3 class="title-lined">Top Top</h3>
+									<div id="quick-tip" class="carousel slide" data-ride="carousel">
+										<!-- Wrapper for slides -->
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<div class="col-sm-6 col-xs-6">
+													<div class="tipimage">
+														<img src="https://lsx-health-plan.feedmybeta.com/wp-content/uploads/2019/05/bolognaise.jpg" class="attachment-thumbnail size-thumbnail" alt="tip">
+													</div>
+												</div>
+												<div class="col-sm-6 col-xs-6">
+													<h4>AXE DIET FATIGUE:</h4>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+												</div> 
+											</div>
+											<div class="carousel-item ">
+												<div class="col-sm-6 col-xs-6">
+													<div class="tipimage">
+														<img src="https://lsx-health-plan.feedmybeta.com/wp-content/uploads/2019/05/bolognaise.jpg" class="attachment-thumbnail size-thumbnail" alt="tip">
+													</div>
+												</div>
+												<div class="col-sm-6 col-xs-6">
+													<h4>AXE DIET 2:</h4>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+												</div> 
+											</div>
+										</div>
+										<!-- Indicators -->
+										<ol class="carousel-indicators">
+											<li data-target="#quick-tip" data-slide-to="0" class="active"></li>	
+											<li data-target="#quick-tip" data-slide-to="1"></li>	
+										</ol>
 									</div>
-								</div>	
+								</div>
 							</div>
 						</div>
 					</div>
