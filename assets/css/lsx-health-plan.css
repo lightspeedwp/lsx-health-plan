@@ -1,3 +1,105 @@
 /** LSX Health Plan styles. @package lsx-health-plan */
+@media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
+
+#payment.woocommerce-checkout-payment .form-row.place-order { background: #fff; padding: 0px 20px 20px 20px !important; }
+
+#payment.woocommerce-checkout-payment .form-row.place-order .woocommerce-terms-and-conditions-wrapper { background: #f6f6f6; margin-left: -20px; margin-right: -20px; }
+
+#payment.woocommerce-checkout-payment .form-row.place-order .woocommerce-terms-and-conditions-wrapper .validate-required { padding-bottom: 20px !important; }
+
+#payment.woocommerce-checkout-payment .form-row.place-order button#place_order { margin-top: 5px; float: initial; width: 100%; background-color: #F7AE00; box-shadow: 2px 2px 0 0 #CE9100; }
+
+#payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
+
+#single-plan-nav { margin-bottom: 15px; }
+
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; } }
+
+#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+
+#single-plan-nav .nav.nav-pills li a::before { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
+
+#single-plan-nav .nav.nav-pills li a.overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.warp-up-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/warm.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.workout-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/work.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.meal-plan-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/meal.svg"); }
+
+#single-plan-nav .nav.nav-pills li a.recipes-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg"); }
+
+#single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+
+.single-plan .entry-content, .single-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
+
+.single-plan .title-lined { padding-bottom: 20px; border-bottom: 2px solid #418ad0; }
+
+.single-plan .tab-content-plan { margin-right: 0; margin-left: 0; }
+
+@media (min-width: 992px) { .single-plan .tab-content-plan { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+  .single-plan .tab-content-plan .col-md-4 { display: -ms-flexbox; display: flex; } }
+
+.single-plan .tab-content-plan .lsx-health-plan-box { background: #f6f6f6; padding: 25px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26); margin-bottom: 30px; width: 100%; }
+
+@media (min-width: 992px) { .single-plan .tab-content-plan .lsx-health-plan-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; } }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title { font-size: 30px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; background-repeat: no-repeat; background-position: center; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title.warm-up-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/warm.svg); }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title.work-out-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/work.svg); width: 45px; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title.meal-plan-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/meal.svg); width: 35px; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title.recipes-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/recipes.svg); width: 55px; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .title.downloads-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/downloads.svg); width: 55px; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .btn { width: 100%; }
+
+.single-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
+
+.single-plan .single-plan-inner.workout-content { max-width: 900px; }
+
+.single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418AD0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-content, .single-plan .single-plan-inner.workout-content .set .set-table { font-size: 16px; color: #222222; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table { width: 100%; table-layout: fixed; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr th { border-bottom: 2px solid #418AD0; padding: 5px 0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td { border-bottom: 1px solid #E1E1E1; padding: 20px 0; }
+
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td.video-button-item .fa { font-size: 40px; }
+
+.single-plan .single-plan-inner .eating-row, .single-plan .single-plan-inner .tip-row { max-width: 900px; }
+
+.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; }
+
+@media (min-width: 600px) { .single-plan .single-plan-inner .tip-row { display: -ms-flexbox; display: flex; } }
+
+.single-plan .single-plan-inner .tip-row .tip-left { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
+
+.single-plan .single-plan-inner .tip-row .eating-title, .single-plan .single-plan-inner .tip-row h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; text-transform: uppercase; }
+
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h3 { color: #418AD0; }
+
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h4 { font-family: "Noto Sans"; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
+
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip .tip-item { font-size: 16px; }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner .tip-row .tip-right { margin-top: 30px; } }
+
+.single-plan .single-plan-inner-buttons { padding: 45px 0; }
+
+@media (min-width: 600px) { .single-plan .single-plan-inner-buttons { display: -ms-flexbox; display: flex; }
+  .single-plan .single-plan-inner-buttons .complete-plan-btn { margin-right: 40px; } }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 40px; }
+  .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
 /*# sourceMappingURL=maps/lsx-health-plan.css.map */

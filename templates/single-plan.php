@@ -17,6 +17,8 @@ get_header(); ?>
 
 		<?php lsx_content_top(); ?>
 
+		<?php include( LSX_HEALTH_PLAN_PATH . '/templates/single-plan-tabs.php' ); ?>
+
 		<?php
 			$endpoint = get_query_var( 'endpoint' );
 			switch( $endpoint ) {
@@ -24,7 +26,7 @@ get_header(); ?>
 				case 'meal':
 					include( LSX_HEALTH_PLAN_PATH . '/templates/tab-content-meal.php' );
 				break;
-				
+
 				case 'recipes':
 					include( LSX_HEALTH_PLAN_PATH . '/templates/tab-content-recipes.php' );
 				break;				
