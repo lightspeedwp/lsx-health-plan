@@ -84,7 +84,9 @@ function lsx_health_plan_warmup_box() { ?>
   *
   * @return void
   */
-  function lsx_health_plan_downloads_box() { ?>
+  function lsx_health_plan_downloads_box() { 
+    global $current_user;
+    ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
             <h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
@@ -107,21 +109,6 @@ function lsx_health_plan_warmup_box() { ?>
 }
 
 /**
- * Only display the my account page is the user is logged out.
- *
- * @return string
- */
-function lsx_health_plan_restricted_content() {
-    $content = '';
-    if ( ! is_user_logged_in() ) {
-        ob_start();
-        echo do_shortcode( '[woocommerce_my_account]' );
-        $content = ob_get_clean();
-    }  
-    return $content;
-}
-
-/**
  * outputs the dynamic classes for the nav tabs.
  *
  * @param string $tab
@@ -135,4 +122,135 @@ function lsx_health_plan_nav_class( $tab = '' ) {
     if ( ! empty( $nav_classes ) ) {
         echo wp_kses_post( implode( ' ', $nav_classes ) );
     }
+}
+
+/**
+ * Outputs the my profile box
+ *
+ * @return void
+ */
+function lsx_health_plan_my_profile_box() { ?>
+    <div class="lsx-health-plan my-profile-block">
+        <div class="profile-navigation">
+            <div class="profile-photo">
+            <?php
+                global $current_user;
+                get_currentuserinfo();
+                echo get_avatar( $current_user->ID, 240 );
+                ?>
+            </div>
+            <div class="edit-profile">
+                <a class="btn btn-grey" href="<?php echo get_permalink( wc_get_page_id( 'myaccount' ) ); ?>edit-account/"><?php _e( 'Edit Profile', 'lsx-health-plan' ); ?></a>
+            </div>
+        </div>
+
+        <div class="profile-details">
+            <h1><?php echo esc_html( $current_user->display_name ); ?></h1>
+
+            <table class="table personal-information">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"><strong><?php _e( 'Start', 'lsx-health-plan' ); ?></strong></th>
+                    <th scope="col"><strong><?php _e( 'Goal', 'lsx-health-plan' ); ?></strong></th>
+                    <th scope="col"><strong><?php _e( 'Current', 'lsx-health-plan' ); ?></strong></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row"><strong><?php _e( 'Weight', 'lsx-health-plan' ); ?></strong></th>
+                    <td>
+                        <?php
+                            if ( '' !== get_user_meta( get_current_user_id(), 'weight_start', true ) ) {
+                                echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . "Kg's");
+                            } else {
+                                echo '/';
+                            }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'weight_goal', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_goal', true ) . "Kg's");
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'weight_end', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_end', true ) . "Kg's" );
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><strong><?php _e( 'Waist', 'lsx-health-plan' ); ?></strong></th>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'waist_start', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . "cm's");
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'waist_goal', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_goal', true ) . "cm's");
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'waist_end', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_end', true ) . "cm's" );
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><strong><?php _e( 'Fitness', 'lsx-health-plan' ); ?></strong></th>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'fitness_start', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_start', true ) );
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'fitness_goal', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_goal', true ) );
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        if ( '' !== get_user_meta( get_current_user_id(), 'fitness_end', true ) ) {
+                            echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_end', true ) );
+                        } else {
+                            echo '/';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+<?php
 }

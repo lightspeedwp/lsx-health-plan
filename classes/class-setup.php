@@ -26,10 +26,8 @@ class Setup {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-		add_shortcode( 'lsx_health_plan_restricted_content', 'lsx_health_plan_restricted_content' ); 
-
-		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
-		$this->post_types = Post_Type::get_instance();
+		add_action( 'init', array( $this, 'load_shortcodes' ) );
+		$this->load_classes();
 	}
 
 	/**
@@ -56,4 +54,24 @@ class Setup {
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'lsx-health-plan', false, basename( LSX_HEALTH_PLAN_PATH ) . '/languages' );
 	}	
+
+	/**
+	 * Registers our shortcodes.
+	 *
+	 * @return void
+	 */
+	public function load_classes() {
+		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
+		$this->post_types = Post_Type::get_instance();
+	}	
+
+	/**
+	 * Registers our shortcodes.
+	 *
+	 * @return void
+	 */
+	public function load_shortcodes() {
+		add_shortcode( 'lsx_health_plan_restricted_content', '\lsx_health_plan\shortcodes\restricted_content' ); 
+		add_shortcode( 'lsx_health_plan_my_profile_block', '\lsx_health_plan\shortcodes\my_profile_box' );
+	}
 }
