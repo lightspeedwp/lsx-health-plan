@@ -12,9 +12,11 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 
 	$warmup_query = new WP_Query(
 		array(
-			'p' => $warm_up,
+			'post__in' => $warm_up,
+			'post_type' => 'page',
 		)
 	);
+
 	if ( $warmup_query->have_posts() ) {
 		while ( $warmup_query->have_posts() ) {
 			$warmup_query->the_post(); 
