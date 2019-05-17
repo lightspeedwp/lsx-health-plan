@@ -18,16 +18,7 @@ function lsx_health_plan_warmup_box() { ?>
             <div class="excerpt">
                 <p>Pellentesque non scelerisque dui.</p>
             </div>
-            <?php 
-            $warm_ups = get_post_meta( get_the_ID(), 'plan_warmup', true );
-
-            if ( ! empty( $warm_ups ) ) {
-                foreach( $warm_ups as $warm_up ) {
-                    ?>
-                        <a href="<?php echo wp_kses_post( get_the_permalink( $warm_up ) ); ?>" class="btn"><?php esc_html_e( 'Start your warmup', 'lsx-health-plan' ); ?></a>
-                    <?php
-                }
-            }?>
+            <a href="<?php the_permalink(); ?>warm-up/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
         </div>
     </div>
 <?php

@@ -35,6 +35,10 @@ get_header(); ?>
 					include( LSX_HEALTH_PLAN_PATH . '/templates/tab-content-workout.php' );
 				break;
 
+				case 'warm-up':
+					include( LSX_HEALTH_PLAN_PATH . '/templates/tab-content-warm-up.php' );
+				break;				
+
 				default:
 					include( LSX_HEALTH_PLAN_PATH . '/templates/tab-content-plan.php' );
 				break;
