@@ -13,7 +13,7 @@
 function lsx_health_plan_warmup_box() { ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
-            <h3 class="title warm-up-title"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?></h3>
+            <h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
                 <p>Pellentesque non scelerisque dui.</p>
@@ -41,7 +41,7 @@ function lsx_health_plan_warmup_box() { ?>
   function lsx_health_plan_workout_box() { ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
-            <h3 class="title work-out-title"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?></h3>
+            <h3 class="title work-out-title title-lined"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
                 <p>Vestibulum quis mi eu nisl eleifend maximus.</p>
@@ -60,7 +60,7 @@ function lsx_health_plan_warmup_box() { ?>
   function lsx_health_plan_meal_box() { ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
-            <h3 class="title meal-plan-title"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?></h3>
+            <h3 class="title meal-plan-title title-lined"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="excerpt">
                 <p>Nam vestibulum augue id condimentum consectetur.</p>
@@ -79,7 +79,7 @@ function lsx_health_plan_warmup_box() { ?>
   function lsx_health_plan_recipe_box() { ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
-            <h3 class="title recipes-title"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
+            <h3 class="title recipes-title title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'Recipe 1', 'lsx-health-plan' ); ?></a>
             <a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all', 'lsx-health-plan' ); ?></a>
@@ -96,7 +96,7 @@ function lsx_health_plan_warmup_box() { ?>
   function lsx_health_plan_downloads_box() { ?>
     <div class="col-md-4" >
         <div class="lsx-health-plan-box">
-            <h3 class="title downloads-title"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+            <h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
             <div class="spacer"></div>
             <div class="download-list">
                 <ul>

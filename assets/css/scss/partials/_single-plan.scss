@@ -67,6 +67,10 @@
 		background: #ffffff;    
 		padding: 25px 40px;
 	}
+	.title-lined {
+		padding-bottom: 20px;
+    	border-bottom: 2px solid #418ad0;
+	}
 	.tab-content-plan {
 		margin-right: 0;
 		margin-left: 0;
@@ -90,8 +94,6 @@
 			}
 			.title {
 				font-size: 30px;
-				padding-bottom: 20px;
-				border-bottom: 2px solid #418ad0;
 				display: flex;
 				justify-content: space-between;
 				&::after {
@@ -138,14 +140,14 @@
 			}
 		}
 	}
+	.content-box {
+		margin: 30px 0;
+		background: #f6f6f6;
+		padding: 12px 16px;
+	}
 	.single-plan-inner {
 		&.workout-content {
 			max-width: 900px;
-			.workout-content-box {
-				margin: 30px 0;
-				background: #f6f6f6;
-				padding: 12px 16px;
-			}
 			.set {
 				.set-title {
 					font-family: "Noto Sans";
@@ -176,6 +178,56 @@
 							}
 						}
 					}
+				}
+			}
+		}
+		.eating-row, .tip-row {
+			max-width: 900px;
+		}
+		.eating-row {
+			.eating-column {
+				.content-box {
+					.eating-title, h3 {
+						font-family: "Noto Sans";
+						font-size: 22px;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.tip-row {
+			@media (min-width:600px) {
+				display: flex;
+			}
+			.tip-left {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.eating-title, h3 {
+				font-family: "Noto Sans";
+				font-size: 22px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			.tip-right {
+				.quick-tip {
+					h3 {
+						color: #418AD0;
+					}
+					h4 {
+						font-family: "Noto Sans";
+						font-size: 16px;
+						text-transform: uppercase;
+						margin: 0;
+						font-weight: 600;
+					}
+					.tip-item {
+						font-size: 16px;
+					}
+				}
+				@media (max-width:600px) {
+					margin-top: 30px;
 				}
 			}
 		}

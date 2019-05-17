@@ -27,7 +27,7 @@
 			) );
 		?>
 		<div class="single-plan-inner workout-content">
-			<div class="set workout-content-box">
+			<div class="set content-box">
 				<h3 class="set-title">Set One:</h3>
 				<div class="set-content">
 					<p>Do three rounds before moving on to set two. Take a short rest once you’ve completed all reps of a particular exercise. Take a longer rest (up to a minute) between rounds.</p>
@@ -71,7 +71,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="set workout-content-box">
+			<div class="set content-box">
 				<h3 class="set-title">Set One:</h3>
 				<div class="set-content">
 					<p>Do three rounds before moving on to set two. Take a short rest once you’ve completed all reps of a particular exercise. Take a longer rest (up to a minute) between rounds.</p>
