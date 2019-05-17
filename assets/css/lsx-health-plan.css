@@ -1,6 +1,8 @@
 /** LSX Health Plan styles. @package lsx-health-plan */
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
+body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 600px; margin-left: auto; margin-right: auto; }
+
 #payment.woocommerce-checkout-payment .form-row.place-order { background: #fff; padding: 0px 20px 20px 20px !important; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order .woocommerce-terms-and-conditions-wrapper { background: #f6f6f6; margin-left: -20px; margin-right: -20px; }

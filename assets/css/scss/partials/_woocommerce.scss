@@ -6,6 +6,16 @@
 	
 }
 
+// Account 
+
+body:not(.logged-in).woocommerce-account.my-plan {
+	.woocommerce {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
 // Checkout
 
 #payment {
