@@ -120,3 +120,19 @@ function lsx_health_plan_restricted_content() {
     }  
     return $content;
 }
+
+/**
+ * outputs the dynamic classes for the nav tabs.
+ *
+ * @param string $tab
+ * @return void
+ */
+function lsx_health_plan_nav_class( $tab = '' ) {
+    $nav_classes = array();
+    if ( lsx_health_plan_is_current_tab( $tab ) ) {
+        $nav_classes[] = 'active';
+    }
+    if ( ! empty( $nav_classes ) ) {
+        echo wp_kses_post( implode( ' ', $nav_classes ) );
+    }
+}
