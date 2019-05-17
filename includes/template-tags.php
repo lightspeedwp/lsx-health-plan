@@ -114,3 +114,18 @@ function lsx_health_plan_warmup_box() { ?>
     </div>
 <?php
 }
+
+/**
+ * Only display the my account page is the user is logged out.
+ *
+ * @return string
+ */
+function lsx_health_plan_restricted_content() {
+    $content = '';
+    if ( ! is_user_logged_in() ) {
+        ob_start();
+        echo do_shortcode( '[woocommerce_my_account]' );
+        $content = ob_get_clean();
+    }  
+    return $content;
+}

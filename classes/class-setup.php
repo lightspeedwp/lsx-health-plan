@@ -26,6 +26,7 @@ class Setup {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+		add_shortcode( 'lsx_health_plan_restricted_content', 'lsx_health_plan_restricted_content' ); 
 
 		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
 		$this->post_types = Post_Type::get_instance();
