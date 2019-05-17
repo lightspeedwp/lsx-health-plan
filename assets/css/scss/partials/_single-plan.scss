@@ -229,10 +229,28 @@
 				background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/meal.svg);
 			}
 		}
+		&.workout {
+			&::before {
+				background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/work.svg);
+				width: 80px;
+			}
+		}
 	}
 	.single-plan-inner {
 		&.workout-content {
-			max-width: 900px;
+			max-width: 1000px;
+			.workout-instructions {
+				padding-left: 10px;
+    			padding-right: 10px;
+				h3 {
+					font-family: 'Noto Sans', sans-serif;
+					font-weight: bold;
+					margin-bottom: 5px;
+				}
+				.single-plan-inner-buttons {
+					padding: 0;
+				}
+			}
 			.set {
 				.set-title {
 					font-family: "Noto Sans";
@@ -243,6 +261,7 @@
 					font-size: 16px;
 					color: #222222;
 				}
+				
 				.set-table {
 					.workout-table {
 						width: 100%;

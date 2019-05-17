@@ -94,7 +94,15 @@
 
 .single-plan .single-plan-section-title.meal-plan::before { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/meal.svg); }
 
-.single-plan .single-plan-inner.workout-content { max-width: 900px; }
+.single-plan .single-plan-section-title.workout::before { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/work.svg); width: 80px; }
+
+.single-plan .single-plan-inner.workout-content { max-width: 1000px; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions { padding-left: 10px; padding-right: 10px; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions h3 { font-family: 'Noto Sans', sans-serif; font-weight: bold; margin-bottom: 5px; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons { padding: 0; }
 
 .single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418AD0; }
 

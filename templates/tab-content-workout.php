@@ -27,6 +27,27 @@
 			) );
 		?>
 		<div class="single-plan-inner workout-content">
+			<div class="single-plan-section-title workout">
+				<h2 class="title-lined">My Workout <span class="blue-title">Day 1</span></h2>
+			</div>
+			<div class="workout-instructions">
+				<div class="row">
+					<div class="col-md-6">
+					<h3>Dont forget your warm up!</h3>
+					<p>Be sure to do the warm-up before every workout session.</p>
+					</div>
+					<div class="col-md-6">
+						<div class="single-plan-inner-buttons">
+							<div class="complete-plan-btn">
+								<a class="btn border-btn" href="#"><?php esc_html_e( 'Download Warm-Up', 'lsx-health-plan' ); ?></a>
+							</div>
+							<div  class="back-plan-btn">
+								<a class="btn secondary-btn" href="#"><?php esc_html_e( 'See Warm-Up', 'lsx-health-plan' ); ?></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="set content-box">
 				<h3 class="set-title">Set One:</h3>
 				<div class="set-content">
