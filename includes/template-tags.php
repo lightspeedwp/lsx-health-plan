@@ -267,6 +267,7 @@ function lsx_health_plan_day_plan_block() {
 		'orderby' => 'date',
 		'order'   => 'ASC',
 		'post_type' => 'plan',
+		'posts_per_page' => 28,
 	);
 	$the_query = new WP_Query( $args );
 	?>

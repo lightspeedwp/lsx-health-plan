@@ -29,9 +29,13 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
-.my-profile-block { background: #ffffff; padding: 35px 20px 20px; display: -ms-flexbox; display: flex; max-width: 900px; margin: 0 auto; }
+.my-profile-block { background: #ffffff; padding: 35px 20px 20px; max-width: 900px; margin: 0 auto; }
 
-.my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+@media (min-width: 900px) { .my-profile-block { display: -ms-flexbox; display: flex; } }
+
+.my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; }
+
+@media (max-width: 900px) { .my-profile-block .profile-navigation { margin-bottom: 20px; } }
 
 .my-profile-block .profile-navigation .profile-photo img { border-radius: 50%; border: 2px solid #418ad0; max-width: 200px; margin-bottom: 20px; }
 
@@ -55,9 +59,29 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; max-width: 110px; -ms-flex-positive: 1; flex-grow: 1; width: calc(100% * (1/7)); min-height: 110px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; }
+.daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; -ms-flex-positive: 1; flex-grow: 1; width: calc(100% * (1/7)); height: 110px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; border-radius: 2px; -ms-flex-preferred-size: 40%; flex-basis: 40%; max-width: 90px; }
+
+@media (min-width: 900px) { .daily-plan-block .day { max-width: 110px; } }
 
 .daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
+
+.daily-plan-block .day.day-completed .plan-content { font-size: 0; }
+
+.daily-plan-block .day.day-completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 82px; color: #dcdcdc; font-weight: 300; }
+
+.daily-plan-block .day.current-day { background-color: transparent; border: 2px solid #418ad0; }
+
+.daily-plan-block .day.current-day .plan-content { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+
+.daily-plan-block .day.current-day .plan-content:before { content: url(/wp-content/plugins/lsx-health-plan/assets/images/hourglass.svg); height: 40px; }
+
+.daily-plan-block .day.next-day { background-color: #418ad0; }
+
+.daily-plan-block .day.next-day .plan-content { color: #ffffff; }
+
+.daily-plan-block .day.next-day:last-child .plan-content { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+
+.daily-plan-block .day.next-day:last-child .plan-content:before { content: url(/wp-content/plugins/lsx-health-plan/assets/images/trophy.svg); height: 40px; }
 
 #single-plan-nav { margin-bottom: 15px; }
 

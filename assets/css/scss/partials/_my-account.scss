@@ -3,12 +3,18 @@
 .my-profile-block {
 	background: $white;    
 	padding: 35px 20px 20px;
-	display: flex;
 	max-width: 900px;
-    margin: 0 auto;
+	margin: 0 auto;
+	@media (min-width:900px) {
+		display: flex;
+	}
 	.profile-navigation {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		@media (max-width:900px) {
+			margin-bottom: 20px;
+		}
 		.profile-photo {
 			img {
 				border-radius: 50%;
@@ -62,17 +68,62 @@
 	.day {
 		background-color: #ececec;
 		margin-bottom: 20px;
-		max-width: 110px;
 		flex-grow: 1;
 		width: calc(100% * (1/7));
-		min-height: 110px;
+		height: 110px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		border-radius: 2px;
+		flex-basis: 40%;
+		max-width: 90px;
+		@media (min-width:900px) {
+			max-width: 110px;
+		}
 		.plan-content {
 			font-size: 22px;
 			font-weight: bold;
 			text-align: center;
+		}
+		&.day-completed {
+			.plan-content {
+				font-size: 0;
+				&:before {
+					content: '\f05d';
+					font-family: FontAwesome;
+					font-size: 82px;
+					color: #dcdcdc;
+					font-weight: 300
+				}
+			}
+		}
+		&.current-day {
+			background-color: transparent;
+			border: 2px solid $blue;
+			.plan-content {
+				display: flex;
+    			flex-direction: column;
+				&:before {
+					content: url(/wp-content/plugins/lsx-health-plan/assets/images/hourglass.svg);
+					height: 40px;
+				}
+			}
+		}
+		&.next-day {
+			background-color: $blue;
+			.plan-content {
+				color: $white;
+			}
+			&:last-child {
+				.plan-content {
+					display: flex;
+					flex-direction: column;
+					&:before {
+						content: url(/wp-content/plugins/lsx-health-plan/assets/images/trophy.svg);
+						height: 40px;
+					}
+				}
+			}
 		}
 	}
 }
