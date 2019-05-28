@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\functions;
+
 /**
  * LSX Health Plan functions.
  *
@@ -15,16 +16,16 @@ namespace lsx_health_plan\functions;
  * @param boolean $single
  * @return boolean
  */
-function has_attached_post( $post_id = '', $meta_key = '', $single = true ){
-    $has_post = false;
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
+function has_attached_post( $post_id = '', $meta_key = '', $single = true ) {
+	$has_post = false;
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
 	}
 	$items = get_post_meta( $post_id, $meta_key, $single );
 	if ( '' !== $items && false !== $items && 0 !== $items ) {
 		$has_post = true;
 	}
-    return $has_post;
+	return $has_post;
 }
 
 /**
@@ -40,8 +41,8 @@ function get_option( $key = '', $default = false ) {
 	}
 	// Fallback to get_option if CMB2 is not loaded yet.
 	$opts = get_option( 'lsx_health_plan_options', $default );
-	$val = $default;
-	if ( 'all' == $key ) {
+	$val  = $default;
+	if ( 'all' === $key ) {
 		$val = $opts;
 	} elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
 		$val = $opts[ $key ];
@@ -80,14 +81,15 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 		'page',
 		'meal',
 		'workout',
-		'recipe'
+		'recipe',
+		'video',
 	);
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
 	$downloads = array();
-	foreach( $post_types as $post_type ) {
-		if ( 'all' === $type || in_array( $type, $post_types ) ) {
+	foreach ( $post_types as $post_type ) {
+		if ( 'all' === $type || in_array( $type, $post_types, true ) ) {
 
 			if ( 'page' === $post_type ) {
 				$key = 'plan_warmup';
@@ -95,9 +97,9 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 				$key = 'connected_' . $post_type . 's';
 			}
 
-			$connected_items = get_post_meta( $post_id, $key , true );
+			$connected_items = get_post_meta( $post_id, $key, true );
 			if ( ! empty( $connected_items ) ) {
-				foreach( $connected_items as $connected_item ) {
+				foreach ( $connected_items as $connected_item ) {
 					$current_downloads = get_post_meta( $connected_item, 'connected_downloads', true );
 					if ( false !== $current_downloads && ! empty( $current_downloads ) ) {
 						$downloads = array_merge( $downloads, $current_downloads );

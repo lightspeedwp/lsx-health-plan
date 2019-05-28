@@ -70,6 +70,7 @@ class Post_Type {
 			'meal',
 			'recipe',
 			'tip',
+			'video',
 		);
 		$this->post_types = $post_types;
 		return $post_types;
