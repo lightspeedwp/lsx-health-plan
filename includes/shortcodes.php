@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\shortcodes;
+
 /**
  * LSX Health Plan Conditional Helpers.
  *
@@ -12,13 +13,13 @@ namespace lsx_health_plan\shortcodes;
  * @return string
  */
 function restricted_content() {
-    $content = '';
-    if ( ! is_user_logged_in() ) {
-        ob_start();
-        echo do_shortcode( '[woocommerce_my_account]' );
-        $content = ob_get_clean();
-    }  
-    return $content;
+	$content = '';
+	if ( ! is_user_logged_in() ) {
+		ob_start();
+		echo do_shortcode( '[woocommerce_my_account]' );
+		$content = ob_get_clean();
+	}
+	return $content;
 }
 
  /**
@@ -27,8 +28,21 @@ function restricted_content() {
   * @return void
   */
 function my_profile_box() {
-    ob_start();
-    echo lsx_health_plan_my_profile_box();
-    $content = ob_get_clean();
-    return $content;
+	ob_start();
+	echo lsx_health_plan_my_profile_box();
+	$content = ob_get_clean();
+	return $content;
 }
+
+/**
+ * outputs the my profile box on the frontpage
+*
+* @return void
+*/
+function day_plan_box() {
+	ob_start();
+	echo lsx_health_plan_day_plan_block();
+	$content = ob_get_clean();
+	return $content;
+}
+

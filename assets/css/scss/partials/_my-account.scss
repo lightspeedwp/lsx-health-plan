@@ -1,0 +1,78 @@
+// Account
+
+.my-profile-block {
+	background: $white;    
+	padding: 35px 20px 20px;
+	display: flex;
+	max-width: 900px;
+    margin: 0 auto;
+	.profile-navigation {
+		display: flex;
+		flex-direction: column;
+		.profile-photo {
+			img {
+				border-radius: 50%;
+				border: 2px solid $blue;
+				max-width: 200px;
+				margin-bottom: 20px;
+				@media (min-width: 900px) {
+					margin-right: 20px;
+				}
+			}
+		}
+		.edit-profile {
+			.btn.btn-green {
+				background-color: $green;
+				box-shadow: 2px 2px 0 0 $dark_green;
+				color: $white;
+			}
+		}
+	}
+	.profile-details {
+		width: 100%;
+		h1 {
+			font-size: 30px;
+			text-transform: capitalize;
+		}
+		.table.personal-information {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 16px;
+			thead {
+				background-color: $light_gray;
+			}
+			tr {
+				th, td {
+					border: none;
+				}
+				td {
+					font-weight: 300;
+				}
+				strong {
+					font-weight: 500;
+				}
+			}
+		}
+	}
+}
+
+.daily-plan-block {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	.day {
+		background-color: #ececec;
+		margin-bottom: 20px;
+		max-width: 110px;
+		flex-grow: 1;
+		width: calc(100% * (1/7));
+		min-height: 110px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.plan-content {
+			font-size: 22px;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
+}

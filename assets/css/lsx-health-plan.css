@@ -1,4 +1,8 @@
 /** LSX Health Plan styles. @package lsx-health-plan */
+.title-lined { padding-bottom: 20px; border-bottom: 2px solid #418ad0; }
+
+table, .table { width: 100%; table-layout: fixed; }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -24,6 +28,36 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order { margin-top: 5px; float: initial; width: 100%; background-color: #F7AE00; box-shadow: 2px 2px 0 0 #CE9100; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
+
+.my-profile-block { background: #ffffff; padding: 35px 20px 20px; display: -ms-flexbox; display: flex; max-width: 900px; margin: 0 auto; }
+
+.my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+
+.my-profile-block .profile-navigation .profile-photo img { border-radius: 50%; border: 2px solid #418ad0; max-width: 200px; margin-bottom: 20px; }
+
+@media (min-width: 900px) { .my-profile-block .profile-navigation .profile-photo img { margin-right: 20px; } }
+
+.my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: #6ba913; box-shadow: 2px 2px 0 0 #446b0c; color: #ffffff; }
+
+.my-profile-block .profile-details { width: 100%; }
+
+.my-profile-block .profile-details h1 { font-size: 30px; text-transform: capitalize; }
+
+.my-profile-block .profile-details .table.personal-information { font-family: 'Montserrat', sans-serif; font-size: 16px; }
+
+.my-profile-block .profile-details .table.personal-information thead { background-color: #f6f6f6; }
+
+.my-profile-block .profile-details .table.personal-information tr th, .my-profile-block .profile-details .table.personal-information tr td { border: none; }
+
+.my-profile-block .profile-details .table.personal-information tr td { font-weight: 300; }
+
+.my-profile-block .profile-details .table.personal-information tr strong { font-weight: 500; }
+
+.daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; max-width: 110px; -ms-flex-positive: 1; flex-grow: 1; width: calc(100% * (1/7)); min-height: 110px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; }
+
+.daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
 
 #single-plan-nav { margin-bottom: 15px; }
 
@@ -66,8 +100,6 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
-
-.single-plan .title-lined { padding-bottom: 20px; border-bottom: 2px solid #418ad0; }
 
 .single-plan .extra-title span { color: #418ad0; font-weight: bold; }
 
@@ -120,13 +152,11 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons { padding: 0; }
 
-.single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418AD0; }
+.single-plan .single-plan-inner.workout-content .set .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
 .single-plan .single-plan-inner.workout-content .set .set-content, .single-plan .single-plan-inner.workout-content .set .set-table { font-size: 16px; color: #222222; }
 
-.single-plan .single-plan-inner.workout-content .set .set-table .workout-table { width: 100%; table-layout: fixed; }
-
-.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr th { border-bottom: 2px solid #418AD0; padding: 5px 0; }
+.single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr th { border-bottom: 2px solid #418ad0; padding: 5px 0; }
 
 .single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td { border-bottom: 1px solid #E1E1E1; padding: 20px 0; }
 
@@ -142,7 +172,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .single-plan .single-plan-inner .tip-row .tip-right .quick-tip { margin: 0; }
 
-.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h3 { color: #418AD0; text-transform: uppercase; font-weight: bold; }
+.single-plan .single-plan-inner .tip-row .tip-right .quick-tip h3 { color: #418ad0; text-transform: uppercase; font-weight: bold; }
 
 .single-plan .single-plan-inner .tip-row .tip-right .quick-tip h4 { font-family: "Noto Sans"; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
 

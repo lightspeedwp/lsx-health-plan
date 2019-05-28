@@ -36,11 +36,11 @@
 			}
 			a {
 				border-radius: 0;
-				background: #ffffff;
+				background: $white;
 				font-family: 'Lora', serif;
 				font-weight: bold;
 				font-size: 18px;
-				color: #4a4a4a;
+				color: $gray;
 				padding: 15px 35px;
 				display: flex;
 				&::before {
@@ -106,8 +106,8 @@
 			}
 			&.active, &:hover {
 				a {
-					background: #418ad0;
-					color: #ffffff;
+					background: $blue;
+					color: $white;
 				}
 			}
 		}
@@ -116,16 +116,12 @@
 
 .single-plan {
 	.entry-content, .tab-content-plan {
-		background: #ffffff;    
+		background: $white;    
 		padding: 25px 40px;
-	}
-	.title-lined {
-		padding-bottom: 20px;
-    	border-bottom: 2px solid #418ad0;
 	}
 	.extra-title {
 		span {
-			color: #418ad0;
+			color: $blue;
 			font-weight: bold;
 		}
 	}
@@ -146,7 +142,7 @@
 			}
 		}
 		.lsx-health-plan-box {
-			background: #f6f6f6;
+			background: $light_gray;
 			padding: 25px 20px;
 			box-shadow: 0 2px 4px rgba(0,0,0,0.26);
 			margin-bottom: 30px;
@@ -206,11 +202,11 @@
 	}
 	.content-box {
 		margin: 30px 0;
-		background: #f6f6f6;
+		background: $light_gray;
 		padding: 12px 16px;
 	}
 	.blue-title {
-		color: #418ad0;
+		color: $blue;
 		font-weight: bold;
 	}
 	.single-plan-section-title {
@@ -260,7 +256,7 @@
 				.set-title {
 					font-family: "Noto Sans";
 					text-transform: uppercase;
-					color: #418AD0;
+					color: $blue;
 				}
 				.set-content, .set-table {
 					font-size: 16px;
@@ -269,11 +265,9 @@
 				
 				.set-table {
 					.workout-table {
-						width: 100%;
-    					table-layout: fixed;
 						tr {
 							th {
-								border-bottom: 2px solid #418AD0;
+								border-bottom: 2px solid $blue;
 								padding: 5px 0;
 							}
 							td {
@@ -319,7 +313,7 @@
 				.quick-tip {
 					margin: 0;
 					h3 {
-						color: #418AD0;
+						color: $blue;
 						text-transform: uppercase;
 						font-weight: bold;
 					}
