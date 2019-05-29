@@ -30,7 +30,7 @@ $recipes = new WP_Query( $args );
 				$featured_image = get_the_post_thumbnail( $post_id, 'thumbnail', array( 'class' => 'aligncenter' ) );
 				?>
 
-				<?php if ( get_post_meta( get_the_ID(), 'recipe_featured_recipe', 1 ) ) : ?>
+				<?php if ( get_post_meta( get_the_ID(), 'recipe_featured', 1 ) ) : ?>
 					<div class="lsx-recipes-slot">
 						<div class="row">
 							<div class="col-md-5">
