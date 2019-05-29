@@ -22,11 +22,23 @@ function restricted_content() {
 	return $content;
 }
 
- /**
-  * outputs the my profile box on the frontpage
-  *
-  * @return void
-  */
+/**
+ * outputs the my profile tabs on the frontpage
+*
+* @return void
+*/
+function my_profile_tabs() {
+	ob_start();
+	echo lsx_health_plan_my_profile_tabs();
+	$content = ob_get_clean();
+	return $content;
+}
+
+/**
+ * outputs the my profile box on the frontpage
+*
+* @return void
+*/
 function my_profile_box() {
 	ob_start();
 	echo lsx_health_plan_my_profile_box();

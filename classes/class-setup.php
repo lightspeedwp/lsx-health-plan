@@ -72,6 +72,7 @@ class Setup {
 	 */
 	public function load_shortcodes() {
 		add_shortcode( 'lsx_health_plan_restricted_content', '\lsx_health_plan\shortcodes\restricted_content' );
+		add_shortcode( 'lsx_health_plan_my_profile_tabs', '\lsx_health_plan\shortcodes\my_profile_tabs' );
 		add_shortcode( 'lsx_health_plan_my_profile_block', '\lsx_health_plan\shortcodes\my_profile_box' );
 		add_shortcode( 'lsx_health_plan_day_plan_block', '\lsx_health_plan\shortcodes\day_plan_box' );
 	}

@@ -1,5 +1,61 @@
 // Account
 
+#account-nav {
+	margin-bottom: 15px;
+	.nav.nav-pills {
+		li {
+			@media (max-width:600px) {
+				width: 100%;
+			}
+			margin-right: 15px;
+			&.active {
+				.my-plan-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+					}
+				}
+			}
+			a {
+				border-radius: 0;
+				background: $white;
+				font-family: 'Noto Sans', sans-serif;
+				font-weight: bold;
+				font-size: 15px;
+				color: $gray;
+				padding: 15px 35px;
+				display: flex;
+				&::after {
+					content: '';
+					margin-left: 10px;
+					background-size: contain;
+					display: inline-block;
+					width: 25px;
+					height: 25px;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+				&.my-plan-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye.svg');
+					}
+					&:hover {
+						&::after {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+						}
+					}
+				}
+				
+			}
+			&.active, &:hover {
+				a {
+					background: $blue;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
 .my-profile-block {
 	background: $white;    
 	padding: 35px 20px 20px;
