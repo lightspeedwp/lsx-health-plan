@@ -11,7 +11,17 @@
 			&.active {
 				.my-plan-tab {
 					&::after {
-						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/my-plan-wht.svg');
+					}
+				}
+				.account-details-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/edit-account-wht.svg');
+					}
+				}
+				.logout-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/logout-wht.svg');
 					}
 				}
 			}
@@ -22,8 +32,9 @@
 				font-weight: bold;
 				font-size: 15px;
 				color: $gray;
-				padding: 15px 35px;
+				padding: 15px;
 				display: flex;
+				min-width: 200px;
 				&::after {
 					content: '';
 					margin-left: 10px;
@@ -36,15 +47,34 @@
 				}
 				&.my-plan-tab {
 					&::after {
-						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye.svg');
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/my-plan.svg');
 					}
 					&:hover {
 						&::after {
-							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg');
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/my-plan-wht.svg');
 						}
 					}
 				}
-				
+				&.account-details-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/edit-account.svg');
+					}
+					&:hover {
+						&::after {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/edit-account-wht.svg');
+						}
+					}
+				}
+				&.logout-tab {
+					&::after {
+						background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/logout.svg');
+					}
+					&:hover {
+						&::after {
+							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/logout-wht.svg');
+						}
+					}
+				}
 			}
 			&.active, &:hover {
 				a {
