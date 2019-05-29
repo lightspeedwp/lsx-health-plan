@@ -35,6 +35,8 @@
 				padding: 15px;
 				display: flex;
 				min-width: 200px;
+				display: flex;
+				justify-content: space-between;
 				&::after {
 					content: '';
 					margin-left: 10px;

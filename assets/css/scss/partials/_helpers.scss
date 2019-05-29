@@ -9,3 +9,7 @@ table, .table {
 	width: 100%;
     table-layout: fixed;
 }
+
+.woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle {
+	display: none;
+}

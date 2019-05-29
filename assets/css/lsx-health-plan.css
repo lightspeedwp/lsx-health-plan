@@ -3,6 +3,8 @@
 
 table, .table { width: 100%; table-layout: fixed; }
 
+.woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -41,7 +43,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #account-nav .nav.nav-pills li.active .logout-tab::after { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/logout-wht.svg"); }
 
-#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15px; color: #4a4a4a; padding: 15px; display: -ms-flexbox; display: flex; min-width: 200px; }
+#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15px; color: #4a4a4a; padding: 15px; display: -ms-flexbox; display: flex; min-width: 200px; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
 
 #account-nav .nav.nav-pills li a::after { content: ''; margin-left: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
 
