@@ -165,33 +165,4 @@ class Video {
 		) );
 	}
 
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function videos_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_videos_connections_metabox',
-			'title'        => __( 'Videos', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => false,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Videos', 'lsx-health-plan' ),
-			'id'         => 'connected_videos',
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15, // Limit selection to X items only (default 1)
-			'sortable'   => true, // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( 'video' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
-	}
 }

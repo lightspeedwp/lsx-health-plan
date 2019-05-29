@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * Contains the downlaods functions post type
  *
@@ -23,7 +24,7 @@ class Downloads {
 	 *
 	 * @var      string
 	 */
-	public $slug = 'download';	
+	public $slug = 'download';
 
 	/**
 	 * Contructor
@@ -43,7 +44,7 @@ class Downloads {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self;
 		}
 		return self::$instance;
@@ -56,84 +57,83 @@ class Downloads {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['dlm_download']['connected_pages'] = 'connected_downloads';
+		$connections['dlm_download']['connected_pages']    = 'connected_downloads';
 		$connections['dlm_download']['connected_workouts'] = 'connected_downloads';
-		$connections['dlm_download']['connected_meals'] = 'connected_downloads';
-		$connections['dlm_download']['connected_recipes'] = 'connected_downloads';
-
+		$connections['dlm_download']['connected_meals']    = 'connected_downloads';
+		$connections['dlm_download']['connected_recipes']  = 'connected_downloads';
 
 		//Post Type Connections
 		$connections['workout']['connected_downloads'] = 'connected_workouts';
-		$connections['meal']['connected_downloads'] = 'connected_meals';
-		$connections['recipe']['connected_downloads'] = 'connected_recipes';
-		$connections['page']['connected_downloads'] = 'connected_pages';
+		$connections['meal']['connected_downloads']    = 'connected_meals';
+		$connections['recipe']['connected_downloads']  = 'connected_recipes';
+		$connections['page']['connected_downloads']    = 'connected_pages';
 		return $connections;
-	}	
+	}
 
 	/**
 	 * Define the metabox and field configurations.
 	 */
 	function downloads_post_type_metaboxes() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_connections_metabox',
-			'title'         => __( 'Connections', 'lsx-health-plan' ),
-			'object_types'  => array( 'dlm_download' ), // Post type
-			'context'       => 'normal',
-			'priority'      => 'high',
-			'show_names'    => true,
+			'id'           => $this->slug . '_connections_metabox',
+			'title'        => __( 'Connections', 'lsx-health-plan' ),
+			'object_types' => array( 'dlm_download' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
 		) );
 		$cmb->add_field( array(
-			'name'      	=> __( 'Pages', 'lsx-health-plan' ),
-			'id'        	=> 'connected_pages',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Pages', 'lsx-health-plan' ),
+			'id'         => 'connected_pages',
+			'type'       => 'post_search_ajax',
 			// Optional :
-			'limit'      	=> 10, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'page' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
-		) );		
-		$cmb->add_field( array(
-			'name'      	=> __( 'Workouts', 'lsx-health-plan' ),
-			'id'        	=> 'connected_workouts',
-			'type'      	=> 'post_search_ajax',
-			// Optional :
-			'limit'      	=> 10, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'workout' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
+			'limit'      => 10,  // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'page' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
 		) );
 		$cmb->add_field( array(
-			'name'      	=> __( 'Meals', 'lsx-health-plan' ),
-			'id'        	=> 'connected_meals',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Workouts', 'lsx-health-plan' ),
+			'id'         => 'connected_workouts',
+			'type'       => 'post_search_ajax',
 			// Optional :
-			'limit'      	=> 10, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'meal' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
+			'limit'      => 10,  // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'workout' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
 		) );
 		$cmb->add_field( array(
-			'name'      	=> __( 'Recipe', 'lsx-health-plan' ),
-			'id'        	=> 'connected_recipes',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Meals', 'lsx-health-plan' ),
+			'id'         => 'connected_meals',
+			'type'       => 'post_search_ajax',
 			// Optional :
-			'limit'      	=> 10, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'recipe' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
-		) );						
+			'limit'      => 10,  // Limit selection to X items only (default 1)
+			'sortable'   => true,  // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'meal' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Recipe', 'lsx-health-plan' ),
+			'id'         => 'connected_recipes',
+			'type'       => 'post_search_ajax',
+			// Optional :
+			'limit'      => 10, // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'recipe' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
 	}
 
 	/**
@@ -143,26 +143,26 @@ class Downloads {
 	 */
 	public function download_connections() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_metabox',
-			'title'         => __( 'Downloads', 'lsx-health-plan' ),
-			'desc'			=> __( 'Start typing to search for your downloads', 'lsx-health-plan' ),
-			'object_types'  => array( 'workout', 'meal', 'recipe' ), // Post type
-			'context'       => 'normal',
-			'priority'      => 'high',
-			'show_names'    => true,
-		) );		
+			'id'           => $this->slug . '_metabox',
+			'title'        => __( 'Downloads', 'lsx-health-plan' ),
+			'desc'         => __( 'Start typing to search for your downloads', 'lsx-health-plan' ),
+			'object_types' => array( 'workout', 'meal', 'recipe' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
+		) );
 		$cmb->add_field( array(
-			'name'      	=> __( 'Downloads', 'lsx-health-plan' ),
-			'id'        	=> 'connected_downloads',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Downloads', 'lsx-health-plan' ),
+			'id'         => 'connected_downloads',
+			'type'       => 'post_search_ajax',
 			// Optional
-			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'dlm_download' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
-		) );	
-	}	
+			'limit'      => 15,  // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'dlm_download' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+	}
 }
