@@ -29,6 +29,24 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
+#account-nav { margin-bottom: 15px; }
+
+#account-nav .nav.nav-pills li { margin-left: 15px; }
+
+@media (max-width: 600px) { #account-nav .nav.nav-pills li { width: 100%; } }
+
+#account-nav .nav.nav-pills li.active .my-plan-tab::after { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+
+#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+
+#account-nav .nav.nav-pills li a::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
+
+#account-nav .nav.nav-pills li a.my-plan-tab::after { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye.svg"); }
+
+#account-nav .nav.nav-pills li a.my-plan-tab:hover::after { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
+
+#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+
 .my-profile-block { background: #ffffff; padding: 35px 20px 20px; max-width: 900px; margin: 0 auto; }
 
 @media (min-width: 900px) { .my-profile-block { display: -ms-flexbox; display: flex; } }
