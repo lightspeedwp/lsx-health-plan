@@ -73,29 +73,29 @@ class Woocommerce {
 		
 		if ( is_singular( 'plan' ) ) {
 			
-			$new_crumbs = array();
+			$new_crumbs    = array();
 			$new_crumbs[0] = $crumbs[0];
 
 			$new_crumbs[1] = array(
-				0	=> get_the_title( wc_get_page_id( 'myaccount' ) ),
-				1	=> get_permalink( wc_get_page_id( 'myaccount' ) ),
+				0 => get_the_title( wc_get_page_id( 'myaccount' ) ),
+				1 => get_permalink( wc_get_page_id( 'myaccount' ) ),
 			);
 
 			$endpoint = get_query_var( 'endpoint' );
 			if ( '' === $endpoint || false === $endpoint ) {
 				$new_crumbs[2] = array(
-					0	=> get_the_title(),
-					1	=> false,
+					0 => get_the_title(),
+					1 => false,
 				);
 			} else {
 				$new_crumbs[2] = array(
-					0	=> get_the_title(),
-					1	=> get_permalink(),
+					0 => get_the_title(),
+					1 => get_permalink(),
 				);
 				$new_crumbs[3] = array(
-					0	=> ucwords( $endpoint ),
-					1	=> false,
-				);				
+					0 => ucwords( $endpoint ),
+					1 => false,
+				);
 			}
 
 			$crumbs = $new_crumbs;
