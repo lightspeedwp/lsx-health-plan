@@ -14,7 +14,7 @@ class Woocommerce {
 	 *
 	 * @var      object \lsx_health_plan\classes\Woocommerce()
 	 */
-	protected static $instance = null;	
+	protected static $instance = null;
 
 	/**
 	 * Contructor
@@ -23,6 +23,7 @@ class Woocommerce {
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );		
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
+		add_filter( 'the_content', array( $this, 'edit_my_account' ) );
 	}
 
 	/**
@@ -100,5 +101,18 @@ class Woocommerce {
 			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
+	}
+
+	/**
+	 * Outputs the my account shortcode if its the edit account endpoint.
+	 *
+	 * @param string $content
+	 * @return string
+	 */
+	public function edit_my_account( $content = '' ) {
+		if ( is_wc_endpoint_url( 'edit-account' ) ) {
+			$content = '[woocommerce_my_account]';
+		}
+		return $content;
 	}
 }
