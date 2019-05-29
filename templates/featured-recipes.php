@@ -27,7 +27,7 @@ $recipes = new WP_Query( $args );
 				$cooking_time   = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
 				$serves         = get_post_meta( get_the_ID(), 'recipe_serves', true );
 				$portion        = get_post_meta( get_the_ID(), 'recipe_portion', true );
-				$featured_image = get_the_post_thumbnail( $post_id, 'thumbnail', array( 'class' => 'aligncenter' ) );
+				$featured_image = get_the_post_thumbnail( $post_id, array( 600, 300 ) );
 				?>
 
 				<?php if ( get_post_meta( get_the_ID(), 'recipe_featured', 1 ) ) : ?>
