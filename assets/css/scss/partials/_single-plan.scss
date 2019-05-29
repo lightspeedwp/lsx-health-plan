@@ -198,6 +198,11 @@
 			.btn {
 				width: 100%;
 			}
+			.spacer {
+				+ .btn {
+					margin-bottom: 20px; 
+				}
+			}
 		}
 	}
 	.content-box {

@@ -111,8 +111,10 @@ class Video {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['video']['connected_plans'] = 'connected_videos';
-		$connections['plan']['connected_videos'] = 'connected_plans';
+		$connections['video']['connected_plans']    = 'connected_videos';
+		$connections['plan']['connected_videos']    = 'connected_plans';
+		$connections['video']['connected_workouts'] = 'connected_videos';
+		$connections['plan']['connected_videos']    = 'connected_workouts';
 		return $connections;
 	}
 
@@ -153,16 +155,46 @@ class Video {
 			'name'       => __( 'Youtube Source', 'lsx-health-plan' ),
 			'desc'       => __( 'It will replace the original video source on front-end', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_youtube_source',
-			'type'       => 'text',
+			'type'       => 'oembed',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Giphy Source', 'lsx-health-plan' ),
 			'desc'       => __( 'The HTML will be stripped leaving only the URL', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_giphy_source',
-			'type'       => 'text',
+			'type'       => 'textarea_code',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 	}
+
+	// 	/**
+	//  * Registers the workout connections on the plan post type.
+	//  *
+	//  * @return void
+	//  */
+	// public function videos_connections() {
+	// 	$cmb = new_cmb2_box( array(
+	// 		'id'           => $this->slug . '_videos_connections_metabox',
+	// 		'title'        => __( 'Videos', 'lsx-health-plan' ),
+	// 		'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+	// 		'object_types' => array( 'plan' ), // Post type
+	// 		'context'      => 'normal',
+	// 		'priority'     => 'high',
+	// 		'show_names'   => false,
+	// 	) );
+	// 	$cmb->add_field( array(
+	// 		'name'       => __( 'Videos', 'lsx-health-plan' ),
+	// 		'id'         => 'connected_videos',
+	// 		'type'       => 'post_search_ajax',
+	// 		// Optional :
+	// 		'limit'      => 15, // Limit selection to X items only (default 1)
+	// 		'sortable'   => true, // Allow selected items to be sortable (default false)
+	// 		'query_args' => array(
+	// 			'post_type'      => array( 'video' ),
+	// 			'post_status'    => array( 'publish' ),
+	// 			'posts_per_page' => -1,
+	// 		),
+	// 	) );
+	// }
 
 }

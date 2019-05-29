@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * Contains the workout post type
  *
@@ -45,7 +46,7 @@ class Workout {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self;
 		}
 		return self::$instance;
@@ -69,7 +70,7 @@ class Workout {
 			'parent_item_colon'  => '',
 			'menu_name'          => esc_html__( 'Workouts', 'lsx-health-plan' ),
 		);
-		$args = array(
+		$args   = array(
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -113,7 +114,7 @@ class Workout {
 		$connections['workout']['connected_plans'] = 'connected_workouts';
 		$connections['plan']['connected_workouts'] = 'connected_plans';
 		return $connections;
-	}	
+	}
 
 	/**
 	 * Define the metabox and field configurations.
@@ -134,31 +135,31 @@ class Workout {
 					'name'       => __( 'Title', 'lsx-health-plan' ),
 					'id'         => $this->slug . '_section_' . $i . '_title',
 					'type'       => 'text',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',		
-				) );				
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+				) );
 
 				$cmb_group->add_field( array(
 					'name'       => __( 'Description', 'lsx-health-plan' ),
 					'id'         => $this->slug . '_section_' . $i . '_description',
 					'type'       => 'wysiwyg',
 					'show_on_cb' => 'cmb2_hide_if_no_cats',
-					'options' => array(
+					'options'    => array(
 						'textarea_rows' => 5,
-					),		
-				) );	
+					),
+				) );
 
 				/**
 				 * Repeatable Field Groups
 				 */
 				// $group_field_id is the field id string, so in this case: $prefix . 'demo'
 				$group_field_id = $cmb_group->add_field( array(
-					'id'          => $this->slug . '_section_' . $i,
-					'type'        => 'group',
-					'options'     => array(
-						'group_title'    => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
-						'add_button'     => esc_html__( 'Add New', 'lsx-health-plan' ),
-						'remove_button'  => esc_html__( 'Delete', 'lsx-health-plan' ),
-						'sortable'       => true,
+					'id'      => $this->slug . '_section_' . $i,
+					'type'    => 'group',
+					'options' => array(
+						'group_title'   => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
+						'add_button'    => esc_html__( 'Add New', 'lsx-health-plan' ),
+						'remove_button' => esc_html__( 'Delete', 'lsx-health-plan' ),
+						'sortable'      => true,
 					),
 				) );
 				/**
@@ -168,38 +169,36 @@ class Workout {
 				 * The parent field's id needs to be passed as the first argument.
 				 */
 				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => esc_html__( 'Workout Name', 'lsx-health-plan' ),
-					'id'         => 'name',
-					'type'       => 'text',
+					'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
+					'id'   => 'name',
+					'type' => 'text',
 					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 				) );
 				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
-					'id'         => 'reps',
-					'type'       => 'text',
+					'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+					'id'   => 'reps',
+					'type' => 'text',
 					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 				) );
 
-				if ( class_exists( 'LSX_Videos' ) ) {
-					$cmb_group->add_group_field( $group_field_id, array(
-						'name'      	=> __( 'Video', 'lsx-health-plan' ),
-						'id'        	=> 'connected_video',
-						'type'      	=> 'post_search_ajax',
-						// Optional :
-						'limit'      	=> 1, 		// Limit selection to X items only (default 1)
-						'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-						'query_args'	=> array(
-							'post_type'			=> array( 'video' ),
-							'post_status'		=> array( 'publish' ),
-							'posts_per_page'	=> -1
-						)
-					) );					
-				}
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'       => __( 'Video', 'lsx-health-plan' ),
+					'id'         => 'connected_video',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 1, // Limit selection to X items only (default 1)
+					'sortable'   => true,  // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'video' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				) );
 
 				$i++;
 			};
-		}		
-	}			
+		}
+	}
 
 	/**
 	 * Registers the workout connections on the plan post type.
@@ -208,33 +207,33 @@ class Workout {
 	 */
 	public function workout_connections() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_workout_connections_metabox',
-			'title'         => __( 'Workouts', 'lsx-health-plan' ),
-			'desc'			=> __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-			'object_types'  => array( 'plan' ), // Post type
-			'context'       => 'normal',
-			'priority'      => 'high',
-			'show_names'    => true,
+			'id'           => $this->slug . '_workout_connections_metabox',
+			'title'        => __( 'Workouts', 'lsx-health-plan' ),
+			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+			'object_types' => array( 'plan' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
 		) );
 		/*$cmb->add_field( array(
 			'name'       => __( 'Box Description', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_box_description',
 			'desc'			=> __( 'This discription displays on the single plan page.', 'lsx-health-plan' ),
 			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',	
-		) );*/		
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );*/
 		$cmb->add_field( array(
-			'name'      	=> __( 'Workouts', 'lsx-health-plan' ),
-			'id'        	=> 'connected_workouts',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Workouts', 'lsx-health-plan' ),
+			'id'         => 'connected_workouts',
+			'type'       => 'post_search_ajax',
 			// Optional :
-			'limit'      	=> 15, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'workout' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
-		) );	
-	}	
+			'limit'      => 15, // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'workout' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+	}
 }

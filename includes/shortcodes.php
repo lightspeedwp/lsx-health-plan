@@ -58,3 +58,14 @@ function day_plan_box() {
 	return $content;
 }
 
+/**
+ * outputs the my featured video box on the frontpage
+*
+* @return void
+*/
+function feature_video_box() {
+	ob_start();
+	echo lsx_health_plan_featured_video_block();
+	$content = ob_get_clean();
+	return $content;
+}

@@ -303,3 +303,12 @@ function lsx_health_plan_day_plan_block() {
 
 <?php
 }
+
+/**
+ * Outputs the featured video shortcode
+ *
+ * @return void
+ */
+function lsx_health_plan_featured_video_block() {
+	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php' );
+}

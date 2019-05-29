@@ -5,6 +5,12 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
 
+#lsx-videos-shortcode { background: #ffffff; padding: 30px 15px; }
+
+#lsx-videos-shortcode h2 { width: 100%; }
+
+#lsx-videos-shortcode .lsx-videos-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 600px; margin-right: auto; margin-left: auto; }
@@ -187,6 +193,8 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 .single-plan .tab-content-plan .lsx-health-plan-box .title.downloads-title::after { background-image: url(/wp-content/plugins/lsx-health-plan/assets/images/downloads.svg); width: 55px; }
 
 .single-plan .tab-content-plan .lsx-health-plan-box .btn { width: 100%; }
+
+.single-plan .tab-content-plan .lsx-health-plan-box .spacer + .btn { margin-bottom: 20px; }
 
 .single-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
 
