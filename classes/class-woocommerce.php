@@ -20,6 +20,7 @@ class Woocommerce {
 	 * Contructor
 	 */
 	public function __construct() {
+		add_action( 'init', array( $this, 'init' ), 20, 1 );
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );		
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
@@ -39,6 +40,15 @@ class Woocommerce {
 			self::$instance = new self;
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Runs on init
+	 *
+	 * @return void
+	 */
+	public function init() {
+		remove_action( 'woocommerce_account_navigation', 'woocommerce_account_navigation' );
 	}
 
 	/**
