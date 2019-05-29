@@ -312,3 +312,12 @@ function lsx_health_plan_day_plan_block() {
 function lsx_health_plan_featured_video_block() {
 	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php' );
 }
+
+/**
+ * Outputs the featured recipes shortcode
+ *
+ * @return void
+ */
+function lsx_health_plan_featured_recipes_block() {
+	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php' );
+}

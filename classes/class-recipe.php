@@ -189,6 +189,12 @@ class Recipe {
 			'show_names'    => true,
 		) );
 		$cmb->add_field( array(
+			'name'       => __( 'Featured Recipe', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_featured_recipe',
+			'type'       => 'checkbox',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );
+		$cmb->add_field( array(
 			'name'       => __( 'Prep Time', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_prep_time',
 			'type'       => 'text',

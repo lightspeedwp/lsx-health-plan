@@ -5,11 +5,15 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
 
-#lsx-videos-shortcode { background: #ffffff; padding: 30px 15px; }
+#lsx-videos-shortcode, #lsx-recipes-shortcode { background: #ffffff; padding: 30px 15px; width: 100%; margin-top: 20px; margin-bottom: 20x; }
 
-#lsx-videos-shortcode h2 { width: 100%; }
+#lsx-videos-shortcode h2, #lsx-recipes-shortcode h2 { width: 100%; }
 
-#lsx-videos-shortcode .lsx-videos-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
+#lsx-videos-shortcode .lsx-videos-title, #lsx-videos-shortcode .lsx-recipes-title, #lsx-recipes-shortcode .lsx-videos-title, #lsx-recipes-shortcode .lsx-recipes-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
+
+#lsx-recipes-shortcode .lsx-recipes-shortcode { width: 100%; }
+
+#lsx-recipes-shortcode .lsx-recipes-shortcode table tr th { font-weight: 300; }
 
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 

@@ -1,11 +1,27 @@
-#lsx-videos-shortcode {
+#lsx-videos-shortcode, #lsx-recipes-shortcode {
 	background: $white;
 	padding: 30px 15px;
+	width: 100%;
+	margin-top: 20px;
+    margin-bottom: 20x;
 	h2 {
 		width: 100%;
 	}
-	.lsx-videos-title {
+	.lsx-videos-title, .lsx-recipes-title {
 		font-size: 20px;
 		font-family: 'Noto Sans', sans-serif;
+	}
+}
+
+#lsx-recipes-shortcode {
+	.lsx-recipes-shortcode {
+		width: 100%;
+		table {
+			tr {
+				th {
+					font-weight: 300;
+				}
+			}
+		}
 	}
 }

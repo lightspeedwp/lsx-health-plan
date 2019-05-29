@@ -69,3 +69,15 @@ function feature_video_box() {
 	$content = ob_get_clean();
 	return $content;
 }
+
+/**
+ * outputs the my featured recipes box on the frontpage
+*
+* @return void
+*/
+function feature_recipes_box() {
+	ob_start();
+	echo lsx_health_plan_featured_recipes_block();
+	$content = ob_get_clean();
+	return $content;
+}
