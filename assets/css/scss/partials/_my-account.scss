@@ -226,6 +226,10 @@
 		width: 100%;
 		padding: 30px;
 		background: $white; 
+		.title-lined, .woocommerce {
+			max-width: 760px;
+			margin-left: 0;
+		}
 		.woocommerce {
 			.woocommerce-MyAccount-content {
 				width: 100%;
