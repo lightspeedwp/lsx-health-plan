@@ -80,7 +80,7 @@ $recipes = new WP_Query( $args );
 										</tr>
 									</tbody>
 								</table>
-								<a href="<?php echo get_permalink(); ?>" class="btn"><?php esc_html_e( 'VIEW RECIPE', 'lsx-health-plan' ); ?></a>
+								<a href="<?php echo get_permalink(); ?>" class="btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
 							</div>
 							<div class="col-md-7">
 								<?php

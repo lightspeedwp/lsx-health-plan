@@ -134,7 +134,7 @@ class Woocommerce {
 	 */
 	public function edit_my_account( $content = '' ) {
 		if ( is_wc_endpoint_url( 'edit-account' ) ) {
-			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edict-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div><div class="stat-section"><h2 class="title-lined">My Stats</h2></div></div>';
+			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div><div class="stat-section"><h2 class="title-lined">My Stats</h2></div></div>';
 		}
 		return $content;
 	}

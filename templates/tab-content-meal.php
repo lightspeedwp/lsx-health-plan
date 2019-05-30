@@ -88,7 +88,7 @@
 						<div class="content-box tip-left box-shadow">
 							<h3 class="eating-title title-lined">Recipes</h3>
 							<p>If theres a recipe for the day you can find it here or under the recipes tab.</p>
-							<a class="btn border-btn btn-full" href="#" target="_blank">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							<a class="btn border-btn btn-full" href="<?php echo get_permalink(); ?>" target="_blank">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
 						</div>	
 					</div>
 					<div class="col-md-4">
@@ -146,10 +146,10 @@
 
 	<div class="single-plan-inner-buttons">
 		<div class="complete-plan-btn">
-			<a class="btn cta-btn" href="#"><?php esc_html_e( 'COMPLETE DAY', 'lsx-health-plan' ); ?></a>
-		</div>
+			<a class="btn cta-btn" href="#"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></a>
+		</div> 
 		<div  class="back-plan-btn">
-			<a class="btn" href="#"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
+			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'BACK TO MY PLAN ', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 

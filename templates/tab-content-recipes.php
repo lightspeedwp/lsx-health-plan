@@ -55,7 +55,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="#" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 					<div class="col-md-4 recipe-column">
@@ -81,7 +81,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="#" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 					<div class="col-md-4 recipe-column">
@@ -107,7 +107,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="#" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 				</div>

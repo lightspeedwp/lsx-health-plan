@@ -4,6 +4,15 @@
  *
  * @package lsx-health-plan
  */
+
+$args      = array(
+	'orderby'        => 'date',
+	'order'          => 'DESC',
+	'post_type'      => 'workout',
+	'posts_per_page' => 1,
+);
+$workouts = new WP_Query( $args );
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -49,92 +58,76 @@
 				</div>
 			</div>
 			<div class="set content-box">
-				<h3 class="set-title">Set One:</h3>
-				<div class="set-content">
-					<p>Do three rounds before moving on to set two. Take a short rest once you’ve completed all reps of a particular exercise. Take a longer rest (up to a minute) between rounds.</p>
-				</div>
-				<div class="set-table">
-					<table class="workout-table">
-						<tbody>
-							<tr>
-								<th>Workout</th> 
-								<th class="center-mobile">Reps / Time / Distance</th>
-								<th class="center-mobile">Video</th>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Push-up rotation</td>
-								<td class="reps-field-item center-mobile">10 REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Back lunge to hammer curl press</td>
-								<td class="reps-field-item center-mobile">12REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Speed skaters</td>
-								<td class="reps-field-item center-mobile">45 REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-626">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="set content-box">
-				<h3 class="set-title">Set One:</h3>
-				<div class="set-content">
-					<p>Do three rounds before moving on to set two. Take a short rest once you’ve completed all reps of a particular exercise. Take a longer rest (up to a minute) between rounds.</p>
-				</div>
-				<div class="set-table">
-					<table class="workout-table">
-						<tbody>
-							<tr>
-								<th>Workout</th> 
-								<th class="center-mobile">Reps / Time / Distance</th>
-								<th class="center-mobile">Video</th>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Push-up rotation</td>
-								<td class="reps-field-item center-mobile">10 REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Back lunge to hammer curl press</td>
-								<td class="reps-field-item center-mobile">12REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="workout-title-item">Speed skaters</td>
-								<td class="reps-field-item center-mobile">45 REPS</td>
-								<td class="video-button-item center-mobile">
-									<a href="#" data-toggle="modal" data-target="#sftw-626">
-										<span class="fa fa-play-circle"></span>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<?php
+				$i = 1;
+				if ( $workouts->have_posts() ) :
+					while ( $workouts->have_posts() ) :
+						$workouts->the_post();
+						$post_id = get_the_id();
+						$workout_section = 'workout_section_' . ( $i ) . '_title';
+						$workout_desc    = 'workout_section_' . ( $i ) . '_description';
+						$section_title   = get_post_meta( get_the_ID(), $workout_section, true );
+						$description     = get_post_meta( get_the_ID(), $workout_desc, true );
+
+						$group_name = 'workout_section_' . $i;
+						$group = get_post_meta( get_the_ID(), $group_name, true );
+
+						if ( isset( $group[0]['name'] ) ) {
+							$workout_name = esc_html( $group[0]['name'] );
+						}
+						if ( isset( $group[0]['reps'] ) ) {
+							$workout_reps = esc_html( $group[0]['reps'] );
+						}
+						if ( isset( $group[0]['connected_video'] ) ) {
+							$workout_video = esc_html( $group[0]['video'] );
+						}
+						?>
+						<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
+						<div class="set-content">
+							<p><?php echo esc_html( $description ); ?></p>
+						</div>
+						<div class="set-table">
+							<table class="workout-table">
+								<tbody>
+									<tr>
+										<th>Workout</th> 
+										<th class="center-mobile">Reps / Time / Distance</th>
+										<th class="center-mobile">Video</th>
+									</tr>
+									<tr>
+										<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
+										<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
+										<td class="video-button-item center-mobile">
+											<a href="#" data-toggle="modal" data-target="#sftw-">
+												<span class="fa fa-play-circle"></span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="workout-title-item">Back lunge to hammer curl press</td>
+										<td class="reps-field-item center-mobile">12REPS</td>
+										<td class="video-button-item center-mobile">
+											<a href="#" data-toggle="modal" data-target="#sftw-">
+												<span class="fa fa-play-circle"></span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="workout-title-item">Speed skaters</td>
+										<td class="reps-field-item center-mobile">45 REPS</td>
+										<td class="video-button-item center-mobile">
+											<a href="#" data-toggle="modal" data-target="#sftw-626">
+												<span class="fa fa-play-circle"></span>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<?php $i++; ?>
+					<?php endwhile; ?>
+				<?php endif; ?>
+				<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
 
@@ -145,7 +138,7 @@
 			<a class="btn cta-btn" href="#"><?php esc_html_e( 'COMPLETE DAY', 'lsx-health-plan' ); ?></a>
 		</div>
 		<div  class="back-plan-btn">
-			<a class="btn" href="#"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
+			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 

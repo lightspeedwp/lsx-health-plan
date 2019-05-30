@@ -125,7 +125,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .daily-plan-block .day.next-day:last-child .plan-content:before { content: url(/wp-content/plugins/lsx-health-plan/assets/images/trophy.svg); height: 40px; }
 
-#edit-account-tab { padding: 35px 20px 20px; max-width: 900px; margin: 20px auto 140px; }
+#edit-account-tab { padding: 35px 20px 20px; max-width: 1140px; width: 100%; margin: 20px auto 140px; }
 
 #edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; padding: 30px; background: #ffffff; }
 
