@@ -321,3 +321,12 @@ function lsx_health_plan_featured_video_block() {
 function lsx_health_plan_featured_recipes_block() {
 	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php' );
 }
+
+/**
+ * Outputs the featured tips shortcode
+ *
+ * @return void
+ */
+function lsx_health_plan_featured_tips_block() {
+	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php' );
+}

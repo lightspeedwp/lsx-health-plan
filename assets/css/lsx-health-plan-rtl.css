@@ -5,11 +5,11 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
 
-#lsx-videos-shortcode, #lsx-recipes-shortcode { background: #ffffff; padding: 30px 15px; width: 100%; margin-top: 20px; margin-bottom: 20x; }
+#lsx-videos-shortcode, #lsx-recipes-shortcode, #lsx-tips-shortcode { background: #ffffff; padding: 30px 15px; width: 100%; margin-top: 20px; margin-bottom: 20x; }
 
-#lsx-videos-shortcode h2, #lsx-recipes-shortcode h2 { width: 100%; }
+#lsx-videos-shortcode h2, #lsx-recipes-shortcode h2, #lsx-tips-shortcode h2 { width: 100%; }
 
-#lsx-videos-shortcode .lsx-videos-title, #lsx-videos-shortcode .lsx-recipes-title, #lsx-recipes-shortcode .lsx-videos-title, #lsx-recipes-shortcode .lsx-recipes-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
+#lsx-videos-shortcode .lsx-videos-title, #lsx-videos-shortcode .lsx-recipes-title, #lsx-recipes-shortcode .lsx-videos-title, #lsx-recipes-shortcode .lsx-recipes-title, #lsx-tips-shortcode .lsx-videos-title, #lsx-tips-shortcode .lsx-recipes-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
 
 #lsx-recipes-shortcode .lsx-recipes-shortcode { width: 100%; }
 
@@ -103,7 +103,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; -ms-flex-positive: 1; flex-grow: 1; width: calc(100% * (1/7)); height: 110px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; border-radius: 2px; -ms-flex-preferred-size: 40%; flex-basis: 40%; max-width: 90px; }
 
-@media (min-width: 900px) { .daily-plan-block .day { max-width: 110px; } }
+@media (min-width: 900px) { .daily-plan-block .day { max-width: 120px; } }
 
 .daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
 

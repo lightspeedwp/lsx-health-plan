@@ -81,3 +81,15 @@ function feature_recipes_box() {
 	$content = ob_get_clean();
 	return $content;
 }
+
+/**
+ * outputs the my featured tips box on the frontpage
+*
+* @return void
+*/
+function feature_tips_box() {
+	ob_start();
+	echo lsx_health_plan_featured_tips_block();
+	$content = ob_get_clean();
+	return $content;
+}

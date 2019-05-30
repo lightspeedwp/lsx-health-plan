@@ -121,7 +121,7 @@ class Woocommerce {
 	 */
 	public function edit_my_account( $content = '' ) {
 		if ( is_wc_endpoint_url( 'edit-account' ) ) {
-			$content = '[woocommerce_my_account]';
+			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs][woocommerce_my_account]</div>';
 		}
 		return $content;
 	}

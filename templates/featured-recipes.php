@@ -22,6 +22,7 @@ $recipes = new WP_Query( $args );
 		if ( $recipes->have_posts() ) :
 			while ( $recipes->have_posts() ) :
 				$recipes->the_post();
+				$post_id = get_the_id();
 
 				$prep_time      = get_post_meta( get_the_ID(), 'recipe_prep_time', true );
 				$cooking_time   = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
