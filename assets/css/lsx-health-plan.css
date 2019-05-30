@@ -125,6 +125,14 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .daily-plan-block .day.next-day:last-child .plan-content:before { content: url(/wp-content/plugins/lsx-health-plan/assets/images/trophy.svg); height: 40px; }
 
+#edit-account-tab { padding: 35px 20px 20px; max-width: 900px; margin: 0 auto 140px; }
+
+@media (min-width: 900px) { #edit-account-tab { display: -ms-flexbox; display: flex; } }
+
+#edit-account-tab .woocommerce { background: #ffffff; }
+
+#edit-account-tab .woocommerce .woocommerce-MyAccount-content { width: 100%; padding: 30px; }
+
 #single-plan-nav { margin-bottom: 15px; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; } }
