@@ -6,6 +6,7 @@
 		li {
 			@media (max-width:600px) {
 				width: 100%;
+				margin: 0;
 			}
 			margin-right: 15px;
 			&.active {
@@ -220,11 +221,20 @@
 	padding: 35px 20px 20px;
 	max-width: 900px;
 	margin: 20px auto 140px;
-	.woocommerce {
+	.edit-account-section, .stat-section {
+		width: 100%;
+		padding: 30px;
 		background: $white; 
-		.woocommerce-MyAccount-content {
-			width: 100%;
-			padding: 30px;
+		.woocommerce {
+			.woocommerce-MyAccount-content {
+				width: 100%;
+			}
+			.woocommerce-EditAccountForm {
+				label, span em {
+					font-weight: 300;
+				}
+			}
 		}
 	}
+	
 }

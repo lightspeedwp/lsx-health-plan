@@ -45,7 +45,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #account-nav .nav.nav-pills li { margin-left: 15px; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills li { width: 100%; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills li { width: 100%; margin: 0; } }
 
 #account-nav .nav.nav-pills li.active .my-plan-tab::after { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/my-plan-wht.svg"); }
 
@@ -127,13 +127,15 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #edit-account-tab { padding: 35px 20px 20px; max-width: 900px; margin: 20px auto 140px; }
 
-#edit-account-tab .woocommerce { background: #ffffff; }
+#edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; padding: 30px; background: #ffffff; }
 
-#edit-account-tab .woocommerce .woocommerce-MyAccount-content { width: 100%; padding: 30px; }
+#edit-account-tab .edit-account-section .woocommerce .woocommerce-MyAccount-content, #edit-account-tab .stat-section .woocommerce .woocommerce-MyAccount-content { width: 100%; }
+
+#edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm span em, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm span em { font-weight: 300; }
 
 #single-plan-nav { margin-bottom: 15px; }
 
-@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; } }
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; margin: 0; } }
 
 #single-plan-nav .nav.nav-pills li.active .overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
 
