@@ -219,10 +219,7 @@
 #edit-account-tab {   
 	padding: 35px 20px 20px;
 	max-width: 900px;
-	margin: 0 auto 140px;
-	@media (min-width:900px) {
-		display: flex;
-	}
+	margin: 20px auto 140px;
 	.woocommerce {
 		background: $white; 
 		.woocommerce-MyAccount-content {
