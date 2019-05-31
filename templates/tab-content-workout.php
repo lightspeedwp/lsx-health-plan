@@ -78,7 +78,7 @@ $workouts = new WP_Query( $args );
 						if ( isset( $group[0]['reps'] ) ) {
 							$workout_reps = esc_html( $group[0]['reps'] );
 						}
-						if ( isset( $group[0]['connected_video'] ) ) {
+						if ( isset( $group[0]['connected_videos'] ) ) {
 							$workout_video = esc_html( $group[0]['video'] );
 						}
 						?>

@@ -89,6 +89,19 @@ function lsx_health_plan_has_tip( $post_id = '' ) {
 }
 
 /**
+ * Checks if the current post or supplied $post_ID has a video attached.
+ *
+ * @param string $post_id
+ * @return boolean
+ */
+function lsx_health_plan_has_video( $post_id = '' ) {
+    if ( '' === $post_id ) {
+        $post_id = get_the_ID();
+    }
+    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_videos' );
+}
+
+/**
  * Checks to see if the current user has a valid purchase.
  *
  * @return boolean

@@ -113,6 +113,8 @@ class Workout {
 	public function enable_connections( $connections = array() ) {
 		$connections['workout']['connected_plans'] = 'connected_workouts';
 		$connections['plan']['connected_workouts'] = 'connected_plans';
+		$connections['workout']['connected_videos'] = 'connected_workouts';
+		$connections['video']['connected_workouts'] = 'connected_videos';
 		return $connections;
 	}
 
@@ -183,7 +185,7 @@ class Workout {
 
 				$cmb_group->add_group_field( $group_field_id, array(
 					'name'       => __( 'Video', 'lsx-health-plan' ),
-					'id'         => 'connected_video',
+					'id'         => $this->slug . '_video',
 					'type'       => 'post_search_ajax',
 					// Optional :
 					'limit'      => 1, // Limit selection to X items only (default 1)

@@ -137,21 +137,6 @@ class Video {
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
-			'name'       => __( 'Video Source', 'lsx-health-plan' ),
-			'desc'       => __( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg)', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_video_source',
-			'type'       => 'file',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			// query_args are passed to wp.media's library query.
-			'query_args' => array(
-				'type' => array(
-					'video/mp4',
-					'video/webm',
-					'video/ogg',
-				),
-			),
-		) );
-		$cmb->add_field( array(
 			'name'       => __( 'Youtube Source', 'lsx-health-plan' ),
 			'desc'       => __( 'It will replace the original video source on front-end', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_youtube_source',

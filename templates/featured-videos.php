@@ -26,7 +26,6 @@ $videos = new WP_Query( $args );
 				$featured       = get_post_meta( get_the_ID(), 'video_featured_video', true );
 				$giphy          = get_post_meta( get_the_ID(), 'video_giphy_source', true );
 				$youtube        = esc_url( get_post_meta( get_the_ID(), 'video_youtube_source', 1 ) );
-				$uploaded_video = get_post_meta( get_the_ID(), 'video_video_source', true );
 				?>
 
 				<?php if ( get_post_meta( get_the_ID(), 'video_featured_video', 1 ) ) : ?>
@@ -40,10 +39,6 @@ $videos = new WP_Query( $args );
 								<?php
 								if ( ! empty( $giphy ) ) {
 									echo $giphy;
-								} elseif ( ! empty( $uploaded_video ) ) {
-									?>
-									<video src="<?php echo $uploaded_video; ?>" width="480"></video>
-									<?php
 								} elseif ( ! empty( $youtube ) ) {
 									echo wp_oembed_get( $youtube, array( 'width' => 480 ) );
 								}
