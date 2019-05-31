@@ -3,10 +3,41 @@
 #single-plan-nav {
 	margin-bottom: 15px;
 	.nav.nav-pills {
+		@media (max-width:600px) {
+			width: 100vw;
+			margin-left: -15px;
+			margin-top: -55px;
+    		height: 100%;
+			display: flex;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			overflow-scrolling: touch;
+			scroll-snap-type: x mandatory;
+			scroll-behavior: smooth;
+			box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4);
+			&::-webkit-scrollbar {
+				width: 1px;
+				height: 5px;
+				background-color: $white ;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: $blue;
+			}
+		}
 		li {
 			@media (max-width:600px) {
-				width: 100%;
+				//width: 100%;
 				margin: 0;
+				width: 50%;
+				flex-shrink: 0;
+				height: 100%;
+				scroll-snap-align: start;
+				display: flex;
+				&:not(.active) {
+					a {
+						opacity: 0.7;
+					}
+				}
 			}
 			&.active {
 				.overview-tab {
@@ -44,6 +75,11 @@
 				color: $gray;
 				padding: 15px 35px;
 				display: flex;
+				@media (max-width:600px) {
+					font-size: 15px;
+					width: 100%;
+					padding: 15px;
+				}
 				&::before {
 					content: '';
 					margin-right: 10px;

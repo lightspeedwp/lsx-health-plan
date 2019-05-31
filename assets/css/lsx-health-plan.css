@@ -137,7 +137,12 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #single-plan-nav { margin-bottom: 15px; }
 
-@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { width: 100%; margin: 0; } }
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-left: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
+  #single-plan-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
+  #single-plan-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418ad0; } }
+
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { margin: 0; width: 50%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; }
+  #single-plan-nav .nav.nav-pills li:not(.active) a { opacity: 0.7; } }
 
 #single-plan-nav .nav.nav-pills li.active .overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
 
@@ -150,6 +155,8 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 #single-plan-nav .nav.nav-pills li.active .recipes-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/recipes-w.svg"); }
 
 #single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li a { font-size: 15px; width: 100%; padding: 15px; } }
 
 #single-plan-nav .nav.nav-pills li a::before { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; }
 
