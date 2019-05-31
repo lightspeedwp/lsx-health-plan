@@ -167,7 +167,7 @@ class Woocommerce {
 	/**
 	 * Add fields to registration form and account area.
 	 */
-	function iconic_print_user_frontend_fields() {
+	public function iconic_print_user_frontend_fields() {
 		$fields            = iconic_get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
@@ -197,7 +197,7 @@ class Woocommerce {
 	 *
 	 * @return mixed|string
 	 */
-	function iconic_get_userdata( $user_id, $key ) {
+	public function iconic_get_userdata( $user_id, $key ) {
 		if ( ! iconic_is_userdata( $key ) ) {
 			return get_user_meta( $user_id, $key, true );
 		}
@@ -216,8 +216,8 @@ class Woocommerce {
 	 *
 	 * @return int
 	 */
-	function iconic_get_edit_user_id() {
-		return isset( $_GET['user_id'] ) ? (int) $_GET['user_id'] : get_current_user_id();
+	public function iconic_get_edit_user_id() {
+		return ( isset( $_GET['user_id'] ) && wp_verify_nonce( sanitize_key( $_GET['user_id'] ) ) ) ? (int) $_GET['user_id'] : get_current_user_id();
 	}
 
 
@@ -226,7 +226,7 @@ class Woocommerce {
 	 *
 	 * @param int $customer_id
 	 */
-	function iconic_save_account_fields( $customer_id ) {
+	public function iconic_save_account_fields( $customer_id ) {
 		$fields         = iconic_get_account_fields();
 		$sanitized_data = array();
 
@@ -236,7 +236,7 @@ class Woocommerce {
 			}
 
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
-			$value    = isset( $_POST[ $key ] ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
+			$value    = ( isset( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
 
 			if ( iconic_is_userdata( $key ) ) {
 				$sanitized_data[ $key ] = $value;
@@ -246,9 +246,9 @@ class Woocommerce {
 			if ( 'profile_photo' === $key ) {
 
 				// This handles the image uploads
-				require_once( ABSPATH . 'wp-admin/includes/image.php' );
-				require_once( ABSPATH . 'wp-admin/includes/file.php' );
-				require_once( ABSPATH . 'wp-admin/includes/media.php' );
+				require_once ABSPATH . 'wp-admin/includes/image.php';
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				require_once ABSPATH . 'wp-admin/includes/media.php';
 
 				$id = media_handle_upload( $key, 0, '' );
 				if ( ! is_wp_error( $id ) ) {
@@ -274,7 +274,7 @@ class Woocommerce {
 	 *
 	 * @return bool
 	 */
-	function iconic_is_userdata( $key ) {
+	public function iconic_is_userdata( $key ) {
 		$userdata = array(
 			'user_pass',
 			'user_login',
@@ -295,7 +295,7 @@ class Woocommerce {
 			'show_admin_bar_front',
 		);
 
-		return in_array( $key, $userdata );
+		return in_array( $key, $userdata, true );
 	}
 
 	/**
@@ -305,7 +305,7 @@ class Woocommerce {
 	 *
 	 * @return bool
 	 */
-	function iconic_is_field_visible( $field_args ) {
+	public function iconic_is_field_visible( $field_args ) {
 		$visible = true;
 		$action  = filter_input( INPUT_POST, 'action' );
 
@@ -325,7 +325,7 @@ class Woocommerce {
 	/**
 	 * Add fields to admin area.
 	 */
-	function iconic_print_user_admin_fields() {
+	public function iconic_print_user_admin_fields() {
 		$fields = iconic_get_account_fields();
 		?>
 		<h2><?php esc_html_e( 'Additional Information', 'iconic' ); ?></h2>
@@ -342,7 +342,7 @@ class Woocommerce {
 				?>
 				<tr>
 					<th>
-						<label for="<?php echo $key; ?>"><?php echo $field_args['label']; ?></label>
+						<label for="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $field_args['label'] ); ?></label>
 					</th>
 					<td>
 						<?php $field_args['label'] = false; ?>
@@ -362,7 +362,7 @@ class Woocommerce {
 	 *
 	 * @return WP_Error
 	 */
-	function iconic_validate_user_frontend_fields( $errors ) {
+	public function iconic_validate_user_frontend_fields( $errors ) {
 		$fields = iconic_get_account_fields();
 
 		foreach ( $fields as $key => $field_args ) {
@@ -370,7 +370,7 @@ class Woocommerce {
 				continue;
 			}
 
-			if ( ! isset( $_POST['register'] ) && ! empty( $field_args['hide_in_account'] ) ) {
+			if ( ! isset( $_POST['register'] ) && wp_verify_nonce( sanitize_key( $_POST['register'] ) ) && ! empty( $field_args['hide_in_account'] ) ) {
 				continue;
 			}
 
@@ -379,6 +379,7 @@ class Woocommerce {
 			}
 
 			if ( empty( $_POST[ $key ] ) ) {
+				/* translators: %s: field */
 				$message = sprintf( __( '%s is a required field.', 'iconic' ), '<strong>' . $field_args['label'] . '</strong>' );
 				$errors->add( $key, $message );
 			}
@@ -396,7 +397,7 @@ class Woocommerce {
 	 *
 	 * @return mixed
 	 */
-	function lsx_profile_photo_field_filter( $field, $key, $args, $value ) {
+	public function lsx_profile_photo_field_filter( $field, $key, $args, $value ) {
 		if ( 'profile_photo' === $args['id'] ) {
 
 			if ( $args['required'] ) {
@@ -442,7 +443,7 @@ class Woocommerce {
 				}
 			}
 
-			$field_html = '';
+			$field_html      = '';
 			$field           = '';
 			$label_id        = $args['id'];
 			$sort            = $args['priority'] ? $args['priority'] : '';
@@ -476,7 +477,7 @@ class Woocommerce {
 	}
 
 
-	function action_woocommerce_after_edit_account_form() {
+	public function action_woocommerce_after_edit_account_form() {
 		echo do_shortcode( '[avatar_upload /]' );
 	}
 

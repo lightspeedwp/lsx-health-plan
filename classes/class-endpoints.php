@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * Contains the endpoints
  *
@@ -20,7 +21,7 @@ class Endpoints {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'setup' ));
+		add_action( 'init', array( $this, 'setup' ) );
 	}
 
 	/**
@@ -32,8 +33,8 @@ class Endpoints {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -56,5 +57,5 @@ class Endpoints {
 		add_rewrite_rule( 'plan/([^/]+)/workout/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
 		add_rewrite_rule( 'plan/([^/]+)/meal/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
 		add_rewrite_rule( 'plan/([^/]+)/recipes/?$', 'index.php?plan=$matches[1]&endpoint=recipes', 'top' );
-	}	
+	}
 }

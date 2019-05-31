@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * LSX Health Plan Admin Class.
  *
@@ -22,7 +23,7 @@ class Admin {
 	 * @var array
 	 */
 	public $connections = array();
-	
+
 	/**
 	 * Stores the previous values needed to remove the post relations
 	 *
@@ -33,13 +34,13 @@ class Admin {
 	/**
 	 * @var object \lsx_health_plan\classes\Settings();
 	 */
-	public $settings;	
+	public $settings;
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-settings.php' );
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-settings.php';
 		$this->settings = Settings::get_instance();
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
@@ -57,8 +58,8 @@ class Admin {
 	public static function get_instance() {
 
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -93,7 +94,7 @@ class Admin {
 	 * @param [type] $cmb2
 	 * @return void
 	 */
-	public function save_previous_values( $value_to_save, $a, $args, $cmb2 ) {		
+	public function save_previous_values( $value_to_save, $a, $args, $cmb2 ) {
 		if ( array_key_exists( $a['field_id'], $connections ) ) {
 			//Get the previous values if the field, so we can run through them and remove the current ID from them later.
 			$this->previous_values = get_post_meta( $a['id'], $a['field_id'] );
@@ -111,15 +112,15 @@ class Admin {
 		$connections = $this->get_connections();
 		if ( empty( $connections ) ) {
 			return;
-		}	
-	
+		}
+
 		//If the field has been updated.
 		$post_type = get_post_type( $cmb2->data_to_save['ID'] );
 		if ( isset( $connections[ $post_type ] ) && array_key_exists( $field_id, $connections[ $post_type ] ) ) {
 			$saved_values = get_post_meta( $cmb2->data_to_save['ID'], $field_id, true );
 			if ( 'updated' === $action ) {
 				$this->add_connected_posts( $saved_values, $cmb2->data_to_save['ID'], $connections[ $post_type ][ $field_id ] );
-			} else if ( 'removed' === $action ) {
+			} elseif ( 'removed' === $action ) {
 				$posts_to_remove = array_intersect( $saved_values, $this->previous_values );
 				$this->remove_connected_posts( $posts_to_remove, $cmb2->data_to_save['ID'], $connections[ $post_type ][ $field_id ] );
 			}
@@ -137,11 +138,11 @@ class Admin {
 	public function add_connected_posts( $values, $current_ID, $connected_key ) {
 		foreach ( $values as $value ) {
 			$current_post_array = get_post_meta( $value, $connected_key, true );
-			$previous_values = $current_post_array;
+			$previous_values    = $current_post_array;
 			//If the current connected post has no saved connections then we create it.
 			if ( false === $current_post_array || empty( $current_post_array ) ) {
 				$current_post_array = array( $current_ID );
-			} else if ( ! in_array( $current_ID, $current_post_array ) ) {
+			} elseif ( ! in_array( $current_ID, $current_post_array, true ) ) {
 				$current_post_array[] = $current_ID;
 			}
 
@@ -163,24 +164,24 @@ class Admin {
 	public function remove_connected_posts( $values, $current_ID, $connected_key ) {
 
 		foreach ( $values as $value ) {
-			$current_post_array = get_post_meta( $value, $connected_key, true );		
-			$new_array = array();
+			$current_post_array = get_post_meta( $value, $connected_key, true );
+			$new_array          = array();
 
 			//Loop through only if the current ID has been saved against the post.
-			if ( in_array( $current_ID, $current_post_array ) ) {
-				
-				//Loop through all the connected saved IDS and 
+			if ( in_array( $current_ID, $current_post_array, true ) ) {
+
+				//Loop through all the connected saved IDS and
 				foreach ( $current_post_array as $cpa ) {
 					if ( $cpa !== $current_ID ) {
 						$new_array[] = $cpa;
 					}
-				}				
-				if ( ! empty( $new_array ) ) {			
+				}
+				if ( ! empty( $new_array ) ) {
 					update_post_meta( $value, $connected_key, $new_array, $current_post_array );
 				} else {
 					delete_post_meta( $value, $connected_key );
 				}
 			}
-		}	
+		}
 	}
 }

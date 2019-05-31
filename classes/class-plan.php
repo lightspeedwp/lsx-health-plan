@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * Contains the meal_plan post type
  *
@@ -44,8 +45,8 @@ class Plan {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -68,7 +69,7 @@ class Plan {
 			'parent_item_colon'  => '',
 			'menu_name'          => esc_html__( 'Plans', 'lsx-health-plan' ),
 		);
-		$args = array(
+		$args   = array(
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -123,7 +124,7 @@ class Plan {
 		);
 
 		register_taxonomy( 'week', array( 'plan' ), $args );
-	}	
+	}
 
 	/**
 	 * Adds the post type to the different arrays.
@@ -134,39 +135,39 @@ class Plan {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}		
+	}
 
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	function details_metaboxes() {
+	public function details_metaboxes() {
 		$cmb = new_cmb2_box( array(
-			'id'            => $this->slug . '_details_metabox',
-			'title'         => __( 'Details', 'lsx-health-plan' ),
-			'object_types'  => array( $this->slug, ), // Post type
-			'context'       => 'normal',
-			'priority'      => 'high',
-			'show_names'    => true,
+			'id'           => $this->slug . '_details_metabox',
+			'title'        => __( 'Details', 'lsx-health-plan' ),
+			'object_types' => array( $this->slug ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
 		) );
 		/*$cmb->add_field( array(
 			'name'       => __( 'Box Description', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_warm_up_box_description',
 			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
 			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',	
-		) );*/		
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+		) );*/
 		$cmb->add_field( array(
-			'name'      	=> __( 'Warmup', 'lsx-health-plan' ),
-			'id'        	=> $this->slug . '_warmup',
-			'type'      	=> 'post_search_ajax',
+			'name'       => __( 'Warmup', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_warmup',
+			'type'       => 'post_search_ajax',
 			// Optional :
-			'limit'      	=> 3, 		// Limit selection to X items only (default 1)
-			'sortable' 	 	=> true, 	// Allow selected items to be sortable (default false)
-			'query_args'	=> array(
-				'post_type'			=> array( 'page' ),
-				'post_status'		=> array( 'publish' ),
-				'posts_per_page'	=> -1
-			)
-		) );		
-	}	
+			'limit'      => 3,  // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'page' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+	}
 }

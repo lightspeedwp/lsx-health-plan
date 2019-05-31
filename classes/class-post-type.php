@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * LSX Health Plan Admin Class.
  *
@@ -28,7 +29,7 @@ class Post_Type {
 	 *
 	 * @var array
 	 */
-	public $connections = array();	
+	public $connections = array();
 
 	/**
 	 * Contructor
@@ -37,8 +38,8 @@ class Post_Type {
 		$this->enable_post_types();
 		add_filter( 'lsx_health_plan_post_types', array( $this, 'enable_post_types' ) );
 		foreach ( $this->post_types as $post_type ) {
-			require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-' . $post_type . '.php' );
-			$classname = ucwords( $post_type );
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-' . $post_type . '.php';
+			$classname        = ucwords( $post_type );
 			$this->$post_type = call_user_func_array( '\\lsx_health_plan\classes\\' . $classname . '::get_instance', array() );
 		}
 	}
@@ -52,8 +53,8 @@ class Post_Type {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -64,7 +65,7 @@ class Post_Type {
 	 * @return void
 	 */
 	public function enable_post_types( $post_types = array() ) {
-		$post_types = array(
+		$post_types       = array(
 			'plan',
 			'workout',
 			'meal',

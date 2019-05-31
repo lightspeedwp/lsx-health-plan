@@ -45,7 +45,7 @@ class Downloads {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -73,7 +73,7 @@ class Downloads {
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	function downloads_post_type_metaboxes() {
+	public function downloads_post_type_metaboxes() {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_connections_metabox',
 			'title'        => __( 'Connections', 'lsx-health-plan' ),

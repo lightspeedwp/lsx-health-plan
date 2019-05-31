@@ -47,7 +47,7 @@ class Video {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -121,7 +121,7 @@ class Video {
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	function details_metaboxes() {
+	public function details_metaboxes() {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_details_metabox',
 			'title'        => __( 'Video Details', 'lsx-health-plan' ),

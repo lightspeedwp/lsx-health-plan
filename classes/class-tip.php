@@ -46,7 +46,7 @@ class Tip {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -137,7 +137,7 @@ class Tip {
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	function featured_metabox() {
+	public function featured_metabox() {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_featured_metabox_tip',
 			'title'        => __( 'Featured', 'lsx-health-plan' ),

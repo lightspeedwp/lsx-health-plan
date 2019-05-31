@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * Contains all the classes for 3rd party Integrations
  *
@@ -24,7 +25,7 @@ class Integrations {
 	 * @var      object \MAG_CMB2_Field_Post_Search_Ajax()
 	 */
 	public $cmb2_post_search_ajax = false;
-	
+
 	/**
 	 * Holds class instance
 	 *
@@ -33,7 +34,7 @@ class Integrations {
 	 * @var      object \lsx_health_plan\classes\Downloads()
 	 */
 	public $download_monitor = false;
-	
+
 	/**
 	 * Holds class instance
 	 *
@@ -41,7 +42,7 @@ class Integrations {
 	 *
 	 * @var      object \lsx_health_plan\classes\Woocommerce()
 	 */
-	public $woocommerce = false;	
+	public $woocommerce = false;
 
 	/**
 	 * Contructor
@@ -61,8 +62,8 @@ class Integrations {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -74,8 +75,8 @@ class Integrations {
 	 */
 	public function cmb2_post_search_ajax() {
 		if ( class_exists( 'CMB2_Bootstrap_260' ) ) {
-			require_once( LSX_HEALTH_PLAN_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php' );
-			$this->cmb2_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();	
+			require_once LSX_HEALTH_PLAN_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php';
+			$this->cmb2_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();
 		}
 	}
 
@@ -86,8 +87,8 @@ class Integrations {
 	 */
 	public function download_monitor_init() {
 		if ( function_exists( 'download_monitor' ) ) {
-			require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-downloads.php' );
-			$this->download_monitor = Downloads::get_instance();	
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-downloads.php';
+			$this->download_monitor = Downloads::get_instance();
 		}
 	}
 
@@ -98,8 +99,8 @@ class Integrations {
 	 */
 	public function woocommerce_init() {
 		if ( function_exists( 'download_monitor' ) ) {
-			require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-woocommerce.php' );
-			$this->woocommerce = Woocommerce::get_instance();	
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-woocommerce.php';
+			$this->woocommerce = Woocommerce::get_instance();
 		}
-	}	
+	}
 }

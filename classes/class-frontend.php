@@ -28,8 +28,8 @@ class Frontend {
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 999 );
 
-		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php' );
-		$this->endpoints = Endpoints::get_instance();		
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php';
+		$this->endpoints = Endpoints::get_instance();
 
 		//Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
@@ -47,8 +47,8 @@ class Frontend {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -100,7 +100,7 @@ class Frontend {
 	}
 
 	/**
-	 * Redirect wordpress to the taxonomy located in the plugin
+	 * Redirect WordPress to the taxonomy located in the plugin
 	 *
 	 * @param     $template string
 	 * @return    string
@@ -109,7 +109,7 @@ class Frontend {
 		$applicable_taxonomies = apply_filters( 'lsx_health_plan_taxonomies_template', array() );
 		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
 			$current_taxonomy = get_query_var( 'taxonomy' );
-			if ( '' == locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
+			if ( '' === locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
 				$template = LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
 			}
 		}
@@ -130,10 +130,10 @@ class Frontend {
 			die;
 		}
 
-		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );		
+		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );
 		if ( false !== $product_id && is_single( $product_id ) ) {
 			wp_redirect( home_url() );
 			die;
-		}		
+		}
 	}
 }

@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+
 /**
  * LSX Health Plan Admin Class.
  *
@@ -40,8 +41,8 @@ class Setup {
 	public static function get_instance() {
 
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -53,7 +54,7 @@ class Setup {
 	 */
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'lsx-health-plan', false, basename( LSX_HEALTH_PLAN_PATH ) . '/languages' );
-	}	
+	}
 
 	/**
 	 * Registers our shortcodes.
@@ -61,9 +62,9 @@ class Setup {
 	 * @return void
 	 */
 	public function load_classes() {
-		require_once( LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php' );
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-post-type.php';
 		$this->post_types = Post_Type::get_instance();
-	}	
+	}
 
 	/**
 	 * Registers our shortcodes.
