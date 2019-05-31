@@ -10,7 +10,8 @@
 *
 * @return void
 */
-function lsx_health_plan_warmup_box() { ?>
+function lsx_health_plan_warmup_box() {
+	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
 			<h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?></h3>

@@ -15,5 +15,8 @@
 
 		<!-- Fix on next release -->
 		<exclude name="WordPress.Functions.DontExtract.extract_extract" />
+
+		<exclude name="Generic.Files.LowercasedFilename" />
+        <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
 	</rule>
 </ruleset>

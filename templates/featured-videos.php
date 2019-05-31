@@ -40,7 +40,9 @@ $videos = new WP_Query( $args );
 								if ( ! empty( $giphy ) ) {
 									echo $giphy; // WPCS: XSS OK.
 								} elseif ( ! empty( $youtube ) ) {
-									echo wp_oembed_get( $youtube, array( 'width' => 480 ) ); // WPCS: XSS OK.
+									echo wp_oembed_get( $youtube, array(
+										'width' => 480,
+									) ); // WPCS: XSS OK.
 								}
 								?>
 							</div>
