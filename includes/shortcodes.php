@@ -29,7 +29,7 @@ function restricted_content() {
 */
 function my_profile_tabs() {
 	ob_start();
-	echo lsx_health_plan_my_profile_tabs();
+	echo lsx_health_plan_my_profile_tabs(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
@@ -41,7 +41,7 @@ function my_profile_tabs() {
 */
 function my_profile_box() {
 	ob_start();
-	echo lsx_health_plan_my_profile_box();
+	echo lsx_health_plan_my_profile_box(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
@@ -53,7 +53,7 @@ function my_profile_box() {
 */
 function day_plan_box() {
 	ob_start();
-	echo lsx_health_plan_day_plan_block();
+	echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
@@ -65,7 +65,7 @@ function day_plan_box() {
 */
 function feature_video_box() {
 	ob_start();
-	echo lsx_health_plan_featured_video_block();
+	echo lsx_health_plan_featured_video_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
@@ -77,7 +77,7 @@ function feature_video_box() {
 */
 function feature_recipes_box() {
 	ob_start();
-	echo lsx_health_plan_featured_recipes_block();
+	echo lsx_health_plan_featured_recipes_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
@@ -89,7 +89,7 @@ function feature_recipes_box() {
 */
 function feature_tips_box() {
 	ob_start();
-	echo lsx_health_plan_featured_tips_block();
+	echo lsx_health_plan_featured_tips_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }

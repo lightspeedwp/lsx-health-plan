@@ -21,9 +21,12 @@ get_header(); ?>
 
 			<div class="post-wrapper">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php
+				while ( have_posts() ) :
+					the_post();
+				?>
 
-					<?php include( LSX_HEALTH_PLAN_PATH . '/templates/content-plan.php' ); ?>
+					<?php include LSX_HEALTH_PLAN_PATH . '/templates/content-plan.php'; ?>
 
 				<?php endwhile; ?>
 

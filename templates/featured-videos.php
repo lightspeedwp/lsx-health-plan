@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
-$args      = array(
+$args   = array(
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 	'post_type'      => 'video',
@@ -23,9 +23,9 @@ $videos = new WP_Query( $args );
 			while ( $videos->have_posts() ) :
 				$videos->the_post();
 
-				$featured       = get_post_meta( get_the_ID(), 'video_featured_video', true );
-				$giphy          = get_post_meta( get_the_ID(), 'video_giphy_source', true );
-				$youtube        = esc_url( get_post_meta( get_the_ID(), 'video_youtube_source', 1 ) );
+				$featured = get_post_meta( get_the_ID(), 'video_featured_video', true );
+				$giphy    = get_post_meta( get_the_ID(), 'video_giphy_source', true );
+				$youtube  = esc_url( get_post_meta( get_the_ID(), 'video_youtube_source', 1 ) );
 				?>
 
 				<?php if ( get_post_meta( get_the_ID(), 'video_featured_video', 1 ) ) : ?>
@@ -38,9 +38,9 @@ $videos = new WP_Query( $args );
 							<div class="col-md-8">
 								<?php
 								if ( ! empty( $giphy ) ) {
-									echo $giphy;
+									echo $giphy; // WPCS: XSS OK.
 								} elseif ( ! empty( $youtube ) ) {
-									echo wp_oembed_get( $youtube, array( 'width' => 480 ) );
+									echo wp_oembed_get( $youtube, array( 'width' => 480 ) ); // WPCS: XSS OK.
 								}
 								?>
 							</div>

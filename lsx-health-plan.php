@@ -18,12 +18,12 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'LSX_HEALTH_PLAN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_HEALTH_PLAN_CORE', __FILE__ );
-define( 'LSX_HEALTH_PLAN_URL',  plugin_dir_url( __FILE__ ) );
-define( 'LSX_HEALTH_PLAN_VER',  '1.0.0' );
+define( 'LSX_HEALTH_PLAN_URL', plugin_dir_url( __FILE__ ) );
+define( 'LSX_HEALTH_PLAN_VER', '1.0.0' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
-require_once( LSX_HEALTH_PLAN_PATH . '/classes/class-core.php' );
+require_once LSX_HEALTH_PLAN_PATH . '/classes/class-core.php';
 
 /**
  * Undocumented function

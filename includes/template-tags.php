@@ -138,7 +138,7 @@ function lsx_health_plan_my_profile_tabs() {
 		<ul class="nav nav-pills">
 			<li class="<?php lsx_health_plan_nav_class( '' ); ?>"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
 			<li class="<?php lsx_health_plan_nav_class( 'edit-account' ); ?>"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
-			<li class="<?php lsx_health_plan_nav_class( 'logout' ); ?>"><a class="logout-tab" href="<?php echo wp_logout_url(); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
+			<li class="<?php lsx_health_plan_nav_class( 'logout' ); ?>"><a class="logout-tab" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
 		</ul>
 	</div>
 	<?php
@@ -293,7 +293,11 @@ function lsx_health_plan_day_plan_block() {
 	$the_query = new WP_Query( $args );
 	?>
 	<div class="daily-plan-block">
-		<?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<?php
+		if ( $the_query->have_posts() ) :
+			while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+		?>
 			<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> state">
 				<div class="plan-content"><?php the_title(); ?></div>
 			</a>
@@ -310,7 +314,7 @@ function lsx_health_plan_day_plan_block() {
  * @return void
  */
 function lsx_health_plan_featured_video_block() {
-	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php' );
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php';
 }
 
 /**
@@ -319,7 +323,7 @@ function lsx_health_plan_featured_video_block() {
  * @return void
  */
 function lsx_health_plan_featured_recipes_block() {
-	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php' );
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php';
 }
 
 /**
@@ -328,5 +332,5 @@ function lsx_health_plan_featured_recipes_block() {
  * @return void
  */
 function lsx_health_plan_featured_tips_block() {
-	include( LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php' );
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }

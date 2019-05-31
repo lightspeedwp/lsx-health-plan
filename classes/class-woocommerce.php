@@ -50,7 +50,7 @@ class Woocommerce {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -146,8 +146,8 @@ class Woocommerce {
 	 *
 	 * @return array
 	 */
-	function iconic_add_post_data_to_account_fields( $fields ) {
-		if ( empty( $_POST ) ) {
+	public function iconic_add_post_data_to_account_fields( $fields ) {
+		if ( empty( $_POST ) && wp_verify_nonce( sanitize_key( $_POST ) ) ) {
 			return $fields;
 		}
 

@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
-$args      = array(
+$args     = array(
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 	'post_type'      => 'workout',
@@ -63,14 +63,14 @@ $workouts = new WP_Query( $args );
 				if ( $workouts->have_posts() ) :
 					while ( $workouts->have_posts() ) :
 						$workouts->the_post();
-						$post_id = get_the_id();
+						$post_id         = get_the_id();
 						$workout_section = 'workout_section_' . ( $i ) . '_title';
 						$workout_desc    = 'workout_section_' . ( $i ) . '_description';
 						$section_title   = get_post_meta( get_the_ID(), $workout_section, true );
 						$description     = get_post_meta( get_the_ID(), $workout_desc, true );
 
 						$group_name = 'workout_section_' . $i;
-						$group = get_post_meta( get_the_ID(), $group_name, true );
+						$group      = get_post_meta( get_the_ID(), $group_name, true );
 
 						if ( isset( $group[0]['name'] ) ) {
 							$workout_name = esc_html( $group[0]['name'] );
@@ -148,18 +148,18 @@ $workouts = new WP_Query( $args );
 				<?php lsx_content_post_tags(); ?>
 
 				<?php
-					if ( class_exists( 'LSX_Sharing' ) ) {
-						lsx_content_sharing();
-					} else {
-						if ( function_exists( 'sharing_display' ) ) {
-							sharing_display( '', true );
-						}
-
-						if ( class_exists( 'Jetpack_Likes' ) ) {
-							$custom_likes = new Jetpack_Likes;
-							echo wp_kses_post( $custom_likes->post_likes( '' ) );
-						}
+				if ( class_exists( 'LSX_Sharing' ) ) {
+					lsx_content_sharing();
+				} else {
+					if ( function_exists( 'sharing_display' ) ) {
+						sharing_display( '', true );
 					}
+
+					if ( class_exists( 'Jetpack_Likes' ) ) {
+						$custom_likes = new Jetpack_Likes();
+						echo wp_kses_post( $custom_likes->post_likes( '' ) );
+					}
+				}
 				?>
 		<?php endif ?>
 	</footer><!-- .footer-meta -->
@@ -168,4 +168,5 @@ $workouts = new WP_Query( $args );
 
 </article><!-- #post-## -->
 
-<?php lsx_entry_after();
+<?php
+lsx_entry_after();

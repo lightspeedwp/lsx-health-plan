@@ -152,8 +152,8 @@ class Video {
 		) );
 	}
 
-	// 	/**
-	//  * Registers the workout connections on the plan post type.
+	// /**
+	//  * Registers the workout connections on the workout post type.
 	//  *
 	//  * @return void
 	//  */
@@ -162,7 +162,7 @@ class Video {
 	// 		'id'           => $this->slug . '_videos_connections_metabox',
 	// 		'title'        => __( 'Videos', 'lsx-health-plan' ),
 	// 		'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-	// 		'object_types' => array( 'plan' ), // Post type
+	// 		'object_types' => array( 'workout' ), // Post type
 	// 		'context'      => 'normal',
 	// 		'priority'     => 'high',
 	// 		'show_names'   => false,

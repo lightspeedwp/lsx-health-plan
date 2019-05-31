@@ -35,18 +35,18 @@
 				<?php lsx_content_post_tags(); ?>
 
 				<?php
-					if ( class_exists( 'LSX_Sharing' ) ) {
-						lsx_content_sharing();
-					} else {
-						if ( function_exists( 'sharing_display' ) ) {
-							sharing_display( '', true );
-						}
-
-						if ( class_exists( 'Jetpack_Likes' ) ) {
-							$custom_likes = new Jetpack_Likes;
-							echo wp_kses_post( $custom_likes->post_likes( '' ) );
-						}
+				if ( class_exists( 'LSX_Sharing' ) ) {
+					lsx_content_sharing();
+				} else {
+					if ( function_exists( 'sharing_display' ) ) {
+						sharing_display( '', true );
 					}
+
+					if ( class_exists( 'Jetpack_Likes' ) ) {
+						$custom_likes = new Jetpack_Likes();
+						echo wp_kses_post( $custom_likes->post_likes( '' ) );
+					}
+				}
 				?>
 		<?php endif ?>
 	</footer><!-- .footer-meta -->
@@ -55,4 +55,5 @@
 
 </article><!-- #post-## -->
 
-<?php lsx_entry_after();
+<?php
+lsx_entry_after();

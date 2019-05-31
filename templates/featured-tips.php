@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
-$args      = array(
+$args = array(
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 	'post_type'      => 'tip',
@@ -29,18 +29,18 @@ $tips = new WP_Query( $args );
 				$test = get_post_meta( get_the_ID(), 'tip_featured_tip', 1 );
 
 				?>
-				<?php  //if ( get_post_meta( get_the_ID(), '_featured_tip', 1 ) ) : ?>
+				<?php //if ( get_post_meta( get_the_ID(), '_featured_tip', 1 ) ) : ?>
 					<div class="lsx-tips-slot">
 						<div class="row">
 							<div class="col-md-5">
 								<h4 class="lsx-tips-title"><?php the_title(); ?></h4>
 								<?php the_content(); ?>
-								<a href="<?php echo get_permalink(); ?>" class="btn"><?php esc_html_e( 'VIEW tip', 'lsx-health-plan' ); ?></a>
+								<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn"><?php esc_html_e( 'View tip', 'lsx-health-plan' ); ?></a>
 							</div>
 							<div class="col-md-7">
 								<?php
 								if ( ! empty( $featured_image ) ) {
-									echo $featured_image;
+									echo wp_kses_post( $featured_image );
 								}
 								?>
 							</div>

@@ -19,9 +19,12 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 
-				<?php include( LSX_HEALTH_PLAN_PATH . '/templates/content-recipe.php' ); ?>
+				<?php include LSX_HEALTH_PLAN_PATH . '/templates/content-recipe.php'; ?>
 
 			<?php endwhile; ?>
 
@@ -34,15 +37,15 @@ get_header(); ?>
 	<?php lsx_content_after(); ?>
 
 	<?php
-		if ( is_singular( 'post' ) ) {
-			lsx_post_nav();
-		}
+	if ( is_singular( 'post' ) ) {
+		lsx_post_nav();
+	}
 	?>
 
 	<?php
-		if ( comments_open() ) {
-			comments_template();
-		}
+	if ( comments_open() ) {
+		comments_template();
+	}
 	?>
 
 </div><!-- #primary -->
@@ -51,4 +54,5 @@ get_header(); ?>
 
 <?php get_sidebar(); ?>
 
-<?php get_footer();
+<?php
+get_footer();

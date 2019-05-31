@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
-$args      = array(
+$args    = array(
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 	'post_type'      => 'recipe',
@@ -43,7 +43,7 @@ $recipes = new WP_Query( $args );
 											<td>
 												<?php
 												if ( ! empty( $prep_time ) ) {
-													echo $prep_time;
+													echo esc_html( $prep_time );
 												}
 												?>
 											</td>
@@ -53,7 +53,7 @@ $recipes = new WP_Query( $args );
 											<td>
 												<?php
 												if ( ! empty( $cooking_time ) ) {
-													echo $cooking_time;
+													echo esc_html( $cooking_time );
 												}
 												?>
 											</td>
@@ -63,7 +63,7 @@ $recipes = new WP_Query( $args );
 											<td>
 												<?php
 												if ( ! empty( $serves ) ) {
-													echo $serves;
+													echo esc_html( $serves );
 												}
 												?>
 											</td>
@@ -73,19 +73,19 @@ $recipes = new WP_Query( $args );
 											<td>
 												<?php
 												if ( ! empty( $portion ) ) {
-													echo $portion;
+													echo esc_html( $portion );
 												}
 												?>
 											</td>
 										</tr>
 									</tbody>
 								</table>
-								<a href="<?php echo get_permalink(); ?>" class="btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
+								<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
 							</div>
 							<div class="col-md-7">
 								<?php
 								if ( ! empty( $featured_image ) ) {
-									echo $featured_image;
+									echo wp_kses_post( $featured_image );
 								}
 								?>
 							</div>

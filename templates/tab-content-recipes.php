@@ -55,7 +55,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 					<div class="col-md-4 recipe-column">
@@ -81,7 +81,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 					<div class="col-md-4 recipe-column">
@@ -107,7 +107,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<a href="<?php echo get_permalink(); ?>" class="btn btn-full">View Recipe</a>
+							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
 				</div>
@@ -120,7 +120,7 @@
 			<a class="btn cta-btn" href="#"><?php esc_html_e( 'COMPLETE DAY', 'lsx-health-plan' ); ?></a>
 		</div>
 		<div  class="back-plan-btn">
-			<a class="btn" href="#"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
+			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 
@@ -130,18 +130,18 @@
 				<?php lsx_content_post_tags(); ?>
 
 				<?php
-					if ( class_exists( 'LSX_Sharing' ) ) {
-						lsx_content_sharing();
-					} else {
-						if ( function_exists( 'sharing_display' ) ) {
-							sharing_display( '', true );
-						}
-
-						if ( class_exists( 'Jetpack_Likes' ) ) {
-							$custom_likes = new Jetpack_Likes;
-							echo wp_kses_post( $custom_likes->post_likes( '' ) );
-						}
+				if ( class_exists( 'LSX_Sharing' ) ) {
+					lsx_content_sharing();
+				} else {
+					if ( function_exists( 'sharing_display' ) ) {
+						sharing_display( '', true );
 					}
+
+					if ( class_exists( 'Jetpack_Likes' ) ) {
+						$custom_likes = new Jetpack_Likes();
+						echo wp_kses_post( $custom_likes->post_likes( '' ) );
+					}
+				}
 				?>
 		<?php endif ?>
 	</footer><!-- .footer-meta -->
@@ -150,4 +150,5 @@
 
 </article><!-- #post-## -->
 
-<?php lsx_entry_after();
+<?php
+lsx_entry_after();

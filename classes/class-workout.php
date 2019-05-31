@@ -47,7 +47,7 @@ class Workout {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -111,8 +111,8 @@ class Workout {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['workout']['connected_plans'] = 'connected_workouts';
-		$connections['plan']['connected_workouts'] = 'connected_plans';
+		$connections['workout']['connected_plans']  = 'connected_workouts';
+		$connections['plan']['connected_workouts']  = 'connected_plans';
 		$connections['workout']['connected_videos'] = 'connected_workouts';
 		$connections['video']['connected_workouts'] = 'connected_videos';
 		return $connections;
@@ -121,7 +121,7 @@ class Workout {
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	function details_metaboxes() {
+	public function details_metaboxes() {
 		$workout_sections = apply_filters( 'lsx_health_plan_workout_sections_amount', 6 );
 		if ( false !== $workout_sections && null !== $workout_sections ) {
 			$i = 1;
@@ -185,7 +185,7 @@ class Workout {
 
 				$cmb_group->add_group_field( $group_field_id, array(
 					'name'       => __( 'Video', 'lsx-health-plan' ),
-					'id'         => $this->slug . '_video',
+					'id'         => 'connected_videos',
 					'type'       => 'post_search_ajax',
 					// Optional :
 					'limit'      => 1, // Limit selection to X items only (default 1)

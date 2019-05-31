@@ -12,10 +12,10 @@
  * @return boolean
  */
 function lsx_health_plan_has_warmup( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'plan_warmup' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'plan_warmup' );
 }
 
 /**
@@ -25,10 +25,10 @@ function lsx_health_plan_has_warmup( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_workout( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' );
 }
 
 /**
@@ -38,10 +38,10 @@ function lsx_health_plan_has_workout( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_meal( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
 }
 
 /**
@@ -51,10 +51,10 @@ function lsx_health_plan_has_meal( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_recipe( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_recipes' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_recipes' );
 }
 
 /**
@@ -64,15 +64,15 @@ function lsx_health_plan_has_recipe( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_downloads( $post_id = '' ) {
-    $has_downloads = false;
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    $downloads = \lsx_health_plan\functions\get_downloads( 'all', $post_id );
-    if ( ! empty( $downloads ) ) {
-        $has_downloads = true;
-    }
-    return $has_downloads;
+	$has_downloads = false;
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	$downloads = \lsx_health_plan\functions\get_downloads( 'all', $post_id );
+	if ( ! empty( $downloads ) ) {
+		$has_downloads = true;
+	}
+	return $has_downloads;
 }
 
 /**
@@ -82,10 +82,10 @@ function lsx_health_plan_has_downloads( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_tip( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_tips' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_tips' );
 }
 
 /**
@@ -95,10 +95,10 @@ function lsx_health_plan_has_tip( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_video( $post_id = '' ) {
-    if ( '' === $post_id ) {
-        $post_id = get_the_ID();
-    }
-    return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_videos' );
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_videos' );
 }
 
 /**
@@ -107,16 +107,16 @@ function lsx_health_plan_has_video( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_user_has_purchase() {
-    $valid_order = false;
-    $product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );        
+	$valid_order = false;
+	$product_id  = \lsx_health_plan\functions\get_option( 'membership_product', false );
 
-    if ( is_user_logged_in() && false !== $product_id ) {
-        $current_user = wp_get_current_user();     
-        if ( wc_customer_bought_product( $current_user->user_email, $current_user->ID, $product_id ) ) {
-            $valid_order = true;
-        }
-    }
-    return $valid_order;
+	if ( is_user_logged_in() && false !== $product_id ) {
+		$current_user = wp_get_current_user();
+		if ( wc_customer_bought_product( $current_user->user_email, $current_user->ID, $product_id ) ) {
+			$valid_order = true;
+		}
+	}
+	return $valid_order;
 }
 
 /**
