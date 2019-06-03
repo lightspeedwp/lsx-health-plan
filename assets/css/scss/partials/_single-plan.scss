@@ -301,7 +301,7 @@
 					padding: 0;
 				}
 			}
-			.set {
+			.sets {
 				.set-title {
 					font-family: "Noto Sans";
 					text-transform: uppercase;
@@ -362,42 +362,6 @@
 				font-size: 22px;
 			}
 			.tip-right {
-				.quick-tip {
-					margin: 0;
-					h3 {
-						color: $blue;
-						text-transform: uppercase;
-						font-weight: bold;
-					}
-					h4 {
-						font-family: "Noto Sans";
-						font-size: 16px;
-						text-transform: uppercase;
-						margin: 0;
-						font-weight: 600;
-					}
-					.tip-item {
-						font-size: 16px;
-					}
-				}
-				#quick-tip {
-					.carousel-indicators {
-						clear: both;
-						text-align: center;
-						li {
-							margin-left: 5px;
-							margin-right: 5px;
-							display: inline-block;
-							width: 10px;
-							height: 10px;
-							text-indent: -999px;
-							cursor: pointer;
-							background-color: transparent;
-							border: 2px solid #cdd0d7;
-							border-radius: 10px;
-						}
-					}
-				}
 				@media (max-width:600px) {
 					margin-top: 30px;
 				}

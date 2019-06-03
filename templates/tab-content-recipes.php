@@ -27,90 +27,92 @@
 			) );
 		?>
 		<div class="single-plan-section-title recipes-plan">
-			<h2 class="title-lined">Recipes <span class="blue-title">Day 1</span></h2>
+
+			<h2 class="title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
 		</div>
 		<div class="single-plan-inner recipes-content">
 			<div class="recipes">
-				<div class="row eating-row">
+			<div class="row eating-row">
+			<?php
+			$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
+			if ( empty( $connected_recipes ) ) {
+				return;
+			}
+			$args    = array(
+				'orderby'   => 'date',
+				'order'     => 'DESC',
+				'post_type' => 'recipe',
+				'post__in'  => $connected_recipes,
+			);
+			$recipes = new WP_Query( $args );
+
+			if ( $recipes->have_posts() ) {
+				while ( $recipes->have_posts() ) {
+					$recipes->the_post();
+					$post_id = get_the_id();
+
+					$prep_time    = get_post_meta( get_the_ID(), 'recipe_prep_time', true );
+					$cooking_time = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
+					$serves       = get_post_meta( get_the_ID(), 'recipe_serves', true );
+					$portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
+
+					?>
 					<div class="col-md-4 recipe-column">
 						<div class="content-box box-shadow">
-							<h3 class="recipe-title title-lined">Marinated Hake</h3>
+							<h3 class="recipe-title title-lined"><?php echo the_title(); ?></h3>
 							<table class="recipe-table">
 								<tbody>
 									<tr>
 										<td>Prep time:</td>
-										<td>30 min</td>
+										<td>
+										<?php
+										if ( ! empty( $prep_time ) ) {
+											echo wp_kses_post( $prep_time );
+										}
+										?>
+										</td>
 									</tr>
 									<tr>
 										<td>Cooking time:</td>
-										<td>30 min</td>
+										<td>
+										<?php
+										if ( ! empty( $cooking_time ) ) {
+											echo wp_kses_post( $cooking_time );
+										}
+										?>
+										</td>
 									</tr>
 									<tr>
 										<td>Serves:</td>
-										<td>30 min</td>
+										<td>
+										<?php
+										if ( ! empty( $serves ) ) {
+											echo wp_kses_post( $serves );
+										}
+										?>
+										</td>
 									</tr>
 									<tr>
 										<td>Portion size:</td>
-										<td>30 min</td>
+										<td>
+										<?php
+										if ( ! empty( $portion ) ) {
+											echo wp_kses_post( $portion );
+										}
+										?>
+										</td>
 									</tr>
 								</tbody>
 							</table>
 							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
-					<div class="col-md-4 recipe-column">
-						<div class="content-box box-shadow">
-							<h3 class="recipe-title title-lined">Fish Creole</h3>
-							<table class="recipe-table">
-								<tbody>
-									<tr>
-										<td>Prep time:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Cooking time:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Serves:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Portion size:</td>
-										<td>30 min</td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
-						</div>
-					</div>
-					<div class="col-md-4 recipe-column">
-						<div class="content-box box-shadow">
-							<h3 class="recipe-title title-lined">Creamed Tuna</h3>
-							<table class="recipe-table">
-								<tbody>
-									<tr>
-										<td>Prep time:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Cooking time:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Serves:</td>
-										<td>30 min</td>
-									</tr>
-									<tr>
-										<td>Portion size:</td>
-										<td>30 min</td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
-						</div>
-					</div>
-				</div>
+				<?php
+				}
+			}
+			?>
+			<?php wp_reset_postdata(); ?>
+			</div>
 			</div>
 		</div>
 	</div><!-- .entry-content -->
