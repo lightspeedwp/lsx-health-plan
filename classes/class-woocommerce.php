@@ -26,18 +26,20 @@ class Woocommerce {
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
 		add_filter( 'the_content', array( $this, 'edit_my_account' ) );
-		add_action( 'woocommerce_register_form', 'iconic_print_user_frontend_fields', 10 ); // register form
-		add_action( 'woocommerce_edit_account_form', 'iconic_print_user_frontend_fields', 10 ); // my account
-		add_filter( 'iconic_account_fields', 'iconic_add_post_data_to_account_fields', 10, 1 );
-		add_action( 'show_user_profile', 'iconic_print_user_admin_fields', 30 ); // admin: edit profile
-		add_action( 'edit_user_profile', 'iconic_print_user_admin_fields', 30 ); // admin: edit other users
-		add_action( 'personal_options_update', 'iconic_save_account_fields' ); // edit own account admin
-		add_action( 'edit_user_profile_update', 'iconic_save_account_fields' ); // edit other account
-		add_action( 'woocommerce_save_account_details', 'iconic_save_account_fields' ); // edit WC account
-		add_filter( 'woocommerce_save_account_details_errors', 'iconic_validate_user_frontend_fields', 10 );
-		add_filter( 'woocommerce_form_field_text', 'lsx_profile_photo_field_filter', 10, 4 );
-		// add the action
-		add_action( 'woocommerce_after_edit_account_form', 'action_woocommerce_after_edit_account_form', 10, 0 );
+
+		add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
+		add_action( 'show_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+		add_action( 'edit_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+		add_action( 'personal_options_update', array( $this, 'iconic_save_account_fields' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'iconic_save_account_fields' ) );
+		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
+		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
+		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
+
+		// add the action.
+		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
 	}
 
 	/**
@@ -134,7 +136,7 @@ class Woocommerce {
 	 */
 	public function edit_my_account( $content = '' ) {
 		if ( is_wc_endpoint_url( 'edit-account' ) ) {
-			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div><div class="stat-section"><h2 class="title-lined">My Stats</h2></div></div>';
+			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div></div>';
 		}
 		return $content;
 	}
@@ -168,19 +170,21 @@ class Woocommerce {
 	 * Add fields to registration form and account area.
 	 */
 	public function iconic_print_user_frontend_fields() {
-		$fields            = iconic_get_account_fields();
+		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
+
+		echo wp_kses_post( '<div class="stat-section"><h2 class="title-lined">My Stats</h2></div>' );
 
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 
-			if ( ! iconic_is_field_visible( $field_args ) ) {
+			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			if ( $is_user_logged_in ) {
-				$user_id = iconic_get_edit_user_id();
-				$value   = iconic_get_userdata( $user_id, $key );
+				$user_id = $this->iconic_get_edit_user_id();
+				$value   = $this->iconic_get_userdata( $user_id, $key );
 			}
 
 			$value = isset( $field_args['value'] ) ? $field_args['value'] : $value;
@@ -198,7 +202,7 @@ class Woocommerce {
 	 * @return mixed|string
 	 */
 	public function iconic_get_userdata( $user_id, $key ) {
-		if ( ! iconic_is_userdata( $key ) ) {
+		if ( ! $this->iconic_is_userdata( $key ) ) {
 			return get_user_meta( $user_id, $key, true );
 		}
 
@@ -227,18 +231,18 @@ class Woocommerce {
 	 * @param int $customer_id
 	 */
 	public function iconic_save_account_fields( $customer_id ) {
-		$fields         = iconic_get_account_fields();
+		$fields         = $this->get_account_fields();
 		$sanitized_data = array();
 
 		foreach ( $fields as $key => $field_args ) {
-			if ( ! iconic_is_field_visible( $field_args ) ) {
+			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
 			$value    = ( isset( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
 
-			if ( iconic_is_userdata( $key ) ) {
+			if ( $this->iconic_is_userdata( $key ) ) {
 				$sanitized_data[ $key ] = $value;
 				continue;
 			}
@@ -326,18 +330,18 @@ class Woocommerce {
 	 * Add fields to admin area.
 	 */
 	public function iconic_print_user_admin_fields() {
-		$fields = iconic_get_account_fields();
+		$fields = $this->get_account_fields();
 		?>
 		<h2><?php esc_html_e( 'Additional Information', 'iconic' ); ?></h2>
 		<table class="form-table" id="iconic-additional-information">
 			<tbody>
 			<?php foreach ( $fields as $key => $field_args ) { ?>
 				<?php
-				if ( ! iconic_is_field_visible( $field_args ) ) {
+				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 					continue;
 				}
 
-				$user_id = iconic_get_edit_user_id();
+				$user_id = $this->iconic_get_edit_user_id();
 				$value   = get_user_meta( $user_id, $key, true );
 				?>
 				<tr>
@@ -363,7 +367,7 @@ class Woocommerce {
 	 * @return WP_Error
 	 */
 	public function iconic_validate_user_frontend_fields( $errors ) {
-		$fields = iconic_get_account_fields();
+		$fields = $this->get_account_fields();
 
 		foreach ( $fields as $key => $field_args ) {
 			if ( empty( $field_args['required'] ) ) {
@@ -481,4 +485,94 @@ class Woocommerce {
 		echo do_shortcode( '[avatar_upload /]' );
 	}
 
+	/**
+	 * Get additional account fields.
+	 *
+	 * @return array
+	 */
+	public function get_account_fields() {
+		return apply_filters( 'iconic_account_fields', array(
+			'weight_start' => array(
+				'type'                 => 'text',
+				'label'                => __( 'Weight', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'waist_start'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Waist', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'fitness_start'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'weight_goal' => array(
+				'type'                 => 'text',
+				'label'                => __( 'Weight', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'waist_goal'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Waist', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'fitness_goal'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'weight_end' => array(
+				'type'                 => 'text',
+				'label'                => __( 'Weight', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'waist_end'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Waist', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+			'fitness_end'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => true,
+			),
+		) );
+	}
 }
