@@ -79,9 +79,11 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 @media (max-width: 900px) { .my-profile-block .profile-navigation { margin-bottom: 20px; } }
 
+@media (min-width: 900px) { .my-profile-block .profile-navigation { margin-left: 20px; } }
+
 .my-profile-block .profile-navigation .profile-photo img { border-radius: 50%; border: 2px solid #418ad0; max-width: 200px; margin-bottom: 20px; }
 
-@media (min-width: 900px) { .my-profile-block .profile-navigation .profile-photo img { margin-left: 20px; } }
+@media (min-width: 900px) { .my-profile-block .profile-navigation .profile-photo img { width: 100%; } }
 
 .my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: #6ba913; box-shadow: -2px 2px 0 0 #446b0c; color: #ffffff; }
 

@@ -104,6 +104,9 @@
 		@media (max-width:900px) {
 			margin-bottom: 20px;
 		}
+		@media (min-width: 900px) {
+			margin-right: 20px;
+		}
 		.profile-photo {
 			img {
 				border-radius: 50%;
@@ -111,7 +114,7 @@
 				max-width: 200px;
 				margin-bottom: 20px;
 				@media (min-width: 900px) {
-					margin-right: 20px;
+					width: 100%;
 				}
 			}
 		}
