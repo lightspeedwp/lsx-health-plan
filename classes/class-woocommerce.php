@@ -27,19 +27,19 @@ class Woocommerce {
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
 		add_filter( 'the_content', array( $this, 'edit_my_account' ) );
 
-		add_action( 'woocommerce_register_form', array( 'iconic_print_user_frontend_fields' ), 10 ); // register form
-		add_action( 'woocommerce_edit_account_form', array( 'iconic_print_user_frontend_fields' ), 10 ); // my account
-		add_filter( 'iconic_account_fields', array( 'iconic_add_post_data_to_account_fields' ), 10, 1 );
-		add_action( 'show_user_profile', array( 'iconic_print_user_admin_fields' ), 30 ); // admin: edit profile
-		add_action( 'edit_user_profile', array( 'iconic_print_user_admin_fields' ), 30 ); // admin: edit other users
-		add_action( 'personal_options_update', array( 'iconic_save_account_fields' ) ); // edit own account admin
-		add_action( 'edit_user_profile_update', array( 'iconic_save_account_fields' ) ); // edit other account
-		add_action( 'woocommerce_save_account_details', array( 'iconic_save_account_fields' ) ); // edit WC account
-		add_filter( 'woocommerce_save_account_details_errors', array( 'iconic_validate_user_frontend_fields' ), 10 );
-		add_filter( 'woocommerce_form_field_text', array( 'lsx_profile_photo_field_filter' ), 10, 4 );
+		add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
+		add_action( 'show_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+		add_action( 'edit_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+		add_action( 'personal_options_update', array( $this, 'iconic_save_account_fields' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'iconic_save_account_fields' ) );
+		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
+		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
+		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
 
 		// add the action.
-		add_action( 'woocommerce_after_edit_account_form', array( 'action_woocommerce_after_edit_account_form' ), 10, 0 );
+		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
 	}
 
 	/**
