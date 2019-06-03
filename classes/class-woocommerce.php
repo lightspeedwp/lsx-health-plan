@@ -29,11 +29,13 @@ class Woocommerce {
 
 		add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		
 		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
 		add_action( 'show_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
-		add_action( 'edit_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+
 		add_action( 'personal_options_update', array( $this, 'iconic_save_account_fields' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'iconic_save_account_fields' ) );
+
 		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
 		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
 		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
@@ -173,7 +175,7 @@ class Woocommerce {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
-		echo wp_kses_post( '<div class="stat-section"><h2 class="title-lined">My Stats</h2></div>' );
+		echo wp_kses_post( '<h2 class="title-lined">My Stats</h2>' );
 
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
@@ -494,7 +496,7 @@ class Woocommerce {
 		return apply_filters( 'iconic_account_fields', array(
 			'weight_start' => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'iconic' ),
+				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -503,7 +505,7 @@ class Woocommerce {
 			),
 			'waist_start'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'iconic' ),
+				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -512,7 +514,7 @@ class Woocommerce {
 			),
 			'fitness_start'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -521,7 +523,7 @@ class Woocommerce {
 			),
 			'weight_goal' => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'iconic' ),
+				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -530,7 +532,7 @@ class Woocommerce {
 			),
 			'waist_goal'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'iconic' ),
+				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -539,7 +541,7 @@ class Woocommerce {
 			),
 			'fitness_goal'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -548,7 +550,7 @@ class Woocommerce {
 			),
 			'weight_end' => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'iconic' ),
+				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -557,7 +559,7 @@ class Woocommerce {
 			),
 			'waist_end'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'iconic' ),
+				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -566,7 +568,7 @@ class Woocommerce {
 			),
 			'fitness_end'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'iconic' ),
+				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
