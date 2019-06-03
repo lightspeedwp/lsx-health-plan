@@ -136,7 +136,7 @@ class Woocommerce {
 	 */
 	public function edit_my_account( $content = '' ) {
 		if ( is_wc_endpoint_url( 'edit-account' ) ) {
-			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div><div class="stat-section"><h2 class="title-lined">My Stats</h2></div></div>';
+			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div></div>';
 		}
 		return $content;
 	}
@@ -173,6 +173,8 @@ class Woocommerce {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
+		echo wp_kses_post( '<div class="stat-section"><h2 class="title-lined">My Stats</h2></div>' );
+
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 
@@ -200,7 +202,7 @@ class Woocommerce {
 	 * @return mixed|string
 	 */
 	public function iconic_get_userdata( $user_id, $key ) {
-		if ( ! iconic_is_userdata( $key ) ) {
+		if ( ! $this->iconic_is_userdata( $key ) ) {
 			return get_user_meta( $user_id, $key, true );
 		}
 
