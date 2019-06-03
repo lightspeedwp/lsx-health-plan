@@ -176,13 +176,13 @@ class Woocommerce {
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 
-			if ( ! iconic_is_field_visible( $field_args ) ) {
+			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			if ( $is_user_logged_in ) {
-				$user_id = iconic_get_edit_user_id();
-				$value   = iconic_get_userdata( $user_id, $key );
+				$user_id = $this->iconic_get_edit_user_id();
+				$value   = $this->iconic_get_userdata( $user_id, $key );
 			}
 
 			$value = isset( $field_args['value'] ) ? $field_args['value'] : $value;
@@ -233,14 +233,14 @@ class Woocommerce {
 		$sanitized_data = array();
 
 		foreach ( $fields as $key => $field_args ) {
-			if ( ! iconic_is_field_visible( $field_args ) ) {
+			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
 			$value    = ( isset( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
 
-			if ( iconic_is_userdata( $key ) ) {
+			if ( $this->iconic_is_userdata( $key ) ) {
 				$sanitized_data[ $key ] = $value;
 				continue;
 			}
@@ -335,11 +335,11 @@ class Woocommerce {
 			<tbody>
 			<?php foreach ( $fields as $key => $field_args ) { ?>
 				<?php
-				if ( ! iconic_is_field_visible( $field_args ) ) {
+				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 					continue;
 				}
 
-				$user_id = iconic_get_edit_user_id();
+				$user_id = $this->iconic_get_edit_user_id();
 				$value   = get_user_meta( $user_id, $key, true );
 				?>
 				<tr>
