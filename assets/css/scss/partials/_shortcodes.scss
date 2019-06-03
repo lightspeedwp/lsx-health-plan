@@ -52,7 +52,9 @@
 						border: none;
 						img {
 							border-radius: 50%;
-    						border: 2px solid $blue;
+							border: 2px solid $blue;
+							min-height: 120px;
+							min-width: 120px;
 						}
 					}
 				}
