@@ -81,6 +81,8 @@ $workouts = new WP_Query( $args );
 						if ( isset( $group[0]['connected_videos'] ) ) {
 							$workout_video = esc_html( $group[0]['video'] );
 						}
+						$giphy    = get_post_meta( get_the_ID(), 'video_giphy_source', true );
+						$youtube  = esc_url( get_post_meta( get_the_ID(), 'video_youtube_source', 1 ) );
 						?>
 						<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
 						<div class="set-content">
@@ -98,7 +100,7 @@ $workouts = new WP_Query( $args );
 										<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
 										<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
 										<td class="video-button-item center-mobile">
-											<a href="#" data-toggle="modal" data-target="#sftw-">
+											<a href="#" data-toggle="modal" data-target="#exampleModal">
 												<span class="fa fa-play-circle"></span>
 											</a>
 										</td>
@@ -107,7 +109,7 @@ $workouts = new WP_Query( $args );
 										<td class="workout-title-item">Back lunge to hammer curl press</td>
 										<td class="reps-field-item center-mobile">12REPS</td>
 										<td class="video-button-item center-mobile">
-											<a href="#" data-toggle="modal" data-target="#sftw-">
+											<a href="#" data-toggle="modal" data-target="#exampleModal">
 												<span class="fa fa-play-circle"></span>
 											</a>
 										</td>
@@ -116,7 +118,7 @@ $workouts = new WP_Query( $args );
 										<td class="workout-title-item">Speed skaters</td>
 										<td class="reps-field-item center-mobile">45 REPS</td>
 										<td class="video-button-item center-mobile">
-											<a href="#" data-toggle="modal" data-target="#sftw-626">
+											<a href="#" data-toggle="modal" data-target="#exampleModal">
 												<span class="fa fa-play-circle"></span>
 											</a>
 										</td>
@@ -124,6 +126,33 @@ $workouts = new WP_Query( $args );
 								</tbody>
 							</table>
 						</div>
+
+						<!-- Modal -->
+						<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title"><?php echo esc_html( $workout_name ); ?></h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+									<?php
+									if ( ! empty( $giphy ) ) {
+										echo $giphy; // WPCS: XSS OK.
+									} elseif ( ! empty( $youtube ) ) {
+										echo wp_oembed_get( $youtube, array( // WPCS: XSS OK.
+											'width' => 480,
+										) );
+									}
+									?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End Modal -->
+
 						<?php $i++; ?>
 					<?php endwhile; ?>
 				<?php endif; ?>

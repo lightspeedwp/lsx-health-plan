@@ -332,6 +332,9 @@
 					}
 				}
 			}
+			.modal.in {
+				background-color: rgba(0, 0, 0, 0.5);
+			}
 		}
 		.eating-row {
 			.eating-column {
@@ -433,5 +436,8 @@
 				}
 			}
 		}
+	}
+	.modal-backdrop.in {
+		display: none;
 	}
 }

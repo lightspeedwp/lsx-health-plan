@@ -249,6 +249,8 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .single-plan .single-plan-inner.workout-content .set .set-table .workout-table tr td.video-button-item .fa { font-size: 40px; }
 
+.single-plan .single-plan-inner.workout-content .modal.in { background-color: rgba(0, 0, 0, 0.5); }
+
 .single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; }
 
 @media (min-width: 600px) { .single-plan .single-plan-inner .tip-row { display: -ms-flexbox; display: flex; } }
@@ -284,5 +286,7 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 @media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 40px; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
+
+.single-plan .modal-backdrop.in { display: none; }
 
 /*# sourceMappingURL=maps/lsx-health-plan.css.map */
