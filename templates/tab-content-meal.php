@@ -26,120 +26,103 @@
 			) );
 		?>
 		<div class="single-plan-section-title meal-plan">
-			<h2 class="title-lined">My Meal Plan <span class="blue-title">Day 1</span></h2>
+			<h2 class="title-lined"><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
 		</div>
 		<div class="single-plan-inner meal-content">
 			<div class="meals">
-				<div class="row eating-row">
-					<div class="col-md-4 eating-column">
-						<div class="content-box">
-							<h3 class="eating-title title-lined">Breakfast</h3>
-							<p class="workout-title-item"></p>
-							<ul>
-								<li>1 slice toast OR 2 rice cakes</li>
-								<li>3⁄4 tbsp nut butter</li>
-								<li>Cinnamon to sprinkle on oats (optional)</li>
-							</ul>
-							<h3>Snack</h3>
-							<p class="reps-field-item"></p>
-							<ul>
-								<li>1 fruit e.g. 1 apple</li>
-								<li>1 tbsp nuts or seed mix</li>
-								<li>100g fat-free yoghurt</li>
-							</ul>
+			<?php
+			$connected_meals = get_post_meta( get_the_ID(), 'connected_meals', true );
+			if ( empty( $connected_meals ) ) {
+				return;
+			}
+			$args  = array(
+				'orderby'   => 'date',
+				'order'     => 'DESC',
+				'post_type' => 'meal',
+				'post__in'  => $connected_meals,
+			);
+			$meals = new WP_Query( $args );
+
+			if ( $meals->have_posts() ) {
+				while ( $meals->have_posts() ) {
+					$meals->the_post();
+					$post_id = get_the_id();
+
+					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
+					$breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
+					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
+					$lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
+					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
+					?>
+					<div class="row eating-row">
+						<div class="col-md-4 eating-column">
+							<div class="content-box">
+								<?php
+								if ( ! empty( $breakfast ) ) {
+									echo '<h3 class="eating-title title-lined">Breakfast</h3>';
+									echo wp_kses_post( $breakfast );
+								}
+								if ( ! empty( $breakfast_snack ) ) {
+									echo '<h3>Snack</h3>';
+									echo wp_kses_post( $breakfast_snack );
+								}
+								?>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 eating-column">
-						<div class="content-box">
-							<h3 class="eating-title title-lined">Lunch</h3>
-							<p class="workout-title-item"></p>
-							<ul>
-								<li>6 cracker breads OR 4 rice cakes</li>
-								<li>4 tbsp low-fat cottage cheese</li>
-								<li>2 tsp salad dressing Salad</li>
-							</ul>
-							<h3>Snack</h3>
-							<p class="reps-field-item"></p>
-							<ul>
-								<li>1 fruit e.g. 1 apple</li>
-								<li>1 tbsp nuts or seed mix</li>
-								<li>100g fat-free yoghurt</li>
-							</ul>
+						<div class="col-md-4 eating-column">
+							<div class="content-box">
+								<?php
+								if ( ! empty( $lunch ) ) {
+									echo '<h3 class="eating-title title-lined">Lunch</h3>';
+									echo wp_kses_post( $lunch );
+								}
+								if ( ! empty( $lunch_snack ) ) {
+									echo '<h3>Snack</h3>';
+									echo wp_kses_post( $lunch_snack );
+								}
+								?>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 eating-column">
-						<div class="content-box">
-							<h3 class="eating-title title-lined">Supper</h3>
-							<p class="workout-title-item"></p>
-							<ul>
-								<li>1 baked potato</li>
-								<li>90g chicken kebab, grilled (lemon and herb)</li>
-								<li>1 cup cooked vegetables OR salad</li>
-								<li>2 tsp salad dressing</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="extra-title">
-					<h2 class="title-lined">Meal Plan <span>Extras</span></h2>
-				</div>
-				<div class="row tip-row extras-box">
-					<div class="col-md-4">
-						<div class="content-box tip-left box-shadow">
-							<h3 class="eating-title title-lined">Recipes</h3>
-							<p>If theres a recipe for the day you can find it here or under the recipes tab.</p>
-							<a class="btn border-btn btn-full" href="<?php echo esc_url( get_permalink() ); ?>" target="_blank">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-						</div>	
-					</div>
-					<div class="col-md-4">
-						<div class="content-box tip-middle box-shadow">
-							<h3 class="eating-title title-lined">Shopping List</h3>
-							<p>Checkout the shopping list and make sure you have all the goodies you need!</p>
-							<a class="btn border-btn btn-full" href="#" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-						</div>	
-					</div>
-					<div class="col-md-4">
-						<div class="content-box tip-right box-shadow">
-							<div class="diet-tip-wrapper">
-								<div class="row quick-tip">
-									<h3 class="title-lined">Top Top</h3>
-									<div id="quick-tip" class="carousel slide" data-ride="carousel">
-										<!-- Wrapper for slides -->
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<div class="col-sm-6 col-xs-6">
-													<div class="tipimage">
-														<img src="https://lsx-health-plan.feedmybeta.com/wp-content/uploads/2019/05/bolognaise.jpg" class="attachment-thumbnail size-thumbnail" alt="tip">
-													</div>
-												</div>
-												<div class="col-sm-6 col-xs-6">
-													<h4>AXE DIET FATIGUE:</h4>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-												</div> 
-											</div>
-											<div class="carousel-item ">
-												<div class="col-sm-6 col-xs-6">
-													<div class="tipimage">
-														<img src="https://lsx-health-plan.feedmybeta.com/wp-content/uploads/2019/05/bolognaise.jpg" class="attachment-thumbnail size-thumbnail" alt="tip">
-													</div>
-												</div>
-												<div class="col-sm-6 col-xs-6">
-													<h4>AXE DIET 2:</h4>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-												</div> 
-											</div>
-										</div>
-										<!-- Indicators -->
-										<ol class="carousel-indicators">
-											<li data-target="#quick-tip" data-slide-to="0" class="active"></li>	
-											<li data-target="#quick-tip" data-slide-to="1"></li>	
-										</ol>
-									</div>
-								</div>
+						<div class="col-md-4 eating-column">
+							<div class="content-box">
+								<?php
+								if ( ! empty( $dinner ) ) {
+									echo '<h3 class="eating-title title-lined">Supper</h3>';
+									echo wp_kses_post( $dinner );
+								}
+								?>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php
+				}
+			}
+			?>
+			<?php wp_reset_postdata(); ?>
+			<div class="extra-title">
+						<h2 class="title-lined">Meal Plan <span>Extras</span></h2>
+					</div>
+					<div class="row tip-row extras-box">
+						<div class="col-md-4">
+							<div class="content-box tip-left box-shadow">
+								<h3 class="eating-title title-lined">Recipes</h3>
+								<p>If theres a recipe for the day you can find it here or under the recipes tab.</p>
+								<a class="btn border-btn btn-full" href="<?php echo the_permalink(); ?>recipes">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							</div>	
+						</div>
+						<div class="col-md-4">
+							<div class="content-box tip-middle box-shadow">
+								<h3 class="eating-title title-lined">Shopping List</h3>
+								<p>Checkout the shopping list and make sure you have all the goodies you need!</p>
+								<a class="btn border-btn btn-full" href="#" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							</div>	
+						</div>
+						<div class="col-md-4">
+							<div class="tip-right">
+								<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+							</div>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div><!-- .entry-content -->

@@ -54,13 +54,13 @@
 				<?php
 			}
 			?>
-			<div class="set content-box">
+			<div class="sets">
 				<?php
 				$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
 				if ( empty( $connected_workouts ) ) {
 					return;
 				}
-				$args = array(
+				$args     = array(
 					'orderby'   => 'date',
 					'order'     => 'DESC',
 					'post_type' => 'workout',
@@ -72,7 +72,8 @@
 					while ( $workouts->have_posts() ) {
 						$workouts->the_post();
 
-						$i = 1;
+						$i               = 1;
+						$m               = 1;
 						$section_counter = 6;
 						while ( $i <= $section_counter ) {
 
@@ -86,92 +87,94 @@
 								continue;
 							}
 							?>
+							<div class="set-box set content-box">
+								<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
+								<div class="set-content">
+									<p><?php echo esc_html( $description ); ?></p>
+								</div>
 
-							<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
-							<div class="set-content">
-								<p><?php echo esc_html( $description ); ?></p>
-							</div>
+								<?php
+								$group_name = 'workout_section_' . $i;
+								$groups     = get_post_meta( get_the_ID(), $group_name, true );
 
-							<?php
-							$group_name = 'workout_section_' . $i;
-							$groups     = get_post_meta( get_the_ID(), $group_name, true );
-
-							if ( ! empty( $groups ) ) {
-								?>
-								<div class="set-table">
-									<table class="workout-table">
-										<tbody>
-											<tr>
-												<th>Workout</th> 
-												<th class="center-mobile">Reps / Time / Distance</th>
-												<th class="center-mobile">Video</th>
-											</tr>
-											<?php
-											foreach( $groups as $group ) {
-												$workout_name = '';
-												if ( isset( $group['name'] ) ) {
-													$workout_name = esc_html( $group['name'] );
-												}
-												$workout_reps = '';
-												if ( isset( $group['reps'] ) ) {
-													$workout_reps = esc_html( $group['reps'] );
-												}
-												$workout_video = '';
-												$giphy         = '';
-												$youtube       = '';
-												if ( isset( $group['connected_videos'] ) ) {
-													$workout_video = esc_html( $group['video'] );
-													$giphy    = get_post_meta( $workout_video, 'video_giphy_source', true );
-													$youtube  = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
-												}
-												?>
+								if ( ! empty( $groups ) ) {
+									?>
+									<div class="set-table">
+										<table class="workout-table">
+											<tbody>
 												<tr>
-													<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
-													<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
-													<td class="video-button-item center-mobile">
-														<a href="#" data-toggle="modal" data-target="#exampleModal">
-															<span class="fa fa-play-circle"></span>
-														</a>
-													</td>
+													<th>Workout</th> 
+													<th class="center-mobile">Reps / Time / Distance</th>
+													<th class="center-mobile">Video</th>
 												</tr>
 												<?php
-											}
-											?>
-										</tbody>
-									</table>
-								<?php
-							}
-							?>
-							</div>
-							<!-- Modal -->
-							<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title"><?php echo esc_html( $workout_name ); ?></h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-										<?php
-										if ( ! empty( $giphy ) ) {
-											echo $giphy; // WPCS: XSS OK.
-										} elseif ( ! empty( $youtube ) ) {
-											echo wp_oembed_get( $youtube, array( // WPCS: XSS OK.
-												'width' => 480,
-											) );
-										}
-										?>
-										</div>
-									</div>
+												foreach ( $groups as $group ) {
+													$workout_name = '';
+													if ( isset( $group['name'] ) ) {
+														$workout_name = esc_html( $group['name'] );
+													}
+													$workout_reps = '';
+													if ( isset( $group['reps'] ) ) {
+														$workout_reps = esc_html( $group['reps'] );
+													}
+													$workout_video = '';
+													$giphy         = '';
+													$youtube       = '';
+													if ( isset( $group['connected_videos'] ) ) {
+														$workout_video = esc_html( $group['connected_videos'] );
+														$giphy         = get_post_meta( $workout_video, 'video_giphy_source', true );
+														$youtube       = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
+													}
+													?>
+													<tr>
+														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
+														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
+														<td class="video-button-item center-mobile">
+															<a href="#" data-toggle="modal" data-target="#modal-<?php echo esc_html( $m ); ?>">
+																<span class="fa fa-play-circle"></span>
+															</a>
+														</td>
+													</tr>
+													<!-- Modal -->
+													<div class="modal fade" id="#modal-<?php echo esc_html( $m++ ); ?>" tabindex="-1" role="dialog">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title"><?php echo esc_html( $workout_name ); ?></h5>
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<div class="modal-body">
+																<?php
+																if ( ! empty( $giphy ) ) {
+																	echo $giphy; // WPCS: XSS OK.
+																} elseif ( ! empty( $youtube ) ) {
+																	echo wp_oembed_get( $youtube, array( // WPCS: XSS OK.
+																		'width' => 480,
+																	) );
+																}
+																?>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- End Modal -->
+													<?php
+												}
+												?>
+											</tbody>
+										</table>
+									<?php
+								}
+								?>
 								</div>
 							</div>
-							<!-- End Modal -->
 							<?php
 							$i++;
 						}
-					} ?>
+					}
+					?>
 				<?php } ?>
 				<?php wp_reset_postdata(); ?>
 			</div>

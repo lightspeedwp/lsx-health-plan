@@ -1,4 +1,4 @@
-#lsx-videos-shortcode, #lsx-recipes-shortcode, #lsx-tips-shortcode  {
+#lsx-videos-shortcode, #lsx-recipes-shortcode {
 	background: $white;
 	padding: 30px 15px;
 	width: 100%;
@@ -20,6 +20,61 @@
 			tr {
 				th {
 					font-weight: 300;
+				}
+			}
+		}
+	}
+}
+
+#lsx-tips-shortcode {
+	.lsx-tips-shortcode {
+		.diet-tip-wrapper {
+			.quick-tip {
+				margin: 0;
+				h3 {
+					color: $blue;
+					text-transform: uppercase;
+					font-weight: bold;
+				}
+				h4 {
+					font-family: "Noto Sans";
+					font-size: 16px;
+					text-transform: uppercase;
+					margin: 0;
+					font-weight: 600;
+				}
+				.tip-item {
+					font-size: 16px;
+				}
+				.tipimage {
+					.tip-thumbnail {
+						background: none;
+						border: none;
+						img {
+							border-radius: 50%;
+							border: 2px solid $blue;
+							min-height: 120px;
+							min-width: 120px;
+						}
+					}
+				}
+			}
+			#quick-tip {
+				.carousel-indicators {
+					clear: both;
+					text-align: center;
+					li {
+						margin-left: 5px;
+						margin-right: 5px;
+						display: inline-block;
+						width: 10px;
+						height: 10px;
+						text-indent: -999px;
+						cursor: pointer;
+						background-color: transparent;
+						border: 2px solid #cdd0d7;
+						border-radius: 10px;
+					}
 				}
 			}
 		}

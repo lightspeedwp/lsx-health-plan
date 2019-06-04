@@ -29,7 +29,7 @@ class Woocommerce {
 
 		add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
-		
+
 		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
 		add_action( 'show_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
 
@@ -494,7 +494,7 @@ class Woocommerce {
 	 */
 	public function get_account_fields() {
 		return apply_filters( 'iconic_account_fields', array(
-			'weight_start' => array(
+			'weight_start'  => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -503,7 +503,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'waist_start'  => array(
+			'waist_start'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -512,7 +512,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'fitness_start'  => array(
+			'fitness_start' => array(
 				'type'                 => 'text',
 				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -521,7 +521,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'weight_goal' => array(
+			'weight_goal'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -530,7 +530,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'waist_goal'  => array(
+			'waist_goal'    => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -548,7 +548,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'weight_end' => array(
+			'weight_end'    => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -557,7 +557,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'waist_end'  => array(
+			'waist_end'     => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
@@ -566,7 +566,7 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => true,
 			),
-			'fitness_end'  => array(
+			'fitness_end'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
 				'hide_in_account'      => false,

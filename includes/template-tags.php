@@ -101,7 +101,7 @@ function lsx_health_plan_downloads_box() {
 					$downloads = \lsx_health_plan\functions\get_downloads();
 					if ( ! empty( $downloads ) ) {
 						foreach ( $downloads as $download ) {
-							echo wp_kses_post( '<li><a href=""><i class="fa fa-file-pdf"></i>' . do_shortcode( '[download id="' . $download . '"]' ) . '</li>' );
+							echo wp_kses_post( '<li><a href=""><i class="fa fa-file-pdf"></i>' . do_shortcode( '[download id="' . $download . '"]' ) . '</a></li>' );
 						}
 					}
 					?>
