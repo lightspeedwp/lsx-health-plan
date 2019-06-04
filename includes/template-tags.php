@@ -303,7 +303,7 @@ function lsx_health_plan_day_plan_block() {
 					$completed_class = 'complete';
 				}
 				?>
-				<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php esc_attr_e( $completed_class ); ?>">
+				<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
 					<div class="plan-content"><?php the_title(); ?></div>
 				</a>
 			<?php endwhile; ?>
