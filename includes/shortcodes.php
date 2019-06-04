@@ -23,10 +23,10 @@ function restricted_content() {
 }
 
 /**
- * outputs the my profile tabs on the frontpage
-*
-* @return void
-*/
+ * Outputs the my profile tabs on the frontpage,
+ *
+ * @return void
+ */
 function my_profile_tabs() {
 	ob_start();
 	echo lsx_health_plan_my_profile_tabs(); // WPCS: XSS OK.
@@ -35,10 +35,10 @@ function my_profile_tabs() {
 }
 
 /**
- * outputs the my profile box on the frontpage
-*
-* @return void
-*/
+ * Outputs the my profile box on the frontpage.
+ *
+ * @return void
+ */
 function my_profile_box() {
 	ob_start();
 	echo lsx_health_plan_my_profile_box(); // WPCS: XSS OK.
@@ -47,10 +47,10 @@ function my_profile_box() {
 }
 
 /**
- * outputs the my profile box on the frontpage
-*
-* @return void
-*/
+ * Outputs the my profile box on the frontpage.
+ *
+ * @return void
+ */
 function day_plan_box() {
 	ob_start();
 	echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
@@ -59,34 +59,39 @@ function day_plan_box() {
 }
 
 /**
- * outputs the my featured video box on the frontpage
-*
-* @return void
-*/
+ * Outputs the my featured video box on the frontpage.
+ *
+ * @return void
+ */
 function feature_video_box() {
 	ob_start();
 	echo lsx_health_plan_featured_video_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
+
+	wp_enqueue_script( 'slick-js', LSX_HEALTH_PLAN_URL . 'assets/js/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
+	wp_enqueue_script( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/js/lsx-health-plan.min.js', array( 'slick-js' ), LSX_HEALTH_PLAN_VER, true );
 	return $content;
 }
 
 /**
- * outputs the my featured recipes box on the frontpage
-*
-* @return void
-*/
+ * Outputs the my featured recipes box on the frontpage.
+ *
+ * @return void
+ */
 function feature_recipes_box() {
 	ob_start();
 	echo lsx_health_plan_featured_recipes_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
+	wp_enqueue_script( 'slick-js', LSX_HEALTH_PLAN_URL . 'assets/js/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
+	wp_enqueue_script( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/js/lsx-health-plan.min.js', array( 'slick-js' ), LSX_HEALTH_PLAN_VER, true );	
 	return $content;
 }
 
 /**
- * outputs the my featured tips box on the frontpage
-*
-* @return void
-*/
+ * Outputs the my featured tips box on the frontpage.
+ *
+ * @return void
+ */
 function feature_tips_box() {
 	ob_start();
 	echo lsx_health_plan_featured_tips_block(); // WPCS: XSS OK.
