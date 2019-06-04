@@ -37,9 +37,9 @@ $videos = new WP_Query( $args );
 						<div class="col-md-8">
 							<?php
 							if ( ! empty( $giphy ) ) {
-								echo $giphy;
+								echo $giphy; // WPCS: XSS OK.
 							} elseif ( ! empty( $youtube ) ) {
-								echo wp_oembed_get( $youtube );
+								echo wp_oembed_get( $youtube ); // WPCS: XSS OK.
 							}
 							?>
 						</div>

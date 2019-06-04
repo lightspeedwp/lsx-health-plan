@@ -26,7 +26,11 @@
 				<?php the_content(); ?>
 			</div>
 			<div class="col-md-6">
-				<?php the_post_thumbnail( 'large', array( 'class' => 'aligncenter' ) ); ?>
+				<?php
+				the_post_thumbnail( 'large', array(
+					'class' => 'aligncenter',
+				) );
+				?>
 			</div>
 		</div>
 		<div class="lsx-full-width lsx-full-width-base-small bottom-single-recipe">
