@@ -45,7 +45,7 @@ get_header(); ?>
 		}
 		?>
 
-		<div class="row tab-content-plan">
+		<div class="row status-plan-buttons">
 			<?php lsx_health_plan_day_button(); ?>
 		</div>
 

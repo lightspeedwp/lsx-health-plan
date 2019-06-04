@@ -50,7 +50,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
                 infinite: false,
                 speed: 300,
                 slidesToShow: slidesToShow,
-                slidesToScroll: slidesToScroll,
+				slidesToScroll: slidesToScroll,
+				adaptiveHeight: true,
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -80,7 +81,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
 				speed: 300,
                 slidesToShow: 1,
 				slidesToScroll: 1,
-				arrows: false
+				arrows: false,
+				adaptiveHeight: true
             });
         } );
 	};

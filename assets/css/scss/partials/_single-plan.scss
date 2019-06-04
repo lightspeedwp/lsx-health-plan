@@ -158,7 +158,14 @@
 	}
 }
 
-.single-plan {
+.archive-plan {
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.single-plan, .archive-plan {
 	.entry-content, .tab-content-plan {
 		background: $white;    
 		padding: 25px 40px;
@@ -248,6 +255,9 @@
 				}
 			}
 		}
+	}
+	.status-plan-buttons {
+		padding: 25px 20px;
 	}
 	.content-box {
 		margin: 30px 0;

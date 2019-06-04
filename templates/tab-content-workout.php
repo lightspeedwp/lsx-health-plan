@@ -182,15 +182,6 @@
 
 	</div><!-- .entry-content -->
 
-	<div class="single-plan-inner-buttons">
-		<div class="complete-plan-btn">
-			<a class="btn cta-btn" href="#"><?php esc_html_e( 'COMPLETE DAY', 'lsx-health-plan' ); ?></a>
-		</div>
-		<div  class="back-plan-btn">
-			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
-		</div>
-	</div>
-
 	<footer class="footer-meta clearfix">
 		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
 			<div class="post-tags-wrapper">
