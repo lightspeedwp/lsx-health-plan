@@ -300,7 +300,7 @@ function lsx_health_plan_day_plan_block() {
 				$the_query->the_post();
 				$completed_class = '';
 				if ( lsx_health_plan_is_day_complete() ) {
-					$completed_class = 'complete';
+					$completed_class = 'completed';
 				}
 				?>
 				<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
