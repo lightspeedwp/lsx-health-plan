@@ -6,17 +6,25 @@ var LSX_HEALTH_PLAN = Object.create( null );
     LSX_HEALTH_PLAN.document = $(document);
 
     //Holds the slider function
-    LSX_HEALTH_PLAN.sliders = Object.create( null );
+	LSX_HEALTH_PLAN.sliders = Object.create( null );
+	
+	//Holds the slider function
+    LSX_HEALTH_PLAN.tipsliders = Object.create( null );
 
     /**
      * Start the JS Class
      */
     LSX_HEALTH_PLAN.init = function() {
-        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-slick-slider.slick-slider');
+        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider, .lsx-recipes-shortcode.slick-slider');
         if ( 0 <  LSX_HEALTH_PLAN.sliders.element.length ) {
             LSX_HEALTH_PLAN.sliders.init();
+		}
+		LSX_HEALTH_PLAN.tipsliders.element = jQuery('.lsx-tips-shortcode.slick-slider');
+        if ( 0 <  LSX_HEALTH_PLAN.tipsliders.element.length ) {
+            LSX_HEALTH_PLAN.sliders.init();
         }
-    };
+	};
+	
 
     /**
      * Initiate the Sliders
@@ -63,8 +71,21 @@ var LSX_HEALTH_PLAN = Object.create( null );
                     }
                 ]
             });
+		} );
+		
+		LSX_HEALTH_PLAN.tipsliders.element.each( function() {
+            $(this).slick({
+                dots: true,
+                infinite: false,
+				speed: 300,
+                slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false
+            });
         } );
-    };
+	};
+	
+	
 
     /**
      * On document ready.

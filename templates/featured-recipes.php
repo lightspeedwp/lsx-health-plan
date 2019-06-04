@@ -18,7 +18,7 @@ $recipes = new WP_Query( $args );
 
 <div id="lsx-recipes-shortcode" class="daily-plan-block">
 	<h2 class="title-lined"><?php esc_html_e( 'Featured Recipe', 'lsx-health-plan' ); ?></h2>
-	<div class="lsx-recipes-shortcode lsx-recipes-slider slick-slider lsx-slick-slider slick-dotted slick-has-arrows" data-slick="{'slidesToShow': 1, 'slidesToScroll': 1}" >
+	<div class="lsx-recipes-shortcode lsx-recipes-slider slick-slider slick-dotted slick-has-arrows" data-slick="{'slidesToShow': 1, 'slidesToScroll': 1}" >
 
 		<?php
 		if ( $recipes->have_posts() ) :
