@@ -12,7 +12,7 @@ var LSX_HEALTH_PLAN = Object.create( null );
      * Start the JS Class
      */
     LSX_HEALTH_PLAN.init = function() {
-        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-slider .slick-slider');
+        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-slider.slick-slider');
         if ( 0 <  LSX_HEALTH_PLAN.sliders.element.length ) {
             LSX_HEALTH_PLAN.sliders.init();
         }
@@ -41,8 +41,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
                 dots: true,
                 infinite: false,
                 speed: 300,
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: slidesToShow,
+                slidesToScroll: slidesToScroll,
                 responsive: [
                     {
                         breakpoint: 1024,
