@@ -34,6 +34,7 @@ class Plan {
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
+		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
 	}
 
 	/**
@@ -170,4 +171,33 @@ class Plan {
 			),
 		) );
 	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function plan_connections() {
+		$cmb = new_cmb2_box( array(
+			'id'           => $this->slug . '_connections_metabox',
+			'title'        => __( 'Plans', 'lsx-health-plan' ),
+			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+			'object_types' => array( 'workout' ),
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Plan', 'lsx-health-plan' ),
+			'id'         => 'connected_plans',
+			'type'       => 'post_search_ajax',
+			'limit'      => 15,
+			'sortable'   => true,
+			'query_args' => array(
+				'post_type'      => array( 'plan' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+	}	
 }

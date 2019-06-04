@@ -212,25 +212,17 @@ class Workout {
 			'id'           => $this->slug . '_workout_connections_metabox',
 			'title'        => __( 'Workouts', 'lsx-health-plan' ),
 			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
+			'object_types' => array( 'plan' ),
 			'context'      => 'normal',
 			'priority'     => 'high',
 			'show_names'   => true,
 		) );
-		/*$cmb->add_field( array(
-			'name'       => __( 'Box Description', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_box_description',
-			'desc'			=> __( 'This discription displays on the single plan page.', 'lsx-health-plan' ),
-			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );*/
 		$cmb->add_field( array(
 			'name'       => __( 'Workouts', 'lsx-health-plan' ),
 			'id'         => 'connected_workouts',
 			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15, // Limit selection to X items only (default 1)
-			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'limit'      => 15,
+			'sortable'   => true,
 			'query_args' => array(
 				'post_type'      => array( 'workout' ),
 				'post_status'    => array( 'publish' ),
