@@ -5,15 +5,19 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
 
+@media (max-width: 900px) { .no-padding.lsx-block-container .lsx-container-content { padding: 0; } }
+
 #lsx-videos-shortcode, #lsx-recipes-shortcode { background: #ffffff; padding: 30px 15px; width: 100%; margin-top: 20px; margin-bottom: 20x; }
 
 #lsx-videos-shortcode h2, #lsx-recipes-shortcode h2 { width: 100%; }
 
 #lsx-videos-shortcode .lsx-videos-title, #lsx-videos-shortcode .lsx-recipes-title, #lsx-recipes-shortcode .lsx-videos-title, #lsx-recipes-shortcode .lsx-recipes-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
 
-#lsx-recipes-shortcode .lsx-recipes-shortcode { width: 100%; }
+@media (min-width: 900px) { #lsx-recipes-shortcode .lsx-recipes-shortcode { width: 100%; } }
 
 #lsx-recipes-shortcode .lsx-recipes-shortcode table tr th { font-weight: 300; }
+
+@media (max-width: 767px) { #lsx-recipes-shortcode .lsx-recipes-shortcode .col-md-7 img { margin-top: 2em; } }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .quick-tip { margin: 0; }
 
@@ -27,9 +31,27 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .quick-tip .tipimage .tip-thumbnail img { border-radius: 50%; border: 2px solid #418ad0; min-height: 120px; min-width: 120px; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper #quick-tip .carousel-indicators { clear: both; text-align: center; }
+#lsx-tips-shortcode .lsx-tips-shortcode .slick-dots li button { width: 5px; height: 18px; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 50%; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper #quick-tip .carousel-indicators li { margin-left: 5px; margin-right: 5px; display: inline-block; width: 10px; height: 10px; text-indent: -999px; cursor: pointer; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 10px; }
+#lsx-tips-shortcode .lsx-tips-shortcode .slick-dots li.slick-active button { background-color: #cdd0d7; }
+
+@media (max-width: 782px) { .lsx-slick-slider { width: 100%; } }
+
+@media (max-width: 400px) { .lsx-slick-slider { width: 97%; } }
+
+.lsx-slick-slider button.slick-arrow { border-color: #4a4a4a; color: #4a4a4a; }
+
+.lsx-slick-slider button.slick-arrow.slick-prev { left: -7rem; }
+
+.lsx-slick-slider button.slick-arrow.slick-next { right: -7rem; }
+
+.lsx-slick-slider .slick-dots > li > button { border-color: #4a4a4a; }
+
+.lsx-slick-slider .slick-dots > li.slick-active > button { background-color: #4a4a4a; }
+
+.lsx-slick-slider .lsx-videos-slot iframe { width: 100%; max-height: 300px; }
+
+@media (max-width: 400px) { .lsx-slick-slider .lsx-videos-slot iframe { max-height: 150px; } }
 
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
@@ -87,9 +109,9 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 #account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
-.my-profile-block { background: #ffffff; padding: 35px 20px 20px; max-width: 900px; margin: 0 auto; }
+.my-profile-block { background: #ffffff; max-width: 900px; margin: 0 auto; }
 
-@media (min-width: 900px) { .my-profile-block { display: -ms-flexbox; display: flex; } }
+@media (min-width: 900px) { .my-profile-block { display: -ms-flexbox; display: flex; padding: 35px 20px 20px; } }
 
 .my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; }
 
@@ -125,9 +147,9 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
 
-.daily-plan-block .day.day-completed .plan-content { font-size: 0; }
+.daily-plan-block .day.completed .plan-content { font-size: 0; }
 
-.daily-plan-block .day.day-completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 82px; color: #dcdcdc; font-weight: 300; }
+.daily-plan-block .day.completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 82px; color: #dcdcdc; font-weight: 300; }
 
 .daily-plan-block .day.current-day { background-color: transparent; border: 2px solid #418ad0; }
 

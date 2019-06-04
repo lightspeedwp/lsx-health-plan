@@ -39,9 +39,7 @@ $videos = new WP_Query( $args );
 							if ( ! empty( $giphy ) ) {
 								echo $giphy;
 							} elseif ( ! empty( $youtube ) ) {
-								echo wp_oembed_get( $youtube, array(
-									'width' => 480,
-								) );
+								echo wp_oembed_get( $youtube );
 							}
 							?>
 						</div>
