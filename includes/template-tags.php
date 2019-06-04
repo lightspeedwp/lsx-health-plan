@@ -298,11 +298,16 @@ function lsx_health_plan_day_plan_block() {
 		if ( $the_query->have_posts() ) :
 			while ( $the_query->have_posts() ) :
 				$the_query->the_post();
-		?>
-			<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> state">
-				<div class="plan-content"><?php the_title(); ?></div>
-			</a>
-		<?php endwhile; ?><?php endif; ?>
+				$completed_class = '';
+				if ( lsx_health_plan_is_day_complete() ) {
+					$completed_class = 'complete';
+				}
+				?>
+				<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php esc_attr_e( $completed_class ); ?>">
+					<div class="plan-content"><?php the_title(); ?></div>
+				</a>
+			<?php endwhile; ?>
+		<?php endif; ?>
 		<?php wp_reset_postdata(); ?>
 	</div>
 
@@ -334,4 +339,46 @@ function lsx_health_plan_featured_recipes_block() {
  */
 function lsx_health_plan_featured_tips_block() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
+}
+
+/**
+ * Outputs the Health Plan Buttons
+ *
+ * @param string $button
+ * @return void
+ */
+function lsx_health_plan_day_button() {
+	if ( lsx_health_plan_is_day_complete() ) {
+		lsx_health_plan_unlock_button();
+	} else {
+		lsx_health_plan_complete_button();
+	}
+}
+
+/**
+ * Outputs the health plan complete button.
+ *
+ * @return void
+ */
+function lsx_health_plan_complete_button() {
+	?>
+	<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day">
+		<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
+		<button class="btn btn-primary" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
+	</form>
+	<?php
+}
+
+/**
+ * Outputs the health plan unlock button.
+ *
+ * @return void
+ */
+function lsx_health_plan_unlock_button() {
+	?>
+	<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day">
+		<?php wp_nonce_field( 'unlock', 'lsx-health-plan-actions' ); ?>
+		<button class="btn" type="submit"><?php esc_html_e( 'Im not done!', 'lsx-health-plan' ); ?></button>
+	</form>
+	<?php
 }

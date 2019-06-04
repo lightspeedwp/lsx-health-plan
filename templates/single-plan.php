@@ -45,6 +45,10 @@ get_header(); ?>
 		}
 		?>
 
+		<div class="row tab-content-plan">
+			<?php lsx_health_plan_day_button(); ?>
+		</div>
+
 		<?php lsx_content_bottom(); ?>
 
 	</main><!-- #main -->

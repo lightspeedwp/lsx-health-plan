@@ -135,3 +135,23 @@ function lsx_health_plan_is_current_tab( $needle = '' ) {
 	}
 	return $is_tab;
 }
+
+/**
+ * Checks to see if the current day is complete or not
+ *
+ * @param string $post_id
+ * @return boolean
+ */
+function lsx_health_plan_is_day_complete( $post_id = '' ) {
+	$is_complete = false;
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	if ( is_user_logged_in() ) {
+		$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $post_id . '_complete', true );
+		if ( false !== $is_day_complete && '' !== $is_day_complete ) {
+			$is_complete = true;
+		}
+	}
+	return $is_complete;
+}
