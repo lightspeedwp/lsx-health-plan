@@ -267,6 +267,8 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
+.post-type-archive-recipe .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
+
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
 
 .single-plan .extra-title span, .archive-plan .extra-title span { color: #418ad0; font-weight: bold; }
@@ -332,7 +334,11 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 .single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td { border-bottom: 1px solid #E1E1E1; padding: 20px 0; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item .fa { font-size: 40px; }
+.single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button { background-color: transparent; border: none; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button .fa { font-size: 40px; color: #418ad0; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa { color: #f7ae00; }
 
 .single-plan .single-plan-inner.workout-content .modal.in, .archive-plan .single-plan-inner.workout-content .modal.in { background-color: rgba(0, 0, 0, 0.5); }
 

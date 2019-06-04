@@ -130,17 +130,16 @@
 														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
 														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
 														<td class="video-button-item center-mobile">
-															<a href="#" data-toggle="modal" data-target="#modal-<?php echo esc_html( $m ); ?>">
+															<button data-toggle="modal" data-target="#modal<?php echo esc_html( $m ); ?>">
 																<span class="fa fa-play-circle"></span>
-															</a>
+															</button>
 														</td>
 													</tr>
 													<!-- Modal -->
-													<div class="modal fade" id="#modal-<?php echo esc_html( $m++ ); ?>" tabindex="-1" role="dialog">
+													<div class="modal fade" id="modal<?php echo esc_html( $m ); ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo esc_html( $m ); ?>"  aria-hidden="true">
 														<div class="modal-dialog" role="document">
 															<div class="modal-content">
 																<div class="modal-header">
-																	<h5 class="modal-title"><?php echo esc_html( $workout_name ); ?></h5>
 																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																	<span aria-hidden="true">&times;</span>
 																	</button>
@@ -155,12 +154,14 @@
 																	) );
 																}
 																?>
+																<h5 id="modal<?php echo esc_html( $m ); ?>" class="modal-title title-lined"><?php echo esc_html( $workout_name ); ?></h5>
 																</div>
 															</div>
 														</div>
 													</div>
 													<!-- End Modal -->
 													<?php
+													$m++;
 												}
 												?>
 											</tbody>

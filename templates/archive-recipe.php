@@ -41,6 +41,14 @@ get_header(); ?>
 			</div>
 			<?php lsx_paging_nav(); ?>
 		</div>
+		<div class="lsx-full-width lsx-full-width-base-small bottom-single-recipe">
+			<div class="row">
+				<div class="col-md-8">
+					<p><?php esc_html_e( 'Remember that you can swap foods or even entire meals around – just be sure to consult the portion guide first so you know you’re swapping it out for something of equal value.', 'lsx-health-plan' ); ?></p>
+					<a href="/my-plan/" class="btn"><?php esc_html_e( 'View 28 day Plan', 'lsx-health-plan' ); ?></a>
+				</div>
+			</div>
+		</div>
 		<?php lsx_content_bottom(); ?>
 
 	</main><!-- #main -->
@@ -51,7 +59,7 @@ get_header(); ?>
 
 <?php lsx_content_wrap_after(); ?>
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 
 <?php
 get_footer();

@@ -164,6 +164,12 @@
 		flex-wrap: wrap;
 	}
 }
+.post-type-archive-recipe {
+	.bottom-single-recipe {
+		margin-top: 4.25rem;
+		margin-bottom: -8.4rem;
+	}
+}
 
 .single-plan, .archive-plan {
 	.entry-content, .tab-content-plan {
@@ -333,8 +339,18 @@
 								border-bottom: 1px solid #E1E1E1;
 								padding: 20px 0;
 								&.video-button-item  {
-									.fa {
-										font-size: 40px;
+									button {
+										background-color: transparent;
+										border: none;
+										.fa {
+											font-size: 40px;
+											color: $blue;
+										}
+										&:hover {
+											.fa {
+												color: $yellow;
+											}
+										}
 									}
 								}
 							}
