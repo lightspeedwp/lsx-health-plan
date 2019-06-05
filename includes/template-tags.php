@@ -139,9 +139,20 @@ function lsx_health_plan_my_profile_tabs() {
 	?>
 	<div id="account-nav">
 		<ul class="nav nav-pills">
-			<li class="<?php lsx_health_plan_nav_class( '' ); ?>"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
-			<li class="<?php lsx_health_plan_nav_class( 'edit-account' ); ?>"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
-			<li class="<?php lsx_health_plan_nav_class( 'logout' ); ?>"><a class="logout-tab" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
+			<li class="
+			<?php
+			if ( ( function_exists( 'is_wc_endpoint_url' ) && ! is_wc_endpoint_url( 'edit-account' ) ) || ! function_exists( 'is_wc_endpoint_url' ) ) {
+				echo esc_attr( 'active' );
+			}
+			?>"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
+			<li class="
+			<?php
+			if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {
+				echo esc_attr( 'active' );
+			}
+			?>
+			"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
+			<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
 		</ul>
 	</div>
 	<?php
