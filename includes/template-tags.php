@@ -364,10 +364,15 @@ function lsx_health_plan_day_button() {
  */
 function lsx_health_plan_complete_button() {
 	?>
-	<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day">
-		<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
-		<button class="btn btn-primary" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
-	</form>
+	<div class="single-plan-inner-buttons">
+		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
+			<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
+			<button class="btn cta-btn" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
+		</form>
+		<div  class="back-plan-btn">
+			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+		</div>
+	</div>
 	<?php
 }
 
@@ -378,9 +383,24 @@ function lsx_health_plan_complete_button() {
  */
 function lsx_health_plan_unlock_button() {
 	?>
-	<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day">
-		<?php wp_nonce_field( 'unlock', 'lsx-health-plan-actions' ); ?>
-		<button class="btn" type="submit"><?php esc_html_e( 'Im not done!', 'lsx-health-plan' ); ?></button>
-	</form>
+	<div class="single-plan-inner-buttons">
+		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
+			<?php wp_nonce_field( 'unlock', 'lsx-health-plan-actions' ); ?>
+			<button class="btn secondary-btn" type="submit"><?php esc_html_e( 'Im not done!', 'lsx-health-plan' ); ?></button>
+		</form>
+		<div  class="back-plan-btn">
+			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+		</div>
+	</div>
 	<?php
+}
+
+
+/**
+ * Outputs the recipe info on a table.
+ *
+ * @return void
+ */
+function table_recipe_data() {
+	include LSX_HEALTH_PLAN_PATH . '/templates/table-recipe-data.php';
 }

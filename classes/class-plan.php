@@ -199,5 +199,5 @@ class Plan {
 				'posts_per_page' => -1,
 			),
 		) );
-	}	
+	}
 }

@@ -158,7 +158,20 @@
 	}
 }
 
-.single-plan {
+.archive-plan {
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+.post-type-archive-recipe {
+	.bottom-single-recipe {
+		margin-top: 4.25rem;
+		margin-bottom: -8.4rem;
+	}
+}
+
+.single-plan, .archive-plan {
 	.entry-content, .tab-content-plan {
 		background: $white;    
 		padding: 25px 40px;
@@ -249,6 +262,9 @@
 			}
 		}
 	}
+	.status-plan-buttons {
+		padding: 25px 20px;
+	}
 	.content-box {
 		margin: 30px 0;
 		background: $light_gray;
@@ -323,8 +339,18 @@
 								border-bottom: 1px solid #E1E1E1;
 								padding: 20px 0;
 								&.video-button-item  {
-									.fa {
-										font-size: 40px;
+									button {
+										background-color: transparent;
+										border: none;
+										.fa {
+											font-size: 40px;
+											color: $blue;
+										}
+										&:hover {
+											.fa {
+												color: $yellow;
+											}
+										}
 									}
 								}
 							}
@@ -348,7 +374,7 @@
 			}
 		}
 		.tip-row {
-			@media (min-width:600px) {
+			@media (min-width:992px) {
 				display: flex;
 			}
 			.tip-left, .tip-middle, .tip-right {

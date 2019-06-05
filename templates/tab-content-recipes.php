@@ -51,59 +51,11 @@
 					$recipes->the_post();
 					$post_id = get_the_id();
 
-					$prep_time    = get_post_meta( get_the_ID(), 'recipe_prep_time', true );
-					$cooking_time = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
-					$serves       = get_post_meta( get_the_ID(), 'recipe_serves', true );
-					$portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
-
 					?>
 					<div class="col-md-4 recipe-column">
 						<div class="content-box box-shadow">
 							<h3 class="recipe-title title-lined"><?php echo the_title(); ?></h3>
-							<table class="recipe-table">
-								<tbody>
-									<tr>
-										<td>Prep time:</td>
-										<td>
-										<?php
-										if ( ! empty( $prep_time ) ) {
-											echo wp_kses_post( $prep_time );
-										}
-										?>
-										</td>
-									</tr>
-									<tr>
-										<td>Cooking time:</td>
-										<td>
-										<?php
-										if ( ! empty( $cooking_time ) ) {
-											echo wp_kses_post( $cooking_time );
-										}
-										?>
-										</td>
-									</tr>
-									<tr>
-										<td>Serves:</td>
-										<td>
-										<?php
-										if ( ! empty( $serves ) ) {
-											echo wp_kses_post( $serves );
-										}
-										?>
-										</td>
-									</tr>
-									<tr>
-										<td>Portion size:</td>
-										<td>
-										<?php
-										if ( ! empty( $portion ) ) {
-											echo wp_kses_post( $portion );
-										}
-										?>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<?php table_recipe_data(); ?>
 							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
 						</div>
 					</div>
@@ -116,15 +68,6 @@
 			</div>
 		</div>
 	</div><!-- .entry-content -->
-
-	<div class="single-plan-inner-buttons">
-		<div class="complete-plan-btn">
-			<a class="btn cta-btn" href="#"><?php esc_html_e( 'COMPLETE DAY', 'lsx-health-plan' ); ?></a>
-		</div>
-		<div  class="back-plan-btn">
-			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'BACK TO MY PLAN', 'lsx-health-plan' ); ?></a>
-		</div>
-	</div>
 
 	<footer class="footer-meta clearfix">
 		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>

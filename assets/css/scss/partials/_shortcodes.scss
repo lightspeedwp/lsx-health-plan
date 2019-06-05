@@ -1,3 +1,89 @@
+.slick-slider {
+	.slick-dots {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		height: auto;
+		justify-content: center;
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 0;
+
+		& > li {
+			line-height: 1;
+			padding: 5px;
+
+			@include media('>=tablet') { padding: 0 7.5px; }
+
+			& > button {
+				background: transparent;
+				border-style: solid;
+				border-width: 1px;
+				font: 0/0 a;
+				height: 12px;
+				transition: all 300ms ease-in-out;
+				width: 4rem;
+
+				@include media('>=tablet') { height: 6px; }
+			}
+		}
+	}
+
+	.slick-arrow {
+		background: transparent;
+		border-radius: 50%;
+		border-style: solid;
+		border-width: 2px;
+		font: 0/0 a;
+		height: 4rem;
+		margin-top: calc((2rem - 17px) / 2);
+		opacity: 1;
+		padding: 0;
+		position: absolute;
+		text-shadow: none;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: border 300ms ease;
+		width: 4rem;
+		z-index: 3;
+
+		&:before {
+			display: block;
+				font-family: 'FontAwesome';
+				font-size: 3rem;
+				line-height: 1;
+				position: absolute;
+				text-rendering: auto;
+				top: 47%;
+				transform: translateY(-50%);
+				transition: color 300ms ease;
+
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+		}
+
+		&.slick-disabled { cursor: not-allowed; }
+
+		&.slick-prev {
+			left: -4rem;
+
+			&:before {
+				content: '\f104';
+				left: 1.1rem;
+			}
+		}
+
+		&.slick-next {
+			right: -4rem;
+
+			&:before {
+				content: '\f105';
+				left: 1.5rem;
+			}
+		}
+	}
+}
+
 #lsx-videos-shortcode, #lsx-recipes-shortcode {
 	background: $white;
 	padding: 30px 15px;
@@ -15,11 +101,20 @@
 
 #lsx-recipes-shortcode {
 	.lsx-recipes-shortcode {
-		width: 100%;
+		@media (min-width:900px) {
+			width: 100%;
+		}
 		table {
 			tr {
 				th {
 					font-weight: 300;
+				}
+			}
+		}
+		.col-md-7 {
+			@media (max-width:767px) {
+				img {
+					margin-top: 2em;
 				}
 			}
 		}
@@ -28,8 +123,17 @@
 
 #lsx-tips-shortcode {
 	.lsx-tips-shortcode {
+		@media (min-width: 782px) {
+			max-width: 600px;
+		}
+		@media (min-width: 992px) {
+			max-width: 240px;
+		}
+		@media (min-width: 1200px) {
+			max-width: 300px;
+		}
 		.diet-tip-wrapper {
-			.quick-tip {
+			&.quick-tip {
 				margin: 0;
 				h3 {
 					color: $blue;
@@ -59,23 +163,61 @@
 					}
 				}
 			}
-			#quick-tip {
-				.carousel-indicators {
-					clear: both;
-					text-align: center;
-					li {
-						margin-left: 5px;
-						margin-right: 5px;
-						display: inline-block;
-						width: 10px;
-						height: 10px;
-						text-indent: -999px;
-						cursor: pointer;
-						background-color: transparent;
-						border: 2px solid #cdd0d7;
-						border-radius: 10px;
+		}
+		.slick-dots {
+			li {
+				button {
+					width: 5px;
+					height: 18px;
+					background-color: transparent;
+					border: 2px solid #cdd0d7;
+					border-radius: 50%;
+				}
+				&.slick-active {
+					button {
+						background-color: #cdd0d7;
 					}
 				}
+			}
+		}
+	}
+}
+
+.slick-slider {
+	@media (max-width:782px) {
+		width: 100%;
+	}
+	@media (max-width:400px) {
+		width: 97%;
+	}
+	button.slick-arrow {
+		border-color: $gray;
+    	color: $gray;
+		&.slick-prev {
+			left: -7rem;
+		}
+		&.slick-next {
+			right: -7rem;
+		}
+	}
+	.slick-dots {
+		> li {
+			> button {
+				border-color: $gray;
+			}
+		}
+		> li.slick-active {
+			> button {
+				background-color: $gray;
+			}
+		}
+	}
+	.lsx-videos-slot  {
+		iframe {
+			width: 100%;
+			max-height: 300px;
+			@media (max-width:400px) {
+				max-height: 150px;
 			}
 		}
 	}

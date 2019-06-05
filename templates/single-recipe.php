@@ -52,7 +52,5 @@ get_header(); ?>
 
 <?php lsx_content_wrap_after(); ?>
 
-<?php get_sidebar(); ?>
-
 <?php
 get_footer();

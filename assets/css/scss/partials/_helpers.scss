@@ -13,3 +13,13 @@ table, .table {
 .woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle {
 	display: none;
 }
+
+.no-padding.lsx-block-container .lsx-container-content {
+	@media (max-width:900px) {
+		padding: 0;
+	}
+}
+
+.white-bg {
+	background-color: $white !important;
+}

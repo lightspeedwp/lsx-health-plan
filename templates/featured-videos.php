@@ -18,7 +18,7 @@ $videos = new WP_Query( $args );
 
 <div id="lsx-videos-shortcode" class="daily-plan-block">
 	<h2 class="title-lined"><?php esc_html_e( 'Featured Workout', 'lsx-health-plan' ); ?></h2>
-	<div class="lsx-videos-shortcode lsx-videos-slider slick-slider lsx-slick-slider slick-dotted slick-has-arrows" data-slick="{'slidesToShow': 1, 'slidesToScroll': 1}" >
+	<div class="lsx-videos-shortcode lsx-videos-slider slick-slider slick-dotted slick-has-arrows" data-slick="{'slidesToShow': 1, 'slidesToScroll': 1}" >
 		<?php
 		if ( $videos->have_posts() ) :
 			while ( $videos->have_posts() ) :
@@ -37,11 +37,9 @@ $videos = new WP_Query( $args );
 						<div class="col-md-8">
 							<?php
 							if ( ! empty( $giphy ) ) {
-								echo $giphy;
+								echo $giphy; // WPCS: XSS OK.
 							} elseif ( ! empty( $youtube ) ) {
-								echo wp_oembed_get( $youtube, array(
-									'width' => 480,
-								) );
+								echo wp_oembed_get( $youtube ); // WPCS: XSS OK.
 							}
 							?>
 						</div>

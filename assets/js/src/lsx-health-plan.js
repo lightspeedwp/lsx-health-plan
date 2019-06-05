@@ -6,17 +6,25 @@ var LSX_HEALTH_PLAN = Object.create( null );
     LSX_HEALTH_PLAN.document = $(document);
 
     //Holds the slider function
-    LSX_HEALTH_PLAN.sliders = Object.create( null );
+	LSX_HEALTH_PLAN.sliders = Object.create( null );
+	
+	//Holds the slider function
+    LSX_HEALTH_PLAN.tipsliders = Object.create( null );
 
     /**
      * Start the JS Class
      */
     LSX_HEALTH_PLAN.init = function() {
-        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-slider.slick-slider');
+        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider, .lsx-recipes-shortcode.slick-slider');
         if ( 0 <  LSX_HEALTH_PLAN.sliders.element.length ) {
             LSX_HEALTH_PLAN.sliders.init();
+		}
+		LSX_HEALTH_PLAN.tipsliders.element = jQuery('.lsx-tips-shortcode.slick-slider');
+        if ( 0 <  LSX_HEALTH_PLAN.tipsliders.element.length ) {
+            LSX_HEALTH_PLAN.sliders.init();
         }
-    };
+	};
+	
 
     /**
      * Initiate the Sliders
@@ -42,7 +50,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
                 infinite: false,
                 speed: 300,
                 slidesToShow: slidesToShow,
-                slidesToScroll: slidesToScroll,
+				slidesToScroll: slidesToScroll,
+				adaptiveHeight: true,
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -56,21 +65,29 @@ var LSX_HEALTH_PLAN = Object.create( null );
                     {
                         breakpoint: 600,
                         settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
                             slidesToShow: 1,
-                            slidesToScroll: 1
+							slidesToScroll: 1,
+							arrows: false
                         }
                     }
                 ]
             });
+		} );
+		
+		LSX_HEALTH_PLAN.tipsliders.element.each( function() {
+            $(this).slick({
+                dots: true,
+                infinite: false,
+				speed: 300,
+                slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				adaptiveHeight: true
+            });
         } );
-    };
+	};
+	
+	
 
     /**
      * On document ready.

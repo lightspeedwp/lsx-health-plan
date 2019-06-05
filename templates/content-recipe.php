@@ -16,9 +16,32 @@
 		<?php lsx_post_meta_single_bottom(); ?>
 	</div><!-- .entry-meta -->
 
-	<div class="entry-content">
+	<div id="single-recipe" class="entry-content">
+		<h2 class="title-lined"><?php esc_html_e( 'Recipe: ', 'lsx-health-plan' ); ?><?php the_title(); ?></h2>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="recipe-data">
+					<?php table_recipe_data(); ?>
+				</div>
+				<?php the_content(); ?>
+			</div>
+			<div class="col-md-6">
+				<?php
+				the_post_thumbnail( 'large', array(
+					'class' => 'aligncenter',
+				) );
+				?>
+			</div>
+		</div>
+		<div class="lsx-full-width lsx-full-width-base-small bottom-single-recipe">
+			<div class="row">
+				<div class="col-md-8">
+					<p><?php esc_html_e( 'Remember that you can swap foods or even entire meals around – just be sure to consult the portion guide first so you know you’re swapping it out for something of equal value.', 'lsx-health-plan' ); ?></p>
+					<a href="/my-plan/" class="btn"><?php esc_html_e( 'View 28 day Plan', 'lsx-health-plan' ); ?></a>
+				</div>
+			</div>
+		</div>
 		<?php
-			the_content();
 
 			wp_link_pages( array(
 				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',

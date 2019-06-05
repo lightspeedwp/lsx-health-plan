@@ -1,0 +1,19 @@
+// Single Recipe
+#single-recipe {
+	margin-bottom: -8.4rem;
+	.recipe-table {
+		tbody {
+			td {
+				&:first-child {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.bottom-single-recipe {
+		margin-top: 4.25rem;
+		p {
+			font-size: 24px;
+		}
+	}
+}
