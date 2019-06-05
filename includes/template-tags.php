@@ -120,7 +120,9 @@ function lsx_health_plan_downloads_box() {
  */
 function lsx_health_plan_nav_class( $tab = '' ) {
 	$nav_classes = array();
-	if ( lsx_health_plan_is_current_tab( $tab ) ) {
+	if ( function_exists( 'is_wc_endpoint_url' ) && 'edit-account' === $tab && is_wc_endpoint_url( 'edit-account' ) ) {
+		$nav_classes[] = 'active';
+	} else if ( lsx_health_plan_is_current_tab( $tab ) ) {
 		$nav_classes[] = 'active';
 	}
 	if ( ! empty( $nav_classes ) ) {

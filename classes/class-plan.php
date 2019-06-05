@@ -182,7 +182,7 @@ class Plan {
 			'id'           => $this->slug . '_connections_metabox',
 			'title'        => __( 'Plans', 'lsx-health-plan' ),
 			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-			'object_types' => array( 'workout' ),
+			'object_types' => array( 'workout', 'meal', 'tip', 'recipe' ),
 			'context'      => 'normal',
 			'priority'     => 'high',
 			'show_names'   => true,
