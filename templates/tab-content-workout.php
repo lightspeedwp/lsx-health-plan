@@ -117,49 +117,14 @@
 													if ( isset( $group['reps'] ) ) {
 														$workout_reps = esc_html( $group['reps'] );
 													}
-													$workout_video = '';
-													$giphy         = '';
-													$youtube       = '';
-													if ( isset( $group['connected_videos'] ) ) {
-														$workout_video = esc_html( $group['connected_videos'] );
-														$giphy         = get_post_meta( $workout_video, 'video_giphy_source', true );
-														$youtube       = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
-													}
 													?>
 													<tr>
 														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
 														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
 														<td class="video-button-item center-mobile">
-															<button data-toggle="modal" data-target="#modal<?php echo esc_html( $m ); ?>">
-																<span class="fa fa-play-circle"></span>
-															</button>
+															<?php lsx_health_plan_workout_video_play_button( $m, $group ); ?>
 														</td>
 													</tr>
-													<!-- Modal -->
-													<div class="modal fade" id="modal<?php echo esc_html( $m ); ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo esc_html( $m ); ?>"  aria-hidden="true">
-														<div class="modal-dialog" role="document">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																	</button>
-																</div>
-																<div class="modal-body">
-																<?php
-																if ( ! empty( $giphy ) ) {
-																	echo $giphy; // WPCS: XSS OK.
-																} elseif ( ! empty( $youtube ) ) {
-																	echo wp_oembed_get( $youtube, array( // WPCS: XSS OK.
-																		'width' => 480,
-																	) );
-																}
-																?>
-																<h5 id="modal<?php echo esc_html( $m ); ?>" class="modal-title title-lined"><?php echo esc_html( $workout_name ); ?></h5>
-																</div>
-															</div>
-														</div>
-													</div>
-													<!-- End Modal -->
 													<?php
 													$m++;
 												}

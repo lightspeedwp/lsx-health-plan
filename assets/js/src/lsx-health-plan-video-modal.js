@@ -1,27 +1,27 @@
-var LSX_HEALTH_PLAN = Object.create( null );
+var LSX_HP_VIDEO_MODAL = Object.create( null );
 ;( function( $, window, document, undefined ) {
 
     'use strict';
 
-    LSX_HEALTH_PLAN.document = $(document);
+    LSX_HP_VIDEO_MODAL.document = $(document);
 
     //Holds the slider function
-	LSX_HEALTH_PLAN.sliders = Object.create( null );
+	LSX_HP_VIDEO_MODAL.sliders = Object.create( null );
 	
 	//Holds the slider function
-    LSX_HEALTH_PLAN.tipsliders = Object.create( null );
+    LSX_HP_VIDEO_MODAL.tipsliders = Object.create( null );
 
     /**
      * Start the JS Class
      */
-    LSX_HEALTH_PLAN.init = function() {
-        LSX_HEALTH_PLAN.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider, .lsx-recipes-shortcode.slick-slider');
-        if ( 0 <  LSX_HEALTH_PLAN.sliders.element.length ) {
-            LSX_HEALTH_PLAN.sliders.init();
+    LSX_HP_VIDEO_MODAL.init = function() {
+        LSX_HP_VIDEO_MODAL.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider, .lsx-recipes-shortcode.slick-slider');
+        if ( 0 <  LSX_HP_VIDEO_MODAL.sliders.element.length ) {
+            LSX_HP_VIDEO_MODAL.sliders.init();
 		}
-		LSX_HEALTH_PLAN.tipsliders.element = jQuery('.lsx-tips-shortcode.slick-slider');
-        if ( 0 <  LSX_HEALTH_PLAN.tipsliders.element.length ) {
-            LSX_HEALTH_PLAN.sliders.init();
+		LSX_HP_VIDEO_MODAL.tipsliders.element = jQuery('.lsx-tips-shortcode.slick-slider');
+        if ( 0 <  LSX_HP_VIDEO_MODAL.tipsliders.element.length ) {
+            LSX_HP_VIDEO_MODAL.sliders.init();
         }
 	};
 	
@@ -29,8 +29,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
     /**
      * Initiate the Sliders
      */
-    LSX_HEALTH_PLAN.sliders.init = function( ) {
-        LSX_HEALTH_PLAN.sliders.element.each( function() {
+    LSX_HP_VIDEO_MODAL.sliders.init = function( ) {
+        LSX_HP_VIDEO_MODAL.sliders.element.each( function() {
 
             var slidesToShow = 1;
             var slidesToScroll = 1;
@@ -74,7 +74,7 @@ var LSX_HEALTH_PLAN = Object.create( null );
             });
 		} );
 		
-		LSX_HEALTH_PLAN.tipsliders.element.each( function() {
+		LSX_HP_VIDEO_MODAL.tipsliders.element.each( function() {
             $(this).slick({
                 dots: true,
                 infinite: false,
@@ -95,8 +95,8 @@ var LSX_HEALTH_PLAN = Object.create( null );
      * @package    lsx-health-plan
      * @subpackage scripts
      */
-    LSX_HEALTH_PLAN.document.ready( function() {
-        LSX_HEALTH_PLAN.init();
+    LSX_HP_VIDEO_MODAL.document.ready( function() {
+        LSX_HP_VIDEO_MODAL.init();
     } );
 
 } )( jQuery, window, document );
