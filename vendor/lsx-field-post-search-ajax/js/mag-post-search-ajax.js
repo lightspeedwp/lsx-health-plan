@@ -3,10 +3,15 @@
 	
 	$('.cmb-post-search-ajax').each(
 		function () {
-			
 			var fid 		= $(this).attr('id');
+			var name        = $(this).attr('id');
 			var query_args 	= $(this).attr('data-queryargs');
 			var object		= $(this).attr('data-object');
+
+			name = name.replace( "][", "_" );
+			name = name.replace( "]", "" );
+			name = name.replace( "[", "_" );
+
 			$(this).devbridgeAutocomplete({
 				serviceUrl: psa.ajaxurl,
 				type: 'POST',
@@ -14,10 +19,10 @@
 				showNoSuggestionNotice: true,
 				transformResult: function(r) {
 					var suggestions = $.parseJSON(r);
-					if($('#'+fid+'_results li').length){
+					if($('input#'+name+' li').length){
 						var selected_vals 	= Array();
 						var d 				= 0;
-						$('#'+fid+'_results input').each(function(index, element) {
+						$('input#'+name+' input').each(function(index, element) {
                             selected_vals.push( $(this).val() );
                         });
 						$(suggestions).each(function(ri, re){
@@ -47,32 +52,38 @@
 				onSelect: function (suggestion) {
 					$(this).devbridgeAutocomplete('clearCache');
 					var lid 	 = $(this).attr('id') + '_results';
-					var name  = $(this).attr('id');
+					var name     = $(this).attr('id');
+					name = name.replace( "][", "_" );
+					name = name.replace( "]", "" );
+					name = name.replace( "[", "_" );
+					console.log( lid );
+					console.log( name );
+
 					var limit 	 = $(this).attr('data-limit');
 					var sortable = $(this).attr('data-sortable');
-					if( limit > 1 ){
-						var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';				
-						$('#'+lid).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
+					if ( limit > 1 ) {
+						var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';
+						$( '#'+name+'_results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
 						$(this).val('');
-						if( limit === $('#' + lid + ' li').length ){
+						if ( limit === $('input#'+name + '_results li').length ){
 							$(this).prop( 'disabled', 'disabled' );
-						}
-						else{
+						} else {
 							$(this).focus();
 						}
+					} else {
+						$('input#'+name).val( suggestion.data );
 					}
-					else{
-						name = name.replace( "][", "_" );
-						name = name.replace( "]", "" );
-						name = name.replace( "[", "_" );
-						console.log(name);
-						$('input#'+name).val(suggestion.data);
+
+					if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
+						console.log('cmb-group');
+						$( 'input[name='+name+'_store]' ).val( suggestion.data );
 					}
+
 				}
 			});			
 		
 			if($(this).attr('data-sortable') == 1){
-				$('#'+fid+'_results').sortable({ 
+				$('input#'+name).sortable({ 
 					handle				 : '.hndl', 
 					placeholder			 : 'ui-state-highlight', 
 					forcePlaceholderSize : true 
@@ -82,8 +93,11 @@
 			if($(this).attr('data-limit') == 1){
 				$(this).on('blur', function(){
 					if($(this).val() === ''){
-						var lid = $(this).attr('id') + '_results';
-						$('input[name='+lid+']').val('');
+						var name     = $(this).attr('id');
+						name = name.replace( "][", "_" );
+						name = name.replace( "]", "" );
+						name = name.replace( "[", "_" );
+						$('input#'+name).val('');
 					}
 				});
 			}
@@ -99,6 +113,5 @@
 			$('#' + iid).devbridgeAutocomplete('clearCache');
 		});
 	});
-	  
   });
 })(jQuery);
