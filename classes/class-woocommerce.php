@@ -179,8 +179,8 @@ class Woocommerce {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
-		echo wp_kses_post( '<h2 class="title-lined">My Stats</h2>' );
-
+		echo wp_kses_post( '<h2 class="title-lined my-stats-title">My Stats</h2>' );
+		echo wp_kses_post( '<div class="my-stats">' );
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 
@@ -197,6 +197,7 @@ class Woocommerce {
 
 			woocommerce_form_field( $key, $field_args, $value );
 		}
+		echo wp_kses_post( '</div>' );
 	}
 
 	/**

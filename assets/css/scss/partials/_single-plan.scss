@@ -24,11 +24,14 @@
 				background-color: $blue;
 			}
 		}
+		@media (max-width:319px) {
+			margin-top: -44px;
+		}
 		li {
 			@media (max-width:600px) {
 				//width: 100%;
 				margin: 0;
-				width: 25%;
+				width: 28%;
 				flex-shrink: 0;
 				height: 100%;
 				scroll-snap-align: start;
@@ -39,6 +42,9 @@
 						opacity: 0.7;
 					}
 				}
+			}
+			@media (max-width:333px) {
+				min-height: 90px;
 			}
 			&.active {
 				.overview-tab {

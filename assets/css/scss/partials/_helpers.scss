@@ -23,3 +23,13 @@ table, .table {
 .white-bg {
 	background-color: $white !important;
 }
+
+.reverse-mobile {
+	@media (max-width:600px) {
+		display: flex;
+		flex-direction: column-reverse;
+		.col-md-6:last-child {
+			margin-bottom: 2em;
+		}
+	}
+}

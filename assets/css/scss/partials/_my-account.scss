@@ -201,20 +201,31 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	&.day-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 13%);
+		grid-template-rows: 120px;
+		grid-column-gap: 10px;
+		grid-row-gap: 10px;
+		@media (max-width:600px) {
+			grid-template-columns: repeat(4, 23%);
+			grid-template-rows: 80px;
+		}
+	}
 	.day {
 		background-color: #ececec;
 		margin-bottom: 20px;
-		flex-grow: 1;
-		width: calc(100% * (1/7));
-		height: 110px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 2px;
-		flex-basis: 40%;
-		max-width: 90px;
+		height: 110px;
 		@media (min-width:900px) {
 			max-width: 120px;
+		}
+		@media (max-width:600px) {
+			height: 80px;
+			margin-bottom: 0;
 		}
 		.plan-content {
 			font-size: 22px;
@@ -288,6 +299,87 @@
 				label, span em {
 					font-weight: 300;
 				}
+			}
+		}
+		.my-stats-title {
+			margin-top: 60px;
+		}
+		.my-stats {
+			display: flex;
+			flex-wrap: wrap;
+			.form-row{
+				&:before {
+					color: $blue;
+					font-size: 22px;
+				}
+				&:first-child{
+					&:before {
+						content: "Start";
+						margin-bottom: 20px;
+					}
+				}
+				&:nth-child(2) {
+					&:before {
+						content: "Goal";
+						margin-bottom: 20px;
+					}
+				}
+				&:nth-child(3) {
+					&:before {
+						content: "End";
+						margin-bottom: 20px;
+					}
+				}
+				@media (max-width:900px) {
+					flex-grow: 1;
+					width: 33%;
+				}
+				@media (max-width:600px) {
+					flex-grow: 1;
+  					width: 100%;
+					&:nth-child(2), &:nth-child(3) {
+						&:before {
+							content:none;
+						}
+					}
+					&:nth-child(4) {
+						&:before {
+							content: "Goal";
+							margin-bottom: 20px;
+						}
+					}
+					&:nth-child(7) {
+						&:before {
+							content: "End";
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+		}
+		.wpua-edit-container {
+			margin-top: 60px;
+			h3 {
+				font-size: 0;
+				display: flex;
+				flex-direction: column;
+				&:before {
+					content: "My Profile Picture";
+					font-size: 30px;
+					padding-bottom: 20px;
+					margin-bottom: 20px;
+					border-bottom: 2px solid $blue;
+				}
+				&:after {
+					content: "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb";
+					font-family: 'Noto Sans', sans-serif;
+					font-size: 15px;
+				}
+			}
+			button[name="wpua-add-existing"] {
+				background-color: #dcdcdc;
+				box-shadow: 2px 2px 0 0 #969696;
+    			color: #4e4e4e;
 			}
 		}
 	}

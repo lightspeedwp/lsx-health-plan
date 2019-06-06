@@ -18,7 +18,7 @@
 
 	<div id="single-recipe" class="entry-content">
 		<h2 class="title-lined"><?php esc_html_e( 'Recipe: ', 'lsx-health-plan' ); ?><?php the_title(); ?></h2>
-		<div class="row">
+		<div class="row reverse-mobile">
 			<div class="col-md-6">
 				<div class="recipe-data">
 					<?php table_recipe_data(); ?>

@@ -9,6 +9,9 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .white-bg { background-color: #ffffff !important; }
 
+@media (max-width: 600px) { .reverse-mobile { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; }
+  .reverse-mobile .col-md-6:last-child { margin-bottom: 2em; } }
+
 .slick-slider .slick-dots { -ms-flex-align: center; align-items: center; display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap; height: auto; -ms-flex-pack: center; justify-content: center; list-style: none; margin: 1rem 0 0; padding: 0; }
 
 .slick-slider .slick-dots > li { line-height: 1; padding: 5px; }
@@ -182,9 +185,15 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 .daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; -ms-flex-positive: 1; flex-grow: 1; width: calc(100% * (1/7)); height: 110px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; border-radius: 2px; -ms-flex-preferred-size: 40%; flex-basis: 40%; max-width: 90px; }
+.daily-plan-block.day-grid { display: -ms-grid; display: grid; -ms-grid-columns: (13%)[7]; grid-template-columns: repeat(7, 13%); -ms-grid-rows: 120px; grid-template-rows: 120px; grid-column-gap: 10px; grid-row-gap: 10px; }
+
+@media (max-width: 600px) { .daily-plan-block.day-grid { -ms-grid-columns: (23%)[4]; grid-template-columns: repeat(4, 23%); -ms-grid-rows: 80px; grid-template-rows: 80px; } }
+
+.daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; border-radius: 2px; height: 110px; }
 
 @media (min-width: 900px) { .daily-plan-block .day { max-width: 120px; } }
+
+@media (max-width: 600px) { .daily-plan-block .day { height: 80px; margin-bottom: 0; } }
 
 .daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
 
@@ -218,14 +227,47 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm span em, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm span em { font-weight: 300; }
 
+#edit-account-tab .edit-account-section .my-stats-title, #edit-account-tab .stat-section .my-stats-title { margin-top: 60px; }
+
+#edit-account-tab .edit-account-section .my-stats, #edit-account-tab .stat-section .my-stats { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row:before, #edit-account-tab .stat-section .my-stats .form-row:before { color: #418ad0; font-size: 22px; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row:first-child:before, #edit-account-tab .stat-section .my-stats .form-row:first-child:before { content: "Start"; margin-bottom: 20px; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row:nth-child(2):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(2):before { content: "Goal"; margin-bottom: 20px; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row:nth-child(3):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(3):before { content: "End"; margin-bottom: 20px; }
+
+@media (max-width: 900px) { #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { -ms-flex-positive: 1; flex-grow: 1; width: 33%; } }
+
+@media (max-width: 600px) { #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { -ms-flex-positive: 1; flex-grow: 1; width: 100%; }
+  #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(2):before, #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(3):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(2):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(3):before { content: none; }
+  #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(4):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(4):before { content: "Goal"; margin-bottom: 20px; }
+  #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(7):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(7):before { content: "End"; margin-bottom: 20px; } }
+
+#edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container h3, #edit-account-tab .stat-section .wpua-edit-container h3 { font-size: 0; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container h3:before, #edit-account-tab .stat-section .wpua-edit-container h3:before { content: "My Profile Picture"; font-size: 30px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 2px solid #418ad0; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container h3:after, #edit-account-tab .stat-section .wpua-edit-container h3:after { content: "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb"; font-family: 'Noto Sans', sans-serif; font-size: 15px; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container button[name="wpua-add-existing"], #edit-account-tab .stat-section .wpua-edit-container button[name="wpua-add-existing"] { background-color: #dcdcdc; box-shadow: 2px 2px 0 0 #969696; color: #4e4e4e; }
+
 #single-plan-nav { margin-bottom: 15px; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-left: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
   #single-plan-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
   #single-plan-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418ad0; } }
 
-@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { margin: 0; width: 25%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; padding-right: 2px; }
+@media (max-width: 319px) { #single-plan-nav .nav.nav-pills { margin-top: -44px; } }
+
+@media (max-width: 600px) { #single-plan-nav .nav.nav-pills li { margin: 0; width: 28%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; padding-right: 2px; }
   #single-plan-nav .nav.nav-pills li:not(.active) a { opacity: 0.7; } }
+
+@media (max-width: 333px) { #single-plan-nav .nav.nav-pills li { min-height: 90px; } }
 
 #single-plan-nav .nav.nav-pills li.active .overview-tab::before { background-image: url("/wp-content/plugins/lsx-health-plan/assets/images/eye-w.svg"); }
 

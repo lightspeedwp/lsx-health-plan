@@ -306,7 +306,7 @@ function lsx_health_plan_day_plan_block() {
 	);
 	$the_query = new WP_Query( $args );
 	?>
-	<div class="daily-plan-block">
+	<div class="daily-plan-block day-grid">
 		<?php
 		if ( $the_query->have_posts() ) :
 			while ( $the_query->have_posts() ) :
