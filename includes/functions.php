@@ -110,3 +110,93 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 	}
 	return $downloads;
 }
+
+/**
+ * Registered the modal to be outputted
+ *
+ * @param string $id
+ * @param string $title
+ * @param string $body
+ * @return void
+ */
+function register_modal( $id = '', $title = '', $body = '' ) {
+	lsx_health_plan()->frontend->modals->register_modal( array( 'title' => $title, 'body' => $body ), $id );
+}
+
+/**
+ * Outputs the modal HTML
+ *
+ * @param array $args
+ * @return void
+ */
+function output_modal( $args = array() ) {
+	$defaults = array(
+		'id'    => '',
+		'title' => '',
+		'body'  => '',
+	);
+	$args = wp_parse_args( $args, $defaults );
+	?>
+	<!-- Modal -->
+	<div class="modal fade lsx-health-plan-modal" id="<?php echo esc_html( $args['id'] ); ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo esc_html( $args['id'] ); ?>"  aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<?php
+					if ( '' !== $args['title'] ) {
+						echo wp_kses_post( '<h2>' . $args['title'] . '</h2>' );
+					}
+					?>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				<?php
+				if ( '' !== $args['body'] ) {
+						$allowed_html = array(
+							'iframe'          => array(
+								'data-src'        => array(),
+								'src'             => array(),
+								'width'           => array(),
+								'height'          => array(),
+								'frameBorder'     => array( '0' ),
+								'class'           => array(),
+								'allowFullScreen' => array(),
+								'style'           => array(),
+							),
+							'h5' => array(
+								'class' => array(),
+							),
+					);
+					echo wp_kses( $args['body'], $allowed_html );
+				}
+				?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Modal -->
+	<?php
+}
+
+/**
+ * Gets the src attribute from an iframe embed.
+ *
+ * @param [type] $embed
+ * @return void
+ */
+function get_video_url( $embed ) {
+	$url = '';
+	if ( false !== stripos( $embed, '<iframe' ) ) {
+		preg_match( '/src="([^"]+)"/', $embed, $match );
+		if ( is_array( $match ) && isset( $match[1] ) ) {
+			$url = '<iframe data-src="' . $match[1] . '" style="border: 0;" frameBorder="0" class="giphy-embed" allowFullScreen height="300" width="100%"></iframe>';
+		} else {
+			$url = $embed;
+		}
+	} else {
+		$url = $embed;
+	}
+	return $url;
+}

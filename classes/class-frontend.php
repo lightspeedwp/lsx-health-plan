@@ -23,6 +23,11 @@ class Frontend {
 	public $endpoints;
 
 	/**
+	 * @var object \lsx_health_plan\classes\Modals();
+	 */
+	public $modals;	
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -30,6 +35,9 @@ class Frontend {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php';
 		$this->endpoints = Endpoints::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-modals.php';
+		$this->modals = Modals::get_instance();
 
 		// Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );

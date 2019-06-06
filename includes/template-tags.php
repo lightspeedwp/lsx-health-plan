@@ -419,52 +419,34 @@ function table_recipe_data() {
 /**
  * Outputs the modal button and registers the video modal to show.
  *
- * @param array $group
  * @param int $m
+ * @param array $group
  * @return void
  */
-function lsx_health_plan_workout_video_play_button( $group, $m ) {
+function lsx_health_plan_workout_video_play_button( $m, $group ) {
 	$workout_video = '';
 	$giphy         = '';
 	$youtube       = '';
-	if ( isset( $group['connected_videos'] ) ) {
+	if ( isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] ) {
 		$workout_video = esc_html( $group['connected_videos'] );
 		$giphy         = get_post_meta( $workout_video, 'video_giphy_source', true );
 		$youtube       = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
-	}
-	?>
-	<button data-toggle="modal" data-target="#workout-video-modal-<?php echo esc_html( $m ); ?>">
-		<span class="fa fa-play-circle"></span>
-	</button>
-	<?php
-}
+		?>
+		<button data-toggle="modal" data-target="#workout-video-modal-<?php echo esc_html( $m ); ?>">
+			<span class="fa fa-play-circle"></span>
+		</button>
+		<?php
 
-function lsx_health_plan_workout_video_modal() {
-	?>
-	<!-- Modal -->
-	<div class="modal fade" id="modal<?php echo esc_html( $m ); ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo esc_html( $m ); ?>"  aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-				<?php
-				if ( ! empty( $giphy ) ) {
-					echo $giphy; // WPCS: XSS OK.
-				} elseif ( ! empty( $youtube ) ) {
-					echo wp_oembed_get( $youtube, array( // WPCS: XSS OK.
-						'width' => 480,
-					) );
-				}
-				?>
-				<h5 id="modal<?php echo esc_html( $m ); ?>" class="modal-title title-lined"><?php echo esc_html( $workout_name ); ?></h5>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Modal -->
-	<?php
+		$modal_body = '';
+		if ( ! empty( $giphy ) ) {
+			$giphy = \lsx_health_plan\functions\get_video_url( $giphy );
+			$modal_body = $giphy; // WPCS: XSS OK.
+		} else if ( ! empty( $youtube ) ) {
+			$modal_body = wp_oembed_get( $youtube, array( // WPCS: XSS OK.
+				'width' => 480,
+			) );
+		}
+		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
+		\lsx_health_plan\functions\register_modal( 'workout-video-modal-' . $m, '', $modal_body );
+	}
 }
