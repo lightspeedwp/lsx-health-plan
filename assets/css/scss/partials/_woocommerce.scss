@@ -43,6 +43,14 @@ body:not(.logged-in).woocommerce-account.my-plan {
 	}
 }
 
+// Edit Account
+body.woocommerce-account.woocommerce-edit-account {
+	#primary.content-area {
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+}
+
 // Banners 
 
 .page-banner-wrap {

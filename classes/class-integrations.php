@@ -98,7 +98,7 @@ class Integrations {
 	 * @return void
 	 */
 	public function woocommerce_init() {
-		if ( function_exists( 'download_monitor' ) ) {
+		if ( function_exists( 'WC' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-woocommerce.php';
 			$this->woocommerce = Woocommerce::get_instance();
 		}

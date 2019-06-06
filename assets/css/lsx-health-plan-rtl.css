@@ -3,7 +3,7 @@
 
 table, .table { width: 100%; table-layout: fixed; }
 
-.woocommerce-notices-wrapper, .woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
+.woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
 
 @media (max-width: 900px) { .no-padding.lsx-block-container .lsx-container-content { padding: 0; } }
 
@@ -98,6 +98,8 @@ body:not(.logged-in).woocommerce-account.my-plan .woocommerce .woocommerce-Reset
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce .woocommerce-ResetPassword.lost_reset_password .woocommerce-form-row.form-row.form-row-first label { font-weight: 400; }
 
 body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.woocommerce-button.button.woocommerce-form-login__submit { padding: 10px 40px; }
+
+body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin-top: 0px; margin-bottom: 0px; }
 
 .page-banner-wrap .page-banner > .page-banner-image { bottom: 0; background-color: #2b3840; }
 

@@ -25,9 +25,11 @@ class Woocommerce {
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
-		add_filter( 'the_content', array( $this, 'edit_my_account' ) );
 
-		add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		// Redirect to the Edit Account Template.
+		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
+
+		//add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 
 		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
@@ -38,10 +40,11 @@ class Woocommerce {
 
 		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
 		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
-		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
+		
 
-		// add the action.
-		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
+		// Profile Fields.
+		//add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
+		//add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
 	}
 
 	/**
@@ -131,16 +134,18 @@ class Woocommerce {
 	}
 
 	/**
-	 * Outputs the my account shortcode if its the edit account endpoint.
-	 *
-	 * @param string $content
+	 * Redirects to the my account template.
+	 * 
+	 * @param string $template
 	 * @return string
 	 */
-	public function edit_my_account( $content = '' ) {
-		if ( is_wc_endpoint_url( 'edit-account' ) ) {
-			$content = '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div></div>';
+	public function account_endpoint_redirect( $template ) {
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			if ( empty( locate_template( array( 'page-template-my-plan.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/page-template-my-plan.php' ) ) {
+				$template = LSX_HEALTH_PLAN_PATH . 'templates/page-template-my-plan.php';
+			}
 		}
-		return $content;
+		return $template;
 	}
 
 	/**
@@ -166,7 +171,6 @@ class Woocommerce {
 
 		return $fields;
 	}
-
 
 	/**
 	 * Add fields to registration form and account area.
@@ -376,9 +380,9 @@ class Woocommerce {
 				continue;
 			}
 
-			if ( ! isset( $_POST['register'] ) && wp_verify_nonce( sanitize_key( $_POST['register'] ) ) && ! empty( $field_args['hide_in_account'] ) ) {
+			/*if ( ! isset( $_POST['register'] ) && wp_verify_nonce( sanitize_key( $_POST['register'] ) ) && ! empty( $field_args['hide_in_account'] ) ) {
 				continue;
-			}
+			}*/
 
 			if ( isset( $_POST['register'] ) && ! empty( $field_args['hide_in_registration'] ) ) {
 				continue;

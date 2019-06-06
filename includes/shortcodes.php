@@ -98,3 +98,16 @@ function feature_tips_box() {
 	$content = ob_get_clean();
 	return $content;
 }
+
+/**
+ * Prints out the WooCommerce My Account Notices.
+ *
+ * @return string
+ */
+function account_notices() {
+	$content = '';
+	if ( function_exists( 'wc_print_notices' ) ) {
+		$content = wc_print_notices( true );
+	}
+	return $content;
+}
