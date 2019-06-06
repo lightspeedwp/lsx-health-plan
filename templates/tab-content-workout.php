@@ -17,7 +17,7 @@
 
 	<div class="entry-content">
 		<?php
-			the_content();
+			//the_content();
 
 			wp_link_pages( array(
 				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',

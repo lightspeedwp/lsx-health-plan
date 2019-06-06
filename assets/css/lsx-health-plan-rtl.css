@@ -115,7 +115,7 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 #account-nav { margin-bottom: 15px; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills { width: 100vw; margin-right: -25px; margin-top: -44px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
+@media (max-width: 600px) { #account-nav .nav.nav-pills { width: 100vw; margin-right: -15px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
   #account-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
   #account-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418ad0; } }
 
@@ -267,11 +267,17 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
+.my-plan-container .lsx-container-content { padding: 15px 2em; }
+
+.my-plan-container .lsx-container-content .lsx-block-container .lsx-container-content { padding: 15px 10px; }
+
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
 .post-type-archive-recipe .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
+
+@media (max-width: 992px) { .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan { padding: 15px 10px; } }
 
 .single-plan .extra-title span, .archive-plan .extra-title span { color: #418ad0; font-weight: bold; }
 
@@ -283,6 +289,8 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 @media (min-width: 992px) { .single-plan .tab-content-plan, .archive-plan .tab-content-plan { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
   .single-plan .tab-content-plan .col-md-4, .archive-plan .tab-content-plan .col-md-4 { display: -ms-flexbox; display: flex; } }
+
+@media (max-width: 992px) { .single-plan .tab-content-plan .col-md-4, .archive-plan .tab-content-plan .col-md-4 { padding: 0; } }
 
 .single-plan .tab-content-plan .lsx-health-plan-box, .archive-plan .tab-content-plan .lsx-health-plan-box { background: #f6f6f6; padding: 25px 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26); margin-bottom: 30px; width: 100%; }
 
@@ -365,7 +373,7 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 @media (min-width: 600px) { .single-plan .single-plan-inner-buttons, .archive-plan .single-plan-inner-buttons { display: -ms-flexbox; display: flex; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn { margin-left: 40px; } }
 
-@media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 40px; }
+@media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 20px; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn .btn, .archive-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
 #single-recipe { margin-bottom: -8.4rem; }

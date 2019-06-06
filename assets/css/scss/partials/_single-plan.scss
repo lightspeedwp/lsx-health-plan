@@ -158,6 +158,17 @@
 	}
 }
 
+.my-plan-container {
+	.lsx-container-content {
+		padding: 15px 2em;
+		.lsx-block-container {
+			.lsx-container-content {
+				padding: 15px 10px;
+			}
+		}
+	}
+}
+
 .archive-plan {
 	.row {
 		display: flex;
@@ -175,6 +186,9 @@
 	.entry-content, .tab-content-plan {
 		background: $white;    
 		padding: 25px 40px;
+		@media (max-width:992px) {
+			padding: 15px 10px;
+		}
 	}
 	.extra-title {
 		span {
@@ -196,6 +210,11 @@
 			flex-wrap: wrap;
 			.col-md-4 {
 				display: flex;
+			}
+		}
+		@media (max-width:992px) {
+			.col-md-4 {
+				padding: 0;
 			}
 		}
 		.lsx-health-plan-box {
@@ -373,6 +392,11 @@
 				}
 			}
 		}
+		// .extras-box {
+		// 	@media (max-width:992px) {
+		// 		padding: 10px 15px;
+		// 	}
+		// }
 		.tip-row {
 			@media (min-width:992px) {
 				display: flex;
@@ -420,7 +444,7 @@
 		}
 		@media (max-width:600px) {
 			.complete-plan-btn, .back-plan-btn {
-				margin-bottom: 40px;
+				margin-bottom: 20px;
 				.btn {
 					width: 100%;
 				}
