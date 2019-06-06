@@ -43,8 +43,8 @@ class Woocommerce {
 		
 
 		// Profile Fields.
-		//add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
-		//add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
+		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
+		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
 	}
 
 	/**
@@ -193,7 +193,7 @@ class Woocommerce {
 				$value   = $this->iconic_get_userdata( $user_id, $key );
 			}
 
-			$value = isset( $field_args['value'] ) ? $field_args['value'] : $value;
+			$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 
 			woocommerce_form_field( $key, $field_args, $value );
 		}
@@ -239,22 +239,20 @@ class Woocommerce {
 	public function iconic_save_account_fields( $customer_id ) {
 		$fields         = $this->get_account_fields();
 		$sanitized_data = array();
-
 		foreach ( $fields as $key => $field_args ) {
 			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
-			$value    = ( isset( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
-
+			$value    = ( isset( $_POST[ $key ] ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
 			if ( $this->iconic_is_userdata( $key ) ) {
+				
 				$sanitized_data[ $key ] = $value;
 				continue;
 			}
 
 			if ( 'profile_photo' === $key ) {
-
 				// This handles the image uploads
 				require_once ABSPATH . 'wp-admin/includes/image.php';
 				require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -266,9 +264,10 @@ class Woocommerce {
 					update_term_meta( $customer_id, $key, $id );
 				}
 			} else {
+				delete_user_meta( $customer_id, $key );
 				update_user_meta( $customer_id, $key, $value );
 			}
-		}
+		}	
 
 		if ( ! empty( $sanitized_data ) ) {
 			$sanitized_data['ID'] = $customer_id;
