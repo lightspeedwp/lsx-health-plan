@@ -29,7 +29,7 @@
 			@media (max-width:600px) {
 				//width: 100%;
 				margin: 0;
-				width: 33.33%;
+				width: 40%;
 				flex-shrink: 0;
 				height: 100%;
 				scroll-snap-align: start;
@@ -122,6 +122,9 @@
 							background-image: url('/wp-content/plugins/lsx-health-plan/assets/images/logout-wht.svg');
 						}
 					}
+				}
+				@media (max-width:334px) {
+					font-size: 11px;
 				}
 			}
 			&.active, &:hover {
@@ -281,7 +284,13 @@
     width: 100%;
 	margin: 20px auto 140px;
 	@media (max-width:600px) {
-		padding: 24px 10px 20px;
+		padding: 0 10px 20px;
+		margin-top: 0px;
+		#account-nav {
+			.nav-pills {
+				margin-left: -25px;
+			}
+		}
 	}
 	.edit-account-section, .stat-section {
 		width: 100%;
