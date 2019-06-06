@@ -366,8 +366,6 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 @media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 40px; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn .btn, .archive-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
-.single-plan .modal-backdrop.in, .archive-plan .modal-backdrop.in { display: none; }
-
 #single-recipe { margin-bottom: -8.4rem; }
 
 #single-recipe .recipe-table tbody td:first-child { font-weight: bold; }
