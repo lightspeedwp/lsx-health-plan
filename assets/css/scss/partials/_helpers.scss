@@ -79,4 +79,10 @@ table, .table {
 			}
 		}
 	}
+	&.white-list {
+		table {
+			background-color: #ffffff;
+			border: 20px solid #ffffff;
+		}
+	}
 }

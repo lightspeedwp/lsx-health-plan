@@ -28,6 +28,8 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .shopping-list-container table tbody tr td.column-2 { color: #9B9B9B; text-align: left; }
 
+.shopping-list-container.white-list table { background-color: #ffffff; border: 20px solid #ffffff; }
+
 .slick-slider .slick-dots { -ms-flex-align: center; align-items: center; display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap; height: auto; -ms-flex-pack: center; justify-content: center; list-style: none; margin: 1rem 0 0; padding: 0; }
 
 .slick-slider .slick-dots > li { line-height: 1; padding: 5px; }
