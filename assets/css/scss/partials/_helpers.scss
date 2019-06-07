@@ -24,12 +24,50 @@ table, .table {
 	background-color: $white !important;
 }
 
+.blue-title, .content-area h2.blue-title {
+	color: $blue;
+}
+
 .reverse-mobile {
 	@media (max-width:600px) {
 		display: flex;
 		flex-direction: column-reverse;
 		.col-md-6:last-child {
 			margin-bottom: 2em;
+		}
+	}
+}
+
+// Shooping List
+
+.shopping-list-container {
+	@media (min-width:600px) {
+		column-count: 2;
+		column-gap: 3em;
+		width: 100%;
+		height: 100%;
+	}
+	table {
+		background-color: #f8f8f8;
+		border: 20px solid #f8f8f8;
+		display: block;
+		tbody {
+			tr {
+				border-bottom: 1px solid #e1e1e1;
+				td {
+					vertical-align: middle;
+					display: inline-block;
+					border: none;
+					&.column-1 {
+						font-weight: bold;
+					}
+					&.column-2 {
+						color: #9B9B9B;
+						text-align: right;
+						float: right !important;
+					}
+				}
+			}
 		}
 	}
 }

@@ -9,8 +9,22 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .white-bg { background-color: #ffffff !important; }
 
+.blue-title, .content-area h2.blue-title { color: #418ad0; }
+
 @media (max-width: 600px) { .reverse-mobile { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; }
   .reverse-mobile .col-md-6:last-child { margin-bottom: 2em; } }
+
+@media (min-width: 600px) { .shopping-list-container { column-count: 2; column-gap: 3em; width: 100%; height: 100%; } }
+
+.shopping-list-container table { background-color: #f8f8f8; border: 20px solid #f8f8f8; display: block; }
+
+.shopping-list-container table tbody tr { border-bottom: 1px solid #e1e1e1; }
+
+.shopping-list-container table tbody tr td { vertical-align: middle; display: inline-block; border: none; }
+
+.shopping-list-container table tbody tr td.column-1 { font-weight: bold; }
+
+.shopping-list-container table tbody tr td.column-2 { color: #9B9B9B; text-align: left; float: left !important; }
 
 .slick-slider .slick-dots { -ms-flex-align: center; align-items: center; display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap; height: auto; -ms-flex-pack: center; justify-content: center; list-style: none; margin: 1rem 0 0; padding: 0; }
 
