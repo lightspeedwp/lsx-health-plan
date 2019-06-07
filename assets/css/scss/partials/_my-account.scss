@@ -385,10 +385,16 @@
 					font-size: 15px;
 				}
 			}
-			button[name="wpua-add-existing"] {
+			#wpua-add-existing, #wpua-remove-existing {
 				background-color: #dcdcdc;
 				box-shadow: 2px 2px 0 0 #969696;
-    			color: #4e4e4e;
+				color: #4e4e4e;
+				&:hover {
+					background-color: #969696;
+				}
+			}
+			#wpua-undo-button-existing {
+				display: none;
 			}
 		}
 	}

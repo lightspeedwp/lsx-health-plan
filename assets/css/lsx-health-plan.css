@@ -14,17 +14,19 @@ table, .table { width: 100%; table-layout: fixed; }
 @media (max-width: 600px) { .reverse-mobile { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; }
   .reverse-mobile .col-md-6:last-child { margin-bottom: 2em; } }
 
-@media (min-width: 600px) { .shopping-list-container { column-count: 2; column-gap: 3em; width: 100%; height: 100%; } }
+@media (min-width: 600px) { .shopping-list-container { column-count: 2; column-gap: 4em; width: 100%; height: 100%; } }
 
-.shopping-list-container table { background-color: #f8f8f8; border: 20px solid #f8f8f8; display: block; }
+.shopping-list-container table { background-color: #f8f8f8; border: 20px solid #f8f8f8; border-top: none; display: block; }
 
-.shopping-list-container table tbody tr { border-bottom: 1px solid #e1e1e1; }
+.shopping-list-container table tbody tr { border-bottom: 1px solid #e1e1e1; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
 
-.shopping-list-container table tbody tr td { vertical-align: middle; display: inline-block; border: none; }
+.shopping-list-container table tbody tr td { vertical-align: middle; display: inline-block; border: none; padding: 10px; }
 
 .shopping-list-container table tbody tr td.column-1 { font-weight: bold; }
 
-.shopping-list-container table tbody tr td.column-2 { color: #9B9B9B; text-align: right; float: right !important; }
+.shopping-list-container table tbody tr td.column-1 span { font-size: 12px; line-height: 15px; display: block; font-weight: 400; }
+
+.shopping-list-container table tbody tr td.column-2 { color: #9B9B9B; text-align: right; }
 
 .slick-slider .slick-dots { -ms-flex-align: center; align-items: center; display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap; height: auto; -ms-flex-pack: center; justify-content: center; list-style: none; margin: 1rem 0 0; padding: 0; }
 
@@ -271,7 +273,11 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 #edit-account-tab .edit-account-section .wpua-edit-container h3:after, #edit-account-tab .stat-section .wpua-edit-container h3:after { content: "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb"; font-family: 'Noto Sans', sans-serif; font-size: 15px; }
 
-#edit-account-tab .edit-account-section .wpua-edit-container button[name="wpua-add-existing"], #edit-account-tab .stat-section .wpua-edit-container button[name="wpua-add-existing"] { background-color: #dcdcdc; box-shadow: 2px 2px 0 0 #969696; color: #4e4e4e; }
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing { background-color: #dcdcdc; box-shadow: 2px 2px 0 0 #969696; color: #4e4e4e; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing:hover, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing:hover { background-color: #969696; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-undo-button-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-undo-button-existing { display: none; }
 
 #single-plan-nav { margin-bottom: 15px; }
 
