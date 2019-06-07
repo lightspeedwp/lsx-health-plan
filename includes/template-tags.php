@@ -77,7 +77,7 @@ function lsx_health_plan_recipe_box() {
 			<h3 class="title recipes-title title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>
 			<div class="excerpt">
-				<p><?php esc_html_e( "Let's get cooking! Recipes for the day are over on the Meal Plan tab.", 'lsx-health-plan' ); ?></p>
+				<p><?php esc_html_e( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ); ?></p>
 			</div>
 			<a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
 		</div>
