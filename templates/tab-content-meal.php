@@ -48,6 +48,8 @@
 					$meals->the_post();
 					$post_id = get_the_id();
 
+					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
+
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
 					$breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
@@ -114,7 +116,7 @@
 							<div class="content-box tip-middle box-shadow">
 								<h3 class="eating-title title-lined">Shopping List</h3>
 								<p>Checkout the shopping list and make sure you have all the goodies you need!</p>
-								<a class="btn border-btn btn-full" href="#" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+								<a class="btn border-btn btn-full" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
 							</div>	
 						</div>
 						<div class="col-md-4">

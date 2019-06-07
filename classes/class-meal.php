@@ -123,6 +123,27 @@ class Meal {
 	 */
 	public function details_metaboxes() {
 		$cmb = new_cmb2_box( array(
+			'id'           => $this->slug . '_shopping_list_metabox',
+			'title'        => __( 'Shopping List', 'lsx-health-plan' ),
+			'object_types' => array( $this->slug ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Shopping List', 'lsx-health-plan' ),
+			'id'         => $this->slug . '_shopping_list',
+			'type'       => 'post_search_ajax',
+			// Optional :
+			'limit'      => 1,  // Limit selection to X items only (default 1)
+			'sortable'   => true, // Allow selected items to be sortable (default false)
+			'query_args' => array(
+				'post_type'      => array( 'page' ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => -1,
+			),
+		) );
+		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_details_metabox',
 			'title'        => __( 'Meal Details', 'lsx-health-plan' ),
 			'object_types' => array( $this->slug ), // Post type
