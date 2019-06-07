@@ -83,7 +83,7 @@ var LSX_HP_SLIDER = Object.create( null );
      * Initiate the Sliders
      */
     LSX_HP_SLIDER.tipSliders.init = function( ) {
-		LSX_HP_SLIDER.tipsliders.element.each( function() {
+		LSX_HP_SLIDER.tipSliders.element.each( function() {
             $(this).slick({
                 dots: true,
                 infinite: false,
@@ -95,8 +95,6 @@ var LSX_HP_SLIDER = Object.create( null );
             });
         } );
 	};	
-	
-	
 
     /**
      * On document ready.
@@ -107,5 +105,4 @@ var LSX_HP_SLIDER = Object.create( null );
     LSX_HP_SLIDER.document.ready( function() {
         LSX_HP_SLIDER.init();
     } );
-
 } )( jQuery, window, document );
