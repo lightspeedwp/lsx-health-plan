@@ -443,6 +443,14 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 @media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 20px; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn .btn, .archive-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
+.lsx-health-plan-modal .modal-header { display: none; }
+
+.lsx-health-plan-modal .modal-content { padding: 40px; }
+
+.lsx-health-plan-modal .modal-title { margin-bottom: 25px; }
+
+@media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
+
 #single-recipe { margin-bottom: -8.4rem; }
 
 #single-recipe .recipe-table tbody td:first-child { font-weight: bold; }
