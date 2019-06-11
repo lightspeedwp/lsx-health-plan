@@ -368,11 +368,16 @@ function lsx_health_plan_week_plan_block() {
 		)
 	);
 	if ( ! empty( $weeks ) ) {
+		$counter = 1;
 		foreach ( $weeks as $week ) {
+			$collapse_class = '';
+			if ( 1 === $counter ) {
+				$collapse_class = 'in';
+			}
 			?>
 				<div class="daily-plan-block week-grid">
 					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse"><?php echo esc_attr( $week->name ); ?></a>
-					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse">
+					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 						<?php
 							$args = array(
 								'orderby'        => 'date',
@@ -405,9 +410,10 @@ function lsx_health_plan_week_plan_block() {
 							endif;
 							wp_reset_postdata();
 						?>
-					</div>					
+					</div>
 				</div>
 			<?php
+			++$counter;
 		}
 	}
 }
