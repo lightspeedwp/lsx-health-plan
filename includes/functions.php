@@ -200,3 +200,26 @@ function get_video_url( $embed ) {
 	}
 	return $url;
 }
+
+/**
+ * Limit media library access
+ */
+function lsx_health_show_current_user_attachments( $query ) {
+	$user_id = get_current_user_id();
+	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
+	') ) {
+		$query['author'] = $user_id;
+	}
+	return $query;
+}
+add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachments' );
+
+
+function show_full_list_of_attachments( $show_all ) {
+	if ( ! current_user_can( 'super_author' ) ) {
+		return $show_all;
+	}
+
+	return true;
+}
+add_filter( 'ure_attachments_show_full_list', 'show_full_list_of_attachments', 10, 1 );
