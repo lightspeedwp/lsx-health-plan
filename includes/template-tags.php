@@ -16,9 +16,16 @@ function lsx_health_plan_warmup_box() {
 		<div class="lsx-health-plan-box">
 			<h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>
-			<div class="excerpt">
-				<p><?php esc_html_e( "Don't forget your warm-up! It's a vital part of your daily workout routine.", 'lsx-health-plan' ); ?></p>
-			</div>
+			<?php
+			$intro_text = \lsx_health_plan\functions\get_option( 'warmup_intro', false );
+			if ( false !== $intro_text ) {
+				?>
+				<div class="excerpt">
+					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+				</div>
+				<?php
+			}
+			?>
 			<a href="<?php the_permalink(); ?>warm-up/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
@@ -36,9 +43,16 @@ function lsx_health_plan_workout_box() {
 		<div class="lsx-health-plan-box">
 			<h3 class="title work-out-title title-lined"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>
-			<div class="excerpt">
-				<p><?php esc_html_e( "Let's do this! Smash your daily workout and reach your fitness goals.", 'lsx-health-plan' ); ?></p>
-			</div>
+			<?php
+			$intro_text = \lsx_health_plan\functions\get_option( 'workout_intro', false );
+			if ( false !== $intro_text ) {
+				?>
+				<div class="excerpt">
+					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+				</div>
+				<?php
+			}
+			?>
 			<a href="<?php the_permalink(); ?>workout/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
@@ -56,9 +70,16 @@ function lsx_health_plan_meal_box() {
 		<div class="lsx-health-plan-box">
 			<h3 class="title meal-plan-title title-lined"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>
-			<div class="excerpt">
-				<p><?php esc_html_e( 'Get the right mix of nutrients to keep muscles strong & healthy.', 'lsx-health-plan' ); ?></p>
-			</div>
+			<?php
+			$intro_text = \lsx_health_plan\functions\get_option( 'meal_plan_intro', false );
+			if ( false !== $intro_text ) {
+				?>
+				<div class="excerpt">
+					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+				</div>
+				<?php
+			}
+			?>
 			<a href="<?php the_permalink(); ?>meal/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
@@ -76,9 +97,16 @@ function lsx_health_plan_recipe_box() {
 		<div class="lsx-health-plan-box">
 			<h3 class="title recipes-title title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>
-			<div class="excerpt">
-				<p><?php esc_html_e( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ); ?></p>
-			</div>
+			<?php
+			$intro_text = \lsx_health_plan\functions\get_option( 'recipes_intro', false );
+			if ( false !== $intro_text ) {
+				?>
+				<div class="excerpt">
+					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+				</div>
+				<?php
+			}
+			?>
 			<a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
