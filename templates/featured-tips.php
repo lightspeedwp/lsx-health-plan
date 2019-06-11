@@ -4,15 +4,29 @@
  *
  * @package lsx-health-plan
  */
+$connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
+if ( empty( $connected_tips ) ) {
+	// Featured Tips Global
+	$connected_tips = 'tip_featured_tip';
+	$args = array(
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+		'post_type'      => 'tip',
+		'posts_per_page' => 3,
+		'meta_key'       => $connected_tips,
+	);
+} else {
+	// Featured Tips per Day
+	$args = array(
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+		'post_type'      => 'tip',
+		'posts_per_page' => 3,
+		'post__in'       => $connected_tips,
+	);
+}
 
-$args = array(
-	'orderby'        => 'date',
-	'order'          => 'ASC',
-	'post_type'      => 'tip',
-	'posts_per_page' => 3,
-	'meta_key'       => 'tip_featured_tip',
-	'meta_compare'   => 'EXISTS',
-);
+
 $tips = new WP_Query( $args );
 ?>
 
