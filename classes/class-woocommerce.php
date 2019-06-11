@@ -589,8 +589,12 @@ class Woocommerce {
 	 * @return void
 	 */
 	public function allow_reset_password_page() {
-		if ( is_user_logged_in() && is_wc_endpoint_url( 'lost-password' ) ) {
-			remove_action( 'wp', array( 'WC_Memberships_Posts_Restrictions', 'handle_restriction_modes' ), 10, 1 );
+		if ( ! is_user_logged_in() && function_exists( 'wc_memberships' ) && is_wc_endpoint_url( 'lost-password' ) ) {
+
+			$members_instance = wc_memberships();
+			$restriction_instance = $members_instance->get_restrictions_instance();
+			$post_restrictions_instance = $restriction_instance->get_posts_restrictions_instance();
+			remove_action( 'wp', array( $post_restrictions_instance, 'handle_restriction_modes' ), 10, 1 );
 		}
 	}
 }
