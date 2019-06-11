@@ -40,11 +40,12 @@ class Woocommerce {
 
 		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
 		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
-		
 
 		// Profile Fields.
 		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
 		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
+
+		add_action( 'wp', array( $this, 'allow_reset_password_page' ), 9 );
 	}
 
 	/**
@@ -580,5 +581,16 @@ class Woocommerce {
 				'required'             => true,
 			),
 		) );
+	}
+
+	/**
+	 * Removes the content restriction class to allow the password page to show.
+	 *
+	 * @return void
+	 */
+	public function allow_reset_password_page() {
+		if ( is_user_logged_in() && is_wc_endpoint_url( 'lost-password' ) ) {
+			remove_action( 'wp', array( 'WC_Memberships_Posts_Restrictions', 'handle_restriction_modes' ), 10, 1 );
+		}
 	}
 }
