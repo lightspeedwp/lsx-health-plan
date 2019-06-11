@@ -51,9 +51,18 @@ function my_profile_box() {
  *
  * @return void
  */
-function day_plan_box() {
+function day_plan_box( $args = array() ) {
+	$defaults = array(
+		'week_view' => false,
+	);
+	$args = wp_parse_args( $args, $defaults );
+
 	ob_start();
-	echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
+	if ( false === $args['week_view'] ) {
+		echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
+	} else {
+		echo lsx_health_plan_week_plan_block();
+	}
 	$content = ob_get_clean();
 	return $content;
 }

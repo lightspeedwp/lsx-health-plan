@@ -320,19 +320,18 @@ function lsx_health_plan_my_profile_box() {
 <?php
 }
 
-
 /**
- * Outputs the my profile box
+ * Outputs the my profile day view box
  *
  * @return void
  */
 function lsx_health_plan_day_plan_block() {
-
 	$args      = array(
 		'orderby'        => 'date',
 		'order'          => 'ASC',
 		'post_type'      => 'plan',
-		'posts_per_page' => 28,
+		'posts_per_page' => -1,
+		'nopagin'        => true,
 	);
 	$the_query = new WP_Query( $args );
 	?>
@@ -355,6 +354,62 @@ function lsx_health_plan_day_plan_block() {
 	</div>
 
 <?php
+}
+
+/**
+ * Outputs the my profile week view box
+ *
+ * @return void
+ */
+function lsx_health_plan_week_plan_block() {
+	$weeks = get_terms(
+		array(
+			'taxonomy' => 'week',
+		)
+	);
+	if ( ! empty( $weeks ) ) {
+		foreach ( $weeks as $week ) {
+			?>
+				<div class="daily-plan-block week-grid">
+					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse"><?php echo esc_attr( $week->name ); ?></a>
+					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse">
+						<?php
+							$args = array(
+								'orderby'        => 'date',
+								'order'          => 'ASC',
+								'post_type'      => 'plan',
+								'posts_per_page' => -1,
+								'nopagin'        => true,
+								'tax_query'      => array(
+									array(
+										'taxonomy' => 'week',
+										'field'    => 'slug',
+										'terms'    => array( $week->slug ),
+									)
+								),
+							);
+							$the_query = new WP_Query( $args );
+							if ( $the_query->have_posts() ) :
+								while ( $the_query->have_posts() ) :
+									$the_query->the_post();
+									$completed_class = '';
+									if ( lsx_health_plan_is_day_complete() ) {
+										$completed_class = 'completed';
+									}
+									?>
+									<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+										<div class="plan-content"><?php the_title(); ?></div>
+									</a>
+									<?php
+								endwhile;
+							endif;
+							wp_reset_postdata();
+						?>
+					</div>					
+				</div>
+			<?php
+		}
+	}
 }
 
 /**
