@@ -245,6 +245,28 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 .daily-plan-block .day.next-day:last-child .plan-content:before { content: url(/wp-content/plugins/lsx-health-plan/assets/images/trophy.svg); height: 40px; }
 
+.daily-plan-block.week-grid { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; transition: none; }
+
+.daily-plan-block.week-grid a { background: #e9ecee; margin-bottom: 10px; font-size: 28px; font-family: 'Lora', serif; font-weight: bold; padding: 10px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; transition: none; }
+
+.daily-plan-block.week-grid a:not(.day):after { content: "\f0d7"; font-family: 'FontAwesome'; }
+
+.daily-plan-block.week-grid a:not(.day)[aria-expanded="true"]:after { content: "\f0d8"; font-family: 'FontAwesome'; }
+
+.daily-plan-block.week-grid a:not(.day)[aria-expanded="false"]:after { content: "\f0d7"; font-family: 'FontAwesome'; }
+
+.daily-plan-block.week-grid .week-row.collapse.in { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.daily-plan-block.week-grid .week-row.collapse.in .day { background: none; }
+
+.daily-plan-block.week-grid .week-row.collapse.in .day:not(.completed) { border: 3px solid #418ad0; border-radius: 50px; height: 100px; width: 100px; background: rgba(65, 138, 208, 0.3); text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
+
+.daily-plan-block.week-grid .week-row.collapse.in .day:hover:not(.completed) { background: #418ad0; }
+
+.daily-plan-block.week-grid .week-row.collapse.in .day:hover:not(.completed) .plan-content { color: #ffffff; }
+
+.daily-plan-block.week-grid .week-row.collapse.in .day .plan-content { font-family: 'Noto Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
+
 #edit-account-tab { padding: 35px 20px 20px; max-width: 1140px; width: 100%; margin: 20px auto 140px; }
 
 @media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; }

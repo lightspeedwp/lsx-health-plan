@@ -276,6 +276,72 @@
 			}
 		}
 	}
+	&.week-grid {
+		display: flex;
+		flex-direction: column;
+		transition: none;
+		a {
+			background: #e9ecee;
+			margin-bottom: 10px;
+			font-size: 28px;
+			font-family: 'Lora', serif;
+			font-weight: bold;
+			padding: 10px;
+			display: flex;
+			justify-content: space-between;
+			transition: none;
+			&:not(.day) {
+				&:after {
+					content: "\f0d7";
+					font-family: 'FontAwesome';
+				}
+				&[aria-expanded="true"] {
+					&:after {
+						content: "\f0d8";
+						font-family: 'FontAwesome';
+					}
+				}
+				&[aria-expanded="false"] {
+					&:after {
+						content: "\f0d7";
+						font-family: 'FontAwesome';
+					}
+				}
+			}
+		}
+		.week-row.collapse.in {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			.day {
+				background: none;
+				&:not(.completed) {
+					border: 3px solid $blue;
+					border-radius: 50px;
+					height: 100px;
+					width: 100px;
+					background: rgba(65, 138, 208, 0.3);
+					text-align: center;
+					display: flex;
+					justify-content: center;
+				}
+				&:hover {
+					&:not(.completed) {
+						background: $blue;
+						.plan-content {
+							color: $white;
+						}
+					}
+				}
+				.plan-content {
+					font-family: 'Noto Sans', sans-serif;
+					font-weight: 300;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
 }
 
 #edit-account-tab {   
