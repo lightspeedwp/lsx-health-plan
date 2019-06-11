@@ -595,6 +595,24 @@ class Woocommerce {
 			$restriction_instance = $members_instance->get_restrictions_instance();
 			$post_restrictions_instance = $restriction_instance->get_posts_restrictions_instance();
 			remove_action( 'wp', array( $post_restrictions_instance, 'handle_restriction_modes' ), 10, 1 );
+			add_action( 'body_class', array( $this, 'remove_body_classes' ) );
 		}
+	}
+
+	/**
+	 * Remove the gutenberg classes from the lost password page.
+	 *
+	 * @param array $classes
+	 * @return void
+	 */
+	public function remove_body_classes( $classes = array() ) {
+		if ( ! empty( $classes ) ) {
+			foreach ( $classes as $class_key => $class_value ) {
+				if ( 'gutenberg-compatible-template' === $class_value || 'using-gutenberg' === $class_value ) {
+					unset( $classes[ $class_key ] );
+				}
+			}
+		}
+		return $classes;
 	}
 }
