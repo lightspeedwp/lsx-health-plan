@@ -51,6 +51,28 @@ body.woocommerce-account.woocommerce-edit-account {
 	}
 }
 
+// Lost Password
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
+	article.page {
+		width: 66.66667% !important;
+		margin: 0 auto;
+
+		.woocommerce {
+			max-width: none;
+
+			.form {
+				.form-row-first {
+					font-weight: 700;
+				} 
+				.form-row-last {
+					float: none;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
 // Banners 
 
 .page-banner-wrap {
