@@ -376,7 +376,7 @@ function lsx_health_plan_week_plan_block() {
 			}
 			?>
 				<div class="daily-plan-block week-grid">
-					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse"><?php echo esc_attr( $week->name ); ?></a>
+					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
 					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 						<?php
 							$args = array(

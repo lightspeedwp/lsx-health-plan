@@ -223,6 +223,14 @@
 		align-items: center;
 		border-radius: 2px;
 		height: 110px;
+		transition: none;
+		&:hover {
+			background-color: $blue;
+			color: $white;
+			.plan-content {
+				color: $white;
+			}
+		}
 		@media (min-width:900px) {
 			max-width: 120px;
 		}
@@ -290,7 +298,10 @@
 			display: flex;
 			justify-content: space-between;
 			transition: none;
-			&:not(.day) {
+			&.week-title {
+				&:hover, &:focus {
+					color: $blue;
+				}
 				&:after {
 					content: "\f0d7";
 					font-family: 'FontAwesome';
