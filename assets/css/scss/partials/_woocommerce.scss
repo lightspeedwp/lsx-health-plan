@@ -61,7 +61,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 			max-width: none;
 
 			form {
-				.form-row-first {
+				.form-row-first label {
 					font-weight: 700;
 				} 
 				.form-row-last {

@@ -126,7 +126,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce { max-width: none; }
 
-body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-first { font-weight: 700; }
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-first label { font-weight: 700; }
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-last { float: none; width: 100%; }
 
