@@ -458,3 +458,23 @@
 		}
 	}
 }
+
+.lsx-health-plan-modal {
+	.modal-header {
+		display: none;
+	}
+	.modal-content {
+		padding: 40px;
+	}
+	.modal-title  {
+		margin-bottom: 25px;
+	}
+	.modal-body {
+		@media (max-width: 600px) {
+			iframe {
+				height: 100%;
+			}	
+		}
+		
+	}
+}
