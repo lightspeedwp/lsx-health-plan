@@ -216,7 +216,8 @@ add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachm
 
 
 function show_full_list_of_attachments( $show_all ) {
-	if ( ! current_user_can( 'super_author' ) ) {
+	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
+	') ) {
 		return $show_all;
 	}
 
