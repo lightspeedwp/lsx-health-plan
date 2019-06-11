@@ -62,7 +62,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 
 			form {
 				.form-row-first label {
-					font-weight: 700;
+					font-weight: 700 !important;
 				} 
 				.form-row-last {
 					float: none;
