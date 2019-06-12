@@ -214,7 +214,12 @@ function lsx_health_show_current_user_attachments( $query ) {
 }
 add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachments' );
 
-
+/**
+ * Show the Full Attachements
+ *
+ * @param [type] $show_all
+ * @return void
+ */
 function show_full_list_of_attachments( $show_all ) {
 	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
 	') ) {
@@ -224,3 +229,51 @@ function show_full_list_of_attachments( $show_all ) {
 	return true;
 }
 add_filter( 'ure_attachments_show_full_list', 'show_full_list_of_attachments', 10, 1 );
+
+/**
+ * Takes the Week ID and sees if it is complete
+ *
+ * @param boolean $term_id
+ * @param array $post_ids
+ * @return boolean
+ */
+function is_week_complete( $term_id = false, $post_ids = array() ) {
+	$return = false;
+	if ( ! empty( $post_ids ) ) {
+		foreach ( $post_ids as &$pid ) {
+			$pid = 'day_' . $pid . '_complete';
+		}
+		$days_complete = get_meta_amounts( $post_ids );
+		if ( 7 === $days_complete || '7' === $days_complete ) {
+			$return = true;
+		}
+	}
+	return $return;
+}
+
+/**
+ * Gets the values straight from the DB
+ *
+ * @param integer $week
+ * @param string $key
+ * @return void
+ */
+function get_meta_amounts( $post_ids = array() ) {
+	global $wpdb;
+	$amount       = 0;
+	$current_user = wp_get_current_user();
+	if ( false !== $current_user && ! empty( $post_ids ) ) {
+		$post_ids = "'" . implode( "','", $post_ids ) . "'";
+		$query = "
+			SELECT COUNT(`meta_value`) 
+			FROM `{$wpdb->usermeta}`
+			WHERE `meta_key` IN ({$post_ids})
+			AND `user_id` = '{$current_user->ID}'
+		";
+		$results = $wpdb->get_var( $query );
+		if ( ! empty( $results ) ) {
+			$amount = $results;
+		}
+	}
+	return $amount;
+}

@@ -21,7 +21,7 @@ function lsx_health_plan_warmup_box() {
 			if ( false !== $intro_text ) {
 				?>
 				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+					<p><?php echo wp_kses_post( $intro_text ); ?></p>
 				</div>
 				<?php
 			}
@@ -48,7 +48,7 @@ function lsx_health_plan_workout_box() {
 			if ( false !== $intro_text ) {
 				?>
 				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+					<p><?php echo wp_kses_post( $intro_text ); ?></p>
 				</div>
 				<?php
 			}
@@ -75,7 +75,7 @@ function lsx_health_plan_meal_box() {
 			if ( false !== $intro_text ) {
 				?>
 				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+					<p><?php echo wp_kses_post( $intro_text ); ?></p>
 				</div>
 				<?php
 			}
@@ -102,7 +102,7 @@ function lsx_health_plan_recipe_box() {
 			if ( false !== $intro_text ) {
 				?>
 				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ) ?></p>
+					<p><?php echo wp_kses_post( $intro_text ); ?></p>
 				</div>
 				<?php
 			}
@@ -368,52 +368,67 @@ function lsx_health_plan_week_plan_block() {
 		)
 	);
 	if ( ! empty( $weeks ) ) {
-		$counter = 1;
+		$counter      = 1;
+		$section_open = false;
+
 		foreach ( $weeks as $week ) {
+			//Grab the days of the week.
+			$args = array(
+				'orderby'        => 'date',
+				'order'          => 'ASC',
+				'post_type'      => 'plan',
+				'posts_per_page' => -1,
+				'nopagin'        => true,
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'week',
+						'field'    => 'slug',
+						'terms'    => array( $week->slug ),
+					)
+				),
+			);
+			$the_query      = new WP_Query( $args );
 			$collapse_class = '';
-			if ( 1 === $counter ) {
-				$collapse_class = 'in';
+
+			// Determine if the current week is complete.
+			if ( $the_query->have_posts() ) {
+				$day_ids = wp_list_pluck( $the_query->posts, 'ID' );
+
+				if ( false !== $section_open ) {
+					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
+						$collapse_class = 'in';
+						$section_open = true;
+					} else if ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
+						$collapse_class = 'in';
+						$section_open = true;
+					}
+				}
 			}
 			?>
-				<div class="daily-plan-block week-grid">
-					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
-					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
-						<div class="week-row-inner">
-							<?php
-								$args = array(
-									'orderby'        => 'date',
-									'order'          => 'ASC',
-									'post_type'      => 'plan',
-									'posts_per_page' => -1,
-									'nopagin'        => true,
-									'tax_query'      => array(
-										array(
-											'taxonomy' => 'week',
-											'field'    => 'slug',
-											'terms'    => array( $week->slug ),
-										)
-									),
-								);
-								$the_query = new WP_Query( $args );
-								if ( $the_query->have_posts() ) :
-									while ( $the_query->have_posts() ) :
-										$the_query->the_post();
-										$completed_class = '';
-										if ( lsx_health_plan_is_day_complete() ) {
-											$completed_class = 'completed';
-										}
-										?>
-										<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-											<div class="plan-content"><?php the_title(); ?></div>
-										</a>
-										<?php
-									endwhile;
-								endif;
-								wp_reset_postdata();
-							?>
-						</div>
+			<div class="daily-plan-block week-grid">
+				<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
+				<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
+					<div class="week-row-inner">
+						<?php
+						if ( $the_query->have_posts() ) :
+							while ( $the_query->have_posts() ) :
+								$the_query->the_post();
+								$completed_class = '';
+								if ( lsx_health_plan_is_day_complete() ) {
+									$completed_class = 'completed';
+								}
+								?>
+								<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+									<div class="plan-content"><?php the_title(); ?></div>
+								</a>
+								<?php
+							endwhile;
+						endif;
+						wp_reset_postdata();
+						?>
 					</div>
 				</div>
+			</div>
 			<?php
 			++$counter;
 		}
