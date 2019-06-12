@@ -394,7 +394,7 @@ function lsx_health_plan_week_plan_block() {
 			if ( $the_query->have_posts() ) {
 				$day_ids = wp_list_pluck( $the_query->posts, 'ID' );
 
-				if ( false !== $section_open ) {
+				if ( false === $section_open ) {
 					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
 						$collapse_class = 'in';
 						$section_open = true;
