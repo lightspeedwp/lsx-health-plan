@@ -320,35 +320,37 @@
 				}
 			}
 		}
-		.week-row.collapse.in {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: wrap;
-			.day {
-				background: none;
-				&:not(.completed) {
-					border: 3px solid $blue;
-					border-radius: 50px;
-					height: 100px;
-					width: 100px;
-					background: rgba(65, 138, 208, 0.3);
-					text-align: center;
-					display: flex;
-					justify-content: center;
-				}
-				&:hover {
+		.week-row {
+			.week-row-inner {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				.day {
+					background: none;
 					&:not(.completed) {
-						background: $blue;
-						.plan-content {
-							color: $white;
+						border: 3px solid $blue;
+						border-radius: 50px;
+						height: 100px;
+						width: 100px;
+						background: rgba(65, 138, 208, 0.3);
+						text-align: center;
+						display: flex;
+						justify-content: center;
+					}
+					&:hover {
+						&:not(.completed) {
+							background: $blue;
+							.plan-content {
+								color: $white;
+							}
 						}
 					}
-				}
-				.plan-content {
-					font-family: 'Noto Sans', sans-serif;
-					font-weight: 300;
-					text-transform: uppercase;
+					.plan-content {
+						font-family: 'Noto Sans', sans-serif;
+						font-weight: 300;
+						text-transform: uppercase;
+					}
 				}
 			}
 		}
