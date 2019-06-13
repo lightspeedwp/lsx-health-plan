@@ -145,7 +145,6 @@ class Downloads {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_metabox',
 			'title'        => __( 'Downloads', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your downloads', 'lsx-health-plan' ),
 			'object_types' => array( 'workout', 'meal', 'recipe' ), // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -153,6 +152,7 @@ class Downloads {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Downloads', 'lsx-health-plan' ),
+			'desc'       => __( "Add the pdf's connected to this day plan, using the field provided.", 'lsx-health-plan' ),
 			'id'         => 'connected_downloads',
 			'type'       => 'post_search_ajax',
 			// Optional

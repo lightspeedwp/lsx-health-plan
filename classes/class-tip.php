@@ -86,7 +86,6 @@ class Tip {
 				'title',
 				'editor',
 				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'tip', $args );
@@ -113,7 +112,6 @@ class Tip {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_tips_connections_metabox',
 			'title'        => __( 'Tips', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
 			'object_types' => array( 'plan' ), // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -122,6 +120,7 @@ class Tip {
 		$cmb->add_field( array(
 			'name'       => __( 'Tips', 'lsx-health-plan' ),
 			'id'         => 'connected_tips',
+			'desc'       => __( 'Connect the tips that apply to this day plan using the field provided.', 'lsx-health-plan' ),
 			'type'       => 'post_search_ajax',
 			// Optional :
 			'limit'      => 15,  // Limit selection to X items only (default 1)
@@ -148,6 +147,7 @@ class Tip {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Featured', 'lsx-health-plan' ),
+			'desc'       => __( 'Enable the checkbox to feature this tip, featured tips display in any page that has the tip shortcode: [lsx_health_plan_featured_tips_block]' ),
 			'id'         => $this->slug . '_featured_tip',
 			'type'       => 'checkbox',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',

@@ -86,8 +86,6 @@ class Workout {
 			'supports'           => array(
 				'title',
 				'editor',
-				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'workout', $args );
@@ -129,7 +127,7 @@ class Workout {
 
 				$cmb_group = new_cmb2_box( array(
 					'id'           => $this->slug . '_section_' . $i . '_metabox',
-					'title'        => esc_html__( 'Section ', 'lsx-health-plan' ) . $i,
+					'title'        => esc_html__( 'Exercise Group ', 'lsx-health-plan' ) . $i,
 					'object_types' => array( $this->slug ),
 				) );
 
@@ -220,6 +218,7 @@ class Workout {
 		$cmb->add_field( array(
 			'name'       => __( 'Workouts', 'lsx-health-plan' ),
 			'id'         => 'connected_workouts',
+			'desc'       => __( 'Connect this workout to the day plan it applies to using the field provided.', 'lsx-health-plan' ),
 			'type'       => 'post_search_ajax',
 			'limit'      => 15,
 			'sortable'   => true,

@@ -158,11 +158,12 @@
 		}
 		.profile-photo {
 			img {
-				border-radius: 50%;
+				border-radius: 100px;
 				border: 2px solid $blue;
-				max-width: 200px;
+				min-height: 200px;
 				margin-bottom: 20px;
-				width: 100%;
+				min-width: 200px;
+				object-fit: cover;
 			}
 		}
 		.edit-profile {

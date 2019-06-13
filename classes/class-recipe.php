@@ -98,7 +98,6 @@ class Recipe {
 				'title',
 				'editor',
 				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'recipe', $args );
@@ -171,6 +170,7 @@ class Recipe {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Featured', 'lsx-health-plan' ),
+			'desc'       => __( 'Enable the checkbox to feature this recipe, featured recipes display in any page that has the recipe shortcode: [lsx_health_plan_featured_recipes_block]', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_featured',
 			'type'       => 'checkbox',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
@@ -224,7 +224,6 @@ class Recipe {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_recipes_connections_metabox',
 			'title'        => __( 'Recipes', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
 			'object_types' => array( 'plan' ), // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -232,6 +231,7 @@ class Recipe {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Recipes', 'lsx-health-plan' ),
+			'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
 			'id'         => 'connected_recipes',
 			'type'       => 'post_search_ajax',
 			// Optional :

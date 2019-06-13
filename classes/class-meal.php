@@ -58,7 +58,7 @@ class Meal {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Meal', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Meal Plans', 'lsx-health-plan' ),
 			'singular_name'      => esc_html__( 'Meals', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
@@ -70,7 +70,7 @@ class Meal {
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Meals', 'lsx-health-plan' ),
+			'menu_name'          => esc_html__( 'Meal Plans', 'lsx-health-plan' ),
 		);
 		$args   = array(
 			'labels'             => $labels,
@@ -88,8 +88,6 @@ class Meal {
 			'supports'           => array(
 				'title',
 				'editor',
-				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'meal', $args );
@@ -132,6 +130,7 @@ class Meal {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Shopping List', 'lsx-health-plan' ),
+			'desc'       => __( 'Connect the shopping list page that applies to this meal by entering the name of the page in the field provided.' ),
 			'id'         => $this->slug . '_shopping_list',
 			'type'       => 'post_search_ajax',
 			// Optional :
@@ -207,7 +206,6 @@ class Meal {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_meals_connections_metabox',
 			'title'        => __( 'Meal Plan', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your recipes', 'lsx-health-plan' ),
 			'object_types' => array( 'plan' ), // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -222,6 +220,7 @@ class Meal {
 		) );*/
 		$cmb->add_field( array(
 			'name'       => __( 'Meals', 'lsx-health-plan' ),
+			'desc'       => __( 'Connect the meal that applies to this day plan using the field provided.', 'lsx-health-plan' ),
 			'id'         => 'connected_meals',
 			'type'       => 'post_search_ajax',
 			// Optional :

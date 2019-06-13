@@ -68,7 +68,7 @@ class Plan {
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Plans', 'lsx-health-plan' ),
+			'menu_name'          => esc_html__( 'Day Plans', 'lsx-health-plan' ),
 		);
 		$args   = array(
 			'labels'             => $labels,
@@ -89,7 +89,6 @@ class Plan {
 				'title',
 				'editor',
 				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'plan', $args );
@@ -159,6 +158,7 @@ class Plan {
 		) );*/
 		$cmb->add_field( array(
 			'name'       => __( 'Warmup', 'lsx-health-plan' ),
+			'desc'       => __( 'Connect the warm up page that applies to this day plan using the field provided.', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_warmup',
 			'type'       => 'post_search_ajax',
 			// Optional :
@@ -181,7 +181,6 @@ class Plan {
 		$cmb = new_cmb2_box( array(
 			'id'           => $this->slug . '_connections_metabox',
 			'title'        => __( 'Plans', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
 			'object_types' => array( 'workout', 'meal', 'tip', 'recipe' ),
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -190,6 +189,7 @@ class Plan {
 		$cmb->add_field( array(
 			'name'       => __( 'Plan', 'lsx-health-plan' ),
 			'id'         => 'connected_plans',
+			'desc'       => __( 'Connect this to the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
 			'type'       => 'post_search_ajax',
 			'limit'      => 15,
 			'sortable'   => true,

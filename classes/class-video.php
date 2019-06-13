@@ -86,7 +86,6 @@ class Video {
 				'title',
 				'editor',
 				'thumbnail',
-				'excerpt',
 			),
 		);
 		register_post_type( 'video', $args );
@@ -131,6 +130,7 @@ class Video {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Featured Video', 'lsx-health-plan' ),
+			'desc'       => __( 'Enable the checkbox to feature this video, featured videos display in any page that has the video shortcode: [lsx_health_plan_featured_videos_block]', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_featured_video',
 			'type'       => 'checkbox',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
