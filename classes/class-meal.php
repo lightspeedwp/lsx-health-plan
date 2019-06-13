@@ -87,7 +87,6 @@ class Meal {
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
-				'editor',
 			),
 		);
 		register_post_type( 'meal', $args );
