@@ -85,7 +85,6 @@ class Video {
 			'supports'           => array(
 				'title',
 				'editor',
-				'thumbnail',
 			),
 		);
 		register_post_type( 'video', $args );
@@ -137,14 +136,14 @@ class Video {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Youtube Source', 'lsx-health-plan' ),
-			'desc'       => __( 'It will replace the original video source on front-end', 'lsx-health-plan' ),
+			'desc'       => __( 'Drop in the url for your video from YouTube in this field, i.e: "https://www.youtube.com/watch?v=9xwazD5SyVg"', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_youtube_source',
 			'type'       => 'oembed',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Giphy Source', 'lsx-health-plan' ),
-			'desc'       => __( 'The HTML will be stripped leaving only the URL', 'lsx-health-plan' ),
+			'desc'       => __( 'Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src="https://giphy.com/embed/3o7527Rn1HxXWqgxuo" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_giphy_source',
 			'type'       => 'textarea_code',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',

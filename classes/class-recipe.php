@@ -192,23 +192,27 @@ class Recipe {
 		$cmb->add_field( array(
 			'name'       => __( 'Prep Time', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_prep_time',
+			'desc'       => __( 'Add the preparation time for the entire meal i.e: 25 mins', 'lsx-health-plan' ),
 			'type'       => 'text',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Cooking Time', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_cooking_time',
+			'desc'       => __( 'Add the cooking time i.e: 15 mins', 'lsx-health-plan' ),
 			'type'       => 'text',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Serves', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_serves',
+			'desc'       => __( 'Add the recommended serving size i.e: 6', 'lsx-health-plan' ),
 			'type'       => 'text',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Portion', 'lsx-health-plan' ),
+			'desc'       => __( 'Add the recommended portion size i.e: 200mg', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_portion',
 			'type'       => 'text',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',

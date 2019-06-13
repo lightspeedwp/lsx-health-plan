@@ -182,7 +182,7 @@ class Workout {
 				) );
 
 				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => __( 'Video', 'lsx-health-plan' ),
+					'name'       => __( 'Video related to this workout', 'lsx-health-plan' ),
 					'id'         => 'connected_videos',
 					'type'       => 'post_search_ajax',
 					// Optional :
