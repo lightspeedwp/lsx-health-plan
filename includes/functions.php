@@ -202,18 +202,6 @@ function get_video_url( $embed ) {
 }
 
 /**
- * Limit media library access
- */
-function lsx_query_set_only_author( $wp_query ) {
-	global $current_user;
-	if ( is_admin() && ! current_user_can( 'edit_others_posts' ) ) {
-		$wp_query->set( 'author', $current_user->ID );
-		add_filter( 'views_upload', 'fix_media_counts' );
-	}
-}
-add_action( 'pre_get_posts', 'lsx_query_set_only_author' );
-
-/**
  * Takes the Week ID and sees if it is complete
  *
  * @param boolean $term_id
@@ -260,3 +248,15 @@ function get_meta_amounts( $post_ids = array() ) {
 	}
 	return $amount;
 }
+
+/**
+ * Limit media library access
+ */
+function lsx_query_set_only_author( $wp_query ) {
+	global $current_user;
+	if ( is_admin() && ! current_user_can( 'edit_others_posts' ) ) {
+		$wp_query->set( 'administrator', $current_user->ID );
+		add_filter( 'views_upload', 'fix_media_counts' );
+	}
+}
+add_action( 'pre_get_posts', 'lsx_query_set_only_author' );
