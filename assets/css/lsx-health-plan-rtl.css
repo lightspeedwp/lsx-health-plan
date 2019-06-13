@@ -195,7 +195,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 @media (min-width: 900px) { .my-profile-block .profile-navigation { margin-left: 20px; } }
 
-.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 2px solid #418ad0; min-height: 200px; margin-bottom: 20px; min-width: 200px; -o-object-fit: cover; object-fit: cover; }
+.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 2px solid #418ad0; height: 180px; margin-bottom: 20px; width: 180px; -o-object-fit: cover; object-fit: cover; }
 
 .my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: #6ba913; box-shadow: -2px 2px 0 0 #446b0c; color: #ffffff; }
 

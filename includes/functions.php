@@ -201,18 +201,18 @@ function get_video_url( $embed ) {
 	return $url;
 }
 
-/**
- * Limit media library access
- */
-function lsx_health_show_current_user_attachments( $query ) {
-	$user_id = get_current_user_id();
-	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
-	') ) {
-		$query['author'] = $user_id;
-	}
-	return $query;
-}
-add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachments' );
+// /**
+//  * Limit media library access
+//  */
+// function lsx_health_show_current_user_attachments( $query ) {
+// 	$user_id = get_current_user_id();
+// 	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
+// 	') ) {
+// 		$query['author'] = $user_id;
+// 	}
+// 	return $query;
+// }
+// add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachments' );
 
 /**
  * Show the Full Attachements
@@ -220,15 +220,14 @@ add_filter( 'ajax_query_attachments_args', 'lsx_health_show_current_user_attachm
  * @param [type] $show_all
  * @return void
  */
-function show_full_list_of_attachments( $show_all ) {
-	if ( $user_id && ! current_user_can( 'activate_plugins' ) && ! current_user_can('edit_others_posts
-	') ) {
-		return $show_all;
+function show_current_user_attachments( $query = array() ) {
+	$user_id = get_current_user_id();
+	if ( $user_id ) {
+		$query['author'] = $user_id;
 	}
-
-	return true;
+	return $query;
 }
-add_filter( 'ure_attachments_show_full_list', 'show_full_list_of_attachments', 10, 1 );
+add_filter( 'ajax_query_attachments_args', 'show_current_user_attachments', 10, 1 );
 
 /**
  * Takes the Week ID and sees if it is complete
