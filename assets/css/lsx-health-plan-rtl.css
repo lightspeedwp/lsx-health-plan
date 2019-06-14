@@ -319,6 +319,10 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 #edit-account-tab .edit-account-section .wpua-edit-container #wpua-undo-button-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-undo-button-existing { display: none; }
 
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-upload-button-existing #wpua-file-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-upload-button-existing #wpua-file-existing { margin-bottom: 15px; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-thumbnail-existing { display: none; }
+
 #single-plan-nav { margin-bottom: 15px; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-right: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }

@@ -476,6 +476,14 @@
 			#wpua-undo-button-existing {
 				display: none;
 			}
+			#wpua-upload-button-existing {
+				#wpua-file-existing {
+					margin-bottom: 15px;
+				}
+			}
+			#wpua-thumbnail-existing {
+				display: none;
+			}
 		}
 	}
 	
