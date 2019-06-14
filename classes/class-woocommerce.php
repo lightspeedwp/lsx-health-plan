@@ -136,7 +136,7 @@ class Woocommerce {
 
 	/**
 	 * Redirects to the my account template.
-	 * 
+	 *
 	 * @param string $template
 	 * @return string
 	 */
@@ -249,7 +249,7 @@ class Woocommerce {
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
 			$value    = ( isset( $_POST[ $key ] ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
 			if ( $this->iconic_is_userdata( $key ) ) {
-				
+
 				$sanitized_data[ $key ] = $value;
 				continue;
 			}
@@ -269,7 +269,7 @@ class Woocommerce {
 				delete_user_meta( $customer_id, $key );
 				update_user_meta( $customer_id, $key, $value );
 			}
-		}	
+		}
 
 		if ( ! empty( $sanitized_data ) ) {
 			$sanitized_data['ID'] = $customer_id;
@@ -385,7 +385,7 @@ class Woocommerce {
 				continue;
 			}*/
 
-			if ( isset( $_POST['register'] ) && ! empty( $field_args['hide_in_registration'] ) ) {
+			if ( isset( $_POST['register'] ) && wp_verify_nonce( sanitize_key( $_POST['register'] ) ) && ! empty( $field_args['hide_in_registration'] ) ) {
 				continue;
 			}
 
@@ -591,8 +591,8 @@ class Woocommerce {
 	public function allow_reset_password_page() {
 		if ( ! is_user_logged_in() && function_exists( 'wc_memberships' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 
-			$members_instance = wc_memberships();
-			$restriction_instance = $members_instance->get_restrictions_instance();
+			$members_instance           = wc_memberships();
+			$restriction_instance       = $members_instance->get_restrictions_instance();
 			$post_restrictions_instance = $restriction_instance->get_posts_restrictions_instance();
 			remove_action( 'wp', array( $post_restrictions_instance, 'handle_restriction_modes' ), 10, 1 );
 			add_action( 'body_class', array( $this, 'remove_body_classes' ) );

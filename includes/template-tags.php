@@ -152,7 +152,7 @@ function lsx_health_plan_nav_class( $tab = '' ) {
 	$nav_classes = array();
 	if ( function_exists( 'is_wc_endpoint_url' ) && 'edit-account' === $tab && is_wc_endpoint_url( 'edit-account' ) ) {
 		$nav_classes[] = 'active';
-	} else if ( lsx_health_plan_is_current_tab( $tab ) ) {
+	} elseif ( lsx_health_plan_is_current_tab( $tab ) ) {
 		$nav_classes[] = 'active';
 	}
 	if ( ! empty( $nav_classes ) ) {
@@ -174,7 +174,8 @@ function lsx_health_plan_my_profile_tabs() {
 			if ( ( function_exists( 'is_wc_endpoint_url' ) && ! is_wc_endpoint_url( 'edit-account' ) ) || ! function_exists( 'is_wc_endpoint_url' ) ) {
 				echo esc_attr( 'active' );
 			}
-			?>"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
+			?>
+			"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
 			<li class="
 			<?php
 			if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {
@@ -373,7 +374,7 @@ function lsx_health_plan_week_plan_block() {
 
 		foreach ( $weeks as $week ) {
 			//Grab the days of the week.
-			$args = array(
+			$args           = array(
 				'orderby'        => 'date',
 				'order'          => 'ASC',
 				'post_type'      => 'plan',
@@ -384,7 +385,7 @@ function lsx_health_plan_week_plan_block() {
 						'taxonomy' => 'week',
 						'field'    => 'slug',
 						'terms'    => array( $week->slug ),
-					)
+					),
 				),
 			);
 			$the_query      = new WP_Query( $args );
@@ -397,10 +398,10 @@ function lsx_health_plan_week_plan_block() {
 				if ( false === $section_open ) {
 					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
 						$collapse_class = 'in';
-						$section_open = true;
-					} else if ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
+						$section_open   = true;
+					} elseif ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
 						$collapse_class = 'in';
-						$section_open = true;
+						$section_open   = true;
 					}
 				}
 			}
@@ -548,9 +549,9 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 
 		$modal_body = '';
 		if ( ! empty( $giphy ) ) {
-			$giphy = \lsx_health_plan\functions\get_video_url( $giphy );
+			$giphy      = \lsx_health_plan\functions\get_video_url( $giphy );
 			$modal_body = $giphy; // WPCS: XSS OK.
-		} else if ( ! empty( $youtube ) ) {
+		} elseif ( ! empty( $youtube ) ) {
 			$modal_body = wp_oembed_get( $youtube, array( // WPCS: XSS OK.
 				'width' => 480,
 			) );

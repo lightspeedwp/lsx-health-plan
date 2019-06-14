@@ -55,13 +55,13 @@ function day_plan_box( $args = array() ) {
 	$defaults = array(
 		'week_view' => false,
 	);
-	$args = wp_parse_args( $args, $defaults );
+	$args     = wp_parse_args( $args, $defaults );
 
 	ob_start();
 	if ( false === $args['week_view'] ) {
 		echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
 	} else {
-		echo lsx_health_plan_week_plan_block();
+		echo lsx_health_plan_week_plan_block(); // WPCS: XSS OK.
 	}
 	$content = ob_get_clean();
 	return $content;
@@ -106,7 +106,7 @@ function feature_tips_box() {
 	echo lsx_health_plan_featured_tips_block(); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
-	wp_enqueue_script( 'lsx-health-plan-slider', LSX_HEALTH_PLAN_URL . 'assets/js/lsx-health-plan-slider.min.js', array( 'slick' ), LSX_HEALTH_PLAN_VER, true );	
+	wp_enqueue_script( 'lsx-health-plan-slider', LSX_HEALTH_PLAN_URL . 'assets/js/lsx-health-plan-slider.min.js', array( 'slick' ), LSX_HEALTH_PLAN_VER, true );
 	return $content;
 }
 

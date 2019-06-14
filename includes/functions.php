@@ -120,7 +120,10 @@ function get_downloads( $type = 'all', $post_id = '' ) {
  * @return void
  */
 function register_modal( $id = '', $title = '', $body = '' ) {
-	lsx_health_plan()->frontend->modals->register_modal( array( 'title' => $title, 'body' => $body ), $id );
+	lsx_health_plan()->frontend->modals->register_modal( array(
+		'title' => $title,
+		'body'  => $body,
+	), $id );
 }
 
 /**
@@ -135,7 +138,7 @@ function output_modal( $args = array() ) {
 		'title' => '',
 		'body'  => '',
 	);
-	$args = wp_parse_args( $args, $defaults );
+	$args     = wp_parse_args( $args, $defaults );
 	?>
 	<!-- Modal -->
 	<div class="modal fade lsx-health-plan-modal" id="<?php echo esc_html( $args['id'] ); ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo esc_html( $args['id'] ); ?>"  aria-hidden="true">
@@ -155,7 +158,7 @@ function output_modal( $args = array() ) {
 				<?php
 				if ( '' !== $args['body'] ) {
 						$allowed_html = array(
-							'iframe'          => array(
+							'iframe' => array(
 								'data-src'        => array(),
 								'src'             => array(),
 								'width'           => array(),
@@ -165,10 +168,10 @@ function output_modal( $args = array() ) {
 								'allowFullScreen' => array(),
 								'style'           => array(),
 							),
-							'h5' => array(
+							'h5'     => array(
 								'class' => array(),
 							),
-					);
+						);
 					echo wp_kses( $args['body'], $allowed_html );
 				}
 				?>
@@ -235,13 +238,13 @@ function get_meta_amounts( $post_ids = array() ) {
 	$current_user = wp_get_current_user();
 	if ( false !== $current_user && ! empty( $post_ids ) ) {
 		$post_ids = "'" . implode( "','", $post_ids ) . "'";
-		$query = "
+		$query    = "
 			SELECT COUNT(`meta_value`) 
 			FROM `{$wpdb->usermeta}`
 			WHERE `meta_key` IN ({$post_ids})
 			AND `user_id` = '{$current_user->ID}'
 		";
-		$results = $wpdb->get_var( $query );
+		$results  = $wpdb->get_var( $query ); // WPCS: unprepared SQL
 		if ( ! empty( $results ) ) {
 			$amount = $results;
 		}

@@ -217,7 +217,7 @@ class Workout {
 		$cmb->add_field( array(
 			'name'       => __( 'Workouts', 'lsx-health-plan' ),
 			'id'         => 'connected_workouts',
-			'desc'       => __( 'Connect this workout to the day plan it applies to using the field provided.', 'lsx-health-plan' ),
+			'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
 			'type'       => 'post_search_ajax',
 			'limit'      => 15,
 			'sortable'   => true,

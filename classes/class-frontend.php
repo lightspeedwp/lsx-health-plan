@@ -25,7 +25,7 @@ class Frontend {
 	/**
 	 * @var object \lsx_health_plan\classes\Modals();
 	 */
-	public $modals;	
+	public $modals;
 
 	/**
 	 * Contructor
