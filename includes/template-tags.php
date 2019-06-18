@@ -490,7 +490,13 @@ function lsx_health_plan_complete_button() {
 			<button class="btn cta-btn" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
 		</form>
 		<div  class="back-plan-btn">
-			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+			<?php
+			if ( function_exists( 'wc_get_page_id' ) ) {
+				?>
+				<a class="btn" href="<?php the_permalink( wc_get_page_id( 'myaccount' ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 	<?php
