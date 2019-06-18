@@ -45,7 +45,7 @@ class Frontend {
 		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
 		add_action( 'template_redirect', array( $this, 'redirect' ) );
 
-		add_action( 'wp_head', array( $this, 'handle_day_action' ) );
+		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
 	}
 
 	/**
@@ -143,12 +143,13 @@ class Frontend {
 	 * Registers the rewrites.
 	 */
 	public function handle_day_action() {
-		if ( is_singular( 'plan' ) && isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'complete' ) ) {
-			update_user_meta( get_current_user_id(), 'day_' . get_the_ID() . '_complete', true );
+		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'complete' ) ) {
+			update_user_meta( get_current_user_id(), 'day_' . $_POST['lsx-health-plan-id'] . '_complete', true );
+			wp_safe_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
 		}
 
-		if ( is_singular( 'plan' ) && isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
-			delete_user_meta( get_current_user_id(), 'day_' . get_the_ID() . '_complete' );
+		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
+			delete_user_meta( get_current_user_id(), 'day_' . $_POST['lsx-health-plan-id'] . '_complete' );
 		}
 	}
 }
