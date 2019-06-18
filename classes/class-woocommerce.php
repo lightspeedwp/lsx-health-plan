@@ -29,7 +29,6 @@ class Woocommerce {
 		// Redirect to the Edit Account Template.
 		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
 
-		//add_action( 'woocommerce_register_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 
 		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
@@ -182,20 +181,17 @@ class Woocommerce {
 
 		echo wp_kses_post( '<h2 class="title-lined my-stats-title">My Stats</h2>' );
 		echo wp_kses_post( '<div class="my-stats">' );
+
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
-
 			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
 				continue;
 			}
-
 			if ( $is_user_logged_in ) {
 				$user_id = $this->iconic_get_edit_user_id();
 				$value   = $this->iconic_get_userdata( $user_id, $key );
 			}
-
 			$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
-
 			woocommerce_form_field( $key, $field_args, $value );
 		}
 		echo wp_kses_post( '</div>' );
@@ -239,6 +235,11 @@ class Woocommerce {
 	 * @param int $customer_id
 	 */
 	public function iconic_save_account_fields( $customer_id ) {
+		$nonce_value = wc_get_var( $_REQUEST['save-account-details-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( ! wp_verify_nonce( $nonce_value, 'save_account_details' ) ) {
+			return;
+		}
+
 		$fields         = $this->get_account_fields();
 		$sanitized_data = array();
 		foreach ( $fields as $key => $field_args ) {
@@ -255,7 +256,7 @@ class Woocommerce {
 			}
 
 			if ( 'profile_photo' === $key ) {
-				// This handles the image uploads
+				// This handles the image uploads.
 				require_once ABSPATH . 'wp-admin/includes/image.php';
 				require_once ABSPATH . 'wp-admin/includes/file.php';
 				require_once ABSPATH . 'wp-admin/includes/media.php';

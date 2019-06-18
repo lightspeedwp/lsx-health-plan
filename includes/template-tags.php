@@ -487,10 +487,17 @@ function lsx_health_plan_complete_button() {
 	<div class="single-plan-inner-buttons">
 		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
 			<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
+			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( get_the_ID() ); ?>" />
 			<button class="btn cta-btn" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
 		</form>
 		<div  class="back-plan-btn">
-			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+			<?php
+			if ( function_exists( 'wc_get_page_id' ) ) {
+				?>
+				<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 	<?php
@@ -506,10 +513,17 @@ function lsx_health_plan_unlock_button() {
 	<div class="single-plan-inner-buttons">
 		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
 			<?php wp_nonce_field( 'unlock', 'lsx-health-plan-actions' ); ?>
+			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( get_the_ID() ); ?>" />
 			<button class="btn secondary-btn" type="submit"><?php esc_html_e( 'Im not done!', 'lsx-health-plan' ); ?></button>
 		</form>
 		<div  class="back-plan-btn">
-			<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+		<?php
+		if ( function_exists( 'wc_get_page_id' ) ) {
+			?>
+			<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+			<?php
+		}
+		?>
 		</div>
 	</div>
 	<?php

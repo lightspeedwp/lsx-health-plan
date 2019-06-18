@@ -255,11 +255,11 @@ function get_meta_amounts( $post_ids = array() ) {
 /**
  * Limit media library access
  */
-function lsx_query_set_only_author( $wp_query ) {
+function set_only_author( $wp_query ) {
 	global $current_user;
 	if ( is_admin() && ! current_user_can( 'edit_others_posts' ) ) {
 		$wp_query->set( 'administrator', $current_user->ID );
 		add_filter( 'views_upload', 'fix_media_counts' );
 	}
 }
-add_action( 'pre_get_posts', 'lsx_query_set_only_author' );
+add_action( 'pre_get_posts', '\lsx_health_plan\functions\set_only_author' );

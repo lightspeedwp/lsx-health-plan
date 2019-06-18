@@ -28,11 +28,12 @@ require_once LSX_HEALTH_PLAN_PATH . '/classes/class-core.php';
  * Remove unnesesary custom post types
  */
 function lsx_remove_extra_meta_box() {
+	global $wp_meta_boxes;
 	$all_post_types = [ 'plan', 'video', 'workout', 'tip', 'recipe', 'meal' ];
 	remove_meta_box( 'wpseo_meta', $all_post_types, 'normal' );
 	remove_meta_box( 'commentsdiv', $all_post_types, 'normal' );
 	remove_meta_box( 'commentstatusdiv', $all_post_types, 'normal' );
-	remove_meta_box( 'lsx_blocks_title_meta', $all_post_types, 'normal' );
+	remove_meta_box( 'lsx_blocks_title_meta', $all_post_types, 'side' );
 }
 add_action( 'add_meta_boxes', 'lsx_remove_extra_meta_box', 100 );
 

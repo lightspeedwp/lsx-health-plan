@@ -15,16 +15,6 @@
 	</div><!-- .entry-meta -->
 
 	<div class="entry-content">
-		<?php
-			//the_content();
-
-			wp_link_pages( array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
-		?>
 		<div class="single-plan-section-title meal-plan">
 			<h2 class="title-lined"><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
 		</div>
