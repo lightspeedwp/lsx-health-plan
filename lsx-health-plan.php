@@ -33,6 +33,8 @@ function lsx_remove_extra_meta_box() {
 	remove_meta_box( 'commentsdiv', $all_post_types, 'normal' );
 	remove_meta_box( 'commentstatusdiv', $all_post_types, 'normal' );
 	remove_meta_box( 'lsx_blocks_title_meta', $all_post_types, 'normal' );
+	print_r('hello');
+	die();
 }
 add_action( 'add_meta_boxes', 'lsx_remove_extra_meta_box', 100 );
 
