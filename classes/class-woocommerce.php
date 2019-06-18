@@ -182,7 +182,6 @@ class Woocommerce {
 		echo wp_kses_post( '<h2 class="title-lined my-stats-title">My Stats</h2>' );
 		echo wp_kses_post( '<div class="my-stats">' );
 
-
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
@@ -257,7 +256,7 @@ class Woocommerce {
 			}
 
 			if ( 'profile_photo' === $key ) {
-				// This handles the image uploads
+				// This handles the image uploads.
 				require_once ABSPATH . 'wp-admin/includes/image.php';
 				require_once ABSPATH . 'wp-admin/includes/file.php';
 				require_once ABSPATH . 'wp-admin/includes/media.php';
