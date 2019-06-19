@@ -144,7 +144,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
-.page.login #footer-cta, .page.login #footer-widgets { display: none; }
+.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets { display: none; }
 
 #account-nav { margin-bottom: 15px; }
 

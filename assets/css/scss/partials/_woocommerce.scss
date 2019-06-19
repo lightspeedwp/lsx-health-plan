@@ -121,7 +121,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 }
 
 // Login page
-.page.login {
+.page.login, .page.content-restricted {
 	#footer-cta, #footer-widgets {
 		display: none;
 	}
