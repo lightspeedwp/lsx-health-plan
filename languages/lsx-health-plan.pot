@@ -1,4 +1,4 @@
-# Copyright (C) 2017 lsx-health-plan
+# Copyright (C) 2019 lsx-health-plan
 # This file is distributed under the same license as the lsx-health-plan package.
 msgid ""
 msgstr ""
@@ -15,3 +15,519 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: classes/class-downloads.php:79
+msgid "Connections"
+msgstr ""
+
+#: classes/class-downloads.php:86
+msgid "Pages"
+msgstr ""
+
+#: classes/class-downloads.php:99, classes/class-workout.php:60, classes/class-workout.php:71, classes/class-workout.php:210, classes/class-workout.php:218
+msgid "Workouts"
+msgstr ""
+
+#: classes/class-downloads.php:112, classes/class-meal.php:62, classes/class-meal.php:221
+msgid "Meals"
+msgstr ""
+
+#: classes/class-downloads.php:125, classes/class-recipe.php:68
+msgid "Recipe"
+msgstr ""
+
+#: classes/class-downloads.php:147, classes/class-downloads.php:154, includes/template-tags.php:126
+msgid "Downloads"
+msgstr ""
+
+#: classes/class-downloads.php:155
+msgid "Add the pdf's connected to this day plan, using the field provided."
+msgstr ""
+
+#: classes/class-meal.php:61, classes/class-meal.php:73
+msgid "Meal Plans"
+msgstr ""
+
+#: classes/class-meal.php:63, classes/class-plan.php:61, classes/class-recipe.php:70, classes/class-tip.php:60, classes/class-video.php:60, classes/class-workout.php:61
+msgctxt "post type general name"
+msgid "Add New"
+msgstr ""
+
+#: classes/class-meal.php:64, classes/class-plan.php:62, classes/class-plan.php:110, classes/class-recipe.php:71, classes/class-recipe.php:119, classes/class-tip.php:61, classes/class-video.php:61, classes/class-workout.php:62, classes/class-workout.php:159
+msgid "Add New"
+msgstr ""
+
+#: classes/class-meal.php:65, classes/class-plan.php:63, classes/class-plan.php:108, classes/class-recipe.php:72, classes/class-recipe.php:117, classes/class-tip.php:62, classes/class-video.php:62, classes/class-workout.php:63
+msgid "Edit"
+msgstr ""
+
+#: classes/class-meal.php:66, classes/class-plan.php:64, classes/class-recipe.php:73, classes/class-tip.php:63, classes/class-video.php:63, classes/class-workout.php:64
+msgid "New"
+msgstr ""
+
+#: classes/class-meal.php:67, classes/class-plan.php:65, classes/class-plan.php:105, classes/class-recipe.php:74, classes/class-recipe.php:114, classes/class-tip.php:64, classes/class-video.php:64, classes/class-workout.php:65
+msgid "All"
+msgstr ""
+
+#: classes/class-meal.php:68, classes/class-plan.php:66, classes/class-recipe.php:75, classes/class-tip.php:65, classes/class-video.php:65, classes/class-workout.php:66
+msgid "View"
+msgstr ""
+
+#: classes/class-meal.php:69, classes/class-plan.php:67, classes/class-plan.php:104, classes/class-recipe.php:76, classes/class-recipe.php:113, classes/class-tip.php:66, classes/class-video.php:66, classes/class-workout.php:67
+msgid "Search"
+msgstr ""
+
+#: classes/class-meal.php:70, classes/class-plan.php:68, classes/class-recipe.php:77, classes/class-tip.php:67, classes/class-video.php:67, classes/class-workout.php:68
+msgid "None found"
+msgstr ""
+
+#: classes/class-meal.php:71, classes/class-plan.php:69, classes/class-recipe.php:78, classes/class-tip.php:68, classes/class-video.php:68, classes/class-workout.php:69
+msgid "None found in Trash"
+msgstr ""
+
+#: classes/class-meal.php:124, classes/class-meal.php:131
+msgid "Shopping List"
+msgstr ""
+
+#: classes/class-meal.php:146
+msgid "Meal Details"
+msgstr ""
+
+#: classes/class-meal.php:153
+msgid "Breakfast"
+msgstr ""
+
+#: classes/class-meal.php:162
+msgid "Breakfast Snack"
+msgstr ""
+
+#: classes/class-meal.php:171
+msgid "Lunch"
+msgstr ""
+
+#: classes/class-meal.php:180
+msgid "Lunch Snack"
+msgstr ""
+
+#: classes/class-meal.php:189
+msgid "Dinner"
+msgstr ""
+
+#: classes/class-meal.php:207, templates/single-plan-tabs.php:24
+msgid "Meal Plan"
+msgstr ""
+
+#: classes/class-meal.php:222
+msgid "Connect the meal that applies to this day plan using the field provided."
+msgstr ""
+
+#: classes/class-plan.php:59, classes/class-plan.php:190
+msgid "Plan"
+msgstr ""
+
+#: classes/class-plan.php:60, classes/class-plan.php:183
+msgid "Plans"
+msgstr ""
+
+#: classes/class-plan.php:71
+msgid "Day Plans"
+msgstr ""
+
+#: classes/class-plan.php:102
+msgctxt "taxonomy general name"
+msgid "Week"
+msgstr ""
+
+#: classes/class-plan.php:103
+msgctxt "taxonomy singular name"
+msgid "Week"
+msgstr ""
+
+#: classes/class-plan.php:106, classes/class-recipe.php:115
+msgid "Parent"
+msgstr ""
+
+#: classes/class-plan.php:107, classes/class-recipe.php:116
+msgid "Parent:"
+msgstr ""
+
+#: classes/class-plan.php:109, classes/class-recipe.php:118
+msgid "Update"
+msgstr ""
+
+#: classes/class-plan.php:111, classes/class-recipe.php:120
+msgid "New Name"
+msgstr ""
+
+#: classes/class-plan.php:112
+msgid "Weeks"
+msgstr ""
+
+#: classes/class-plan.php:146
+msgid "Details"
+msgstr ""
+
+#: classes/class-plan.php:160
+msgid "Warmup"
+msgstr ""
+
+#: classes/class-plan.php:161
+msgid "Connect the warm up page that applies to this day plan using the field provided."
+msgstr ""
+
+#: classes/class-plan.php:192
+msgid "Connect this to the day plan it applies to, using the field provided."
+msgstr ""
+
+#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:29, templates/tab-content-recipes.php:31
+msgid "Recipes"
+msgstr ""
+
+#: classes/class-recipe.php:111
+msgctxt "taxonomy general name"
+msgid "Type"
+msgstr ""
+
+#: classes/class-recipe.php:112
+msgctxt "taxonomy singular name"
+msgid "Types"
+msgstr ""
+
+#: classes/class-recipe.php:121
+msgid "Types"
+msgstr ""
+
+#: classes/class-recipe.php:165, classes/class-recipe.php:172, classes/class-tip.php:142, classes/class-tip.php:149
+msgid "Featured"
+msgstr ""
+
+#: classes/class-recipe.php:173
+msgid "Enable the checkbox to feature this recipe, featured recipes display in any page that has the recipe shortcode: [lsx_health_plan_featured_recipes_block]"
+msgstr ""
+
+#: classes/class-recipe.php:186
+msgid "Recipe Details"
+msgstr ""
+
+#: classes/class-recipe.php:193
+msgid "Prep Time"
+msgstr ""
+
+#: classes/class-recipe.php:195
+msgid "Add the preparation time for the entire meal i.e: 25 mins"
+msgstr ""
+
+#: classes/class-recipe.php:200
+msgid "Cooking Time"
+msgstr ""
+
+#: classes/class-recipe.php:202
+msgid "Add the cooking time i.e: 15 mins"
+msgstr ""
+
+#: classes/class-recipe.php:207
+msgid "Serves"
+msgstr ""
+
+#: classes/class-recipe.php:209
+msgid "Add the recommended serving size i.e: 6"
+msgstr ""
+
+#: classes/class-recipe.php:214
+msgid "Portion"
+msgstr ""
+
+#: classes/class-recipe.php:215
+msgid "Add the recommended portion size i.e: 200mg"
+msgstr ""
+
+#: classes/class-recipe.php:238
+msgid "Connect the recipes that apply to this day plan using the field provided."
+msgstr ""
+
+#: classes/class-settings.php:69
+msgid "Membership Product"
+msgstr ""
+
+#: classes/class-settings.php:83
+msgid "Your Warm-up Intro"
+msgstr ""
+
+#: classes/class-settings.php:87
+msgid "Don't forget your warm-up! It's a vital part of your daily workout routine."
+msgstr ""
+
+#: classes/class-settings.php:90
+msgid "Your Workout Intro"
+msgstr ""
+
+#: classes/class-settings.php:94
+msgid "Let's do this! Smash your daily workout and reach your fitness goals."
+msgstr ""
+
+#: classes/class-settings.php:97
+msgid "Your Meal Plan Intro"
+msgstr ""
+
+#: classes/class-settings.php:101
+msgid "Get the right mix of nutrients to keep muscles strong & healthy."
+msgstr ""
+
+#: classes/class-settings.php:104
+msgid "Recipes Intro"
+msgstr ""
+
+#: classes/class-settings.php:108
+msgid "Let's get cooking! Delicious and easy to follow recipes."
+msgstr ""
+
+#: classes/class-tip.php:58
+msgid "Tip"
+msgstr ""
+
+#: classes/class-tip.php:59, classes/class-tip.php:70, classes/class-tip.php:114, classes/class-tip.php:121
+msgid "Tips"
+msgstr ""
+
+#: classes/class-tip.php:123
+msgid "Connect the tips that apply to this day plan using the field provided."
+msgstr ""
+
+#: classes/class-video.php:58
+msgid "Video"
+msgstr ""
+
+#: classes/class-video.php:59, classes/class-video.php:70
+msgid "Videos"
+msgstr ""
+
+#: classes/class-video.php:124
+msgid "Video Details"
+msgstr ""
+
+#: classes/class-video.php:131
+msgid "Featured Video"
+msgstr ""
+
+#: classes/class-video.php:132
+msgid "Enable the checkbox to feature this video, featured videos display in any page that has the video shortcode: [lsx_health_plan_featured_videos_block]"
+msgstr ""
+
+#: classes/class-video.php:138
+msgid "Youtube Source"
+msgstr ""
+
+#: classes/class-video.php:139
+msgid "Drop in the url for your video from YouTube in this field, i.e: \"https://www.youtube.com/watch?v=9xwazD5SyVg\""
+msgstr ""
+
+#: classes/class-video.php:145
+msgid "Giphy Source"
+msgstr ""
+
+#: classes/class-video.php:146
+msgid "Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src=\"https://giphy.com/embed/3o7527Rn1HxXWqgxuo\" width=\"480\" height=\"270\" frameborder=\"0\" class=\"giphy-embed\" allowfullscreen&gt;&lt;/iframe&gt;"
+msgstr ""
+
+#: classes/class-woocommerce.php:93
+msgid "Place order"
+msgstr ""
+
+#: classes/class-woocommerce.php:505, classes/class-woocommerce.php:515, classes/class-woocommerce.php:525
+msgid "Weight"
+msgstr ""
+
+#: classes/class-woocommerce.php:535, classes/class-woocommerce.php:545, classes/class-woocommerce.php:555
+msgid "Waist"
+msgstr ""
+
+#: classes/class-woocommerce.php:565, classes/class-woocommerce.php:575, classes/class-woocommerce.php:585
+msgid "Fitness Test Score"
+msgstr ""
+
+#: classes/class-workout.php:59, templates/single-plan-tabs.php:19
+msgid "Workout"
+msgstr ""
+
+#: classes/class-workout.php:129
+msgid "Exercise Group "
+msgstr ""
+
+#: classes/class-workout.php:134
+msgid "Title"
+msgstr ""
+
+#: classes/class-workout.php:141
+msgid "Description"
+msgstr ""
+
+#: classes/class-workout.php:158
+msgid "Exercise {#}"
+msgstr ""
+
+#: classes/class-workout.php:160
+msgid "Delete"
+msgstr ""
+
+#: classes/class-workout.php:171
+msgid "Workout Name"
+msgstr ""
+
+#: classes/class-workout.php:177
+msgid "Reps / Time / Distance"
+msgstr ""
+
+#: classes/class-workout.php:184
+msgid "Video related to this workout"
+msgstr ""
+
+#: classes/class-workout.php:211
+msgid "Start typing to search for your workouts"
+msgstr ""
+
+#: classes/class-workout.php:220
+msgid "Connect the workout that applies to this day plan using the field provided."
+msgstr ""
+
+#: includes/template-tags.php:17
+msgid "Your Warm-up"
+msgstr ""
+
+#: includes/template-tags.php:29
+msgid "Start your warm-up"
+msgstr ""
+
+#: includes/template-tags.php:44
+msgid "Your Workout"
+msgstr ""
+
+#: includes/template-tags.php:56
+msgid "Start your workout"
+msgstr ""
+
+#: includes/template-tags.php:71
+msgid "Your Meal Plan"
+msgstr ""
+
+#: includes/template-tags.php:83
+msgid "View your meal plan"
+msgstr ""
+
+#: includes/template-tags.php:110
+msgid "View all recipes"
+msgstr ""
+
+#: includes/template-tags.php:178, templates/page-template-my-plan.php:5
+msgid "My Plan"
+msgstr ""
+
+#: includes/template-tags.php:185
+msgid "Account Details"
+msgstr ""
+
+#: includes/template-tags.php:186
+msgid "Logout"
+msgstr ""
+
+#: includes/template-tags.php:209
+msgid "Edit Profile"
+msgstr ""
+
+#: includes/template-tags.php:220
+msgid "Start"
+msgstr ""
+
+#: includes/template-tags.php:221
+msgid "Goal"
+msgstr ""
+
+#: includes/template-tags.php:222
+msgid "Current"
+msgstr ""
+
+#: includes/template-tags.php:227
+msgid "Weight:"
+msgstr ""
+
+#: includes/template-tags.php:257
+msgid "Waist:"
+msgstr ""
+
+#: includes/template-tags.php:287
+msgid "Fitness:"
+msgstr ""
+
+#: includes/template-tags.php:491
+msgid "Complete Day"
+msgstr ""
+
+#: includes/template-tags.php:497, includes/template-tags.php:523
+msgid "Back To My Plan"
+msgstr ""
+
+#: includes/template-tags.php:517
+msgid "Im not done!"
+msgstr ""
+
+#: templates/archive-recipe.php:47, templates/content-recipe.php:39
+msgid "Remember that you can swap foods or even entire meals around – just be sure to consult the portion guide first so you know you’re swapping it out for something of equal value."
+msgstr ""
+
+#: templates/archive-recipe.php:48, templates/content-recipe.php:40
+msgid "View 28 day Plan"
+msgstr ""
+
+#: templates/content-recipe.php:20
+msgid "Recipe: "
+msgstr ""
+
+#: templates/featured-recipes.php:20
+msgid "Featured Recipe"
+msgstr ""
+
+#: templates/featured-recipes.php:35
+msgid "View Recipe"
+msgstr ""
+
+#: templates/featured-videos.php:20
+msgid "Featured Workout"
+msgstr ""
+
+#: templates/single-plan-tabs.php:10
+msgid "Overview"
+msgstr ""
+
+#: templates/single-plan-tabs.php:14
+msgid "Warm-up"
+msgstr ""
+
+#: templates/tab-content-meal.php:19
+msgid "My Meal Plan"
+msgstr ""
+
+#: templates/tab-content-workout.php:31
+msgid "My Workout"
+msgstr ""
+
+#: templates/tab-content-workout.php:45
+msgid "Download Warm-Up"
+msgstr ""
+
+#: templates/tab-content-workout.php:48
+msgid "See Warm-Up"
+msgstr ""
+
+#: templates/table-recipe-data.php:13
+msgid "Prep time: "
+msgstr ""
+
+#: templates/table-recipe-data.php:27
+msgid "Cooking time: "
+msgstr ""
+
+#: templates/table-recipe-data.php:41
+msgid "Serves: "
+msgstr ""
+
+#: templates/table-recipe-data.php:55
+msgid "Portion size: "
+msgstr ""
