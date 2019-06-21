@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0.0"?>
 <ruleset name="WordPress-LSX-Theme">
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<rule ref="WordPress">

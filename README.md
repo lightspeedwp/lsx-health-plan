@@ -1,9 +1,9 @@
 <h1 align="center"><a href="https://lsx-demo.lsdev.biz/"><img src="https://www.lsdev.biz/wp-content/uploads/2019/05/LSXHLogo.svg" alt="WooCommerce"></a></h1>
 
 <p align="center">
-    <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built with gulp.js"></a> 
-    <a href="https://travis-ci.org/lightspeeddevelopment/lsx-banners"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-banners.svg?branch=master" alt="Build Status"></a>
-    <a href="https://lsx.lsdev.biz/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
+  <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built gulp.js"></a> 
+  <img src="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan.svg?branch=master">
+  <a href="https://lsx.lsdev.biz/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
 </p>
 
 LSX Health Plan plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions.
