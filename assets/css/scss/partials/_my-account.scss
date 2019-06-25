@@ -243,6 +243,7 @@
 			font-size: 22px;
 			font-weight: bold;
 			text-align: center;
+			display: flex;
 		}
 		&.completed {
 			.plan-content {
@@ -465,12 +466,32 @@
 					font-size: 15px;
 				}
 			}
-			#wpua-add-existing, #wpua-remove-existing {
+			#wpua-add-existing {
 				background-color: #dcdcdc;
 				box-shadow: 2px 2px 0 0 #969696;
 				color: #4e4e4e;
 				&:hover {
 					background-color: #969696;
+				}
+			}
+			#wpua-preview-existing {
+				img {
+					border-radius: 50%;
+				}
+			}
+			#wpua-remove-existing {
+				color: #4e4e4e;
+				background: none;
+				box-shadow: none;
+				padding: 0;
+				&:before {
+					content: '\f00d';
+					font-family: 'FontAwesome';
+					color: #d84e2e;
+					margin-right: 10px;
+				}
+				&:hover {
+					color: #969696;
 				}
 			}
 			#wpua-undo-button-existing {

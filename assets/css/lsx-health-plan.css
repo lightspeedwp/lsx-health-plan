@@ -231,7 +231,7 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 @media (max-width: 600px) { .daily-plan-block .day { height: 80px; margin-bottom: 0; } }
 
-.daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; }
+.daily-plan-block .day .plan-content { font-size: 22px; font-weight: bold; text-align: center; display: -ms-flexbox; display: flex; }
 
 .daily-plan-block .day.completed .plan-content { font-size: 0; }
 
@@ -315,9 +315,17 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 #edit-account-tab .edit-account-section .wpua-edit-container h3:after, #edit-account-tab .stat-section .wpua-edit-container h3:after { content: "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb"; font-family: 'Noto Sans', sans-serif; font-size: 15px; }
 
-#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing { background-color: #dcdcdc; box-shadow: 2px 2px 0 0 #969696; color: #4e4e4e; }
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing { background-color: #dcdcdc; box-shadow: 2px 2px 0 0 #969696; color: #4e4e4e; }
 
-#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing:hover, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing:hover { background-color: #969696; }
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-add-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-add-existing:hover { background-color: #969696; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-preview-existing img, #edit-account-tab .stat-section .wpua-edit-container #wpua-preview-existing img { border-radius: 50%; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing { color: #4e4e4e; background: none; box-shadow: none; padding: 0; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing:before, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing:before { content: '\f00d'; font-family: 'FontAwesome'; color: #d84e2e; margin-right: 10px; }
+
+#edit-account-tab .edit-account-section .wpua-edit-container #wpua-remove-existing:hover, #edit-account-tab .stat-section .wpua-edit-container #wpua-remove-existing:hover { color: #969696; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container #wpua-undo-button-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-undo-button-existing { display: none; }
 
