@@ -211,6 +211,9 @@
 		grid-template-rows: 120px;
 		grid-column-gap: 10px;
 		grid-row-gap: 10px;
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			display: flex;
+		}
 		@media (max-width:600px) {
 			grid-template-columns: repeat(4, 23%);
 			grid-template-rows: 80px;
@@ -225,6 +228,9 @@
 		border-radius: 2px;
 		height: 110px;
 		transition: none;
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			width: 110px;
+		}
 		&:hover {
 			background-color: $blue;
 			color: $white;

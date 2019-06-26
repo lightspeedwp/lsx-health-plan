@@ -219,9 +219,13 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 .daily-plan-block.day-grid { display: -ms-grid; display: grid; -ms-grid-columns: (13%)[7]; grid-template-columns: repeat(7, 13%); -ms-grid-rows: 120px; grid-template-rows: 120px; grid-column-gap: 10px; grid-row-gap: 10px; }
 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { .daily-plan-block.day-grid { display: -ms-flexbox; display: flex; } }
+
 @media (max-width: 600px) { .daily-plan-block.day-grid { -ms-grid-columns: (23%)[4]; grid-template-columns: repeat(4, 23%); -ms-grid-rows: 80px; grid-template-rows: 80px; } }
 
 .daily-plan-block .day { background-color: #ececec; margin-bottom: 20px; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; border-radius: 2px; height: 110px; transition: none; }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { .daily-plan-block .day { width: 110px; } }
 
 .daily-plan-block .day:hover { background-color: #418ad0; color: #ffffff; }
 
