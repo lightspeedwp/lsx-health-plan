@@ -144,12 +144,12 @@ class Frontend {
 	 */
 	public function handle_day_action() {
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'complete' ) ) {
-			update_user_meta( get_current_user_id(), 'day_' . $_POST['lsx-health-plan-id'] . '_complete', true );
+			update_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete', true );
 			wp_safe_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
 		}
 
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
-			delete_user_meta( get_current_user_id(), 'day_' . $_POST['lsx-health-plan-id'] . '_complete' );
+			delete_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete' );
 		}
 	}
 }

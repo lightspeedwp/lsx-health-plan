@@ -161,7 +161,7 @@ class Woocommerce {
 		}
 
 		foreach ( $fields as $key => $field_args ) {
-			if ( empty( $_POST[ $key ] ) ) {
+			if ( empty( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) {
 				$fields[ $key ]['value'] = '';
 				continue;
 			}
