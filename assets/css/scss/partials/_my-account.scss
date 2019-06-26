@@ -229,7 +229,7 @@
 		height: 110px;
 		transition: none;
 		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-			width: 110px;
+			width: 100px;
 		}
 		&:hover {
 			background-color: $blue;
