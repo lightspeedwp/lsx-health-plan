@@ -1,4 +1,4 @@
-<?xml version="1.0.0"?>
+<?xml version="1.0"?>
 <ruleset name="WordPress-LSX-Theme">
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<rule ref="WordPress">
@@ -17,6 +17,6 @@
 		<exclude name="WordPress.Functions.DontExtract.extract_extract" />
 
 		<exclude name="Generic.Files.LowercasedFilename" />
-        <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
+        <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />		
 	</rule>
 </ruleset>
