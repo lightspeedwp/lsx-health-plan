@@ -208,16 +208,16 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		 * Ajax request : get results
 		 */
 		public function cmb_post_search_ajax_get_results() {
-			$nonce = $_POST['psacheck'];
+			$nonce = sanitize_text_field( $_POST['psacheck'] );
 			if ( ! wp_verify_nonce( $nonce, 'mag_cmb_post_search_ajax_get_results' ) ) {
 				die( json_encode( array( 'error' => __( 'Error : Unauthorized action' ) ) ) );
 			} else {
-				$args      = json_decode( stripslashes( htmlspecialchars_decode( $_POST['query_args'] ) ), true );
-				$args['s'] = $_POST['query'];
+				$args      = json_decode( stripslashes( htmlspecialchars_decode( sanitize_text_field( $_POST['query_args'] ) ) ), true );
+				$args['s'] = sanitize_text_field( $_POST['query'] );
 				$datas     = array();
 				if ( $_POST['object'] == 'user' ) {
 
-					$args['search'] = '*' . esc_attr( $_POST['query'] ) . '*';
+					$args['search'] = '*' . esc_attr( sanitize_text_field( $_POST['query'] ) ) . '*';
 					$users          = new WP_User_Query( $args );
 					$results        = $users->get_results();
 

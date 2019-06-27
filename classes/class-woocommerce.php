@@ -166,7 +166,7 @@ class Woocommerce {
 				continue;
 			}
 
-			$fields[ $key ]['value'] = $_POST[ $key ];
+			$fields[ $key ]['value'] = sanitize_key( $_POST[ $key ] );
 		}
 
 		return $fields;
