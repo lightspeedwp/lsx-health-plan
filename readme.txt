@@ -1,7 +1,7 @@
 === LSX Health Plan ===
 Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
-Tags: lsx, health plan
+Tags: lsx, meal plan, workout, blocks, recipes
 Requires at least: 4.9
 Tested up to: 5.2.2
 Requires PHP: 7.0
@@ -44,7 +44,7 @@ We’re firm believers in open source – that’s why the LSX Health Plan plugi
 
 == Documentation ==
 
-[LSX Health Plan Documentation](https://lsx.lsdev.biz/documentation/lsx-health-plan/) has everything you need to use the plugin.
+[LSX Health Plan Documentation](https://lsx.lsdev.biz/documentation/health-plan/) has everything you need to use the plugin.
 
 == Help & Support ==
 
