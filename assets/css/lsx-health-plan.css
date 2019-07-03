@@ -509,6 +509,14 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box { min-height: 290px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
+
 #single-recipe { margin-bottom: -8.4rem; }
 
 #single-recipe .recipe-table tbody td:first-child { font-weight: bold; }

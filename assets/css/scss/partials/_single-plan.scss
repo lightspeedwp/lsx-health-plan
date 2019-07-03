@@ -481,3 +481,28 @@
 		
 	}
 }
+
+.post-type-archive-recipe {
+	.archive-plan {
+		.row {
+			.col-md-4 {
+				.content-box {
+					min-height: 290px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					table {
+						flex-grow: 2;
+						display: flex;
+						td, th {
+							vertical-align: top;
+						}
+					}
+					a {
+						margin-bottom: 1.5em;
+					}
+				}
+			}
+		}
+	}
+}
