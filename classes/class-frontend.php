@@ -46,6 +46,8 @@ class Frontend {
 		add_action( 'template_redirect', array( $this, 'redirect' ) );
 
 		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
 	/**
@@ -151,5 +153,22 @@ class Frontend {
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
 			delete_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete' );
 		}
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param    $title
+	 *
+	 * @return    $title
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$title = 'Recipes';
+		}
+		if ( is_tax( 'recipe' ) ) {
+			$title = 'Recipes';
+		}
+		return $title;
 	}
 }
