@@ -10,7 +10,7 @@
 
 body:not(.logged-in).woocommerce-account.my-plan {
 	.woocommerce {
-		max-width: 600px;
+		max-width: 550px;
 		margin-left: auto;
 		margin-right: auto;
 		p.woocommerce-LostPassword.lost_password {
@@ -58,7 +58,6 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 		margin: 0 auto;
 
 		.woocommerce {
-			max-width: none;
 
 			form {
 				.form-row-first label {
@@ -71,6 +70,16 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 			}
 		}
 	}
+}
+
+body:not(.logged-in).woocommerce-login,
+body:not(.logged-in).content-restricted  {
+	.woocommerce {
+		max-width: 550px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
 }
 
 // Order Received

@@ -108,7 +108,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
-body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 600px; margin-right: auto; margin-left: auto; }
+body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce p.woocommerce-LostPassword.lost_password a { color: #f7ae00; }
 
@@ -124,11 +124,11 @@ body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page { width: 66.66667% !important; margin: 0 auto; }
 
-body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce { max-width: none; }
-
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-first label { font-weight: 700 !important; }
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-last { float: none; width: 100%; }
+
+body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).content-restricted .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
 
 .woocommerce-page.woocommerce-order-received .woocommerce { display: none; }
 
