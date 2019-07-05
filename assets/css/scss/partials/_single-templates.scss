@@ -12,6 +12,7 @@
 	}
 	.recipe-image {
 		img, .recipe-data {
+			width: 100%;
 			@media (min-width: 992px) {
 				max-width: 440px;	
 			}

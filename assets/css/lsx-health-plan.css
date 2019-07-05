@@ -521,6 +521,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-recipe .recipe-table tbody td:first-child { font-weight: bold; }
 
+#single-recipe .recipe-image img, #single-recipe .recipe-image .recipe-data { width: 100%; }
+
 @media (min-width: 992px) { #single-recipe .recipe-image img, #single-recipe .recipe-image .recipe-data { max-width: 440px; } }
 
 @media (min-width: 1200px) { #single-recipe .recipe-image img, #single-recipe .recipe-image .recipe-data { max-width: 490px; } }
