@@ -18,29 +18,30 @@
 
 	<div id="single-recipe" class="entry-content">
 		<h2 class="title-lined"><?php esc_html_e( 'Recipe: ', 'lsx-health-plan' ); ?><?php the_title(); ?></h2>
-		<div class="row reverse-mobile">
-			<div class="col-md-6">
-				<div class="recipe-data">
-					<?php table_recipe_data(); ?>
-				</div>
-				<?php the_content(); ?>
-			</div>
-			<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-6 recipe-image">
 				<?php
 				the_post_thumbnail( 'large', array(
 					'class' => 'aligncenter',
 				) );
 				?>
-			</div>
-		</div>
-		<!-- <div class="lsx-full-width lsx-full-width-base-small bottom-single-recipe">
-			<div class="row">
-				<div class="col-md-8">
-					<p><?php esc_html_e( 'Remember that you can swap foods or even entire meals around – just be sure to consult the portion guide first so you know you’re swapping it out for something of equal value.', 'lsx-health-plan' ); ?></p>
-					<a href="/my-plan/" class="btn"><?php esc_html_e( 'View 28 day Plan', 'lsx-health-plan' ); ?></a>
+				<div class="recipe-data">
+					<?php table_recipe_data(); ?>
 				</div>
 			</div>
-		</div> -->
+			<div class="col-md-6 recipe-content">
+				<?php the_content(); ?>
+				<div  class="back-plan-btn">
+				<?php
+				if ( function_exists( 'wc_get_page_id' ) ) {
+					?>
+					<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+					<?php
+				}
+				?>
+				</div>
+			</div>
+		</div>
 		<?php
 
 			wp_link_pages( array(
