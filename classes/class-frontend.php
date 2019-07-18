@@ -31,7 +31,7 @@ class Frontend {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 999 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php';
 		$this->endpoints = Endpoints::get_instance();
