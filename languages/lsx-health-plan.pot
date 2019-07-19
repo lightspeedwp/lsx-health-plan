@@ -460,20 +460,12 @@ msgstr ""
 msgid "Complete Day"
 msgstr ""
 
-#: includes/template-tags.php:497, includes/template-tags.php:523
+#: includes/template-tags.php:497, includes/template-tags.php:523, templates/content-recipe.php:38
 msgid "Back To My Plan"
 msgstr ""
 
 #: includes/template-tags.php:517
 msgid "Im not done!"
-msgstr ""
-
-#: templates/archive-recipe.php:47, templates/content-recipe.php:39
-msgid "Remember that you can swap foods or even entire meals around – just be sure to consult the portion guide first so you know you’re swapping it out for something of equal value."
-msgstr ""
-
-#: templates/archive-recipe.php:48, templates/content-recipe.php:40
-msgid "View 28 day Plan"
 msgstr ""
 
 #: templates/content-recipe.php:20
