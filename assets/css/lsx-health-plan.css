@@ -439,6 +439,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .tab-content-plan .lsx-health-plan-box .spacer + .btn, .archive-plan .tab-content-plan .lsx-health-plan-box .spacer + .btn { margin-bottom: 20px; }
 
+@media (min-width: 992px) { .single-plan .tab-content-plan .day-download-box .lsx-health-plan-box, .archive-plan .tab-content-plan .day-download-box .lsx-health-plan-box { -ms-flex-pack: start; justify-content: start; } }
+
 .single-plan .status-plan-buttons, .archive-plan .status-plan-buttons { padding: 25px 20px; }
 
 .single-plan .content-box, .archive-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }

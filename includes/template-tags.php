@@ -121,7 +121,7 @@ function lsx_health_plan_recipe_box() {
 function lsx_health_plan_downloads_box() {
 	global $current_user;
 	?>
-	<div class="col-md-4" >
+	<div class="col-md-4 day-download-box" >
 		<div class="lsx-health-plan-box">
 			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
 			<div class="spacer"></div>

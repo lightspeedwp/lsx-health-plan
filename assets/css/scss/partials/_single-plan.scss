@@ -289,6 +289,13 @@
 				}
 			}
 		}
+		.day-download-box {
+			.lsx-health-plan-box {
+				@media (min-width:992px) {
+					justify-content: start;
+				}
+			}
+		}
 	}
 	.status-plan-buttons {
 		padding: 25px 20px;
