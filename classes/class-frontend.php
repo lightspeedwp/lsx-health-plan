@@ -73,6 +73,7 @@ class Frontend {
 	public function assets() {
 		wp_enqueue_style( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan.css', array(), LSX_HEALTH_PLAN_VER );
 		wp_style_add_data( 'lsx-health-plan', 'rtl', 'replace' );
+		wp_enqueue_script( 'lsx-health-plan-scripts', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-admin.js', array( 'jquery' ) );
 	}
 
 	/**
