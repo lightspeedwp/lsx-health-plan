@@ -33,6 +33,15 @@ get_header(); ?>
 					<div class="entry-content">
 						<?php
 						if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {
+							$classes = get_body_class();
+							if ( in_array( 'has-block-banner', $classes ) ) {
+								$blocks = parse_blocks( get_the_content() );
+								foreach ( $blocks as $block ) {
+									if ( 'lsx-blocks/lsx-banner-box' === $block['blockName'] ) {
+										echo wp_kses_post( $block['innerHTML'] );
+									}
+								}
+							}
 							echo do_shortcode( '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div></div>' );
 						} else if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 							echo do_shortcode( '[woocommerce_my_account]' );
