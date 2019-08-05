@@ -51,11 +51,11 @@
 							<div class="content-box">
 								<?php
 								if ( ! empty( $breakfast ) ) {
-									echo '<h3 class="eating-title title-lined">Breakfast</h3>';
+									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( $breakfast );
 								}
 								if ( ! empty( $breakfast_snack ) ) {
-									echo '<h3>Snack</h3>';
+									echo '<h3>' . wp_kses_post( 'Snack', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( $breakfast_snack );
 								}
 								?>
@@ -65,11 +65,11 @@
 							<div class="content-box">
 								<?php
 								if ( ! empty( $lunch ) ) {
-									echo '<h3 class="eating-title title-lined">Lunch</h3>';
+									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Lunch', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( $lunch );
 								}
 								if ( ! empty( $lunch_snack ) ) {
-									echo '<h3>Snack</h3>';
+									echo '<h3>' . wp_kses_post( 'Snack', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( $lunch_snack );
 								}
 								?>
@@ -79,7 +79,7 @@
 							<div class="content-box">
 								<?php
 								if ( ! empty( $dinner ) ) {
-									echo '<h3 class="eating-title title-lined">Supper</h3>';
+									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Supper', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( $dinner );
 								}
 								?>
@@ -92,21 +92,21 @@
 			?>
 			<?php wp_reset_postdata(); ?>
 			<div class="extra-title">
-						<h2 class="title-lined">Meal Plan <span>Extras</span></h2>
+						<h2 class="title-lined"><?php wp_kses_post( 'Meal Plan', 'lsx-health-plan' ); ?><span><?php wp_kses_post( 'Extras', 'lsx-health-plan' ); ?></span></h2>
 					</div>
 					<div class="row tip-row extras-box">
 						<div class="col-md-4">
 							<div class="content-box tip-left box-shadow">
-								<h3 class="eating-title title-lined">Recipes</h3>
-								<p>If theres a recipe for the day you can find it here or under the recipes tab.</p>
-								<a class="btn border-btn btn-full" href="<?php echo the_permalink(); ?>recipes">View Recipe<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+								<h3 class="eating-title title-lined"><?php echo wp_kses_post( 'Recipes', 'lsx-health-plan' ); ?></h3>
+								<p><?php echo wp_kses_post( 'If theres a recipe for the day you can find it here or under the recipes tab.', 'lsx-health-plan' ); ?></p>
+								<a class="btn border-btn btn-full" href="<?php echo the_permalink(); ?>recipes"><?php echo wp_kses_post( 'View Recipe', 'lsx-health-plan' ); ?><i class="fa fa-angle-right" aria-hidden="true"></i></a>
 							</div>	
 						</div>
 						<div class="col-md-4">
 							<div class="content-box tip-middle box-shadow">
-								<h3 class="eating-title title-lined">Shopping List</h3>
-								<p>Checkout the shopping list and make sure you have all the goodies you need!</p>
-								<a class="btn border-btn btn-full" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank">View Shopping List<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+								<h3 class="eating-title title-lined"><?php echo wp_kses_post( 'Shopping List', 'lsx-health-plan' ); ?></h3>
+								<p><?php echo wp_kses_post( 'Checkout the shopping list and make sure you have all the goodies you need!', 'lsx-health-plan' ); ?></p>
+								<a class="btn border-btn btn-full" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php echo wp_kses_post( 'View Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-angle-right" aria-hidden="true"></i></a>
 							</div>	
 						</div>
 						<div class="col-md-4">

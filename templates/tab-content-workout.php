@@ -36,8 +36,8 @@
 				<div class="workout-instructions">
 					<div class="row">
 						<div class="col-md-6">
-							<h3>Dont forget your warm up!</h3>
-							<p>Be sure to do the warm-up before every workout session.</p>
+							<h3><?php echo wp_kses_post( 'Dont forget your warm up!', 'lsx-health-plan' ); ?></h3>
+							<p><?php echo wp_kses_post( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
 						</div>
 						<div class="col-md-6">
 							<div class="single-plan-inner-buttons">
@@ -103,9 +103,9 @@
 										<table class="workout-table">
 											<tbody>
 												<tr>
-													<th>Workout</th> 
-													<th class="center-mobile">Reps / Time / Distance</th>
-													<th class="center-mobile">Video</th>
+													<th><?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></th> 
+													<th class="center-mobile"><?php esc_html_e( 'Reps / Time / Distance', 'lsx-health-plan' ); ?></th>
+													<th class="center-mobile"><?php esc_html_e( 'Video', 'lsx-health-plan' ); ?></th>
 												</tr>
 												<?php
 												foreach ( $groups as $group ) {

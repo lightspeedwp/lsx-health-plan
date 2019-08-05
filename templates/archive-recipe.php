@@ -35,7 +35,7 @@ get_header(); ?>
 									<div class="content-box box-shadow white-bg">
 										<h3 class="recipe-title title-lined"><?php the_title(); ?></h3>
 										<?php table_recipe_data(); ?>
-										<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full">View Recipe</a>
+										<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
 									</div>
 								</div>
 							<?php endwhile; ?>
