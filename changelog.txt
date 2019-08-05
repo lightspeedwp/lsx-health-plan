@@ -1,4 +1,7 @@
 ## Change log
 
+### 1.0.1
+* Fix - Style fixes and improvements on desktop and mobile.
+
 ### 1.0
 * Initial release
