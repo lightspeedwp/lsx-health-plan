@@ -292,7 +292,7 @@ msgstr ""
 msgid "Connect the tips that apply to this day plan using the field provided."
 msgstr ""
 
-#: classes/class-video.php:58
+#: classes/class-video.php:58, templates/tab-content-workout.php:108
 msgid "Video"
 msgstr ""
 
@@ -344,7 +344,7 @@ msgstr ""
 msgid "Fitness Test Score"
 msgstr ""
 
-#: classes/class-workout.php:59, templates/single-plan-tabs.php:19
+#: classes/class-workout.php:59, templates/single-plan-tabs.php:19, templates/tab-content-workout.php:106
 msgid "Workout"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Workout Name"
 msgstr ""
 
-#: classes/class-workout.php:177
+#: classes/class-workout.php:177, templates/tab-content-workout.php:107
 msgid "Reps / Time / Distance"
 msgstr ""
 
@@ -468,16 +468,16 @@ msgstr ""
 msgid "Im not done!"
 msgstr ""
 
+#: templates/archive-recipe.php:38, templates/featured-recipes.php:35
+msgid "View Recipe"
+msgstr ""
+
 #: templates/content-recipe.php:20
 msgid "Recipe: "
 msgstr ""
 
 #: templates/featured-recipes.php:20
 msgid "Featured Recipe"
-msgstr ""
-
-#: templates/featured-recipes.php:35
-msgid "View Recipe"
 msgstr ""
 
 #: templates/featured-videos.php:20
