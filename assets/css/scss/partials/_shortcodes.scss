@@ -99,6 +99,13 @@
 	}
 }
 
+.single-recipe {
+	.content-area, .widget-area {
+		@media (max-width: 768px) {
+			margin-top: 8.5rem;
+		}
+	}
+}
 #lsx-recipes-shortcode {
 	.lsx-recipes-shortcode {
 		@media (min-width:900px) {

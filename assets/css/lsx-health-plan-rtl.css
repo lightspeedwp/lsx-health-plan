@@ -60,6 +60,8 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-videos-shortcode .lsx-videos-title, #lsx-videos-shortcode .lsx-recipes-title, #lsx-recipes-shortcode .lsx-videos-title, #lsx-recipes-shortcode .lsx-recipes-title { font-size: 20px; font-family: 'Noto Sans', sans-serif; }
 
+@media (max-width: 768px) { .single-recipe .content-area, .single-recipe .widget-area { margin-top: 8.5rem; } }
+
 @media (min-width: 900px) { #lsx-recipes-shortcode .lsx-recipes-shortcode { width: 100%; } }
 
 #lsx-recipes-shortcode .lsx-recipes-shortcode table tr th { font-weight: 300; }
