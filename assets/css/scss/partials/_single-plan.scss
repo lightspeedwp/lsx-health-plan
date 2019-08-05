@@ -183,6 +183,27 @@
 	}
 }
 
+@media (max-width: 600px) {
+	#edit-account-tab {
+		padding: 0 10px 20px;
+		margin-top: 0px;
+		margin-top: -45px;
+	}
+}
+
+.woocommerce-edit-account {
+	.wp-block-lsx-blocks-lsx-banner-box {
+		min-height: 200px;
+	}
+	.lsx-banner-image-wrap {
+		img {
+			min-width: 100%;
+			min-height: 200px;
+			object-fit: cover;
+		}
+	}
+}
+
 .archive-plan {
 	.row {
 		display: flex;
