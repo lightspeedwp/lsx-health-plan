@@ -394,6 +394,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .woocommerce-edit-account .lsx-banner-image-wrap img { min-width: 100%; min-height: 200px; -o-object-fit: cover; object-fit: cover; }
 
+@media (max-width: 600px) { .woocommerce-edit-account .lsx-banner-image-wrap img { min-height: 440px; } }
+
+@media (max-width: 600px) { .menu-my-account.lsx-block-container.alignfull .lsx-container-content { padding: 0em 3em 1em; } }
+
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
 .post-type-archive-recipe .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }

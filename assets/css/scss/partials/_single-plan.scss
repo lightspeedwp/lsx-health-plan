@@ -200,6 +200,17 @@
 			min-width: 100%;
 			min-height: 200px;
 			object-fit: cover;
+			@media (max-width: 600px) {
+				min-height: 440px;
+			}
+		}
+	}
+}
+
+.menu-my-account.lsx-block-container.alignfull {
+	@media (max-width: 600px) {
+		.lsx-container-content {
+			padding: 0em 3em 1em;
 		}
 	}
 }
