@@ -1,5 +1,13 @@
 // Single Plan
 
+.plan-template-default {
+	.content-area, .widget-area {
+		@media (max-width:768px) {
+			margin-top: 8.5rem;
+		}
+	}
+}
+
 #single-plan-nav {
 	margin-bottom: 15px;
 	.nav.nav-pills {

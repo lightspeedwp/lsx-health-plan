@@ -329,6 +329,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-images-existing span, #edit-account-tab .stat-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-images-existing span { display: none; }
 
+@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area { margin-top: 8.5rem; } }
+
 #single-plan-nav { margin-bottom: 15px; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-right: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
