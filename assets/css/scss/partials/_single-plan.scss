@@ -262,8 +262,9 @@
 			}
 			.title {
 				font-size: 30px;
-				display: flex;
-				justify-content: space-between;
+				display: grid;
+				grid-template-columns: 80% 20%;
+    			grid-template-rows: 50% 50%;
 				&::after {
 					content: '';
 					margin-right: 10px;
@@ -276,6 +277,7 @@
 				svg {
 					width: 40px;
 					height: 40px;
+					justify-self: end;
 				}
 			}
 			.excerpt {

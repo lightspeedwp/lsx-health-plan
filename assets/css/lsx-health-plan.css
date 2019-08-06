@@ -423,11 +423,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (min-width: 992px) { .single-plan .tab-content-plan .lsx-health-plan-box, .archive-plan .tab-content-plan .lsx-health-plan-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; } }
 
-.single-plan .tab-content-plan .lsx-health-plan-box .title, .archive-plan .tab-content-plan .lsx-health-plan-box .title { font-size: 30px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+.single-plan .tab-content-plan .lsx-health-plan-box .title, .archive-plan .tab-content-plan .lsx-health-plan-box .title { font-size: 30px; display: -ms-grid; display: grid; -ms-grid-columns: 80% 20%; grid-template-columns: 80% 20%; -ms-grid-rows: 50% 50%; grid-template-rows: 50% 50%; }
 
 .single-plan .tab-content-plan .lsx-health-plan-box .title::after, .archive-plan .tab-content-plan .lsx-health-plan-box .title::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; background-repeat: no-repeat; background-position: center; }
 
-.single-plan .tab-content-plan .lsx-health-plan-box .title svg, .archive-plan .tab-content-plan .lsx-health-plan-box .title svg { width: 40px; height: 40px; }
+.single-plan .tab-content-plan .lsx-health-plan-box .title svg, .archive-plan .tab-content-plan .lsx-health-plan-box .title svg { width: 40px; height: 40px; justify-self: end; }
 
 .single-plan .tab-content-plan .lsx-health-plan-box .excerpt, .archive-plan .tab-content-plan .lsx-health-plan-box .excerpt { -ms-flex-positive: 2; flex-grow: 2; }
 

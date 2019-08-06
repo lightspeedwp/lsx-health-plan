@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.0.2
+* Dev - Changing icons to be inline svgs.
+
 ### 1.0.1
 * Fix - Style fixes and improvements on desktop and mobile.
 
