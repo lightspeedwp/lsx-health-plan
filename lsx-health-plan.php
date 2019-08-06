@@ -117,3 +117,20 @@ function lsx_health_plan() {
 	return \lsx_health_plan\classes\Core::get_instance();
 }
 lsx_health_plan();
+
+/**
+ * Creates the svg path
+ *
+ * @return void
+ */
+function lsx_get_svg_icon( $icon ) {
+	$path = '/assets/images/';
+
+	if ( file_exists( LSX_HEALTH_PLAN_PATH . $path . $icon ) ) {
+		// Load and return the contents of the file
+		return include LSX_HEALTH_PLAN_PATH . $path . $icon;
+	}
+
+	// Return a blank string if we can't find the file.
+	return '';
+}

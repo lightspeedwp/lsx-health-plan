@@ -14,7 +14,7 @@ function lsx_health_plan_warmup_box() {
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?></h3>
+			<h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'warm.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<?php
 			$intro_text = \lsx_health_plan\functions\get_option( 'warmup_intro', false );
@@ -41,7 +41,7 @@ function lsx_health_plan_workout_box() {
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title work-out-title title-lined"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?></h3>
+			<h3 class="title work-out-title title-lined"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'work.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<?php
 			$intro_text = \lsx_health_plan\functions\get_option( 'workout_intro', false );
@@ -68,7 +68,7 @@ function lsx_health_plan_meal_box() {
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title meal-plan-title title-lined"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?></h3>
+			<h3 class="title meal-plan-title title-lined"><?php esc_html_e( 'Your Meal Plan', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'meal.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<?php
 			$intro_text = \lsx_health_plan\functions\get_option( 'meal_plan_intro', false );
@@ -95,7 +95,7 @@ function lsx_health_plan_recipe_box() {
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title recipes-title title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></h3>
+			<h3 class="title recipes-title title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'recipes.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<?php
 			$intro_text = \lsx_health_plan\functions\get_option( 'recipes_intro', false );
@@ -123,7 +123,7 @@ function lsx_health_plan_downloads_box() {
 	?>
 	<div class="col-md-4 day-download-box" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'downloads.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<div class="download-list">
 				<ul>

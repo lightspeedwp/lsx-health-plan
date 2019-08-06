@@ -48,6 +48,7 @@ class Frontend {
 		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
 
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+		
 	}
 
 	/**
@@ -172,4 +173,5 @@ class Frontend {
 		}
 		return $title;
 	}
+
 }

@@ -16,6 +16,7 @@
 
 	<div class="entry-content">
 		<div class="single-plan-section-title meal-plan">
+			<?php lsx_get_svg_icon( 'meal.svg' ); ?>
 			<h2 class="title-lined"><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
 		</div>
 		<div class="single-plan-inner meal-content">

@@ -27,7 +27,7 @@
 			) );
 		?>
 		<div class="single-plan-section-title recipes-plan">
-
+			<?php lsx_get_svg_icon( 'recipes.svg' ); ?>
 			<h2 class="title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
 		</div>
 		<div class="single-plan-inner recipes-content">
