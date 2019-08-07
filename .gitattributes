@@ -2,6 +2,8 @@
 * text=auto
 
 # Files to exclude when creating archive.
+.editor* export-ignore
+.eslint* export-ignore
 .git* export-ignore
 .mergify.yml export-ignore
 .scrutinizer.yml export-ignore
