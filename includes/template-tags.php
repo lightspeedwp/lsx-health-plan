@@ -366,6 +366,11 @@ function lsx_health_plan_week_plan_block() {
 	$weeks = get_terms(
 		array(
 			'taxonomy' => 'week',
+			'orderby'  => array(
+				'date'       => 'DESC',
+				'menu_order' => 'ASC',
+			),
+			'order'    => 'ASC',
 		)
 	);
 	if ( ! empty( $weeks ) ) {
