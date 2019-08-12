@@ -3,6 +3,7 @@
 ### 1.0.2
 * Dev - Changing icons to be inline svgs.
 * Fix - Fixing the week view order to be by date.
+* Fix - Recipes and shopping list box only appear if they are not empty on the Meal Plan Tab
 
 ### 1.0.1
 * Fix - Style fixes and improvements on desktop and mobile.
