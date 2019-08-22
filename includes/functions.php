@@ -63,7 +63,7 @@ add_action( 'woocommerce_checkout_after_order_review', function() {
 			<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
+			<img style="max-width:210px;margin-top:30px;" src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
 		</div>
 	</div>
 	<?php
