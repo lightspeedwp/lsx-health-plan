@@ -56,14 +56,14 @@ function get_option( $key = '', $default = false ) {
 
 add_action( 'woocommerce_checkout_after_order_review', function() {
 	$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/le-logo.svg';
-	$peach_image   = LSX_HEALTH_PLAN_URL . 'assets/images/peach-payments-logo.svg';
+	$payfast_image   = LSX_HEALTH_PLAN_URL . 'assets/images/payfast-logo.svg';
 	?>
 	<div class="row text-center vertical-align">
 		<div class="col-md-6 col-sm-6 col-xs-6">
 			<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $peach_image ); ?>" alt="peach_payments"/>
+			<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
 		</div>
 	</div>
 	<?php

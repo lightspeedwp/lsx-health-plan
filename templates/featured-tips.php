@@ -48,7 +48,7 @@ $tips = new WP_Query( $args );
 						<?php
 						if ( ! empty( $featured_image ) ) {
 							?>
-							<a href="<?php echo esc_url( get_permalink() ); ?>" class="thumbnail tip-thumbnail"><?php echo wp_kses_post( $featured_image ); ?></a>
+							<div class="thumbnail tip-thumbnail"><?php echo wp_kses_post( $featured_image ); ?></div>
 							<?php
 						}
 						?>
