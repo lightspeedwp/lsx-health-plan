@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.0.4
+* Fix - Downloads box will not have duplicated links
+
 ### 1.0.3
 * Dev - Removed Peach Payments and added in Payfast on Checkout
 * Fix - Removed unnecessary link on Tips

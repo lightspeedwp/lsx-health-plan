@@ -103,6 +103,7 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 					$current_downloads = get_post_meta( $connected_item, 'connected_downloads', true );
 					if ( false !== $current_downloads && ! empty( $current_downloads ) ) {
 						$downloads = array_merge( $downloads, $current_downloads );
+						$downloads = array_unique( $downloads );
 					}
 				}
 			}
