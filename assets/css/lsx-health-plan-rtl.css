@@ -132,8 +132,6 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).content-restricted .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
 
-.woocommerce-page.woocommerce-order-received .woocommerce { display: none; }
-
 .page-banner-wrap .page-banner > .page-banner-image { bottom: 0; background-color: #2b3840; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order { background: #fff; padding: 0px 20px 20px 20px !important; }
