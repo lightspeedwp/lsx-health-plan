@@ -2,6 +2,8 @@
 * text=auto
 
 # Files to exclude when creating archive.
+.wordpress-org export-ignore
+.github export-ignore
 .editor* export-ignore
 .eslint* export-ignore
 .git* export-ignore
