@@ -37,6 +37,9 @@
 				td:first-child {
 					color: $blue;
 				}
+				@media (max-width:600px) {
+					display:block;
+				}
 			}
 		}
 	}
