@@ -1,7 +1,10 @@
 ## Change log
 
-### 1.0.4
+### 1.0.4 - 13 September 2019
 * Fix - Downloads box will not have duplicated links
+* Fix - Removing the display non for the EFT page
+* Fix - Added in Fix for Recipe details on Mobile View
+* Dev - Activating github actions.
 
 ### 1.0.3
 * Dev - Removed Peach Payments and added in Payfast on Checkout
