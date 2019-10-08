@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.0.5 - In Development
+* Fix - Placeholder for Waist changed to cm.
+
 ### 1.0.4 - 13 September 2019
 * Fix - Downloads box will not have duplicated links
 * Fix - Removing the display non for the EFT page

@@ -533,7 +533,7 @@ class Woocommerce {
 			'waist_start'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => 'cm’s',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -543,7 +543,7 @@ class Woocommerce {
 			'waist_goal'    => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => 'cm’s',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -553,7 +553,7 @@ class Woocommerce {
 			'waist_end'     => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => 'cm’s',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
