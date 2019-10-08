@@ -228,7 +228,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'weight_start', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . "Kg's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . ' kg' );
 						} else {
 							echo '/';
 						}
@@ -237,7 +237,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'weight_goal', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_goal', true ) . "Kg's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_goal', true ) . ' kg' );
 						} else {
 							echo '/';
 						}
@@ -246,7 +246,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'weight_end', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_end', true ) . "Kg's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_end', true ) . ' kg' );
 						} else {
 							echo '/';
 						}
@@ -258,7 +258,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'waist_start', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . "cm's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . ' cm' );
 						} else {
 							echo '/';
 						}
@@ -267,7 +267,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'waist_goal', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_goal', true ) . "cm's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_goal', true ) . ' cm' );
 						} else {
 							echo '/';
 						}
@@ -276,7 +276,7 @@ function lsx_health_plan_my_profile_box() {
 					<td>
 						<?php
 						if ( '' !== get_user_meta( get_current_user_id(), 'waist_end', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_end', true ) . "cm's" );
+							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_end', true ) . ' cm' );
 						} else {
 							echo '/';
 						}

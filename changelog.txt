@@ -1,7 +1,8 @@
 ## Change log
 
 ### 1.0.5 - In Development
-* Fix - Placeholder for Waist changed to cm.
+* Fix - Placeholder for Waist changed to cm on Edit Account Page.
+* Fix - Added a space between the value to make it neater and also change the Kg's to kg on my account page.
 
 ### 1.0.4 - 13 September 2019
 * Fix - Downloads box will not have duplicated links
