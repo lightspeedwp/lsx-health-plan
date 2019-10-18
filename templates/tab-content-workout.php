@@ -91,7 +91,7 @@
 							<div class="set-box set content-box">
 								<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
 								<div class="set-content">
-									<p><?php echo esc_html( $description ); ?></p>
+									<p><?php echo wp_kses_post( $description ); ?></p>
 								</div>
 
 								<?php
