@@ -126,7 +126,7 @@ class SCPO_Engine {
 
 	function load_script_css() {
 		if ( $this->_check_load_script_css() ) {
-			wp_enqueue_script( 'scporderjs', LSX_TO_URL . '/assets/js/scporder.min.js', array( 'jquery', 'jquery-ui-sortable' ), null, true );
+			wp_enqueue_script( 'scporderjs', LSX_HEALTH_PLAN_URL . '/assets/js/scporder.min.js', array( 'jquery', 'jquery-ui-sortable' ), null, true );
 
 			$scporderjs_params = array(
 				'ajax_url'   => admin_url( 'admin-ajax.php' ),
@@ -135,7 +135,7 @@ class SCPO_Engine {
 
 			wp_localize_script( 'scporderjs', 'scporderjs_params', $scporderjs_params );
 
-			wp_enqueue_style( 'scporder', LSX_TO_URL . '/assets/css/scporder.css', array(), null );
+			wp_enqueue_style( 'scporder', LSX_HEALTH_PLAN_URL . '/assets/css/scporder.css', array(), null );
 			wp_style_add_data( 'scporder', 'rtl', 'replace' );
 		}
 	}
@@ -494,12 +494,12 @@ class SCPO_Engine {
 	}
 
 	function get_to_scporder_options_objects() {
-		$ordering = array( 'plan' );
+		$ordering = array( 'plan' => 'plan' );
 		return $ordering;
 	}
 
 	function get_to_scporder_options_tags() {
-		$ordering = array( 'plan' );
+		$ordering = array( 'plan' => 'plan' );
 		return $ordering;
 	}
 }
