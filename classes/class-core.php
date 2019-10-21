@@ -38,6 +38,11 @@ class Core {
 	public $integrations;
 
 	/**
+	 * @var object \lsx_health_plan\classes\Integrations();
+	 */
+	public $scpo_engine;
+
+	/**
 	 * The post types available
 	 *
 	 * @var array
@@ -86,6 +91,9 @@ class Core {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-integrations.php';
 		$this->integrations = Integrations::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-scpo-engine.php';
+		$this->scpo_engine = SCPO_Engine::get_instance();
 	}
 
 	/**
