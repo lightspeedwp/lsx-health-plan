@@ -494,13 +494,13 @@ class SCPO_Engine {
 	}
 
 	function get_to_scporder_options_objects() {
-		$tour_operator = array();
-		return $tour_operator;
+		$ordering = array( 'plan' );
+		return $ordering;
 	}
 
 	function get_to_scporder_options_tags() {
-		$tour_operator = array();
-		return $tour_operator;
+		$ordering = array( 'plan' );
+		return $ordering;
 	}
 }
 
