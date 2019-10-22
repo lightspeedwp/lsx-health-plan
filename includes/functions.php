@@ -145,15 +145,13 @@ function output_modal( $args = array() ) {
 	<div class="modal fade lsx-health-plan-modal" id="<?php echo esc_html( $args['id'] ); ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo esc_html( $args['id'] ); ?>"  aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>			
 				<div class="modal-header">
 					<?php
 					if ( '' !== $args['title'] ) {
 						echo wp_kses_post( '<h2>' . $args['title'] . '</h2>' );
 					}
 					?>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
 				</div>
 				<div class="modal-body">
 				<?php
