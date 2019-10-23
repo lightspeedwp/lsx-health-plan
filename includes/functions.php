@@ -51,7 +51,7 @@ function get_option( $key = '', $default = false ) {
 }
 
 /**
- * Add Lets Enrypt and Peach Payments logos to cart
+ * Add Lets Enrypt and PayFast logos to cart
  **/
 
 add_action( 'woocommerce_checkout_after_order_review', function() {
