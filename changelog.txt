@@ -5,6 +5,7 @@
 * Fix - HTML not displaying on Workouts
 * Fix - Updated placeholder text in fields on profile #10 & #9
 * Fix - Video modal not closing on mobile devices #13
+* Fix - Tips images distorting
 * Dev - Added drag-able Days in the back-end to re-order them #16
 
 ### 1.0.5 - In Development
