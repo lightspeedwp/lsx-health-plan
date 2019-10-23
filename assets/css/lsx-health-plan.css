@@ -84,7 +84,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail { background: none; border: none; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail img { border-radius: 50%; border: 2px solid #418ad0; min-height: 120px; min-width: 120px; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail img { border-radius: 50%; border: 2px solid #418ad0; height: 120px; width: 120px; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .slick-dots li button { width: 5px; height: 18px; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 50%; }
 
