@@ -329,7 +329,7 @@ function lsx_health_plan_my_profile_box() {
 function lsx_health_plan_day_plan_block() {
 	$args      = array(
 		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
+		'order'          => 'DESC',
 		'post_type'      => 'plan',
 		'posts_per_page' => -1,
 		'nopagin'        => true,
