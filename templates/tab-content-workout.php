@@ -43,10 +43,10 @@
 						<div class="col-md-6">
 							<div class="single-plan-inner-buttons">
 								<div class="complete-plan-btn">
-									<a class="btn border-btn" href="#"><?php esc_html_e( 'Download Warm-Up', 'lsx-health-plan' ); ?></a>
+									<a class="btn border-btn dwnld-btn" href="#"><?php esc_html_e( 'Download Warm-Up', 'lsx-health-plan' ); ?></a>
 								</div>
 								<div  class="back-plan-btn">
-									<a class="btn secondary-btn" href="<?php the_permalink(); ?>warm-up/"><?php esc_html_e( 'See Warm-Up', 'lsx-health-plan' ); ?></a>
+									<a class="btn secondary-btn wrm-up-btn" href="<?php the_permalink(); ?>warm-up/"><?php esc_html_e( 'See Warm-Up', 'lsx-health-plan' ); ?></a>
 								</div>
 							</div>
 						</div>
