@@ -109,7 +109,32 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 			}
 		}
 	}
+	check_posts_exist( $downloads );
 	return $downloads;
+}
+
+/**
+ * Checks to see if the downloads exist before adding them
+ *
+ * @param array $post_ids
+ * @return void
+ */
+function check_posts_exist( $post_ids = array() ) {
+	$new_ids = array();
+	global $wpdb;
+	if ( is_array( $post_ids ) && ! empty( $post_ids ) ) {
+		$post_ids = "'" . implode( "','", $post_ids ) . "'";
+		$query    = "
+			SELECT COUNT(`meta_value`) 
+			FROM `{$wpdb->posts}`
+			WHERE `ID` IN ({$post_ids})'
+		";
+		$results = $wpdb->get_results( $query ); // WPCS: unprepared SQL
+		if ( ! empty( $results ) ) {
+			$new_ids = wp_list_pluck( $results, 'ID' );
+		}
+	}
+	return $new_ids;
 }
 
 /**
