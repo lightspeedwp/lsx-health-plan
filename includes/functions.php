@@ -125,9 +125,9 @@ function check_posts_exist( $post_ids = array() ) {
 	if ( is_array( $post_ids ) && ! empty( $post_ids ) ) {
 		$post_ids = "'" . implode( "','", $post_ids ) . "'";
 		$query    = "
-			SELECT COUNT(`meta_value`) 
+			SELECT `ID` 
 			FROM `{$wpdb->posts}`
-			WHERE `ID` IN ({$post_ids})'
+			WHERE `ID` IN ({$post_ids})
 		";
 		$results = $wpdb->get_results( $query ); // WPCS: unprepared SQL
 		if ( ! empty( $results ) ) {
