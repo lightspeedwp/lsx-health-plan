@@ -88,14 +88,20 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 		$post_id = get_the_ID();
 	}
 	$downloads = array();
-
-	$options = get_option( 'all' );
-	print_r('<pre>');
-	print_r($options);
-	print_r('</pre>');
+	$options   = get_option( 'all' );
 
 	foreach ( $post_types as $post_type ) {
 		if ( 'all' === $type || in_array( $type, $post_types, true ) ) {
+
+			// Get the default downloads for this post type.
+			$default_downloads = array();
+			if ( isset( $options[ 'download_' . $post_type ] ) ) {
+				if ( is_array( $options[ 'download_' . $post_type ] ) ) {
+					$default_downloads = $options[ 'download_' . $post_type ];
+				} else {
+					$default_downloads[] = $options[ 'download_' . $post_type ];
+				}
+			}
 
 			if ( 'page' === $post_type ) {
 				$key = 'plan_warmup';
@@ -112,6 +118,9 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 						$downloads = array_unique( $downloads );
 					}
 				}
+			} elseif ( ! empty( $default_downloads ) ) {
+				$downloads = array_merge( $downloads, $default_downloads );
+				$downloads = array_unique( $downloads );
 			}
 		}
 	}
