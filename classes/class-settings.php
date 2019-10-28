@@ -107,5 +107,57 @@ class Settings {
 			'value'   => '',
 			'default' => __( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ),
 		) );
+		$cmb->add_field( array(
+			'name'    => __( 'Recipes Intro', 'lsx-health-plan' ),
+			'id'      => 'recipes_intro',
+			'type'    => 'textarea',
+			'value'   => '',
+			'default' => __( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ),
+		) );
+		$cmb->add_field( array(
+			'id'      => 'global_downloads_title',
+			'type'    => 'title',
+			'name'    => __( 'Global Downloads', 'lsx-health-plan' ),
+			'default' => __( 'Global Downloads', 'lsx-health-plan' ),
+		) );
+
+		$download_types = array(
+			'page'    => array(
+				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
+				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
+			),
+			'meal'    => array(
+				'title'       => __( 'Meal Plan', 'lsx-health-plan' ),
+				'description' => __( 'Set a default meal plan.', 'lsx-health-plan' ),
+			),
+			'recipe'  => array(
+				'title'       => __( 'Recipe', 'lsx-health-plan' ),
+				'description' => __( 'Set a default recipe.', 'lsx-health-plan' ),
+			),
+			'workout' => array(
+				'title'       => __( 'Workout', 'lsx-health-plan' ),
+				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
+			),
+			'video'   => array(
+				'title'       => __( 'Workout Video', 'lsx-health-plan' ),
+				'description' => __( 'Set a default wourkout video, this will be shown on all workouts that do not have a specific video set.', 'lsx-health-plan' ),
+			),
+		);
+
+		foreach ( $download_types as $type => $download_type ) {
+			$cmb->add_field( array(
+				'name'       => $download_type['title'],
+				'id'         => 'download_' . $type,
+				'type'       => 'post_search_ajax',
+				// Optional :
+				'limit'      => 1,  // Limit selection to X items only (default 1)
+				'sortable'   => false, // Allow selected items to be sortable (default false)
+				'query_args' => array(
+					'post_type'      => array( 'dlm_download' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			) );
+		}
 	}
 }
