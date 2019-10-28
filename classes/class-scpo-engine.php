@@ -489,17 +489,20 @@ class SCPO_Engine {
 		if ( $a->lsx_to_term_order == $b->lsx_to_term_order ) {
 			return 0;
 		}
-
 		return ( $a->lsx_to_term_order < $b->lsx_to_term_order ) ? - 1 : 1;
 	}
 
 	function get_to_scporder_options_objects() {
-		$ordering = array( 'plan' => 'plan' );
+		$ordering = array(
+			'plan' => 'plan',
+		);
 		return $ordering;
 	}
 
 	function get_to_scporder_options_tags() {
-		$ordering = array( 'plan' => 'plan' );
+		$ordering = array(
+			'plan' => 'plan',
+		);
 		return $ordering;
 	}
 }
