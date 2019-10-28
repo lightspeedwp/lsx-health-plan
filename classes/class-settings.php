@@ -125,6 +125,7 @@ class Settings {
 			'page'    => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
+				'limit'       => 1,
 			),
 			'meal'    => array(
 				'title'       => __( 'Meal Plan', 'lsx-health-plan' ),
@@ -145,19 +146,27 @@ class Settings {
 		);
 
 		foreach ( $download_types as $type => $download_type ) {
-			$cmb->add_field( array(
-				'name'       => $download_type['title'],
-				'id'         => 'download_' . $type,
-				'type'       => 'post_search_ajax',
-				// Optional :
-				'limit'      => 1,  // Limit selection to X items only (default 1)
-				'sortable'   => false, // Allow selected items to be sortable (default false)
-				'query_args' => array(
-					'post_type'      => array( 'dlm_download' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-			) );
+			$limit    = 5;
+			$sortable = false;
+			if ( isset( $download_type['limit'] ) ) {
+				$limit    = $download_type['limit'];
+				$sortable = true;
+			}
+
+			$cmb->add_field(
+				array(
+					'name'       => $download_type['title'],
+					'id'         => 'download_' . $type,
+					'type'       => 'post_search_ajax',
+					'limit'      => $limit,
+					'sortable'   => $sortable,
+					'query_args' => array(
+						'post_type'      => array( 'dlm_download' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
 		}
 	}
 }
