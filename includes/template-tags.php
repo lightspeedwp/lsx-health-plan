@@ -329,7 +329,7 @@ function lsx_health_plan_my_profile_box() {
 function lsx_health_plan_day_plan_block() {
 	$args      = array(
 		'orderby'        => 'menu_order',
-		'order'          => 'DESC',
+		'order'          => 'ASC',
 		'post_type'      => 'plan',
 		'posts_per_page' => -1,
 		'nopagin'        => true,
@@ -381,7 +381,7 @@ function lsx_health_plan_week_plan_block() {
 			//Grab the days of the week.
 			$args           = array(
 				'orderby'        => 'menu_order',
-				'order'          => 'DESC',
+				'order'          => 'ASC',
 				'post_type'      => 'plan',
 				'posts_per_page' => -1,
 				'nopagin'        => true,
