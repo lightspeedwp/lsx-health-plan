@@ -88,6 +88,12 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 		$post_id = get_the_ID();
 	}
 	$downloads = array();
+
+	$options = get_option( 'all' );
+	print_r('<pre>');
+	print_r($options);
+	print_r('</pre>');
+
 	foreach ( $post_types as $post_type ) {
 		if ( 'all' === $type || in_array( $type, $post_types, true ) ) {
 
