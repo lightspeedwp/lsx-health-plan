@@ -109,7 +109,7 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 			}
 		}
 	}
-	check_posts_exist( $downloads );
+	$downloads = check_posts_exist( $downloads );
 	return $downloads;
 }
 
