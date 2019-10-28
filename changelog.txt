@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.1.1 (in development)
+* Fix - Added in a function to filters downloads that do not exist.
+
 ### 1.1 - October 23 2019
 * Fix - Day Ordering
 * Fix - HTML not displaying on Workouts
