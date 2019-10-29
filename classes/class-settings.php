@@ -137,11 +137,7 @@ class Settings {
 			),
 			'workout' => array(
 				'title'       => __( 'Workout', 'lsx-health-plan' ),
-				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
-			),
-			'video'   => array(
-				'title'       => __( 'Workout Video', 'lsx-health-plan' ),
-				'description' => __( 'Set a default wourkout video, this will be shown on all workouts that do not have a specific video set.', 'lsx-health-plan' ),
+				'description' => __( 'Set a default wourkout routine PDF.', 'lsx-health-plan' ),
 			),
 		);
 
