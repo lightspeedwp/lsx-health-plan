@@ -95,6 +95,7 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 
 			// Get the default downloads for this post type.
 			$default_downloads = array();
+			$new_downloads     = array();
 			if ( isset( $options[ 'download_' . $post_type ] ) ) {
 				if ( is_array( $options[ 'download_' . $post_type ] ) ) {
 					$default_downloads = $options[ 'download_' . $post_type ];
@@ -114,14 +115,17 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 				foreach ( $connected_items as $connected_item ) {
 					$current_downloads = get_post_meta( $connected_item, 'connected_downloads', true );
 					if ( false !== $current_downloads && ! empty( $current_downloads ) ) {
-						$downloads = array_merge( $downloads, $current_downloads );
-						$downloads = array_unique( $downloads );
+						$new_downloads = array_merge( $new_downloads, $current_downloads );
 					}
 				}
+			}
+
+			if ( ! empty( $new_downloads ) ) {
+				$downloads = array_merge( $downloads, $new_downloads );
 			} elseif ( ! empty( $default_downloads ) ) {
 				$downloads = array_merge( $downloads, $default_downloads );
-				$downloads = array_unique( $downloads );
 			}
+			$downloads = array_unique( $downloads );
 		}
 	}
 	$downloads = check_posts_exist( $downloads );
