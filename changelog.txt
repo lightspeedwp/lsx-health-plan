@@ -2,6 +2,7 @@
 
 ### 1.1.1 (in development)
 * Fix - Added in a function to filters downloads that do not exist.
+* Fix - Applied the_content filters to the meal plan paragraphs #18
 
 ### 1.1 - October 23 2019
 * Fix - Day Ordering

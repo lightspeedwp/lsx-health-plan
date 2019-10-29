@@ -53,11 +53,11 @@
 								<?php
 								if ( ! empty( $breakfast ) ) {
 									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( $breakfast );
+									echo wp_kses_post( apply_filters( 'the_content', $breakfast ) );
 								}
 								if ( ! empty( $breakfast_snack ) ) {
 									echo '<h3>' . wp_kses_post( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( $breakfast_snack );
+									echo wp_kses_post( apply_filters( 'the_content', $breakfast_snack ) );
 								}
 								?>
 							</div>
@@ -67,11 +67,11 @@
 								<?php
 								if ( ! empty( $lunch ) ) {
 									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Lunch', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( $lunch );
+									echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
 								}
 								if ( ! empty( $lunch_snack ) ) {
 									echo '<h3>' . wp_kses_post( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( $lunch_snack );
+									echo wp_kses_post( apply_filters( 'the_content', $lunch_snack ) );
 								}
 								?>
 							</div>
@@ -81,7 +81,7 @@
 								<?php
 								if ( ! empty( $dinner ) ) {
 									echo '<h3 class="eating-title title-lined">' . wp_kses_post( 'Supper', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( $dinner );
+									echo wp_kses_post( apply_filters( 'the_content', $dinner ) );
 								}
 								?>
 							</div>
