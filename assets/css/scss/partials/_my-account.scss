@@ -372,7 +372,7 @@
 		padding: 30px;
 		background: $white; 
 		.title-lined, .woocommerce {
-			max-width: 760px;
+			max-width: 800px;
 			margin-left: 0;
 		}
 		.woocommerce {
@@ -382,6 +382,9 @@
 			.woocommerce-EditAccountForm {
 				label, span em {
 					font-weight: 300;
+				}
+				p:last-child {
+					margin-top:20px;
 				}
 			}
 		}

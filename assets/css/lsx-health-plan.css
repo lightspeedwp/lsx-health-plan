@@ -278,11 +278,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; padding: 30px; background: #ffffff; }
 
-#edit-account-tab .edit-account-section .title-lined, #edit-account-tab .edit-account-section .woocommerce, #edit-account-tab .stat-section .title-lined, #edit-account-tab .stat-section .woocommerce { max-width: 760px; margin-left: 0; }
+#edit-account-tab .edit-account-section .title-lined, #edit-account-tab .edit-account-section .woocommerce, #edit-account-tab .stat-section .title-lined, #edit-account-tab .stat-section .woocommerce { max-width: 800px; margin-left: 0; }
 
 #edit-account-tab .edit-account-section .woocommerce .woocommerce-MyAccount-content, #edit-account-tab .stat-section .woocommerce .woocommerce-MyAccount-content { width: 100%; }
 
 #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm span em, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm label, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm span em { font-weight: 300; }
+
+.woocommerce-EditAccountForm p:last-child { margin-top:20px; }
 
 #edit-account-tab .edit-account-section .my-stats-title, #edit-account-tab .stat-section .my-stats-title { margin-top: 60px; }
 
@@ -295,6 +297,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(2):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(2):before { content: "Goal"; margin-bottom: 20px; }
 
 #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(3):before, #edit-account-tab .stat-section .my-stats .form-row:nth-child(3):before { content: "End"; margin-bottom: 20px; }
+
+
 
 @media (max-width: 900px) { #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { flex-grow: 1; width: 33%; } }
 
