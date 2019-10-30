@@ -1,8 +1,9 @@
 ## Change log
 
-### 1.1.1 (in development)
+### 1.1.1 30 October 2019
 * Fix - Added in a function to filters downloads that do not exist.
-* Fix - Applied the_content filters to the meal plan paragraphs #18
+* Fix - Applied the_content filters to the meal plan paragraphs and the workouts text #18
+* Fix - Fixed the string translations
 
 ### 1.1 - October 23 2019
 * Fix - Day Ordering
@@ -12,7 +13,7 @@
 * Fix - Tips images distorting
 * Dev - Added drag-able Days in the back-end to re-order them #16
 
-### 1.0.5 - In Development
+### 1.0.5
 * Fix - Placeholder for Waist changed to cm on Edit Account Page.
 * Fix - Added a space between the value to make it neater and also change the Kg's to kg on my account page.
 

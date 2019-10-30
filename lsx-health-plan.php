@@ -4,7 +4,7 @@
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-health-plan
  * Description:	A meal and workout plan, with recipes
  * Author:		LightSpeed
- * Version: 	1.1
+ * Version: 	1.1.1
  * Author URI: 	https://www.lsdev.biz/
  * License: 	GPL3
  * Text Domain: lsx-health-plan
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_HEALTH_PLAN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_HEALTH_PLAN_CORE', __FILE__ );
 define( 'LSX_HEALTH_PLAN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_HEALTH_PLAN_VER', '1.1' );
+define( 'LSX_HEALTH_PLAN_VER', '1.1.1' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
