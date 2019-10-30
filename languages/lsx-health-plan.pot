@@ -15,6 +15,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: lsx-health-plan.php:90
+msgid "Login"
+msgstr ""
+
 #: classes/class-downloads.php:79
 msgid "Connections"
 msgstr ""
@@ -84,7 +88,7 @@ msgstr ""
 msgid "None found in Trash"
 msgstr ""
 
-#: classes/class-meal.php:124, classes/class-meal.php:131
+#: classes/class-meal.php:124, classes/class-meal.php:131, templates/tab-content-meal.php:116
 msgid "Shopping List"
 msgstr ""
 
@@ -92,7 +96,7 @@ msgstr ""
 msgid "Meal Details"
 msgstr ""
 
-#: classes/class-meal.php:153
+#: classes/class-meal.php:153, templates/tab-content-meal.php:55
 msgid "Breakfast"
 msgstr ""
 
@@ -100,7 +104,7 @@ msgstr ""
 msgid "Breakfast Snack"
 msgstr ""
 
-#: classes/class-meal.php:171
+#: classes/class-meal.php:171, templates/tab-content-meal.php:69
 msgid "Lunch"
 msgstr ""
 
@@ -112,7 +116,7 @@ msgstr ""
 msgid "Dinner"
 msgstr ""
 
-#: classes/class-meal.php:207, classes/class-settings.php:131, templates/single-plan-tabs.php:25
+#: classes/class-meal.php:207, classes/class-settings.php:131, templates/single-plan-tabs.php:25, templates/tab-content-meal.php:96
 msgid "Meal Plan"
 msgstr ""
 
@@ -178,7 +182,7 @@ msgstr ""
 msgid "Connect this to the day plan it applies to, using the field provided."
 msgstr ""
 
-#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:30, templates/tab-content-recipes.php:31
+#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:30, templates/tab-content-meal.php:105, templates/tab-content-recipes.php:31
 msgid "Recipes"
 msgstr ""
 
@@ -360,12 +364,37 @@ msgstr ""
 msgid "Place order"
 msgstr ""
 
+#: classes/class-woocommerce.php:182
+msgid "My Stats"
+msgstr ""
+
+#: classes/class-woocommerce.php:343
+msgid "Additional Information"
+msgstr ""
+
+#. translators: %s: field
+#: classes/class-woocommerce.php:395
+msgid "%s is a required field."
+msgstr ""
+
+#: classes/class-woocommerce.php:417, classes/class-woocommerce.php:464
+msgid "required"
+msgstr ""
+
 #: classes/class-woocommerce.php:505, classes/class-woocommerce.php:515, classes/class-woocommerce.php:525
 msgid "Weight"
 msgstr ""
 
+#: classes/class-woocommerce.php:506, classes/class-woocommerce.php:516, classes/class-woocommerce.php:526
+msgid "kg’s"
+msgstr ""
+
 #: classes/class-woocommerce.php:535, classes/class-woocommerce.php:545, classes/class-woocommerce.php:555
 msgid "Waist"
+msgstr ""
+
+#: classes/class-woocommerce.php:536, classes/class-woocommerce.php:546, classes/class-woocommerce.php:556
+msgid "cm’s"
 msgstr ""
 
 #: classes/class-woocommerce.php:565, classes/class-woocommerce.php:575, classes/class-woocommerce.php:585
@@ -492,7 +521,7 @@ msgstr ""
 msgid "Im not done!"
 msgstr ""
 
-#: templates/archive-recipe.php:38, templates/featured-recipes.php:35
+#: templates/archive-recipe.php:38, templates/featured-recipes.php:35, templates/tab-content-meal.php:107, templates/tab-content-recipes.php:59
 msgid "View Recipe"
 msgstr ""
 
@@ -508,6 +537,14 @@ msgstr ""
 msgid "Featured Workout"
 msgstr ""
 
+#: templates/page-template-my-plan.php:46
+msgid "My Profile"
+msgstr ""
+
+#: templates/page-template-my-plan.php:47
+msgid "Update your details below"
+msgstr ""
+
 #: templates/single-plan-tabs.php:11
 msgid "Overview"
 msgstr ""
@@ -518,6 +555,30 @@ msgstr ""
 
 #: templates/tab-content-meal.php:20
 msgid "My Meal Plan"
+msgstr ""
+
+#: templates/tab-content-meal.php:59, templates/tab-content-meal.php:73
+msgid "Snack"
+msgstr ""
+
+#: templates/tab-content-meal.php:83
+msgid "Supper"
+msgstr ""
+
+#: templates/tab-content-meal.php:96
+msgid "Extras"
+msgstr ""
+
+#: templates/tab-content-meal.php:106
+msgid "If theres a recipe for the day you can find it here or under the recipes tab."
+msgstr ""
+
+#: templates/tab-content-meal.php:117
+msgid "Checkout the shopping list and make sure you have all the goodies you need!"
+msgstr ""
+
+#: templates/tab-content-meal.php:118
+msgid "View Shopping List"
 msgstr ""
 
 #: templates/tab-content-workout.php:32

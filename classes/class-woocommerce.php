@@ -179,7 +179,7 @@ class Woocommerce {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
-		echo wp_kses_post( '<h2 class="title-lined my-stats-title">My Stats</h2>' );
+		echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
 		echo wp_kses_post( '<div class="my-stats">' );
 
 		foreach ( $fields as $key => $field_args ) {
@@ -340,7 +340,7 @@ class Woocommerce {
 	public function iconic_print_user_admin_fields() {
 		$fields = $this->get_account_fields();
 		?>
-		<h2><?php esc_html_e( 'Additional Information', 'iconic' ); ?></h2>
+		<h2><?php esc_html_e( 'Additional Information', 'lsx-health-plan' ); ?></h2>
 		<table class="form-table" id="iconic-additional-information">
 			<tbody>
 			<?php foreach ( $fields as $key => $field_args ) { ?>
@@ -392,7 +392,7 @@ class Woocommerce {
 
 			if ( empty( $_POST[ $key ] ) ) {
 				/* translators: %s: field */
-				$message = sprintf( __( '%s is a required field.', 'iconic' ), '<strong>' . $field_args['label'] . '</strong>' );
+				$message = sprintf( __( '%s is a required field.', 'lsx-health-plan' ), '<strong>' . $field_args['label'] . '</strong>' );
 				$errors->add( $key, $message );
 			}
 		}
@@ -414,7 +414,7 @@ class Woocommerce {
 
 			if ( $args['required'] ) {
 				$args['class'][] = 'validate-required';
-				$required        = ' <abbr class="required" title="' . esc_attr__( 'required', 'woocommerce' ) . '">*</abbr>';
+				$required        = ' <abbr class="required" title="' . esc_attr__( 'required', 'lsx-health-plan' ) . '">*</abbr>';
 			} else {
 				$required = '';
 			}
@@ -461,7 +461,7 @@ class Woocommerce {
 			$sort            = $args['priority'] ? $args['priority'] : '';
 			$field_container = '<p class="form-row %1$s" id="%2$s" data-priority="' . esc_attr( $sort ) . '">%3$s</p>';
 			$args['class'][] = 'validate-required';
-			$required        = ' <abbr class="required" title="' . esc_attr__( 'required', 'woocommerce' ) . '">*</abbr>';
+			$required        = ' <abbr class="required" title="' . esc_attr__( 'required', 'lsx-health-plan' ) . '">*</abbr>';
 
 			$field .= '<input accept="image/*" type="file" class="input-text ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  value="" ' . implode( ' ', $custom_attributes ) . ' />';
 
@@ -503,7 +503,7 @@ class Woocommerce {
 			'weight_start'  => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -513,7 +513,7 @@ class Woocommerce {
 			'weight_goal'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -523,7 +523,7 @@ class Woocommerce {
 			'weight_end'    => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => 'kg’s',
+				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -533,7 +533,7 @@ class Woocommerce {
 			'waist_start'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'cm’s',
+				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -543,7 +543,7 @@ class Woocommerce {
 			'waist_goal'    => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'cm’s',
+				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -553,7 +553,7 @@ class Woocommerce {
 			'waist_end'     => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => 'cm’s',
+				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,

@@ -87,7 +87,7 @@ function lsx_add_login_logout_register_menu( $items, $args ) {
 		$loginoutlink = ob_get_contents();
 		ob_end_clean();
 		if ( ! is_user_logged_in() ) {
-			$items .= '<li class="my-login menu-item"><a rel="nofollow" href="/login/">Login</a></li>';
+			$items .= '<li class="my-login menu-item"><a rel="nofollow" href="/login/">' . __( 'Login', 'lsx-health-plan' ) . '</a></li>';
 		} else {
 			$items .= '<li class="my-login menu-item">' . $loginoutlink . '</li>';
 		}
