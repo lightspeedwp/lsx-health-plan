@@ -54,9 +54,9 @@
 					?>
 					<div class="col-md-4 recipe-column">
 						<div class="content-box box-shadow">
-							<h3 class="recipe-title title-lined"><?php echo the_title(); ?></h3>
+							<h3 class="recipe-title title-lined"><?php the_title(); ?></h3>
 							<?php table_recipe_data(); ?>
-							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full"><?php echo wp_kses_post( 'View Recipe', 'lsx-health-plan' ); ?></a>
+							<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
 						</div>
 					</div>
 				<?php

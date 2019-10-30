@@ -42,7 +42,10 @@ get_header(); ?>
 									}
 								}
 							}
-							echo do_shortcode( '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">My Profile</h2><p>Update your details below</p>[woocommerce_my_account]</div></div>' );
+
+							$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
+							$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
+							echo do_shortcode( '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">' . $my_profile_string . '</h2><p>' . $my_profile_tagline . '</p>[woocommerce_my_account]</div></div>' );
 						} else if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 							echo do_shortcode( '[woocommerce_my_account]' );
 						} else {
