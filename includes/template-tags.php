@@ -206,7 +206,14 @@ function lsx_health_plan_my_profile_box() {
 				?>
 			</div>
 			<div class="edit-profile">
-				<a class="btn btn-green" href="<?php echo esc_url( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>edit-account/"><?php esc_html_e( 'Edit Profile', 'lsx-health-plan' ); ?></a>
+				<?php
+				if ( function_exists( 'wc_get_page_id' ) ) {
+					$url_id = wc_get_page_id( 'myaccount' );
+				} else {
+					$url_id = '';
+				}
+				?>
+				<a class="btn btn-green" href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit Profile', 'lsx-health-plan' ); ?></a>
 			</div>
 		</div>
 

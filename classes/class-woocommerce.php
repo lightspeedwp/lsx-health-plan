@@ -161,12 +161,14 @@ class Woocommerce {
 		}
 
 		foreach ( $fields as $key => $field_args ) {
-			if ( empty( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) {
+			if ( isset( $_POST[ $key ] ) && empty( $_POST[ $key ] ) && wp_verify_nonce( sanitize_key( $_POST[ $key ] ) ) ) {
 				$fields[ $key ]['value'] = '';
 				continue;
 			}
 
-			$fields[ $key ]['value'] = sanitize_key( $_POST[ $key ] );
+			if ( isset( $_POST[ $key ] ) ) {
+				$fields[ $key ]['value'] = sanitize_key( $_POST[ $key ] );
+			}
 		}
 
 		return $fields;
@@ -181,6 +183,10 @@ class Woocommerce {
 
 		echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
 		echo wp_kses_post( '<div class="my-stats">' );
+
+		echo wp_kses_post( '<p class="form-row form-label">' . __( 'Start', 'lsx-health-plan' ) . '</p>');
+		echo wp_kses_post( '<p class="form-row form-label">' . __( 'Goal', 'lsx-health-plan' ) . '</p>');
+		echo wp_kses_post( '<p class="form-row form-label">' . __( 'End', 'lsx-health-plan' ) . '</p>');
 
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;

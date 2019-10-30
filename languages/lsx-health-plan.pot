@@ -481,43 +481,43 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: includes/template-tags.php:209
+#: includes/template-tags.php:216
 msgid "Edit Profile"
 msgstr ""
 
-#: includes/template-tags.php:220
+#: includes/template-tags.php:227
 msgid "Start"
 msgstr ""
 
-#: includes/template-tags.php:221
+#: includes/template-tags.php:228
 msgid "Goal"
 msgstr ""
 
-#: includes/template-tags.php:222
+#: includes/template-tags.php:229
 msgid "Current"
 msgstr ""
 
-#: includes/template-tags.php:227
+#: includes/template-tags.php:234
 msgid "Weight:"
 msgstr ""
 
-#: includes/template-tags.php:257
+#: includes/template-tags.php:264
 msgid "Waist:"
 msgstr ""
 
-#: includes/template-tags.php:287
+#: includes/template-tags.php:294
 msgid "Fitness:"
 msgstr ""
 
-#: includes/template-tags.php:496
+#: includes/template-tags.php:503
 msgid "Complete Day"
 msgstr ""
 
-#: includes/template-tags.php:502, includes/template-tags.php:528, templates/content-recipe.php:38
+#: includes/template-tags.php:509, includes/template-tags.php:535, templates/content-recipe.php:38
 msgid "Back To My Plan"
 msgstr ""
 
-#: includes/template-tags.php:522
+#: includes/template-tags.php:529
 msgid "Im not done!"
 msgstr ""
 
@@ -583,6 +583,14 @@ msgstr ""
 
 #: templates/tab-content-workout.php:32
 msgid "My Workout"
+msgstr ""
+
+#: templates/tab-content-workout.php:40
+msgid "Dont forget your warm up!"
+msgstr ""
+
+#: templates/tab-content-workout.php:41
+msgid "Be sure to do the warm-up before every workout session."
 msgstr ""
 
 #: templates/tab-content-workout.php:46

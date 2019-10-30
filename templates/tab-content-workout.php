@@ -37,8 +37,8 @@
 				<div class="workout-instructions">
 					<div class="row">
 						<div class="col-md-6">
-							<h3><?php echo wp_kses_post( 'Dont forget your warm up!', 'lsx-health-plan' ); ?></h3>
-							<p><?php echo wp_kses_post( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
+							<h3><?php esc_html_e( 'Dont forget your warm up!', 'lsx-health-plan' ); ?></h3>
+							<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
 						</div>
 						<div class="col-md-6">
 							<div class="single-plan-inner-buttons">
