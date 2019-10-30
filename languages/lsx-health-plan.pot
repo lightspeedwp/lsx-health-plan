@@ -31,7 +31,7 @@ msgstr ""
 msgid "Meals"
 msgstr ""
 
-#: classes/class-downloads.php:125, classes/class-recipe.php:68
+#: classes/class-downloads.php:125, classes/class-recipe.php:68, classes/class-settings.php:135
 msgid "Recipe"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Dinner"
 msgstr ""
 
-#: classes/class-meal.php:207, templates/single-plan-tabs.php:24
+#: classes/class-meal.php:207, classes/class-settings.php:131, templates/single-plan-tabs.php:25
 msgid "Meal Plan"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Connect this to the day plan it applies to, using the field provided."
 msgstr ""
 
-#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:29, templates/tab-content-recipes.php:31
+#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:30, templates/tab-content-recipes.php:31
 msgid "Recipes"
 msgstr ""
 
@@ -272,12 +272,40 @@ msgstr ""
 msgid "Get the right mix of nutrients to keep muscles strong & healthy."
 msgstr ""
 
-#: classes/class-settings.php:104
+#: classes/class-settings.php:104, classes/class-settings.php:111
 msgid "Recipes Intro"
 msgstr ""
 
-#: classes/class-settings.php:108
+#: classes/class-settings.php:108, classes/class-settings.php:115
 msgid "Let's get cooking! Delicious and easy to follow recipes."
+msgstr ""
+
+#: classes/class-settings.php:120, classes/class-settings.php:121
+msgid "Global Downloads"
+msgstr ""
+
+#: classes/class-settings.php:126
+msgid "Warm Up"
+msgstr ""
+
+#: classes/class-settings.php:127
+msgid "Set a default warm up routine."
+msgstr ""
+
+#: classes/class-settings.php:132
+msgid "Set a default meal plan."
+msgstr ""
+
+#: classes/class-settings.php:136
+msgid "Set a default recipe."
+msgstr ""
+
+#: classes/class-settings.php:139, classes/class-workout.php:59, templates/single-plan-tabs.php:20, templates/tab-content-workout.php:107
+msgid "Workout"
+msgstr ""
+
+#: classes/class-settings.php:140
+msgid "Set a default wourkout routine PDF."
 msgstr ""
 
 #: classes/class-tip.php:58
@@ -292,7 +320,7 @@ msgstr ""
 msgid "Connect the tips that apply to this day plan using the field provided."
 msgstr ""
 
-#: classes/class-video.php:58, templates/tab-content-workout.php:108
+#: classes/class-video.php:58, templates/tab-content-workout.php:109
 msgid "Video"
 msgstr ""
 
@@ -344,10 +372,6 @@ msgstr ""
 msgid "Fitness Test Score"
 msgstr ""
 
-#: classes/class-workout.php:59, templates/single-plan-tabs.php:19, templates/tab-content-workout.php:106
-msgid "Workout"
-msgstr ""
-
 #: classes/class-workout.php:129
 msgid "Exercise Group "
 msgstr ""
@@ -372,7 +396,7 @@ msgstr ""
 msgid "Workout Name"
 msgstr ""
 
-#: classes/class-workout.php:177, templates/tab-content-workout.php:107
+#: classes/class-workout.php:177, templates/tab-content-workout.php:108
 msgid "Reps / Time / Distance"
 msgstr ""
 
@@ -456,15 +480,15 @@ msgstr ""
 msgid "Fitness:"
 msgstr ""
 
-#: includes/template-tags.php:491
+#: includes/template-tags.php:496
 msgid "Complete Day"
 msgstr ""
 
-#: includes/template-tags.php:497, includes/template-tags.php:523, templates/content-recipe.php:38
+#: includes/template-tags.php:502, includes/template-tags.php:528, templates/content-recipe.php:38
 msgid "Back To My Plan"
 msgstr ""
 
-#: includes/template-tags.php:517
+#: includes/template-tags.php:522
 msgid "Im not done!"
 msgstr ""
 
@@ -484,27 +508,27 @@ msgstr ""
 msgid "Featured Workout"
 msgstr ""
 
-#: templates/single-plan-tabs.php:10
+#: templates/single-plan-tabs.php:11
 msgid "Overview"
 msgstr ""
 
-#: templates/single-plan-tabs.php:14
+#: templates/single-plan-tabs.php:15
 msgid "Warm-up"
 msgstr ""
 
-#: templates/tab-content-meal.php:19
+#: templates/tab-content-meal.php:20
 msgid "My Meal Plan"
 msgstr ""
 
-#: templates/tab-content-workout.php:31
+#: templates/tab-content-workout.php:32
 msgid "My Workout"
 msgstr ""
 
-#: templates/tab-content-workout.php:45
+#: templates/tab-content-workout.php:46
 msgid "Download Warm-Up"
 msgstr ""
 
-#: templates/tab-content-workout.php:48
+#: templates/tab-content-workout.php:49
 msgid "See Warm-Up"
 msgstr ""
 
