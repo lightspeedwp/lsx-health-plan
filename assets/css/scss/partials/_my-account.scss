@@ -419,18 +419,14 @@
 				font-size: 0;
 				display: flex;
 				flex-direction: column;
-				&:before {
-					content: "My Profile Picture";
-					font-size: 30px;
-					padding-bottom: 20px;
-					margin-bottom: 20px;
-					border-bottom: 2px solid $blue;
-				}
-				&:after {
-					content: "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb";
-					font-family: 'Noto Sans', sans-serif;
-					font-size: 15px;
-				}
+				font-size: 30px;
+				padding-bottom: 20px;
+				margin-bottom: 20px;
+				border-bottom: 2px solid $blue;
+			}
+			p.tagline {
+				font-family: 'Noto Sans', sans-serif;
+				font-size: 15px;
 			}
 			#wpua-add-existing {
 				background-color: #dcdcdc;
