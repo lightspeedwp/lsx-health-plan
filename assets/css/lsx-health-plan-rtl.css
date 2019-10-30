@@ -114,7 +114,7 @@ body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 550px
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce p.woocommerce-LostPassword.lost_password a { color: #f7ae00; }
 
-body:not(.logged-in).woocommerce-account.my-plan .woocommerce .woocommerce-ResetPassword.lost_reset_password p:first-child:before { content: 'Lost your password?'; font-size: 30px; display: block; font-family: 'Lora', serif; margin-bottom: 20px; }
+body:not(.logged-in).woocommerce-account.my-plan .woocommerce h1.lost-your-password-title { font-size: 30px; display: block; font-family: 'Lora', serif; margin-bottom: 20px; }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce .woocommerce-ResetPassword.lost_reset_password .woocommerce-form-row.form-row.form-row-first { width: 100%; }
 

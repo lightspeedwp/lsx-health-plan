@@ -44,6 +44,9 @@ class Woocommerce {
 		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
 		add_action( 'woocommerce_after_edit_account_form', array( $this, 'action_woocommerce_after_edit_account_form' ), 10, 0 );
 
+		// Lost Password fields
+		add_action( 'woocommerce_before_lost_password_form', array( $this, 'lost_password_page_title' ), 10 );
+
 		add_action( 'wp', array( $this, 'allow_reset_password_page' ), 9 );
 	}
 
@@ -630,5 +633,11 @@ class Woocommerce {
 			}
 		}
 		return $classes;
+	}
+
+	public function lost_password_page_title() {
+		?>
+		<h1 class="lost-your-password-title"><?php esc_html_e( 'Lost your password?', 'lsx-health-plan' ); ?></h1>
+		<?php
 	}
 }
