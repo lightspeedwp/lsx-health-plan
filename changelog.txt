@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.2.0 - (in development)
+* Patch - Made sure that connected ids in the "trash" do not show. #20
+
 ### 1.1.1 30 October 2019
 * Fix - Added in a function to filters downloads that do not exist.
 * Fix - Applied the_content filters to the meal plan paragraphs and the workouts text #18
