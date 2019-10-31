@@ -127,22 +127,27 @@ class Settings {
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
 				'limit'       => 1,
+				'id'          => 'plan_warmup',
 			),
 			'meal'    => array(
 				'title'       => __( 'Meal Plan', 'lsx-health-plan' ),
 				'description' => __( 'Set a default meal plan.', 'lsx-health-plan' ),
+				'id'          => 'connected_meals',
 			),
 			'recipe'  => array(
 				'title'       => __( 'Recipe', 'lsx-health-plan' ),
 				'description' => __( 'Set a default recipe.', 'lsx-health-plan' ),
+				'id'          => 'connected_recipes',
 			),
 			'workout' => array(
 				'title'       => __( 'Workout', 'lsx-health-plan' ),
 				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
+				'id'          => 'connected_workouts',
 			),
 			'tip' => array(
 				'title'       => __( 'Tip', 'lsx-health-plan' ),
 				'description' => __( 'Set a default tip', 'lsx-health-plan' ),
+				'id'          => 'connected_tips',
 			),
 		);
 
@@ -158,7 +163,7 @@ class Settings {
 				array(
 					'name'       => $default_type['title'],
 					'desc'       => $default_type['description'],
-					'id'         => 'default_' . $type,
+					'id'         => $default_type['id'],
 					'type'       => 'post_search_ajax',
 					'limit'      => $limit,
 					'sortable'   => $sortable,
