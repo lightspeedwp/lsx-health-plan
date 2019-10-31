@@ -23,7 +23,10 @@ function has_attached_post( $post_id = '', $meta_key = '', $single = true ) {
 	}
 	$items = get_post_meta( $post_id, $meta_key, $single );
 	if ( '' !== $items && false !== $items && 0 !== $items ) {
-		$has_post = true;
+		$items = check_posts_exist( $items );
+		if ( ! empty( $items ) ) {
+			$has_post = true;
+		}
 	} else {
 		// Check for defaults.
 		$options = get_option( 'all' );
@@ -153,6 +156,7 @@ function check_posts_exist( $post_ids = array() ) {
 			SELECT `ID` 
 			FROM `{$wpdb->posts}`
 			WHERE `ID` IN ({$post_ids})
+			AND `post_status` != 'trash'
 		";
 		$results = $wpdb->get_results( $query ); // WPCS: unprepared SQL
 		if ( ! empty( $results ) ) {
