@@ -60,8 +60,6 @@ var mag_ajax_js = Object.create( null );
 						name = name.replace( "][", "_" );
 						name = name.replace( "]", "" );
 						name = name.replace( "[", "_" );
-						console.log( lid );
-						console.log( name );
 	
 						var limit 	 = $(this).attr('data-limit');
 						var sortable = $(this).attr('data-sortable');
@@ -122,7 +120,6 @@ var mag_ajax_js = Object.create( null );
 	};
 
 	mag_ajax_js.event_init = function( evt, $row ) {
-		console.log('testing');
 		mag_ajax_js.init_ajax();
 	};
 
