@@ -36,7 +36,13 @@
 			<?php
 			$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
 			if ( empty( $connected_recipes ) ) {
-				return;
+				$options = \lsx_health_plan\functions\get_option( 'all' );
+				if ( isset( $options['connected_recipes'] ) && '' !== $options['connected_recipes'] && ! empty( $options['connected_recipes'] ) ) {
+					$connected_recipes = $options['connected_recipes'];
+					if ( ! array( $connected_recipes ) ) {
+						$connected_recipes = array( $connected_recipes );
+					}
+				}
 			}
 			$args    = array(
 				'orderby'   => 'date',

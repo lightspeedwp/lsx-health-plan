@@ -24,7 +24,13 @@
 			<?php
 			$connected_meals = get_post_meta( get_the_ID(), 'connected_meals', true );
 			if ( empty( $connected_meals ) ) {
-				return;
+				$options = \lsx_health_plan\functions\get_option( 'all' );
+				if ( isset( $options['connected_meals'] ) && '' !== $options['connected_meals'] && ! empty( $options['connected_meals'] ) ) {
+					$connected_meals = $options['connected_meals'];
+					if ( ! array( $connected_meals ) ) {
+						$connected_meals = array( $connected_meals );
+					}
+				}
 			}
 			$args  = array(
 				'orderby'   => 'date',

@@ -114,6 +114,68 @@ class Settings {
 			'value'   => '',
 			'default' => __( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ),
 		) );
+
+		$cmb->add_field( array(
+			'id'      => 'global_defaults_title',
+			'type'    => 'title',
+			'name'    => __( 'Global Defaults', 'lsx-health-plan' ),
+			'default' => __( 'Global Defaults', 'lsx-health-plan' ),
+		) );
+
+		$default_types = array(
+			'page'    => array(
+				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
+				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
+				'limit'       => 1,
+				'id'          => 'plan_warmup',
+			),
+			'meal'    => array(
+				'title'       => __( 'Meal Plan', 'lsx-health-plan' ),
+				'description' => __( 'Set a default meal plan.', 'lsx-health-plan' ),
+				'id'          => 'connected_meals',
+			),
+			'recipe'  => array(
+				'title'       => __( 'Recipe', 'lsx-health-plan' ),
+				'description' => __( 'Set a default recipe.', 'lsx-health-plan' ),
+				'id'          => 'connected_recipes',
+			),
+			'workout' => array(
+				'title'       => __( 'Workout', 'lsx-health-plan' ),
+				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
+				'id'          => 'connected_workouts',
+			),
+			/*'tip' => array(
+				'title'       => __( 'Tip', 'lsx-health-plan' ),
+				'description' => __( 'Set a default tip', 'lsx-health-plan' ),
+				'id'          => 'connected_tips',
+			),*/
+		);
+
+		foreach ( $default_types as $type => $default_type ) {
+			$limit    = 5;
+			$sortable = false;
+			if ( isset( $default_type['limit'] ) ) {
+				$limit    = $default_type['limit'];
+				$sortable = true;
+			}
+
+			$cmb->add_field(
+				array(
+					'name'       => $default_type['title'],
+					'desc'       => $default_type['description'],
+					'id'         => $default_type['id'],
+					'type'       => 'post_search_ajax',
+					'limit'      => $limit,
+					'sortable'   => $sortable,
+					'query_args' => array(
+						'post_type'      => array( $type ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
+
 		$cmb->add_field( array(
 			'id'      => 'global_downloads_title',
 			'type'    => 'title',

@@ -24,6 +24,12 @@ function has_attached_post( $post_id = '', $meta_key = '', $single = true ) {
 	$items = get_post_meta( $post_id, $meta_key, $single );
 	if ( '' !== $items && false !== $items && 0 !== $items ) {
 		$has_post = true;
+	} else {
+		// Check for defaults.
+		$options = get_option( 'all' );
+		if ( isset( $options[ $meta_key ] ) && '' !== $options[ $meta_key ] && ! empty( $options[ $meta_key ] ) ) {
+			$has_post = true;
+		}
 	}
 	return $has_post;
 }

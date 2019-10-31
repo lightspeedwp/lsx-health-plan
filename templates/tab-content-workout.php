@@ -59,7 +59,13 @@
 				<?php
 				$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
 				if ( empty( $connected_workouts ) ) {
-					return;
+					$options = \lsx_health_plan\functions\get_option( 'all' );
+					if ( isset( $options['connected_workouts'] ) && '' !== $options['connected_workouts'] && ! empty( $options['connected_workouts'] ) ) {
+						$connected_workouts = $options['connected_workouts'];
+						if ( ! array( $connected_workouts ) ) {
+							$connected_workouts = array( $connected_workouts );
+						}
+					}
 				}
 				$args     = array(
 					'orderby'   => 'date',
