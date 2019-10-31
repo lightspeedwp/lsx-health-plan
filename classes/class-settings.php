@@ -144,11 +144,11 @@ class Settings {
 				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
 				'id'          => 'connected_workouts',
 			),
-			'tip' => array(
+			/*'tip' => array(
 				'title'       => __( 'Tip', 'lsx-health-plan' ),
 				'description' => __( 'Set a default tip', 'lsx-health-plan' ),
 				'id'          => 'connected_tips',
-			),
+			),*/
 		);
 
 		foreach ( $default_types as $type => $default_type ) {
