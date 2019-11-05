@@ -17,7 +17,7 @@
 	</div><!-- .entry-meta -->
 
 	<div id="single-recipe" class="entry-content">
-		<h2 class="title-lined"><?php esc_html_e( 'Recipe: ', 'lsx-health-plan' ); ?><?php the_title(); ?></h2>
+		<h2 class="title-lined"><span class="recipe-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
 		<div class="row">
 			<div class="col-md-6 recipe-image">
 				<?php
