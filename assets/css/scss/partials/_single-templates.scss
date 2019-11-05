@@ -31,7 +31,7 @@
 				display: grid;
 				grid-template-columns: auto auto;
 				tr {
-					display: grid;
+					display: table-row;
 					grid-template-columns: 50% 50%;
 				}
 				td:first-child {
