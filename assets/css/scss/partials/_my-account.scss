@@ -233,7 +233,6 @@
 						.week-row-inner {
 							justify-content: flex-start;
 							.day {
-								&:not(.completed) {
 									margin-right: 12px;
 								}
 							}
@@ -242,6 +241,17 @@
 				}
 			}
 		}
+		@media (max-width: 500px) {
+			.daily-plan-block.week-grid {
+				.week-row {
+					.week-row-inner {
+						.day.completed {
+							padding: 5px;
+						}
+					}
+				}
+			}
+		}		
 		@media (min-width:900px) {
 			max-width: 120px;
 		}
