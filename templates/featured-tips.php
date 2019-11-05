@@ -51,6 +51,11 @@ $tips = new WP_Query( $args );
 							<div class="thumbnail tip-thumbnail"><?php echo wp_kses_post( $featured_image ); ?></div>
 							<?php
 						}
+						else {
+							?>
+							<div class="thumbnail tip-thumbnail"><img src="<?php echo plugin_dir_url( __FILE__ ) . '../assets/images/TipPlaceholder.png'; ?>"></div>
+							<?php
+						}
 						?>
 						</div>
 					</div>
