@@ -93,7 +93,7 @@
 			?>
 			<?php wp_reset_postdata(); ?>
 			<div class="extra-title">
-						<h2 class="title-lined"><?php esc_html_e( 'Meal Plan ', 'lsx-health-plan' ); ?><span><?php esc_html_e( 'Extras', 'lsx-health-plan' ); ?></span></h2>
+						<h2 class="title-lined"><?php esc_html_e( 'Meal Plan ', 'lsx-health-plan' ); ?> <span><?php esc_html_e( 'Extras', 'lsx-health-plan' ); ?></span></h2>
 					</div>
 					<div class="row tip-row extras-box">
 						<?php

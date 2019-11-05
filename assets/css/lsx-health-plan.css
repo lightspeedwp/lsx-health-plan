@@ -521,7 +521,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-recipe .recipe-image .recipe-data tbody { display: -ms-grid; display: grid; -ms-grid-columns: auto auto; grid-template-columns: auto auto; }
 
-#single-recipe .recipe-image .recipe-data tbody tr { display: -ms-grid; display: grid; -ms-grid-columns: 50% 50%; grid-template-columns: 50% 50%; }
+#single-recipe .recipe-image .recipe-data tbody tr {  display: table-row; -ms-grid-columns: 50% 50%; grid-template-columns: 50% 50%; }
 
 #single-recipe .recipe-image .recipe-data tbody td:first-child { color: #418ad0; }
 
