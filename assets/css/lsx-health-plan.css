@@ -324,7 +324,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
 
-@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } }
+@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } .daily-plan-block.week-grid .week-row .week-row-inner { justify-content:flex-start; } .daily-plan-block.week-grid .week-row .week-row-inner .day {
+  margin-right:12px } }
+
+@media (max-width: 500px) {.daily-plan-block.week-grid .week-row .week-row-inner .day.completed { padding:5px }}
 
 #single-plan-nav { margin-bottom: 15px; }
 
