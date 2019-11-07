@@ -223,6 +223,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block .day:hover .plan-content { color: #ffffff; }
 
+@media (max-width: 768px) { .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner { -ms-flex-pack: start; justify-content: flex-start; }
+  .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner .day { margin-left: 12px; } }
+
+@media (max-width: 500px) { .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner .day.completed { padding: 5px; } }
+
 @media (min-width: 900px) { .daily-plan-block .day { max-width: 120px; } }
 
 @media (max-width: 600px) { .daily-plan-block .day { height: 80px; margin-bottom: 0; } }
@@ -518,7 +523,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-recipe .recipe-image .recipe-data tbody { display: -ms-grid; display: grid; -ms-grid-columns: auto auto; grid-template-columns: auto auto; }
 
-#single-recipe .recipe-image .recipe-data tbody tr { display: -ms-grid; display: grid; -ms-grid-columns: 50% 50%; grid-template-columns: 50% 50%; }
+#single-recipe .recipe-image .recipe-data tbody tr { display: table-row; -ms-grid-columns: 50% 50%; grid-template-columns: 50% 50%; }
 
 #single-recipe .recipe-image .recipe-data tbody td:first-child { color: #418ad0; }
 

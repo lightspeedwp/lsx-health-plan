@@ -223,6 +223,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block .day:hover .plan-content { color: #ffffff; }
 
+@media (max-width: 768px) { .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner { -ms-flex-pack: start; justify-content: flex-start; }
+  .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner .day { margin-right: 12px; } }
+
+@media (max-width: 500px) { .daily-plan-block .day .daily-plan-block.week-grid .week-row .week-row-inner .day.completed { padding: 5px; } }
+
 @media (min-width: 900px) { .daily-plan-block .day { max-width: 120px; } }
 
 @media (max-width: 600px) { .daily-plan-block .day { height: 80px; margin-bottom: 0; } }
@@ -324,10 +329,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
 
-@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } .daily-plan-block.week-grid .week-row .week-row-inner { justify-content:flex-start; } .daily-plan-block.week-grid .week-row .week-row-inner .day {
-  margin-right:12px } }
-
-@media (max-width: 500px) {.daily-plan-block.week-grid .week-row .week-row-inner .day.completed { padding:5px }}
+@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } }
 
 #single-plan-nav { margin-bottom: 15px; }
 
