@@ -50,6 +50,9 @@ class Endpoints {
 	 * Registers the rewrites.
 	 */
 	public function add_rewrite_rules() {
+
+		$var  = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
+
 		// Here is where we add in the rewrite rules above the normal WP ones.
 		add_rewrite_tag( '%endpoint%', '([^&]+)' );
 
