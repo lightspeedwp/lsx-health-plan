@@ -16,9 +16,12 @@ if ( false === $warm_up || '' === $warm_up ) {
 }
 
 if ( false !== $warm_up && '' !== $warm_up ) {
+	if ( ! is_array( $warm_up ) ) {
+		$warm_up = array( $warm_up );
+	}
 	$warmup_query = new WP_Query(
 		array(
-			'post__in'  => array( $warm_up ),
+			'post__in'  => $warm_up,
 			'post_type' => 'page',
 		)
 	);
