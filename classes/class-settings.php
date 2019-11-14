@@ -63,7 +63,7 @@ class Settings {
 			'option_key'   => 'lsx_health_plan_options', // The option key and admin menu page slug.
 			'parent_slug'  => 'options-general.php', // Make options page a submenu item of the themes menu.
 			'capability'   => 'manage_options', // Cap required to view options-page.
-		) );	
+		) );
 
 		$cmb->add_field( array(
 			'name'       => __( 'Membership Product', 'lsx-health-plan' ),
@@ -240,7 +240,7 @@ class Settings {
 			'id'      => 'endpoint_warm_up',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "warm-up" ),
+			'default' => 'warm-up',
 		) );
 
 		$cmb->add_field( array(
@@ -248,7 +248,7 @@ class Settings {
 			'id'      => 'endpoint_workout',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "workout" ),
+			'default' => 'workout',
 		) );
 
 		$cmb->add_field( array(
@@ -256,7 +256,7 @@ class Settings {
 			'id'      => 'endpoint_meal',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "meal" ),
+			'default' => 'meal',
 		) );
 
 		$cmb->add_field( array(
@@ -264,7 +264,7 @@ class Settings {
 			'id'      => 'endpoint_recipe',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "recipe" ),
+			'default' => 'recipe',
 		) );
 
 		$cmb->add_field( array(
@@ -272,7 +272,7 @@ class Settings {
 			'id'      => 'login_slug',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "login" ),
+			'default' => 'login',
 		) );
 
 		$cmb->add_field( array(
@@ -280,7 +280,7 @@ class Settings {
 			'id'      => 'my_plan_slug',
 			'type'    => 'input',
 			'value'   => '',
-			'default' => __( "my-plan" ),
+			'default' => 'my-plan',
 		) );
 	}
 
