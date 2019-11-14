@@ -118,7 +118,7 @@ function lsx_health_plan_recipe_box() {
 				</div>
 				<?php
 			}
-			$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipes', false );
+			$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipe', false );
 			if ( false === $recipes ) {
 				$recipes = 'recipes';
 			}
