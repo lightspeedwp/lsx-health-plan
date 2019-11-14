@@ -25,8 +25,12 @@ function lsx_health_plan_warmup_box() {
 				</div>
 				<?php
 			}
+			$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
+			if ( false === $warm_up ) {
+				$warm_up = 'warm-up';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>warm-up/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $warm_up ); ?>/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -52,8 +56,12 @@ function lsx_health_plan_workout_box() {
 				</div>
 				<?php
 			}
+			$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
+			if ( false === $warm_up ) {
+				$workout = 'workout';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>workout/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $workout ); ?>/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -79,8 +87,12 @@ function lsx_health_plan_meal_box() {
 				</div>
 				<?php
 			}
+			$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
+			if ( false === $meal ) {
+				$meal = 'meal';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>meal/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $meal ); ?>/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -106,8 +118,12 @@ function lsx_health_plan_recipe_box() {
 				</div>
 				<?php
 			}
+			$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipes', false );
+			if ( false === $recipes ) {
+				$recipes = 'meal';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $recipes ); ?>/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
