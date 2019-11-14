@@ -30,7 +30,7 @@
 		}
 		if ( lsx_health_plan_has_meal() ) {
 			$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
-			if ( false === $workout ) {
+			if ( false === $meal ) {
 				$meal = 'meal';
 			}
 			?>
@@ -43,7 +43,7 @@
 				$recipe = 'recipes';
 			}
 			?>
-				<li class="<?php lsx_health_plan_nav_class( 'recipes' ); ?>"><a class="recipes-tab" href="<?php the_permalink(); ?>r<?php echo esc_attr( $recipe ); ?>/"><?php lsx_get_svg_icon( 'recipes.svg' ); ?> <?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></a></li>
+				<li class="<?php lsx_health_plan_nav_class( 'recipes' ); ?>"><a class="recipes-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $recipe ); ?>/"><?php lsx_get_svg_icon( 'recipes.svg' ); ?> <?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></a></li>
 			<?php
 		}
 		?>

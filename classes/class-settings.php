@@ -265,8 +265,23 @@ class Settings {
 			'type'    => 'input',
 			'value'   => '',
 			'default' => __( "recipe" ),
-		) );		
+		) );
 
+		$cmb->add_field( array(
+			'name'    => __( 'Login Slug', 'lsx-health-plan' ),
+			'id'      => 'login_slug',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => __( "login" ),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'My Plan Slug', 'lsx-health-plan' ),
+			'id'      => 'my_plan_slug',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => __( "my-plan" ),
+		) );
 	}
 
 }

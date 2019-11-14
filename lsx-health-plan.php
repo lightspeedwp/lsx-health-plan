@@ -87,7 +87,11 @@ function lsx_add_login_logout_register_menu( $items, $args ) {
 		$loginoutlink = ob_get_contents();
 		ob_end_clean();
 		if ( ! is_user_logged_in() ) {
-			$items .= '<li class="my-login menu-item"><a rel="nofollow" href="/teken-in/">' . __( 'Login', 'lsx-health-plan' ) . '</a></li>';
+			$login_slug = \lsx_health_plan\functions\get_option( 'login_slug', false );
+			if ( false === $login_slug ) {
+				$login_slug = 'login';
+			}
+			$items .= '<li class="my-login menu-item"><a rel="nofollow" href="/' . $login_slug . '/">' . __( 'Login', 'lsx-health-plan' ) . '</a></li>';
 		} else {
 			$items .= '<li class="my-login menu-item">' . $loginoutlink . '</li>';
 		}
@@ -104,7 +108,11 @@ add_filter( 'wp_nav_menu_items', 'lsx_add_login_logout_register_menu', 199, 2 );
  * @return void
  */
 function lsx_login_redirect() {
-	return home_url( 'my-plan' );
+	$plan_slug = \lsx_health_plan\functions\get_option( 'my_plan_slug', false );
+	if ( false === $plan_slug ) {
+		$plan_slug = 'my-plan';
+	}
+	return home_url( $plan_slug );
 }
 add_filter( 'woocommerce_login_redirect', 'lsx_login_redirect' );
 

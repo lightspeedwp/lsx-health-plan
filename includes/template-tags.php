@@ -57,7 +57,7 @@ function lsx_health_plan_workout_box() {
 				<?php
 			}
 			$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
-			if ( false === $warm_up ) {
+			if ( false === $workout ) {
 				$workout = 'workout';
 			}
 			?>
@@ -120,7 +120,7 @@ function lsx_health_plan_recipe_box() {
 			}
 			$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipes', false );
 			if ( false === $recipes ) {
-				$recipes = 'meal';
+				$recipes = 'recipes';
 			}
 			?>
 			<a href="<?php the_permalink(); ?><?php echo esc_attr( $recipes ); ?>/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
