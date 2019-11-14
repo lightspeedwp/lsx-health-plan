@@ -46,14 +46,13 @@ $tips = new WP_Query( $args );
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="tipimage">
 						<?php
-						if ( ! empty( $featured_image ) ) {
+						if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 							?>
 							<div class="thumbnail tip-thumbnail"><?php echo wp_kses_post( $featured_image ); ?></div>
 							<?php
-						}
-						else {
+						} else {
 							?>
-							<div class="thumbnail tip-thumbnail"><img src="<?php echo plugin_dir_url( __FILE__ ) . '../assets/images/TipPlaceholder.png'; ?>"></div>
+							<div class="thumbnail tip-thumbnail"><img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/TipPlaceholder.png' ); ?>"></div>
 							<?php
 						}
 						?>

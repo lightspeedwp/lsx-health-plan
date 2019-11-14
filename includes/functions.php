@@ -49,7 +49,7 @@ function get_option( $key = '', $default = false ) {
 		return cmb2_get_option( 'lsx_health_plan_options', $key, $default );
 	}
 	// Fallback to get_option if CMB2 is not loaded yet.
-	$opts = get_option( 'lsx_health_plan_options', $default );
+	$opts = \get_option( 'lsx_health_plan_options', $default );
 	$val  = $default;
 	if ( 'all' === $key ) {
 		$val = $opts;

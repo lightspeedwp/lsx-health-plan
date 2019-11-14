@@ -127,7 +127,11 @@ function lsx_health_plan_user_has_purchase() {
  */
 function lsx_health_plan_is_current_tab( $needle = '' ) {
 	$is_tab = false;
-	if ( is_singular( 'plan' ) || is_page( 'my-plan' ) ) {
+	$plan_slug = \lsx_health_plan\functions\get_option( 'my_plan_slug', false );
+	if ( false === $plan_slug ) {
+		$plan_slug = 'my-plan';
+	}
+	if ( is_singular( 'plan' ) || is_page( $plan_slug ) ) {
 		$endpoint = get_query_var( 'endpoint' );
 		if ( false !== $endpoint && $needle === $endpoint ) {
 			$is_tab = true;

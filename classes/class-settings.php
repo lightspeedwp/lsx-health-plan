@@ -226,5 +226,62 @@ class Settings {
 				)
 			);
 		}
+
+		$cmb->add_field( array(
+			'id'      => 'endpoints_title',
+			'type'    => 'title',
+			'name'    => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
+			'default' => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
+			'description' => __( 'You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Warm Up Endpoint', 'lsx-health-plan' ),
+			'id'      => 'endpoint_warm_up',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'warm-up',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Workout Endpoint', 'lsx-health-plan' ),
+			'id'      => 'endpoint_workout',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'workout',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Meal Endpoint', 'lsx-health-plan' ),
+			'id'      => 'endpoint_meal',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'meal',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Recipes Endpoint', 'lsx-health-plan' ),
+			'id'      => 'endpoint_recipe',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'recipe',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Login Slug', 'lsx-health-plan' ),
+			'id'      => 'login_slug',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'login',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'My Plan Slug', 'lsx-health-plan' ),
+			'id'      => 'my_plan_slug',
+			'type'    => 'input',
+			'value'   => '',
+			'default' => 'my-plan',
+		) );
 	}
+
 }
