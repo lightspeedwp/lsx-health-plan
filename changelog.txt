@@ -1,7 +1,17 @@
 ## Change log
 
-### 1.2.0 - (in development)
-* Patch - Made sure that connected ids in the "trash" do not show. #20
+### 1.2.0
+* Dev - Added in translatable endpoint settings.
+* Dev - Added in placeholder image for Tips.
+* Fix - Spacing and margins fixes in general.
+* Fix - Styling fixes for the Daily Plan list on tablet view.
+* Dev - Improved the search results for Health Plan items.
+* Dev- Added in Settings to assign a default workout, recipe, warm up and meal type post.
+* Fix - Changed the setting id to mimic the meta_key, and added in a check for hs_attachement.
+* Dev - Adding in a setting to assign the default post type connections.
+* Fix - Made sure that connected ids in the "trash" do not show.
+* Dev - General testing to ensure compatibility with latest WordPress version (5.3).
+* Dev - Checking compatibility with LSX 2.6 release.
 
 ### 1.1.1 30 October 2019
 * Fix - Added in a function to filters downloads that do not exist.

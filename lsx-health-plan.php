@@ -2,9 +2,9 @@
 /*
  * Plugin Name:	LSX Health Plan
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-health-plan
- * Description:	A meal and workout plan, with recipes
+ * Description:	LSX Health Plan extension adds a meal and workout plan, with recipes.
  * Author:		LightSpeed
- * Version: 	1.1.1
+ * Version: 	1.2.0
  * Author URI: 	https://www.lsdev.biz/
  * License: 	GPL3
  * Text Domain: lsx-health-plan
@@ -18,14 +18,14 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_HEALTH_PLAN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_HEALTH_PLAN_CORE', __FILE__ );
 define( 'LSX_HEALTH_PLAN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_HEALTH_PLAN_VER', '1.1.1' );
+define( 'LSX_HEALTH_PLAN_VER', '1.2.0' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
 require_once LSX_HEALTH_PLAN_PATH . '/classes/class-core.php';
 
 /**
- * Remove unnesesary custom post types
+ * Remove unnecessary custom post types
  *
  * @return void
  */
@@ -74,7 +74,7 @@ if ( ( isset( $_GET['activated'] ) && wp_verify_nonce( sanitize_key( $_GET['acti
 }
 
 /**
- * Add Loing Logut Button to Main Menu
+ * Add Login Logout Button to Main Menu
  *
  * @param [type] $items
  * @param [type] $args
