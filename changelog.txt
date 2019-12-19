@@ -1,6 +1,6 @@
 ## Change log
 
-### 1.2.0
+### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.
 * Dev - Added in placeholder image for Tips.
 * Fix - Spacing and margins fixes in general.
