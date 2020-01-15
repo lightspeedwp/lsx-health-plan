@@ -334,8 +334,8 @@ class Settings {
 		$cmb->add_field( array(
 			'id'      => 'post_type_toggles_title',
 			'type'    => 'title',
-			'name'    => __( 'Enable / Disable Post Types', 'lsx-health-plan' ),
-			'default' => __( 'Enable / Disable Post Types', 'lsx-health-plan' ),
+			'name'    => __( 'Disable Post Types', 'lsx-health-plan' ),
+			'default' => __( 'Disable Post Types', 'lsx-health-plan' ),
 			'description' => __( 'Disable post types if you are wanting a minimal site.', 'lsx-health-plan' ),
 		) );
 
@@ -345,10 +345,10 @@ class Settings {
 			}
 			$cmb->add_field( array(
 				'name'    => ucwords( $post_type ),
-				'id'      => $post_type . '_enabled',
+				'id'      => $post_type . '_disabled',
 				'type'    => 'checkbox',
 				'value'   => 1,
-				'default' => true,
+				'default' => 0,
 			) );
 		}
 	}

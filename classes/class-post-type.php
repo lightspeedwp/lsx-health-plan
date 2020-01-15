@@ -1,5 +1,6 @@
 <?php
 namespace lsx_health_plan\classes;
+use lsx_health_plan\functions;
 
 /**
  * LSX Health Plan Admin Class.
