@@ -67,13 +67,8 @@ function get_option( $key = '', $default = false ) {
  * @return mixed           Option value
  */
 function get_downloads( $type = 'all', $post_id = '' ) {
-	$post_types = array(
-		'page',
-		'meal',
-		'workout',
-		'recipe',
-		'video',
-	);
+	$lsx_health_plan = \lsx_health_plan();
+	$post_types      = $lsx_health_plan->get_post_types();
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}

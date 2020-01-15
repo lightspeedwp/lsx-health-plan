@@ -43,13 +43,6 @@ class Core {
 	public $scpo_engine;
 
 	/**
-	 * The post types available
-	 *
-	 * @var array
-	 */
-	public $post_types = array();
-
-	/**
 	 * Contructor
 	 */
 	public function __construct() {

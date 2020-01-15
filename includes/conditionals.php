@@ -25,7 +25,7 @@ function lsx_health_plan_has_warmup( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_workout( $post_id = '' ) {
-	if ( ! post_exists( 'workout' ) ) {
+	if ( ! post_type_exists( 'workout' ) ) {
 		return false;
 	}
 	if ( '' === $post_id ) {
@@ -41,7 +41,7 @@ function lsx_health_plan_has_workout( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_meal( $post_id = '' ) {
-	if ( ! post_exists( 'meal' ) ) {
+	if ( ! post_type_exists( 'meal' ) ) {
 		return false;
 	}
 	if ( '' === $post_id ) {
@@ -57,7 +57,7 @@ function lsx_health_plan_has_meal( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_recipe( $post_id = '' ) {
-	if ( ! post_exists( 'recipe' ) ) {
+	if ( ! post_type_exists( 'recipe' ) ) {
 		return false;
 	}
 	if ( '' === $post_id ) {
@@ -91,7 +91,7 @@ function lsx_health_plan_has_downloads( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_tip( $post_id = '' ) {
-	if ( ! post_exists( 'tip' ) ) {
+	if ( ! post_type_exists( 'tip' ) ) {
 		return false;
 	}
 	if ( '' === $post_id ) {
@@ -107,7 +107,7 @@ function lsx_health_plan_has_tip( $post_id = '' ) {
  * @return boolean
  */
 function lsx_health_plan_has_video( $post_id = '' ) {
-	if ( ! post_exists( 'video' ) ) {
+	if ( ! post_type_exists( 'video' ) ) {
 		return false;
 	}
 	if ( '' === $post_id ) {
