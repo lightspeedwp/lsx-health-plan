@@ -345,33 +345,54 @@
 			.week-row-inner {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
-				flex-wrap: wrap;
-				.day {
-					background: none;
-					&:not(.completed) {
-						border: 3px solid $blue;
-						border-radius: 50px;
-						height: 100px;
-						width: 100px;
-						background: rgba(65, 138, 208, 0.3);
-						text-align: center;
-						display: flex;
-						justify-content: center;
+				.week-meals-recipes-box {
+					padding-right: 5px;
+					h3 {
+						background-color: $light_gray;
+						padding: 10px 16px;
+						margin-bottom: 16px;
 					}
-					&:hover {
-						&:not(.completed) {
-							background: $blue;
+					.week-meals-recipes-box-inner {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						flex-wrap: wrap;
+						.day {
+							background: none;
+							&:not(.completed) {
+								border: 4px solid $blue;
+								border-radius: 50px;
+								height: 75px;
+								width: 75px;
+								margin-right: 5px;
+								background: rgba(65, 138, 208, 0.3);
+								text-align: center;
+								display: flex;
+								justify-content: center;
+								.plan-content {
+									font-size: 18px;
+								}
+							}
+							&:hover {
+								&:not(.completed) {
+									background: $blue;
+									.plan-content {
+										color: $white;
+									}
+								}
+							}
 							.plan-content {
-								color: $white;
+								font-family: 'Noto Sans', sans-serif;
+								font-weight: 300;
+								text-transform: uppercase;
 							}
 						}
 					}
-					.plan-content {
-						font-family: 'Noto Sans', sans-serif;
-						font-weight: 300;
-						text-transform: uppercase;
-					}
+				}
+				.week-download-box {
+					background-color: $light_gray;
+					padding: 10px 16px;
+					margin-bottom: 5px;
 				}
 			}
 		}

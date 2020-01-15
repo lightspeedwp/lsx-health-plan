@@ -438,23 +438,31 @@ function lsx_health_plan_week_plan_block() {
 				<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
 				<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 					<div class="week-row-inner">
-						<?php
-						if ( $the_query->have_posts() ) :
-							while ( $the_query->have_posts() ) :
-								$the_query->the_post();
-								$completed_class = '';
-								if ( lsx_health_plan_is_day_complete() ) {
-									$completed_class = 'completed';
-								}
-								?>
-								<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-									<div class="plan-content"><?php the_title(); ?></div>
-								</a>
-								<?php
-							endwhile;
-						endif;
-						wp_reset_postdata();
-						?>
+						<div class="week-meals-recipes-box">
+							<h3 class="title"><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+							<div class="week-meals-recipes-box-inner">
+							<?php
+								if ( $the_query->have_posts() ) :
+									while ( $the_query->have_posts() ) :
+										$the_query->the_post();
+										$completed_class = '';
+										if ( lsx_health_plan_is_day_complete() ) {
+											$completed_class = 'completed';
+										}
+										?>
+										<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+											<div class="plan-content"><?php the_title(); ?></div>
+										</a>
+										<?php
+									endwhile;
+								endif;
+								wp_reset_postdata();
+							?>
+							</div>
+						</div>
+						<div class="week-download-box">
+							<h3 class="title"><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+						</div>
 					</div>
 				</div>
 			</div>
