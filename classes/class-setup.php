@@ -27,7 +27,7 @@ class Setup {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-		add_action( 'init', array( $this, 'load_shortcodes' ) );
+		add_action( 'wp_head', array( $this, 'load_shortcodes' ) );
 		$this->load_classes();
 	}
 
