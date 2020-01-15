@@ -28,6 +28,11 @@ class Settings {
 	 */
 	public function __construct() {
 		add_action( 'cmb2_admin_init', array( $this, 'register_settings_page' ) );
+		add_action( 'lsx_hp_settings_page', array( $this, 'general_settings' ), 1, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'global_defaults' ), 3, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'global_downloads' ), 5, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'endpoint_translations' ), 7, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'post_type_toggles' ), 9, 1 );
 	}
 
 	/**
@@ -64,7 +69,16 @@ class Settings {
 			'parent_slug'  => 'options-general.php', // Make options page a submenu item of the themes menu.
 			'capability'   => 'manage_options', // Cap required to view options-page.
 		) );
+		do_action( 'lsx_hp_settings_page', $cmb );
+	}
 
+	/**
+	 * Registers the general settings.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function general_settings( $cmb ) {
 		$cmb->add_field( array(
 			'name'       => __( 'Membership Product', 'lsx-health-plan' ),
 			'id'         => 'membership_product',
@@ -114,7 +128,15 @@ class Settings {
 			'value'   => '',
 			'default' => __( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ),
 		) );
+	}
 
+	/**
+	 * Registers the global default settings.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function global_defaults( $cmb ) {
 		$cmb->add_field( array(
 			'id'      => 'global_defaults_title',
 			'type'    => 'title',
@@ -175,7 +197,15 @@ class Settings {
 				)
 			);
 		}
+	}
 
+	/**
+	 * Registers the global dowloads settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function global_downloads( $cmb ) {
 		$cmb->add_field( array(
 			'id'      => 'global_downloads_title',
 			'type'    => 'title',
@@ -226,7 +256,15 @@ class Settings {
 				)
 			);
 		}
+	}
 
+	/**
+	 * Registers the endpoint translation settings.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function endpoint_translations( $cmb ) {
 		$cmb->add_field( array(
 			'id'      => 'endpoints_title',
 			'type'    => 'title',
@@ -284,4 +322,34 @@ class Settings {
 		) );
 	}
 
+	/**
+	 * Registers the post type toggle settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function post_type_toggles( $cmb ) {
+		$post_types = apply_filters( 'lsx_health_plan_post_types', $this->post_types );
+
+		$cmb->add_field( array(
+			'id'      => 'post_type_toggles_title',
+			'type'    => 'title',
+			'name'    => __( 'Enable / Disable Post Types', 'lsx-health-plan' ),
+			'default' => __( 'Enable / Disable Post Types', 'lsx-health-plan' ),
+			'description' => __( 'Disable post types if you are wanting a minimal site.', 'lsx-health-plan' ),
+		) );
+
+		foreach ( $post_types as $post_type ) {
+			if ( 'plan' === $post_type ) {
+				continue;
+			}
+			$cmb->add_field( array(
+				'name'    => ucwords( $post_type ),
+				'id'      => $post_type . '_enabled',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => true,
+			) );
+		}
+	}
 }
