@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.3.0 (In development)
+* Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
+
 ### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.
 * Dev - Added in placeholder image for Tips.
