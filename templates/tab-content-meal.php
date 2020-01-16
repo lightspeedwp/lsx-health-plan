@@ -55,42 +55,43 @@
 					?>
 					<div class="row eating-row">
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $breakfast ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $breakfast ) );
-								}
-								if ( ! empty( $breakfast_snack ) ) {
-									echo '<h3>' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $breakfast_snack ) );
-								}
-								?>
-							</div>
+							<?php
+							if ( ! empty( $breakfast ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $breakfast ) );
+								echo '</div>';
+							}
+							?>
+							<?php
+							if ( ! empty( $breakfast_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $breakfast_snack ) );
+								echo '</div>';
+							}
+							?>
 						</div>
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $lunch ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Lunch', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
-								}
-								if ( ! empty( $lunch_snack ) ) {
-									echo '<h3>' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $lunch_snack ) );
-								}
-								?>
-							</div>
+							<?php
+							if ( ! empty( $lunch ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Lunch', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
+								echo '</div>';
+							}
+							if ( ! empty( $lunch_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $lunch_snack ) );
+								echo '</div>';
+							}
+							?>
 						</div>
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $dinner ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Supper', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $dinner ) );
-								}
-								?>
-							</div>
+							<?php
+							if ( ! empty( $dinner ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Supper', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $dinner ) );
+								echo '</div>';
+							}
+							?>
 						</div>
 					</div>
 				<?php
