@@ -139,7 +139,7 @@ function lsx_health_plan_downloads_box() {
 	?>
 	<div class="col-md-4 day-download-box" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'downloads.svg' ); ?></h3>
+			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'download.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<div class="download-list">
 				<ul>
@@ -439,7 +439,7 @@ function lsx_health_plan_week_plan_block() {
 				<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 					<div class="week-row-inner">
 						<div class="week-meals-recipes-box">
-							<h3 class="title"><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+							<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
 							<div class="week-meals-recipes-box-inner">
 							<?php
 								if ( $the_query->have_posts() ) :
@@ -461,7 +461,12 @@ function lsx_health_plan_week_plan_block() {
 							</div>
 						</div>
 						<div class="week-download-box">
-							<h3 class="title"><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+							<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+							<ul class="week-download-box-list">
+								<li><a href="#">What you can and can’t eat</a></li>
+								<li><a href="#">Shopping list - Week 1</a></li>
+								<li><a href="#">Meal Plan - Week 1</a></li></li>
+							</ul>
 						</div>
 					</div>
 				</div>
