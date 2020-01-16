@@ -498,4 +498,12 @@
 			}
 		}
 	}
+
+	&.lsx-search-enabled {
+		.archive-plan {
+			.content-box {
+				margin: 0px 0 30px;
+			}
+		}
+	}
 }

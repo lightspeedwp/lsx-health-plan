@@ -123,7 +123,7 @@ class LSX_Search {
 					'default' => '',
 				)
 			);
-			$cmb->add_field(
+			/*$cmb->add_field(
 				array(
 					'name'    => __( 'Disable per page', 'lsx-health-plan' ),
 					'id'      => 'recipe_search_disable_per_page',
@@ -131,7 +131,7 @@ class LSX_Search {
 					'value'   => 1,
 					'default' => 0,
 				)
-			);
+			);*/
 			$cmb->add_field(
 				array(
 					'name'        => __( 'Collapse', 'lsx-health-plan' ),
@@ -236,14 +236,15 @@ class LSX_Search {
 			}
 			$options['display'] = array(
 				'search_enable'                => 'on',
-				'archive_disable_per_page'     => \lsx_health_plan\functions\get_option( 'recipe_search_disable_per_page', false ),
+				//'archive_disable_per_page'     => \lsx_health_plan\functions\get_option( 'recipe_search_disable_per_page', false ),
 				'archive_disable_all_sorting'  => \lsx_health_plan\functions\get_option( 'recipe_search_disable_all_sorting', false ),
 				'archive_disable_date_sorting'  => \lsx_health_plan\functions\get_option( 'recipe_search_disable_date_sorting', false ),
 				'archive_layout'               => \lsx_health_plan\functions\get_option( 'recipe_search_layout', '2cr' ),
 				'archive_layout_map'           => 'list',
-				'display_archive_result_count' => \lsx_health_plan\functions\get_option( 'recipe_search_display_result_count', 'on' ),
+				'archive_display_result_count' => \lsx_health_plan\functions\get_option( 'recipe_search_display_result_count', 'on' ),
 				'enable_collapse'              => \lsx_health_plan\functions\get_option( 'recipe_search_enable_collapse', false ),
 				'archive_facets'               => $facets,
+				'archive_display_clear_button' => \lsx_health_plan\functions\get_option( 'recipe_search_display_clear_button', false ),
 			);
 		}
 		return $options;
