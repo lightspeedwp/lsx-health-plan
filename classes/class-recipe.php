@@ -227,7 +227,7 @@ class Recipe {
 			)
 		);
 		$cmb->add_field(
-				array(
+			array(
 				'name'       => __( 'Portion', 'lsx-health-plan' ),
 				'desc'       => __( 'Add the recommended portion size i.e: 200mg', 'lsx-health-plan' ),
 				'id'         => $this->slug . '_portion',

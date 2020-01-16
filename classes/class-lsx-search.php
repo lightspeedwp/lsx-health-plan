@@ -186,7 +186,7 @@ class LSX_Search {
 
 	/**
 	 * Enables the search if it is the recipe archive.
-	 * 
+	 *
 	 * @var boolean $enabled
 	 * @return boolean
 	 */
@@ -199,7 +199,7 @@ class LSX_Search {
 
 	/**
 	 * Enables the search if it is the recipe archive.
-	 * 
+	 *
 	 * @var string $enabled
 	 * @return string
 	 */
