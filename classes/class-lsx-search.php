@@ -36,6 +36,7 @@ class LSX_Search {
 	 */
 	public function __construct() {
 		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
+		add_action( 'wp', array( $this, 'init' ), 5 );
 	}
 
 	/**
@@ -54,6 +55,19 @@ class LSX_Search {
 	}
 
 	/**
+	 * Runs the recipe search setup
+	 */
+	public function init() {
+		$enabled = \lsx_health_plan\functions\get_option( 'recipe_search_enable', false );
+		if ( false !== $enabled ) {
+			// LSX Search filters.
+			add_filter( 'lsx_search_options', array( $this, 'lsx_search_options' ), 10, 1 );
+			add_filter( 'lsx_search_enabled', array( $this, 'lsx_search_enabled' ), 10, 1 );
+			add_filter( 'lsx_search_prefix', array( $this, 'lsx_search_prefix' ), 10, 1 );
+		}
+	}
+
+	/**
 	 * Sets the FacetWP variables.
 	 */
 	public function set_facetwp_vars() {
@@ -62,8 +76,6 @@ class LSX_Search {
 		}
 
 		$this->facet_data = array();
-
-		$this->facet_data['search_form'] = esc_html__( 'Search Form', 'lsx-search' );
 		if ( ! empty( $facet_data ) && is_array( $facet_data ) ) {
 			foreach ( $facet_data as $facet ) {
 				$this->facet_data[ $facet['name'] ] = $facet['label'];
@@ -180,5 +192,60 @@ class LSX_Search {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Enables the search if it is the recipe archive.
+	 * 
+	 * @var boolean $enabled
+	 * @return boolean
+	 */
+	public function lsx_search_enabled( $enabled = false ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$enabled = true;
+		}
+		return $enabled;
+	}
+
+	/**
+	 * Enables the search if it is the recipe archive.
+	 * 
+	 * @var string $enabled
+	 * @return string
+	 */
+	public function lsx_search_prefix( $prefix = '' ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$prefix = 'archive';
+		}
+		return $prefix;
+	}
+
+	/**
+	 * Adds the recipe options to the lsx search options.
+	 *
+	 * @param array $options
+	 * @return array
+	 */
+	public function lsx_search_options( $options = array() ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+
+			$active_facets = \lsx_health_plan\functions\get_option( 'recipe_search_facets', array() );
+			$facets = array();
+			foreach ( $active_facets as $index => $facet_name ) {
+				$facets[ $facet_name ] = 'on';
+			}
+			$options['display'] = array(
+				'search_enable'                => 'on',
+				'archive_disable_per_page'     => \lsx_health_plan\functions\get_option( 'recipe_search_disable_per_page', false ),
+				'archive_disable_all_sorting'  => \lsx_health_plan\functions\get_option( 'recipe_search_disable_all_sorting', false ),
+				'archive_disable_date_sorting'  => \lsx_health_plan\functions\get_option( 'recipe_search_disable_date_sorting', false ),
+				'archive_layout'               => \lsx_health_plan\functions\get_option( 'recipe_search_layout', '2cr' ),
+				'archive_layout_map'           => 'list',
+				'display_archive_result_count' => \lsx_health_plan\functions\get_option( 'recipe_search_display_result_count', 'on' ),
+				'enable_collapse'              => \lsx_health_plan\functions\get_option( 'recipe_search_enable_collapse', false ),
+				'archive_facets'               => $facets,
+			);
+		}
+		return $options;
 	}
 }
