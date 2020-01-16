@@ -2,6 +2,8 @@
 
 ### 1.3.0 (In Development)
 * Dev - Separated the "Snack" boxes from the Meal Plan columns.
+* Dev - Added in an archive description field for the recipes post type archive.
+* Dev - Integrated the recipes archive with the LSX Search plugin.
 * Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
 
 ### 1.2.0 - 19 December 2019
