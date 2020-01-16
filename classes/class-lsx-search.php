@@ -35,7 +35,7 @@ class LSX_Search {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
+		add_action( 'lsx_hp_recipe_settings_page', array( $this, 'register_settings' ), 9, 1 );
 		add_action( 'wp', array( $this, 'init' ), 5 );
 	}
 
@@ -93,105 +93,95 @@ class LSX_Search {
 		$this->set_facetwp_vars();
 		$cmb->add_field(
 			array(
-				'id'          => 'lsx_search_settings_title',
-				'type'        => 'title',
-				'name'        => __( 'LSX Search Settings', 'lsx-health-plan' ),
-				'description' => __( 'Enable search functionality on the recipe archive.', 'lsx-health-plan' ),
+				'name'    => __( 'Enable Search', 'lsx-health-plan' ),
+				'id'      => 'recipe_search_enable',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
 			)
 		);
-		if ( post_type_exists( 'recipe' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Enable Search', 'lsx-health-plan' ),
-					'id'      => 'recipe_search_enable',
-					'type'    => 'checkbox',
-					'value'   => 1,
-					'default' => 0,
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Layout', 'lsx-health-plan' ),
-					'id'      => 'recipe_search_layout',
-					'type'    => 'select',
-					'options' => array(
-						''    => __( 'Follow the theme layout', 'lsx-health-plan' ),
-						'1c'  => __( '1 column', 'lsx-health-plan' ),
-						'2cr' => __( '2 columns / Content on right', 'lsx-health-plan' ),
-						'2cl' => __( '2 columns / Content on left', 'lsx-health-plan' ),
-					),
-					'default' => '',
-				)
-			);
-			/*$cmb->add_field(
-				array(
-					'name'    => __( 'Disable per page', 'lsx-health-plan' ),
-					'id'      => 'recipe_search_disable_per_page',
-					'type'    => 'checkbox',
-					'value'   => 1,
-					'default' => 0,
-				)
-			);*/
-			$cmb->add_field(
-				array(
-					'name'        => __( 'Collapse', 'lsx-health-plan' ),
-					'id'          => 'recipe_search_enable_collapse',
-					'type'        => 'checkbox',
-					'value'       => 1,
-					'description' => __( 'Enable collapsible filters on search results', 'lsx-health-plan' ),
-					'default'     => 0,
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'        => __( 'Disable Sorting', 'lsx-health-plan' ),
-					'id'          => 'recipe_search_disable_all_sorting',
-					'type'        => 'checkbox',
-					'value'       => 1,
-					'description' => __( 'Disables the sort by dropdown.', 'lsx-health-plan' ),
-					'default'     => 0,
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'        => __( 'Disable the date option', 'lsx-health-plan' ),
-					'id'          => 'recipe_search_disable_date_sorting',
-					'type'        => 'checkbox',
-					'value'       => 1,
-					'description' => __( 'Disables the date option for the sort by dropdown.', 'lsx-health-plan' ),
-					'default'     => 0,
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Display Result Count', 'lsx-health-plan' ),
-					'id'      => 'recipe_search_display_result_count',
-					'type'    => 'checkbox',
-					'value'   => 1,
-					'default' => 1,
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'        => __( 'Display Clear Button', 'lsx-health-plan' ),
-					'id'          => 'recipe_search_display_clear_button',
-					'type'        => 'checkbox',
-					'value'       => 1,
-					'description' => __( 'This will display a clear button next to the "result" count.', 'lsx-health-plan' ),
-					'default'     => 1,
-				)
-			);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Layout', 'lsx-health-plan' ),
+				'id'      => 'recipe_search_layout',
+				'type'    => 'select',
+				'options' => array(
+					''    => __( 'Follow the theme layout', 'lsx-health-plan' ),
+					'1c'  => __( '1 column', 'lsx-health-plan' ),
+					'2cr' => __( '2 columns / Content on right', 'lsx-health-plan' ),
+					'2cl' => __( '2 columns / Content on left', 'lsx-health-plan' ),
+				),
+				'default' => '',
+			)
+		);
+		/*$cmb->add_field(
+			array(
+				'name'    => __( 'Disable per page', 'lsx-health-plan' ),
+				'id'      => 'recipe_search_disable_per_page',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);*/
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Collapse', 'lsx-health-plan' ),
+				'id'          => 'recipe_search_enable_collapse',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Enable collapsible filters on search results', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Disable Sorting', 'lsx-health-plan' ),
+				'id'          => 'recipe_search_disable_all_sorting',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Disables the sort by dropdown.', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Disable the date option', 'lsx-health-plan' ),
+				'id'          => 'recipe_search_disable_date_sorting',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Disables the date option for the sort by dropdown.', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Display Result Count', 'lsx-health-plan' ),
+				'id'      => 'recipe_search_display_result_count',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 1,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Display Clear Button', 'lsx-health-plan' ),
+				'id'          => 'recipe_search_display_clear_button',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'This will display a clear button next to the "result" count.', 'lsx-health-plan' ),
+				'default'     => 1,
+			)
+		);
 
-			$cmb->add_field(
-				array(
-					'name'        => __( 'Facets', 'lsx-health-plan' ),
-					'description' => __( 'These are the filters that will appear on your archive page.', 'lsx-health-plan' ),
-					'id'          => 'recipe_search_facets',
-					'type'        => 'multicheck',
-					'options'     => $this->facet_data,
-				)
-			);
-		}
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Facets', 'lsx-health-plan' ),
+				'description' => __( 'These are the filters that will appear on your archive page.', 'lsx-health-plan' ),
+				'id'          => 'recipe_search_facets',
+				'type'        => 'multicheck',
+				'options'     => $this->facet_data,
+			)
+		);
 	}
 
 	/**

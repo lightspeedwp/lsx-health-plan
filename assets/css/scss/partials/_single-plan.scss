@@ -499,6 +499,15 @@
 		}
 	}
 
+	.lsx-hp-archive-description {
+		.description-wrapper {
+			margin-top: 4.25rem;
+			p {
+				margin-bottom:0px;
+			}
+		}
+	}
+
 	&.lsx-search-enabled {
 		.archive-plan {
 			.content-box {

@@ -603,3 +603,21 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		\lsx_health_plan\functions\register_modal( 'workout-video-modal-' . $m, '', $modal_body );
 	}
 }
+
+/**
+ * Outputs the recipe description if it is included.
+ *
+ * @return void
+ */
+function lsx_health_plan_recipe_archive_description() {
+	if ( is_post_type_archive( 'recipe' ) ) {
+		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
+		if ( '' !== $description ) {
+			?>
+			<div class="lsx-hp-archive-description row">
+				<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
+			</div>
+			<?php
+		}
+	}
+}

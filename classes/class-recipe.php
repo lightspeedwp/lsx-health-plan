@@ -33,13 +33,17 @@ class Recipe {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 
+		// Frontend Actions and Filters.
+		add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 
+		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 5 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 	}
 
 	/**
@@ -160,63 +164,77 @@ class Recipe {
 	 * Define the metabox and field configurations.
 	 */
 	public function featured_metabox() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_featured_metabox',
-			'title'        => __( 'Featured', 'lsx-health-plan' ),
-			'object_types' => array( $this->slug ), // Post type
-			'context'      => 'side',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Featured', 'lsx-health-plan' ),
-			'desc'       => __( 'Enable the checkbox to feature this recipe, featured recipes display in any page that has the recipe shortcode: [lsx_health_plan_featured_recipes_block]', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_featured',
-			'type'       => 'checkbox',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox',
+				'title'        => __( 'Featured', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ),
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable the checkbox to feature this recipe, featured recipes display in any page that has the recipe shortcode: [lsx_health_plan_featured_recipes_block]', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_featured',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 
 	/**
 	 * Define the metabox and field configurations.
 	 */
 	public function details_metaboxes() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_details_metabox',
-			'title'        => __( 'Recipe Details', 'lsx-health-plan' ),
-			'object_types' => array( $this->slug ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Prep Time', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_prep_time',
-			'desc'       => __( 'Add the preparation time for the entire meal i.e: 25 mins', 'lsx-health-plan' ),
-			'type'       => 'text',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Cooking Time', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_cooking_time',
-			'desc'       => __( 'Add the cooking time i.e: 15 mins', 'lsx-health-plan' ),
-			'type'       => 'text',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Serves', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_serves',
-			'desc'       => __( 'Add the recommended serving size i.e: 6', 'lsx-health-plan' ),
-			'type'       => 'text',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Portion', 'lsx-health-plan' ),
-			'desc'       => __( 'Add the recommended portion size i.e: 200mg', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_portion',
-			'type'       => 'text',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_details_metabox',
+				'title'        => __( 'Recipe Details', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Prep Time', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_prep_time',
+				'desc'       => __( 'Add the preparation time for the entire meal i.e: 25 mins', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Cooking Time', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_cooking_time',
+				'desc'       => __( 'Add the cooking time i.e: 15 mins', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Serves', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_serves',
+				'desc'       => __( 'Add the recommended serving size i.e: 6', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+				array(
+				'name'       => __( 'Portion', 'lsx-health-plan' ),
+				'desc'       => __( 'Add the recommended portion size i.e: 200mg', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_portion',
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 
 	/**
@@ -225,27 +243,57 @@ class Recipe {
 	 * @return void
 	 */
 	public function recipes_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_recipes_connections_metabox',
-			'title'        => __( 'Recipes', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Recipes', 'lsx-health-plan' ),
-			'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
-			'id'         => 'connected_recipes',
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15,  // Limit selection to X items only (default 1)
-			'sortable'   => true, // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( $this->slug ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_recipes_connections_metabox',
+				'title'        => __( 'Recipes', 'lsx-health-plan' ),
+				'object_types' => array( 'plan' ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Recipes', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
+				'id'         => 'connected_recipes',
+				'type'       => 'post_search_ajax',
+				// Optional :
+				'limit'      => 15,  // Limit selection to X items only (default 1)
+				'sortable'   => true, // Allow selected items to be sortable (default false)
+				'query_args' => array(
+					'post_type'      => array( $this->slug ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+	}
+
+	/**
+	 * Registers the lsx_search_settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function register_settings( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'          => 'recipe_archive_settings_title',
+				'type'        => 'title',
+				'name'        => __( 'Recipes Archive', 'lsx-health-plan' ),
+				'description' => __( 'All of the settings relating to the recipes post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'          => 'recipe_archive_description',
+				'type'        => 'wysiwyg',
+				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
+				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		do_action( 'lsx_hp_recipe_settings_page', $cmb );
 	}
 }

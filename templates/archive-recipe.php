@@ -19,7 +19,9 @@ get_header(); ?>
 		<?php lsx_content_before(); ?>
 
 		<!-- Begining restricted content -->
-		<?php if ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) { ?>
+		<?php
+		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) {
+			?>
 			<main id="main" role="main">
 
 				<?php lsx_content_top(); ?>
@@ -40,7 +42,7 @@ get_header(); ?>
 								</div>
 							<?php endwhile; ?>
 
-							<?php else : ?>
+						<?php else : ?>
 
 							<?php get_template_part( 'partials/content', 'none' ); ?>
 
@@ -52,12 +54,12 @@ get_header(); ?>
 
 			</main><!-- #main -->
 
-		<?php
-} else {
-	wp_redirect( $redirect );
-	exit;
-}
-?>
+			<?php
+		} else {
+			wp_redirect( $redirect );
+			exit;
+		}
+		?>
 
 <?php lsx_content_after(); ?>
 

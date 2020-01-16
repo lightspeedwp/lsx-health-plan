@@ -507,6 +507,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
 
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper { margin-top: 4.25rem; }
+
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper p { margin-bottom: 0px; }
+
 .post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
 
 #single-recipe { margin-bottom: -8.4rem; }
