@@ -396,6 +396,10 @@ function lsx_health_plan_week_plan_block() {
 			'order'    => 'ASC',
 		)
 	);
+	$downloads_disabled = \cmb2_get_option( 'lsx_health_plan_options', 'downloads_view_disabled', false );
+	if ( true === $downloads_disabled || 1 === $downloads_disabled || 'on' === $downloads_disabled ) {
+		$week_downloads_view = 'week-downloads-view-on';
+	}
 	if ( ! empty( $weeks ) ) {
 		$counter      = 1;
 		$section_open = false;
@@ -437,9 +441,11 @@ function lsx_health_plan_week_plan_block() {
 			<div class="daily-plan-block week-grid">
 				<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
 				<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
-					<div class="week-row-inner">
+					<div class="week-row-inner <?php echo esc_html( $week_downloads_view ); ?>">
 						<div class="week-meals-recipes-box">
-							<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+							<?php if ( ! empty( $week_downloads_view ) ) { ?>
+								<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+							<?php } ?>
 							<div class="week-meals-recipes-box-inner">
 							<?php
 								if ( $the_query->have_posts() ) :
@@ -460,14 +466,16 @@ function lsx_health_plan_week_plan_block() {
 							?>
 							</div>
 						</div>
-						<div class="week-download-box">
-							<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
-							<ul class="week-download-box-list">
-								<li><a href="#">What you can and can’t eat</a></li>
-								<li><a href="#">Shopping list - Week 1</a></li>
-								<li><a href="#">Meal Plan - Week 1</a></li></li>
-							</ul>
-						</div>
+						<?php if ( ! empty( $week_downloads_view ) ) { ?>
+							<div class="week-download-box">
+								<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+								<ul class="week-download-box-list">
+									<li><a href="#">What you can and can’t eat</a></li>
+									<li><a href="#">Shopping list - Week 1</a></li>
+									<li><a href="#">Meal Plan - Week 1</a></li></li>
+								</ul>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

@@ -343,20 +343,7 @@
 		}
 		.week-row {
 			.week-row-inner {
-				display: flex;
-				justify-content: space-between;
 				.week-meals-recipes-box {
-					padding-right: 5px;
-					flex-grow: 1;
-					h3 {
-						background-color: $light_gray;
-						padding: 10px 16px;
-						margin-bottom: 16px;
-						display: flex;
-						svg {
-							margin-right: 10px;
-						}
-					}
 					.week-meals-recipes-box-inner {
 						display: flex;
 						justify-content: space-between;
@@ -364,31 +351,15 @@
 						flex-wrap: wrap;
 						.day {
 							background: none;
-							&.completed {
-								.plan-content {
-									font-size: 0;
-									&:before {
-										font-size: 50px;
-										color: #F1F1F1;
-									}
-								}
-							}
 							&:not(.completed) {
 								border: 4px solid $blue;
 								border-radius: 50px;
-								height: 75px;
-								width: 75px;
-								margin-right: 5px;
+								height: 100px;
+								width: 100px;
 								background: rgba(65, 138, 208, 0.3);
 								text-align: center;
 								display: flex;
 								justify-content: center;
-								padding: 5px;
-								.plan-content {
-									font-size: 18px;
-									font-weight: bold;
-									line-height: 24px;
-								}
 							}
 							&:hover {
 								&:not(.completed) {
@@ -406,26 +377,73 @@
 						}
 					}
 				}
-				.week-download-box {
-					background-color: $light_gray;
-					padding: 10px 16px;
-					margin-bottom: 5px;
-					flex-grow: 1;
-					.title {
-						display: flex;
-						svg {
-							margin-right: 10px;
+				&.week-downloads-view-on {
+					display: flex;
+					justify-content: space-between;
+					@media (max-width:1024px) {
+						flex-direction: column;
+					}
+					.week-meals-recipes-box {
+						padding-right: 5px;
+						flex-grow: 1;
+						h3 {
+							background-color: $light_gray;
+							padding: 10px 16px;
+							margin-bottom: 16px;
+							display: flex;
+							svg {
+								margin-right: 10px;
+							}
+						}
+						.week-meals-recipes-box-inner {
+							.day {
+								&.completed {
+									.plan-content {
+										font-size: 0;
+										&:before {
+											font-size: 50px;
+											color: #F1F1F1;
+											@media (max-width:1024px) {
+												font-size: 66px;
+											}
+										}
+									}
+								}
+								&:not(.completed) {
+									height: 75px;
+									width: 75px;
+									margin-right: 5px;
+									padding: 5px;
+									.plan-content {
+										font-size: 18px;
+										font-weight: bold;
+										line-height: 24px;
+									}
+								}
+							}
 						}
 					}
-					.week-download-box-list {
-						a {
-							background: none;
-							font-size: 15px;
-							line-height: 24px;
-							padding: 0;
-							font-weight: normal;
-							font-family: 'Noto Sans', sans-serif;
-							margin: 0;
+					.week-download-box {
+						background-color: $light_gray;
+						padding: 10px 16px;
+						margin-bottom: 5px;
+						flex-grow: 1;
+						.title {
+							display: flex;
+							svg {
+								margin-right: 10px;
+							}
+						}
+						.week-download-box-list {
+							a {
+								background: none;
+								font-size: 15px;
+								line-height: 24px;
+								padding: 0;
+								font-weight: normal;
+								font-family: 'Noto Sans', sans-serif;
+								margin: 0;
+							}
 						}
 					}
 				}
