@@ -34,11 +34,20 @@ get_header(); ?>
 								the_post();
 								?>
 								<div class="col-md-4">
-									<div class="content-box box-shadow white-bg">
-										<h3 class="recipe-title title-lined"><?php the_title(); ?></h3>
-										<?php table_recipe_data(); ?>
-										<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-full"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
-									</div>
+									<article class="lsx-slot box-shadow">
+										<div class="recipe-feature-img">
+											<?php
+											the_post_thumbnail( 'lsx-thumbnail-square', array(
+												'class' => 'aligncenter',
+											) );
+											?>
+										</div>
+										<div class="content-box white-bg">
+											<?php table_recipe_data(); ?>
+											<h3 class="recipe-title"><?php the_title(); ?></h3>
+											<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
+										</div>
+									</article>
 								</div>
 							<?php endwhile; ?>
 
