@@ -514,8 +514,8 @@ class Woocommerce {
 		return apply_filters( 'iconic_account_fields', array(
 			'weight_start'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -524,8 +524,8 @@ class Woocommerce {
 			),
 			'weight_goal'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -534,8 +534,8 @@ class Woocommerce {
 			),
 			'weight_end'    => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -544,8 +544,8 @@ class Woocommerce {
 			),
 			'waist_start'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -554,8 +554,8 @@ class Woocommerce {
 			),
 			'waist_goal'    => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -564,8 +564,8 @@ class Woocommerce {
 			),
 			'waist_end'     => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -574,7 +574,7 @@ class Woocommerce {
 			),
 			'fitness_start' => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
@@ -584,7 +584,7 @@ class Woocommerce {
 			),
 			'fitness_goal'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
@@ -594,7 +594,7 @@ class Woocommerce {
 			),
 			'fitness_end'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
