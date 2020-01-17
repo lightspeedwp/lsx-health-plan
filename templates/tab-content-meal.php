@@ -105,7 +105,7 @@
 					<div class="row tip-row extras-box">
 						<?php
 						$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
-						if ( ! empty( $connected_recipes ) ) {
+						if ( ! empty( $connected_recipes ) && post_type_exists( 'recipe' ) ) {
 							?>
 							<div class="col-md-4">
 								<div class="content-box tip-left box-shadow">
@@ -127,11 +127,13 @@
 							</div>
 						<?php } ?>
 						
-						<div class="col-md-4">
-							<div class="tip-right">
-								<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+						<?php if ( post_type_exists( 'tip' ) ) { ?>
+							<div class="col-md-4">
+								<div class="tip-right">
+									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 					</div>
 			</div>
 		</div>

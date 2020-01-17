@@ -42,6 +42,9 @@ function lsx_health_plan_warmup_box() {
 * @return void
 */
 function lsx_health_plan_workout_box() {
+	if ( ! post_type_exists( 'workout' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -73,6 +76,9 @@ function lsx_health_plan_workout_box() {
 * @return void
 */
 function lsx_health_plan_meal_box() {
+	if ( ! post_type_exists( 'meal' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -104,6 +110,9 @@ function lsx_health_plan_meal_box() {
 * @return void
 */
 function lsx_health_plan_recipe_box() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -470,6 +479,9 @@ function lsx_health_plan_week_plan_block() {
  * @return void
  */
 function lsx_health_plan_featured_video_block() {
+	if ( ! post_type_exists( 'video' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php';
 }
 
@@ -479,6 +491,9 @@ function lsx_health_plan_featured_video_block() {
  * @return void
  */
 function lsx_health_plan_featured_recipes_block() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php';
 }
 
@@ -488,6 +503,9 @@ function lsx_health_plan_featured_recipes_block() {
  * @return void
  */
 function lsx_health_plan_featured_tips_block() {
+	if ( ! post_type_exists( 'tip' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
