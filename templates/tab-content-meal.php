@@ -47,14 +47,25 @@
 
 					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
 
+					$pre_breakfast_snack = get_post_meta( get_the_ID(), 'meal_pre_breakfast_snack', true );
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
-					$breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
+					$post_breakfast_snack = get_post_meta( get_the_ID(), 'meal_post_breakfast_snack', true );
+					$pre_lunch_snack = get_post_meta( get_the_ID(), 'meal_post_breakfast_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
-					$lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
+					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_post_lunch_snack', true );
+					$pre_dinner_snack     = get_post_meta( get_the_ID(), 'meal_pre_dinner_snack', true );
 					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
+					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_post_dinner_snack', true );					
 					?>
 					<div class="row eating-row">
 						<div class="col-md-4 eating-column">
+						<?php
+							if ( ! empty( $pre_breakfast_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_breakfast_snack ) );
+								echo '</div>';
+							}
+							?>						
 							<?php
 							if ( ! empty( $breakfast ) ) {
 								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
@@ -63,28 +74,42 @@
 							}
 							?>
 							<?php
-							if ( ! empty( $breakfast_snack ) ) {
+							if ( ! empty( $post_breakfast_snack ) ) {
 								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-								echo wp_kses_post( apply_filters( 'the_content', $breakfast_snack ) );
+								echo wp_kses_post( apply_filters( 'the_content', $post_breakfast_snack ) );
 								echo '</div>';
 							}
 							?>
 						</div>
 						<div class="col-md-4 eating-column">
+						<?php
+							if ( ! empty( $pre_lunch_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_lunch_snack ) );
+								echo '</div>';
+							}
+							?>							
 							<?php
 							if ( ! empty( $lunch ) ) {
 								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Lunch', 'lsx-health-plan' ) . '</h3>';
 								echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
 								echo '</div>';
 							}
-							if ( ! empty( $lunch_snack ) ) {
+							if ( ! empty( $post_lunch_snack ) ) {
 								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-								echo wp_kses_post( apply_filters( 'the_content', $lunch_snack ) );
+								echo wp_kses_post( apply_filters( 'the_content', $post_lunch_snack ) );
 								echo '</div>';
 							}
 							?>
 						</div>
 						<div class="col-md-4 eating-column">
+						<?php
+							if ( ! empty( $pre_dinner_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_dinner_snack ) );
+								echo '</div>';
+							}
+							?>						
 							<?php
 							if ( ! empty( $dinner ) ) {
 								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Supper', 'lsx-health-plan' ) . '</h3>';
@@ -92,6 +117,13 @@
 								echo '</div>';
 							}
 							?>
+							<?php
+							if ( ! empty( $post_dinner_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $post_dinner_snack ) );
+								echo '</div>';
+							}
+							?>							
 						</div>
 					</div>
 				<?php
