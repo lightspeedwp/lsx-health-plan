@@ -581,7 +581,7 @@ function lsx_health_plan_unlock_button() {
  *
  * @return void
  */
-function table_recipe_data() {
+function lsx_health_plan_recipe_data() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/table-recipe-data.php';
 }
 

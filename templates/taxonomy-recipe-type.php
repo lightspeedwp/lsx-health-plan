@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the Recipes Type Term archives
+ * The template for displaying Recipe Type Archives.
  *
  * @package lsx-health-plan
  */
@@ -9,48 +9,61 @@ get_header(); ?>
 
 <?php lsx_content_wrap_before(); ?>
 
-<div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
+<?php
+	$page_id  = get_the_ID();
+	$redirect = '/content-restricted/?r=' . $page_id . '&wcm_redirect_to=archive&wcm_redirect_id=' . $page_id;
+?>
 
-	<?php lsx_content_before(); ?>
+	<div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
 
-	<main id="main" class="site-main" role="main">
+		<?php lsx_content_before(); ?>
 
-		<?php lsx_content_top(); ?>
+		<!-- Begining restricted content -->
+		<?php
+		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) {
+			?>
+			<main id="main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+				<?php lsx_content_top(); ?>
 
-			<div class="post-wrapper">
+				<div class="post-wrapper archive-plan">
+					<div class="row">
+						<?php if ( have_posts() ) : ?>
+							<?php
+							while ( have_posts() ) :
+								the_post();
+								?>
 
-				<?php
-				while ( have_posts() ) :
-					the_post();
-				?>
+								<?php include LSX_HEALTH_PLAN_PATH . '/templates/content-archive-recipe.php'; ?>
 
-					<?php include LSX_HEALTH_PLAN_PATH . '/templates/content-recipe.php'; ?>
+							<?php endwhile; ?>
 
-				<?php endwhile; ?>
+						<?php else : ?>
 
-			</div>
+							<?php get_template_part( 'partials/content', 'none' ); ?>
 
-			<?php lsx_paging_nav(); ?>
+						<?php endif; ?>
+					</div>
+					<?php lsx_paging_nav(); ?>
+				</div>
+				<?php lsx_content_bottom(); ?>
 
-		<?php else : ?>
+			</main><!-- #main -->
 
-			<?php get_template_part( 'partials/content', 'none' ); ?>
+			<?php
+		} else {
+			wp_redirect( $redirect );
+			exit;
+		}
+		?>
 
-		<?php endif; ?>
-
-		<?php lsx_content_bottom(); ?>
-
-	</main><!-- #main -->
-
-	<?php lsx_content_after(); ?>
+<?php lsx_content_after(); ?>
 
 </div><!-- #primary -->
 
 <?php lsx_content_wrap_after(); ?>
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 
 <?php
 get_footer();

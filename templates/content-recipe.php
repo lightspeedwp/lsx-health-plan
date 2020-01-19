@@ -26,7 +26,7 @@
 				) );
 				?>
 				<div class="recipe-data">
-					<?php table_recipe_data(); ?>
+					<?php lsx_health_plan_recipe_data(); ?>
 				</div>
 			</div>
 			<div class="col-md-6 recipe-content">
@@ -43,13 +43,14 @@
 			</div>
 		</div>
 		<?php
-
-			wp_link_pages( array(
+		wp_link_pages(
+			array(
 				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
 				'after'       => '</div></div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
-			) );
+			)
+		);
 		?>
 	</div><!-- .entry-content -->
 

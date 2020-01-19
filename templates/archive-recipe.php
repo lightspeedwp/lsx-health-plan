@@ -33,22 +33,9 @@ get_header(); ?>
 							while ( have_posts() ) :
 								the_post();
 								?>
-								<div class="col-xs-12 col-sm-6 col-md-4">
-									<article class="lsx-slot box-shadow">
-										<div class="recipe-feature-img">
-											<?php
-											the_post_thumbnail( 'lsx-thumbnail-square', array(
-												'class' => 'aligncenter',
-											) );
-											?>
-										</div>
-										<div class="content-box white-bg">
-											<?php table_recipe_data(); ?>
-											<h3 class="recipe-title"><?php the_title(); ?></h3>
-											<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
-										</div>
-									</article>
-								</div>
+
+								<?php include LSX_HEALTH_PLAN_PATH . '/templates/content-archive-recipe.php'; ?>
+
 							<?php endwhile; ?>
 
 						<?php else : ?>
