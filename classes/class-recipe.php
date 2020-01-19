@@ -184,7 +184,7 @@ class Recipe {
 	/**
 	 * Disables the global header description
 	 *
-	 * @param boolean $disable 
+	 * @param boolean $disable
 	 * @return boolean
 	 */
 	public function disable_global_header_description( $disable ) {
