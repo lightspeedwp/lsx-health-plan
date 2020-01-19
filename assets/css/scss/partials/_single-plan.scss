@@ -207,7 +207,8 @@
 		flex-wrap: wrap;
 	}
 }
-.post-type-archive-recipe {
+.post-type-archive-recipe,
+.tax-recipe-type {
 	.bottom-single-recipe {
 		margin-top: 4.25rem;
 		margin-bottom: -8.4rem;
@@ -475,7 +476,8 @@
 	}
 }
 
-.post-type-archive-recipe {
+.post-type-archive-recipe,
+.tax-recipe-type {
 	.archive-plan {
 		.row {
 			.col-md-4 {
