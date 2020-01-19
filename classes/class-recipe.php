@@ -39,6 +39,7 @@ class Recipe {
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+		add_filter( 'lsx_display_global_header_description', array( $this, 'disable_global_header_description' ), 100 );
 
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
@@ -159,6 +160,38 @@ class Recipe {
 		$connections['recipe']['connected_plans'] = 'connected_recipes';
 		$connections['plan']['connected_recipes'] = 'connected_plans';
 		return $connections;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$title = __( 'Recipes', 'lsx-health-plan' );
+		}
+		if ( is_tax( 'recipe-type' ) ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name . ' ' . __( 'Recipes', 'lsx-health-plan' );
+			}
+		}
+		return $title;
+	}
+
+	/**
+	 * Disables the global header description
+	 *
+	 * @param boolean $disable 
+	 * @return boolean
+	 */
+	public function disable_global_header_description( $disable ) {
+		if ( is_tax( 'recipe-type' ) ) {
+			$disable = true;
+		}
+		return $disable;
 	}
 
 	/**
@@ -296,25 +329,5 @@ class Recipe {
 			)
 		);
 		do_action( 'lsx_hp_recipe_settings_page', $cmb );
-	}
-
-	/**
-	 * Remove the "Archives:" from the post type recipes.
-	 *
-	 * @param    $title
-	 *
-	 * @return    $title
-	 */
-	public function get_the_archive_title( $title ) {
-		if ( is_post_type_archive( 'recipe' ) ) {
-			$title = __( 'Recipes', 'lsx-health-plan' );
-		}
-		if ( is_tax( 'recipe-type' ) ) {
-			$queried_object = get_queried_object();
-			if ( isset( $queried_object->name ) ) {
-				$title = $queried_object->name . ' ' . __( 'Recipes', 'lsx-health-plan' );
-			}
-		}
-		return $title;
 	}
 }
