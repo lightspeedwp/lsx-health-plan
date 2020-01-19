@@ -27,6 +27,15 @@ class Recipe {
 	public $slug = 'recipe';
 
 	/**
+	 * Holds post_type labels
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $labels = array();
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -38,6 +47,9 @@ class Recipe {
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+		add_filter( 'lsx_display_global_header_description', array( $this, 'disable_global_header_description' ), 100 );
+		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'recipes_breadcrumb_filter' ), 30, 1 );
 
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
@@ -68,7 +80,7 @@ class Recipe {
 	 * Register the post type.
 	 */
 	public function register_post_type() {
-		$labels = array(
+		$this->labels = array(
 			'name'               => esc_html__( 'Recipe', 'lsx-health-plan' ),
 			'singular_name'      => esc_html__( 'Recipes', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
@@ -83,8 +95,8 @@ class Recipe {
 			'parent_item_colon'  => '',
 			'menu_name'          => esc_html__( 'Recipes', 'lsx-health-plan' ),
 		);
-		$args   = array(
-			'labels'             => $labels,
+		$args         = array(
+			'labels'             => $this->labels,
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
@@ -158,6 +170,63 @@ class Recipe {
 		$connections['recipe']['connected_plans'] = 'connected_recipes';
 		$connections['plan']['connected_recipes'] = 'connected_plans';
 		return $connections;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$title = __( 'Recipes', 'lsx-health-plan' );
+		}
+		if ( is_tax( 'recipe-type' ) ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name . ' ' . __( 'Recipes', 'lsx-health-plan' );
+			}
+		}
+		return $title;
+	}
+
+	/**
+	 * Disables the global header description
+	 *
+	 * @param boolean $disable
+	 * @return boolean
+	 */
+	public function disable_global_header_description( $disable ) {
+		if ( is_tax( 'recipe-type' ) ) {
+			$disable = true;
+		}
+		return $disable;
+	}
+
+	/**
+	 * Holds the array for the breadcrumbs.
+	 *
+	 * @var array $crumbs
+	 * @return array
+	 */
+	public function recipes_breadcrumb_filter( $crumbs ) {
+		if ( is_tax( 'recipe-type' ) ) {
+			$text = $this->labels['singular_name'];
+			$url  = get_post_type_archive_link( 'recipe' );
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$crumbs[1] = array(
+					0 => $text,
+					1 => $url,
+				);
+			} else {
+				$crumbs[1] = array(
+					'text' => $text,
+					'url'  => $url,
+				);
+			}
+		}
+		return $crumbs;
 	}
 
 	/**

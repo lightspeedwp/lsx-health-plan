@@ -581,7 +581,7 @@ function lsx_health_plan_unlock_button() {
  *
  * @return void
  */
-function table_recipe_data() {
+function lsx_health_plan_recipe_data() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/table-recipe-data.php';
 }
 
@@ -630,12 +630,14 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 function lsx_health_plan_recipe_archive_description() {
 	if ( is_post_type_archive( 'recipe' ) ) {
 		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
-		if ( '' !== $description ) {
-			?>
-			<div class="lsx-hp-archive-description row">
-				<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
-			</div>
-			<?php
-		}
+	} elseif ( is_tax() ) {
+		$description = get_the_archive_description();
+	}
+	if ( '' !== $description ) {
+		?>
+		<div class="lsx-hp-archive-description row">
+			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
+		</div>
+		<?php
 	}
 }

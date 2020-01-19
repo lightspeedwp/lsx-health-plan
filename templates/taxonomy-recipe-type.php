@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Recipes Archive.
+ * The template for displaying Recipe Type Archives.
  *
  * @package lsx-health-plan
  */
