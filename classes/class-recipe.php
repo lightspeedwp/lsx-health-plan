@@ -38,6 +38,7 @@ class Recipe {
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
@@ -295,5 +296,25 @@ class Recipe {
 			)
 		);
 		do_action( 'lsx_hp_recipe_settings_page', $cmb );
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param    $title
+	 *
+	 * @return    $title
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$title = __( 'Recipes', 'lsx-health-plan' );
+		}
+		if ( is_tax( 'recipe-type' ) ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name . ' ' . __( 'Recipes', 'lsx-health-plan' );
+			}
+		}
+		return $title;
 	}
 }
