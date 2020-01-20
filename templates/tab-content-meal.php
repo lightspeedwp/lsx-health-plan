@@ -47,15 +47,25 @@
 
 					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
 
+					//Breakfast
+
 					$pre_breakfast_snack = get_post_meta( get_the_ID(), 'meal_pre_breakfast_snack', true );
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
-					$post_breakfast_snack = get_post_meta( get_the_ID(), 'meal_post_breakfast_snack', true );
-					$pre_lunch_snack = get_post_meta( get_the_ID(), 'meal_post_breakfast_snack', true );
+					$post_breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
+
+					//Lunch
+
+					$pre_lunch_snack = get_post_meta( get_the_ID(), 'meal_pre_lunch_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
-					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_post_lunch_snack', true );
+					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
+
+					//Dinner
+
 					$pre_dinner_snack     = get_post_meta( get_the_ID(), 'meal_pre_dinner_snack', true );
 					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
-					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_post_dinner_snack', true );
+					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
+
+
 					?>
 					<div class="row eating-row">
 						<div class="col-md-4 eating-column">

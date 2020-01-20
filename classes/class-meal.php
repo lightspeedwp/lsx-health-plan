@@ -223,7 +223,7 @@ class Meal {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Post Dinner Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_post_dinner_snack',
+			'id'         => $this->slug . '_dinner_snack',
 			'type'       => 'wysiwyg',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 			'options'    => array(
