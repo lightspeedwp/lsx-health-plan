@@ -169,7 +169,7 @@ class Meal {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Post Breakfast Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_post_breakfast_snack',
+			'id'         => $this->slug . '_breakfast_snack',
 			'type'       => 'wysiwyg',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 			'options'    => array(
@@ -196,7 +196,7 @@ class Meal {
 		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Post Lunch Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_post_lunch_snack',
+			'id'         => $this->slug . '_lunch_snack',
 			'type'       => 'wysiwyg',
 			'show_on_cb' => 'cmb2_hide_if_no_cats',
 			'options'    => array(

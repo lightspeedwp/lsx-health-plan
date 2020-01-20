@@ -55,7 +55,7 @@
 					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_post_lunch_snack', true );
 					$pre_dinner_snack     = get_post_meta( get_the_ID(), 'meal_pre_dinner_snack', true );
 					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
-					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_post_dinner_snack', true );					
+					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_post_dinner_snack', true );
 					?>
 					<div class="row eating-row">
 						<div class="col-md-4 eating-column">
