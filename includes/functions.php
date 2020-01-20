@@ -142,6 +142,20 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 }
 
 /**
+ * Returns the weekly downloads for the week name
+ * 
+ * @param  string $week    Week name 'week-1'.
+ * @return array           an array of the downloads or empty.
+ */
+function get_weekly_downloads( $week = '' ) {
+	$downloads = array();
+	if ( '' !== $week ) {
+
+	}
+	return $downloads;
+}
+
+/**
  * Checks to see if the downloads exist before adding them
  *
  * @param array $post_ids

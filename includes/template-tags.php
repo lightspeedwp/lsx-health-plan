@@ -397,9 +397,6 @@ function lsx_health_plan_week_plan_block() {
 		)
 	);
 	$downloads_disabled = \cmb2_get_option( 'lsx_health_plan_options', 'downloads_view_disabled', false );
-	if ( true === $downloads_disabled || 1 === $downloads_disabled || 'on' === $downloads_disabled ) {
-		$week_downloads_view = 'week-downloads-view-on';
-	}
 	if ( ! empty( $weeks ) ) {
 		$counter      = 1;
 		$section_open = false;
@@ -435,6 +432,14 @@ function lsx_health_plan_week_plan_block() {
 						$collapse_class = 'in';
 						$section_open   = true;
 					}
+				}
+			}
+
+			// Determine if there are any weekly downloads.
+			if ( true === $downloads_disabled || 1 === $downloads_disabled || 'on' === $downloads_disabled ) {
+				$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $week->slug );
+				if ( ! empty( $weekly_downloads ) ) {
+					$week_downloads_view = 'week-downloads-view-on';
 				}
 			}
 			?>
