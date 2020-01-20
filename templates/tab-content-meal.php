@@ -43,10 +43,7 @@
 			if ( $meals->have_posts() ) {
 				while ( $meals->have_posts() ) {
 					$meals->the_post();
-					$post_id = get_the_id();
-
-					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
-
+					$shopping_list   = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
 					$breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
@@ -94,7 +91,7 @@
 							?>
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			?>
@@ -126,8 +123,8 @@
 								</div>	
 							</div>
 						<?php } ?>
-						
-						<?php if ( post_type_exists( 'tip' ) ) { ?>
+
+						<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
 							<div class="col-md-4">
 								<div class="tip-right">
 									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
