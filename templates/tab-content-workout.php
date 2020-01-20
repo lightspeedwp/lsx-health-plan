@@ -112,7 +112,9 @@
 												<tr>
 													<th><?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></th> 
 													<th class="center-mobile"><?php esc_html_e( 'Reps / Time / Distance', 'lsx-health-plan' ); ?></th>
-													<th class="center-mobile"><?php esc_html_e( 'Video', 'lsx-health-plan' ); ?></th>
+													<?php if ( post_type_exists( 'video' ) ) { ?>
+														<th class="center-mobile"><?php esc_html_e( 'Video', 'lsx-health-plan' ); ?></th>
+													<?php } ?>
 												</tr>
 												<?php
 												foreach ( $groups as $group ) {
@@ -128,9 +130,11 @@
 													<tr>
 														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
 														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
-														<td class="video-button-item center-mobile">
-															<?php lsx_health_plan_workout_video_play_button( $m, $group ); ?>
-														</td>
+														<?php if ( post_type_exists( 'video' ) ) { ?>
+															<td class="video-button-item center-mobile">
+																<?php lsx_health_plan_workout_video_play_button( $m, $group ); ?>
+															</td>
+														<?php } ?>
 													</tr>
 													<?php
 													$m++;

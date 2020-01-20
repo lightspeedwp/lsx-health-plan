@@ -42,6 +42,9 @@ function lsx_health_plan_warmup_box() {
 * @return void
 */
 function lsx_health_plan_workout_box() {
+	if ( ! post_type_exists( 'workout' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -73,6 +76,9 @@ function lsx_health_plan_workout_box() {
 * @return void
 */
 function lsx_health_plan_meal_box() {
+	if ( ! post_type_exists( 'meal' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -104,6 +110,9 @@ function lsx_health_plan_meal_box() {
 * @return void
 */
 function lsx_health_plan_recipe_box() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -470,6 +479,9 @@ function lsx_health_plan_week_plan_block() {
  * @return void
  */
 function lsx_health_plan_featured_video_block() {
+	if ( ! post_type_exists( 'video' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php';
 }
 
@@ -479,6 +491,9 @@ function lsx_health_plan_featured_video_block() {
  * @return void
  */
 function lsx_health_plan_featured_recipes_block() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php';
 }
 
@@ -488,6 +503,9 @@ function lsx_health_plan_featured_recipes_block() {
  * @return void
  */
 function lsx_health_plan_featured_tips_block() {
+	if ( ! post_type_exists( 'tip' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
@@ -563,7 +581,7 @@ function lsx_health_plan_unlock_button() {
  *
  * @return void
  */
-function table_recipe_data() {
+function lsx_health_plan_recipe_data() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/table-recipe-data.php';
 }
 
@@ -601,5 +619,25 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
 		$modal_body .= $content;
 		\lsx_health_plan\functions\register_modal( 'workout-video-modal-' . $m, '', $modal_body );
+	}
+}
+
+/**
+ * Outputs the recipe description if it is included.
+ *
+ * @return void
+ */
+function lsx_health_plan_recipe_archive_description() {
+	if ( is_post_type_archive( 'recipe' ) ) {
+		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
+	} elseif ( is_tax() ) {
+		$description = get_the_archive_description();
+	}
+	if ( '' !== $description ) {
+		?>
+		<div class="lsx-hp-archive-description row">
+			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
+		</div>
+		<?php
 	}
 }

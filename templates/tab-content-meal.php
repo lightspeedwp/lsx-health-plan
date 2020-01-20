@@ -43,24 +43,19 @@
 			if ( $meals->have_posts() ) {
 				while ( $meals->have_posts() ) {
 					$meals->the_post();
-					$post_id = get_the_id();
-
 					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
 
 					//Breakfast
-
 					$pre_breakfast_snack = get_post_meta( get_the_ID(), 'meal_pre_breakfast_snack', true );
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
 					$post_breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
 
 					//Lunch
-
 					$pre_lunch_snack = get_post_meta( get_the_ID(), 'meal_pre_lunch_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
 					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
 
 					//Dinner
-
 					$pre_dinner_snack     = get_post_meta( get_the_ID(), 'meal_pre_dinner_snack', true );
 					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
 					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
@@ -136,7 +131,7 @@
 							?>							
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			?>
@@ -147,7 +142,7 @@
 					<div class="row tip-row extras-box">
 						<?php
 						$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
-						if ( ! empty( $connected_recipes ) ) {
+						if ( ! empty( $connected_recipes ) && post_type_exists( 'recipe' ) ) {
 							?>
 							<div class="col-md-4">
 								<div class="content-box tip-left box-shadow">
@@ -168,12 +163,14 @@
 								</div>	
 							</div>
 						<?php } ?>
-						
-						<div class="col-md-4">
-							<div class="tip-right">
-								<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+
+						<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
+							<div class="col-md-4">
+								<div class="tip-right">
+									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 					</div>
 			</div>
 		</div>

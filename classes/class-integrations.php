@@ -54,6 +54,15 @@ class Integrations {
 	public $wp_user_avatar = false;
 
 	/**
+	 * Holds class instance
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      object \lsx_health_plan\classes\LSX_Search()
+	 */
+	public $lsx_search = false;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -61,6 +70,7 @@ class Integrations {
 		add_action( 'init', array( $this, 'download_monitor_init' ) );
 		add_action( 'init', array( $this, 'woocommerce_init' ) );
 		add_action( 'init', array( $this, 'wp_user_avatar_init' ) );
+		add_action( 'init', array( $this, 'lsx_search_init' ) );
 	}
 
 	/**
@@ -123,6 +133,18 @@ class Integrations {
 		if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-wp-user-avatar.php';
 			$this->wp_user_avatar = WP_User_Avatar::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the Woocommerce functions.
+	 *
+	 * @return void
+	 */
+	public function lsx_search_init() {
+		if ( class_exists( '\LSX_Search' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-lsx-search.php';
+			$this->lsx_search = LSX_Search::get_instance();
 		}
 	}
 }

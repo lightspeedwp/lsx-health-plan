@@ -60,25 +60,6 @@ function get_option( $key = '', $default = false ) {
 }
 
 /**
- * Add Lets Enrypt and PayFast logos to cart
- **/
-
-add_action( 'woocommerce_checkout_after_order_review', function() {
-	$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/le-logo.svg';
-	$payfast_image   = LSX_HEALTH_PLAN_URL . 'assets/images/secure-payments.png';
-	?>
-	<div class="row text-center vertical-align">
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
-		</div>
-	</div>
-	<?php
-});
-
-/**
  * Returns the downloads attached to the items
  * @since  0.1.0
  * @param  string $key     Options array key
@@ -86,13 +67,8 @@ add_action( 'woocommerce_checkout_after_order_review', function() {
  * @return mixed           Option value
  */
 function get_downloads( $type = 'all', $post_id = '' ) {
-	$post_types = array(
-		'page',
-		'meal',
-		'workout',
-		'recipe',
-		'video',
-	);
+	$lsx_health_plan = \lsx_health_plan();
+	$post_types      = $lsx_health_plan->get_post_types();
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}

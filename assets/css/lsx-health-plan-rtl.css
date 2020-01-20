@@ -144,7 +144,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
-.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
+.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
 #account-nav { margin-bottom: 15px; }
 
@@ -396,7 +396,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.post-type-archive-recipe .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
+.post-type-archive-recipe .bottom-single-recipe, .tax-recipe-type .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
 
@@ -435,7 +435,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .status-plan-buttons, .archive-plan .status-plan-buttons { padding: 25px 20px; }
 
-.single-plan .content-box, .archive-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
+.single-plan .content-box, .archive-plan .content-box { margin: 0 0 30px; background: #f6f6f6; padding: 12px 16px; }
 
 .single-plan .blue-title, .archive-plan .blue-title { color: #418ad0; font-weight: bold; }
 
@@ -499,13 +499,25 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box { min-height: 290px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-feature-img img { width: 100%; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box, .tax-recipe-type .archive-plan .row .col-md-4 .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 15px 15px 0; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table td, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .prep-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .cooking-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .portion-size, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .prep-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .cooking-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .portion-size { display: none; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
+
+.post-type-archive-recipe .lsx-hp-archive-description, .tax-recipe-type .lsx-hp-archive-description { margin-right: auto; margin-left: auto; width: 100%; display: -ms-flexbox; display: flex; }
+
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper, .tax-recipe-type .lsx-hp-archive-description .description-wrapper { margin-top: 4.25rem; text-align: center; max-width: 900px; margin-right: auto; margin-left: auto; }
+
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper p, .tax-recipe-type .lsx-hp-archive-description .description-wrapper p { margin-bottom: 0px; }
+
+.post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box, .tax-recipe-type.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
 
 #single-recipe { margin-bottom: -8.4rem; }
 
