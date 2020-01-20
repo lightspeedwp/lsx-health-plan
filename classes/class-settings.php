@@ -355,33 +355,4 @@ class Settings {
 			);
 		}
 	}
-
-	/**
-	 * Registers the downloads view toggle settings
-	 *
-	 * @param object $cmb new_cmb2_box().
-	 * @return void
-	 */
-	public function weekly_downloads( $cmb ) {
-
-		$cmb->add_field(
-			array(
-				'id'          => 'weekly_downloads_title',
-				'type'        => 'title',
-				'name'        => __( 'Enable Weekly Downloads', 'lsx-health-plan' ),
-				'default'     => __( 'Enable Weekly Downloads', 'lsx-health-plan' ),
-				'description' => __( 'Enable Weekly Downloads if you want a list of general weekly downloads on the plan weekly view.', 'lsx-health-plan' ),
-			)
-		);
-
-		$cmb->add_field(
-			array(
-				'name'    => 'Enable',
-				'id'      => 'downloads_view_disabled',
-				'type'    => 'checkbox',
-				'value'   => 1,
-				'default' => 0,
-			)
-		);
-	}
 }
