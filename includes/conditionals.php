@@ -176,6 +176,23 @@ function lsx_health_plan_is_day_complete( $post_id = '' ) {
 }
 
 /**
+ * Checks if the current week has any downloads attached.
+ *
+ * @param string $week The week name 'week-1'.
+ * @return boolean
+ */
+function lsx_health_plan_week_has_downloads( $week = '' ) {
+	$has_downloads = false;
+	if ( '' !== $week ) {
+		$downloads = \lsx_health_plan\functions\get_weekly_downloads( $week );
+		if ( ! empty( $downloads ) ) {
+			$has_downloads = true;
+		}
+	}
+	return $has_downloads;
+}
+
+/**
  * Checks to see if the current ID has any tips attached.
  *
  * @param string $post_id
