@@ -157,7 +157,7 @@ class Meal {
 			'options'    => array(
 				'textarea_rows' => 5,
 			),
-		) );		
+		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Breakfast', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_breakfast',
@@ -184,7 +184,7 @@ class Meal {
 			'options'    => array(
 				'textarea_rows' => 5,
 			),
-		) );				
+		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Lunch', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_lunch',
@@ -211,7 +211,7 @@ class Meal {
 			'options'    => array(
 				'textarea_rows' => 5,
 			),
-		) );		
+		) );
 		$cmb->add_field( array(
 			'name'       => __( 'Dinner', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_dinner',
@@ -229,7 +229,7 @@ class Meal {
 			'options'    => array(
 				'textarea_rows' => 5,
 			),
-		) );			
+		) );
 	}
 
 	/**
