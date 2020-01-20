@@ -453,40 +453,60 @@ function lsx_health_plan_week_plan_block() {
 							<?php } ?>
 							<div class="week-meals-recipes-box-inner">
 							<?php
-								if ( $the_query->have_posts() ) :
-									while ( $the_query->have_posts() ) :
-										$the_query->the_post();
-										$completed_class = '';
-										if ( lsx_health_plan_is_day_complete() ) {
-											$completed_class = 'completed';
-										}
-										?>
-										<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-											<div class="plan-content"><?php the_title(); ?></div>
-										</a>
-										<?php
-									endwhile;
-								endif;
-								wp_reset_postdata();
+							if ( $the_query->have_posts() ) :
+								while ( $the_query->have_posts() ) :
+									$the_query->the_post();
+									$completed_class = '';
+									if ( lsx_health_plan_is_day_complete() ) {
+										$completed_class = 'completed';
+									}
+									?>
+									<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+										<div class="plan-content"><?php the_title(); ?></div>
+									</a>
+									<?php
+								endwhile;
+							endif;
+							wp_reset_postdata();
 							?>
 							</div>
 						</div>
-						<?php if ( ! empty( $week_downloads_view ) ) { ?>
-							<div class="week-download-box">
-								<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
-								<ul class="week-download-box-list">
-									<li><a href="#">What you can and can’t eat</a></li>
-									<li><a href="#">Shopping list - Week 1</a></li>
-									<li><a href="#">Meal Plan - Week 1</a></li></li>
-								</ul>
-							</div>
-						<?php } ?>
+						<?php
+						if ( ! empty( $week_downloads_view ) ) {
+							lsx_health_plan_weekly_downloads( $weekly_downloads );
+						}
+						?>
 					</div>
 				</div>
 			</div>
 			<?php
 			++$counter;
 		}
+	}
+}
+
+/**
+ * Outputs the weekly downloads box.
+ *
+ * @param array $weekly_downloads An array of the download ids.
+ * @return void
+ */
+function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
+	if ( ! empty( $weekly_downloads ) ) {
+		?>
+		<div class="week-download-box">
+			<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+			<ul class="week-download-box-list">
+				<?php
+				foreach ( $weekly_downloads as $weekly_download ) {
+					?>
+					<li><?php echo wp_kses_post( do_shortcode( '[download id="' . $weekly_download . '"]' ) ); ?></li>
+					<?php
+				}
+				?>
+			</ul>
+		</div>
+		<?php
 	}
 }
 

@@ -150,8 +150,32 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 function get_weekly_downloads( $week = '' ) {
 	$downloads = array();
 	if ( '' !== $week ) {
-
+		$saved_downloads = get_transient( 'lsx_hp_weekly_downloads_' . $week );
+		if ( false !== $saved_downloads && ! empty( $saved_downloads ) ) {
+			$downloads = $saved_downloads;
+		} else {
+			$args = array(
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+				'post_type'      => 'dlm_download',
+				'posts_per_page' => -1,
+				'nopagin'        => true,
+				'fields'         => 'ids',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'dlm_download_category',
+						'field'    => 'slug',
+						'terms'    => array( $week ),
+					),
+				),
+			);
+			$download_query = new \WP_Query( $args );
+			if ( $download_query->have_posts() ) {
+				$downloads = $download_query->posts;
+			}
+		}
 	}
+	$downloads = check_posts_exist( $downloads );
 	return $downloads;
 }
 
