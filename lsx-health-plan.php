@@ -42,7 +42,7 @@ add_action( 'add_meta_boxes', 'lsx_remove_extra_meta_box', 100 );
 /**
  * Create Login page with woocommerce shortcode if the page is not created
  */
-if ( ( isset( $_GET['activated'] ) && wp_verify_nonce( sanitize_key( $_GET['activated'] ) ) ) && is_admin() ) {
+if ( ( isset( $_GET['activated'] ) && function_exists( 'wp_verify_nonce' ) && wp_verify_nonce( sanitize_key( $_GET['activated'] ) ) ) && is_admin() ) {
 
 	$new_page_title = 'Login';
 	// Content to add spacing and woocommerce login shortcode

@@ -50,38 +50,41 @@ class Endpoints {
 	 * Registers the rewrites.
 	 */
 	public function add_rewrite_rules() {
-
-		// Variables to hold Translations.
+		// Here is where we add in the rewrite rules above the normal WP ones.
+		add_rewrite_tag( '%endpoint%', '([^&]+)' );
 
 		// Warm up.
 		$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
 		if ( false === $warm_up ) {
 			$warm_up = 'warm-up';
 		}
+		add_rewrite_rule( 'plan/([^/]+)/' . $warm_up . '/?$', 'index.php?plan=$matches[1]&endpoint=warm-up', 'top' );
+
 		// Workout.
-		$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
-		if ( false === $workout ) {
-			$workout = 'workout';
+		if ( post_type_exists( 'workout' ) ) {
+			$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
+			if ( false === $workout ) {
+				$workout = 'workout';
+			}
 		}
+		add_rewrite_rule( 'plan/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
 
 		// Meal.
-		$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
-		if ( false === $meal ) {
-			$meal = 'meal';
+		if ( post_type_exists( 'meal' ) ) {
+			$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
+			if ( false === $meal ) {
+				$meal = 'meal';
+			}
 		}
+		add_rewrite_rule( 'plan/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
 
 		// Recipe.
-		$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe', false );
-		if ( false === $recipe ) {
-			$recipe = 'recipes';
+		if ( post_type_exists( 'recipe' ) ) {
+			$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe', false );
+			if ( false === $recipe ) {
+				$recipe = 'recipes';
+			}
 		}
-
-		// Here is where we add in the rewrite rules above the normal WP ones.
-		add_rewrite_tag( '%endpoint%', '([^&]+)' );
-
-		add_rewrite_rule( 'plan/([^/]+)/' . $warm_up . '/?$', 'index.php?plan=$matches[1]&endpoint=warm-up', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
-		add_rewrite_rule( 'plan/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
 		add_rewrite_rule( 'plan/([^/]+)/' . $recipe . '/?$', 'index.php?plan=$matches[1]&endpoint=recipes', 'top' );
 	}
 }
