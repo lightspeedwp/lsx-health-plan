@@ -383,9 +383,14 @@ function lsx_health_plan_day_plan_block() {
 /**
  * Outputs the my profile week view box
  *
+ * @param  array $args An array of arguments.
  * @return void
  */
-function lsx_health_plan_week_plan_block() {
+function lsx_health_plan_week_plan_block( $args = array() ) {
+	$defaults = array(
+		'show_downloads' => false,
+	);
+	$args     = wp_parse_args( $args, $defaults );
 	$weeks = get_terms(
 		array(
 			'taxonomy' => 'week',
@@ -396,14 +401,13 @@ function lsx_health_plan_week_plan_block() {
 			'order'    => 'ASC',
 		)
 	);
-	$downloads_disabled = \cmb2_get_option( 'lsx_health_plan_options', 'downloads_view_disabled', false );
 	if ( ! empty( $weeks ) ) {
 		$counter      = 1;
 		$section_open = false;
 
 		foreach ( $weeks as $week ) {
-			//Grab the days of the week.
-			$args           = array(
+			// Grab the days of the week.
+			$query_args      = array(
 				'orderby'        => 'menu_order',
 				'order'          => 'ASC',
 				'post_type'      => 'plan',
@@ -417,7 +421,7 @@ function lsx_health_plan_week_plan_block() {
 					),
 				),
 			);
-			$the_query      = new WP_Query( $args );
+			$the_query      = new WP_Query( $query_args );
 			$collapse_class = '';
 
 			// Determine if the current week is complete.
@@ -436,7 +440,7 @@ function lsx_health_plan_week_plan_block() {
 			}
 
 			// Determine if there are any weekly downloads.
-			if ( true === $downloads_disabled || 1 === $downloads_disabled || 'on' === $downloads_disabled ) {
+			if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
 				$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $week->slug );
 				if ( ! empty( $weekly_downloads ) ) {
 					$week_downloads_view = 'week-downloads-view-on';
