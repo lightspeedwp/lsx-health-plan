@@ -174,3 +174,22 @@ function lsx_health_plan_is_day_complete( $post_id = '' ) {
 	}
 	return $is_complete;
 }
+
+/**
+ * Checks to see if the current ID has any tips attached.
+ *
+ * @param string $post_id
+ * @return boolean
+ */
+function lsx_health_plan_has_tips( $post_id = '' ) {
+	$has_tips = false;
+	if ( '' === $post_id ) {
+		$post_id = get_the_ID();
+	}
+	$connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
+	$connected_tips = \lsx_health_plan\functions\check_posts_exist( $connected_tips );
+	if ( ! empty( $connected_tips ) ) {
+		$has_tips = true;
+	}
+	return $has_tips;
+}
