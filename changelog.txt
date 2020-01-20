@@ -10,6 +10,7 @@
 * Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
 * Fix - Making sure the wrapper for the tip carousel doesnt output if there are not tips assigned.
 * Dev - Added a 'show_downloads' parameter to the weekly plan shortcode, which displays a list of the downloads added to the downloads category.
+* Dev - Refactored single plan tabs and the tab output, so they are passed through filters.
 
 ### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.

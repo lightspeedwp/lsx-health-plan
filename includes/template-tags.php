@@ -625,6 +625,53 @@ function lsx_health_plan_unlock_button() {
 	<?php
 }
 
+/**
+ * Outputs the Single Plan Endpoint Tabs
+ *
+ * @param string $button
+ * @return void
+ */
+function lsx_health_plan_single_nav() {
+	$tab_template_path = apply_filters( 'lsx_health_plan_single_nav_path', LSX_HEALTH_PLAN_PATH . '/templates/single-plan-tabs.php' );
+	if ( '' !== $tab_template_path ) {
+		require $tab_template_path;
+	}
+}
+
+/**
+ * Outputs the Single Plan Tab based on the endpoint
+ *
+ * @param string $button
+ * @return void
+ */
+function lsx_health_plan_single_tabs() {
+	$endpoint = get_query_var( 'endpoint' );
+	switch ( $endpoint ) {
+		case 'meal':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-meal.php';
+			break;
+
+		case 'recipes':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-recipes.php';
+			break;
+
+		case 'workout':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-workout.php';
+			break;
+
+		case 'warm-up':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-warm-up.php';
+			break;
+
+		default:
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-plan.php';
+			break;
+	}
+	$tab_template_path = apply_filters( 'lsx_health_plan_single_nav_tabs', $tab_template_path );
+	if ( '' !== $tab_template_path ) {
+		include $tab_template_path;
+	}
+}
 
 /**
  * Outputs the recipe info on a table.
