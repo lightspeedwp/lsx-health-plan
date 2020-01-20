@@ -667,7 +667,7 @@ function lsx_health_plan_single_tabs() {
 			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-plan.php';
 			break;
 	}
-	$tab_template_path = apply_filters( 'lsx_health_plan_single_nav_tabs', $tab_template_path );
+	$tab_template_path = apply_filters( 'lsx_health_plan_single_tab_path', $tab_template_path );
 	if ( '' !== $tab_template_path ) {
 		include $tab_template_path;
 	}
