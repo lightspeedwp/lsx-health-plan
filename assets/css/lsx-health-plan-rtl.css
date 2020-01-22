@@ -355,6 +355,12 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-images-existing span, #edit-account-tab .stat-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-images-existing span { display: none; }
 
+#__wp-uploader-id-2 h1, #__wp-uploader-id-2 .h1, #__wp-uploader-id-2 h2, #__wp-uploader-id-2 .h2, #__wp-uploader-id-2 h3, #__wp-uploader-id-2 .h3, #__wp-uploader-id-2 .media-frame-title h1, #__wp-uploader-id-2 .image-details h2, #__wp-uploader-id-2 .media-sidebar h2 { font-family: inherit; }
+
+#__wp-uploader-id-2 .wp-core-ui .attachment .thumbnail { background: none; border: none; line-height: initial; padding: initial; margin-bottom: initial; }
+
+#__wp-uploader-id-2 button.button { box-shadow: none; min-height: initial; color: #0071a1; border: 1px solid #0071a1; background: #f3f5f6; vertical-align: top; text-transform: initial; font-weight: 400; font-size: 13px; padding: 0 10px; height: 30px; line-height: inherit; }
+
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
 
 @media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } }

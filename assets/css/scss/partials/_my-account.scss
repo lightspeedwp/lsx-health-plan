@@ -569,3 +569,38 @@
 		}
 	}
 }
+
+// Normalize styles for the media uploader for profile images.
+#__wp-uploader-id-2 {
+	h1, .h1, h2, .h2, h3, .h3,
+	.media-frame-title h1,
+	.image-details h2,
+	.media-sidebar h2 {
+		font-family: inherit;
+	}
+	.wp-core-ui {
+		.attachment {
+			.thumbnail {
+				background: none;
+				border: none;
+				line-height: initial;
+				padding: initial;
+				margin-bottom: initial;
+			}
+		}
+	}
+	button.button {
+		box-shadow: none;
+		min-height: initial;
+		color: #0071a1;
+		border: 1px solid #0071a1;
+		background: #f3f5f6;
+		vertical-align: top;
+		text-transform: initial;
+		font-weight: 400;
+		font-size: 13px;
+		padding: 0 10px;
+		height: 30px;
+		line-height: inherit;
+	}
+}
