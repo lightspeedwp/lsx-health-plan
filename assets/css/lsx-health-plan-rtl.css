@@ -533,6 +533,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
+.post-type-archive-recipe .archive-plan .row .col-md-4 .lsx-slot, .tax-recipe-type .archive-plan .row .col-md-4 .lsx-slot { position: relative; }
+
 .post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-type, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-type { position: absolute; left: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-feature-img img { width: 100%; }

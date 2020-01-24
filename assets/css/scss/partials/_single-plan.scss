@@ -481,6 +481,9 @@
 	.archive-plan {
 		.row {
 			.col-md-4 {
+				.lsx-slot {
+					position: relative;
+				}
 				.recipe-type {
 					position: absolute;
 					right: 10px;
