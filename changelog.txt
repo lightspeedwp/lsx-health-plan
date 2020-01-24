@@ -8,9 +8,10 @@
 * Fix - Fixed the un-prefixed functions
 * Fix - Refactored the recipes functions
 * Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
-* Fix - Making sure the wrapper for the tip carousel doesnt output if there are not tips assigned.
-* Dev - Added a 'show_downloads' parameter to the weekly plan shortcode, which displays a list of the downloads added to the downloads category.
+* Fix - Making sure the wrapper for the tip carousel doesn't output if there are not tips assigned.
+* Dev - Added a `show_downloads` parameter to the weekly plan shortcode, which displays a list of the downloads added to the downloads category.
 * Dev - Refactored single plan tabs and the tab output, so they are passed through filters.
+* Dev - Design Updates to Recipes Cards.
 
 ### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.
@@ -19,7 +20,7 @@
 * Fix - Styling fixes for the Daily Plan list on tablet view.
 * Dev - Improved the search results for Health Plan items.
 * Dev- Added in Settings to assign a default workout, recipe, warm up and meal type post.
-* Fix - Changed the setting id to mimic the meta_key, and added in a check for hs_attachement.
+* Fix - Changed the setting id to mimic the meta_key, and added in a check for `hs_attachement`.
 * Dev - Adding in a setting to assign the default post type connections.
 * Fix - Made sure that connected ids in the "trash" do not show.
 * Dev - General testing to ensure compatibility with latest WordPress version (5.3).

@@ -481,6 +481,16 @@
 	.archive-plan {
 		.row {
 			.col-md-4 {
+				.recipe-type {
+					position: absolute;
+					right: 10px;
+					top: 15px;
+					font-size: 13px;
+					background: white;
+					padding: 5px 10px;
+					font-weight: bold;
+					border-radius: 1px;
+				}
 				.recipe-feature-img {
 					img {
 						width: 100%;
@@ -491,21 +501,57 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					padding: 15px 15px 0;
+					padding: 10px 15px 0;
 					table {
 						flex-grow: 2;
 						display: flex;
+						margin-bottom: 10px;
+						tbody {
+							display: flex;
+						}
 						td, th {
 							vertical-align: top;
 						}
-						.prep-time,
+						tr {
+							display: flex;
+							margin-right: 10px;
+							&:before {
+								font-family: FontAwesome;
+								margin-right: 5px;
+								color: $blue;
+							}
+							td {
+								&:first-child {
+									display: none;
+								}
+							}
+						}
+						.serves {
+							&:before {
+								content: '\f0f5';
+							}
+						}
+						.prep-time {
+							&:before {
+								content: '\f017';
+							}
+						}
 						.cooking-time,
 						.portion-size {
 							display: none;
 						}
 					}
+					.recipe-title {
+						margin-bottom: 15px;
+					}
 					a {
-						margin-bottom: 1.5em;
+						margin-bottom: 15px;
+						&:after {
+							content: '\f105';
+							font-family: FontAwesome;
+							margin-left: 2rem;
+							color: $blue;
+						}
 					}
 				}
 			}

@@ -10,6 +10,7 @@
 
 <div class="col-xs-12 col-sm-6 col-md-4">
 	<article class="lsx-slot box-shadow">
+		<span class="recipe-type"><?php echo esc_html( lsx_health_plan_recipe_type() ); ?></span>
 		<?php lsx_entry_top(); ?>
 
 		<div class="recipe-feature-img">
