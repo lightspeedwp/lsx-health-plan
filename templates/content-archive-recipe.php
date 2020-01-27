@@ -13,11 +13,13 @@
 		<?php lsx_entry_top(); ?>
 
 		<div class="recipe-feature-img">
+			<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php
 			the_post_thumbnail( 'lsx-thumbnail-square', array(
 				'class' => 'aligncenter',
 			) );
 			?>
+			</a>
 		</div>
 		<div class="content-box white-bg">
 			<?php lsx_health_plan_recipe_data(); ?>
