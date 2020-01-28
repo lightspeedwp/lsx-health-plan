@@ -7,6 +7,22 @@ $portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
 <table class="recipe-table">
 	<tbody>
 		<?php
+		if ( 1 >= (int) $serves ) {
+			$serves       = '1';
+			$serves_label = __( 'Person', 'lsx-health-plan' );
+		} else {
+			$serves_label = __( 'People', 'lsx-health-plan' );
+		}
+		?>
+		<tr class="serves">
+			<td><?php esc_html_e( 'Serves:', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td>
+			<?php
+				echo wp_kses_post( $serves ) . ' ' . esc_html( $serves_label );
+			?>
+			</td>
+		</tr>
+		<?php
 		if ( ! empty( $prep_time ) ) {
 		?>
 		<tr class="prep-time">
@@ -28,20 +44,6 @@ $portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
 			<td>
 			<?php
 				echo wp_kses_post( $cooking_time );
-			?>
-			</td>
-		</tr>
-		<?php
-		}
-		?>
-		<?php
-		if ( ! empty( $serves ) ) {
-		?>
-		<tr class="serves">
-			<td><?php esc_html_e( 'Serves:', 'lsx-health-plan' ); ?>&nbsp</td>
-			<td>
-			<?php
-				echo wp_kses_post( $serves );
 			?>
 			</td>
 		</tr>
