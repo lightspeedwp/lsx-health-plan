@@ -161,16 +161,13 @@ class Workout {
 						'sortable'      => true,
 					),
 				) );
-				
 				//** Adding in Workout Extra Information */
 
 				$cmb_group->add_field( array(
 					'name' => 'Extra Workout Information',
 					'type' => 'title',
 					'id'   => 'section_title'
-				) );				
-
-
+				) );
 				$cmb_group->add_field( array(
 					'name'       => __( 'Description', 'lsx-health-plan' ),
 					'id'         => $this->slug . '_section_' . $i . '_workoutgroup_description',
@@ -191,9 +188,7 @@ class Workout {
 					'id'         => $this->slug . '_section_' . $i . '_workoutgroup_muscle',
 					'type'       => 'text',
 					'show_on_cb' => 'cmb2_hide_if_no_cats',
-				) );									
-
-
+				) );
 				/**
 				 * Group fields works the same, except ids only need
 				 * to be unique to the group. Prefix is not needed.
