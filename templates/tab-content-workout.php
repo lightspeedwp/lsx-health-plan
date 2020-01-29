@@ -55,6 +55,7 @@
 				<?php
 			}
 			?>
+			
 			<div class="sets">
 				<?php
 				$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
@@ -86,8 +87,13 @@
 
 							$workout_section = 'workout_section_' . ( $i ) . '_title';
 							$workout_desc    = 'workout_section_' . ( $i ) . '_description';
+							$workout_extra_equipment = 'workout_section_' . ( $i ) . '_workoutgroup_equipment';
+							$workout_extra_muscle = 'workout_section_' . ( $i ) . '_workoutgroup_muscle';
 							$section_title   = get_post_meta( get_the_ID(), $workout_section, true );
 							$description     = get_post_meta( get_the_ID(), $workout_desc, true );
+							$extra_equipment     = get_post_meta( get_the_ID(), $workout_extra_equipment, true );
+							$extra_muscle     = get_post_meta( get_the_ID(), $workout_extra_muscle, true );
+
 
 							if ( '' === $section_title ) {
 								$i++;
@@ -95,6 +101,13 @@
 							}
 							?>
 							<div class="set-box set content-box">
+							<?php
+								if ( ! empty( $post_dinner_snack ) ) {
+									echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Pre-workout Snack', 'lsx-health-plan' ) . '</h3>';
+									echo wp_kses_post( apply_filters( 'the_content', $pre_workout_snack ) );
+									echo '</div>';
+								}
+								?>							
 								<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
 								<div class="set-content">
 									<p><?php echo wp_kses_post( apply_filters( 'the_content', $description ) ); ?></p>
@@ -142,6 +155,21 @@
 												?>
 											</tbody>
 										</table>
+										<table class="workout-extra-table">
+												<tbody>
+													<tr>
+														<th><?php esc_html_e( 'Equipment', 'lsx-health-plan' ); ?></th>
+														<th><?php esc_html_e( 'Muscle Group', 'lsx-health-plan' ); ?></th>
+														<th></th>
+													</tr>
+													<tr>
+														<td>
+															<?php echo wp_kses_post( apply_filters( 'the_content', $extra_equipment ) ); ?>
+														</td>
+														<td><?php echo wp_kses_post( apply_filters( 'the_content', $extra_muscle ) ); ?></td>
+													</tr>
+												</tbody>
+										</table>
 									<?php
 								}
 								?>
@@ -187,3 +215,4 @@
 
 <?php
 lsx_entry_after();
+

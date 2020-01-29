@@ -161,6 +161,39 @@ class Workout {
 						'sortable'      => true,
 					),
 				) );
+				
+				//** Adding in Workout Extra Information */
+
+				$cmb_group->add_field( array(
+					'name' => 'Extra Workout Information',
+					'type' => 'title',
+					'id'   => 'section_title'
+				) );				
+
+
+				$cmb_group->add_field( array(
+					'name'       => __( 'Description', 'lsx-health-plan' ),
+					'id'         => $this->slug . '_section_' . $i . '_workoutgroup_description',
+					'type'       => 'wysiwyg',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+					'options'    => array(
+						'textarea_rows' => 5,
+					),
+				) );
+				$cmb_group->add_field( array(
+					'name'       => __( 'Equipment', 'lsx-health-plan' ),
+					'id'         => $this->slug . '_section_' . $i . '_workoutgroup_equipment',
+					'type'       => 'text',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+				) );
+				$cmb_group->add_field( array(
+					'name'       => __( 'Muscle Group', 'lsx-health-plan' ),
+					'id'         => $this->slug . '_section_' . $i . '_workoutgroup_muscle',
+					'type'       => 'text',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+				) );									
+
+
 				/**
 				 * Group fields works the same, except ids only need
 				 * to be unique to the group. Prefix is not needed.
@@ -193,6 +226,8 @@ class Workout {
 						'posts_per_page' => -1,
 					),
 				) );
+
+
 
 				$i++;
 			};
