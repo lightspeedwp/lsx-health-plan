@@ -533,17 +533,37 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
+.post-type-archive-recipe .archive-plan .row .col-md-4 .lsx-slot, .tax-recipe-type .archive-plan .row .col-md-4 .lsx-slot { position: relative; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-type, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-type { position: absolute; left: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
+
 .post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-feature-img img { width: 100%; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box, .tax-recipe-type .archive-plan .row .col-md-4 .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 15px 15px 0; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box, .tax-recipe-type .archive-plan .row .col-md-4 .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tbody, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tbody { display: -ms-flexbox; display: flex; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table td, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .prep-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .cooking-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .portion-size, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .prep-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .cooking-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .portion-size { display: none; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr { display: -ms-flexbox; display: flex; margin-left: 10px; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr:before { font-family: FontAwesome; margin-left: 5px; color: #418ad0; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr td:first-child, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr td:first-child { display: none; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .serves:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .serves:before { content: '\f0f5'; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .prep-time:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .prep-time:before { content: '\f017'; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .cooking-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .portion-size, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .cooking-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .portion-size { display: none; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .recipe-title { margin-bottom: 15px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a { margin-bottom: 15px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
 
 .post-type-archive-recipe .lsx-hp-archive-description, .tax-recipe-type .lsx-hp-archive-description { margin-right: auto; margin-left: auto; width: 100%; display: -ms-flexbox; display: flex; }
 

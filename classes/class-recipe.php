@@ -293,6 +293,10 @@ class Recipe {
 				'desc'       => __( 'Add the recommended serving size i.e: 6', 'lsx-health-plan' ),
 				'type'       => 'text',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'attributes' => array(
+					'type'    => 'number',
+					'pattern' => '\d*',
+				),
 			)
 		);
 		$cmb->add_field(

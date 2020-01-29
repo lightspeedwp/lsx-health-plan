@@ -683,6 +683,19 @@ function lsx_health_plan_recipe_data() {
 }
 
 /**
+ * Outputs the recipe type.
+ *
+ * @return recipe_type
+ */
+function lsx_health_plan_recipe_type() {
+	$term_obj_list = get_the_terms( get_the_ID(), 'recipe-type' );
+	$recipe_type   = $term_obj_list[0]->name;
+	if ( ! empty( $recipe_type ) ) {
+		return $recipe_type;
+	}
+}
+
+/**
  * Outputs the modal button and registers the video modal to show.
  *
  * @param int $m
