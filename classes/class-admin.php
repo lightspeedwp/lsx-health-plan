@@ -246,7 +246,6 @@ class Admin {
 								unset( $new_connections[ $ckey ] );
 							}
 						}
-
 						// Now we save the field.
 						update_post_meta( $con_id, $connected_key, $new_connections, $their_connections );
 					}
