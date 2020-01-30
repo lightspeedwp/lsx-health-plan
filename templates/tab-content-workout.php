@@ -124,10 +124,13 @@
 											<tbody>
 												<tr>
 													<th><?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></th> 
+													<th><?php esc_html_e( 'Description', 'lsx-health-plan' ); ?></th>
 													<th class="center-mobile"><?php esc_html_e( 'Reps / Time / Distance', 'lsx-health-plan' ); ?></th>
 													<?php if ( post_type_exists( 'video' ) ) { ?>
 														<th class="center-mobile"><?php esc_html_e( 'Video', 'lsx-health-plan' ); ?></th>
 													<?php } ?>
+													<th><?php esc_html_e( 'Equipment', 'lsx-health-plan' ); ?></th>
+													<th><?php esc_html_e( 'Muscle Group', 'lsx-health-plan' ); ?></th>
 												</tr>
 												<?php
 												foreach ( $groups as $group ) {
@@ -135,40 +138,40 @@
 													if ( isset( $group['name'] ) ) {
 														$workout_name = esc_html( $group['name'] );
 													}
+													$workout_description = '';
+													if ( isset( $group['description'] ) ) {
+														$workout_description = esc_html( $group['description'] );
+													}													
 													$workout_reps = '';
 													if ( isset( $group['reps'] ) ) {
 														$workout_reps = esc_html( $group['reps'] );
 													}
+													$workout_equipment = '';
+													if( isset( $group['equipment'] ) ) {
+														$workout_equipment = esc_html( $group['equipment'] );
+													}
+													$workout_muscle = '';
+													if( isset( $group['muscle'] ) ) {
+														$workout_muscle = esc_html( $group['muscle'] );
+													}
 													?>
 													<tr>
 														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
+														<td class="workout-desc-item"><p><?php echo esc_html( $workout_description ); ?></td>
 														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
 														<?php if ( post_type_exists( 'video' ) ) { ?>
 															<td class="video-button-item center-mobile">
 																<?php lsx_health_plan_workout_video_play_button( $m, $group ); ?>
 															</td>
 														<?php } ?>
+														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_equipment ); ?></td>
+														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_muscle ); ?></td>
 													</tr>
 													<?php
 													$m++;
 												}
 												?>
 											</tbody>
-										</table>
-										<table class="workout-extra-table">
-												<tbody>
-													<tr>
-														<th><?php esc_html_e( 'Equipment', 'lsx-health-plan' ); ?></th>
-														<th><?php esc_html_e( 'Muscle Group', 'lsx-health-plan' ); ?></th>
-														<th></th>
-													</tr>
-													<tr>
-														<td>
-															<?php echo wp_kses_post( apply_filters( 'the_content', $extra_equipment ) ); ?>
-														</td>
-														<td><?php echo wp_kses_post( apply_filters( 'the_content', $extra_muscle ) ); ?></td>
-													</tr>
-												</tbody>
 										</table>
 									<?php
 								}

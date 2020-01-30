@@ -368,6 +368,7 @@
               td {
                 border-bottom: 1px solid #e1e1e1;
                 padding: 20px 0;
+                vertical-align: top;
                 &.video-button-item {
                   button {
                     background-color: transparent;
@@ -390,17 +391,6 @@
       }
       .modal.in {
         background-color: rgba(0, 0, 0, 0.5);
-      }
-    }
-    .workout-extra-table {
-      tr {
-        th {
-          border-bottom: 2px solid #418ad0;
-          padding-bottom: 5px;
-        }
-        td {
-          padding: 20px 0;
-        }
       }
     }
     .eating-row {
