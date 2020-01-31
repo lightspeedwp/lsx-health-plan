@@ -141,17 +141,17 @@
 													$workout_description = '';
 													if ( isset( $group['description'] ) ) {
 														$workout_description = esc_html( $group['description'] );
-													}													
+													}
 													$workout_reps = '';
 													if ( isset( $group['reps'] ) ) {
 														$workout_reps = esc_html( $group['reps'] );
 													}
 													$workout_equipment = '';
-													if( isset( $group['equipment'] ) ) {
+													if ( isset( $group['equipment'] ) ) {
 														$workout_equipment = esc_html( $group['equipment'] );
 													}
 													$workout_muscle = '';
-													if( isset( $group['muscle'] ) ) {
+													if ( isset( $group['muscle'] ) ) {
 														$workout_muscle = esc_html( $group['muscle'] );
 													}
 													?>
