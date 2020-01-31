@@ -147,14 +147,14 @@
 													$this_row[]              = '<td class="muscle-field-item center-mobile">' . esc_html( $group['muscle'] ) . '</td>';
 													$table_headers['muscle'] = true;
 												}
-												if ( isset( $group['video'] ) && '' !== $group['video'] ) {
-													$this_row[]             = '<td class="video-button-item center-mobile"></td>';
+												if ( isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] ) {
+													$this_row[]             = '<td class="video-button-item center-mobile">' . lsx_health_plan_workout_video_play_button( $m, $group, false ) . '</td>';
 													$table_headers['video'] = true;
 												}
 												$this_row[] = '</tr>';
 
 												$table_body[] = implode( '', $this_row );
-												//$m++;
+												$m++;
 											}
 
 											// Now we build the table header.
@@ -181,10 +181,10 @@
 											$table_header[] = '</tr>';
 											?>
 											<thead>
-												<?php echo implode( '', $table_header ); ?>
+												<?php echo wp_kses_post( implode( '', $table_header ) ); ?>
 											</thead>
 											<tbody>
-												<?php echo implode( '', $table_body ); ?>
+												<?php echo wp_kses_post( implode( '', $table_body ) ); ?>
 											</tbody>
 										</table>
 									<?php
