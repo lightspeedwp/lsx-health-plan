@@ -17,8 +17,6 @@
 
 	<div class="entry-content">
 		<?php
-			//the_content();
-
 			wp_link_pages( array(
 				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
 				'after'       => '</div></div>',
@@ -55,7 +53,6 @@
 				<?php
 			}
 			?>
-			
 			<div class="sets">
 				<?php
 				$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
@@ -101,13 +98,13 @@
 							}
 							?>
 							<div class="set-box set content-box">
-							<?php
+								<?php
 								if ( ! empty( $post_dinner_snack ) ) {
 									echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Pre-workout Snack', 'lsx-health-plan' ) . '</h3>';
 									echo wp_kses_post( apply_filters( 'the_content', $pre_workout_snack ) );
 									echo '</div>';
 								}
-								?>							
+								?>
 								<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
 								<div class="set-content">
 									<p><?php echo wp_kses_post( apply_filters( 'the_content', $description ) ); ?></p>
@@ -121,56 +118,73 @@
 									?>
 									<div class="set-table">
 										<table class="workout-table">
-											<tbody>
-												<tr>
-													<th><?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></th> 
-													<th><?php esc_html_e( 'Description', 'lsx-health-plan' ); ?></th>
-													<th class="center-mobile"><?php esc_html_e( 'Reps / Time / Distance', 'lsx-health-plan' ); ?></th>
-													<?php if ( post_type_exists( 'video' ) ) { ?>
-														<th class="center-mobile"><?php esc_html_e( 'Video', 'lsx-health-plan' ); ?></th>
-													<?php } ?>
-													<th><?php esc_html_e( 'Equipment', 'lsx-health-plan' ); ?></th>
-													<th><?php esc_html_e( 'Muscle Group', 'lsx-health-plan' ); ?></th>
-												</tr>
-												<?php
-												foreach ( $groups as $group ) {
-													$workout_name = '';
-													if ( isset( $group['name'] ) ) {
-														$workout_name = esc_html( $group['name'] );
-													}
-													$workout_description = '';
-													if ( isset( $group['description'] ) ) {
-														$workout_description = esc_html( $group['description'] );
-													}
-													$workout_reps = '';
-													if ( isset( $group['reps'] ) ) {
-														$workout_reps = esc_html( $group['reps'] );
-													}
-													$workout_equipment = '';
-													if ( isset( $group['equipment'] ) ) {
-														$workout_equipment = esc_html( $group['equipment'] );
-													}
-													$workout_muscle = '';
-													if ( isset( $group['muscle'] ) ) {
-														$workout_muscle = esc_html( $group['muscle'] );
-													}
-													?>
-													<tr>
-														<td class="workout-title-item"><?php echo esc_html( $workout_name ); ?></td>
-														<td class="workout-desc-item"><p><?php echo esc_html( $workout_description ); ?></td>
-														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_reps ); ?></td>
-														<?php if ( post_type_exists( 'video' ) ) { ?>
-															<td class="video-button-item center-mobile">
-																<?php lsx_health_plan_workout_video_play_button( $m, $group ); ?>
-															</td>
-														<?php } ?>
-														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_equipment ); ?></td>
-														<td class="reps-field-item center-mobile"><?php echo esc_html( $workout_muscle ); ?></td>
-													</tr>
-													<?php
-													$m++;
+											<?php
+											$table_headers = array();
+											$table_body    = array();
+
+											foreach ( $groups as $group ) {
+												$this_row = array();
+
+												$this_row[] = '<tr>';
+
+												if ( isset( $group['name'] ) && '' !== $group['name'] ) {
+													$this_row[]            = '<td class="workout-title-item">' . esc_html( $group['name'] ) . '</td>';
+													$table_headers['name'] = true;
 												}
-												?>
+												if ( isset( $group['description'] ) && '' !== $group['description'] ) {
+													$this_row[]                   = '<td class="workout-desc-item"><p>' . esc_html( $group['description'] ) . '</td>';
+													$table_headers['description'] = true;
+												}
+												if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
+													$this_row[]            = '<td class="reps-field-item center-mobile">' . esc_html( $group['reps'] ) . '</td>';
+													$table_headers['reps'] = true;
+												}
+												if ( isset( $group['equipment'] ) && '' !== $group['equipment'] ) {
+													$this_row[]                 = '<td class="equipment-field-item center-mobile">' . esc_html( $group['equipment'] ) . '</td>';
+													$table_headers['equipment'] = true;
+												}
+												if ( isset( $group['muscle'] ) && '' !== $group['muscle'] ) {
+													$this_row[]              = '<td class="muscle-field-item center-mobile">' . esc_html( $group['muscle'] ) . '</td>';
+													$table_headers['muscle'] = true;
+												}
+												if ( isset( $group['video'] ) && '' !== $group['video'] ) {
+													$this_row[]             = '<td class="video-button-item center-mobile"></td>';
+													$table_headers['video'] = true;
+												}
+												$this_row[] = '</tr>';
+
+												$table_body[] = implode( '', $this_row );
+												//$m++;
+											}
+
+											// Now we build the table header.
+											$table_html     = array();
+											$table_header[] = '<tr>';
+											if ( isset( $table_headers['name'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Workout', 'lsx-health-plan' ) . '</th>';
+											}
+											if ( isset( $table_headers['description'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Description', 'lsx-health-plan' ) . '</th>';
+											}
+											if ( isset( $table_headers['reps'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Reps / Time / Distance', 'lsx-health-plan' ) . '</th>';
+											}
+											if ( isset( $table_headers['equipment'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Equipment', 'lsx-health-plan' ) . '</th>';
+											}
+											if ( isset( $table_headers['muscle'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Muscle Group', 'lsx-health-plan' ) . '</th>';
+											}
+											if ( isset( $table_headers['video'] ) ) {
+												$table_header[] = '<th class="center-mobile">' . __( 'Video', 'lsx-health-plan' ) . '</th>';
+											}
+											$table_header[] = '</tr>';
+											?>
+											<thead>
+												<?php echo implode( '', $table_header ); ?>
+											</thead>
+											<tbody>
+												<?php echo implode( '', $table_body ); ?>
 											</tbody>
 										</table>
 									<?php
