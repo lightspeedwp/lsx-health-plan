@@ -158,7 +158,7 @@
 											}
 
 											// Now we build the table header.
-											$table_html     = array();
+											$table_header   = array();
 											$table_header[] = '<tr>';
 											if ( isset( $table_headers['name'] ) ) {
 												$table_header[] = '<th class="center-mobile">' . __( 'Workout', 'lsx-health-plan' ) . '</th>';
