@@ -44,6 +44,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					if ( ! is_array( $value ) ) {
 						$value = array( $value );
 					}
+					$value = array_unique( $value );
 					foreach ( $value as $val ) {
 						$handle = ( $field->args( 'sortable' ) ) ? '<span class="hndl"></span>' : '';
 						if ( $field->args( 'object_type' ) == 'user' ) {
