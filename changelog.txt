@@ -13,6 +13,7 @@
 * Dev - Refactored single plan tabs and the tab output, so they are passed through filters.
 * Dev - Design Updates to Recipes Cards.
 * Fix - Fixed the integration with CMB2, and detecting when it is active.
+* Dev - Adding Pre Workout Snack and the Recovery Snack to Workout.
 
 ### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.

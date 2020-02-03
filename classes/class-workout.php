@@ -227,5 +227,23 @@ class Workout {
 				'posts_per_page' => -1,
 			),
 		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+			'id'         => 'pre_workout_snack',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options'    => array(
+				'textarea_rows' => 5,
+			),
+		) );
+		$cmb->add_field( array(
+			'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
+			'id'         => 'post_workout_snack',
+			'type'       => 'wysiwyg',
+			'show_on_cb' => 'cmb2_hide_if_no_cats',
+			'options'    => array(
+				'textarea_rows' => 5,
+			),
+		) );
 	}
 }

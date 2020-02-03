@@ -339,6 +339,17 @@
 					padding: 0;
 				}
 			}
+			.workout-snacks {
+				&.pre-workout {
+					margin-top: 4.25rem;
+				}
+				.content-box {
+					.title-lined {
+						font-weight: bold;
+						font-family: "Noto Sans";
+					}
+				}
+			}
 			.sets {
 				.set-title {
 					font-family: "Noto Sans";

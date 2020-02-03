@@ -37,7 +37,7 @@
 				<div class="workout-instructions">
 					<div class="row">
 						<div class="col-md-6">
-							<h3><?php esc_html_e( 'Dont forget your warm up!', 'lsx-health-plan' ); ?></h3>
+							<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
 							<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
 						</div>
 						<div class="col-md-6">
@@ -55,6 +55,8 @@
 				<?php
 			}
 			?>
+			<!-- Pre Workout-->
+			<?php lsx_workout_snacks( 'pre' ); ?>
 			<div class="sets">
 				<?php
 				$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
@@ -155,6 +157,8 @@
 				<?php } ?>
 				<?php wp_reset_postdata(); ?>
 			</div>
+			<!-- Post Workout-->
+			<?php lsx_workout_snacks( 'post' ); ?>
 		</div>
 
 	</div><!-- .entry-content -->
