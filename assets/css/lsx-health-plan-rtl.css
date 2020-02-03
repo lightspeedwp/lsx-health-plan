@@ -485,6 +485,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons { padding: 0; }
 
+.single-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .archive-plan .single-plan-inner.workout-content .workout-snacks.pre-workout { margin-top: 4.25rem; }
+
+.single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
+
 .single-plan .single-plan-inner.workout-content .sets .set-title, .archive-plan .single-plan-inner.workout-content .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-content, .single-plan .single-plan-inner.workout-content .sets .set-table, .archive-plan .single-plan-inner.workout-content .sets .set-content, .archive-plan .single-plan-inner.workout-content .sets .set-table { font-size: 16px; color: #222222; }
