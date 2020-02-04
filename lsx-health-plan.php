@@ -142,3 +142,28 @@ function lsx_get_svg_icon( $icon ) {
 	// Return a blank string if we can't find the file.
 	return '';
 }
+
+/**
+ * Workout Snacks
+ *
+ * @return void
+ */
+function lsx_workout_snacks( $snack ) {
+	$workout_snack = get_post_meta( get_the_ID(), $snack . '_workout_snack', true );
+	if ( ! empty( $workout_snack ) ) {
+	?>
+	<div class="<?php echo esc_html( $snack ); ?>-workout workout-snacks">
+			<div class="content-box">
+				<?php
+				$snack_title = ucfirst( $snack );
+				/* Translators: %s: snack */
+				$title_text = __( '%s-Workout Snack', 'lsx-health-plan' );
+				$title      = sprintf( $title_text, $snack_title );
+				?>
+				<h3 class="title-lined"><?php echo esc_html( $title ); ?></h3>
+				<?php echo wp_kses_post( apply_filters( 'the_content', $workout_snack ) ); ?>
+			</div>
+		</div>
+	<?php
+	}
+}

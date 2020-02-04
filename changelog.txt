@@ -14,6 +14,8 @@
 * Dev - Design Updates to Recipes Cards.
 * Fix - Fixed the integration with CMB2, and detecting when it is active.
 * Dev - Download button on the workout tab will only appear if there is a pdf attached.
+* Dev - Adding Pre Workout Snack and the Recovery Snack to Workout.
+
 
 ### 1.2.0 - 19 December 2019
 * Dev - Added in translatable endpoint settings.
