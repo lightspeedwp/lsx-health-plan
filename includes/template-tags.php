@@ -702,7 +702,7 @@ function lsx_health_plan_recipe_type() {
  * @param array $group
  * @return void
  */
-function lsx_health_plan_workout_video_play_button( $m, $group ) {
+function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
 	$workout_video = '';
 	$giphy         = '';
 	$youtube       = '';
@@ -711,11 +711,7 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		$giphy         = get_post_meta( $workout_video, 'video_giphy_source', true );
 		$youtube       = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
 		$content       = get_post_field( 'post_content', $workout_video );
-		?>
-		<button data-toggle="modal" data-target="#workout-video-modal-<?php echo esc_html( $m ); ?>">
-			<span class="fa fa-play-circle"></span>
-		</button>
-		<?php
+		$play_button   = '<button data-toggle="modal" data-target="#workout-video-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
 
 		$modal_body = '';
 		if ( ! empty( $giphy ) ) {
@@ -729,6 +725,12 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
 		$modal_body .= $content;
 		\lsx_health_plan\functions\register_modal( 'workout-video-modal-' . $m, '', $modal_body );
+
+		if ( true === $echo ) {
+			echo wp_kses_post( $play_button );
+		} else {
+			return $play_button;
+		}
 	}
 }
 

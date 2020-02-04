@@ -161,23 +161,40 @@ class Workout {
 						'sortable'      => true,
 					),
 				) );
-				/**
-				 * Group fields works the same, except ids only need
-				 * to be unique to the group. Prefix is not needed.
-				 *
-				 * The parent field's id needs to be passed as the first argument.
-				 */
+
 				$cmb_group->add_group_field( $group_field_id, array(
 					'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
 					'id'   => 'name',
 					'type' => 'text',
 					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 				) );
+
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'    => __( 'Description', 'lsx-health-plan' ),
+					'id'      => 'description',
+					'type'    => 'wysiwyg',
+					'options' => array(
+						'textarea_rows' => 2,
+					),
+				) );
+
 				$cmb_group->add_group_field( $group_field_id, array(
 					'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
 					'id'   => 'reps',
 					'type' => 'text',
 					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				) );
+
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'       => __( 'Equipment', 'lsx-health-plan' ),
+					'id'         => 'equipment',
+					'type'       => 'text',
+				) );
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'       => __( 'Muscle Group', 'lsx-health-plan' ),
+					'id'         => 'muscle',
+					'type'       => 'text',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
 				) );
 
 				$cmb_group->add_group_field( $group_field_id, array(
@@ -193,7 +210,6 @@ class Workout {
 						'posts_per_page' => -1,
 					),
 				) );
-
 				$i++;
 			};
 		}
