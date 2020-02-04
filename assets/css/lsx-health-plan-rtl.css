@@ -382,7 +382,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-plan-nav .nav.nav-pills li.active svg g circle { fill: white !important; }
 
-#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: "Lora", serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 15px; -ms-flex-direction: column; flex-direction: column; text-align: center; } }
 
@@ -490,6 +490,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { color: white; background-color: #418ad0; }
 
 @media (max-width: 600px) { .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { width: 100%; } }
+
 .single-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .archive-plan .single-plan-inner.workout-content .workout-snacks.pre-workout { margin-top: 4.25rem; }
 
 .single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
