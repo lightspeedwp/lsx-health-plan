@@ -137,11 +137,11 @@ class Settings {
 		if ( post_type_exists( 'workout' ) ) {
 			$this->download_types['workout'] = array(
 				'title'       => __( 'Workout', 'lsx-health-plan' ),
-				'description' => __( 'Set a default wourkout routine PDF.', 'lsx-health-plan' ),
+				'description' => __( 'Set a default workout routine PDF.', 'lsx-health-plan' ),
 			);
 			$this->default_types['workout'] = array(
 				'title'       => __( 'Workout', 'lsx-health-plan' ),
-				'description' => __( 'Set a default wourkout routine.', 'lsx-health-plan' ),
+				'description' => __( 'Set a default workout routine.', 'lsx-health-plan' ),
 				'id'          => 'connected_workouts',
 			);
 			$this->endpoints['endpoint_workout'] = array(

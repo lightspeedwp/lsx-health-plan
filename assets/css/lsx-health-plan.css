@@ -485,6 +485,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons { padding: 0; }
 
+.single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { border: 2px solid #418ad0; color: #418ad0; height: 50px; border-radius: 3px; display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 0.6px; line-height: 1.25; padding: 15px 40px; position: relative; text-transform: uppercase; transition: all 100ms ease; text-align: center; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { color: white; background-color: #418ad0; }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { width: 100%; } }
 .single-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .archive-plan .single-plan-inner.workout-content .workout-snacks.pre-workout { margin-top: 4.25rem; }
 
 .single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }

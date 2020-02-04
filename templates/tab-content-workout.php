@@ -42,9 +42,16 @@
 						</div>
 						<div class="col-md-6">
 							<div class="single-plan-inner-buttons">
-								<div class="complete-plan-btn">
-									<a class="btn border-btn dwnld-btn" href="#"><?php esc_html_e( 'Download Warm-Up', 'lsx-health-plan' ); ?></a>
-								</div>
+								<?php
+								$download = \lsx_health_plan\functions\get_option( 'download_page', false );
+								if ( ! empty( $download ) ) {
+									?>
+									<div class="complete-plan-btn">
+										<?php
+										echo wp_kses_post( do_shortcode( '[download id="' . $download . '"]' ) );
+										?>
+									</div>
+								<?php } ?>
 								<div  class="back-plan-btn">
 									<a class="btn secondary-btn wrm-up-btn" href="<?php the_permalink(); ?>warm-up/"><?php esc_html_e( 'See Warm-Up', 'lsx-health-plan' ); ?></a>
 								</div>

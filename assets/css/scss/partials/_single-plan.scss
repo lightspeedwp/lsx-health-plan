@@ -337,6 +337,31 @@
 				}
 				.single-plan-inner-buttons {
 					padding: 0;
+					.complete-plan-btn {
+						.download-link {
+							border: 2px solid $blue;
+							color: $blue;
+							height: 50px;
+							border-radius: 3px;
+							display: inline-block;
+							font-size: 14px;
+							font-weight: 700;
+							letter-spacing: 0.6px;
+							line-height: 1.25;
+							padding: 15px 40px;
+							position: relative;
+							text-transform: uppercase;
+							transition: all 100ms ease;
+							text-align: center;
+							&:hover {
+								color: white;
+								background-color: $blue;
+							}
+							@media (max-width: 600px) {
+								width: 100%;
+							}
+						}
+					}
 				}
 			}
 			.workout-snacks {
