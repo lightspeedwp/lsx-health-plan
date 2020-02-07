@@ -157,14 +157,14 @@ class Admin {
 	 */
 	public function add_connected_posts( $values, $current_id, $connected_key ) {
 		foreach ( $values as $value ) {
-			$current_post_array = get_post_meta( $value, $connected_key, true );	
+			$current_post_array = get_post_meta( $value, $connected_key, true );
 			$previous_values    = $current_post_array;
 
 			if ( ! empty( $current_post_array ) ) {
 				$current_post_array = array_map( 'strval', $current_post_array );
 				array_unique( $current_post_array );
 			}
-			
+
 			// If the current connected post has no saved connections then we create it.
 			if ( false === $current_post_array || empty( $current_post_array ) ) {
 				$current_post_array = array( $current_id );
