@@ -43,57 +43,95 @@
 			if ( $meals->have_posts() ) {
 				while ( $meals->have_posts() ) {
 					$meals->the_post();
-					$post_id = get_the_id();
-
 					$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
 
+					//Breakfast
+					$pre_breakfast_snack = get_post_meta( get_the_ID(), 'meal_pre_breakfast_snack', true );
 					$breakfast       = get_post_meta( get_the_ID(), 'meal_breakfast', true );
-					$breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
+					$post_breakfast_snack = get_post_meta( get_the_ID(), 'meal_breakfast_snack', true );
+
+					//Lunch
+					$pre_lunch_snack = get_post_meta( get_the_ID(), 'meal_pre_lunch_snack', true );
 					$lunch           = get_post_meta( get_the_ID(), 'meal_lunch', true );
-					$lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
+					$post_lunch_snack     = get_post_meta( get_the_ID(), 'meal_lunch_snack', true );
+
+					//Dinner
+					$pre_dinner_snack     = get_post_meta( get_the_ID(), 'meal_pre_dinner_snack', true );
 					$dinner          = get_post_meta( get_the_ID(), 'meal_dinner', true );
+					$post_dinner_snack     = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
+
+
 					?>
 					<div class="row eating-row">
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $breakfast ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $breakfast ) );
-								}
-								if ( ! empty( $breakfast_snack ) ) {
-									echo '<h3>' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $breakfast_snack ) );
-								}
-								?>
-							</div>
+						<?php
+							if ( ! empty( $pre_breakfast_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_breakfast_snack ) );
+								echo '</div>';
+							}
+							?>						
+							<?php
+							if ( ! empty( $breakfast ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Breakfast', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $breakfast ) );
+								echo '</div>';
+							}
+							?>
+							<?php
+							if ( ! empty( $post_breakfast_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $post_breakfast_snack ) );
+								echo '</div>';
+							}
+							?>
 						</div>
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $lunch ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Lunch', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
-								}
-								if ( ! empty( $lunch_snack ) ) {
-									echo '<h3>' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $lunch_snack ) );
-								}
-								?>
-							</div>
+						<?php
+							if ( ! empty( $pre_lunch_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_lunch_snack ) );
+								echo '</div>';
+							}
+							?>							
+							<?php
+							if ( ! empty( $lunch ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Lunch', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $lunch ) );
+								echo '</div>';
+							}
+							if ( ! empty( $post_lunch_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $post_lunch_snack ) );
+								echo '</div>';
+							}
+							?>
 						</div>
 						<div class="col-md-4 eating-column">
-							<div class="content-box">
-								<?php
-								if ( ! empty( $dinner ) ) {
-									echo '<h3 class="eating-title title-lined">' . esc_html__( 'Supper', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $dinner ) );
-								}
-								?>
-							</div>
+						<?php
+							if ( ! empty( $pre_dinner_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $pre_dinner_snack ) );
+								echo '</div>';
+							}
+							?>						
+							<?php
+							if ( ! empty( $dinner ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Supper', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $dinner ) );
+								echo '</div>';
+							}
+							?>
+							<?php
+							if ( ! empty( $post_dinner_snack ) ) {
+								echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
+								echo wp_kses_post( apply_filters( 'the_content', $post_dinner_snack ) );
+								echo '</div>';
+							}
+							?>							
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			?>
@@ -104,7 +142,7 @@
 					<div class="row tip-row extras-box">
 						<?php
 						$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
-						if ( ! empty( $connected_recipes ) ) {
+						if ( ! empty( $connected_recipes ) && post_type_exists( 'recipe' ) ) {
 							?>
 							<div class="col-md-4">
 								<div class="content-box tip-left box-shadow">
@@ -125,12 +163,14 @@
 								</div>	
 							</div>
 						<?php } ?>
-						
-						<div class="col-md-4">
-							<div class="tip-right">
-								<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+
+						<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
+							<div class="col-md-4">
+								<div class="tip-right">
+									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 					</div>
 			</div>
 		</div>

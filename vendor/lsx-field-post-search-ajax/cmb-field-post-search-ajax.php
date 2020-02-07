@@ -44,8 +44,10 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					if ( ! is_array( $value ) ) {
 						$value = array( $value );
 					}
+					$value = array_unique( $value );
 					foreach ( $value as $val ) {
 						$handle = ( $field->args( 'sortable' ) ) ? '<span class="hndl"></span>' : '';
+						$li_css = '';
 						if ( $field->args( 'object_type' ) == 'user' ) {
 							$guid  = get_edit_user_link( $val );
 							$user  = get_userdata( $val );
@@ -53,8 +55,11 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 						} else {
 							$guid  = get_edit_post_link( $val );
 							$title = get_the_title( $val );
+							if ( 'trash' === get_post_status( $val ) ) {
+								$li_css = 'display:none;';
+							}
 						}
-						echo '<li>' . $handle . '<input type="hidden" name="' . $field_name . '_results[]" value="' . $val . '"><a href="' . $guid . '" target="_blank" class="edit-link">' . $title . '</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>';
+						echo '<li style="' . $li_css . '">' . $handle . '<input type="hidden" name="' . $field_name . '_results[]" value="' . $val . '"><a href="' . $guid . '" target="_blank" class="edit-link">' . $title . '</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>';
 					}
 				}
 				echo '</ul>';

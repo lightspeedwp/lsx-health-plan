@@ -7,10 +7,26 @@ $portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
 <table class="recipe-table">
 	<tbody>
 		<?php
+		if ( 1 >= (int) $serves ) {
+			$serves       = '1';
+			$serves_label = __( 'Person', 'lsx-health-plan' );
+		} else {
+			$serves_label = __( 'People', 'lsx-health-plan' );
+		}
+		?>
+		<tr class="serves">
+			<td><?php esc_html_e( 'Serves:', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td>
+			<?php
+				echo wp_kses_post( $serves ) . ' ' . esc_html( $serves_label );
+			?>
+			</td>
+		</tr>
+		<?php
 		if ( ! empty( $prep_time ) ) {
 		?>
-		<tr>
-		<td><?php esc_html_e( 'Prep time: ', 'lsx-health-plan' ); ?></td>
+		<tr class="prep-time">
+		<td><?php esc_html_e( 'Prep time: ', 'lsx-health-plan' ); ?>&nbsp</td>
 			<td>
 			<?php
 				echo wp_kses_post( $prep_time );
@@ -23,8 +39,8 @@ $portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
 		<?php
 		if ( ! empty( $cooking_time ) ) {
 		?>
-		<tr>
-			<td><?php esc_html_e( 'Cooking time: ', 'lsx-health-plan' ); ?></td>
+		<tr class="cooking-time">
+			<td><?php esc_html_e( 'Cooking time: ', 'lsx-health-plan' ); ?>&nbsp</td>
 			<td>
 			<?php
 				echo wp_kses_post( $cooking_time );
@@ -35,24 +51,10 @@ $portion      = get_post_meta( get_the_ID(), 'recipe_portion', true );
 		}
 		?>
 		<?php
-		if ( ! empty( $serves ) ) {
-		?>
-		<tr>
-			<td><?php esc_html_e( 'Serves: ', 'lsx-health-plan' ); ?></td>
-			<td>
-			<?php
-				echo wp_kses_post( $serves );
-			?>
-			</td>
-		</tr>
-		<?php
-		}
-		?>
-		<?php
 		if ( ! empty( $portion ) ) {
 		?>
-		<tr>
-			<td><?php esc_html_e( 'Portion size: ', 'lsx-health-plan' ); ?></td>
+		<tr class="portion-size">
+			<td><?php esc_html_e( 'Portion size: ', 'lsx-health-plan' ); ?>&nbsp</td>
 			<td>
 			<?php
 				echo wp_kses_post( $portion );

@@ -44,9 +44,10 @@ class Admin {
 		$this->settings = Settings::get_instance();
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
-		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 4, 20 );
-		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 4, 20 );
-		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 4, 20 );
+		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
+		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
+		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 20, 4 );
+		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
 	}
 
 	/**
@@ -150,19 +151,25 @@ class Admin {
 	 * Updates the connected posts witht he current post ID
 	 *
 	 * @param [type] $values
-	 * @param [type] $current_ID
+	 * @param [type] $current_id
 	 * @param [type] $connected_key
 	 * @return void
 	 */
-	public function add_connected_posts( $values, $current_ID, $connected_key ) {
+	public function add_connected_posts( $values, $current_id, $connected_key ) {
 		foreach ( $values as $value ) {
 			$current_post_array = get_post_meta( $value, $connected_key, true );
 			$previous_values    = $current_post_array;
+
+			if ( ! empty( $current_post_array ) ) {
+				$current_post_array = array_map( 'strval', $current_post_array );
+				array_unique( $current_post_array );
+			}
+
 			// If the current connected post has no saved connections then we create it.
 			if ( false === $current_post_array || empty( $current_post_array ) ) {
-				$current_post_array = array( $current_ID );
-			} elseif ( ! in_array( $current_ID, $current_post_array, true ) ) {
-				$current_post_array[] = $current_ID;
+				$current_post_array = array( $current_id );
+			} elseif ( ! in_array( (string) $current_id, $current_post_array, true ) ) {
+				$current_post_array[] = $current_id;
 			}
 
 			// Check if the values are empty, if not update them.
@@ -199,6 +206,55 @@ class Admin {
 					add_post_meta( $value, $connected_key, $new_array, true );
 				} else {
 					delete_post_meta( $value, $connected_key );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Runs on 'before_delete_post' to run through and remove this post ID from its connected values.
+	 *
+	 * @param string $item_id
+	 * @return void
+	 */
+	public function delete_post_meta_connections( $item_id = '' ) {
+		if ( '' !== $item_id ) {
+			$post_type   = get_post_type( $item_id );
+			$connections = $this->get_connections();
+			if ( isset( $connections[ $post_type ] ) && ! empty( $connections[ $post_type ] ) && is_array( $connections[ $post_type ] ) ) {
+				foreach ( $connections[ $post_type ] as $this_key => $connected_key ) {
+					$this->delete_connected_items( $item_id, $this_key, $connected_key );
+				}
+			}
+		}
+	}
+
+	/**
+	 * This function will remvoe the post id fomr its connected posts.
+	 *
+	 * @param string $item_id
+	 * @param string $this_key
+	 * @param string $connected_key
+	 * @return void
+	 */
+	public function delete_connected_items( $item_id = '', $this_key, $connected_key ) {
+		if ( '' !== $item_id ) {
+			$connected_items = get_post_meta( $item_id, $this_key, true );
+			if ( ! empty( $connected_items ) ) {
+				foreach ( $connected_items as $con_id ) {
+					// Get the connected item array from the connected item.
+					$their_connections = get_post_meta( $con_id, $connected_key, true );
+					if ( ! empty( $their_connections ) ) {
+						$new_connections = $their_connections;
+						// Run through the array and remove the post to be deleteds ID.
+						foreach ( $their_connections as $ckey => $cvalue ) {
+							if ( (int) $item_id === (int) $cvalue ) {
+								unset( $new_connections[ $ckey ] );
+							}
+						}
+						// Now we save the field.
+						update_post_meta( $con_id, $connected_key, $new_connections, $their_connections );
+					}
 				}
 			}
 		}

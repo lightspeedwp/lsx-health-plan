@@ -25,8 +25,12 @@ function lsx_health_plan_warmup_box() {
 				</div>
 				<?php
 			}
+			$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
+			if ( false === $warm_up ) {
+				$warm_up = 'warm-up';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>warm-up/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $warm_up ); ?>/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -38,6 +42,9 @@ function lsx_health_plan_warmup_box() {
 * @return void
 */
 function lsx_health_plan_workout_box() {
+	if ( ! post_type_exists( 'workout' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -52,8 +59,12 @@ function lsx_health_plan_workout_box() {
 				</div>
 				<?php
 			}
+			$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
+			if ( false === $workout ) {
+				$workout = 'workout';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>workout/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $workout ); ?>/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -65,6 +76,9 @@ function lsx_health_plan_workout_box() {
 * @return void
 */
 function lsx_health_plan_meal_box() {
+	if ( ! post_type_exists( 'meal' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -79,8 +93,12 @@ function lsx_health_plan_meal_box() {
 				</div>
 				<?php
 			}
+			$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
+			if ( false === $meal ) {
+				$meal = 'meal';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>meal/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $meal ); ?>/" class="btn"><?php esc_html_e( 'View your meal plan', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -92,6 +110,9 @@ function lsx_health_plan_meal_box() {
 * @return void
 */
 function lsx_health_plan_recipe_box() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	?>
 	<div class="col-md-4" >
 		<div class="lsx-health-plan-box">
@@ -106,8 +127,12 @@ function lsx_health_plan_recipe_box() {
 				</div>
 				<?php
 			}
+			$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipe', false );
+			if ( false === $recipes ) {
+				$recipes = 'recipes';
+			}
 			?>
-			<a href="<?php the_permalink(); ?>recipes/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
+			<a href="<?php the_permalink(); ?><?php echo esc_attr( $recipes ); ?>/" class="btn"><?php esc_html_e( 'View all recipes', 'lsx-health-plan' ); ?></a>
 		</div>
 	</div>
 <?php
@@ -123,7 +148,7 @@ function lsx_health_plan_downloads_box() {
 	?>
 	<div class="col-md-4 day-download-box" >
 		<div class="lsx-health-plan-box">
-			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'downloads.svg' ); ?></h3>
+			<h3 class="title downloads-title title-lined"><?php esc_html_e( 'Downloads', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'download.svg' ); ?></h3>
 			<div class="spacer"></div>
 			<div class="download-list">
 				<ul>
@@ -367,9 +392,14 @@ function lsx_health_plan_day_plan_block() {
 /**
  * Outputs the my profile week view box
  *
+ * @param  array $args An array of arguments.
  * @return void
  */
-function lsx_health_plan_week_plan_block() {
+function lsx_health_plan_week_plan_block( $args = array() ) {
+	$defaults = array(
+		'show_downloads' => false,
+	);
+	$args     = wp_parse_args( $args, $defaults );
 	$weeks = get_terms(
 		array(
 			'taxonomy' => 'week',
@@ -385,8 +415,8 @@ function lsx_health_plan_week_plan_block() {
 		$section_open = false;
 
 		foreach ( $weeks as $week ) {
-			//Grab the days of the week.
-			$args           = array(
+			// Grab the days of the week.
+			$query_args      = array(
 				'orderby'        => 'menu_order',
 				'order'          => 'ASC',
 				'post_type'      => 'plan',
@@ -400,7 +430,7 @@ function lsx_health_plan_week_plan_block() {
 					),
 				),
 			);
-			$the_query      = new WP_Query( $args );
+			$the_query      = new WP_Query( $query_args );
 			$collapse_class = '';
 
 			// Determine if the current week is complete.
@@ -417,27 +447,47 @@ function lsx_health_plan_week_plan_block() {
 					}
 				}
 			}
+
+			// Determine if there are any weekly downloads.
+			if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
+				$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $week->slug );
+				if ( ! empty( $weekly_downloads ) ) {
+					$week_downloads_view = 'week-downloads-view-on';
+				}
+			}
 			?>
 			<div class="daily-plan-block week-grid">
 				<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
 				<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
-					<div class="week-row-inner">
+					<div class="week-row-inner <?php echo esc_html( $week_downloads_view ); ?>">
+						<div class="week-meals-recipes-box">
+							<?php if ( ! empty( $week_downloads_view ) ) { ?>
+								<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+							<?php } ?>
+							<div class="week-meals-recipes-box-inner">
+							<?php
+							if ( $the_query->have_posts() ) :
+								while ( $the_query->have_posts() ) :
+									$the_query->the_post();
+									$completed_class = '';
+									if ( lsx_health_plan_is_day_complete() ) {
+										$completed_class = 'completed';
+									}
+									?>
+									<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+										<div class="plan-content"><?php the_title(); ?></div>
+									</a>
+									<?php
+								endwhile;
+							endif;
+							wp_reset_postdata();
+							?>
+							</div>
+						</div>
 						<?php
-						if ( $the_query->have_posts() ) :
-							while ( $the_query->have_posts() ) :
-								$the_query->the_post();
-								$completed_class = '';
-								if ( lsx_health_plan_is_day_complete() ) {
-									$completed_class = 'completed';
-								}
-								?>
-								<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-									<div class="plan-content"><?php the_title(); ?></div>
-								</a>
-								<?php
-							endwhile;
-						endif;
-						wp_reset_postdata();
+						if ( ! empty( $week_downloads_view ) ) {
+							lsx_health_plan_weekly_downloads( $weekly_downloads );
+						}
 						?>
 					</div>
 				</div>
@@ -449,11 +499,39 @@ function lsx_health_plan_week_plan_block() {
 }
 
 /**
+ * Outputs the weekly downloads box.
+ *
+ * @param array $weekly_downloads An array of the download ids.
+ * @return void
+ */
+function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
+	if ( ! empty( $weekly_downloads ) ) {
+		?>
+		<div class="week-download-box">
+			<h3 class="title"><?php lsx_get_svg_icon( 'download.svg' ); ?><?php echo esc_html_e( 'Downloads', 'lsx-health-plan' ); ?></h3>
+			<ul class="week-download-box-list">
+				<?php
+				foreach ( $weekly_downloads as $weekly_download ) {
+					?>
+					<li><?php echo wp_kses_post( do_shortcode( '[download id="' . $weekly_download . '"]' ) ); ?></li>
+					<?php
+				}
+				?>
+			</ul>
+		</div>
+		<?php
+	}
+}
+
+/**
  * Outputs the featured video shortcode
  *
  * @return void
  */
 function lsx_health_plan_featured_video_block() {
+	if ( ! post_type_exists( 'video' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-videos.php';
 }
 
@@ -463,6 +541,9 @@ function lsx_health_plan_featured_video_block() {
  * @return void
  */
 function lsx_health_plan_featured_recipes_block() {
+	if ( ! post_type_exists( 'recipe' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-recipes.php';
 }
 
@@ -472,6 +553,9 @@ function lsx_health_plan_featured_recipes_block() {
  * @return void
  */
 function lsx_health_plan_featured_tips_block() {
+	if ( ! post_type_exists( 'tip' ) ) {
+		return;
+	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
@@ -541,14 +625,74 @@ function lsx_health_plan_unlock_button() {
 	<?php
 }
 
+/**
+ * Outputs the Single Plan Endpoint Tabs
+ *
+ * @param string $button
+ * @return void
+ */
+function lsx_health_plan_single_nav() {
+	$tab_template_path = apply_filters( 'lsx_health_plan_single_nav_path', LSX_HEALTH_PLAN_PATH . '/templates/single-plan-tabs.php' );
+	if ( '' !== $tab_template_path ) {
+		require $tab_template_path;
+	}
+}
+
+/**
+ * Outputs the Single Plan Tab based on the endpoint
+ *
+ * @param string $button
+ * @return void
+ */
+function lsx_health_plan_single_tabs() {
+	$endpoint = get_query_var( 'endpoint' );
+	switch ( $endpoint ) {
+		case 'meal':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-meal.php';
+			break;
+
+		case 'recipes':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-recipes.php';
+			break;
+
+		case 'workout':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-workout.php';
+			break;
+
+		case 'warm-up':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-warm-up.php';
+			break;
+
+		default:
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . '/templates/tab-content-plan.php';
+			break;
+	}
+	$tab_template_path = apply_filters( 'lsx_health_plan_single_tab_path', $tab_template_path );
+	if ( '' !== $tab_template_path ) {
+		include $tab_template_path;
+	}
+}
 
 /**
  * Outputs the recipe info on a table.
  *
  * @return void
  */
-function table_recipe_data() {
+function lsx_health_plan_recipe_data() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/table-recipe-data.php';
+}
+
+/**
+ * Outputs the recipe type.
+ *
+ * @return recipe_type
+ */
+function lsx_health_plan_recipe_type() {
+	$term_obj_list = get_the_terms( get_the_ID(), 'recipe-type' );
+	$recipe_type   = $term_obj_list[0]->name;
+	if ( ! empty( $recipe_type ) ) {
+		return $recipe_type;
+	}
 }
 
 /**
@@ -558,7 +702,7 @@ function table_recipe_data() {
  * @param array $group
  * @return void
  */
-function lsx_health_plan_workout_video_play_button( $m, $group ) {
+function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
 	$workout_video = '';
 	$giphy         = '';
 	$youtube       = '';
@@ -567,11 +711,7 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		$giphy         = get_post_meta( $workout_video, 'video_giphy_source', true );
 		$youtube       = esc_url( get_post_meta( $workout_video, 'video_youtube_source', 1 ) );
 		$content       = get_post_field( 'post_content', $workout_video );
-		?>
-		<button data-toggle="modal" data-target="#workout-video-modal-<?php echo esc_html( $m ); ?>">
-			<span class="fa fa-play-circle"></span>
-		</button>
-		<?php
+		$play_button   = '<button data-toggle="modal" data-target="#workout-video-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
 
 		$modal_body = '';
 		if ( ! empty( $giphy ) ) {
@@ -585,5 +725,31 @@ function lsx_health_plan_workout_video_play_button( $m, $group ) {
 		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
 		$modal_body .= $content;
 		\lsx_health_plan\functions\register_modal( 'workout-video-modal-' . $m, '', $modal_body );
+
+		if ( true === $echo ) {
+			echo wp_kses_post( $play_button );
+		} else {
+			return $play_button;
+		}
+	}
+}
+
+/**
+ * Outputs the recipe description if it is included.
+ *
+ * @return void
+ */
+function lsx_health_plan_recipe_archive_description() {
+	if ( is_post_type_archive( 'recipe' ) ) {
+		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
+	} elseif ( is_tax() ) {
+		$description = get_the_archive_description();
+	}
+	if ( '' !== $description ) {
+		?>
+		<div class="lsx-hp-archive-description row">
+			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
+		</div>
+		<?php
 	}
 }

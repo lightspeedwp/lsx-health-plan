@@ -144,7 +144,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
-.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
+.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
 #account-nav { margin-bottom: 15px; }
 
@@ -264,17 +264,45 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block.week-grid a.week-title[aria-expanded="false"]:after { content: "\f0d7"; font-family: 'FontAwesome'; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner .day { background: none; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day { background: none; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner .day:not(.completed) { border: 3px solid #418ad0; border-radius: 50px; height: 100px; width: 100px; background: rgba(65, 138, 208, 0.3); text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:not(.completed) { border: 4px solid #418ad0; border-radius: 50px; height: 100px; width: 100px; background: rgba(65, 138, 208, 0.3); text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner .day:hover:not(.completed) { background: #418ad0; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:hover:not(.completed) { background: #418ad0; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner .day:hover:not(.completed) .plan-content { color: #ffffff; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:hover:not(.completed) .plan-content { color: #ffffff; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner .day .plan-content { font-family: 'Noto Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day .plan-content { font-family: 'Noto Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+
+@media (max-width: 1024px) { .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { -ms-flex-direction: column; flex-direction: column; } }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box { padding-right: 5px; -ms-flex-positive: 1; flex-grow: 1; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box h3 { background-color: #f6f6f6; padding: 10px 16px; margin-bottom: 16px; display: -ms-flexbox; display: flex; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box h3 svg { margin-right: 10px; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content { font-size: 0; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content:before { font-size: 50px; color: #F1F1F1; }
+
+@media (max-width: 1024px) { .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content:before { font-size: 66px; } }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day:not(.completed) { height: 75px; width: 75px; margin-right: 5px; padding: 5px; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day:not(.completed) .plan-content { font-size: 18px; font-weight: bold; line-height: 24px; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-download-box { background-color: #f6f6f6; padding: 10px 16px; margin-bottom: 5px; -ms-flex-positive: 1; flex-grow: 1; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-download-box .title { display: -ms-flexbox; display: flex; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-download-box .title svg { margin-right: 10px; }
+
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-download-box .week-download-box-list a { background: none; font-size: 15px; line-height: 24px; padding: 0; font-weight: normal; font-family: 'Noto Sans', sans-serif; margin: 0; }
 
 #edit-account-tab { padding: 35px 20px 20px; max-width: 1140px; width: 100%; margin: 20px auto 140px; }
 
@@ -327,6 +355,12 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .edit-account-section .wpua-edit-container #wpua-images-existing span, #edit-account-tab .stat-section .wpua-edit-container #wpua-thumbnail-existing, #edit-account-tab .stat-section .wpua-edit-container #wpua-images-existing span { display: none; }
 
+#__wp-uploader-id-2 h1, #__wp-uploader-id-2 .h1, #__wp-uploader-id-2 h2, #__wp-uploader-id-2 .h2, #__wp-uploader-id-2 h3, #__wp-uploader-id-2 .h3, #__wp-uploader-id-2 .media-frame-title h1, #__wp-uploader-id-2 .image-details h2, #__wp-uploader-id-2 .media-sidebar h2 { font-family: inherit; }
+
+#__wp-uploader-id-2 .wp-core-ui .attachment .thumbnail { background: none; border: none; line-height: initial; padding: initial; margin-bottom: initial; }
+
+#__wp-uploader-id-2 button.button { box-shadow: none; min-height: initial; color: #0071a1; border: 1px solid #0071a1; background: #f3f5f6; vertical-align: top; text-transform: initial; font-weight: 400; font-size: 13px; padding: 0 10px; height: 30px; line-height: inherit; }
+
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
 
 @media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } }
@@ -348,7 +382,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-plan-nav .nav.nav-pills li.active svg g circle { fill: white !important; }
 
-#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: "Lora", serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 15px; -ms-flex-direction: column; flex-direction: column; text-align: center; } }
 
@@ -396,7 +430,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.post-type-archive-recipe .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
+.post-type-archive-recipe .bottom-single-recipe, .tax-recipe-type .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan { background: #ffffff; padding: 25px 40px; }
 
@@ -435,7 +469,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .status-plan-buttons, .archive-plan .status-plan-buttons { padding: 25px 20px; }
 
-.single-plan .content-box, .archive-plan .content-box { margin: 30px 0; background: #f6f6f6; padding: 12px 16px; }
+.single-plan .content-box, .archive-plan .content-box { margin: 0 0 30px; background: #f6f6f6; padding: 12px 16px; }
 
 .single-plan .blue-title, .archive-plan .blue-title { color: #418ad0; font-weight: bold; }
 
@@ -450,6 +484,16 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .single-plan .single-plan-inner.workout-content .workout-instructions h3, .archive-plan .single-plan-inner.workout-content .workout-instructions h3 { font-family: 'Noto Sans', sans-serif; font-weight: bold; margin-bottom: 5px; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons { padding: 0; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { border: 2px solid #418ad0; color: #418ad0; height: 50px; border-radius: 3px; display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 0.6px; line-height: 1.25; padding: 15px 40px; position: relative; text-transform: uppercase; transition: all 100ms ease; text-align: center; }
+
+.single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { color: white; background-color: #418ad0; }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { width: 100%; } }
+
+.single-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .archive-plan .single-plan-inner.workout-content .workout-snacks.pre-workout { margin-top: 4.25rem; }
+
+.single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-title, .archive-plan .single-plan-inner.workout-content .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
@@ -499,13 +543,45 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box { min-height: 290px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .lsx-slot, .tax-recipe-type .archive-plan .row .col-md-4 .lsx-slot { position: relative; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-type, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-type { position: absolute; right: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-feature-img img { width: 100%; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a { margin-bottom: 1.5em; }
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box, .tax-recipe-type .archive-plan .row .col-md-4 .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tbody, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tbody { display: -ms-flexbox; display: flex; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table td, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table th, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table td, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table th { vertical-align: top; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr { display: -ms-flexbox; display: flex; margin-right: 10px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr:before { font-family: FontAwesome; margin-right: 5px; color: #418ad0; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table tr td:first-child, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table tr td:first-child { display: none; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .serves:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .serves:before { content: '\f0f5'; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .prep-time:before, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .prep-time:before { content: '\f017'; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .cooking-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table .portion-size, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .cooking-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table .portion-size { display: none; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .recipe-title { margin-bottom: 15px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a { margin-bottom: 15px; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
+
+.post-type-archive-recipe .lsx-hp-archive-description, .tax-recipe-type .lsx-hp-archive-description { margin-left: auto; margin-right: auto; width: 100%; display: -ms-flexbox; display: flex; }
+
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper, .tax-recipe-type .lsx-hp-archive-description .description-wrapper { margin-top: 4.25rem; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto; }
+
+.post-type-archive-recipe .lsx-hp-archive-description .description-wrapper p, .tax-recipe-type .lsx-hp-archive-description .description-wrapper p { margin-bottom: 0px; }
+
+.post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box, .tax-recipe-type.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
 
 #single-recipe { margin-bottom: -8.4rem; }
 

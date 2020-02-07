@@ -49,7 +49,7 @@ function get_option( $key = '', $default = false ) {
 		return cmb2_get_option( 'lsx_health_plan_options', $key, $default );
 	}
 	// Fallback to get_option if CMB2 is not loaded yet.
-	$opts = get_option( 'lsx_health_plan_options', $default );
+	$opts = \get_option( 'lsx_health_plan_options', $default );
 	$val  = $default;
 	if ( 'all' === $key ) {
 		$val = $opts;
@@ -60,25 +60,6 @@ function get_option( $key = '', $default = false ) {
 }
 
 /**
- * Add Lets Enrypt and PayFast logos to cart
- **/
-
-add_action( 'woocommerce_checkout_after_order_review', function() {
-	$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/le-logo.svg';
-	$payfast_image   = LSX_HEALTH_PLAN_URL . 'assets/images/secure-payments.png';
-	?>
-	<div class="row text-center vertical-align">
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
-		</div>
-	</div>
-	<?php
-});
-
-/**
  * Returns the downloads attached to the items
  * @since  0.1.0
  * @param  string $key     Options array key
@@ -86,13 +67,8 @@ add_action( 'woocommerce_checkout_after_order_review', function() {
  * @return mixed           Option value
  */
 function get_downloads( $type = 'all', $post_id = '' ) {
-	$post_types = array(
-		'page',
-		'meal',
-		'workout',
-		'recipe',
-		'video',
-	);
+	$lsx_health_plan = \lsx_health_plan();
+	$post_types      = $lsx_health_plan->get_post_types();
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
@@ -135,6 +111,44 @@ function get_downloads( $type = 'all', $post_id = '' ) {
 				$downloads = array_merge( $downloads, $default_downloads );
 			}
 			$downloads = array_unique( $downloads );
+		}
+	}
+	$downloads = check_posts_exist( $downloads );
+	return $downloads;
+}
+
+/**
+ * Returns the weekly downloads for the week name
+ *
+ * @param  string $week    Week name 'week-1'.
+ * @return array           an array of the downloads or empty.
+ */
+function get_weekly_downloads( $week = '' ) {
+	$downloads = array();
+	if ( '' !== $week ) {
+		$saved_downloads = get_transient( 'lsx_hp_weekly_downloads_' . $week );
+		if ( false !== $saved_downloads && ! empty( $saved_downloads ) ) {
+			$downloads = $saved_downloads;
+		} else {
+			$args = array(
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+				'post_type'      => 'dlm_download',
+				'posts_per_page' => -1,
+				'nopagin'        => true,
+				'fields'         => 'ids',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'dlm_download_category',
+						'field'    => 'slug',
+						'terms'    => array( $week ),
+					),
+				),
+			);
+			$download_query = new \WP_Query( $args );
+			if ( $download_query->have_posts() ) {
+				$downloads = $download_query->posts;
+			}
 		}
 	}
 	$downloads = check_posts_exist( $downloads );

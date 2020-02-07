@@ -26,6 +26,9 @@ class Woocommerce {
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
 
+		// Checkout.
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'payment_gateway_logos' ) );
+
 		// Redirect to the Edit Account Template.
 		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
 
@@ -511,8 +514,8 @@ class Woocommerce {
 		return apply_filters( 'iconic_account_fields', array(
 			'weight_start'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -521,8 +524,8 @@ class Woocommerce {
 			),
 			'weight_goal'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -531,8 +534,8 @@ class Woocommerce {
 			),
 			'weight_end'    => array(
 				'type'                 => 'text',
-				'label'                => __( 'Weight', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg’s', 'lsx-health-plan' ),
+				'label'                => __( 'Weight:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -541,8 +544,8 @@ class Woocommerce {
 			),
 			'waist_start'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -551,8 +554,8 @@ class Woocommerce {
 			),
 			'waist_goal'    => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -561,8 +564,8 @@ class Woocommerce {
 			),
 			'waist_end'     => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm’s', 'lsx-health-plan' ),
+				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -571,7 +574,7 @@ class Woocommerce {
 			),
 			'fitness_start' => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
@@ -581,7 +584,7 @@ class Woocommerce {
 			),
 			'fitness_goal'  => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
@@ -591,7 +594,7 @@ class Woocommerce {
 			),
 			'fitness_end'   => array(
 				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score', 'lsx-health-plan' ),
+				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
 				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
@@ -638,6 +641,24 @@ class Woocommerce {
 	public function lost_password_page_title() {
 		?>
 		<h1 class="lost-your-password-title"><?php esc_html_e( 'Lost your password?', 'lsx-health-plan' ); ?></h1>
+		<?php
+	}
+
+	/**
+	 * Add Lets Enrypt and PayFast logos to cart.
+	**/
+	public function payment_gateway_logos() {
+		$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/le-logo.svg';
+		$payfast_image   = LSX_HEALTH_PLAN_URL . 'assets/images/secure-payments.png';
+		?>
+		<div class="row text-center vertical-align">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
+			</div>
+		</div>
 		<?php
 	}
 }
