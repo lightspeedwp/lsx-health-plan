@@ -520,7 +520,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'weight_goal'   => array(
 				'type'                 => 'text',
@@ -530,7 +530,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'weight_end'    => array(
 				'type'                 => 'text',
@@ -540,7 +540,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'waist_start'   => array(
 				'type'                 => 'text',
@@ -550,7 +550,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'waist_goal'    => array(
 				'type'                 => 'text',
@@ -560,7 +560,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'waist_end'     => array(
 				'type'                 => 'text',
@@ -570,7 +570,7 @@ class Woocommerce {
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
-				'required'             => true,
+				'required'             => false,
 			),
 			'fitness_start' => array(
 				'type'                 => 'text',
