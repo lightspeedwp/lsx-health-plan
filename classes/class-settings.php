@@ -341,7 +341,7 @@ class Settings {
 				'default' => 0,
 			)
 		);
-	}	
+	}
 
 
 	/**
