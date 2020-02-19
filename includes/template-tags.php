@@ -241,10 +241,33 @@ function lsx_health_plan_my_profile_box() {
 				<a class="btn btn-green" href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit Profile', 'lsx-health-plan' ); ?></a>
 			</div>
 		</div>
-
+				<div class="excerpt">
+					<p><?php echo wp_kses_post( $intro_text ); ?></p>
+				</div>
+				
 		<div class="profile-details">
 			<h1 class="title-lined"><?php echo esc_html( $current_user->display_name ); ?></h1>
+			<?php
+			$disable_stats = \lsx_health_plan\functions\get_option( 'stat_checkbox', false );
+			if ( false !== $disable_stats ) { 
+				echo wp_kses_post( '<table class="table personal-information">' );
+				echo wp_kses_post( '<thead>' );
+				echo wp_kses_post( '<tr>' );
+				echo wp_kses_post( '<th scope="col"></th>' );
+				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Start', "lsx-health-plan" ) . '</strong></th>' );
+				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Goal', "lsx-health-plan" ) . '</strong></th>' );
+				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Current', "lsx-health-plan" ) . '</strong></th>' );
+				echo wp_kses_post( '</tr>' );
+				echo wp_kses_post( '</thead>' );
+				echo wp_kses_post( '<tbody>' );
+				echo wp_kses_post( '<tr>' );
 
+				echo wp_kses_post( '</tr>' );
+				echo wp_kses_post( '<tbody>' );
+				echo wp_kses_post( '</table>' );
+				// Replace table below to use for settting
+			 } ?>
+			 
 			<table class="table personal-information">
 				<thead>
 				<tr>
@@ -347,11 +370,11 @@ function lsx_health_plan_my_profile_box() {
 				</tr>
 				</tbody>
 			</table>
-
 		</div>
 	</div>
+
 <?php
-}
+}	
 
 /**
  * Outputs the my profile day view box

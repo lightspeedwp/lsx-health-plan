@@ -57,6 +57,8 @@ class Settings {
 		add_action( 'lsx_hp_settings_page', array( $this, 'general_settings' ), 1, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_defaults' ), 3, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_downloads' ), 5, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'stat_disable' ), 6, 1 );
+		//add_action( 'lsx_hp_settings_page', array( $this, 'stat_toggles' ), 6, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'endpoint_translations' ), 7, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'post_type_toggles' ), 9, 1 );
 	}
@@ -285,6 +287,70 @@ class Settings {
 			);
 		}
 	}
+
+
+
+/* 	public function stat_toggles( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'      => 'stat_toggle_title',
+				'type'    => 'title',
+				'name'    => __( 'Enable / Disable Profile Stats', 'lsx-health-plan' ),
+				'default' => __( 'Enable / Disable Profile Stats', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field( array(
+			'name' => 'Weight',
+			'desc' => 'Disable Weight Stat',
+			'id'   => 'weight_checkbox',
+			'type' => 'checkbox',
+			'value'   => 1,
+			'default' => 0,			
+		) );
+		$cmb->add_field( array(
+			'name' => 'Waist',
+			'desc' => 'Disable Waist Stat',
+			'id'   => 'waist_checkbox',
+			'type' => 'checkbox',
+			'value'   => 1,
+			'default' => 0,			
+		) );
+		$cmb->add_field( array(
+			'name' => 'Fitness',
+			'desc' => 'Disable Fitness Stat',
+			'id'   => 'fitness_checkbox',
+			'type' => 'checkbox',
+			'value'   => 1,
+			'default' => 0,			
+		) );
+	} */
+
+	/**
+	 * Registers the Profile Stat Toggle settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */		
+
+	public function stat_disable( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'      => 'stat_disable_title',
+				'type'    => 'title',
+				'name'    => __( 'Disable Profile Stats', 'lsx-health-plan' ),
+				'default' => __( 'Disable Profile Stats', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field( array(
+			'name' => 'Disable All Stats',
+			'desc' => 'Disable All Stats',
+			'id'   => 'stat_checkbox',
+			'type' => 'checkbox',
+			'value'   => 1,
+			'default' => 0,			
+		) );
+	}	
+
 
 	/**
 	 * Registers the global dowloads settings
