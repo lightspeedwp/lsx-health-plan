@@ -57,6 +57,7 @@ class Settings {
 		add_action( 'lsx_hp_settings_page', array( $this, 'general_settings' ), 1, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_defaults' ), 3, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_downloads' ), 5, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'stat_disable' ), 6, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'endpoint_translations' ), 7, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'post_type_toggles' ), 9, 1 );
 	}
@@ -389,5 +390,59 @@ class Settings {
 				)
 			);
 		}
+	}
+	/**
+	 * Registers the Profile Stat Toggle settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+
+	public function stat_disable( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'      => 'stat_disable_title',
+				'type'    => 'title',
+				'name'    => __( 'Disable Profile Stats', 'lsx-health-plan' ),
+				'default' => __( 'Disable Profile Stats', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable All Stats', 'lsx-health-plan' ),
+				'desc'    => 'Disable All Stats',
+				'id'      => 'disable_all_stats',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Weight', 'lsx-health-plan' ),
+				'id'      => 'disable_weight_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Waist', 'lsx-health-plan' ),
+				'id'      => 'disable_waist_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Fitness', 'lsx-health-plan' ),
+				'id'      => 'disable_fitness_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
 	}
 }

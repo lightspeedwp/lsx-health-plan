@@ -187,26 +187,28 @@ class Woocommerce {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
-		echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
-		echo wp_kses_post( '<div class="my-stats">' );
+		$all_disabled = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
+		if ( 'on' !== $all_disabled ) {
+			echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
+			echo wp_kses_post( '<div class="my-stats">' );
 
-		echo wp_kses_post( '<p class="form-row form-label">' . __( 'Start', 'lsx-health-plan' ) . '</p>' );
-		echo wp_kses_post( '<p class="form-row form-label">' . __( 'Goal', 'lsx-health-plan' ) . '</p>' );
-		echo wp_kses_post( '<p class="form-row form-label">' . __( 'End', 'lsx-health-plan' ) . '</p>' );
-
-		foreach ( $fields as $key => $field_args ) {
-			$value = null;
-			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
-				continue;
+			echo wp_kses_post( '<p class="form-row form-label">' . __( 'Start', 'lsx-health-plan' ) . '</p>' );
+			echo wp_kses_post( '<p class="form-row form-label">' . __( 'Goal', 'lsx-health-plan' ) . '</p>' );
+			echo wp_kses_post( '<p class="form-row form-label">' . __( 'End', 'lsx-health-plan' ) . '</p>' );
+			foreach ( $fields as $key => $field_args ) {
+				$value = null;
+				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
+					continue;
+				}
+				if ( $is_user_logged_in ) {
+					$user_id = $this->iconic_get_edit_user_id();
+					$value   = $this->iconic_get_userdata( $user_id, $key );
+				}
+				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
+				woocommerce_form_field( $key, $field_args, $value );
 			}
-			if ( $is_user_logged_in ) {
-				$user_id = $this->iconic_get_edit_user_id();
-				$value   = $this->iconic_get_userdata( $user_id, $key );
-			}
-			$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
-			woocommerce_form_field( $key, $field_args, $value );
+			echo wp_kses_post( '</div>' );
 		}
-		echo wp_kses_post( '</div>' );
 	}
 
 	/**
@@ -343,6 +345,34 @@ class Woocommerce {
 			$visible = false;
 		}
 
+		// Disable the fitness fields if needed.
+		$weight_key  = __( 'Weight:' );
+		$waist_key   = __( 'Waist:' );
+		$fitness_key = __( 'Fitness Test Score:' );
+		if ( $weight_key === $field_args['label'] || $waist_key === $field_args['label'] || $fitness_key === $field_args['label'] ) {
+
+			// Check if all stats are disabled.
+			$all_disabled = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
+
+			$option_key = '';
+			switch ( $field_args['label'] ) {
+				case $weight_key:
+					$option_key = 'disable_weight_checkbox';
+					break;
+
+				case $waist_key:
+					$option_key = 'disable_waist_checkbox';
+					break;
+
+				case $fitness_key:
+					$option_key = 'disable_fitness_checkbox';
+					break;
+			}
+			$is_disabled = \lsx_health_plan\functions\get_option( $option_key, false );
+			if ( 'on' === $all_disabled || 'on' === $is_disabled ) {
+				$visible = false;
+			}
+		}
 		return $visible;
 	}
 
@@ -511,7 +541,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function get_account_fields() {
-		return apply_filters( 'iconic_account_fields', array(
+		$account_fields = apply_filters( 'iconic_account_fields', array(
 			'weight_start'  => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight:', 'lsx-health-plan' ),
@@ -603,6 +633,20 @@ class Woocommerce {
 				'required'             => false,
 			),
 		) );
+
+		$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
+		if ( 'on' === $is_weight_disabled ) {
+			$account_fields['weight_start']['required'] = false;
+			$account_fields['weight_goal']['required']  = false;
+			$account_fields['weight_end']['required']   = false;
+		}
+		$is_waist_disabled = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
+		if ( 'on' === $is_waist_disabled ) {
+			$account_fields['waist_start']['required'] = false;
+			$account_fields['waist_goal']['required']  = false;
+			$account_fields['waist_end']['required']   = false;
+		}
+		return $account_fields;
 	}
 
 	/**
