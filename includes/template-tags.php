@@ -241,140 +241,126 @@ function lsx_health_plan_my_profile_box() {
 				<a class="btn btn-green" href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit Profile', 'lsx-health-plan' ); ?></a>
 			</div>
 		</div>
-				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ); ?></p>
-				</div>
-				
+
+		<div class="excerpt">
+			<p><?php echo wp_kses_post( $intro_text ); ?></p>
+		</div>
+
 		<div class="profile-details">
 			<h1 class="title-lined"><?php echo esc_html( $current_user->display_name ); ?></h1>
 			<?php
 			$disable_stats = \lsx_health_plan\functions\get_option( 'stat_checkbox', false );
-			if ( false !== $disable_stats ) { 
-				echo wp_kses_post( '<table class="table personal-information">' );
-				echo wp_kses_post( '<thead>' );
-				echo wp_kses_post( '<tr>' );
-				echo wp_kses_post( '<th scope="col"></th>' );
-				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Start', "lsx-health-plan" ) . '</strong></th>' );
-				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Goal', "lsx-health-plan" ) . '</strong></th>' );
-				echo wp_kses_post( '<th scope="col"><strong>' . esc_html_e( 'Current', "lsx-health-plan" ) . '</strong></th>' );
-				echo wp_kses_post( '</tr>' );
-				echo wp_kses_post( '</thead>' );
-				echo wp_kses_post( '<tbody>' );
-				echo wp_kses_post( '<tr>' );
-
-				echo wp_kses_post( '</tr>' );
-				echo wp_kses_post( '<tbody>' );
-				echo wp_kses_post( '</table>' );
-				// Replace table below to use for settting
-			 } ?>
-			 
-			<table class="table personal-information">
-				<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col"><strong><?php esc_html_e( 'Start', 'lsx-health-plan' ); ?></strong></th>
-					<th scope="col"><strong><?php esc_html_e( 'Goal', 'lsx-health-plan' ); ?></strong></th>
-					<th scope="col"><strong><?php esc_html_e( 'Current', 'lsx-health-plan' ); ?></strong></th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<th scope="row"><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong></th>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'weight_start', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . ' kg' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'weight_goal', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_goal', true ) . ' kg' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'weight_end', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_end', true ) . ' kg' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row"><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong></th>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'waist_start', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . ' cm' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'waist_goal', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_goal', true ) . ' cm' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'waist_end', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_end', true ) . ' cm' );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row"><strong><?php esc_html_e( 'Fitness:', 'lsx-health-plan' ); ?></strong></th>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'fitness_start', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_start', true ) );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'fitness_goal', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_goal', true ) );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-					<td>
-						<?php
-						if ( '' !== get_user_meta( get_current_user_id(), 'fitness_end', true ) ) {
-							echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_end', true ) );
-						} else {
-							echo '/';
-						}
-						?>
-					</td>
-				</tr>
-				</tbody>
-			</table>
+			if ( 'on' !== $disable_stats ) {
+				?>
+				<table class="table personal-information">
+					<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col"><strong><?php esc_html_e( 'Start', 'lsx-health-plan' ); ?></strong></th>
+						<th scope="col"><strong><?php esc_html_e( 'Goal', 'lsx-health-plan' ); ?></strong></th>
+						<th scope="col"><strong><?php esc_html_e( 'Current', 'lsx-health-plan' ); ?></strong></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th scope="row"><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong></th>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'weight_start', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . ' kg' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'weight_goal', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_goal', true ) . ' kg' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'weight_end', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_end', true ) . ' kg' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong></th>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'waist_start', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . ' cm' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'waist_goal', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_goal', true ) . ' cm' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'waist_end', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_end', true ) . ' cm' );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><strong><?php esc_html_e( 'Fitness:', 'lsx-health-plan' ); ?></strong></th>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'fitness_start', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_start', true ) );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'fitness_goal', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_goal', true ) );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+						<td>
+							<?php
+							if ( '' !== get_user_meta( get_current_user_id(), 'fitness_end', true ) ) {
+								echo wp_kses_post( get_user_meta( get_current_user_id(), 'fitness_end', true ) );
+							} else {
+								echo '/';
+							}
+							?>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<?php
+			}
+			?>
 		</div>
 	</div>
-
-<?php
-}	
+	<?php
+}
 
 /**
  * Outputs the my profile day view box

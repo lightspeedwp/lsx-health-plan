@@ -288,49 +288,12 @@ class Settings {
 		}
 	}
 
-
-
-/* 	public function stat_toggles( $cmb ) {
-		$cmb->add_field(
-			array(
-				'id'      => 'stat_toggle_title',
-				'type'    => 'title',
-				'name'    => __( 'Enable / Disable Profile Stats', 'lsx-health-plan' ),
-				'default' => __( 'Enable / Disable Profile Stats', 'lsx-health-plan' ),
-			)
-		);
-		$cmb->add_field( array(
-			'name' => 'Weight',
-			'desc' => 'Disable Weight Stat',
-			'id'   => 'weight_checkbox',
-			'type' => 'checkbox',
-			'value'   => 1,
-			'default' => 0,			
-		) );
-		$cmb->add_field( array(
-			'name' => 'Waist',
-			'desc' => 'Disable Waist Stat',
-			'id'   => 'waist_checkbox',
-			'type' => 'checkbox',
-			'value'   => 1,
-			'default' => 0,			
-		) );
-		$cmb->add_field( array(
-			'name' => 'Fitness',
-			'desc' => 'Disable Fitness Stat',
-			'id'   => 'fitness_checkbox',
-			'type' => 'checkbox',
-			'value'   => 1,
-			'default' => 0,			
-		) );
-	} */
-
 	/**
 	 * Registers the Profile Stat Toggle settings
 	 *
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
-	 */		
+	 */
 
 	public function stat_disable( $cmb ) {
 		$cmb->add_field(
@@ -341,14 +304,43 @@ class Settings {
 				'default' => __( 'Disable Profile Stats', 'lsx-health-plan' ),
 			)
 		);
-		$cmb->add_field( array(
-			'name' => 'Disable All Stats',
-			'desc' => 'Disable All Stats',
-			'id'   => 'stat_checkbox',
-			'type' => 'checkbox',
-			'value'   => 1,
-			'default' => 0,			
-		) );
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable All Stats', 'lsx-health-plan' ),
+				'desc'    => 'Disable All Stats',
+				'id'      => 'stat_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Weight', 'lsx-health-plan' ),
+				'id'      => 'weight_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Waist', 'lsx-health-plan' ),
+				'id'      => 'waist_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Fitness', 'lsx-health-plan' ),
+				'id'      => 'fitness_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
 	}	
 
 
