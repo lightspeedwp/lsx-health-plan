@@ -355,7 +355,7 @@ class Woocommerce {
 			$all_disabled = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
 
 			$option_key = '';
-			switch( $field_args['label'] ) {
+			switch( $field_args['label'] ) { 
 				case $weight_key:
 					$option_key = 'disable_weight_checkbox';
 					break;
