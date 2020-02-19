@@ -308,7 +308,7 @@ class Settings {
 			array(
 				'name'    => __( 'Disable All Stats', 'lsx-health-plan' ),
 				'desc'    => 'Disable All Stats',
-				'id'      => 'stat_checkbox',
+				'id'      => 'disable_all_stats',
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
@@ -317,7 +317,7 @@ class Settings {
 		$cmb->add_field(
 			array(
 				'name'    => __( 'Disable Weight', 'lsx-health-plan' ),
-				'id'      => 'weight_checkbox',
+				'id'      => 'disable_weight_checkbox',
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
@@ -326,7 +326,7 @@ class Settings {
 		$cmb->add_field(
 			array(
 				'name'    => __( 'Disable Waist', 'lsx-health-plan' ),
-				'id'      => 'waist_checkbox',
+				'id'      => 'disable_waist_checkbox',
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
@@ -335,7 +335,7 @@ class Settings {
 		$cmb->add_field(
 			array(
 				'name'    => __( 'Disable Fitness', 'lsx-health-plan' ),
-				'id'      => 'fitness_checkbox',
+				'id'      => 'disable_fitness_checkbox',
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
