@@ -1,4 +1,4 @@
-# Copyright (C) 2019 lsx-health-plan
+# Copyright (C) 2020 lsx-health-plan
 # This file is distributed under the same license as the lsx-health-plan package.
 msgid ""
 msgstr ""
@@ -15,8 +15,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lsx-health-plan.php:90
+#: lsx-health-plan.php:94
 msgid "Login"
+msgstr ""
+
+#. translators: %s: snack
+#: lsx-health-plan.php:161
+msgctxt "pre workout"
+msgid "Pre-Workout Snack"
+msgstr ""
+
+#: lsx-health-plan.php:163
+msgctxt "post workout"
+msgid "Post-Workout Snack"
 msgstr ""
 
 #: classes/class-downloads.php:79
@@ -27,19 +38,19 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: classes/class-downloads.php:99, classes/class-workout.php:60, classes/class-workout.php:71, classes/class-workout.php:210, classes/class-workout.php:218
+#: classes/class-downloads.php:99, classes/class-workout.php:60, classes/class-workout.php:71, classes/class-workout.php:226, classes/class-workout.php:234
 msgid "Workouts"
 msgstr ""
 
-#: classes/class-downloads.php:112, classes/class-meal.php:62, classes/class-meal.php:221
+#: classes/class-downloads.php:112, classes/class-meal.php:62, classes/class-meal.php:257
 msgid "Meals"
 msgstr ""
 
-#: classes/class-downloads.php:125, classes/class-recipe.php:68, classes/class-settings.php:135
+#: classes/class-downloads.php:125, classes/class-recipe.php:84, classes/class-settings.php:125, classes/class-settings.php:129
 msgid "Recipe"
 msgstr ""
 
-#: classes/class-downloads.php:147, classes/class-downloads.php:154, includes/template-tags.php:126
+#: classes/class-downloads.php:147, classes/class-downloads.php:154, includes/template-tags.php:151, includes/template-tags.php:530
 msgid "Downloads"
 msgstr ""
 
@@ -47,48 +58,116 @@ msgstr ""
 msgid "Add the pdf's connected to this day plan, using the field provided."
 msgstr ""
 
+#: classes/class-lsx-search.php:96
+msgid "Enable Search"
+msgstr ""
+
+#: classes/class-lsx-search.php:105
+msgid "Layout"
+msgstr ""
+
+#: classes/class-lsx-search.php:109
+msgid "Follow the theme layout"
+msgstr ""
+
+#: classes/class-lsx-search.php:110
+msgid "1 column"
+msgstr ""
+
+#: classes/class-lsx-search.php:111
+msgid "2 columns / Content on right"
+msgstr ""
+
+#: classes/class-lsx-search.php:112
+msgid "2 columns / Content on left"
+msgstr ""
+
+#: classes/class-lsx-search.php:128
+msgid "Collapse"
+msgstr ""
+
+#: classes/class-lsx-search.php:132
+msgid "Enable collapsible filters on search results"
+msgstr ""
+
+#: classes/class-lsx-search.php:138
+msgid "Disable Sorting"
+msgstr ""
+
+#: classes/class-lsx-search.php:142
+msgid "Disables the sort by dropdown."
+msgstr ""
+
+#: classes/class-lsx-search.php:148
+msgid "Disable the date option"
+msgstr ""
+
+#: classes/class-lsx-search.php:152
+msgid "Disables the date option for the sort by dropdown."
+msgstr ""
+
+#: classes/class-lsx-search.php:158
+msgid "Display Result Count"
+msgstr ""
+
+#: classes/class-lsx-search.php:167
+msgid "Display Clear Button"
+msgstr ""
+
+#: classes/class-lsx-search.php:171
+msgid "This will display a clear button next to the \"result\" count."
+msgstr ""
+
+#: classes/class-lsx-search.php:178
+msgid "Facets"
+msgstr ""
+
+#: classes/class-lsx-search.php:179
+msgid "These are the filters that will appear on your archive page."
+msgstr ""
+
 #: classes/class-meal.php:61, classes/class-meal.php:73
 msgid "Meal Plans"
 msgstr ""
 
-#: classes/class-meal.php:63, classes/class-plan.php:61, classes/class-recipe.php:70, classes/class-tip.php:60, classes/class-video.php:60, classes/class-workout.php:61
+#: classes/class-meal.php:63, classes/class-plan.php:61, classes/class-recipe.php:86, classes/class-tip.php:60, classes/class-video.php:60, classes/class-workout.php:61
 msgctxt "post type general name"
 msgid "Add New"
 msgstr ""
 
-#: classes/class-meal.php:64, classes/class-plan.php:62, classes/class-plan.php:110, classes/class-recipe.php:71, classes/class-recipe.php:119, classes/class-tip.php:61, classes/class-video.php:61, classes/class-workout.php:62, classes/class-workout.php:159
+#: classes/class-meal.php:64, classes/class-plan.php:62, classes/class-plan.php:110, classes/class-recipe.php:87, classes/class-recipe.php:135, classes/class-tip.php:61, classes/class-video.php:61, classes/class-workout.php:62, classes/class-workout.php:159
 msgid "Add New"
 msgstr ""
 
-#: classes/class-meal.php:65, classes/class-plan.php:63, classes/class-plan.php:108, classes/class-recipe.php:72, classes/class-recipe.php:117, classes/class-tip.php:62, classes/class-video.php:62, classes/class-workout.php:63
+#: classes/class-meal.php:65, classes/class-plan.php:63, classes/class-plan.php:108, classes/class-recipe.php:88, classes/class-recipe.php:133, classes/class-tip.php:62, classes/class-video.php:62, classes/class-workout.php:63
 msgid "Edit"
 msgstr ""
 
-#: classes/class-meal.php:66, classes/class-plan.php:64, classes/class-recipe.php:73, classes/class-tip.php:63, classes/class-video.php:63, classes/class-workout.php:64
+#: classes/class-meal.php:66, classes/class-plan.php:64, classes/class-recipe.php:89, classes/class-tip.php:63, classes/class-video.php:63, classes/class-workout.php:64
 msgid "New"
 msgstr ""
 
-#: classes/class-meal.php:67, classes/class-plan.php:65, classes/class-plan.php:105, classes/class-recipe.php:74, classes/class-recipe.php:114, classes/class-tip.php:64, classes/class-video.php:64, classes/class-workout.php:65
+#: classes/class-meal.php:67, classes/class-plan.php:65, classes/class-plan.php:105, classes/class-recipe.php:90, classes/class-recipe.php:130, classes/class-tip.php:64, classes/class-video.php:64, classes/class-workout.php:65
 msgid "All"
 msgstr ""
 
-#: classes/class-meal.php:68, classes/class-plan.php:66, classes/class-recipe.php:75, classes/class-tip.php:65, classes/class-video.php:65, classes/class-workout.php:66
+#: classes/class-meal.php:68, classes/class-plan.php:66, classes/class-recipe.php:91, classes/class-tip.php:65, classes/class-video.php:65, classes/class-workout.php:66
 msgid "View"
 msgstr ""
 
-#: classes/class-meal.php:69, classes/class-plan.php:67, classes/class-plan.php:104, classes/class-recipe.php:76, classes/class-recipe.php:113, classes/class-tip.php:66, classes/class-video.php:66, classes/class-workout.php:67
+#: classes/class-meal.php:69, classes/class-plan.php:67, classes/class-plan.php:104, classes/class-recipe.php:92, classes/class-recipe.php:129, classes/class-tip.php:66, classes/class-video.php:66, classes/class-workout.php:67
 msgid "Search"
 msgstr ""
 
-#: classes/class-meal.php:70, classes/class-plan.php:68, classes/class-recipe.php:77, classes/class-tip.php:67, classes/class-video.php:67, classes/class-workout.php:68
+#: classes/class-meal.php:70, classes/class-plan.php:68, classes/class-recipe.php:93, classes/class-tip.php:67, classes/class-video.php:67, classes/class-workout.php:68
 msgid "None found"
 msgstr ""
 
-#: classes/class-meal.php:71, classes/class-plan.php:69, classes/class-recipe.php:78, classes/class-tip.php:68, classes/class-video.php:68, classes/class-workout.php:69
+#: classes/class-meal.php:71, classes/class-plan.php:69, classes/class-recipe.php:94, classes/class-tip.php:68, classes/class-video.php:68, classes/class-workout.php:69
 msgid "None found in Trash"
 msgstr ""
 
-#: classes/class-meal.php:124, classes/class-meal.php:131, templates/tab-content-meal.php:116
+#: classes/class-meal.php:124, classes/class-meal.php:131, templates/tab-content-meal.php:160
 msgid "Shopping List"
 msgstr ""
 
@@ -96,31 +175,47 @@ msgstr ""
 msgid "Meal Details"
 msgstr ""
 
-#: classes/class-meal.php:153, templates/tab-content-meal.php:55
+#: classes/class-meal.php:153
+msgid "Pre Breakfast Snack"
+msgstr ""
+
+#: classes/class-meal.php:162, templates/tab-content-meal.php:76
 msgid "Breakfast"
 msgstr ""
 
-#: classes/class-meal.php:162
-msgid "Breakfast Snack"
-msgstr ""
-
-#: classes/class-meal.php:171, templates/tab-content-meal.php:69
-msgid "Lunch"
+#: classes/class-meal.php:171
+msgid "Post Breakfast Snack"
 msgstr ""
 
 #: classes/class-meal.php:180
-msgid "Lunch Snack"
+msgid "Pre Lunch Snack"
 msgstr ""
 
-#: classes/class-meal.php:189
+#: classes/class-meal.php:189, templates/tab-content-meal.php:99
+msgid "Lunch"
+msgstr ""
+
+#: classes/class-meal.php:198
+msgid "Post Lunch Snack"
+msgstr ""
+
+#: classes/class-meal.php:207
+msgid "Pre Dinner Snack"
+msgstr ""
+
+#: classes/class-meal.php:216
 msgid "Dinner"
 msgstr ""
 
-#: classes/class-meal.php:207, classes/class-settings.php:131, templates/single-plan-tabs.php:25
+#: classes/class-meal.php:225
+msgid "Post Dinner Snack"
+msgstr ""
+
+#: classes/class-meal.php:243, classes/class-settings.php:110, classes/class-settings.php:114, templates/single-plan-tabs.php:37
 msgid "Meal Plan"
 msgstr ""
 
-#: classes/class-meal.php:222
+#: classes/class-meal.php:258
 msgid "Connect the meal that applies to this day plan using the field provided."
 msgstr ""
 
@@ -146,19 +241,19 @@ msgctxt "taxonomy singular name"
 msgid "Week"
 msgstr ""
 
-#: classes/class-plan.php:106, classes/class-recipe.php:115
+#: classes/class-plan.php:106, classes/class-recipe.php:131
 msgid "Parent"
 msgstr ""
 
-#: classes/class-plan.php:107, classes/class-recipe.php:116
+#: classes/class-plan.php:107, classes/class-recipe.php:132
 msgid "Parent:"
 msgstr ""
 
-#: classes/class-plan.php:109, classes/class-recipe.php:118
+#: classes/class-plan.php:109, classes/class-recipe.php:134
 msgid "Update"
 msgstr ""
 
-#: classes/class-plan.php:111, classes/class-recipe.php:120
+#: classes/class-plan.php:111, classes/class-recipe.php:136
 msgid "New Name"
 msgstr ""
 
@@ -182,134 +277,218 @@ msgstr ""
 msgid "Connect this to the day plan it applies to, using the field provided."
 msgstr ""
 
-#: classes/class-recipe.php:69, classes/class-recipe.php:80, classes/class-recipe.php:230, classes/class-recipe.php:237, includes/template-tags.php:98, templates/single-plan-tabs.php:30, templates/tab-content-meal.php:105, templates/tab-content-recipes.php:31
+#: classes/class-recipe.php:85, classes/class-recipe.php:96, classes/class-recipe.php:183, classes/class-recipe.php:188, classes/class-recipe.php:322, classes/class-recipe.php:331, includes/template-tags.php:119, templates/single-plan-tabs.php:46, templates/tab-content-meal.php:149, templates/tab-content-recipes.php:31
 msgid "Recipes"
 msgstr ""
 
-#: classes/class-recipe.php:111
+#: classes/class-recipe.php:127
 msgctxt "taxonomy general name"
 msgid "Type"
 msgstr ""
 
-#: classes/class-recipe.php:112
+#: classes/class-recipe.php:128
 msgctxt "taxonomy singular name"
 msgid "Types"
 msgstr ""
 
-#: classes/class-recipe.php:121
+#: classes/class-recipe.php:137
 msgid "Types"
 msgstr ""
 
-#: classes/class-recipe.php:165, classes/class-recipe.php:172, classes/class-tip.php:142, classes/class-tip.php:149
+#: classes/class-recipe.php:239, classes/class-recipe.php:248, classes/class-tip.php:142, classes/class-tip.php:149
 msgid "Featured"
 msgstr ""
 
-#: classes/class-recipe.php:173
+#: classes/class-recipe.php:249
 msgid "Enable the checkbox to feature this recipe, featured recipes display in any page that has the recipe shortcode: [lsx_health_plan_featured_recipes_block]"
 msgstr ""
 
-#: classes/class-recipe.php:186
+#: classes/class-recipe.php:264
 msgid "Recipe Details"
 msgstr ""
 
-#: classes/class-recipe.php:193
+#: classes/class-recipe.php:273
 msgid "Prep Time"
 msgstr ""
 
-#: classes/class-recipe.php:195
+#: classes/class-recipe.php:275
 msgid "Add the preparation time for the entire meal i.e: 25 mins"
 msgstr ""
 
-#: classes/class-recipe.php:200
+#: classes/class-recipe.php:282
 msgid "Cooking Time"
 msgstr ""
 
-#: classes/class-recipe.php:202
+#: classes/class-recipe.php:284
 msgid "Add the cooking time i.e: 15 mins"
 msgstr ""
 
-#: classes/class-recipe.php:207
+#: classes/class-recipe.php:291
 msgid "Serves"
 msgstr ""
 
-#: classes/class-recipe.php:209
+#: classes/class-recipe.php:293
 msgid "Add the recommended serving size i.e: 6"
 msgstr ""
 
-#: classes/class-recipe.php:214
+#: classes/class-recipe.php:304
 msgid "Portion"
 msgstr ""
 
-#: classes/class-recipe.php:215
+#: classes/class-recipe.php:305
 msgid "Add the recommended portion size i.e: 200mg"
 msgstr ""
 
-#: classes/class-recipe.php:238
+#: classes/class-recipe.php:332
 msgid "Connect the recipes that apply to this day plan using the field provided."
 msgstr ""
 
-#: classes/class-settings.php:69
-msgid "Membership Product"
+#: classes/class-recipe.php:358
+msgid "Recipes Archive"
 msgstr ""
 
-#: classes/class-settings.php:83
-msgid "Your Warm-up Intro"
+#: classes/class-recipe.php:359
+msgid "All of the settings relating to the recipes post type archive."
 msgstr ""
 
-#: classes/class-settings.php:87
-msgid "Don't forget your warm-up! It's a vital part of your daily workout routine."
+#: classes/class-recipe.php:366
+msgid "Archive Description"
 msgstr ""
 
-#: classes/class-settings.php:90
-msgid "Your Workout Intro"
+#: classes/class-recipe.php:367
+msgid "This will show up on the post type archive."
 msgstr ""
 
-#: classes/class-settings.php:94
-msgid "Let's do this! Smash your daily workout and reach your fitness goals."
-msgstr ""
-
-#: classes/class-settings.php:97
-msgid "Your Meal Plan Intro"
-msgstr ""
-
-#: classes/class-settings.php:101
-msgid "Get the right mix of nutrients to keep muscles strong & healthy."
-msgstr ""
-
-#: classes/class-settings.php:104, classes/class-settings.php:111
-msgid "Recipes Intro"
-msgstr ""
-
-#: classes/class-settings.php:108, classes/class-settings.php:115
-msgid "Let's get cooking! Delicious and easy to follow recipes."
-msgstr ""
-
-#: classes/class-settings.php:120, classes/class-settings.php:121
-msgid "Global Downloads"
-msgstr ""
-
-#: classes/class-settings.php:126
+#: classes/class-settings.php:88, classes/class-settings.php:96
 msgid "Warm Up"
 msgstr ""
 
-#: classes/class-settings.php:127
+#: classes/class-settings.php:89, classes/class-settings.php:97
 msgid "Set a default warm up routine."
 msgstr ""
 
-#: classes/class-settings.php:132
+#: classes/class-settings.php:103
+msgid "Warm Up Endpoint"
+msgstr ""
+
+#: classes/class-settings.php:111, classes/class-settings.php:115
 msgid "Set a default meal plan."
 msgstr ""
 
-#: classes/class-settings.php:136
+#: classes/class-settings.php:119
+msgid "Meal Endpoint"
+msgstr ""
+
+#: classes/class-settings.php:126, classes/class-settings.php:130
 msgid "Set a default recipe."
 msgstr ""
 
-#: classes/class-settings.php:139, classes/class-workout.php:59, templates/single-plan-tabs.php:20, templates/tab-content-workout.php:107
+#: classes/class-settings.php:134
+msgid "Recipes Endpoint"
+msgstr ""
+
+#: classes/class-settings.php:140, classes/class-settings.php:144, classes/class-workout.php:59, templates/single-plan-tabs.php:28, templates/tab-content-workout.php:173
 msgid "Workout"
 msgstr ""
 
-#: classes/class-settings.php:140
-msgid "Set a default wourkout routine PDF."
+#: classes/class-settings.php:141
+msgid "Set a default workout routine PDF."
+msgstr ""
+
+#: classes/class-settings.php:145
+msgid "Set a default workout routine."
+msgstr ""
+
+#: classes/class-settings.php:149
+msgid "Workout Endpoint"
+msgstr ""
+
+#: classes/class-settings.php:155
+msgid "Login Slug"
+msgstr ""
+
+#: classes/class-settings.php:159
+msgid "My Plan Slug"
+msgstr ""
+
+#: classes/class-settings.php:191
+msgid "Membership Product"
+msgstr ""
+
+#: classes/class-settings.php:206
+msgid "Your Warm-up Intro"
+msgstr ""
+
+#: classes/class-settings.php:210
+msgid "Don't forget your warm-up! It's a vital part of your daily workout routine."
+msgstr ""
+
+#: classes/class-settings.php:216
+msgid "Your Workout Intro"
+msgstr ""
+
+#: classes/class-settings.php:220
+msgid "Let's do this! Smash your daily workout and reach your fitness goals."
+msgstr ""
+
+#: classes/class-settings.php:227
+msgid "Your Meal Plan Intro"
+msgstr ""
+
+#: classes/class-settings.php:231
+msgid "Get the right mix of nutrients to keep muscles strong & healthy."
+msgstr ""
+
+#: classes/class-settings.php:238
+msgid "Recipes Intro"
+msgstr ""
+
+#: classes/class-settings.php:242
+msgid "Let's get cooking! Delicious and easy to follow recipes."
+msgstr ""
+
+#: classes/class-settings.php:259, classes/class-settings.php:260
+msgid "Global Defaults"
+msgstr ""
+
+#: classes/class-settings.php:301, classes/class-settings.php:302
+msgid "Global Downloads"
+msgstr ""
+
+#: classes/class-settings.php:342, classes/class-settings.php:343
+msgid "Set Endpoint Translations"
+msgstr ""
+
+#: classes/class-settings.php:344
+msgid "You need to resave your permalinks after changing the endpoint settings."
+msgstr ""
+
+#: classes/class-settings.php:373, classes/class-settings.php:374
+msgid "Disable Post Types"
+msgstr ""
+
+#: classes/class-settings.php:375
+msgid "Disable post types if you are wanting a minimal site."
+msgstr ""
+
+#: classes/class-settings.php:406, classes/class-settings.php:407
+msgid "Disable Profile Stats"
+msgstr ""
+
+#: classes/class-settings.php:412
+msgid "Disable All Stats"
+msgstr ""
+
+#: classes/class-settings.php:422
+msgid "Disable Weight"
+msgstr ""
+
+#: classes/class-settings.php:431
+msgid "Disable Waist"
+msgstr ""
+
+#: classes/class-settings.php:440
+msgid "Disable Fitness"
 msgstr ""
 
 #: classes/class-tip.php:58
@@ -324,7 +503,7 @@ msgstr ""
 msgid "Connect the tips that apply to this day plan using the field provided."
 msgstr ""
 
-#: classes/class-video.php:58, templates/tab-content-workout.php:109
+#: classes/class-video.php:58, templates/tab-content-workout.php:188
 msgid "Video"
 msgstr ""
 
@@ -360,60 +539,60 @@ msgstr ""
 msgid "Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src=\"https://giphy.com/embed/3o7527Rn1HxXWqgxuo\" width=\"480\" height=\"270\" frameborder=\"0\" class=\"giphy-embed\" allowfullscreen&gt;&lt;/iframe&gt;"
 msgstr ""
 
-#: classes/class-woocommerce.php:96
+#: classes/class-woocommerce.php:99
 msgid "Place order"
 msgstr ""
 
-#: classes/class-woocommerce.php:187
+#: classes/class-woocommerce.php:192
 msgid "My Stats"
 msgstr ""
 
-#: classes/class-woocommerce.php:190, includes/template-tags.php:227
+#: classes/class-woocommerce.php:195, includes/template-tags.php:263
 msgid "Start"
 msgstr ""
 
-#: classes/class-woocommerce.php:191, includes/template-tags.php:228
+#: classes/class-woocommerce.php:196, includes/template-tags.php:264
 msgid "Goal"
 msgstr ""
 
-#: classes/class-woocommerce.php:192
+#: classes/class-woocommerce.php:197
 msgid "End"
 msgstr ""
 
-#: classes/class-woocommerce.php:352
+#: classes/class-woocommerce.php:385
 msgid "Additional Information"
 msgstr ""
 
 #. translators: %s: field
-#: classes/class-woocommerce.php:404
+#: classes/class-woocommerce.php:437
 msgid "%s is a required field."
 msgstr ""
 
-#: classes/class-woocommerce.php:426, classes/class-woocommerce.php:473
+#: classes/class-woocommerce.php:459, classes/class-woocommerce.php:506
 msgid "required"
 msgstr ""
 
-#: classes/class-woocommerce.php:514, classes/class-woocommerce.php:524, classes/class-woocommerce.php:534
-msgid "Weight"
+#: classes/class-woocommerce.php:547, classes/class-woocommerce.php:557, classes/class-woocommerce.php:567, includes/template-tags.php:271
+msgid "Weight:"
 msgstr ""
 
-#: classes/class-woocommerce.php:515, classes/class-woocommerce.php:525, classes/class-woocommerce.php:535
-msgid "kg’s"
+#: classes/class-woocommerce.php:548, classes/class-woocommerce.php:558, classes/class-woocommerce.php:568
+msgid "kg"
 msgstr ""
 
-#: classes/class-woocommerce.php:544, classes/class-woocommerce.php:554, classes/class-woocommerce.php:564
-msgid "Waist"
+#: classes/class-woocommerce.php:577, classes/class-woocommerce.php:587, classes/class-woocommerce.php:597, includes/template-tags.php:303
+msgid "Waist:"
 msgstr ""
 
-#: classes/class-woocommerce.php:545, classes/class-woocommerce.php:555, classes/class-woocommerce.php:565
-msgid "cm’s"
+#: classes/class-woocommerce.php:578, classes/class-woocommerce.php:588, classes/class-woocommerce.php:598
+msgid "cm"
 msgstr ""
 
-#: classes/class-woocommerce.php:574, classes/class-woocommerce.php:584, classes/class-woocommerce.php:594
-msgid "Fitness Test Score"
+#: classes/class-woocommerce.php:607, classes/class-woocommerce.php:617, classes/class-woocommerce.php:627
+msgid "Fitness Test Score:"
 msgstr ""
 
-#: classes/class-woocommerce.php:640
+#: classes/class-woocommerce.php:687
 msgid "Lost your password?"
 msgstr ""
 
@@ -425,7 +604,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: classes/class-workout.php:141
+#: classes/class-workout.php:141, classes/class-workout.php:173, templates/tab-content-workout.php:176
 msgid "Description"
 msgstr ""
 
@@ -437,24 +616,40 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: classes/class-workout.php:171
+#: classes/class-workout.php:166
 msgid "Workout Name"
 msgstr ""
 
-#: classes/class-workout.php:177, templates/tab-content-workout.php:108
+#: classes/class-workout.php:182, templates/tab-content-workout.php:179
 msgid "Reps / Time / Distance"
 msgstr ""
 
-#: classes/class-workout.php:184
+#: classes/class-workout.php:189, templates/tab-content-workout.php:182
+msgid "Equipment"
+msgstr ""
+
+#: classes/class-workout.php:194, templates/tab-content-workout.php:185
+msgid "Muscle Group"
+msgstr ""
+
+#: classes/class-workout.php:201
 msgid "Video related to this workout"
 msgstr ""
 
-#: classes/class-workout.php:211
+#: classes/class-workout.php:227
 msgid "Start typing to search for your workouts"
 msgstr ""
 
-#: classes/class-workout.php:220
+#: classes/class-workout.php:236
 msgid "Connect the workout that applies to this day plan using the field provided."
+msgstr ""
+
+#: classes/class-workout.php:247
+msgid "Pre Workout Snack"
+msgstr ""
+
+#: classes/class-workout.php:256
+msgid "Post Workout Snack"
 msgstr ""
 
 #: classes/class-wp-user-avatar.php:49, templates/page-template-my-plan.php:46
@@ -469,80 +664,76 @@ msgstr ""
 msgid "Your Warm-up"
 msgstr ""
 
-#: includes/template-tags.php:29
+#: includes/template-tags.php:33
 msgid "Start your warm-up"
 msgstr ""
 
-#: includes/template-tags.php:44
+#: includes/template-tags.php:51
 msgid "Your Workout"
 msgstr ""
 
-#: includes/template-tags.php:56
+#: includes/template-tags.php:67
 msgid "Start your workout"
 msgstr ""
 
-#: includes/template-tags.php:71
+#: includes/template-tags.php:85
 msgid "Your Meal Plan"
 msgstr ""
 
-#: includes/template-tags.php:83
+#: includes/template-tags.php:101
 msgid "View your meal plan"
 msgstr ""
 
-#: includes/template-tags.php:110
+#: includes/template-tags.php:135
 msgid "View all recipes"
 msgstr ""
 
-#: includes/template-tags.php:178, templates/page-template-my-plan.php:5
+#: includes/template-tags.php:203, templates/page-template-my-plan.php:5
 msgid "My Plan"
 msgstr ""
 
-#: includes/template-tags.php:185
+#: includes/template-tags.php:210
 msgid "Account Details"
 msgstr ""
 
-#: includes/template-tags.php:186
+#: includes/template-tags.php:211
 msgid "Logout"
 msgstr ""
 
-#: includes/template-tags.php:216
+#: includes/template-tags.php:241
 msgid "Edit Profile"
 msgstr ""
 
-#: includes/template-tags.php:229
+#: includes/template-tags.php:265
 msgid "Current"
 msgstr ""
 
-#: includes/template-tags.php:234
-msgid "Weight:"
-msgstr ""
-
-#: includes/template-tags.php:264
-msgid "Waist:"
-msgstr ""
-
-#: includes/template-tags.php:294
+#: includes/template-tags.php:335
 msgid "Fitness:"
 msgstr ""
 
-#: includes/template-tags.php:503
+#: includes/template-tags.php:484
+msgid "Daily Plan"
+msgstr ""
+
+#: includes/template-tags.php:606
 msgid "Complete Day"
 msgstr ""
 
-#: includes/template-tags.php:509, includes/template-tags.php:535, templates/content-recipe.php:38
+#: includes/template-tags.php:612, includes/template-tags.php:638, templates/content-recipe.php:38
 msgid "Back To My Plan"
 msgstr ""
 
-#: includes/template-tags.php:529
+#: includes/template-tags.php:632
 msgid "Im not done!"
 msgstr ""
 
-#: templates/archive-recipe.php:38, templates/featured-recipes.php:35, templates/tab-content-meal.php:107, templates/tab-content-recipes.php:59
+#: templates/content-archive-recipe.php:28, templates/featured-recipes.php:35, templates/tab-content-meal.php:151, templates/tab-content-recipes.php:65
 msgid "View Recipe"
 msgstr ""
 
 #: templates/content-recipe.php:20
-msgid "Recipe: "
+msgid "Recipe:"
 msgstr ""
 
 #: templates/featured-recipes.php:20
@@ -561,7 +752,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: templates/single-plan-tabs.php:15
+#: templates/single-plan-tabs.php:19
 msgid "Warm-up"
 msgstr ""
 
@@ -569,66 +760,74 @@ msgstr ""
 msgid "My Meal Plan"
 msgstr ""
 
-#: templates/tab-content-meal.php:59, templates/tab-content-meal.php:73
+#: templates/tab-content-meal.php:69, templates/tab-content-meal.php:83, templates/tab-content-meal.php:92, templates/tab-content-meal.php:104, templates/tab-content-meal.php:113, templates/tab-content-meal.php:127
 msgid "Snack"
 msgstr ""
 
-#: templates/tab-content-meal.php:83
+#: templates/tab-content-meal.php:120
 msgid "Supper"
 msgstr ""
 
-#: templates/tab-content-meal.php:96
+#: templates/tab-content-meal.php:140
 msgid "Meal Plan "
 msgstr ""
 
-#: templates/tab-content-meal.php:96
+#: templates/tab-content-meal.php:140
 msgid "Extras"
 msgstr ""
 
-#: templates/tab-content-meal.php:106
+#: templates/tab-content-meal.php:150
 msgid "If theres a recipe for the day you can find it here or under the recipes tab."
 msgstr ""
 
-#: templates/tab-content-meal.php:117
+#: templates/tab-content-meal.php:161
 msgid "Checkout the shopping list and make sure you have all the goodies you need!"
 msgstr ""
 
-#: templates/tab-content-meal.php:118
+#: templates/tab-content-meal.php:162
 msgid "View Shopping List"
 msgstr ""
 
-#: templates/tab-content-workout.php:32
+#: templates/tab-content-workout.php:30
 msgid "My Workout"
 msgstr ""
 
-#: templates/tab-content-workout.php:40
-msgid "Dont forget your warm up!"
+#: templates/tab-content-workout.php:38
+msgid "Don't forget your warm up!"
 msgstr ""
 
-#: templates/tab-content-workout.php:41
+#: templates/tab-content-workout.php:39
 msgid "Be sure to do the warm-up before every workout session."
 msgstr ""
 
-#: templates/tab-content-workout.php:46
-msgid "Download Warm-Up"
-msgstr ""
-
-#: templates/tab-content-workout.php:49
+#: templates/tab-content-workout.php:54
 msgid "See Warm-Up"
 msgstr ""
 
-#: templates/table-recipe-data.php:13
+#: templates/tab-content-workout.php:112
+msgid "Pre-workout Snack"
+msgstr ""
+
+#: templates/table-recipe-data.php:12
+msgid "Person"
+msgstr ""
+
+#: templates/table-recipe-data.php:14
+msgid "People"
+msgstr ""
+
+#: templates/table-recipe-data.php:18
+msgid "Serves:"
+msgstr ""
+
+#: templates/table-recipe-data.php:29
 msgid "Prep time: "
 msgstr ""
 
-#: templates/table-recipe-data.php:27
+#: templates/table-recipe-data.php:43
 msgid "Cooking time: "
 msgstr ""
 
-#: templates/table-recipe-data.php:41
-msgid "Serves: "
-msgstr ""
-
-#: templates/table-recipe-data.php:55
+#: templates/table-recipe-data.php:57
 msgid "Portion size: "
 msgstr ""

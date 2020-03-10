@@ -156,9 +156,14 @@ function lsx_workout_snacks( $snack ) {
 			<div class="content-box">
 				<?php
 				$snack_title = ucfirst( $snack );
-				/* Translators: %s: snack */
-				$title_text = __( '%s-Workout Snack', 'lsx-health-plan' );
-				$title      = sprintf( $title_text, $snack_title );
+				if ( 'pre' === $snack ) {
+					/* Translators: %s: snack */
+					$title_text = esc_attr_x( 'Pre-Workout Snack', 'pre workout', 'lsx-health-plan' );
+				} else {
+					/* Translators: %s: snack */
+					$title_text = esc_attr_x( 'Post-Workout Snack', 'post workout', 'lsx-health-plan' );
+				}
+				$title = sprintf( $title_text, $snack_title );
 				?>
 				<h3 class="title-lined"><?php echo esc_html( $title ); ?></h3>
 				<?php echo wp_kses_post( apply_filters( 'the_content', $workout_snack ) ); ?>

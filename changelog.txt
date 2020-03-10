@@ -15,6 +15,7 @@
 * Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
 * Fix - Making sure the wrapper for the tip carousel doesn't output if there are not tips assigned.
 * Fix - Fixed the integration with CMB2, and detecting when it is active.
+* Fixed - Pre and Post workout snack titles can be translated individually.
 
 
 ### 1.2.0 - 19 December 2019
