@@ -135,7 +135,7 @@ class Woocommerce {
 				$new_crumbs[3] = array(
 					0 => ucwords( $endpoint ),
 					1 => false,
-				);			
+				);
 			}
 
 			$crumbs = $new_crumbs;
