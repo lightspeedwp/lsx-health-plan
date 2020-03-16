@@ -133,6 +133,10 @@ class Woocommerce {
 					1 => false,
 				);
 			}
+			$endpoint_translation = \lsx_health_plan\functions\get_option( 'endpoint_' . $endpoint, false );
+			if ( false !== $endpoint_translation && '' !== $endpoint_translation ) {
+				$endpoint = $endpoint_translation;
+			}
 
 			$crumbs = $new_crumbs;
 		}
