@@ -242,10 +242,6 @@ function lsx_health_plan_my_profile_box() {
 			</div>
 		</div>
 
-		<div class="excerpt">
-			<p><?php echo wp_kses_post( $intro_text ); ?></p>
-		</div>
-
 		<div class="profile-details">
 			<h1 class="title-lined"><?php echo esc_html( $current_user->display_name ); ?></h1>
 			<?php
@@ -759,6 +755,7 @@ function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
  * @return void
  */
 function lsx_health_plan_recipe_archive_description() {
+	$description = '';
 	if ( is_post_type_archive( 'recipe' ) ) {
 		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
 	} elseif ( is_tax() ) {
