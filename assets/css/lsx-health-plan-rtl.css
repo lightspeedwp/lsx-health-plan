@@ -168,6 +168,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .lsx-hp-simple-checkout .wrap.container + footer#colophon { margin-top: 0; }
 
+@media (min-width: 768px) { .lsx-hp-simple-checkout.lsx-wc-checkout-layout-two-column-addreses .wrap.container #primary #main .checkout.woocommerce-checkout > .col2-set { float: right; margin-left: 4.347826087%; width: 47.826087%; }
+  .lsx-hp-simple-checkout.lsx-wc-checkout-layout-two-column-addreses .wrap.container #primary #main .checkout.woocommerce-checkout > .col2-set > .col-1 { width: 100%; }
+  .lsx-hp-simple-checkout.lsx-wc-checkout-layout-two-column-addreses .wrap.container #primary #main .checkout.woocommerce-checkout > #order_review, .lsx-hp-simple-checkout.lsx-wc-checkout-layout-two-column-addreses .wrap.container #primary #main .checkout.woocommerce-checkout > #order_review_heading { float: left; margin-right: 0; margin-left: 0; width: 47.8260869565%; } }
+
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
 #account-nav { margin-bottom: 15px; }

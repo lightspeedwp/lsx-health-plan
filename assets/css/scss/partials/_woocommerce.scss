@@ -175,7 +175,33 @@ body:not(.logged-in).content-restricted  {
 			margin-top: 0;
 		}
 	}
-	
+	&.lsx-wc-checkout-layout-two-column-addreses {
+		.wrap.container {
+			#primary {
+				#main {
+					.checkout.woocommerce-checkout {
+						@media (min-width: 768px) {
+							>.col2-set {
+								float: left;
+								margin-right: 4.347826087%;
+								width: 47.826087%;
+								>.col-1 {
+									width: 100%;
+								}
+							}
+							>#order_review,
+							>#order_review_heading {
+								float: right;
+								margin-left: 0;
+								margin-right: 0;
+								width: 47.8260869565%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // Login page
