@@ -1,75 +1,124 @@
-## Change log
-
-### 1.3.1
-* Fix - Adding in Fix to translate breadcrumbs if endpoints where translated.
-* Fix - Fixed issue `Undefined variable: intro_text`.
-* Fix - Fixed issue `Undefined variable: post_id`.
-
-### 1.3.0 - 20 February 2019
-* Dev - Separated the "Snack" boxes from the Meal Plan columns.
-* Dev - Added in an archive description field for the recipes post type archive.
-* Dev - Integrated the recipes archive with the LSX Search plugin.
-* Dev - Added in the structure and styling for the Recipes Type taxonomy to match the post type archive.
-* Dev - Added a `show_downloads` parameter to the weekly plan shortcode, which displays a list of the downloads added to the downloads category.
-* Dev - Refactored single plan tabs and the tab output, so they are passed through filters to allow 3rd Party changes.
-* Dev - Design Updates to Recipes Cards.
-* Dev - Download button on the workout tab will only appear if there is a pdf attached.
-* Dev - Adding Pre Workout Snack and the Recovery Snack to Workout.
-* Fix - Fixed the un-prefixed functions
-* Fix - Refactored the recipes functions
-* Fix - Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
-* Fix - Making sure the wrapper for the tip carousel doesn't output if there are not tips assigned.
-* Fix - Fixed the integration with CMB2, and detecting when it is active.
-* Fixed - Pre and Post workout snack titles can be translated individually.
+# Change log
 
 
-### 1.2.0 - 19 December 2019
-* Dev - Added in translatable endpoint settings.
-* Dev - Added in placeholder image for Tips.
-* Fix - Spacing and margins fixes in general.
-* Fix - Styling fixes for the Daily Plan list on tablet view.
-* Dev - Improved the search results for Health Plan items.
-* Dev- Added in Settings to assign a default workout, recipe, warm up and meal type post.
-* Fix - Changed the setting id to mimic the meta_key, and added in a check for `hs_attachement`.
-* Dev - Adding in a setting to assign the default post type connections.
-* Fix - Made sure that connected ids in the "trash" do not show.
-* Dev - General testing to ensure compatibility with latest WordPress version (5.3).
-* Dev - Checking compatibility with LSX 2.6 release.
+## [Unreleased] - Minor version 1.3.1
 
-### 1.1.1 30 October 2019
-* Fix - Added in a function to filters downloads that do not exist.
-* Fix - Applied the_content filters to the meal plan paragraphs and the workouts text #18
-* Fix - Fixed the string translations
+### Fixed
+- Adding in Fix to translate breadcrumbs if endpoints where translated.
+- Fixed issue `Undefined variable: intro_text`.
+- Fixed issue `Undefined variable: post_id`.
 
-### 1.1 - October 23 2019
-* Fix - Day Ordering
-* Fix - HTML not displaying on Workouts
-* Fix - Updated placeholder text in fields on profile #10 & #9
-* Fix - Video modal not closing on mobile devices #13
-* Fix - Tips images distorting
-* Dev - Added drag-able Days in the back-end to re-order them #16
+### Security
+- Updating dependencies to prevent vulnerabilities.
+- General testing to ensure compatibility with latest WordPress version (5.4).
+- General testing to ensure compatibility with latest LSX Theme version (2.7).
 
-### 1.0.5
-* Fix - Placeholder for Waist changed to cm on Edit Account Page.
-* Fix - Added a space between the value to make it neater and also change the Kg's to kg on my account page.
 
-### 1.0.4 - 13 September 2019
-* Fix - Downloads box will not have duplicated links
-* Fix - Removing the display non for the EFT page
-* Fix - Added in Fix for Recipe details on Mobile View
-* Dev - Activating github actions.
+## [[1.3.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/untagged-5ce7408d3f5c6aaeda32) - 2020-02-20
 
-### 1.0.3
-* Dev - Removed Peach Payments and added in Payfast on Checkout
-* Fix - Removed unnecessary link on Tips
+### Added
+- Separated the "Snack" boxes from the Meal Plan columns.
+- Added in an archive description field for the recipes post type archive.
+- Integrated the recipes archive with the LSX Search plugin.
+- Added in the structure and styling for the Recipes Type taxonomy to match the post type archive.
+- Added a `show_downloads` parameter to the weekly plan shortcode, which displays a list of the downloads added to the downloads category.
+- Refactored single plan tabs and the tab output, so they are passed through filters to allow 3rd Party changes.
+- Design Updates to Recipes Cards.
+- Download button on the workout tab will only appear if there is a pdf attached.
+- Adding Pre Workout Snack and the Recovery Snack to Workout.
 
-### 1.0.2
+### Fixed
+- Fixed the un-prefixed functions
+- Refactored the recipes functions
+- Changing all the kg's and cm's in the detail boxes to just kg and cm (no plural).
+- Making sure the wrapper for the tip carousel doesn't output if there are not tips assigned.
+- Fixed the integration with CMB2, and detecting when it is active.
+- Pre and Post workout snack titles can be translated individually.
+
+
+## [[1.2.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.2) - 2019-12-19
+
+### Added
+- Added in translatable endpoint settings.
+- Added in placeholder image for Tips.
+- Improved the search results for Health Plan items.
+- Added in Settings to assign a default workout, recipe, warm up and meal type post.
+- Adding in a setting to assign the default post type connections.
+- General testing to ensure compatibility with latest WordPress version (5.3).
+- Checking compatibility with LSX 2.6 release.
+
+### Fixed
+- Spacing and margins fixes in general.
+- Styling fixes for the Daily Plan list on tablet view.
+- Changed the setting id to mimic the meta_key, and added in a check for `hs_attachment`.
+- Made sure that connected ids in the "trash" do not show.
+
+
+## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.1.1) - 2019-10-30
+
+### Fixed
+- Added in a function to filters downloads that do not exist.
+- Applied the_content filters to the meal plan paragraphs and the workouts text #18.
+- Fixed the string translations.
+
+
+## [[1.1.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.1) - 2019-10-23
+
+### Added
+- Added drag-able Days in the back-end to re-order them #16.
+
+### Fixed
+- Day Ordering.
+- HTML not displaying on Workouts.
+- Updated placeholder text in fields on profile #10 & #9.
+- Video modal not closing on mobile devices #13.
+- Tips images distorting.
+
+
+## [[1.0.5]]()
+
+### Fixed
+- Placeholder for Waist changed to cm on Edit Account Page.
+- Added a space between the value to make it neater and also change the Kg's to kg on my account page.
+
+
+## [[1.0.4]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.0.4) - 2019-09-13
+
+### Added
+- Activating github actions.
+
+### Fixed
+- Downloads box will not have duplicated links.
+- Removing the display non for the EFT page.
+- Added in Fix for Recipe details on Mobile View.
+
+
+## [[1.0.3]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.0.3) - 2019-08-23
+
+### Added
+- Removed Peach Payments and added in Payfast on Checkout.
+
+### Fixed
+- Removed unnecessary link on Tips.
+
+
+## [[1.0.2]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.0.1.2) - 2019-08-07
+
+### Added
 * Dev - Changing icons to be inline svgs.
-* Fix - Fixing the week view order to be by date.
-* Fix - Recipes and shopping list box only appear if they are not empty on the Meal Plan Tab
 
-### 1.0.1
-* Fix - Style fixes and improvements on desktop and mobile.
+### Fixed
+- Fixing the week view order to be by date.
+- Recipes and shopping list box only appear if they are not empty on the Meal Plan Tab.
 
-### 1.0
-* Initial release
+
+## [[1.0.1]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.0.1) - 2019-08-05
+
+### Fixed
+- Style fixes and improvements on desktop and mobile.
+
+
+## [[1.0.0]]()
+
+### Added
+- Initial release
