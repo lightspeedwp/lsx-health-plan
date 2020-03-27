@@ -144,6 +144,28 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
 
+.lsx-hp-simple-checkout .header-wrap #masthead .primary-navbar { display: none !important; }
+
+.lsx-hp-simple-checkout .wrap.container .archive-header-wrapper, .lsx-hp-simple-checkout .wrap.container .lsx-hp-archive-description { display: none; }
+
+.lsx-hp-simple-checkout .wrap.container #primary { padding-top: 8.4rem; margin-bottom: 0; }
+
+.lsx-hp-simple-checkout .wrap.container #primary #main .lsx-wc-checkout-steps { display: none; }
+
+.lsx-hp-simple-checkout .wrap.container #primary #main .entry-content .lsx-title { text-align: right; }
+
+.lsx-hp-simple-checkout .wrap.container #primary #main .entry-content .lsx-title:after { width: 100%; margin-top: 1rem; background-color: #418ad0; }
+
+.lsx-hp-simple-checkout .wrap.container #primary #main .woocommerce .woocommerce-notices-wrapper { display: none; }
+
+.lsx-hp-simple-checkout .wrap.container #primary #main .woocommerce #order_review { margin-bottom: 8.4rem; }
+
+.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; background: white; }
+
+.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom .img-payments { filter: grayscale(100%); margin-top: 3rem; margin-bottom: 3rem; }
+
+.lsx-hp-simple-checkout .wrap.container + footer#colophon { margin-top: 0; }
+
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
 #account-nav { margin-bottom: 15px; }
