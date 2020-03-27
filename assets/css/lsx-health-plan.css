@@ -3,7 +3,7 @@
 
 table, .table { width: 100%; table-layout: fixed; }
 
-.woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
+.woocommerce-form-coupon-toggle { display: none; }
 
 @media (max-width: 900px) { .no-padding.lsx-block-container .lsx-container-content { padding: 0; } }
 
@@ -143,6 +143,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order { margin-top: 5px; float: initial; width: 100%; background-color: #F7AE00; box-shadow: 2px 2px 0 0 #CE9100; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #CE9100; }
+
+.lsx-hp-simple-checkout .header-wrap #lsx-banner { display: none; }
 
 .lsx-hp-simple-checkout .header-wrap #masthead .primary-navbar { display: none !important; }
 
