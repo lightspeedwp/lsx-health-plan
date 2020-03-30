@@ -20,7 +20,7 @@ get_header(); ?>
 
 		<!-- Begining restricted content -->
 		<?php
-		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) {
+		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $page_id ) ) {
 			?>
 			<main id="main" role="main">
 

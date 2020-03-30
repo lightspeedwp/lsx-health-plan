@@ -9,6 +9,8 @@
 
 ### Fixed
 - Adding in Fix to translate breadcrumbs if endpoints where translated.
+- Fixed issue `Undefined variable: intro_text`.
+- Fixed issue `Undefined variable: post_id`.
 
 ### Security
 - Updating dependencies to prevent vulnerabilities.
