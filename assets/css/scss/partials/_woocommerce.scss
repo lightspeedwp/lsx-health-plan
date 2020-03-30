@@ -47,7 +47,34 @@ body.woocommerce-account.woocommerce-edit-account {
 }
 
 // Lost Password
+body.logged-in.woocommerce-account.woocommerce-lost-password {
+	article.page {
+		padding: 8.4rem 0;
+	}
+}
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
+	.wrap.container {
+		.archive-header-wrapper.banner-page {
+			display: block !important;
+			padding: 0;
+			margin: 0 -15px;
+			height: 200px;
+			width: 100vw;
+			.archive-header {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.archive-title {
+					font-size: 0;
+					&:before {
+						font-size: 40px;
+						content: 'Lost Password';
+					}
+				}
+			}
+		}
+	}
 	article.page {
 		width: 66.66667% !important;
 		margin: 0 auto;
