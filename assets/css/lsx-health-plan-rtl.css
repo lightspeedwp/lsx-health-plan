@@ -148,13 +148,19 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .lsx-hp-simple-checkout .header-wrap #masthead .primary-navbar { display: none !important; }
 
+.lsx-hp-simple-checkout .header-wrap #masthead .checkout-navbar { width: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: end; justify-content: flex-end; }
+
+@media (max-width: 1199px) { .lsx-hp-simple-checkout .header-wrap #masthead .checkout-navbar { display: none; } }
+
+.lsx-hp-simple-checkout .header-wrap #masthead .checkout-navbar ul li a { font-weight: bold; }
+
 .lsx-hp-simple-checkout .wrap.container .archive-header-wrapper, .lsx-hp-simple-checkout .wrap.container .lsx-hp-archive-description { display: none; }
 
 .lsx-hp-simple-checkout .wrap.container #primary { padding-top: 8.4rem; margin-bottom: 0; }
 
 .lsx-hp-simple-checkout .wrap.container #primary #main .lsx-wc-checkout-steps { display: none; }
 
-.lsx-hp-simple-checkout .wrap.container #primary #main .entry-content .lsx-title { text-align: right; }
+.lsx-hp-simple-checkout .wrap.container #primary #main .entry-content .lsx-title { text-align: right; font-size: 40px; }
 
 .lsx-hp-simple-checkout .wrap.container #primary #main .entry-content .lsx-title:after { width: 100%; margin-top: 1rem; background-color: #418ad0; }
 
@@ -162,9 +168,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .lsx-hp-simple-checkout .wrap.container #primary #main .woocommerce #order_review { margin-bottom: 8.4rem; }
 
-.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; background: white; }
+.lsx-hp-simple-checkout .wrap.container #primary #main .woocommerce h3 { font-size: 30px; }
 
-.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom .img-payments { filter: grayscale(100%); margin-top: 3rem; margin-bottom: 3rem; }
+.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; background: white; padding-top: 60px; padding-bottom: 60px; }
+
+.lsx-hp-simple-checkout .wrap.container #primary .checkout-cta-bottom .img-payments { filter: grayscale(100%); margin-top: 4rem; margin-bottom: 4rem; }
 
 .lsx-hp-simple-checkout .wrap.container + footer#colophon { margin-top: 0; }
 

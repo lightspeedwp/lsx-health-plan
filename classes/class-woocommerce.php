@@ -29,6 +29,7 @@ class Woocommerce {
 		// Checkout.
 		add_action( 'woocommerce_after_checkout_form', array( $this, 'payment_gateway_logos' ) );
 		add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
+		add_action( 'lsx_nav_before', array( $this, 'hp_link_lsx_navbar_header' ), 99 );
 		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
 
 		// Redirect to the Edit Account Template.
@@ -718,6 +719,13 @@ class Woocommerce {
 		<h1 class="lost-your-password-title"><?php esc_html_e( 'Lost your password?', 'lsx-health-plan' ); ?></h1>
 		<?php
 	}
+
+	public function hp_link_lsx_navbar_header() {
+		if ( is_checkout() ) {
+			echo '<nav class="checkout-navbar"><ul class="nav navbar-nav"><li><a href="' . esc_url( home_url() ) . '">Home</a></li></ul></nav>';
+		}
+	}
+
 
 	/**
 	 * Add Lets Enrypt and PayFast logos to cart.

@@ -127,6 +127,21 @@ body:not(.logged-in).content-restricted  {
 			.primary-navbar {
 				display: none !important;
 			}
+			.checkout-navbar {
+				width: 100%;
+				display: flex;
+				justify-content: flex-end;
+				@media (max-width:1199px) {
+					display: none;
+				}
+				ul {
+					li {
+						a {
+							font-weight: bold;
+						}
+					}
+				}
+			}
 		}
 	}
 	.wrap.container {
@@ -144,6 +159,7 @@ body:not(.logged-in).content-restricted  {
 				.entry-content {
 					.lsx-title {
 						text-align: left;
+						font-size: 40px;
 						&:after {
 							width: 100%;
 							margin-top: 1rem;
@@ -158,16 +174,21 @@ body:not(.logged-in).content-restricted  {
 					#order_review {
 						margin-bottom: 8.4rem;
 					}
+					h3 {
+						font-size: 30px;
+					}
 				}
 			}
 			.checkout-cta-bottom {
 				display: flex;
 				flex-direction: column;
 				background: white;
+				padding-top: 60px;
+				padding-bottom: 60px;
 				.img-payments {
 					filter: grayscale(100%);
-					margin-top: 3rem;
-					margin-bottom: 3rem;
+					margin-top: 4rem;
+					margin-bottom: 4rem;
 				}
 			}
 		}
