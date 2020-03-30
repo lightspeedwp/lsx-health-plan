@@ -27,7 +27,10 @@ class Woocommerce {
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
 
 		// Checkout.
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'payment_gateway_logos' ) );
+		add_action( 'woocommerce_after_checkout_form', array( $this, 'payment_gateway_logos' ) );
+		add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
+		add_action( 'lsx_nav_before', array( $this, 'hp_link_lsx_navbar_header' ), 99 );
+		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
 
 		// Redirect to the Edit Account Template.
 		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
@@ -686,27 +689,68 @@ class Woocommerce {
 		return $classes;
 	}
 
+	/**
+	 * Add 'lsx-simple-checkout' class to body if it is woocommerce checkout page.
+	 *
+	 * @param array $classes
+	 * @return void
+	 */
+	public function hp_add_body_classes( $classes = array() ) {
+		if ( is_checkout() ) {
+			$classes[] = 'lsx-hp-simple-checkout';
+		}
+		return $classes;
+	}
+
+	/**
+	 * Remove unnecessary items for simple woocommerce checkout page.
+	 *
+	 * @param array $classes
+	 * @return void
+	 */
+	public function hp_simple_checkout() {
+		if ( is_checkout() ) {
+			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
+		}
+	}
+
 	public function lost_password_page_title() {
 		?>
 		<h1 class="lost-your-password-title"><?php esc_html_e( 'Lost your password?', 'lsx-health-plan' ); ?></h1>
 		<?php
 	}
 
+	public function hp_link_lsx_navbar_header() {
+		if ( is_checkout() ) {
+			echo '<nav class="checkout-navbar"><ul class="nav navbar-nav"><li><a href="' . esc_url( home_url() ) . '">Home</a></li></ul></nav>';
+		}
+	}
+
+
 	/**
 	 * Add Lets Enrypt and PayFast logos to cart.
 	**/
 	public function payment_gateway_logos() {
-		$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/le-logo.svg';
-		$payfast_image   = LSX_HEALTH_PLAN_URL . 'assets/images/secure-payments.png';
+		$encript_image = LSX_HEALTH_PLAN_URL . 'assets/images/lets-encript.svg';
+		$payfast_image = LSX_HEALTH_PLAN_URL . 'assets/images/payfast-footer-logo.svg';
+		$payment_logos = LSX_HEALTH_PLAN_URL . 'assets/images/payment-logos.svg';
+		$payment_logos_mobile = LSX_HEALTH_PLAN_URL . 'assets/images/payment-logos-mobile.svg';
 		?>
-		<div class="row text-center vertical-align">
-			<div class="col-md-6 col-sm-6 col-xs-6">
-				<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
-			</div>
-			<div class="col-md-6 col-sm-6 col-xs-6">
+		<div class="row text-center vertical-align lsx-full-width-base-small checkout-cta-bottom">
+			<div class="col-md-12 img-payfast">
 				<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
 			</div>
+			<div class="col-md-12 img-payments hidden-xs">
+				<img src="<?php echo esc_url( $payment_logos ); ?>" alt="payments"/>
+			</div>
+			<div class="col-md-12 img-payments hidden-sm hidden-md hidden-lg">
+				<img src="<?php echo esc_url( $payment_logos_mobile ); ?>" alt="payments"/>
+			</div>
+			<div class="col-md-12 img-encrypt">
+				<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
+			</div>
 		</div>
+
 		<?php
 	}
 }

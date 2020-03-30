@@ -117,6 +117,114 @@ body:not(.logged-in).content-restricted  {
 	}
 }
 
+// Simple Checkout
+.lsx-hp-simple-checkout {
+	.header-wrap {
+		#lsx-banner {
+			display: none;
+		}
+		#masthead {
+			.primary-navbar {
+				display: none !important;
+			}
+			.checkout-navbar {
+				width: 100%;
+				display: flex;
+				justify-content: flex-end;
+				@media (max-width:1199px) {
+					display: none;
+				}
+				ul {
+					li {
+						a {
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+	.wrap.container {
+		.archive-header-wrapper,
+		.lsx-hp-archive-description {
+			display: none;
+		}
+		#primary {
+			padding-top: 8.4rem;
+			margin-bottom: 0;
+			#main {
+				.lsx-wc-checkout-steps {
+					display: none;
+				}
+				.entry-content {
+					.lsx-title {
+						text-align: left;
+						font-size: 40px;
+						&:after {
+							width: 100%;
+							margin-top: 1rem;
+							background-color: $blue;
+						}
+					}
+				}
+				.woocommerce {
+					.woocommerce-notices-wrapper {
+						display: none;
+					}
+					#order_review {
+						margin-bottom: 8.4rem;
+					}
+					h3 {
+						font-size: 30px;
+					}
+				}
+			}
+			.checkout-cta-bottom {
+				display: flex;
+				flex-direction: column;
+				background: white;
+				padding-top: 60px;
+				padding-bottom: 60px;
+				.img-payments {
+					filter: grayscale(100%);
+					margin-top: 4rem;
+					margin-bottom: 4rem;
+				}
+			}
+		}
+		+ footer#colophon {
+			margin-top: 0;
+		}
+	}
+	&.lsx-wc-checkout-layout-two-column-addreses {
+		.wrap.container {
+			#primary {
+				#main {
+					.checkout.woocommerce-checkout {
+						@media (min-width: 768px) {
+							>.col2-set {
+								float: left;
+								margin-right: 4.347826087%;
+								width: 47.826087%;
+								>.col-1 {
+									width: 100%;
+								}
+							}
+							>#order_review,
+							>#order_review_heading {
+								float: right;
+								margin-left: 0;
+								margin-right: 0;
+								width: 47.8260869565%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // Login page
 .page.login, .page.content-restricted,
 .recipe-template-default,
