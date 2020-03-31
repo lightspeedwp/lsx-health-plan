@@ -208,7 +208,7 @@ function lsx_health_plan_my_profile_tabs() {
 			}
 			?>
 			"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
-			<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
+			<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
 		</ul>
 	</div>
 	<?php

@@ -83,7 +83,7 @@ if ( ( isset( $_GET['activated'] ) && function_exists( 'wp_verify_nonce' ) && wp
 function lsx_add_login_logout_register_menu( $items, $args ) {
 	if ( 'primary' === $args->theme_location ) {
 		ob_start();
-		wp_loginout( home_url() );
+		wp_loginout( get_permalink() );
 		$loginoutlink = ob_get_contents();
 		ob_end_clean();
 		if ( ! is_user_logged_in() ) {
