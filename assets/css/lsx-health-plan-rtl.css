@@ -124,6 +124,18 @@ body:not(.logged-in).woocommerce-account.my-plan #main .woocommerce button.wooco
 
 body.woocommerce-account.woocommerce-edit-account #primary.content-area { margin-top: 0px; margin-bottom: 0px; }
 
+body.logged-in.woocommerce-account.woocommerce-lost-password article.page { padding: 8.4rem 0; }
+
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password .wrap.container { width: 100%; }
+
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password .wrap.container .archive-header-wrapper.banner-page { display: block !important; padding: 0; height: 200px; width: 100vw; }
+
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password .wrap.container .archive-header-wrapper.banner-page .archive-header { height: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; }
+
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password .wrap.container .archive-header-wrapper.banner-page .archive-header .archive-title { font-size: 0; }
+
+body:not(.logged-in).woocommerce-account.woocommerce-lost-password .wrap.container .archive-header-wrapper.banner-page .archive-header .archive-title:before { font-size: 40px; content: 'Lost Password'; }
+
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page { width: 66.66667% !important; margin: 0 auto; }
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-first label { font-weight: 700 !important; }

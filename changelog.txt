@@ -11,6 +11,8 @@
 - Adding in Fix to translate breadcrumbs if endpoints where translated.
 - Fixed issue `Undefined variable: intro_text`.
 - Fixed issue `Undefined variable: post_id`.
+- Fixed banner for the Lost Password page.
+- Fixed the login/logout links on the tab and menu.
 
 ### Security
 - Updating dependencies to prevent vulnerabilities.
