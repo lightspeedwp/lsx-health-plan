@@ -19,11 +19,18 @@
 	<div id="single-recipe" class="entry-content">
 		<h2 class="title-lined"><span class="recipe-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
 		<div class="row">
-			<div class="col-md-6 recipe-image lsx-shadow">
+			<div class="col-md-6 recipe-image lsx-hp-shadow">
 				<?php
-				the_post_thumbnail( 'large', array(
-					'class' => 'aligncenter',
-				) );
+				$featured_image = get_the_post_thumbnail();
+				if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+					the_post_thumbnail( 'large', array(
+						'class' => 'aligncenter',
+					) );
+				} else {
+					?>
+					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder-recipe.jpg' ); ?>">
+					<?php
+				}
 				?>
 				<div class="recipe-data">
 					<?php lsx_health_plan_recipe_data(); ?>

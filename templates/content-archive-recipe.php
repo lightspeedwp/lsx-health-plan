@@ -16,9 +16,16 @@
 		<div class="recipe-feature-img">
 			<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php
-			the_post_thumbnail( 'lsx-thumbnail-square', array(
-				'class' => 'aligncenter',
-			) );
+			$featured_image = get_the_post_thumbnail();
+			if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+				the_post_thumbnail( 'lsx-thumbnail-square', array(
+					'class' => 'aligncenter',
+				) );
+			} else {
+				?>
+				<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder-recipe.jpg' ); ?>">
+				<?php
+			}
 			?>
 			</a>
 		</div>

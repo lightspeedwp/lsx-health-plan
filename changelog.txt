@@ -4,6 +4,7 @@
 
 ### Added
 - Extend the current single recipe post type to display additional fields.
+- Added placeholder image for recipes.
 
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.
