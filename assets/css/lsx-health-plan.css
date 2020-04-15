@@ -653,20 +653,24 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) { margin-top: 2rem; }
 
+#single-recipe .recipe-image .recipe-data .recipe-table thead th { color: #434343; }
+
+#single-recipe .recipe-image .recipe-data .recipe-table tbody { margin-top: 1rem; display: -ms-grid; display: grid; }
+
+#single-recipe .recipe-image .recipe-data .recipe-table tbody td:first-child { color: #919191; }
+
+#single-recipe .recipe-image .recipe-data .recipe-table tbody tr { display: -ms-grid; display: grid; -ms-grid-columns: 60% 40%; grid-template-columns: 60% 40%; }
+
+@media (max-width: 600px) { #single-recipe .recipe-image .recipe-data .recipe-table tbody { display: block; } }
+
+#single-recipe .recipe-image .recipe-data .recipe-table:only-child tbody tr { -ms-grid-columns: 40% 60%; grid-template-columns: 40% 60%; }
+
 @media (min-width: 600px) { #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) { margin-top: 0; border-left: 1px solid #DDDDDD; margin-left: -10px; }
   #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) th, #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) td { padding-left: 10px; } }
 
-#single-recipe .recipe-image .recipe-data thead th { color: #434343; }
-
-#single-recipe .recipe-image .recipe-data tbody { margin-top: 1rem; display: -ms-grid; display: grid; }
-
-#single-recipe .recipe-image .recipe-data tbody td:first-child { color: #919191; }
-
-#single-recipe .recipe-image .recipe-data tbody tr { display: -ms-grid; display: grid; -ms-grid-columns: 60% 40%; grid-template-columns: 60% 40%; }
-
-@media (max-width: 600px) { #single-recipe .recipe-image .recipe-data tbody { display: block; } }
-
 #single-recipe .recipe-content { margin-bottom: 8.5rem; float: right; }
+
+@media (min-width: 992px) { #single-recipe .recipe-content { margin-right: 2rem; } }
 
 @media (max-width: 600px) { #single-recipe .recipe-content .back-plan-btn { margin-top: 4.25rem; }
   #single-recipe .recipe-content .back-plan-btn .btn { width: 100%; } }
