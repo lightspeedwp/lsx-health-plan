@@ -78,6 +78,7 @@ class Meal {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-carrot',
 			'query_var'          => true,
 			'rewrite'            => false,

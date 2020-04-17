@@ -76,6 +76,7 @@ class Plan {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-welcome-write-blog',
 			'query_var'          => true,
 			'rewrite'            => array(

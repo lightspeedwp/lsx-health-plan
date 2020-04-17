@@ -101,6 +101,7 @@ class Recipe {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-editor-ul',
 			'query_var'          => true,
 			'rewrite'            => array(
