@@ -6,6 +6,18 @@
  */
 ?>
 
+<?php
+$prep_time     = get_post_meta( get_the_ID(), 'recipe_prep_time', true );
+$cooking_time  = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
+$serves        = get_post_meta( get_the_ID(), 'recipe_serves', true );
+$portion       = get_post_meta( get_the_ID(), 'recipe_portion', true );
+$energy        = get_post_meta( get_the_ID(), 'recipe_energy', true );
+$protein       = get_post_meta( get_the_ID(), 'recipe_protein', true );
+$carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
+$fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
+$fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
+?>
+
 <?php lsx_entry_before(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -32,9 +44,11 @@
 					<?php
 				}
 				?>
+				<?php if ( ( ! empty( $prep_time ) ) || ( ! empty( $cooking_time ) ) || ( ! empty( $serves ) ) || ( ! empty( $portion ) ) || ( ! empty( $energy ) ) || ( ! empty( $protein ) ) || ( ! empty( $carbohydrates ) ) || ( ! empty( $fibre ) ) || ( ! empty( $fat ) ) ) { ?>
 				<div class="recipe-data">
 					<?php lsx_health_plan_recipe_data(); ?>
 				</div>
+				<?php } ?>
 			</div>
 			<div class="col-md-6 recipe-content">
 				<?php the_content(); ?>
