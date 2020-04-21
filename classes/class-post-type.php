@@ -40,6 +40,11 @@ class Post_Type {
 		add_filter( 'lsx_health_plan_post_types', array( $this, 'enable_post_types' ) );
 		foreach ( $this->post_types as $index => $post_type ) {
 			$is_disabled = \lsx_health_plan\functions\get_option( $post_type . '_disabled', false );
+			// Check if exercises is enabled, if so disable the videos.
+			if ( 'video' === $post_type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+				$is_disabled = true;
+			}
+
 			if ( true === $is_disabled || 1 === $is_disabled || 'on' === $is_disabled ) {
 				unset( $this->post_types[ $index ] );
 			} else {

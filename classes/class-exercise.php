@@ -30,13 +30,14 @@ class Exercise {
 	 * Contructor
 	 */
 	public function __construct() {
-		if ( true !== \lsx_health_plan\functions\get_option( 'exercise_disabled', true ) ) {
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			add_action( 'init', array( $this, 'register_post_type' ) );
-			add_action( 'init', array( $this, 'taxonomy_setup' ) );
+			add_action( 'init', array( $this, 'workout_taxonomy_setup' ) );
+			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
+			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 			add_action( 'cmb2_admin_init', array( $this, 'video_metabox' ) );
-			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 15 );
 		}
 	}
 
@@ -89,18 +90,19 @@ class Exercise {
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'thumbnail',
 			),
 		);
 		register_post_type( 'exercise', $args );
 	}
 
 	/**
-	 * Register the Week taxonomy.
+	 * Register the Workout taxonomy.
 	 */
-	public function taxonomy_setup() {
+	public function workout_taxonomy_setup() {
 		$labels = array(
-			'name'              => esc_html_x( 'Week', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Week', 'taxonomy singular name', 'lsx-health-plan' ),
+			'name'              => esc_html_x( 'Workout Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Workout', 'taxonomy singular name', 'lsx-health-plan' ),
 			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
 			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
 			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
@@ -109,7 +111,7 @@ class Exercise {
 			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
 			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
-			'menu_name'         => esc_html__( 'Weeks', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Workouts', 'lsx-health-plan' ),
 		);
 
 		$args = array(
@@ -119,11 +121,79 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'week',
+				'slug' => 'workout',
 			),
 		);
 
-		register_taxonomy( 'week', array( 'plan' ), $args );
+		register_taxonomy( 'workout', array( 'exercise' ), $args );
+	}
+
+	/**
+	 * Register the Exercise taxonomy.
+	 *
+	 * @return void
+	 */
+	public function exercise_type_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Exercise Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Exercise Type', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Exercise Types', 'lsx-health-plan' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'exercise-type',
+			),
+		);
+
+		register_taxonomy( 'exercise-type', array( 'exercise' ), $args );
+	}
+
+	/**
+	 * Register the Exercise taxonomy.
+	 *
+	 * @return void
+	 */
+	public function equipment_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Equipment', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Equipment', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Equipment', 'lsx-health-plan' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'equipment',
+			),
+		);
+
+		register_taxonomy( 'equipment', array( 'exercise' ), $args );
 	}
 
 	/**
@@ -144,8 +214,11 @@ class Exercise {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['exercise']['connected_plans'] = 'connected_exercises';
-		$connections['plan']['connected_exercises'] = 'connected_plans';
+		$connections['exercise']['connected_workouts'] = 'connected_exercises';
+		$connections['workout']['connected_exercise']  = 'connected_workouts';
+
+		$connections['tip']['connected_exercises'] = 'connected_tips';
+		$connections['exercise']['connected_tips'] = 'connected_exercises';
 		return $connections;
 	}
 
