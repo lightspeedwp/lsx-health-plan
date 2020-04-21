@@ -380,15 +380,29 @@ class Settings {
 			if ( 'plan' === $post_type ) {
 				continue;
 			}
-			$cmb->add_field(
-				array(
-					'name'    => ucwords( $post_type ),
-					'id'      => $post_type . '_disabled',
-					'type'    => 'checkbox',
-					'value'   => 1,
-					'default' => 0,
-				)
-			);
+
+			if ( 'exercise' === $post_type ) {
+				$cmb->add_field(
+					array(
+						'name'        => ucwords( $post_type ),
+						'id'          => $post_type . '_disabled',
+						'type'        => 'checkbox',
+						'value'       => 1,
+						'default'     => 1,
+						'description' => __( 'Enabling the exercise post type will automatically disable the Workout and Video post types.', 'lsx-health-plan' ),
+					)
+				);
+			} else {
+				$cmb->add_field(
+					array(
+						'name'    => ucwords( $post_type ),
+						'id'      => $post_type . '_disabled',
+						'type'    => 'checkbox',
+						'value'   => 1,
+						'default' => 0,
+					)
+				);
+			}
 		}
 	}
 	/**
