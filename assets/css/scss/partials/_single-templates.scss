@@ -1,50 +1,83 @@
 // Single Recipe
 #single-recipe {
 	margin-bottom: -8.4rem;
-	.recipe-table {
-		tbody {
-			td {
-				&:first-child {
-					font-weight: bold;
-				}
-			}
-		}
+	> .row {
+		margin-right: 0;
+		margin-left: 0;
 	}
 	.recipe-image {
-		img, .recipe-data {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 4.25rem;
+		img {
 			width: 100%;
-			@media (min-width: 992px) {
-				max-width: 440px;	
-			}
-			@media (min-width: 1200px) {
-				max-width: 490px;	
-			}
+		}
+		@media (min-width: 992px) {
+			max-width: 440px;	
+		}
+		@media (min-width: 1200px) {
+			max-width: 490px;	
 		}
 		.recipe-data {
 			background: white;
-			padding: 2.4rem;
-			margin-bottom: 4.25rem;
+			padding: 2.4rem 1.4rem;
+			@media (min-width: 600px) {
+				display: flex;
+			}
+			
 			.recipe-table {
 				margin-bottom: 0;
+				&:nth-child(2) {
+					margin-top: 2rem;
+				}
+				thead {
+					th {
+						color: #434343;
+					}
+				}
+				tbody {
+					margin-top: 1rem;
+					display: grid;
+					td {
+						&:first-child {
+							color: #919191;
+						}
+					}
+					tr {
+						display: grid;
+						grid-template-columns: 60% 40%;
+					}
+					@media (max-width:600px) {
+						display:block;
+					}
+				}
+				&:only-child {
+					tbody {
+						tr {
+							grid-template-columns: 40% 60%;
+						}
+					}
+				}
+				@media (min-width: 600px) {
+					&:nth-child(2) {
+						margin-top: 0;
+						border-left: 1px solid #DDDDDD;
+						margin-left: -10px;
+						th, td {
+							padding-left: 10px;
+						}
+					}
+				}
 			}
-			tbody {
-				display: grid;
-				grid-template-columns: auto auto;
-				tr {
-					display: table-row;
-					grid-template-columns: 50% 50%;
-				}
-				td:first-child {
-					color: $blue;
-				}
-				@media (max-width:600px) {
-					display:block;
-				}
-			}
+			
 		}
 	}
 	.recipe-content {
 		margin-bottom: 8.5rem;
+		float: right;
+		@media (min-width: 992px) {
+			margin-right: 2rem;
+		}
 		@media (max-width: 600px) {
 			.back-plan-btn {
 				margin-top: 4.25rem;

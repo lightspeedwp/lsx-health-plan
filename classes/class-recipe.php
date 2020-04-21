@@ -262,7 +262,7 @@ class Recipe {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->slug . '_details_metabox',
-				'title'        => __( 'Recipe Details', 'lsx-health-plan' ),
+				'title'        => __( 'Cooking Info', 'lsx-health-plan' ),
 				'object_types' => array( $this->slug ), // Post type
 				'context'      => 'normal',
 				'priority'     => 'high',
@@ -305,6 +305,61 @@ class Recipe {
 				'name'       => __( 'Portion', 'lsx-health-plan' ),
 				'desc'       => __( 'Add the recommended portion size i.e: 200mg', 'lsx-health-plan' ),
 				'id'         => $this->slug . '_portion',
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_nutritional_metabox',
+				'title'        => __( 'Nutritional Info', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Energy', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_energy',
+				'desc'       => __( 'Add the energy amount for the entire meal i.e: 700 kj', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Protein', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_protein',
+				'desc'       => __( 'Add the protein amount for the entire meal i.e: 50 g', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Carbohydrates', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_carbohydrates',
+				'desc'       => __( 'Add the carbohydrates amount for the entire meal i.e: 5 g', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Fibre', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_fibre',
+				'desc'       => __( 'Add the fibre amount for the entire meal i.e: 5 g', 'lsx-health-plan' ),
+				'type'       => 'text',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Fat', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_fat',
+				'desc'       => __( 'Add the fat amount for the entire meal i.e: 20 g', 'lsx-health-plan' ),
 				'type'       => 'text',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
 			)
