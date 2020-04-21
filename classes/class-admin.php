@@ -42,7 +42,6 @@ class Admin {
 	public function __construct() {
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-settings.php';
 		$this->settings = Settings::get_instance();
-
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
