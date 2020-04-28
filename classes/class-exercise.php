@@ -85,7 +85,7 @@ class Exercise {
 			'query_var'          => true,
 			'rewrite'            => false,
 			'capability_type'    => 'post',
-			'has_archive'        => array( 'slug' => 'exercises' ),
+			'has_archive'        => 'exercises',
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
