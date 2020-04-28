@@ -37,8 +37,10 @@ class Exercise {
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_meta' ) );
 			add_action( 'cmb2_admin_init', array( $this, 'video_metabox' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
+			add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
 			add_filter( 'lsx_health_plan_workout_sections_amount', array( $this, 'disable_workout_details' ) );
 		}
 	}
@@ -244,11 +246,11 @@ class Exercise {
 	public function video_metabox() {
 		$cmb = new_cmb2_box(
 			array(
-				'id'           => $this->slug . '_details_metabox',
+				'id'           => $this->slug . '_video_details_metabox',
 				'title'        => __( 'Video Details', 'lsx-health-plan' ),
 				'object_types' => array( $this->slug ), // Post type
 				'context'      => 'normal',
-				'priority'     => 'high',
+				'priority'     => 'low',
 				'show_names'   => true,
 			)
 		);
@@ -314,7 +316,7 @@ class Exercise {
 	public function exercise_connections() {
 		$cmb = new_cmb2_box(
 			array(
-				'id'           => $this->slug . '_connections_metabox',
+				'id'           => 'workout_exercise_connections_metabox',
 				'title'        => __( 'Exercises', 'lsx-health-plan' ),
 				'object_types' => array( 'workout' ),
 				'context'      => 'normal',
@@ -332,6 +334,38 @@ class Exercise {
 				'sortable'   => true,
 				'query_args' => array(
 					'post_type'      => array( 'exercise' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+	}
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function workout_connections() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_connections_metabox',
+				'title'        => __( 'Workouts', 'lsx-health-plan' ),
+				'object_types' => array( 'exercise' ),
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Workout', 'lsx-health-plan' ),
+				'id'         => 'connected_workouts',
+				'desc'       => __( 'Connect workouts the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'workout' ),
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => -1,
 				),
