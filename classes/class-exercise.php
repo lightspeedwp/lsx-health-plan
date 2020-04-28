@@ -37,7 +37,9 @@ class Exercise {
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
 			add_action( 'cmb2_admin_init', array( $this, 'video_metabox' ) );
+			add_filter( 'lsx_health_plan_workout_sections_amount', array( $this, 'disable_workout_details' ) );
 		}
 	}
 
@@ -219,11 +221,21 @@ class Exercise {
 	 */
 	public function enable_connections( $connections = array() ) {
 		$connections['exercise']['connected_workouts'] = 'connected_exercises';
-		$connections['workout']['connected_exercise']  = 'connected_workouts';
+		$connections['workout']['connected_exercises'] = 'connected_workouts';
 
 		$connections['tip']['connected_exercises'] = 'connected_tips';
 		$connections['exercise']['connected_tips'] = 'connected_exercises';
 		return $connections;
+	}
+
+	/**
+	 * Disables the workout fields.
+	 *
+	 * @param string $number
+	 * @return string
+	 */
+	public function disable_workout_details( $number ) {
+		return 0;
 	}
 
 	/**
@@ -265,6 +277,64 @@ class Exercise {
 				'id'         => $this->slug . '_giphy_source',
 				'type'       => 'textarea_code',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function exercise_meta() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_details_metabox',
+				'title'        => __( 'Exercise Meta', 'lsx-health-plan' ),
+				'object_types' => array( 'exercise' ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+				'id'   => 'reps',
+				'type' => 'text',
+			)
+		);
+	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function exercise_connections() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_connections_metabox',
+				'title'        => __( 'Exercises', 'lsx-health-plan' ),
+				'object_types' => array( 'workout' ),
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Exercise', 'lsx-health-plan' ),
+				'id'         => 'connected_exercises',
+				'desc'       => __( 'Connect exercises the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'exercise' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
 			)
 		);
 	}
