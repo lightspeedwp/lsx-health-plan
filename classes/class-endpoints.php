@@ -86,5 +86,14 @@ class Endpoints {
 			}
 		}
 		add_rewrite_rule( 'plan/([^/]+)/' . $recipe . '/?$', 'index.php?plan=$matches[1]&endpoint=recipes', 'top' );
+
+		// Exercise.
+		if ( post_type_exists( 'exercise' ) ) {
+			$exercise = \lsx_health_plan\functions\get_option( 'endpoint_exercise', false );
+			if ( false === $exercise ) {
+				$exercise = 'exercises';
+			}
+		}
+		add_rewrite_rule( 'plan/([^/]+)/' . $exercise . '/?$', 'index.php?plan=$matches[1]&endpoint=exercises', 'top' );
 	}
 }

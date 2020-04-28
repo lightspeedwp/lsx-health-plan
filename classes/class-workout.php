@@ -198,19 +198,41 @@ class Workout {
 					'show_on_cb' => 'cmb2_hide_if_no_cats',
 				) );
 
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => __( 'Video related to this workout', 'lsx-health-plan' ),
-					'id'         => 'connected_videos',
-					'type'       => 'post_search_ajax',
-					// Optional :
-					'limit'      => 1, // Limit selection to X items only (default 1)
-					'sortable'   => true,  // Allow selected items to be sortable (default false)
-					'query_args' => array(
-						'post_type'      => array( 'video' ),
-						'post_status'    => array( 'publish' ),
-						'posts_per_page' => -1,
-					),
-				) );
+				if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+					$cmb_group->add_group_field(
+						$group_field_id,
+						array(
+							'name'       => __( 'Exercise related to this workout', 'lsx-health-plan' ),
+							'id'         => 'connected_exercises',
+							'type'       => 'post_search_ajax',
+							// Optional :
+							'limit'      => 1, // Limit selection to X items only (default 1)
+							'sortable'   => true,  // Allow selected items to be sortable (default false)
+							'query_args' => array(
+								'post_type'      => array( 'video' ),
+								'post_status'    => array( 'publish' ),
+								'posts_per_page' => -1,
+							),
+						)
+					);
+				} else {
+					$cmb_group->add_group_field(
+						$group_field_id,
+						array(
+							'name'       => __( 'Video related to this workout', 'lsx-health-plan' ),
+							'id'         => 'connected_videos',
+							'type'       => 'post_search_ajax',
+							// Optional :
+							'limit'      => 1, // Limit selection to X items only (default 1)
+							'sortable'   => true,  // Allow selected items to be sortable (default false)
+							'query_args' => array(
+								'post_type'      => array( 'video' ),
+								'post_status'    => array( 'publish' ),
+								'posts_per_page' => -1,
+							),
+						)
+					);
+				}
 				$i++;
 			};
 		}

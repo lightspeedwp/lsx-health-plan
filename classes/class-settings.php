@@ -377,9 +377,10 @@ class Settings {
 		);
 
 		foreach ( $post_types as $post_type ) {
-			if ( 'plan' === $post_type ) {
+			if ( 'plan' === $post_type || 'exercise' === $post_type || ( 'video' === $post_type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) ) {
 				continue;
 			}
+
 			$cmb->add_field(
 				array(
 					'name'    => ucwords( $post_type ),
@@ -390,6 +391,25 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'          => 'post_type_toggles_enable_title',
+				'type'        => 'title',
+				'name'        => __( 'Enable Post Types', 'lsx-health-plan' ),
+				'default'     => __( 'Enable Post Types', 'lsx-health-plan' ),
+				'description' => __( 'Enable new functionailty like the "exercise" post type.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Exercises', 'lsx-health-plan' ),
+				'id'          => 'exercise_enabled',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'default'     => 0,
+				'description' => __( 'Enabling the exercise post type will automatically replace the Video post type.', 'lsx-health-plan' ),
+			)
+		);
 	}
 	/**
 	 * Registers the Profile Stat Toggle settings

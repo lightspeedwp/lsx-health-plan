@@ -156,7 +156,7 @@
 													$this_row[]              = '<td class="muscle-field-item center-mobile">' . esc_html( $group['muscle'] ) . '</td>';
 													$table_headers['muscle'] = true;
 												}
-												if ( isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] && ! empty( \lsx_health_plan\functions\check_posts_exist( array( $group['connected_videos'] ) ) ) ) {
+												if ( post_type_exists( 'video' ) && isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] && ! empty( \lsx_health_plan\functions\check_posts_exist( array( $group['connected_videos'] ) ) ) ) {
 													$this_row[]             = '<td class="video-button-item center-mobile">' . lsx_health_plan_workout_video_play_button( $m, $group, false ) . '</td>';
 													$table_headers['video'] = true;
 												}
