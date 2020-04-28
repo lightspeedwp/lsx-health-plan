@@ -83,7 +83,9 @@ class Exercise {
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'exercise' ),
+			'rewrite'            => array(
+				'slug' => 'exercise',
+			),
 			'capability_type'    => 'post',
 			'has_archive'        => 'exercises',
 			'hierarchical'       => false,
