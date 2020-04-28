@@ -101,7 +101,7 @@ class Exercise {
 	 */
 	public function workout_taxonomy_setup() {
 		$labels = array(
-			'name'              => esc_html_x( 'Workout Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'name'              => esc_html_x( 'Workout', 'taxonomy general name', 'lsx-health-plan' ),
 			'singular_name'     => esc_html_x( 'Workout', 'taxonomy singular name', 'lsx-health-plan' ),
 			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
 			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
