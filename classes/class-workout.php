@@ -1,6 +1,8 @@
 <?php
 namespace lsx_health_plan\classes;
 
+use function lsx_health_plan\functions\get_option;
+
 /**
  * Contains the workout post type
  *
@@ -70,7 +72,7 @@ class Workout {
 			'parent_item_colon'  => '',
 			'menu_name'          => esc_html__( 'Workouts', 'lsx-health-plan' ),
 		);
-		$args   = array(
+		$args = array(
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -88,6 +90,9 @@ class Workout {
 				'title',
 			),
 		);
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			$args['supports'][] = 'editor';
+		}
 		register_post_type( 'workout', $args );
 	}
 
