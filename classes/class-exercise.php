@@ -91,6 +91,7 @@ class Exercise {
 			'supports'           => array(
 				'title',
 				'thumbnail',
+				'editor',
 			),
 		);
 		register_post_type( 'exercise', $args );
