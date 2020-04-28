@@ -407,7 +407,7 @@ class Settings {
 				'type'        => 'checkbox',
 				'value'       => 1,
 				'default'     => 0,
-				'description' => __( 'Enabling the exercise post type will automatically disable the Workout and Video post types.', 'lsx-health-plan' ),
+				'description' => __( 'Enabling the exercise post type will automatically replace the Video post type.', 'lsx-health-plan' ),
 			)
 		);
 	}
