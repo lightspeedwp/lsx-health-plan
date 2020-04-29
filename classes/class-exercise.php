@@ -35,11 +35,11 @@ class Exercise {
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
 			add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
-			add_filter( 'lsx_health_plan_workout_sections_amount', array( $this, 'disable_workout_details' ) );
 		}
 	}
 
@@ -204,6 +204,70 @@ class Exercise {
 	}
 
 	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function tips_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_tips_details_metabox',
+				'title'        => __( 'Exercise Tips', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		// Repeatable group.
+		$tip_group = $cmb->add_field(
+			array(
+				'id'      => $this->slug . '_tips',
+				'type'    => 'group',
+				'options' => array(
+					'group_title'   => __( 'Tip', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add another tip', 'your-text-domain' ),
+					'remove_button' => __( 'Remove tip', 'your-text-domain' ),
+					'sortable'      => true,
+				),
+				'classes' => 'lsx-admin-row',
+			)
+		);
+
+		// Title.
+		$cmb->add_group_field(
+			$tip_group,
+			array(
+				'name' => __( 'Thumbnail', 'your-text-domain' ),
+				'id'   => $this->slug . '_tip_thumbnail',
+				'type' => 'file',
+				'text'        => array(
+					'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
+				),
+				'desc'        => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
+				'query_args' => array(
+					'type' => array(
+						'image/gif',
+						'image/jpeg',
+						'image/png',
+					),
+				),
+				'preview_size' => 'thumbnail',
+				'classes'      => 'lsx-field-col lsx-field-thumbnail',
+			)
+		);
+
+		$cmb->add_group_field(
+			$tip_group,
+			array(
+				'name'    => __( 'Description', 'your-text-domain' ),
+				'id'      => $this->slug . '_tip_content',
+				'type'    => 'textarea',
+				'classes' => 'lsx-field-col lsx-field-content',
+			)
+		);
+	}
+
+	/**
 	 * Adds the post type to the different arrays.
 	 *
 	 * @param array $post_types
@@ -223,12 +287,8 @@ class Exercise {
 	public function enable_connections( $connections = array() ) {
 		$connections['exercise']['connected_workouts'] = 'connected_exercises';
 		$connections['workout']['connected_exercises'] = 'connected_workouts';
-
-		$connections['tip']['connected_exercises'] = 'connected_tips';
-		$connections['exercise']['connected_tips'] = 'connected_exercises';
 		return $connections;
 	}
-
 	/**
 	 * Registers the workout connections on the plan post type.
 	 *
