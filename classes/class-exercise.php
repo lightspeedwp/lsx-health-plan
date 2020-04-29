@@ -35,11 +35,11 @@ class Exercise {
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
-			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
 			add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 		}
 	}
 
