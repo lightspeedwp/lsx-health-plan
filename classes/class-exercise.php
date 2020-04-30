@@ -184,7 +184,7 @@ class Exercise {
 			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
 			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
-			'menu_name'         => esc_html__( 'Equipment', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Muscle Groups', 'lsx-health-plan' ),
 		);
 
 		$args = array(
