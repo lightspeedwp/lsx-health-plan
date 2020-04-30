@@ -83,7 +83,6 @@
 							if ( ! empty( $exercises ) ) {
 								foreach ( $exercises as $exercise ) {
 
-
 									if ( isset( $exercise['connected_exercises'] ) && '' !== $exercise['connected_exercises'] ) {
 										$exercise_obj = get_post( $exercise['connected_exercises'] );
 										if ( ! is_wp_error( $exercise_obj ) ) {
