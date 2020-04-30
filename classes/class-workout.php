@@ -257,7 +257,7 @@ class Workout {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->slug . '_exercise_details_metabox',
-				'title'        => __( 'Exercise Tips', 'lsx-health-plan' ),
+				'title'        => __( 'Routine', 'lsx-health-plan' ),
 				'object_types' => array( $this->slug ),
 				'context'      => 'normal',
 				'priority'     => 'low',
@@ -286,11 +286,8 @@ class Workout {
 			array(
 				'name'    => __( 'Reps / Sets / Time', 'your-text-domain' ),
 				'id'      => 'reps',
-				'type'    => 'file',
-				'text'        => array(
-					'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
-				),
-				'classes' => 'lsx-field-col lsx-field-reps lsx-field-col-25',
+				'type'    => 'text',
+				'classes' => 'lsx-field-col lsx-field-text-field lsx-field-col-33',
 			)
 		);
 
@@ -308,7 +305,7 @@ class Workout {
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => -1,
 				),
-				'classes'    => 'lsx-field-col lsx-field-connected-exercise lsx-field-col-75',
+				'classes'    => 'lsx-field-col lsx-field-connect-field lsx-field-col-66',
 			)
 		);
 	}

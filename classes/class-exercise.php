@@ -251,7 +251,7 @@ class Exercise {
 					),
 				),
 				'preview_size' => 'thumbnail',
-				'classes'      => 'lsx-field-col lsx-field-thumbnail lsx-field-col-25',
+				'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
 			)
 		);
 
@@ -261,7 +261,7 @@ class Exercise {
 				'name'    => __( 'Description', 'your-text-domain' ),
 				'id'      => $this->slug . '_tip_content',
 				'type'    => 'textarea',
-				'classes' => 'lsx-field-col lsx-field-content lsx-field-col-75',
+				'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
 			)
 		);
 	}
