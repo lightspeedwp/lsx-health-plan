@@ -295,7 +295,7 @@ class Exercise {
 	 * @return void
 	 */
 	public function workout_connections() {
-		$cmb = new_cmb2_box(
+		/*$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->slug . '_connections_metabox',
 				'title'        => __( 'Workouts', 'lsx-health-plan' ),
@@ -319,6 +319,6 @@ class Exercise {
 					'posts_per_page' => -1,
 				),
 			)
-		);
+		);*/
 	}
 }
