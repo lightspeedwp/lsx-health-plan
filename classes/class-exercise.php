@@ -85,10 +85,10 @@ class Exercise {
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_meal', 'exercise' ),
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_meal', 'exercises' ),
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_exercise_archive', 'exercises' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
@@ -127,7 +127,7 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'exercise-type',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_type', 'exercise-type' ),
 			),
 		);
 
@@ -161,7 +161,7 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'equipment',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_equipment', 'equipment' ),
 			),
 		);
 
@@ -195,7 +195,7 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'muscle-group',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_muscle_group', 'muscle-group' ),
 			),
 		);
 

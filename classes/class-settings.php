@@ -163,23 +163,23 @@ class Settings {
 
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			$this->endpoints['exercise'] = array(
-				'single' => array(
+				'exercise_single' => array(
 					'title'   => __( 'Single Exercise Slug', 'lsx-health-plan' ),
 					'default' => 'exercise',
 				),
-				'archive' => array(
+				'exercise_archive' => array(
 					'title'   => __( 'Archive Exercise Slug', 'lsx-health-plan' ),
 					'default' => 'exercises',
 				),
-				'exercise-type' => array(
+				'exercise_type' => array(
 					'title'   => __( 'Exercise Type Slug', 'lsx-health-plan' ),
 					'default' => 'exercise-type',
 				),
-				'equipment' => array(
+				'exercise_equipment' => array(
 					'title'   => __( 'Equipment Slug', 'lsx-health-plan' ),
 					'default' => 'equipment',
 				),
-				'muscle-group' => array(
+				'exercise_musclegroup' => array(
 					'title'   => __( 'Muscle Group Slug', 'lsx-health-plan' ),
 					'default' => 'muscle-group',
 				),
@@ -407,7 +407,7 @@ class Settings {
 			$cmb->add_field(
 				array(
 					'name'    => $endpoint_vars['title'],
-					'id'      => $slug,
+					'id'      => 'endpoint_' . $slug,
 					'type'    => 'input',
 					'value'   => '',
 					'default' => $endpoint_vars['default'],
