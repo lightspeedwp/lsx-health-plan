@@ -35,11 +35,7 @@ class Workout {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
-		} else {
-			add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		}
+		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 	}
 
@@ -94,9 +90,6 @@ class Workout {
 				'title',
 			),
 		);
-		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-			$args['supports'][] = 'editor';
-		}
 		register_post_type( 'workout', $args );
 	}
 
@@ -218,7 +211,7 @@ class Workout {
 							'limit'      => 1, // Limit selection to X items only (default 1)
 							'sortable'   => true,  // Allow selected items to be sortable (default false)
 							'query_args' => array(
-								'post_type'      => array( 'video' ),
+								'post_type'      => array( 'exercise' ),
 								'post_status'    => array( 'publish' ),
 								'posts_per_page' => -1,
 							),
@@ -245,69 +238,6 @@ class Workout {
 				$i++;
 			};
 		}
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function exercise_connections() {
-
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_exercise_details_metabox',
-				'title'        => __( 'Routine', 'lsx-health-plan' ),
-				'object_types' => array( $this->slug ),
-				'context'      => 'normal',
-				'priority'     => 'low',
-				'show_names'   => true,
-			)
-		);
-
-		// Repeatable group.
-		$exercise_group = $cmb->add_field(
-			array(
-				'id'      => $this->slug . '_exercises',
-				'type'    => 'group',
-				'options' => array(
-					'group_title'   => __( 'Exercise', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
-					'add_button'    => __( 'Add', 'your-text-domain' ),
-					'remove_button' => __( 'Remove', 'your-text-domain' ),
-					'sortable'      => false,
-				),
-				'classes' => 'lsx-admin-row',
-			)
-		);
-
-		// Title.
-		$cmb->add_group_field(
-			$exercise_group,
-			array(
-				'name'    => __( 'Reps / Sets / Time', 'your-text-domain' ),
-				'id'      => 'reps',
-				'type'    => 'text',
-				'classes' => 'lsx-field-col lsx-field-text-field lsx-field-col-33',
-			)
-		);
-
-		$cmb->add_group_field(
-			$exercise_group,
-			array(
-				'name'       => __( 'Exercise', 'lsx-health-plan' ),
-				'id'         => 'connected_exercises',
-				'desc'       => __( 'Connect exercises the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'exercise' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-				'classes'    => 'lsx-field-col lsx-field-connect-field lsx-field-col-66',
-			)
-		);
 	}
 
 	/**

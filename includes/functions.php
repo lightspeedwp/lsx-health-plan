@@ -189,10 +189,13 @@ function check_posts_exist( $post_ids = array() ) {
  * @return void
  */
 function register_modal( $id = '', $title = '', $body = '' ) {
-	lsx_health_plan()->frontend->modals->register_modal( array(
-		'title' => $title,
-		'body'  => $body,
-	), $id );
+	lsx_health_plan()->frontend->modals->register_modal(
+		array(
+			'title' => $title,
+			'body'  => $body,
+		),
+		$id
+	);
 }
 
 /**
@@ -224,22 +227,26 @@ function output_modal( $args = array() ) {
 				<div class="modal-body">
 				<?php
 				if ( '' !== $args['body'] ) {
-						$allowed_html = array(
-							'iframe' => array(
-								'data-src'        => array(),
-								'src'             => array(),
-								'width'           => array(),
-								'height'          => array(),
-								'frameBorder'     => array( '0' ),
-								'class'           => array(),
-								'allowFullScreen' => array(),
-								'style'           => array(),
-							),
-							'h5'     => array(
-								'class' => array(),
-							),
-						);
-					echo wp_kses( $args['body'], $allowed_html );
+					$allowed_html = array(
+						'iframe' => array(
+							'data-src'        => array(),
+							'src'             => array(),
+							'width'           => array(),
+							'height'          => array(),
+							'frameBorder'     => array( '0' ),
+							'class'           => array(),
+							'allowFullScreen' => array(),
+							'style'           => array(),
+						),
+						'h5'     => array(
+							'class' => array(),
+						),
+					);
+					if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+						echo wp_kses_post( $args['body'] );
+					} else {
+						echo wp_kses( $args['body'], $allowed_html );
+					}
 				}
 				?>
 				</div>

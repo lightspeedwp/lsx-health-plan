@@ -750,6 +750,33 @@ function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
 }
 
 /**
+ * A function to call the play button
+ *
+ * @param [type] $m
+ * @param [type] $group
+ * @param boolean $echo
+ * @return void
+ */
+function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
+	$workout_video = '';
+	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+		$workout_video = esc_html( $group['connected_exercises'] );
+		$content       = get_post_field( 'post_content', $workout_video );
+		$play_button   = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
+		$modal_body    = '';
+		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
+		$modal_body .= $content;
+		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
+
+		if ( true === $echo ) {
+			echo wp_kses_post( $play_button );
+		} else {
+			return $play_button;
+		}
+	}
+}
+
+/**
  * Outputs the recipe description if it is included.
  *
  * @return void
