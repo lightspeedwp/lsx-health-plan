@@ -1,6 +1,8 @@
 <?php
 namespace lsx_health_plan\classes;
 
+use function lsx_health_plan\functions\get_option;
+
 /**
  * Contains the workout post type
  *
@@ -33,7 +35,11 @@ class Workout {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
+		} else {
+			add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+		}
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 	}
 
@@ -70,7 +76,7 @@ class Workout {
 			'parent_item_colon'  => '',
 			'menu_name'          => esc_html__( 'Workouts', 'lsx-health-plan' ),
 		);
-		$args   = array(
+		$args = array(
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -88,6 +94,9 @@ class Workout {
 				'title',
 			),
 		);
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			$args['supports'][] = 'editor';
+		}
 		register_post_type( 'workout', $args );
 	}
 
@@ -243,46 +252,117 @@ class Workout {
 	 *
 	 * @return void
 	 */
+	public function exercise_connections() {
+
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_exercise_details_metabox',
+				'title'        => __( 'Routine', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ),
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		// Repeatable group.
+		$exercise_group = $cmb->add_field(
+			array(
+				'id'      => $this->slug . '_exercises',
+				'type'    => 'group',
+				'options' => array(
+					'group_title'   => __( 'Exercise', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add', 'your-text-domain' ),
+					'remove_button' => __( 'Remove', 'your-text-domain' ),
+					'sortable'      => false,
+				),
+				'classes' => 'lsx-admin-row',
+			)
+		);
+
+		// Title.
+		$cmb->add_group_field(
+			$exercise_group,
+			array(
+				'name'    => __( 'Reps / Sets / Time', 'your-text-domain' ),
+				'id'      => 'reps',
+				'type'    => 'text',
+				'classes' => 'lsx-field-col lsx-field-text-field lsx-field-col-33',
+			)
+		);
+
+		$cmb->add_group_field(
+			$exercise_group,
+			array(
+				'name'       => __( 'Exercise', 'lsx-health-plan' ),
+				'id'         => 'connected_exercises',
+				'desc'       => __( 'Connect exercises the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'exercise' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+				'classes'    => 'lsx-field-col lsx-field-connect-field lsx-field-col-66',
+			)
+		);
+	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
 	public function workout_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_workout_connections_metabox',
-			'title'        => __( 'Workouts', 'lsx-health-plan' ),
-			'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ),
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Workouts', 'lsx-health-plan' ),
-			'id'         => 'connected_workouts',
-			'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
-			'type'       => 'post_search_ajax',
-			'limit'      => 15,
-			'sortable'   => true,
-			'query_args' => array(
-				'post_type'      => array( 'workout' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-			'id'         => 'pre_workout_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
-			'id'         => 'post_workout_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_workout_connections_metabox',
+				'title'        => __( 'Workouts', 'lsx-health-plan' ),
+				'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
+				'object_types' => array( 'plan' ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Workouts', 'lsx-health-plan' ),
+				'id'         => 'connected_workouts',
+				'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'workout' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+				'id'         => 'pre_workout_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
+				'id'         => 'post_workout_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
 	}
 }

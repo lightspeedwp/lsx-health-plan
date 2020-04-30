@@ -32,12 +32,13 @@ class Exercise {
 	public function __construct() {
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			add_action( 'init', array( $this, 'register_post_type' ) );
-			add_action( 'init', array( $this, 'workout_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
+			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-			add_action( 'cmb2_admin_init', array( $this, 'video_metabox' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 		}
 	}
 
@@ -84,10 +85,10 @@ class Exercise {
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug' => 'exercise',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => 'exercises',
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_exercise_archive', 'exercises' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
@@ -97,39 +98,6 @@ class Exercise {
 			),
 		);
 		register_post_type( 'exercise', $args );
-	}
-
-	/**
-	 * Register the Workout taxonomy.
-	 */
-	public function workout_taxonomy_setup() {
-		$labels = array(
-			'name'              => esc_html_x( 'Workout', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Workout', 'taxonomy singular name', 'lsx-health-plan' ),
-			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
-			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
-			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
-			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
-			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
-			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
-			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
-			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
-			'menu_name'         => esc_html__( 'Workouts', 'lsx-health-plan' ),
-		);
-
-		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'show_in_rest'      => true,
-			'query_var'         => true,
-			'rewrite'           => array(
-				'slug' => 'workout',
-			),
-		);
-
-		register_taxonomy( 'workout', array( 'exercise' ), $args );
 	}
 
 	/**
@@ -159,7 +127,7 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'exercise-type',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_type', 'exercise-type' ),
 			),
 		);
 
@@ -193,11 +161,109 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'equipment',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_equipment', 'equipment' ),
 			),
 		);
 
 		register_taxonomy( 'equipment', array( 'exercise' ), $args );
+	}
+
+	/**
+	 * Register the Muscle Group taxonomy.
+	 *
+	 * @return void
+	 */
+	public function muscle_group_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Muscle Groups', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Muscle Group', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Equipment', 'lsx-health-plan' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_muscle_group', 'muscle-group' ),
+			),
+		);
+
+		register_taxonomy( 'muscle-group', array( 'exercise' ), $args );
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function tips_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_tips_details_metabox',
+				'title'        => __( 'Exercise Tips', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		// Repeatable group.
+		$tip_group = $cmb->add_field(
+			array(
+				'id'      => $this->slug . '_tips',
+				'type'    => 'group',
+				'options' => array(
+					'group_title'   => __( 'Tip', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add another tip', 'your-text-domain' ),
+					'remove_button' => __( 'Remove tip', 'your-text-domain' ),
+					'sortable'      => true,
+				),
+				'classes' => 'lsx-admin-row',
+			)
+		);
+
+		// Title.
+		$cmb->add_group_field(
+			$tip_group,
+			array(
+				'name' => __( 'Thumbnail', 'your-text-domain' ),
+				'id'   => $this->slug . '_tip_thumbnail',
+				'type' => 'file',
+				'text'        => array(
+					'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
+				),
+				'desc'        => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
+				'query_args' => array(
+					'type' => array(
+						'image/gif',
+						'image/jpeg',
+						'image/png',
+					),
+				),
+				'preview_size' => 'thumbnail',
+				'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+			)
+		);
+
+		$cmb->add_group_field(
+			$tip_group,
+			array(
+				'name'    => __( 'Description', 'your-text-domain' ),
+				'id'      => $this->slug . '_tip_content',
+				'type'    => 'textarea',
+				'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
+			)
+		);
 	}
 
 	/**
@@ -219,53 +285,40 @@ class Exercise {
 	 */
 	public function enable_connections( $connections = array() ) {
 		$connections['exercise']['connected_workouts'] = 'connected_exercises';
-		$connections['workout']['connected_exercise']  = 'connected_workouts';
-
-		$connections['tip']['connected_exercises'] = 'connected_tips';
-		$connections['exercise']['connected_tips'] = 'connected_exercises';
+		$connections['workout']['connected_exercises'] = 'connected_workouts';
 		return $connections;
 	}
 
 	/**
-	 * Define the metabox and field configurations.
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
 	 */
-	public function video_metabox() {
-		$cmb = new_cmb2_box(
+	public function workout_connections() {
+		/*$cmb = new_cmb2_box(
 			array(
-				'id'           => $this->slug . '_details_metabox',
-				'title'        => __( 'Video Details', 'lsx-health-plan' ),
-				'object_types' => array( $this->slug ), // Post type
+				'id'           => $this->slug . '_connections_metabox',
+				'title'        => __( 'Workouts', 'lsx-health-plan' ),
+				'object_types' => array( 'exercise' ),
 				'context'      => 'normal',
-				'priority'     => 'high',
+				'priority'     => 'low',
 				'show_names'   => true,
 			)
 		);
 		$cmb->add_field(
 			array(
-				'name'       => __( 'Featured Video', 'lsx-health-plan' ),
-				'desc'       => __( 'Enable the checkbox to feature this video, featured videos display in any page that has the video shortcode: [lsx_health_plan_featured_videos_block]', 'lsx-health-plan' ),
-				'id'         => $this->slug . '_featured_video',
-				'type'       => 'checkbox',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'name'       => __( 'Workout', 'lsx-health-plan' ),
+				'id'         => 'connected_workouts',
+				'desc'       => __( 'Connect workouts the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'workout' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
 			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Youtube Source', 'lsx-health-plan' ),
-				'desc'       => __( 'Drop in the url for your video from YouTube in this field, i.e: "https://www.youtube.com/watch?v=9xwazD5SyVg"', 'lsx-health-plan' ),
-				'id'         => $this->slug . '_youtube_source',
-				'type'       => 'oembed',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Giphy Source', 'lsx-health-plan' ),
-				'desc'       => __( 'Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src="https://giphy.com/embed/3o7527Rn1HxXWqgxuo" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;', 'lsx-health-plan' ),
-				'id'         => $this->slug . '_giphy_source',
-				'type'       => 'textarea_code',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-			)
-		);
+		);*/
 	}
 }

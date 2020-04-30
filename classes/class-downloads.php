@@ -57,10 +57,10 @@ class Downloads {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['dlm_download']['connected_pages']    = 'connected_downloads';
-		$connections['dlm_download']['connected_workouts'] = 'connected_downloads';
-		$connections['dlm_download']['connected_meals']    = 'connected_downloads';
-		$connections['dlm_download']['connected_recipes']  = 'connected_downloads';
+		$connections['dlm_download']['connected_pages']     = 'connected_downloads';
+		$connections['dlm_download']['connected_workouts']  = 'connected_downloads';
+		$connections['dlm_download']['connected_meals']     = 'connected_downloads';
+		$connections['dlm_download']['connected_recipes']   = 'connected_downloads';
 
 		//Post Type Connections
 		$connections['workout']['connected_downloads'] = 'connected_workouts';

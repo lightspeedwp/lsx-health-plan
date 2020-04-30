@@ -179,26 +179,30 @@ class Plan {
 	 * @return void
 	 */
 	public function plan_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_connections_metabox',
-			'title'        => __( 'Plans', 'lsx-health-plan' ),
-			'object_types' => array( 'workout', 'meal', 'tip', 'recipe' ),
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Plan', 'lsx-health-plan' ),
-			'id'         => 'connected_plans',
-			'desc'       => __( 'Connect this to the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
-			'type'       => 'post_search_ajax',
-			'limit'      => 15,
-			'sortable'   => true,
-			'query_args' => array(
-				'post_type'      => array( 'plan' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_connections_metabox',
+				'title'        => __( 'Plans', 'lsx-health-plan' ),
+				'object_types' => array( 'workout', 'meal', 'tip', 'recipe' ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Plan', 'lsx-health-plan' ),
+				'id'         => 'connected_plans',
+				'desc'       => __( 'Connect this to the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'plan' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
 	}
 }
