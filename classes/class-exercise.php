@@ -37,7 +37,6 @@ class Exercise {
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-			add_action( 'cmb2_admin_init', array( $this, 'exercise_connections' ), 20 );
 			add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ) );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 		}
@@ -86,10 +85,10 @@ class Exercise {
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug' => 'exercise',
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_meal', 'exercise' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => 'exercises',
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_meal', 'exercises' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
@@ -252,7 +251,7 @@ class Exercise {
 					),
 				),
 				'preview_size' => 'thumbnail',
-				'classes'      => 'lsx-field-col lsx-field-thumbnail',
+				'classes'      => 'lsx-field-col lsx-field-thumbnail lsx-field-col-25',
 			)
 		);
 
@@ -262,7 +261,7 @@ class Exercise {
 				'name'    => __( 'Description', 'your-text-domain' ),
 				'id'      => $this->slug . '_tip_content',
 				'type'    => 'textarea',
-				'classes' => 'lsx-field-col lsx-field-content',
+				'classes' => 'lsx-field-col lsx-field-content lsx-field-col-75',
 			)
 		);
 	}
@@ -289,38 +288,7 @@ class Exercise {
 		$connections['workout']['connected_exercises'] = 'connected_workouts';
 		return $connections;
 	}
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function exercise_connections() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => 'workout_exercise_connections_metabox',
-				'title'        => __( 'Exercises', 'lsx-health-plan' ),
-				'object_types' => array( 'workout' ),
-				'context'      => 'normal',
-				'priority'     => 'low',
-				'show_names'   => true,
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Exercise', 'lsx-health-plan' ),
-				'id'         => 'connected_exercises',
-				'desc'       => __( 'Connect exercises the day plan it applies to, using the field provided.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'exercise' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-			)
-		);
-	}
+
 	/**
 	 * Registers the workout connections on the plan post type.
 	 *

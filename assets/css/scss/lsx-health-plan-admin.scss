@@ -10,7 +10,8 @@
 
 	// Exercise Tips
 	&.lsx-admin-row,
-	&.cmb2-id-exercise-tips {
+	&.cmb2-id-exercise-tips,
+	&.cmb2-id-exercise-details {
 		.lsx-field-col {
 			display: inline-block;
 			vertical-align: top;
@@ -25,8 +26,13 @@
 				float: right;
 			}
 		}
-		.lsx-field-thumbnail {
+		.lsx-field-col-25 {
 			width: 25%;
+		}
+		.lsx-field-col-75 {
+			width: 25%;
+		}
+		.lsx-field-thumbnail {
 
 			.regular-text {
 				display:none;
