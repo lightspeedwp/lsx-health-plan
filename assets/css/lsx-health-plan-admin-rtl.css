@@ -23,7 +23,7 @@
 
 .cmb-row.lsx-admin-row .lsx-field-text-field input, .cmb-row.lsx-admin-row .lsx-field-add-field input, .cmb-row.cmb2-id-exercise-tips .lsx-field-text-field input, .cmb-row.cmb2-id-exercise-tips .lsx-field-add-field input, .cmb-row.cmb2-id-exercise-details .lsx-field-text-field input, .cmb-row.cmb2-id-exercise-details .lsx-field-add-field input { float: none; margin-right: 0px !important; margin-bottom: 10px; margin-left: 10px; }
 
-.cmb-row.lsx-admin-row .lsx-field-text-field, .cmb-row.cmb2-id-exercise-tips .lsx-field-text-field, .cmb-row.cmb2-id-exercise-details .lsx-field-text-field { max-width: 90%; }
+.cmb-row.lsx-admin-row .lsx-field-text-field input, .cmb-row.cmb2-id-exercise-tips .lsx-field-text-field input, .cmb-row.cmb2-id-exercise-details .lsx-field-text-field input { max-width: 90%; }
 
 .cmb-row.lsx-admin-row .lsx-field-add-field .regular-text, .cmb-row.cmb2-id-exercise-tips .lsx-field-add-field .regular-text, .cmb-row.cmb2-id-exercise-details .lsx-field-add-field .regular-text { display: none; }
 

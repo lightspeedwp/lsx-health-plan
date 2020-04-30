@@ -274,7 +274,7 @@ class Workout {
 					'group_title'   => __( 'Exercise', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
 					'add_button'    => __( 'Add', 'your-text-domain' ),
 					'remove_button' => __( 'Remove', 'your-text-domain' ),
-					'sortable'      => true,
+					'sortable'      => false,
 				),
 				'classes' => 'lsx-admin-row',
 			)

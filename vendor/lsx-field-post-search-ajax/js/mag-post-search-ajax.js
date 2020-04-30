@@ -57,15 +57,35 @@ var mag_ajax_js = Object.create( null );
 						$(this).devbridgeAutocomplete('clearCache');
 						var lid 	 = $(this).attr('id') + '_results';
 						var name     = $(this).attr('id');
+						var original = $(this).attr('id');
 						name = name.replace( "][", "_" );
 						name = name.replace( "]", "" );
 						name = name.replace( "[", "_" );
+
+						console.log('====== LID =======');
+						console.log(lid);
+						console.log('====== name =======');
+						console.log(name);
+						console.log('====== suggestion =======');
+						console.log(suggestion);
+
+						console.log($(this).parents('.cmb-row').hasClass('cmb-repeat-group-field'));
+						console.log($(this).parents('.cmb-row').hasClass('lsx-field-connect-field'));
+						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).parents('.cmb-row').hasClass('lsx-field-connect-field') ) {
+							name = original;
+						}
+
+						console.log('====== new name =======');
+						console.log(name);
+						console.log($('#workout_exercises[0][connected_exercises]_results'));
 	
 						var limit 	 = $(this).attr('data-limit');
 						var sortable = $(this).attr('data-sortable');
 						if ( limit > 1 ) {
 							var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';
-							$( '#'+name+'_results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
+
+							$(this).parents('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');;
+
 							$(this).val('');
 							if ( limit === $('input#'+name + '_results li').length ){
 								$(this).prop( 'disabled', 'disabled' );
@@ -76,6 +96,11 @@ var mag_ajax_js = Object.create( null );
 							$('input#'+name).val( suggestion.data );
 						}
 	
+						console.log($(this).parents('.cmb-row'));
+						console.log($(this).parents('.cmb-row').hasClass('cmb-repeat-group-field'));
+
+
+
 						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
 							console.log('cmb-group');
 							$( 'input[name='+name+'_store]' ).val( suggestion.data );

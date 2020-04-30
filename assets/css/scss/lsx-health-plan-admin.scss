@@ -64,7 +64,9 @@
 			}
 		}
 		.lsx-field-text-field {
-			max-width: 90%;
+			input {
+				max-width: 90%;
+			}
 		}
 		.lsx-field-add-field {
 			.regular-text {
