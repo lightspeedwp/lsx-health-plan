@@ -189,7 +189,7 @@
 												$table_header[] = '<th class="center-mobile">' . __( 'Muscle Group', 'lsx-health-plan' ) . '</th>';
 											}
 											if ( isset( $table_headers['video'] ) ) {
-												$table_header[] = '<th class="center-mobile">' . __( 'Video', 'lsx-health-plan' ) . '</th>';
+												$table_header[] = '<th class="center-mobile">' . __( 'How To', 'lsx-health-plan' ) . '</th>';
 											}
 											if ( isset( $table_headers['exercise'] ) ) {
 												$table_header[] = '<th class="center-mobile">' . __( 'How To', 'lsx-health-plan' ) . '</th>';
