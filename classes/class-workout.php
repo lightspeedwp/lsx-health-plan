@@ -344,8 +344,8 @@ class Workout {
 		$cmb->add_field(
 			array(
 				'name'    => __( 'News Category', 'lsx-health-plan' ),
-				'id'      => 'connected_workouts',
-				'desc'    => __( 'Specifiy individual news posts for this workout.', 'lsx-health-plan' ),
+				'id'      => 'connected_category',
+				'desc'    => __( 'Specifiy a category to pull articles from.', 'lsx-health-plan' ),
 				'type'    => 'select',
 				'options' => $category_options,
 			)
