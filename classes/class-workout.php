@@ -35,6 +35,7 @@ class Workout {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'workout_news_connections' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 	}
@@ -111,10 +112,14 @@ class Workout {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['workout']['connected_plans']  = 'connected_workouts';
-		$connections['plan']['connected_workouts']  = 'connected_plans';
+		$connections['workout']['connected_plans'] = 'connected_workouts';
+		$connections['plan']['connected_workouts'] = 'connected_plans';
+
 		$connections['workout']['connected_videos'] = 'connected_workouts';
 		$connections['video']['connected_workouts'] = 'connected_videos';
+
+		$connections['workout']['connected_posts'] = 'connected_workouts';
+		$connections['post']['connected_workouts'] = 'connected_posts';
 		return $connections;
 	}
 
@@ -249,7 +254,7 @@ class Workout {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->slug . '_workout_connections_metabox',
-				'title'        => __( 'Workouts', 'lsx-health-plan' ),
+				'title'        => __( 'Connections', 'lsx-health-plan' ),
 				'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
 				'object_types' => array( 'plan' ),
 				'context'      => 'normal',
@@ -292,6 +297,57 @@ class Workout {
 				'options'    => array(
 					'textarea_rows' => 5,
 				),
+			)
+		);
+	}
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function workout_news_connections() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => 'workout_news_connections_metabox',
+				'title'        => __( 'News Connections', 'lsx-health-plan' ),
+				'desc'         => __( 'Start typing to search for your articles, or assign a category to pull from.', 'lsx-health-plan' ),
+				'object_types' => array( 'workout' ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'News Articles', 'lsx-health-plan' ),
+				'id'         => 'connected_posts',
+				'desc'       => __( 'Specifiy individual news posts for this workout.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'post' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+		$categories       = get_categories();
+		$category_options = array(
+			'' => __( 'Select', 'lsx-health-plan' ),
+		);
+		if ( ! empty( $categories ) ) {
+			foreach ( $categories as $category ) {
+				$category_options[ $category->term_id ] = $category->name;
+			}
+		}
+		$cmb->add_field(
+			array(
+				'name'    => __( 'News Category', 'lsx-health-plan' ),
+				'id'      => 'connected_workouts',
+				'desc'    => __( 'Specifiy individual news posts for this workout.', 'lsx-health-plan' ),
+				'type'    => 'select',
+				'options' => $category_options,
 			)
 		);
 	}
