@@ -517,7 +517,9 @@
 }
 
 .post-type-archive-recipe,
-.tax-recipe-type {
+.tax-recipe-type,
+.post-type-archive-exercise,
+.tax-exercise-type {
 	.archive-plan {
 		.row {
 			.col-md-4 {
@@ -534,7 +536,8 @@
 					font-weight: bold;
 					border-radius: 1px;
 				}
-				.recipe-feature-img {
+				.recipe-feature-img,
+				.exercise-feature-img {
 					img {
 						width: 100%;
 					}
@@ -545,7 +548,7 @@
 					flex-direction: column;
 					justify-content: space-between;
 					padding: 10px 15px 0;
-					table {
+					table:not(.exercise-table) {
 						flex-grow: 2;
 						display: flex;
 						margin-bottom: 10px;
@@ -584,7 +587,8 @@
 							display: none;
 						}
 					}
-					.recipe-title {
+					.recipe-title,
+					.exercise-title {
 						margin-bottom: 15px;
 					}
 					a {
@@ -594,6 +598,15 @@
 							font-family: FontAwesome;
 							margin-left: 2rem;
 							color: $blue;
+						}
+					}
+					&.exercise-content-box {
+						.exercise-table {
+							a {
+								&:after {
+									content: none;
+								}
+							}
 						}
 					}
 				}

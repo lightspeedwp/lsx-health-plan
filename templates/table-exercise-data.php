@@ -6,7 +6,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 
 ?>
 <?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
-<table class="exercise-table cooking-info-table">
+<table class="exercise-table">
 	<tbody>
 		<?php
 		if ( ! empty( $type ) ) {

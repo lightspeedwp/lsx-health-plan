@@ -809,8 +809,9 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
 		$content       = get_post_field( 'post_content', $workout_video );
 		$play_button   = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
 		$modal_body    = '';
-		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
-		$modal_body .= $content;
+		$modal_body   .= get_the_post_thumbnail( $workout_video, 'thumbnail' );
+		$modal_body   .= '<h5 class="modal-title title-lined">' . get_the_title( $workout_video ) . '</h5>';
+		$modal_body   .= $content;
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {
@@ -830,6 +831,8 @@ function lsx_health_plan_recipe_archive_description() {
 	$description = '';
 	if ( is_post_type_archive( 'recipe' ) ) {
 		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
+	} elseif ( is_post_type_archive( 'exercise' ) ) {
+		$description = \lsx_health_plan\functions\get_option( 'exercise_archive_description', '' );
 	} elseif ( is_tax() ) {
 		$description = get_the_archive_description();
 	}

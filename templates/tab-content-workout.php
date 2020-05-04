@@ -95,11 +95,11 @@
 							$workout_desc    = 'workout_section_' . ( $i ) . '_description';
 							$workout_extra_equipment = 'workout_section_' . ( $i ) . '_workoutgroup_equipment';
 							$workout_extra_muscle = 'workout_section_' . ( $i ) . '_workoutgroup_muscle';
+
 							$section_title   = get_post_meta( get_the_ID(), $workout_section, true );
 							$description     = get_post_meta( get_the_ID(), $workout_desc, true );
 							$extra_equipment     = get_post_meta( get_the_ID(), $workout_extra_equipment, true );
 							$extra_muscle     = get_post_meta( get_the_ID(), $workout_extra_muscle, true );
-
 
 							if ( '' === $section_title ) {
 								$i++;
@@ -136,9 +136,19 @@
 
 												$this_row[] = '<tr>';
 
-												if ( isset( $group['name'] ) && '' !== $group['name'] ) {
-													$this_row[]            = '<td class="workout-title-item">' . esc_html( $group['name'] ) . '</td>';
+												// Getting the connected exercise.
+												$exercise    = $group['connected_exercises'];
+												$exercise_id = get_post( $exercise );
+
+												if ( isset( $exercise ) && '' !== $exercise ) {
+													$exercise_name         = get_the_title( $exercise_id );
+													$this_row[]            = '<td class="workout-title-item">' . esc_html( $exercise_name ) . '</td>';
 													$table_headers['name'] = true;
+												} else {
+													if ( isset( $group['name'] ) && '' !== $group['name'] ) {
+														$this_row[]            = '<td class="workout-title-item">' . esc_html( $group['name'] ) . '</td>';
+														$table_headers['name'] = true;
+													}
 												}
 												if ( isset( $group['description'] ) && '' !== $group['description'] ) {
 													$this_row[]                   = '<td class="workout-desc-item"><p>' . esc_html( $group['description'] ) . '</td>';
@@ -148,12 +158,13 @@
 													$this_row[]            = '<td class="reps-field-item center-mobile">' . esc_html( $group['reps'] ) . '</td>';
 													$table_headers['reps'] = true;
 												}
-												if ( isset( $group['equipment'] ) && '' !== $group['equipment'] ) {
-													$this_row[]                 = '<td class="equipment-field-item center-mobile">' . esc_html( $group['equipment'] ) . '</td>';
+												if ( isset( $exercise ) && '' !== $exercise ) {
+													$equipment_group            = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
+													$this_row[]                 = '<td class="equipment-field-item center-mobile">' . wp_kses_post( $equipment_group ) . '</td>';
 													$table_headers['equipment'] = true;
-												}
-												if ( isset( $group['muscle'] ) && '' !== $group['muscle'] ) {
-													$this_row[]              = '<td class="muscle-field-item center-mobile">' . esc_html( $group['muscle'] ) . '</td>';
+
+													$muscle_group            = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
+													$this_row[]              = '<td class="muscle-field-item center-mobile">' . wp_kses_post( $muscle_group ) . '</td>';
 													$table_headers['muscle'] = true;
 												}
 												if ( post_type_exists( 'video' ) && isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] && ! empty( \lsx_health_plan\functions\check_posts_exist( array( $group['connected_videos'] ) ) ) ) {

@@ -29,7 +29,7 @@
 			?>
 			</a>
 		</div>
-		<div class="content-box white-bg">
+		<div class="content-box exercise-content-box white-bg">
 			<h3 class="exercise-title"><?php the_title(); ?></h3>
 			<?php lsx_health_plan_exercise_data(); ?>
 			<?php

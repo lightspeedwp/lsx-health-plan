@@ -170,41 +170,6 @@ class Workout {
 					),
 				) );
 
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
-					'id'   => 'name',
-					'type' => 'text',
-					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-				) );
-
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name'    => __( 'Description', 'lsx-health-plan' ),
-					'id'      => 'description',
-					'type'    => 'wysiwyg',
-					'options' => array(
-						'textarea_rows' => 2,
-					),
-				) );
-
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
-					'id'   => 'reps',
-					'type' => 'text',
-					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-				) );
-
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => __( 'Equipment', 'lsx-health-plan' ),
-					'id'         => 'equipment',
-					'type'       => 'text',
-				) );
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name'       => __( 'Muscle Group', 'lsx-health-plan' ),
-					'id'         => 'muscle',
-					'type'       => 'text',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',
-				) );
-
 				if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 					$cmb_group->add_group_field(
 						$group_field_id,
@@ -239,10 +204,48 @@ class Workout {
 							),
 						)
 					);
+					$cmb_group->add_group_field( $group_field_id, array(
+						'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
+						'id'   => 'name',
+						'type' => 'text',
+						// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+					) );
 				}
+
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name'    => __( 'Description', 'lsx-health-plan' ),
+					'id'      => 'description',
+					'type'    => 'wysiwyg',
+					'options' => array(
+						'textarea_rows' => 2,
+					),
+				) );
+
+				$cmb_group->add_group_field( $group_field_id, array(
+					'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+					'id'   => 'reps',
+					'type' => 'text',
+					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+				) );
 				$i++;
 			};
 		}
+	}
+
+	/**
+	 * Gets the post title from the ID for mapping purposes in autocompletes.
+	 *
+	 * @param int $id
+	 * @return string
+	 */
+	public function autocomplete_cmb2_get_post_title_from_id($id) {
+		if (empty($id)) {
+			return '';
+		}
+
+		$post = get_post($id);
+
+		return 'testttttt';
 	}
 
 	/**
