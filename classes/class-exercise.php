@@ -35,9 +35,11 @@ class Exercise {
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
+			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
+			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 		}
 	}
 
@@ -94,6 +96,7 @@ class Exercise {
 				'title',
 				'thumbnail',
 				'editor',
+				'excerpt',
 			),
 		);
 		register_post_type( 'exercise', $args );
@@ -128,6 +131,7 @@ class Exercise {
 			'rewrite'           => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_type', 'exercise-type' ),
 			),
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'exercise-type', array( 'exercise' ), $args );
@@ -162,6 +166,7 @@ class Exercise {
 			'rewrite'           => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_equipment', 'equipment' ),
 			),
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'equipment', array( 'exercise' ), $args );
@@ -196,6 +201,7 @@ class Exercise {
 			'rewrite'           => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_muscle_group', 'muscle-group' ),
 			),
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'muscle-group', array( 'exercise' ), $args );
@@ -286,5 +292,31 @@ class Exercise {
 		$connections['exercise']['connected_workouts'] = 'connected_exercises';
 		$connections['workout']['connected_exercises'] = 'connected_workouts';
 		return $connections;
+	}
+
+	/**
+	 * Registers the lsx_search_settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function register_settings( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'          => 'exercise_archive_settings_title',
+				'type'        => 'title',
+				'name'        => __( 'Exercises Archive', 'lsx-health-plan' ),
+				'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'          => 'exercise_archive_description',
+				'type'        => 'wysiwyg',
+				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
+				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		do_action( 'lsx_hp_exercise_settings_page', $cmb );
 	}
 }

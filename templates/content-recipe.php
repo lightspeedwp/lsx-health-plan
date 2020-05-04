@@ -40,7 +40,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 					) );
 				} else {
 					?>
-					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder-recipe.jpg' ); ?>">
+					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 					<?php
 				}
 				?>
