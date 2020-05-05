@@ -17,11 +17,19 @@ var LSX_HP_ADMIN = Object.create( null );
      */
     LSX_HP_ADMIN.init = function() {
         LSX_HP_ADMIN.changeName();
+        LSX_HP_ADMIN.singleExerciseRemoveClass();
 	};
 
 	LSX_HP_ADMIN.changeName = function() {
 		$( ".wpua-edit .button" ).last().attr("value","Update Profile Image");
-	};
+    };
+    
+        /**
+     * All Meta Tag terms will have target blank
+     */
+    LSX_HP_ADMIN.singleExerciseRemoveClass = function() {
+        $('body.single-exercise').removeClass("using-gutenberg");
+    };
 
 	/**
      * On document ready.

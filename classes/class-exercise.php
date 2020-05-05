@@ -319,4 +319,5 @@ class Exercise {
 		);
 		do_action( 'lsx_hp_exercise_settings_page', $cmb );
 	}
+
 }
