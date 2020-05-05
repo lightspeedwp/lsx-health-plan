@@ -805,13 +805,21 @@ function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
 function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
 	$workout_video = '';
 	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
-		$workout_video = esc_html( $group['connected_exercises'] );
-		$content       = get_post_field( 'post_content', $workout_video );
-		$play_button   = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
-		$modal_body    = '';
-		$modal_body   .= get_the_post_thumbnail( $workout_video, 'thumbnail' );
-		$modal_body   .= '<h5 class="modal-title title-lined">' . get_the_title( $workout_video ) . '</h5>';
-		$modal_body   .= $content;
+		$workout_video   = esc_html( $group['connected_exercises'] );
+		$content         = get_post_field( 'post_content', $workout_video );
+		$content         = wp_trim_words( $content, 40 );
+		$url             = get_permalink( $workout_video );
+		$equipment_group = get_the_term_list( $workout_video, 'equipment', '', ', ' );
+		$muscle_group    = get_the_term_list( $workout_video, 'muscle-group', '', ', ' );
+		$play_button     = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
+
+		$modal_body  = '';
+		$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $workout_video, 'lsx-thumbnail-single' ) . '</div>';
+		$modal_body .= '<h5 class="modal-title title-lined">' . get_the_title( $workout_video ) . '</h5>';
+		$modal_body .= '<span class="equipment-terms">' . $equipment_group . '</span>';
+		$modal_body .= '<span class="muscle-terms">' . $muscle_group . '</span>';
+		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
+		$modal_body .= '<div class="more"/><a class="btn border-btn" target="_blank" href="' . $url . '">See More</a></div>';
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {

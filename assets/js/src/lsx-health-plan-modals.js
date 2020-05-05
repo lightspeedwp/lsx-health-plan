@@ -11,6 +11,7 @@ var LSX_HP_MODALS = Object.create( null );
      */
     LSX_HP_MODALS.init = function() {
         LSX_HP_MODALS.loadIframes();
+        LSX_HP_MODALS.termsTargetBlank();
 	};
 	
 
@@ -25,7 +26,15 @@ var LSX_HP_MODALS = Object.create( null );
 				});
 			}
 		 });
-	};
+    };
+    
+    /**
+     * All Meta Tag terms will have target blank
+     */
+    LSX_HP_MODALS.termsTargetBlank = function() {
+        console.log('test target');
+        $('.workout-table td.center-mobile a').attr("target","_blank");
+    };
 	
     /**
      * On document ready.
