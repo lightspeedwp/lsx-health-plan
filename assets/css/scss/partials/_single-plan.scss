@@ -555,7 +555,9 @@
 .post-type-archive-recipe,
 .tax-recipe-type,
 .post-type-archive-exercise,
-.tax-exercise-type {
+.tax-exercise-type,
+.tax-muscle-group,
+.tax-equipment {
 	.archive-plan {
 		.row {
 			.col-md-4 {
@@ -699,4 +701,19 @@
       }
     }
   }
+}
+
+.tax-exercise-type,
+.tax-muscle-group,
+.tax-equipment {
+	.archive-header-wrapper {
+		.archive-header {
+			.archive-title {
+				text-transform: capitalize;
+			}
+			p {
+				display: none;
+			}
+		}
+	}
 }
