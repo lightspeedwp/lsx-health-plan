@@ -815,11 +815,11 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
 
 		$modal_body  = '';
 		$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $workout_video, 'lsx-thumbnail-single' ) . '</div>';
-		$modal_body .= '<h5 class="modal-title title-lined">' . get_the_title( $workout_video ) . '</h5>';
-		$modal_body .= '<span class="equipment-terms">' . $equipment_group . '</span>';
-		$modal_body .= '<span class="muscle-terms">' . $muscle_group . '</span>';
+		$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $workout_video ) . '</h5>';
+		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
 		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
-		$modal_body .= '<div class="more"/><a class="btn border-btn" target="_blank" href="' . $url . '">See More</a></div>';
+		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">Read More</a>';
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {

@@ -585,11 +585,23 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 600px) { .single-plan .single-plan-inner-buttons .complete-plan-btn, .single-plan .single-plan-inner-buttons .back-plan-btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn, .archive-plan .single-plan-inner-buttons .back-plan-btn { margin-bottom: 20px; }
   .single-plan .single-plan-inner-buttons .complete-plan-btn .btn, .single-plan .single-plan-inner-buttons .back-plan-btn .btn, .archive-plan .single-plan-inner-buttons .complete-plan-btn .btn, .archive-plan .single-plan-inner-buttons .back-plan-btn .btn { width: 100%; } }
 
+.equipment-terms a, .muscle-terms a, .muscle-field-item a, .equipment-field-item a { text-transform: capitalize; }
+
 .lsx-health-plan-modal .modal-header { display: none; }
 
 .lsx-health-plan-modal .modal-content { padding: 40px; }
 
 .lsx-health-plan-modal .modal-title { margin-bottom: 25px; }
+
+.lsx-health-plan-modal .modal-body .exercise-modal.title-lined { padding-bottom: 15px; margin-bottom: 20px; }
+
+.lsx-health-plan-modal .modal-body .exercise-modal .modal-title { margin-bottom: 0; margin-top: 15px; padding-bottom: 5px; }
+
+.lsx-health-plan-modal .modal-body .exercise-modal .equipment-terms, .lsx-health-plan-modal .modal-body .exercise-modal .muscle-terms { display: block; color: #919191; font-size: 13px; }
+
+.lsx-health-plan-modal .modal-body .moretag { margin-top: 1rem; display: block; text-transform: uppercase; }
+
+.lsx-health-plan-modal .modal-body .moretag:after { content: '\f105'; font-family: FontAwesome; margin-left: 1rem; }
 
 @media (max-width: 600px) { .lsx-health-plan-modal .modal-body iframe { height: 100%; } }
 
@@ -624,6 +636,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box a, .tax-exercise-type .archive-plan .row .col-md-4 .content-box a { margin-bottom: 15px; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a:after, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box a:after, .tax-exercise-type .archive-plan .row .col-md-4 .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after { content: none; }
 
