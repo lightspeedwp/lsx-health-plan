@@ -819,7 +819,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
 		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
 		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
-		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">Read More</a>';
+		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {

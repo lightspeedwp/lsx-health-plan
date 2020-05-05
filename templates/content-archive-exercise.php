@@ -30,8 +30,10 @@
 			</a>
 		</div>
 		<div class="content-box exercise-content-box white-bg">
-			<h3 class="exercise-title"><?php the_title(); ?></h3>
-			<?php lsx_health_plan_exercise_data(); ?>
+			<div class="title-lined">
+				<h3 class="exercise-title"><?php the_title(); ?></h3>
+				<?php lsx_health_plan_exercise_data(); ?>
+			</div>
 			<?php
 			if ( ! has_excerpt() ) {
 				$content = wp_trim_words( get_the_content(), 20 );

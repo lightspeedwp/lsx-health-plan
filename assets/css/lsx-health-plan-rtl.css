@@ -643,6 +643,16 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after { content: none; }
 
+.post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined { margin-bottom: 10px; padding-bottom: 10px; }
+
+.post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-title, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-title, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-title, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-title { margin-bottom: 10px; }
+
+.post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table { margin-bottom: 0; }
+
+.post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table tbody > tr, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table tbody > tr, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table tbody > tr, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined .exercise-table tbody > tr { display: -ms-flexbox; display: flex; }
+
+.post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .moretag, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .moretag, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .moretag, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .moretag { display: none; }
+
 .post-type-archive-recipe .lsx-hp-archive-description, .tax-recipe-type .lsx-hp-archive-description, .post-type-archive-exercise .lsx-hp-archive-description, .tax-exercise-type .lsx-hp-archive-description { margin-right: auto; margin-left: auto; width: 100%; display: -ms-flexbox; display: flex; }
 
 .post-type-archive-recipe .lsx-hp-archive-description .description-wrapper, .tax-recipe-type .lsx-hp-archive-description .description-wrapper, .post-type-archive-exercise .lsx-hp-archive-description .description-wrapper, .tax-exercise-type .lsx-hp-archive-description .description-wrapper { margin-top: 4.25rem; text-align: center; max-width: 900px; margin-right: auto; margin-left: auto; }

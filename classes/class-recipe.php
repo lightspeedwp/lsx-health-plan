@@ -183,6 +183,9 @@ class Recipe {
 		if ( is_post_type_archive( 'recipe' ) ) {
 			$title = __( 'Recipes', 'lsx-health-plan' );
 		}
+		if ( is_post_type_archive( 'exercise' ) ) {
+			$title = __( 'Exercises', 'lsx-health-plan' );
+		}
 		if ( is_tax( 'recipe-type' ) ) {
 			$queried_object = get_queried_object();
 			if ( isset( $queried_object->name ) ) {

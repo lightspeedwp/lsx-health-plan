@@ -26,7 +26,7 @@ get_header(); ?>
 
 				<?php lsx_content_top(); ?>
 
-				<div class="post-wrapper archive-plan">
+				<div class="post-wrapper exercise-archive-plan archive-plan">
 					<div class="row">
 						<?php if ( have_posts() ) : ?>
 							<?php

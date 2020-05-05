@@ -651,6 +651,28 @@
 				}
 			}
 		}
+		&.exercise-archive-plan {
+			.lsx-slot {
+				.title-lined {
+					margin-bottom: 10px;
+					padding-bottom: 10px;
+					.exercise-title {
+						margin-bottom: 10px;
+					}
+					.exercise-table {
+						margin-bottom: 0;
+						tbody {
+							> tr {
+								display: flex;
+							}
+						}
+					}
+				}
+				.moretag {
+					display: none;
+				}
+			}
+		}
 	}
 
   .lsx-hp-archive-description {
