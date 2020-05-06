@@ -573,9 +573,9 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 		);
 		$query_array['tax_query'] = $taxonomy_filter;
 	}
-	print( '<pre>' . print_r( $query_array, true ) . '</pre>' );
+
 	$exercises = new WP_Query( $query_array );
-	
+
 	if ( ! post_type_exists( 'exercise' ) ) {
 		return;
 	}
