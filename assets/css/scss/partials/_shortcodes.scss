@@ -231,6 +231,8 @@
 }
 
 #lsx-exercises-shortcode {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	.lsx-exercises-shortcode {
 		width: 100%;
 		@include media('>=tablet') {
@@ -258,10 +260,18 @@
 				height: 100%;
 				background-image: linear-gradient(120deg, $blue, $blue);
 				opacity: .4;
+				transition: opacity .1s ease-in;
 			}
 			&:hover {
 				&:before {
-					opacity: .8;
+					content: '\f05d';
+					font-family: FontAwesome;
+					color: rgba(255, 255, 255, 0.6);
+					font-size: 6em;
+					opacity: 1;
+					display: flex;
+					align-items: baseline;
+					justify-content: center;
 				}
 			}
 			.exercise-link {
@@ -269,6 +279,7 @@
 				align-items: flex-end;
 				position: relative;
 				padding: 1rem 2rem;
+				width: 100%;
 				.lsx-exercises-title {
 					color: white;
 					text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
