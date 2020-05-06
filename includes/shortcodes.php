@@ -68,6 +68,23 @@ function day_plan_box( $args = array() ) {
 }
 
 /**
+ * Outputs the my exercise shortcode box on the frontpage.
+ *
+ * @return void
+ */
+function feature_exercise_box( $args = array() ) {
+	$defaults = array(
+		'columns'   => 3,
+		'view_more' => false,
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	ob_start();
+	echo lsx_health_plan_featured_exercise_block( $args ); // WPCS: XSS OK.
+	$content = ob_get_clean();
+	return $content;
+}
+
+/**
  * Outputs the my featured video box on the frontpage.
  *
  * @return void

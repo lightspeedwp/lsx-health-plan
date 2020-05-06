@@ -539,6 +539,18 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
 }
 
 /**
+ * Outputs the featured exercise shortcode
+ *
+ * @return void
+ */
+function lsx_health_plan_featured_exercise_block() {
+	if ( ! post_type_exists( 'exercise' ) ) {
+		return;
+	}
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
+}
+
+/**
  * Outputs the featured video shortcode
  *
  * @return void
