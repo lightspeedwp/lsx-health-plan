@@ -588,7 +588,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article { margin-bottom: 19px; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-8, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-8 { padding-right: 0px; }
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-9, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-9 { padding-right: 0px; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 { margin-top: 15px; margin-bottom: 15px; }
 

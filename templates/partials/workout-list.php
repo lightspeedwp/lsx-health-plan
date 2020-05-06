@@ -21,7 +21,7 @@ if ( ! empty( $groups ) ) {
 					?>
 					<article class="lsx-slot box-shadow">
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="exercise-feature-img">
 									<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
 										<?php
@@ -40,7 +40,7 @@ if ( ! empty( $groups ) ) {
 									</a>
 								</div>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-9">
 								<div class="title">
 									<h3>
 										<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
