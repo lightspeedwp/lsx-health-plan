@@ -1,6 +1,6 @@
 <?php
 /**
- * Template used to display the workout content in list form
+ * Template used to display the workout content in table form
  *
  * @package lsx-health-plan
  */
@@ -9,8 +9,8 @@ global $group_name;
 $groups = get_post_meta( get_the_ID(), $group_name, true );
 if ( ! empty( $groups ) ) {
 	?>
-	<div class="set-list">
-		<div class="workout-list row">
+	<div class="set-grid">
+		<div class="workout-grid row">
 			<?php
 			foreach ( $groups as $group ) {
 				if ( isset( $group['connected_exercises'] ) ) {

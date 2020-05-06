@@ -17,12 +17,14 @@
 
 	<div class="entry-content">
 		<?php
-			wp_link_pages( array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
+			wp_link_pages(
+				array(
+					'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
+					'after'       => '</div></div>',
+					'link_before' => '<span>',
+					'link_after'  => '</span>',
+				)
+			);
 		?>
 		<div class="single-plan-inner workout-content">
 			<div class="single-plan-section-title workout">
@@ -85,21 +87,15 @@
 				if ( $workouts->have_posts() ) {
 					while ( $workouts->have_posts() ) {
 						$workouts->the_post();
-
 						$i               = 1;
-						$m               = 1;
 						$section_counter = 6;
 						while ( $i <= $section_counter ) {
 
 							$workout_section = 'workout_section_' . ( $i ) . '_title';
 							$workout_desc    = 'workout_section_' . ( $i ) . '_description';
-							$workout_extra_equipment = 'workout_section_' . ( $i ) . '_workoutgroup_equipment';
-							$workout_extra_muscle = 'workout_section_' . ( $i ) . '_workoutgroup_muscle';
 
-							$section_title   = get_post_meta( get_the_ID(), $workout_section, true );
-							$description     = get_post_meta( get_the_ID(), $workout_desc, true );
-							$extra_equipment     = get_post_meta( get_the_ID(), $workout_extra_equipment, true );
-							$extra_muscle     = get_post_meta( get_the_ID(), $workout_extra_muscle, true );
+							$section_title = get_post_meta( get_the_ID(), $workout_section, true );
+							$description   = get_post_meta( get_the_ID(), $workout_desc, true );
 
 							if ( '' === $section_title ) {
 								$i++;
@@ -111,7 +107,6 @@
 								<div class="set-content">
 									<p><?php echo wp_kses_post( apply_filters( 'the_content', $description ) ); ?></p>
 								</div>
-
 								<?php lsx_health_plan_workout_tab_content( $i ); ?>
 								</div>
 							</div>

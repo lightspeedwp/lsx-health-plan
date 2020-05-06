@@ -349,26 +349,29 @@ class Workout {
 	 * @return void
 	 */
 	public function register_settings( $cmb ) {
-		$cmb->add_field(
-			array(
-				'id'          => 'workout_settings_title',
-				'type'        => 'title',
-				'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
-				'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'id'          => 'workout_tab_layout',
-				'type'        => 'select',
-				'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),
-				'description' => __( 'Choose the layout for the workouts.', 'lsx-health-plan' ),
-				'options'     => array(
-					'table' => __( 'Table', 'lsx-health-plan' ),
-					'list'  => __( 'List', 'lsx-health-plan' ),
-				),
-			)
-		);
-		do_action( 'lsx_hp_workout_settings_page', $cmb );
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_settings_title',
+					'type'        => 'title',
+					'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
+					'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_layout',
+					'type'        => 'select',
+					'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),
+					'description' => __( 'Choose the layout for the workouts.', 'lsx-health-plan' ),
+					'options'     => array(
+						'table' => __( 'Table', 'lsx-health-plan' ),
+						'list'  => __( 'List', 'lsx-health-plan' ),
+						'grid'  => __( 'Grid', 'lsx-health-plan' ),
+					),
+				)
+			);
+			do_action( 'lsx_hp_workout_settings_page', $cmb );
+		}
 	}
 }
