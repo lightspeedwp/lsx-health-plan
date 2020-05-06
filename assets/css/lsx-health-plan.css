@@ -112,7 +112,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode { width: 100%; }
 
-@media (min-width: 992px) { #lsx-exercises-shortcode .lsx-exercises-shortcode { display: -ms-grid; display: grid; -ms-grid-columns: 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; column-gap: 1rem; row-gap: 1rem; } }
+@media (min-width: 992px) { #lsx-exercises-shortcode .lsx-exercises-shortcode { display: -ms-grid; display: grid; column-gap: 1rem; row-gap: 1rem; -ms-grid-columns: 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; } }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { min-height: 200px; background-position: center; background-size: cover; background-repeat: no-repeat; display: -ms-flexbox; display: flex; position: relative; }
 
@@ -125,6 +125,10 @@ table, .table { width: 100%; table-layout: fixed; }
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link { display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: flex-end; position: relative; padding: 1rem 2rem; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link .lsx-exercises-title { color: white; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); max-width: 80%; margin-left: 0; margin-bottom: 1rem; }
+
+#lsx-exercises-shortcode.columns-2 .lsx-exercises-shortcode { -ms-grid-columns: 1fr 1fr; grid-template-columns: 1fr 1fr; }
+
+#lsx-exercises-shortcode.columns-4 .lsx-exercises-shortcode { -ms-grid-columns: 1fr 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr 1fr; }
 
 #lsx-exercises-shortcode > .col-md-12 { margin: 2rem auto; text-align: center; }
 

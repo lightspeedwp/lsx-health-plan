@@ -547,12 +547,14 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 
 	$taxonomy = $args['taxonomy'];
 	$term     = $args['term'];
+	$columns  = $args['columns'];
+	$limit    = $args['limit'];
 
 	$query_array = array(
-		'posts_per_page' => $args['columns'],
 		'orderby'        => 'date',
 		'order'          => 'DESC',
 		'post_type'      => 'exercise',
+		'posts_per_page' => $limit,
 	);
 
 	if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
@@ -571,9 +573,9 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 		);
 		$query_array['tax_query'] = $taxonomy_filter;
 	}
-
+	print( '<pre>' . print_r( $query_array, true ) . '</pre>' );
 	$exercises = new WP_Query( $query_array );
-
+	
 	if ( ! post_type_exists( 'exercise' ) ) {
 		return;
 	}

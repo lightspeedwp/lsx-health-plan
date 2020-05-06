@@ -235,9 +235,9 @@
 		width: 100%;
 		@include media('>=tablet') {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
 			column-gap: 1rem;
 			row-gap: 1rem;
+			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.lsx-exercises-item {
 			min-height: 200px;
@@ -277,6 +277,16 @@
 					margin-bottom: 1rem;
 				}
 			}
+		}
+	}
+	&.columns-2 {
+		.lsx-exercises-shortcode {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	&.columns-4 {
+		.lsx-exercises-shortcode {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
 	}
 	> .col-md-12 {
