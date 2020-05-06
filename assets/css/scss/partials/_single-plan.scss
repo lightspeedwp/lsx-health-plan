@@ -386,7 +386,7 @@
 					text-transform: uppercase;
 					color: $blue;
 				}
-				.set-content, .set-table {
+				.set-content, .set-table, .set-list, .set-grid {
 					font-size: 16px;
 					color: #222222;
 				}
@@ -419,6 +419,30 @@
 							}
 						}
 					}
+				}
+
+				.set-list {
+					.workout-list {
+						article {
+							margin-bottom: 19px;
+
+							.col-md-8 {
+								padding-left: 0px;
+							}
+
+							.title {
+								h3 {
+									margin-top: 15px;
+									margin-bottom: 15px;
+								}
+							}
+							
+						}
+					}
+				}
+
+				.set-grid {
+
 				}
 			}
 			.modal.in {

@@ -572,7 +572,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .sets .set-title, .archive-plan .single-plan-inner.workout-content .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-content, .single-plan .single-plan-inner.workout-content .sets .set-table, .archive-plan .single-plan-inner.workout-content .sets .set-content, .archive-plan .single-plan-inner.workout-content .sets .set-table { font-size: 16px; color: #222222; }
+.single-plan .single-plan-inner.workout-content .sets .set-content, .single-plan .single-plan-inner.workout-content .sets .set-table, .single-plan .single-plan-inner.workout-content .sets .set-list, .single-plan .single-plan-inner.workout-content .sets .set-grid, .archive-plan .single-plan-inner.workout-content .sets .set-content, .archive-plan .single-plan-inner.workout-content .sets .set-table, .archive-plan .single-plan-inner.workout-content .sets .set-list, .archive-plan .single-plan-inner.workout-content .sets .set-grid { font-size: 16px; color: #222222; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr th, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr th { border-bottom: 2px solid #418ad0; padding: 5px 0; }
 
@@ -583,6 +583,12 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button .fa { font-size: 40px; color: #418ad0; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa { color: #f7ae00; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article { margin-bottom: 19px; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-8, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-8 { padding-right: 0px; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 { margin-top: 15px; margin-bottom: 15px; }
 
 .single-plan .single-plan-inner.workout-content .modal.in, .archive-plan .single-plan-inner.workout-content .modal.in { background-color: rgba(0, 0, 0, 0.5); }
 
