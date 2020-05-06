@@ -297,7 +297,7 @@ class Settings {
 			}
 
 			if ( 'page' === $type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-				$type = array( 'page', 'exercise' );
+				$type = array( 'page', 'workout' );
 			}
 
 			$cmb->add_field(

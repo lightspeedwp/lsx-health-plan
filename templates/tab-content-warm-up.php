@@ -21,7 +21,7 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 	}
 	$warmup_type = 'page';
 	if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-		$warmup_type = array( 'page', 'exercise' );
+		$warmup_type = array( 'page', 'workout' );
 	}
 	$warmup_query = new WP_Query(
 		array(

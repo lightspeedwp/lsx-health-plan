@@ -153,7 +153,7 @@ class Plan {
 
 		$warmup_type = 'page';
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-			$warmup_type = array( 'page', 'exercise' );
+			$warmup_type = array( 'page', 'workout' );
 		}
 		$cmb->add_field( array(
 			'name'       => __( 'Warmup', 'lsx-health-plan' ),
