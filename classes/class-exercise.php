@@ -39,7 +39,7 @@ class Exercise {
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
-			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
+			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
 		}
 	}
 
