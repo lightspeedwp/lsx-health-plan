@@ -72,14 +72,14 @@ function day_plan_box( $args = array() ) {
  *
  * @return void
  */
-function feature_exercise_box( $args = array() ) {
+function exercise_box( $args = array() ) {
 	$defaults = array(
-		'columns'   => 3,
 		'view_more' => false,
+		'columns'   => 3,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	ob_start();
-	echo lsx_health_plan_featured_exercise_block( $args ); // WPCS: XSS OK.
+	echo lsx_health_plan_exercise_block( $args ); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }

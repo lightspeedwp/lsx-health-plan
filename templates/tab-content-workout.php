@@ -137,10 +137,17 @@
 												$this_row[] = '<tr>';
 
 												// Getting the connected exercise.
-												$exercise    = $group['connected_exercises'];
-												$exercise_id = get_post( $exercise );
+												if ( post_type_exists( 'exercise' ) ) {
+													if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] && ! empty( \lsx_health_plan\functions\check_posts_exist( array( $group['connected_exercises'] ) ) ) ) {
+														$exercise    = $group['connected_exercises'];
+														$exercise_id = get_post( $exercise );
+													}
+												} else {
+													$exercise    = false;
+													$exercise_id = false;
+												}
 
-												if ( isset( $exercise ) && '' !== $exercise ) {
+												if ( false !== $exercise && '' !== $exercise ) {
 													$exercise_name         = get_the_title( $exercise_id );
 													$this_row[]            = '<td class="workout-title-item">' . esc_html( $exercise_name ) . '</td>';
 													$table_headers['name'] = true;
@@ -150,22 +157,27 @@
 														$table_headers['name'] = true;
 													}
 												}
-												if ( isset( $group['description'] ) && '' !== $group['description'] ) {
+												// Only display this is exercise is disabled.
+												if ( false === $exercise && isset( $group['description'] ) && '' !== $group['description'] ) {
 													$this_row[]                   = '<td class="workout-desc-item"><p>' . esc_html( $group['description'] ) . '</td>';
 													$table_headers['description'] = true;
 												}
+
 												if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 													$this_row[]            = '<td class="reps-field-item center-mobile">' . esc_html( $group['reps'] ) . '</td>';
 													$table_headers['reps'] = true;
 												}
-												if ( isset( $exercise ) && '' !== $exercise ) {
-													$equipment_group            = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
-													$this_row[]                 = '<td class="equipment-field-item center-mobile">' . wp_kses_post( $equipment_group ) . '</td>';
-													$table_headers['equipment'] = true;
 
-													$muscle_group            = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
-													$this_row[]              = '<td class="muscle-field-item center-mobile">' . wp_kses_post( $muscle_group ) . '</td>';
-													$table_headers['muscle'] = true;
+												// Only display this is exercise is disabled.
+												if ( false === $exercise ) {
+													if ( isset( $group['equipment'] ) && '' !== $group['equipment'] ) {
+														$this_row[]                 = '<td class="equipment-field-item center-mobile">' . esc_html( $group['equipment'] ) . '</td>';
+														$table_headers['equipment'] = true;
+													}
+													if ( isset( $group['muscle'] ) && '' !== $group['muscle'] ) {
+														$this_row[]              = '<td class="muscle-field-item center-mobile">' . esc_html( $group['muscle'] ) . '</td>';
+														$table_headers['muscle'] = true;
+													}
 												}
 												if ( post_type_exists( 'video' ) && isset( $group['connected_videos'] ) && '' !== $group['connected_videos'] && ! empty( \lsx_health_plan\functions\check_posts_exist( array( $group['connected_videos'] ) ) ) ) {
 													$this_row[]             = '<td class="video-button-item center-mobile">' . lsx_health_plan_workout_video_play_button( $m, $group, false ) . '</td>';

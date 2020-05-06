@@ -543,7 +543,7 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
  *
  * @return void
  */
-function lsx_health_plan_featured_exercise_block() {
+function lsx_health_plan_exercise_block() {
 	if ( ! post_type_exists( 'exercise' ) ) {
 		return;
 	}
