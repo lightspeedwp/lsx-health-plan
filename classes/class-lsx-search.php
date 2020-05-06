@@ -36,7 +36,9 @@ class LSX_Search {
 	 */
 	public function __construct() {
 		add_action( 'lsx_hp_recipe_settings_page', array( $this, 'register_settings' ), 9, 1 );
-		add_action( 'lsx_hp_exercise_settings_page', array( $this, 'exercise_register_settings' ), 9, 1 );
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			add_action( 'lsx_hp_exercise_settings_page', array( $this, 'exercise_register_settings' ), 9, 1 );
+		}
 		add_action( 'wp', array( $this, 'init' ), 5 );
 	}
 
