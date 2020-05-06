@@ -852,3 +852,28 @@ function lsx_health_plan_recipe_archive_description() {
 		<?php
 	}
 }
+
+/**
+ * Outputs the Single Plan Workout Tab based on the layout selected.
+ *
+ * @param  string $index
+ * @return void
+ */
+function lsx_health_plan_workout_tab_content( $index = 0 ) {
+	global $group_name;
+	$group_name = 'workout_section_' . $index;
+	$layout     = strtolower( \lsx_health_plan\functions\get_option( 'workout_tab_layout', 'table' ) );
+	switch ( $layout ) {
+		case 'list':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-list.php';
+			break;
+
+		case 'table':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-table.php';
+			break;
+	}
+	$tab_template_path = apply_filters( 'lsx_health_plan_workout_tab_content_path', $tab_template_path );
+	if ( '' !== $tab_template_path ) {
+		include $tab_template_path;
+	}
+}

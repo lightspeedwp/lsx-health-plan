@@ -38,6 +38,7 @@ class Workout {
 		//add_action( 'cmb2_admin_init', array( $this, 'workout_news_connections' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 8, 1 );
 	}
 
 	/**
@@ -235,22 +236,6 @@ class Workout {
 	}
 
 	/**
-	 * Gets the post title from the ID for mapping purposes in autocompletes.
-	 *
-	 * @param int $id
-	 * @return string
-	 */
-	public function autocomplete_cmb2_get_post_title_from_id($id) {
-		if (empty($id)) {
-			return '';
-		}
-
-		$post = get_post($id);
-
-		return 'testttttt';
-	}
-
-	/**
 	 * Registers the workout connections on the plan post type.
 	 *
 	 * @return void
@@ -355,5 +340,35 @@ class Workout {
 				'options' => $category_options,
 			)
 		);
+	}
+
+	/**
+	 * Registers the lsx_search_settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function register_settings( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'          => 'workout_settings_title',
+				'type'        => 'title',
+				'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
+				'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'          => 'workout_tab_layout',
+				'type'        => 'select',
+				'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),
+				'description' => __( 'Choose the layout for the workouts.', 'lsx-health-plan' ),
+				'options'     => array(
+					'table' => __( 'Table', 'lsx-health-plan' ),
+					'list'  => __( 'List', 'lsx-health-plan' ),
+				),
+			)
+		);
+		do_action( 'lsx_hp_workout_settings_page', $cmb );
 	}
 }
