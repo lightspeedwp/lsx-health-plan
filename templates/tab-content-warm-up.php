@@ -19,10 +19,14 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 	if ( ! is_array( $warm_up ) ) {
 		$warm_up = array( $warm_up );
 	}
+	$warmup_type = 'page';
+	if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+		$warmup_type = array( 'page', 'exercise' );
+	}
 	$warmup_query = new WP_Query(
 		array(
 			'post__in'  => $warm_up,
-			'post_type' => 'page',
+			'post_type' => $warmup_type,
 		)
 	);
 

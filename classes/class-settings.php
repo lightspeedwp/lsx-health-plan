@@ -85,13 +85,8 @@ class Settings {
 	 */
 	public function set_vars() {
 
-		$warmup_post_type = 'page';
-		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-			$warmup_post_type = 'exercise';
-		}
-
 		$this->default_types  = array(
-			$warmup_post_type => array(
+			'page' => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
 				'limit'       => 1,
@@ -99,7 +94,7 @@ class Settings {
 			),
 		);
 		$this->download_types = array(
-			$warmup_post_type => array(
+			'page' => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
 				'limit'       => 1,
@@ -301,6 +296,10 @@ class Settings {
 				$sortable = true;
 			}
 
+			if ( 'page' === $type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+				$type = array( 'page', 'exercise' );
+			}
+
 			$cmb->add_field(
 				array(
 					'name'       => $default_type['title'],
@@ -310,7 +309,7 @@ class Settings {
 					'limit'      => $limit,
 					'sortable'   => $sortable,
 					'query_args' => array(
-						'post_type'      => array( $type ),
+						'post_type'      => $type,
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
