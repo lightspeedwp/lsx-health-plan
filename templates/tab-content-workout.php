@@ -107,13 +107,6 @@
 							}
 							?>
 							<div class="set-box set content-box">
-								<?php
-								if ( ! empty( $post_dinner_snack ) ) {
-									echo '<div class="content-box"><h3 class="eating-title title-lined">' . esc_html__( 'Pre-workout Snack', 'lsx-health-plan' ) . '</h3>';
-									echo wp_kses_post( apply_filters( 'the_content', $pre_workout_snack ) );
-									echo '</div>';
-								}
-								?>
 								<h3 class="set-title"><?php echo esc_html( $section_title ); ?></h3>
 								<div class="set-content">
 									<p><?php echo wp_kses_post( apply_filters( 'the_content', $description ) ); ?></p>
