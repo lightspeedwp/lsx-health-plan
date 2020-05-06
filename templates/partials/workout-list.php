@@ -28,14 +28,9 @@ if ( ! empty( $groups ) ) {
 										// We call the button to register the modal, but we do not output it.
 										lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
 
-										$featured_image = get_the_post_thumbnail( $group['connected_exercises'] );
+										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'lsx-thumbnail-square', array( 'class' => 'aligncenter' ) );
 										if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-											the_post_thumbnail(
-												'lsx-thumbnail-square',
-												array(
-													'class' => 'aligncenter',
-												)
-											);
+											echo wp_kses_post( $featured_image );
 										} else {
 											?>
 											<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
@@ -64,7 +59,6 @@ if ( ! empty( $groups ) ) {
 										echo wp_kses_post( $content );
 									}
 									?>
-									<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>" class="read-more"><?php esc_html_e( 'See exercise', 'lsx-health-plan' ); ?></a>
 								</div>	
 							</div>
 						</div>
