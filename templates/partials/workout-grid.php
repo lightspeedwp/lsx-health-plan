@@ -63,5 +63,6 @@ if ( ! empty( $groups ) ) {
 			}
 			?>
 		</div>
+	</div>
 	<?php
 }

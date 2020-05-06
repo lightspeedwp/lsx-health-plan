@@ -108,7 +108,6 @@
 									<p><?php echo wp_kses_post( apply_filters( 'the_content', $description ) ); ?></p>
 								</div>
 								<?php lsx_health_plan_workout_tab_content( $i ); ?>
-								</div>
 							</div>
 							<?php
 							$i++;
