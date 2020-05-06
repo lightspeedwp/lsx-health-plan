@@ -89,6 +89,8 @@ class Workout {
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'editor',
+				'excerpt',
 			),
 		);
 		register_post_type( 'workout', $args );
