@@ -84,8 +84,14 @@ class Settings {
 	 * @return void
 	 */
 	public function set_vars() {
+
+		$warmup_post_type = 'page';
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			$warmup_post_type = 'exercise';
+		}
+
 		$this->default_types  = array(
-			'page' => array(
+			$warmup_post_type => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
 				'limit'       => 1,
@@ -93,7 +99,7 @@ class Settings {
 			),
 		);
 		$this->download_types = array(
-			'page' => array(
+			$warmup_post_type => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
 				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
 				'limit'       => 1,
