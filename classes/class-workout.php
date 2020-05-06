@@ -148,30 +148,34 @@ class Workout {
 					'show_on_cb' => 'cmb2_hide_if_no_cats',
 				) );
 
-				$cmb_group->add_field( array(
-					'name'       => __( 'Description', 'lsx-health-plan' ),
-					'id'         => $this->slug . '_section_' . $i . '_description',
-					'type'       => 'wysiwyg',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',
-					'options'    => array(
-						'textarea_rows' => 5,
-					),
-				) );
+				$cmb_group->add_field(
+					array(
+						'name'       => __( 'Description', 'lsx-health-plan' ),
+						'id'         => $this->slug . '_section_' . $i . '_description',
+						'type'       => 'wysiwyg',
+						'show_on_cb' => 'cmb2_hide_if_no_cats',
+						'options'    => array(
+							'textarea_rows' => 5,
+						),
+					)
+				);
 
 				/**
 				 * Repeatable Field Groups
 				 */
 				// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-				$group_field_id = $cmb_group->add_field( array(
-					'id'      => $this->slug . '_section_' . $i,
-					'type'    => 'group',
-					'options' => array(
-						'group_title'   => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
-						'add_button'    => esc_html__( 'Add New', 'lsx-health-plan' ),
-						'remove_button' => esc_html__( 'Delete', 'lsx-health-plan' ),
-						'sortable'      => true,
-					),
-				) );
+				$group_field_id = $cmb_group->add_field(
+					array(
+						'id'      => $this->slug . '_section_' . $i,
+						'type'    => 'group',
+						'options' => array(
+							'group_title'   => esc_html__( 'Exercise {#}', 'lsx-health-plan' ), // {#} gets replaced by row number
+							'add_button'    => esc_html__( 'Add New', 'lsx-health-plan' ),
+							'remove_button' => esc_html__( 'Delete', 'lsx-health-plan' ),
+							'sortable'      => true,
+						),
+					)
+				);
 
 				if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 					$cmb_group->add_group_field(
@@ -207,29 +211,38 @@ class Workout {
 							),
 						)
 					);
-					$cmb_group->add_group_field( $group_field_id, array(
-						'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
-						'id'   => 'name',
-						'type' => 'text',
-						// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-					) );
+					$cmb_group->add_group_field(
+						$group_field_id,
+						array(
+							'name' => esc_html__( 'Workout Name', 'lsx-health-plan' ),
+							'id'   => 'name',
+							'type' => 'text',
+							// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+						)
+					);
+
+					$cmb_group->add_group_field(
+						$group_field_id,
+						array(
+							'name'    => __( 'Description', 'lsx-health-plan' ),
+							'id'      => 'description',
+							'type'    => 'wysiwyg',
+							'options' => array(
+								'textarea_rows' => 2,
+							),
+						)
+					);
 				}
 
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name'    => __( 'Description', 'lsx-health-plan' ),
-					'id'      => 'description',
-					'type'    => 'wysiwyg',
-					'options' => array(
-						'textarea_rows' => 2,
-					),
-				) );
-
-				$cmb_group->add_group_field( $group_field_id, array(
-					'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
-					'id'   => 'reps',
-					'type' => 'text',
-					// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-				) );
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
+						'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
+						'id'   => 'reps',
+						'type' => 'text',
+						// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+					)
+				);
 				$i++;
 			};
 		}
