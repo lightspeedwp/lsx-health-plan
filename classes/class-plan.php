@@ -150,13 +150,11 @@ class Plan {
 			'priority'     => 'high',
 			'show_names'   => true,
 		) );
-		/*$cmb->add_field( array(
-			'name'       => __( 'Box Description', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_warm_up_box_description',
-			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
-			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );*/
+
+		$warmup_type = 'page';
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			$warmup_type = array( 'page', 'workout' );
+		}
 		$cmb->add_field( array(
 			'name'       => __( 'Warmup', 'lsx-health-plan' ),
 			'desc'       => __( 'Connect the warm up page that applies to this day plan using the field provided.', 'lsx-health-plan' ),
@@ -166,7 +164,7 @@ class Plan {
 			'limit'      => 3,  // Limit selection to X items only (default 1)
 			'sortable'   => true, // Allow selected items to be sortable (default false)
 			'query_args' => array(
-				'post_type'      => array( 'page' ),
+				'post_type'      => $warmup_type,
 				'post_status'    => array( 'publish' ),
 				'posts_per_page' => -1,
 			),

@@ -35,7 +35,7 @@ class Workout {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-		add_action( 'cmb2_admin_init', array( $this, 'workout_news_connections' ) );
+		//add_action( 'cmb2_admin_init', array( $this, 'workout_news_connections' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 	}

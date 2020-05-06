@@ -84,6 +84,7 @@ class Settings {
 	 * @return void
 	 */
 	public function set_vars() {
+
 		$this->default_types  = array(
 			'page' => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
@@ -295,6 +296,10 @@ class Settings {
 				$sortable = true;
 			}
 
+			if ( 'page' === $type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+				$type = array( 'page', 'workout' );
+			}
+
 			$cmb->add_field(
 				array(
 					'name'       => $default_type['title'],
@@ -304,7 +309,7 @@ class Settings {
 					'limit'      => $limit,
 					'sortable'   => $sortable,
 					'query_args' => array(
-						'post_type'      => array( $type ),
+						'post_type'      => $type,
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),

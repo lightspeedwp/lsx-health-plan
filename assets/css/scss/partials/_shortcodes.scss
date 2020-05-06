@@ -232,11 +232,13 @@
 
 #lsx-exercises-shortcode {
 	.lsx-exercises-shortcode {
-		display: grid;
 		width: 100%;
-		grid-template-columns: 1fr 1fr 1fr;
-		column-gap: 1rem;
-		row-gap: 1rem;
+		@include media('>=tablet') {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			column-gap: 1rem;
+			row-gap: 1rem;
+		}
 		.lsx-exercises-item {
 			min-height: 200px;
 			background-position: center;
@@ -244,7 +246,9 @@
 			background-repeat: no-repeat;
 			display: flex;
 			position: relative;
-			padding: 1rem 2rem;
+			@include media('<tablet') {
+				margin-bottom: 1rem;
+			}
 			&:before {
 				content: '';
 				position: absolute;
@@ -264,10 +268,25 @@
 				display: flex;
 				align-items: flex-end;
 				position: relative;
+				padding: 1rem 2rem;
 				.lsx-exercises-title {
 					color: white;
 					text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+					max-width: 80%;
+					margin-left: 0;
+					margin-bottom: 1rem;
 				}
+			}
+		}
+	}
+	> .col-md-12 {
+		margin: 2rem auto;
+		text-align: center;
+		@include media('<tablet') {
+			width: 100%;
+			padding: 0;
+			.btn {
+				width: 100%;
 			}
 		}
 	}

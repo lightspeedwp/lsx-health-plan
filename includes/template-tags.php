@@ -543,7 +543,37 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
  *
  * @return void
  */
-function lsx_health_plan_exercise_block() {
+function lsx_health_plan_exercise_block( $args = array() ) {
+
+	$taxonomy = $args['taxonomy'];
+	$term     = $args['term'];
+
+	$query_array = array(
+		'posts_per_page' => $args['columns'],
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'post_type'      => 'exercise',
+	);
+
+	if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
+		$include                 = explode( ',', $args['include'] );
+		$include_filter          = $include;
+		$query_array['post__in'] = $include_filter;
+	}
+
+	if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $term ) ) {
+		$taxonomy_filter          = array(
+			array(
+				'taxonomy' => $taxonomy,
+				'field'    => 'slug',
+				'terms'    => $term,
+			),
+		);
+		$query_array['tax_query'] = $taxonomy_filter;
+	}
+
+	$exercises = new WP_Query( $query_array );
+
 	if ( ! post_type_exists( 'exercise' ) ) {
 		return;
 	}
