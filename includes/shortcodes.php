@@ -80,6 +80,7 @@ function exercise_box( $args = array() ) {
 		'taxonomy'  => '',
 		'view_more' => false,
 		'columns'   => 3,
+		'limit'     => 3,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 
