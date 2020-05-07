@@ -468,7 +468,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .my-plan-container .lsx-container-content .lsx-block-container .lsx-container-content { padding: 15px 10px; }
 
-@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; margin-top: -45px; } }
+@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; margin-top: -45px; }
+  .wp-block-cover + #edit-account-tab { margin-top: 0; } }
 
 .woocommerce-edit-account .wp-block-lsx-blocks-lsx-banner-box { min-height: 200px; }
 
