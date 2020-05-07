@@ -42,6 +42,15 @@ get_header(); ?>
 									}
 								}
 							}
+							if ( in_array( 'has-block-cover', $classes ) ) {
+								$blocks = parse_blocks( get_the_content() );
+								foreach ( $blocks as $block ) {
+									//print( '<pre>' . print_r( $block, true ) . '</pre>' );
+									if ( 'core/cover' === $block['blockName'] ) {
+										echo wp_kses_post( render_block( $block ) );
+									}
+								}
+							}
 
 							$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
 							$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
