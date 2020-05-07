@@ -81,7 +81,7 @@ class Plan {
 			'menu_icon'          => 'dashicons-welcome-write-blog',
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug' => 'plan',
+				'slug' => \lsx_health_plan\functions\get_option( 'plan_single_slug', 'plan' ),
 			),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
