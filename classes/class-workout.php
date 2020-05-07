@@ -256,7 +256,7 @@ class Workout {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->slug . '_workout_connections_metabox',
-				'title'        => __( 'Connections', 'lsx-health-plan' ),
+				'title'        => __( 'Workouts', 'lsx-health-plan' ),
 				'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
 				'object_types' => array( 'plan' ),
 				'context'      => 'normal',
