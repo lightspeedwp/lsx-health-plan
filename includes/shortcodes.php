@@ -82,6 +82,8 @@ function exercise_box( $args = array() ) {
 		'columns'   => 3,
 		'limit'     => 3,
 		'post_type' => 'exercise',
+		'orderby'   => 'date',
+		'order'     => 'DESC',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 

@@ -551,8 +551,8 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 	$limit    = $args['limit'];
 
 	$query_array = array(
-		'orderby'        => 'date',
-		'order'          => 'DESC',
+		'orderby'        => $args['orderby'],
+		'order'          => $args['order'],
 		'post_type'      => $args['post_type'],
 		'posts_per_page' => $limit,
 	);
