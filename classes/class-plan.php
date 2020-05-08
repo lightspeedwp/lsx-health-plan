@@ -35,7 +35,6 @@ class Plan {
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
-		add_action( 'cmb2_admin_init', array( $this, 'news_connections' ) );
 	}
 
 	/**
@@ -201,57 +200,6 @@ class Plan {
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => -1,
 				),
-			)
-		);
-	}
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function news_connections() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_news_connections_metabox',
-				'title'        => __( 'News Connections', 'lsx-health-plan' ),
-				'desc'         => __( 'Start typing to search for your articles, or assign a category to pull from.', 'lsx-health-plan' ),
-				'object_types' => array( 'plan' ),
-				'context'      => 'normal',
-				'priority'     => 'high',
-				'show_names'   => true,
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'News Articles', 'lsx-health-plan' ),
-				'id'         => 'connected_posts',
-				'desc'       => __( 'Specifiy individual news posts for this workout.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'post', 'page' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-			)
-		);
-		$categories       = get_categories();
-		$category_options = array(
-			'' => __( 'Select', 'lsx-health-plan' ),
-		);
-		if ( ! empty( $categories ) ) {
-			foreach ( $categories as $category ) {
-				$category_options[ $category->term_id ] = $category->name;
-			}
-		}
-		$cmb->add_field(
-			array(
-				'name'    => __( 'News Category', 'lsx-health-plan' ),
-				'id'      => 'connected_category',
-				'desc'    => __( 'Specifiy a category to pull articles from.', 'lsx-health-plan' ),
-				'type'    => 'select',
-				'options' => $category_options,
 			)
 		);
 	}

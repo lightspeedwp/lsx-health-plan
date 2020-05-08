@@ -81,6 +81,7 @@ function exercise_box( $args = array() ) {
 		'view_more' => false,
 		'columns'   => 3,
 		'limit'     => 3,
+		'post_type' => 'exercise',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 

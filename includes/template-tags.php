@@ -553,7 +553,7 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 	$query_array = array(
 		'orderby'        => 'date',
 		'order'          => 'DESC',
-		'post_type'      => 'exercise',
+		'post_type'      => $args['post_type'],
 		'posts_per_page' => $limit,
 	);
 
@@ -575,11 +575,9 @@ function lsx_health_plan_exercise_block( $args = array() ) {
 	}
 
 	$exercises = new WP_Query( $query_array );
-
-	if ( ! post_type_exists( 'exercise' ) ) {
-		return;
+	if ( $exercises->have_posts() ) {
+		include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
 	}
-	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
 }
 
 /**
