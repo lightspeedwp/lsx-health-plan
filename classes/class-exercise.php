@@ -368,7 +368,7 @@ class Exercise {
 					'remove_button' => __( 'Remove Item', 'your-text-domain' ),
 					'sortable'      => true,
 				),
-				//'classes' => 'lsx-admin-row',
+				'classes' => 'lsx-admin-row',
 			)
 		);
 
@@ -391,7 +391,7 @@ class Exercise {
 					),
 				),
 				'preview_size' => 'lsx-thumbnail-wide',
-				//'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+				'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
 
@@ -403,7 +403,7 @@ class Exercise {
 				'id'           => $this->slug . '_gallery_embed',
 				'type'         => 'text',
 				'desc'         => __( 'Drop in the embed url for your video from YouTube, Vimeo or DailyMotion, e.g: "https://www.youtube.com/watch?v=9xwazD5SyVg". A full list of supports formats can be found at <a href="https://make.wordpress.org/support/user-manual/content/media/adding-media-to-your-pages-and-posts/embedding-media-from-other-sites/">WordPress</a>', 'lsx-health-plan' ),
-				//'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+				'classes'      => 'lsx-field-col lsx-field-connect-field  lsx-field-col-33',
 			)
 		);
 
@@ -414,7 +414,7 @@ class Exercise {
 				'id'           => $this->slug . '_gallery_external',
 				'type'         => 'textarea_code',
 				'desc'         => __( 'Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src="https://giphy.com/embed/3o7527Rn1HxXWqgxuo" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;', 'lsx-health-plan' ),
-				//'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+				'classes'      => 'lsx-field-col lsx-field-connect-field  lsx-field-col-33',
 			)
 		);
 	}
