@@ -55,25 +55,40 @@
 				$featured_image = get_the_post_thumbnail_url( $post_id, $image_size );
 				?>
 				<div style="background-image:url('<?php echo esc_url( $featured_image ); ?>')" class="lsx-exercises-item bg-<?php echo esc_html( $image_size ); ?>">
-					<a href="<?php echo esc_url( get_permalink() ); ?>" class="exercise-link excerpt-<?php echo esc_html( $description ); ?>">
+					<?php
+					if ( isset( $link ) && ( 'modal' === $link ) ) {
+						echo wp_kses_post( lsx_health_plan_shortcode_exercise_button( $post_id, true ) );
+					}
+
+					if ( 'item' === $link ) {
+						?>
+						<a href="<?php echo esc_url( get_permalink() ); ?>" class="exercise-link excerpt-<?php echo esc_html( $description ); ?>">
+						<?php
+					} else {
+						?>
+						<div class="exercise-link excerpt-<?php echo esc_html( $description ); ?>">
+						<?php
+					}
+					?>
 						<h4 class="lsx-exercises-title"><?php the_title(); ?></h4>
 						<?php if ( isset( $description ) && ( 'none' !== $description ) ) { ?>
 							<?php
 							if ( 'excerpt' === $description ) {
-								if ( ! has_excerpt() ) {
-									$content = wp_trim_words( get_the_content(), 20 );
-									$content = '<p>' . $content . '</p>';
-								} else {
-									$content = get_the_excerpt();
-								}
+								$excerpt = \lsx_health_plan\functions\hp_excerpt( $post_id );
 								?>
-								<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $content ); ?></p>
+								<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $excerpt ); ?></p>
 							<?php } ?>
 							<?php if ( 'full' === $description ) { ?>
 								<?php echo wp_kses_post( get_the_content() ); ?>
 							<?php } ?>
 						<?php } ?>
-					</a>
+						<?php
+						if ( isset( $link ) && ( 'item' === $link ) ) {
+						?>
+							</a>
+						<?php } else { ?>
+							</div>
+						<?php } ?>
 				</div>
 		<?php endwhile; ?>
 		<?php endif; ?>

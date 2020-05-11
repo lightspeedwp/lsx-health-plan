@@ -247,6 +247,12 @@
 			background-repeat: no-repeat;
 			display: flex;
 			position: relative;
+			a[data-toggle="modal"] {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
 			&.bg-full {
 				background-size: cover;
 			}
