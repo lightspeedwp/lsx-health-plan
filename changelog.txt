@@ -8,6 +8,7 @@
 - Added in a connections box to allows news posts and pages to be attached to workouts.
 - Added in a setting to allow the translation of the `plan` single slug.
 - Added in the exercise post type.
+- Added the exercise shortcode `lsx_health_plan_items`.
 
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.

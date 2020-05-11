@@ -543,41 +543,11 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
  *
  * @return void
  */
-function lsx_health_plan_exercise_block( $args = array() ) {
-
-	$taxonomy = $args['taxonomy'];
-	$term     = $args['term'];
-	$columns  = $args['columns'];
-	$limit    = $args['limit'];
-
-	$query_array = array(
-		'orderby'        => $args['orderby'],
-		'order'          => $args['order'],
-		'post_type'      => $args['post_type'],
-		'posts_per_page' => $limit,
-	);
-
-	if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
-		$include                 = explode( ',', $args['include'] );
-		$include_filter          = $include;
-		$query_array['post__in'] = $include_filter;
+function lsx_health_plan_items( $args = array() ) {
+	if ( ! post_type_exists( 'exercise' ) ) {
+		return;
 	}
-
-	if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $term ) ) {
-		$taxonomy_filter          = array(
-			array(
-				'taxonomy' => $taxonomy,
-				'field'    => 'slug',
-				'terms'    => $term,
-			),
-		);
-		$query_array['tax_query'] = $taxonomy_filter;
-	}
-
-	$exercises = new WP_Query( $query_array );
-	if ( $exercises->have_posts() ) {
-		include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
-	}
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
 }
 
 /**

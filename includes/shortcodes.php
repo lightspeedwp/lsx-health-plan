@@ -88,7 +88,7 @@ function exercise_box( $args = array() ) {
 	$args     = wp_parse_args( $args, $defaults );
 
 	ob_start();
-	echo lsx_health_plan_exercise_block( $args ); // WPCS: XSS OK.
+	echo lsx_health_plan_items( $args ); // WPCS: XSS OK.
 	$content = ob_get_clean();
 	return $content;
 }
