@@ -244,10 +244,12 @@
 		.lsx-exercises-item {
 			min-height: 200px;
 			background-position: center;
-			background-size: cover;
 			background-repeat: no-repeat;
 			display: flex;
 			position: relative;
+			&.bg-full {
+				background-size: cover;
+			}
 			@include media('<tablet') {
 				margin-bottom: 1rem;
 			}
@@ -280,6 +282,13 @@
 				position: relative;
 				padding: 1rem 2rem;
 				width: 100%;
+				&.excerpt-excerpt,
+				&.excerpt-full {
+					display: flex;
+					flex-direction: column;
+					align-items: end;
+					justify-content: flex-end;
+				}
 				.lsx-exercises-title {
 					color: white;
 					text-shadow: 1px 1px 4px rgba(0,0,0,0.5);

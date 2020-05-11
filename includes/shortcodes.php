@@ -75,15 +75,19 @@ function day_plan_box( $args = array() ) {
  */
 function exercise_box( $args = array() ) {
 	$defaults = array(
-		'include'   => '',
-		'term'      => '',
-		'taxonomy'  => '',
-		'view_more' => false,
-		'columns'   => 3,
-		'limit'     => 3,
-		'post_type' => 'exercise',
-		'orderby'   => 'date',
-		'order'     => 'DESC',
+		'include'     => '',
+		'term'        => '',
+		'taxonomy'    => '',
+		'view_more'   => false,
+		'columns'     => 3,
+		'limit'       => 3,
+		'post_type'   => 'exercise',
+		'orderby'     => 'date',
+		'order'       => 'DESC',
+		'description' => 'none',
+		'link'        => 'item',
+		'link_class'  => 'btn border-btn',
+		'image_size'  => 'lsx-thumbnail-square',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 

@@ -116,7 +116,9 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (min-width: 992px) { #lsx-exercises-shortcode .lsx-exercises-shortcode { display: -ms-grid; display: grid; column-gap: 1rem; row-gap: 1rem; -ms-grid-columns: 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; } }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { min-height: 200px; background-position: center; background-size: cover; background-repeat: no-repeat; display: -ms-flexbox; display: flex; position: relative; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { min-height: 200px; background-position: center; background-repeat: no-repeat; display: -ms-flexbox; display: flex; position: relative; }
+
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item.bg-full { background-size: cover; }
 
 @media (max-width: 991px) { #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { margin-bottom: 1rem; } }
 
@@ -125,6 +127,8 @@ table, .table { width: 100%; table-layout: fixed; }
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:hover:before { content: '\f05d'; font-family: FontAwesome; color: rgba(255, 255, 255, 0.6); font-size: 6em; opacity: 1; display: -ms-flexbox; display: flex; -ms-flex-align: baseline; align-items: baseline; -ms-flex-pack: center; justify-content: center; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link { display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: flex-end; position: relative; padding: 1rem 2rem; width: 100%; }
+
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link.excerpt-excerpt, #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link.excerpt-full { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: end; align-items: end; -ms-flex-pack: end; justify-content: flex-end; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item .exercise-link .lsx-exercises-title { color: white; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); max-width: 80%; margin-left: 0; margin-bottom: 1rem; }
 
