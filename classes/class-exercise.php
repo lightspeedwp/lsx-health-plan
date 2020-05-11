@@ -38,7 +38,7 @@ class Exercise {
 			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ) );
+			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
 		}
@@ -338,23 +338,22 @@ class Exercise {
 
 		$cmb->add_field(
 			array(
-				'title'   => __( 'Gallery', 'lsx-health-plan' ),
+				'name'    => __( 'Layout', 'lsx-health-plan' ),
 				'id'      => $this->slug . '_gallery_layout',
 				'type'    => 'radio',
 				'options' => array(
 					'slider' => __( 'Slider', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
 					'grid'   => __( 'Grid', 'your-text-domain' ),
 				),
-				//'classes' => 'lsx-admin-row',
 			)
 		);
 
 		$cmb->add_field(
 			array(
+				'name'    => __( 'Grid Columns', 'lsx-health-plan' ),
 				'id'      => $this->slug . '_gallery_columns',
-				'type'    => 'number',
+				'type'    => 'text',
 				'default' => '3',
-				//'classes' => 'lsx-admin-row',
 			)
 		);
 
