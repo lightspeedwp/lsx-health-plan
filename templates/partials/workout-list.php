@@ -29,7 +29,7 @@ if ( ! empty( $groups ) ) {
 										// We call the button to register the modal, but we do not output it.
 										lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
 
-										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'lsx-thumbnail-square', array( 'class' => 'aligncenter' ) );
+										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'lsx-thumbnail-square', array( 'class' => 'aligncenter' ) ); // phpcs:ignore
 										if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 											echo wp_kses_post( $featured_image );
 										} else {
