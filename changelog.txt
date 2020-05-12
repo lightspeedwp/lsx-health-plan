@@ -10,6 +10,7 @@
 - Added in the exercise post type.
 - Added the exercise shortcode `lsx_health_plan_items`.
 - Added support for the cover block on the Edit My Account page.
+- Added support and styling for a Grid and List views on the workout tab.
 
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.
