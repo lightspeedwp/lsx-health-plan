@@ -539,6 +539,18 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
 }
 
 /**
+ * Outputs the featured exercise shortcode
+ *
+ * @return void
+ */
+function lsx_health_plan_items( $args = array() ) {
+	if ( ! post_type_exists( 'exercise' ) ) {
+		return;
+	}
+	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
+}
+
+/**
  * Outputs the featured video shortcode
  *
  * @return void
@@ -711,6 +723,51 @@ function lsx_health_plan_recipe_type() {
 }
 
 /**
+ * Outputs the exercise type.
+ *
+ * @return exercise_type
+ */
+function lsx_health_plan_exercise_type() {
+	$term_obj_list = get_the_term_list( get_the_ID(), 'exercise-type', '', ', ' );
+	if ( ! empty( $term_obj_list ) ) {
+		return $term_obj_list;
+	}
+}
+
+/**
+ * Outputs the exercise Muscle Groups.
+ *
+ * @return muscle_group_equipment
+ */
+function lsx_health_plan_muscle_group_equipment() {
+	$term_obj_list = get_the_term_list( get_the_ID(), 'muscle-group', '', ', ' );
+	if ( ! empty( $term_obj_list ) ) {
+		return $term_obj_list;
+	}
+}
+
+/**
+ * Outputs the exercise equipment.
+ *
+ * @return exercise_equipment
+ */
+function lsx_health_plan_exercise_equipment() {
+	$term_obj_list = get_the_term_list( get_the_ID(), 'equipment', '', ', ' );
+	if ( ! empty( $term_obj_list ) ) {
+		return $term_obj_list;
+	}
+}
+
+/**
+ * Outputs the exercise info on a table.
+ *
+ * @return void
+ */
+function lsx_health_plan_exercise_data() {
+	include LSX_HEALTH_PLAN_PATH . '/templates/table-exercise-data.php';
+}
+
+/**
  * Outputs the modal button and registers the video modal to show.
  *
  * @param int $m
@@ -750,22 +807,69 @@ function lsx_health_plan_workout_video_play_button( $m, $group, $echo = true ) {
 }
 
 /**
- * A function to call the play button
+ * Outputs the modal button and registers the exercise modal to show.
  *
- * @param [type] $m
- * @param [type] $group
- * @param boolean $echo
+ * @param int $m
+ * @param array $group
  * @return void
  */
-function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true ) {
-	$workout_video = '';
+function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
+	$equipment_group = get_the_term_list( $m, 'equipment', '', ', ' );
+	$muscle_group    = get_the_term_list( $m, 'muscle-group', '', ', ' );
+	$title           = get_the_title();
+	$button     = '<a data-toggle="modal" href="#exercise-modal-' . $m . '" data-target="#exercise-modal-' . $m . '"></a>';
+
+	if ( true === $content ) {
+		$content = get_the_content();
+	}
+
+	$modal_body = '';
+	$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $m, 'lsx-thumbnail-single' ) . '</div>';
+	$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . $title . '</h5>';
+	$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+	$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
+	$modal_body .= $content;
+	\lsx_health_plan\functions\register_modal( 'exercise-modal-' . $m, '', $modal_body );
+
+	return wp_kses_post( $button );
+}
+
+/**
+ * A function to call the play button
+ *
+ * @param string  $m A unique ID for the modal.
+ * @param array   $group The current workout set being looped through.
+ * @param boolean $echo
+ * @param array   $args
+ * @return void
+ */
+function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $args = array() ) {
+	$defaults    = array(
+		'modal_trigger' => 'button',
+	);
+	$args        = wp_parse_args( $args, $defaults );
+	$exercise_id = '';
 	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
-		$workout_video = esc_html( $group['connected_exercises'] );
-		$content       = get_post_field( 'post_content', $workout_video );
-		$play_button   = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
-		$modal_body    = '';
-		$modal_body .= '<h5 class="modal-title title-lined">' . $group['name'] . '</h5>';
-		$modal_body .= $content;
+		$exercise_id     = esc_html( $group['connected_exercises'] );
+		$content         = get_post_field( 'post_content', $exercise_id );
+		$content         = wp_trim_words( $content, 40 );
+		$url             = get_permalink( $exercise_id );
+		$equipment_group = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
+		$muscle_group    = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
+
+		if ( 'link' ) {
+			$play_button = '<a data-toggle="modal" href="#workout-exercise-modal-' . $m . '">' . get_the_title( $exercise_id ) . '</a>';
+		} else {
+			$play_button = '<button data-toggle="modal" data-target="#workout-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
+		}
+
+		$modal_body  = '';
+		$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'lsx-thumbnail-single' ) . '</div>';
+		$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $exercise_id ) . '</h5>';
+		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
+		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
+		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {
@@ -785,6 +889,8 @@ function lsx_health_plan_recipe_archive_description() {
 	$description = '';
 	if ( is_post_type_archive( 'recipe' ) ) {
 		$description = \lsx_health_plan\functions\get_option( 'recipe_archive_description', '' );
+	} elseif ( is_post_type_archive( 'exercise' ) ) {
+		$description = \lsx_health_plan\functions\get_option( 'exercise_archive_description', '' );
 	} elseif ( is_tax() ) {
 		$description = get_the_archive_description();
 	}
@@ -794,5 +900,38 @@ function lsx_health_plan_recipe_archive_description() {
 			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
 		</div>
 		<?php
+	}
+}
+
+/**
+ * Outputs the Single Plan Workout Tab based on the layout selected.
+ *
+ * @param  string $index
+ * @return void
+ */
+function lsx_health_plan_workout_tab_content( $index = 1 ) {
+	global $group_name;
+	$group_name = 'workout_section_' . $index;
+	if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+		$layout = strtolower( \lsx_health_plan\functions\get_option( 'workout_tab_layout', 'table' ) );
+	} else {
+		$layout = 'table';
+	}
+	switch ( $layout ) {
+		case 'list':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-list.php';
+			break;
+
+		case 'grid':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-grid.php';
+			break;
+
+		case 'table':
+			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-table.php';
+			break;
+	}
+	$tab_template_path = apply_filters( 'lsx_health_plan_workout_tab_content_path', $tab_template_path );
+	if ( '' !== $tab_template_path ) {
+		include $tab_template_path;
 	}
 }

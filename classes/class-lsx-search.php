@@ -36,6 +36,9 @@ class LSX_Search {
 	 */
 	public function __construct() {
 		add_action( 'lsx_hp_recipe_settings_page', array( $this, 'register_settings' ), 9, 1 );
+		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			add_action( 'lsx_hp_exercise_settings_page', array( $this, 'exercise_register_settings' ), 9, 1 );
+		}
 		add_action( 'wp', array( $this, 'init' ), 5 );
 	}
 
@@ -58,8 +61,15 @@ class LSX_Search {
 	 * Runs the recipe search setup
 	 */
 	public function init() {
-		$enabled = \lsx_health_plan\functions\get_option( 'recipe_search_enable', false );
-		if ( false !== $enabled ) {
+		$enabled_recipe = \lsx_health_plan\functions\get_option( 'recipe_search_enable', false );
+		$enabled_exercise = \lsx_health_plan\functions\get_option( 'exercise_search_enable', false );
+		if ( ( false !== $enabled_recipe ) && ( is_post_type_archive( 'recipe' ) ) ) {
+			// LSX Search filters.
+			add_filter( 'lsx_search_options', array( $this, 'lsx_search_options' ), 10, 1 );
+			add_filter( 'lsx_search_enabled', array( $this, 'lsx_search_enabled' ), 10, 1 );
+			add_filter( 'lsx_search_prefix', array( $this, 'lsx_search_prefix' ), 10, 1 );
+		}
+		if ( ( false !== $enabled_exercise ) && ( is_post_type_archive( 'exercise' ) ) ) {
 			// LSX Search filters.
 			add_filter( 'lsx_search_options', array( $this, 'lsx_search_options' ), 10, 1 );
 			add_filter( 'lsx_search_enabled', array( $this, 'lsx_search_enabled' ), 10, 1 );
@@ -191,7 +201,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'recipe' ) ) {
+		if ( is_post_type_archive( array( 'recipe', 'exercise' ) ) ) {
 			$enabled = true;
 		}
 		return $enabled;
@@ -204,14 +214,14 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'recipe' ) ) {
+		if ( is_post_type_archive( array( 'recipe', 'exercise' ) ) ) {
 			$prefix = 'archive';
 		}
 		return $prefix;
 	}
 
 	/**
-	 * Adds the recipe options to the lsx search options.
+	 * Adds the recipe and exercise options to the lsx search options.
 	 *
 	 * @param array $options
 	 * @return array
@@ -237,6 +247,117 @@ class LSX_Search {
 				'archive_display_clear_button' => \lsx_health_plan\functions\get_option( 'recipe_search_display_clear_button', false ),
 			);
 		}
+		if ( is_post_type_archive( 'exercise' ) ) {
+
+			$active_facets = \lsx_health_plan\functions\get_option( 'exercise_search_facets', array() );
+			$facets = array();
+			foreach ( $active_facets as $index => $facet_name ) {
+				$facets[ $facet_name ] = 'on';
+			}
+			$options['display'] = array(
+				'search_enable'                => 'on',
+				'archive_disable_all_sorting'  => \lsx_health_plan\functions\get_option( 'exercise_search_disable_all_sorting', false ),
+				'archive_disable_date_sorting'  => \lsx_health_plan\functions\get_option( 'exercise_search_disable_date_sorting', false ),
+				'archive_layout'               => \lsx_health_plan\functions\get_option( 'exercise_search_layout', '2cr' ),
+				'archive_layout_map'           => 'list',
+				'archive_display_result_count' => \lsx_health_plan\functions\get_option( 'exercise_search_display_result_count', 'on' ),
+				'enable_collapse'              => \lsx_health_plan\functions\get_option( 'exercise_search_enable_collapse', false ),
+				'archive_facets'               => $facets,
+				'archive_display_clear_button' => \lsx_health_plan\functions\get_option( 'exercise_search_display_clear_button', false ),
+			);
+		}
 		return $options;
+	}
+
+	/**
+	 * Registers the lsx_search_settings for Exercises
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function exercise_register_settings( $cmb ) {
+		$this->set_facetwp_vars();
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Enable Search', 'lsx-health-plan' ),
+				'id'      => 'exercise_search_enable',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Layout', 'lsx-health-plan' ),
+				'id'      => 'exercise_search_layout',
+				'type'    => 'select',
+				'options' => array(
+					''    => __( 'Follow the theme layout', 'lsx-health-plan' ),
+					'1c'  => __( '1 column', 'lsx-health-plan' ),
+					'2cr' => __( '2 columns / Content on right', 'lsx-health-plan' ),
+					'2cl' => __( '2 columns / Content on left', 'lsx-health-plan' ),
+				),
+				'default' => '',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Collapse', 'lsx-health-plan' ),
+				'id'          => 'exercise_search_enable_collapse',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Enable collapsible filters on search results', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Disable Sorting', 'lsx-health-plan' ),
+				'id'          => 'exercise_search_disable_all_sorting',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Disables the sort by dropdown.', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Disable the date option', 'lsx-health-plan' ),
+				'id'          => 'exercise_search_disable_date_sorting',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'Disables the date option for the sort by dropdown.', 'lsx-health-plan' ),
+				'default'     => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Display Result Count', 'lsx-health-plan' ),
+				'id'      => 'exercise_search_display_result_count',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 1,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Display Clear Button', 'lsx-health-plan' ),
+				'id'          => 'exercise_search_display_clear_button',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'description' => __( 'This will display a clear button next to the "result" count.', 'lsx-health-plan' ),
+				'default'     => 1,
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Facets', 'lsx-health-plan' ),
+				'description' => __( 'These are the filters that will appear on your archive page.', 'lsx-health-plan' ),
+				'id'          => 'exercise_search_facets',
+				'type'        => 'multicheck',
+				'options'     => $this->facet_data,
+			)
+		);
 	}
 }

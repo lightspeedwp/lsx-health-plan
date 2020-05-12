@@ -391,7 +391,7 @@
 					text-transform: uppercase;
 					color: $blue;
 				}
-				.set-content, .set-table {
+				.set-content, .set-table, .set-list, .set-grid {
 					font-size: 16px;
 					color: #222222;
 				}
@@ -424,6 +424,30 @@
 							}
 						}
 					}
+				}
+
+				.set-list {
+					.workout-list {
+						article {
+							margin-bottom: 19px;
+
+							.col-md-9 {
+								padding-left: 0px;
+							}
+
+							.title {
+								h3 {
+									margin-top: 15px;
+									margin-bottom: 15px;
+								}
+							}
+							
+						}
+					}
+				}
+
+				.set-grid {
+
 				}
 			}
 			.modal.in {
@@ -502,6 +526,15 @@
 	}
 }
 
+.equipment-terms,
+.muscle-terms,
+.muscle-field-item,
+.equipment-field-item {
+	a {
+		text-transform: capitalize;
+	}
+}
+
 .lsx-health-plan-modal {
   .modal-header {
     display: none;
@@ -513,6 +546,33 @@
     margin-bottom: 25px;
   }
   .modal-body {
+	.exercise-modal {
+		&.title-lined {
+			padding-bottom: 15px;
+			margin-bottom: 20px;
+		}
+		.modal-title {
+			margin-bottom: 0;
+			margin-top: 15px;
+			padding-bottom: 5px;
+		}
+		.equipment-terms,
+		.muscle-terms {
+			display: block;
+			color: #919191;
+			font-size: 13px;
+		}
+	}
+	.moretag {
+		margin-top: 1rem;
+		display: block;
+		text-transform: uppercase;
+		&:after {
+			content: '\f105';
+			font-family: FontAwesome;
+			margin-left: 1rem;
+		}
+	}
     @media (max-width: 600px) {
       iframe {
         height: 100%;
@@ -522,7 +582,11 @@
 }
 
 .post-type-archive-recipe,
-.tax-recipe-type {
+.tax-recipe-type,
+.post-type-archive-exercise,
+.tax-exercise-type,
+.tax-muscle-group,
+.tax-equipment {
 	.archive-plan {
 		.row {
 			.col-md-4 {
@@ -539,7 +603,8 @@
 					font-weight: bold;
 					border-radius: 1px;
 				}
-				.recipe-feature-img {
+				.recipe-feature-img,
+				.exercise-feature-img {
 					img {
 						width: 100%;
 					}
@@ -550,7 +615,7 @@
 					flex-direction: column;
 					justify-content: space-between;
 					padding: 10px 15px 0;
-					table {
+					table:not(.exercise-table) {
 						flex-grow: 2;
 						display: flex;
 						margin-bottom: 10px;
@@ -589,7 +654,8 @@
 							display: none;
 						}
 					}
-					.recipe-title {
+					.recipe-title,
+					.exercise-title {
 						margin-bottom: 15px;
 					}
 					a {
@@ -601,6 +667,40 @@
 							color: $blue;
 						}
 					}
+					&.exercise-content-box {
+						.exercise-table {
+							font-size: 13px;
+							color: #919191;
+							a {
+								text-transform: capitalize;
+								&:after {
+									content: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		&.exercise-archive-plan {
+			.lsx-slot {
+				.title-lined {
+					margin-bottom: 10px;
+					padding-bottom: 10px;
+					.exercise-title {
+						margin-bottom: 10px;
+					}
+					.exercise-table {
+						margin-bottom: 0;
+						tbody {
+							> tr {
+								display: flex;
+							}
+						}
+					}
+				}
+				.moretag {
+					display: none;
 				}
 			}
 		}
@@ -630,4 +730,19 @@
       }
     }
   }
+}
+
+.tax-exercise-type,
+.tax-muscle-group,
+.tax-equipment {
+	.archive-header-wrapper {
+		.archive-header {
+			.archive-title {
+				text-transform: capitalize;
+			}
+			p {
+				display: none;
+			}
+		}
+	}
 }

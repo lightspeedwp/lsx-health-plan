@@ -84,6 +84,7 @@ class Settings {
 	 * @return void
 	 */
 	public function set_vars() {
+
 		$this->default_types  = array(
 			'page' => array(
 				'title'       => __( 'Warm Up', 'lsx-health-plan' ),
@@ -159,6 +160,10 @@ class Settings {
 		$this->endpoints['my_plan_slug'] = array(
 			'title'   => __( 'My Plan Slug', 'lsx-health-plan' ),
 			'default' => 'my-plan',
+		);
+		$this->endpoints['plan_single_slug'] = array(
+			'title'   => __( 'Single Plan Slug', 'lsx-health-plan' ),
+			'default' => 'plan',
 		);
 
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
@@ -295,6 +300,10 @@ class Settings {
 				$sortable = true;
 			}
 
+			if ( 'page' === $type && false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+				$type = array( 'page', 'workout' );
+			}
+
 			$cmb->add_field(
 				array(
 					'name'       => $default_type['title'],
@@ -304,7 +313,7 @@ class Settings {
 					'limit'      => $limit,
 					'sortable'   => $sortable,
 					'query_args' => array(
-						'post_type'      => array( $type ),
+						'post_type'      => $type,
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
@@ -394,25 +403,28 @@ class Settings {
 	 * @return void
 	 */
 	public function exercise_translations( $cmb ) {
-		$cmb->add_field(
-			array(
-				'id'          => 'exercise_endpoints_title',
-				'type'        => 'title',
-				'name'        => __( 'Set Exercise Translations', 'lsx-health-plan' ),
-				'default'     => __( 'Set Exercise Translations', 'lsx-health-plan' ),
-				'description' => __( 'You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
-			)
-		);
-		foreach ( $this->endpoints['exercise'] as $slug => $endpoint_vars ) {
+		if ( isset( $this->endpoints['exercise'] ) && '' !== $this->endpoints['exercise'] && ! empty( $this->endpoints['exercise'] ) ) {
 			$cmb->add_field(
 				array(
-					'name'    => $endpoint_vars['title'],
-					'id'      => 'endpoint_' . $slug,
-					'type'    => 'input',
-					'value'   => '',
-					'default' => $endpoint_vars['default'],
+					'id'          => 'exercise_endpoints_title',
+					'type'        => 'title',
+					'name'        => __( 'Set Exercise Translations', 'lsx-health-plan' ),
+					'default'     => __( 'Set Exercise Translations', 'lsx-health-plan' ),
+					'description' => __( 'You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
 				)
 			);
+
+			foreach ( $this->endpoints['exercise'] as $slug => $endpoint_vars ) {
+				$cmb->add_field(
+					array(
+						'name'    => $endpoint_vars['title'],
+						'id'      => 'endpoint_' . $slug,
+						'type'    => 'input',
+						'value'   => '',
+						'default' => $endpoint_vars['default'],
+					)
+				);
+			}
 		}
 	}
 

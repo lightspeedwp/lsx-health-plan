@@ -5,6 +5,10 @@
 ### Added
 - Extend the current single recipe post type to display additional fields.
 - Added placeholder image for recipes.
+- Added in a connections box to allows news posts and pages to be attached to workouts.
+- Added in a setting to allow the translation of the `plan` single slug.
+- Added in the exercise post type.
+- Added the exercise shortcode `lsx_health_plan_items`.
 - Added support for the cover block on the Edit My Account page.
 
 ### Fixed

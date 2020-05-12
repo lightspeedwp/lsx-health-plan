@@ -4,18 +4,10 @@
  *
  * @package lsx-health-plan
  */
-?>
 
-<?php
-$prep_time     = get_post_meta( get_the_ID(), 'recipe_prep_time', true );
-$cooking_time  = get_post_meta( get_the_ID(), 'recipe_cooking_time', true );
-$serves        = get_post_meta( get_the_ID(), 'recipe_serves', true );
-$portion       = get_post_meta( get_the_ID(), 'recipe_portion', true );
-$energy        = get_post_meta( get_the_ID(), 'recipe_energy', true );
-$protein       = get_post_meta( get_the_ID(), 'recipe_protein', true );
-$carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
-$fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
-$fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
+$type         = lsx_health_plan_exercise_type();
+$equipment    = lsx_health_plan_exercise_equipment();
+$muscle_group = lsx_health_plan_muscle_group_equipment();
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -28,10 +20,10 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		<?php lsx_post_meta_single_bottom(); ?>
 	</div><!-- .entry-meta -->
 
-	<div id="single-recipe" class="entry-content">
-		<h2 class="title-lined"><span class="recipe-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
+	<div id="single-exercise" class="entry-content">
+		<h2 class="title-lined"><span class="exercise-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
 		<div class="row">
-			<div class="col-md-6 recipe-image lsx-hp-shadow">
+			<div class="col-md-6 exercise-image lsx-hp-shadow">
 				<?php
 				$featured_image = get_the_post_thumbnail();
 				if ( ! empty( $featured_image ) && '' !== $featured_image ) {
@@ -44,13 +36,56 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 					<?php
 				}
 				?>
-				<?php if ( ( ! empty( $prep_time ) ) || ( ! empty( $cooking_time ) ) || ( ! empty( $serves ) ) || ( ! empty( $portion ) ) || ( ! empty( $energy ) ) || ( ! empty( $protein ) ) || ( ! empty( $carbohydrates ) ) || ( ! empty( $fibre ) ) || ( ! empty( $fat ) ) ) { ?>
-				<div class="recipe-data">
-					<?php lsx_health_plan_recipe_data(); ?>
-				</div>
+				<?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
+					<table class="exercise-table">
+						<tbody>
+							<?php
+							if ( ! empty( $type ) ) {
+							?>
+								<tr class="types">
+									<td><?php esc_html_e( 'Type:', 'lsx-health-plan' ); ?>&nbsp</td>
+									<td>
+									<?php
+										echo wp_kses_post( $type );
+									?>
+									</td>
+								</tr>
+							<?php
+							}
+							?>
+							<?php
+							if ( ! empty( $muscle_group ) ) {
+							?>
+								<tr class="muscle-group">
+									<td><?php esc_html_e( 'Muscle Group:', 'lsx-health-plan' ); ?>&nbsp</td>
+									<td>
+									<?php
+										echo wp_kses_post( $muscle_group );
+									?>
+									</td>
+								</tr>
+							<?php
+							}
+							?>
+							<?php
+							if ( ! empty( $equipment ) ) {
+							?>
+								<tr class="equipment">
+									<td><?php esc_html_e( 'Equipment:', 'lsx-health-plan' ); ?>&nbsp</td>
+									<td>
+									<?php
+										echo wp_kses_post( $equipment );
+									?>
+									</td>
+								</tr>
+							<?php
+							}
+							?>
+						</tbody>
+					</table>
 				<?php } ?>
 			</div>
-			<div class="col-md-6 recipe-content">
+			<div class="col-md-6 exercise-content">
 				<?php the_content(); ?>
 				<div  class="back-plan-btn">
 				<?php

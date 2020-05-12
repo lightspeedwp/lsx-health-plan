@@ -337,3 +337,19 @@ function set_only_author( $wp_query ) {
 	}
 }
 add_action( 'pre_get_posts', '\lsx_health_plan\functions\set_only_author' );
+
+/**
+ * Outputs an excerpt even if there is not excerpt.
+ *
+ * @param [type] $post_id
+ * @return void
+ */
+function hp_excerpt( $post_id ) {
+	if ( ! has_excerpt( $post_id ) ) {
+		$content = wp_trim_words( get_the_content( $post_id ), 20 );
+		$content = '<p>' . $content . '</p>';
+	} else {
+		$content = get_the_excerpt( $post_id );
+	}
+	return $content;
+}
