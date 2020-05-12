@@ -579,6 +579,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
 
+.single-plan .single-plan-inner.workout-content .sets .set-box.set, .archive-plan .single-plan-inner.workout-content .sets .set-box.set { padding: 20px 16px; }
+
 .single-plan .single-plan-inner.workout-content .sets .set-title, .archive-plan .single-plan-inner.workout-content .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-content, .single-plan .single-plan-inner.workout-content .sets .set-table, .single-plan .single-plan-inner.workout-content .sets .set-list, .single-plan .single-plan-inner.workout-content .sets .set-grid, .archive-plan .single-plan-inner.workout-content .sets .set-content, .archive-plan .single-plan-inner.workout-content .sets .set-table, .archive-plan .single-plan-inner.workout-content .sets .set-list, .archive-plan .single-plan-inner.workout-content .sets .set-grid { font-size: 16px; color: #222222; }
@@ -593,11 +595,31 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa, .archive-plan .single-plan-inner.workout-content .sets .set-table .workout-table tr td.video-button-item button:hover .fa { color: #f7ae00; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article { margin-bottom: 19px; }
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article { margin-bottom: 19px; background-color: white; margin: 1.5rem 0.5rem; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-9, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-9 { padding-left: 0px; }
+@media (max-width: 991px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article { padding: 15px; } }
+
+@media (min-width: 992px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article > .row, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article > .row { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
+
+@media (max-width: 768px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-2, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-2 { display: none; } }
+
+@media (min-width: 992px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-2 .exercise-feature-img a img, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-2 .exercise-feature-img a img { max-width: 120px; } }
+
+@media (min-width: 992px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10 { padding-left: 0px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; padding-right: 5.4rem; } }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10 .btn:after, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10 .btn:after { content: '\f105'; font-family: FontAwesome; margin-left: 1rem; }
+
+@media (max-width: 600px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10 .btn, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .col-md-10 .btn { width: 100%; } }
 
 .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 { margin-top: 15px; margin-bottom: 15px; }
+
+@media (max-width: 768px) { .single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 { margin-top: 0; } }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; color: #434343; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a .reps, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a .reps { font-size: 15px; color: #434343; text-transform: uppercase; font-family: 'Noto Sans', sans-serif; font-weight: bold; margin-top: 10px; }
+
+.single-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a .reps:before, .archive-plan .single-plan-inner.workout-content .sets .set-list .workout-list article .title h3 a .reps:before { content: '\f01e'; font-family: FontAwesome; margin-right: 1rem; color: #418ad0; font-size: 20px; font-weight: 200; }
 
 .single-plan .single-plan-inner.workout-content .modal.in, .archive-plan .single-plan-inner.workout-content .modal.in { background-color: rgba(0, 0, 0, 0.5); }
 
