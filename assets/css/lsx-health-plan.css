@@ -579,7 +579,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
 
-.single-plan .single-plan-inner.workout-content .sets .set-box.set, .archive-plan .single-plan-inner.workout-content .sets .set-box.set { padding: 20px 16px; }
+.single-plan .single-plan-inner.workout-content .sets .set-box.set, .archive-plan .single-plan-inner.workout-content .sets .set-box.set { padding: 20px 15px 10px; }
 
 .single-plan .single-plan-inner.workout-content .sets .set-title, .archive-plan .single-plan-inner.workout-content .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
 
