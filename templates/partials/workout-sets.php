@@ -5,7 +5,6 @@
  * @package lsx-health-plan
  */
 global $group_name, $connected_workouts;
-var_dump( $connected_workouts );
 ?>
 <div class="sets">
 	<?php
