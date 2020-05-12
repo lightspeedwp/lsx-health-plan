@@ -428,13 +428,60 @@
 						}
 					}
 				}
-
-				.set-list {
-					.workout-list {
+				.set-list,
+				.set-grid {
+					.workout-list,
+					.workout-grid {
 						article {
 							margin-bottom: 19px;
 							background-color: white;
 							margin: 1.5rem 0.5rem;
+							.title {
+								h3 {
+									margin-top: 15px;
+									margin-bottom: 15px;
+									@include media('<=phone') {
+										margin-top: 0;
+									}
+									a {
+										display: flex;
+										flex-direction: column;
+										color: #434343;
+										.reps {
+											font-size: 15px;
+											color: #434343;
+											text-transform: uppercase;
+											font-family: 'Noto Sans', sans-serif;
+											font-weight: bold;
+											margin-top: 10px;
+											&:before {
+												content: '\f01e';
+												font-family: FontAwesome;
+												margin-right: 1rem;
+												color: $blue;
+												font-size: 20px;
+												font-weight: 200;
+											}
+										}
+									}
+								}
+							}
+							.btn {
+								&:after {
+									content: '\f105';
+									font-family: FontAwesome;
+									margin-left: 1rem;
+								}
+								@media (max-width:600px) {
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+				.set-list {
+					.workout-list {
+						article {
 							@include media('<tablet') {
 								padding: 15px;
 							}
@@ -467,55 +514,44 @@
 									align-items: center;
 									padding-right: 5.4rem;
 								}
-								.btn {
-									&:after {
-										content: '\f105';
-										font-family: FontAwesome;
-										margin-left: 1rem;
-									}
-									@media (max-width:600px) {
-										width: 100%;
-									}
-								}
 							}
-
-							.title {
-								h3 {
-									margin-top: 15px;
-									margin-bottom: 15px;
-									@include media('<=phone') {
-										margin-top: 0;
-									}
-									a {
-										display: flex;
-										flex-direction: column;
-										color: #434343;
-										.reps {
-											font-size: 15px;
-											color: #434343;
-											text-transform: uppercase;
-											font-family: 'Noto Sans', sans-serif;
-											font-weight: bold;
-											margin-top: 10px;
-											&:before {
-												content: '\f01e';
-												font-family: FontAwesome;
-												margin-right: 1rem;
-												color: $blue;
-												font-size: 20px;
-												font-weight: 200;
-											}
-										}
-									}
-								}
-							}
-							
 						}
 					}
 				}
 
 				.set-grid {
-
+					.workout-grid {
+						padding: 0 10px;
+						>.col-md-4 {
+							padding: 5px;
+							@include media('<=phone') {
+								padding: 0;
+							}
+						}
+						article {
+							.exercise-feature-img {
+								@include media('<=phone') {
+									display: none;
+								}
+								@include media('>=tablet') {
+									img {
+										max-height: 250px;
+										width: 100%;
+										object-fit: cover;
+									}
+								}
+							}
+							.title {
+								padding: 15px;
+								h3 {
+									margin-top: 0;
+								}
+								.btn {
+									width: 100%;
+								}
+							}
+						}
+					}
 				}
 			}
 			.modal.in {

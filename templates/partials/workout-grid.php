@@ -32,7 +32,7 @@ if ( ! empty( $groups ) ) {
 										echo wp_kses_post( $featured_image );
 									} else {
 										?>
-										<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+										<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
 										<?php
 									}
 									?>
@@ -44,12 +44,13 @@ if ( ! empty( $groups ) ) {
 										<?php
 										$exercise_title = get_the_title( $group['connected_exercises'] );
 										if ( '' !== $reps ) {
-											$exercise_title .= ' - ' . $reps;
+											$exercise_title .= $reps;
 										}
 										echo wp_kses_post( $exercise_title );
 										?>
 									</a>
 								</h3>
+								<a href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn  border-btn"><?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?></a>
 							</div>
 						</article>
 					</div>
