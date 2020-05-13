@@ -31,16 +31,24 @@ class Exercise {
 	 */
 	public function __construct() {
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			// Post Type and Taxonomies.
 			add_action( 'init', array( $this, 'register_post_type' ) );
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
-			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
-			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
-			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+
+			// Settings.
+			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
+
+			// Custom Fields.
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_details' ), 8 );
 			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
-			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
+			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+
+			// Template Redirects.
+			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		}
 	}
 
@@ -417,5 +425,9 @@ class Exercise {
 				'classes'      => 'lsx-field-col lsx-field-connect-field  lsx-field-col-33',
 			)
 		);
+	}
+
+	public function exercise_details() {
+
 	}
 }
