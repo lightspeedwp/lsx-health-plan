@@ -44,7 +44,7 @@ if ( ! empty( $groups ) ) {
 								<h3>
 									<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
 										<?php
-										$exercise_title = get_the_title( $group['connected_exercises'] );
+										$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
 										if ( '' !== $reps ) {
 											$exercise_title .= $reps;
 										}

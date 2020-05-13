@@ -243,7 +243,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 						while ( $results->have_posts() ) : $results->the_post();
 							// Define filter "mag_cmb_post_search_ajax_result" to allow customize ajax results.
 							$datas[] = apply_filters( 'mag_cmb_post_search_ajax_result', array(
-								'value' => get_the_title(),
+								'value' => get_the_title() . ' - ' . '#' . get_the_ID(),
 								'data'	=> get_the_ID(),
 								'guid'	=> get_edit_post_link(),
 							) );
