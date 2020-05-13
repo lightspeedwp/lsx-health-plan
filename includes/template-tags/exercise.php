@@ -6,6 +6,15 @@
  */
 
 /**
+ * Outputs the exercise info on a table.
+ *
+ * @return void
+ */
+function lsx_health_plan_exercise_data() {
+	include LSX_HEALTH_PLAN_PATH . '/templates/table-exercise-data.php';
+}
+
+/**
  * A function to call the play button
  *
  * @param string  $m A unique ID for the modal.
