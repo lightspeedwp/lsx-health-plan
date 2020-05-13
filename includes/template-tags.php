@@ -747,18 +747,6 @@ function lsx_health_plan_muscle_group_equipment() {
 }
 
 /**
- * Outputs the exercise equipment.
- *
- * @return exercise_equipment
- */
-function lsx_health_plan_exercise_equipment() {
-	$term_obj_list = get_the_term_list( get_the_ID(), 'equipment', '', ', ' );
-	if ( ! empty( $term_obj_list ) ) {
-		return $term_obj_list;
-	}
-}
-
-/**
  * Outputs the modal button and registers the video modal to show.
  *
  * @param int $m
