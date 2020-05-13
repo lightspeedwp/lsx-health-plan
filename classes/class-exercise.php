@@ -427,7 +427,35 @@ class Exercise {
 		);
 	}
 
+	/**
+	 * Registers the general settings for the exercise.
+	 *
+	 * @return void
+	 */
 	public function exercise_details() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_general_details_metabox',
+				'title'        => __( 'Details', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
 
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Side', 'lsx-health-plan' ),
+				'id'      => $this->slug . '_side',
+				'type'    => 'select',
+				'options' => array(
+					''      => __( 'Select', 'your-text-domain' ),
+					'left'  => __( 'Left', 'your-text-domain' ),
+					'right' => __( 'Right', 'your-text-domain' ),
+				),
+				'desc'    => __( 'Select which side this exercise uses. ', 'lsx-health-plan' ),
+			)
+		);
 	}
 }
