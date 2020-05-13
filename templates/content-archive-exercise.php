@@ -31,7 +31,7 @@
 		</div>
 		<div class="content-box exercise-content-box white-bg">
 			<div class="title-lined">
-				<h3 class="exercise-title"><?php the_title(); ?></h3>
+				<?php lsx_health_plan_exercise_title( '<h3 class="exercise-title">', '</h3>' ); ?>
 				<?php lsx_health_plan_exercise_data(); ?>
 			</div>
 			<?php

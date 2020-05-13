@@ -31,16 +31,24 @@ class Exercise {
 	 */
 	public function __construct() {
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
+			// Post Type and Taxonomies.
 			add_action( 'init', array( $this, 'register_post_type' ) );
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
-			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
-			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
-			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+
+			// Settings.
+			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
+
+			// Custom Fields.
+			add_action( 'cmb2_admin_init', array( $this, 'exercise_details' ), 8 );
 			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
-			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
+			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+
+			// Template Redirects.
+			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		}
 	}
 
@@ -415,6 +423,38 @@ class Exercise {
 				'type'         => 'textarea_code',
 				'desc'         => __( 'Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src="https://giphy.com/embed/3o7527Rn1HxXWqgxuo" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;', 'lsx-health-plan' ),
 				'classes'      => 'lsx-field-col lsx-field-connect-field  lsx-field-col-33',
+			)
+		);
+	}
+
+	/**
+	 * Registers the general settings for the exercise.
+	 *
+	 * @return void
+	 */
+	public function exercise_details() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_general_details_metabox',
+				'title'        => __( 'Details', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ),
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Side', 'lsx-health-plan' ),
+				'id'      => $this->slug . '_side',
+				'type'    => 'select',
+				'options' => array(
+					''      => __( 'Select', 'your-text-domain' ),
+					'left'  => __( 'Left', 'your-text-domain' ),
+					'right' => __( 'Right', 'your-text-domain' ),
+				),
+				'desc'    => __( 'Select which side this exercise uses. ', 'lsx-health-plan' ),
 			)
 		);
 	}
