@@ -133,7 +133,12 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
  * @return string
  */
 function lsx_health_plan_exercise_title( $before = '', $after = '', $echo = true ) {
-	$title = apply_filters( 'lsx_health_plan_exercise_title', $before . get_the_title() . $after, get_the_title(), $before, $after );
+	$title = get_the_title();
+	$side  = get_post_meta( get_the_ID(), 'exercise_side', true );
+	if ( '' !== $side ) {
+		$title .= ' - ' . ucwords( $side );
+	}
+	$title = apply_filters( 'lsx_health_plan_exercise_title', $before . $title . $after, $title, $before, $after );
 	if ( true === $echo ) {
 		echo wp_kses_post( $title );
 	} else {
