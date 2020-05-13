@@ -50,3 +50,31 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		}
 	}
 }
+
+/**
+ * Outputs the modal button and registers the exercise modal to show.
+ *
+ * @param int $m
+ * @param array $group
+ * @return void
+ */
+function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
+	$equipment_group = get_the_term_list( $m, 'equipment', '', ', ' );
+	$muscle_group    = get_the_term_list( $m, 'muscle-group', '', ', ' );
+	$title           = get_the_title();
+	$button     = '<a data-toggle="modal" href="#exercise-modal-' . $m . '" data-target="#exercise-modal-' . $m . '"></a>';
+
+	if ( true === $content ) {
+		$content = get_the_content();
+	}
+
+	$modal_body = '';
+	$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $m, 'lsx-thumbnail-single' ) . '</div>';
+	$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . $title . '</h5>';
+	$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+	$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
+	$modal_body .= $content;
+	\lsx_health_plan\functions\register_modal( 'exercise-modal-' . $m, '', $modal_body );
+
+	return wp_kses_post( $button );
+}
