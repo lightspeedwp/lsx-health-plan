@@ -21,7 +21,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 	</div><!-- .entry-meta -->
 
 	<div id="single-exercise" class="entry-content">
-		<h2 class="title-lined"><span class="exercise-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
+		<?php lsx_health_plan_exercise_title( '<h2 class="title-lined">', '</h2>' ); ?>
 		<div class="row">
 			<div class="col-md-6 exercise-image lsx-hp-shadow">
 				<?php

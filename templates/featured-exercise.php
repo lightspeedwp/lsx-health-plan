@@ -70,7 +70,7 @@
 						<?php
 					}
 					?>
-						<h4 class="lsx-exercises-title"><?php the_title(); ?></h4>
+						<?php lsx_health_plan_exercise_title( '<h4 class="lsx-exercises-title">', '</h4>' ); ?>
 						<?php if ( isset( $description ) && ( 'none' !== $description ) ) { ?>
 							<?php
 							if ( 'excerpt' === $description ) {

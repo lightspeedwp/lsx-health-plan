@@ -123,3 +123,20 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 
 	return wp_kses_post( $button );
 }
+
+/**
+ * Gets the exercise title along with the side its on.
+ *
+ * @param  string $before
+ * @param  string $after
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_health_plan_exercise_title( $before = '', $after = '', $echo = true ) {
+	$title = apply_filters( 'lsx_health_plan_exercise_title', $before . get_the_title() . $after, get_the_title(), $before, $after );
+	if ( true === $echo ) {
+		echo wp_kses_post( $title );
+	} else {
+		return $title;
+	}
+}
