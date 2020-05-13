@@ -6,6 +6,30 @@
  */
 
 /**
+ * Outputs the exercise type.
+ *
+ * @return exercise_type
+ */
+function lsx_health_plan_exercise_type() {
+	$term_obj_list = get_the_term_list( get_the_ID(), 'exercise-type', '', ', ' );
+	if ( ! empty( $term_obj_list ) ) {
+		return $term_obj_list;
+	}
+}
+
+/**
+ * Outputs the exercise Muscle Groups.
+ *
+ * @return muscle_group_equipment
+ */
+function lsx_health_plan_muscle_group_equipment() {
+	$term_obj_list = get_the_term_list( get_the_ID(), 'muscle-group', '', ', ' );
+	if ( ! empty( $term_obj_list ) ) {
+		return $term_obj_list;
+	}
+}
+
+/**
  * Outputs the exercise equipment.
  *
  * @return exercise_equipment
