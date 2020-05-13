@@ -31,7 +31,7 @@ class Integrations {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Downloads()
+	 * @var      object \lsx_health_plan\classes\Download_Monitor()
 	 */
 	public $download_monitor = false;
 
@@ -105,8 +105,8 @@ class Integrations {
 	 */
 	public function download_monitor_init() {
 		if ( function_exists( 'download_monitor' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-downloads.php';
-			$this->download_monitor = Downloads::get_instance();
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-download-monitor.php';
+			$this->download_monitor = Download_Monitor::get_instance();
 		}
 	}
 
@@ -117,7 +117,7 @@ class Integrations {
 	 */
 	public function woocommerce_init() {
 		if ( function_exists( 'WC' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-woocommerce.php';
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-woocommerce.php';
 			$this->woocommerce = Woocommerce::get_instance();
 		}
 	}
@@ -129,7 +129,7 @@ class Integrations {
 	 */
 	public function wp_user_avatar_init() {
 		if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-wp-user-avatar.php';
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-wp-user-avatar.php';
 			$this->wp_user_avatar = WP_User_Avatar::get_instance();
 		}
 	}
@@ -141,7 +141,7 @@ class Integrations {
 	 */
 	public function lsx_search_init() {
 		if ( class_exists( '\LSX_Search' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/class-lsx-search.php';
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-lsx-search.php';
 			$this->lsx_search = LSX_Search::get_instance();
 		}
 	}

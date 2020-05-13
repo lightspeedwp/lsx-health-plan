@@ -6,14 +6,14 @@ namespace lsx_health_plan\classes;
  *
  * @package lsx-health-plan
  */
-class Downloads {
+class Download_Monitor {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Downloads()
+	 * @var      object \lsx_health_plan\classes\Download_Monitor()
 	 */
 	protected static $instance = null;
 
@@ -40,7 +40,7 @@ class Downloads {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Downloads()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\Download_Monitor()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
