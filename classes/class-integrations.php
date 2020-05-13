@@ -31,7 +31,7 @@ class Integrations {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Downloads()
+	 * @var      object \lsx_health_plan\classes\Download_Monitor()
 	 */
 	public $download_monitor = false;
 
@@ -105,8 +105,8 @@ class Integrations {
 	 */
 	public function download_monitor_init() {
 		if ( function_exists( 'download_monitor' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-downloads.php';
-			$this->download_monitor = Downloads::get_instance();
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-download-monitor.php';
+			$this->download_monitor = Download_Monitor::get_instance();
 		}
 	}
 
