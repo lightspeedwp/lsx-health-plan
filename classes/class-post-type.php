@@ -48,7 +48,7 @@ class Post_Type {
 			if ( true === $is_disabled || 1 === $is_disabled || 'on' === $is_disabled ) {
 				unset( $this->post_types[ $index ] );
 			} else {
-				require_once LSX_HEALTH_PLAN_PATH . 'classes/class-' . $post_type . '.php';
+				require_once LSX_HEALTH_PLAN_PATH . 'classes/post-types/class-' . $post_type . '.php';
 				$classname        = ucwords( $post_type );
 				$this->$post_type = call_user_func_array( '\\lsx_health_plan\classes\\' . $classname . '::get_instance', array() );
 			}
