@@ -16,7 +16,10 @@ var LSX_HP_SLIDER = Object.create( null );
      * Start the JS Class
      */
     LSX_HP_SLIDER.init = function() {
-        LSX_HP_SLIDER.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider');
+		LSX_HP_SLIDER.sliders.element = [];
+		LSX_HP_SLIDER.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider');
+		
+		
         if ( 0 <  LSX_HP_SLIDER.sliders.element.length && undefined !== LSX_HP_SLIDER.sliders.element ) {
             LSX_HP_SLIDER.sliders.init();
 		}

@@ -11,11 +11,30 @@ class Gallery {
 	/**
 	 * Holds class instance
 	 *
-	 * @since 1.0.0
-	 *
-	 * @var      object \lsx_health_plan\classes\lib\Gallery()
+	 * @var object \lsx_health_plan\classes\lib\Gallery()
 	 */
 	protected static $instance = null;
+
+	/**
+	 * The current item ID.
+	 *
+	 * @var boolean | int
+	 */
+	public $item_id = false;
+
+	/**
+	 * If the current post has a gallery.
+	 *
+	 * @var boolean
+	 */
+	public $has_gallery = false;
+
+	/**
+	 * Holds the array of gallery images.
+	 *
+	 * @var array
+	 */
+	public $gallery = array();
 
 	/**
 	 * Contructor
@@ -36,5 +55,27 @@ class Gallery {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Check if the item has a gallery of images returns true or false.
+	 *
+	 * @param  string $item_id
+	 * @param  string $post_type
+	 * @return boolean
+	 */
+	public function has_gallery( $item_id = '', $post_type = '' ) {
+		if ( '' === $item_id ) {
+			$this->item_id = get_the_ID();
+		}
+		if ( '' === $item_id ) {
+			$post_type = get_post_type( $item_id );
+		}
+		$gallery = get_post_meta( $item_id, $post_type . '_gallery', true );
+		if ( ! empty( $gallery ) ) {
+			$this->gallery     = $gallery;
+			$this->has_gallery = true;
+		}
+		$this->has_gallery;
 	}
 }
