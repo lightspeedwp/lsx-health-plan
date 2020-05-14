@@ -3,7 +3,7 @@
 
 table, .table { width: 100%; table-layout: fixed; }
 
-.woocommerce-form-login-toggle, .woocommerce-form-coupon-toggle { display: none; }
+.woocommerce-form-login-toggle { display: none; }
 
 @media (max-width: 900px) { .no-padding.lsx-block-container .lsx-container-content { padding: 0; } }
 
