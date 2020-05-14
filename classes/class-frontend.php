@@ -33,10 +33,10 @@ class Frontend {
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-endpoints.php';
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
 		$this->endpoints = Endpoints::get_instance();
 
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-modals.php';
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
 		$this->modals = Modals::get_instance();
 
 		// Handle the template redirects.
