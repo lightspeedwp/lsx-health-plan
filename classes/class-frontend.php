@@ -39,6 +39,9 @@ class Frontend {
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
 		$this->modals = Modals::get_instance();
 
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-gallery.php';
+		$this->gallery = frontend\Gallery::get_instance();
+
 		// Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );

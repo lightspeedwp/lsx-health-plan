@@ -1,5 +1,5 @@
 <?php
-namespace lsx_health_plan\classes\lib;
+namespace lsx_health_plan\classes\frontend;
 
 /**
  * Contains the gallery functionality.
