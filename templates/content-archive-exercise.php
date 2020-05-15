@@ -10,7 +10,6 @@
 
 <div class="col-xs-12 col-sm-6 col-md-4">
 	<article class="lsx-slot box-shadow">
-
 		<?php lsx_entry_top(); ?>
 
 		<div class="exercise-feature-img">

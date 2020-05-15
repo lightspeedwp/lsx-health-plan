@@ -72,6 +72,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		$url             = get_permalink( $exercise_id );
 		$equipment_group = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
 		$muscle_group    = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
+		$lsx_hp          = lsx_health_plan();
 
 		if ( 'link' ) {
 			$play_button = '<a data-toggle="modal" href="#workout-exercise-modal-' . $m . '">' . get_the_title( $exercise_id ) . '</a>';
@@ -80,7 +81,12 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		}
 
 		$modal_body  = '';
-		$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'lsx-thumbnail-single' ) . '</div>';
+		if ( $lsx_hp->frontend->gallery->has_gallery( $exercise_id ) ) {
+			$modal_body .= $lsx_hp->frontend->gallery->get_gallery();
+		} else {
+			$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'lsx-thumbnail-single' ) . '</div>';
+		}
+
 		$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $exercise_id ) . '</h5>';
 		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
@@ -107,6 +113,7 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 	$equipment_group = get_the_term_list( $m, 'equipment', '', ', ' );
 	$muscle_group    = get_the_term_list( $m, 'muscle-group', '', ', ' );
 	$title           = get_the_title();
+	$lsx_hp          = lsx_health_plan();
 	$button     = '<a data-toggle="modal" href="#exercise-modal-' . $m . '" data-target="#exercise-modal-' . $m . '"></a>';
 
 	if ( true === $content ) {
@@ -114,7 +121,11 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 	}
 
 	$modal_body = '';
-	$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $m, 'lsx-thumbnail-single' ) . '</div>';
+	if ( $lsx_hp->frontend->gallery->has_gallery( $m ) ) {
+		$modal_body .= $lsx_hp->frontend->gallery->get_gallery();
+	} else {
+		$modal_body .= '<div class="modal-image">' . get_the_post_thumbnail( $m, 'lsx-thumbnail-single' ) . '</div>';
+	}
 	$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . $title . '</h5>';
 	$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 	$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
