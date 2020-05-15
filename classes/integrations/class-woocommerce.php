@@ -54,6 +54,8 @@ class Woocommerce {
 		add_action( 'woocommerce_before_lost_password_form', array( $this, 'lost_password_page_title' ), 10 );
 
 		add_action( 'wp', array( $this, 'allow_reset_password_page' ), 9 );
+
+		add_filter( 'wc_add_to_cart_message_html', '__return_false' );
 	}
 
 	/**
