@@ -22,6 +22,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 
 	<div id="single-exercise" class="entry-content">
 		<?php lsx_health_plan_exercise_title( '<h2 class="title-lined">', '</h2>' ); ?>
+		<?php lsx_health_plan_gallery(); ?>
 		<div class="row">
 			<div class="col-md-6 exercise-image lsx-hp-shadow">
 				<?php
@@ -35,7 +36,6 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 					<?php
 				}
-				lsx_health_plan_gallery();
 				?>
 
 

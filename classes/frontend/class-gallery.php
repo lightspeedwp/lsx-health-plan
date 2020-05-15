@@ -106,6 +106,8 @@ class Gallery {
 		if ( ! empty( $gallery ) ) {
 			$this->gallery     = $gallery;
 			$this->has_gallery = true;
+			wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/src/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
+			wp_enqueue_script( 'lsx-health-plan-slider', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-slider.js', array( 'slick' ), LSX_HEALTH_PLAN_VER, true );
 		}
 		return $this->has_gallery;
 	}
@@ -164,7 +166,13 @@ class Gallery {
 
 				$this->loop_start();
 
-				$this->html[] = $gallery;
+				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
+					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
+				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
+					echo $gallery['exercise_gallery_embed']; // WPCS: XSS OK.
+				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
+					echo wp_oembed_get( $gallery['exercise_gallery_external'] ); // WPCS: XSS OK.
+				}
 
 				$this->loop_end();
 
@@ -200,10 +208,7 @@ class Gallery {
 	public function before_loop() {
 		if ( 'slider' === $this->args['layout'] ) {
 			$this->carousel_id = wp_rand( 20, 20000 );
-			$this->html[]      = "<div class='slider-container lsx-hp-widget-items'>";
-			$this->html[]      = "<div id='slider-{$this->carousel_id}' class='lsx-slider'>";
-			$this->html[]      = '<div class="lsx-slider-wrap">';
-			$this->html[]      = "<div class='lsx-slider-inner' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
+			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
 		} else {
 			$this->html[] = "<div class='lsx-hp-widget-items'>";
 		}
@@ -249,9 +254,6 @@ class Gallery {
 	public function after_loop() {
 		// Slider output Closing.
 		if ( 'slider' === $this->args['layout'] ) {
-			$this->html[] = '</div>';
-			$this->html[] = '</div>';
-			$this->html[] = '</div>';
 			$this->html[] = '</div>';
 		} else {
 			$this->html[] = '</div>';
