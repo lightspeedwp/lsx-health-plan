@@ -35,7 +35,11 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 					<?php
 				}
+				lsx_health_plan_gallery();
 				?>
+
+
+
 				<?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
 					<table class="exercise-table">
 						<tbody>

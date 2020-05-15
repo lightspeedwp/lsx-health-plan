@@ -52,7 +52,7 @@ if ( ! empty( $groups ) ) {
 										?>
 									</a>
 								</h3>
-								<a href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn  border-btn"><?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?></a>
+								<a data-toggle="modal" data-target="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>" href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn  border-btn"><?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?></a>
 							</div>
 						</article>
 					</div>
