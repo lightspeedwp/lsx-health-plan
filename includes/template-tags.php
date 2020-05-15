@@ -415,7 +415,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 		'show_downloads' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
-	$weeks = get_terms(
+	$weeks    = get_terms(
 		array(
 			'taxonomy' => 'week',
 			'orderby'  => array(
