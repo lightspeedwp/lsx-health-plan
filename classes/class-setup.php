@@ -87,8 +87,6 @@ class Setup {
 		if ( post_type_exists( 'tip' ) ) {
 			add_shortcode( 'lsx_health_plan_featured_tips_block', '\lsx_health_plan\shortcodes\feature_tips_box' );
 		}
-		if ( post_type_exists( 'exercise' ) ) {
-			add_shortcode( 'lsx_health_plan_items', '\lsx_health_plan\shortcodes\exercise_box' );
-		}
+		add_shortcode( 'lsx_health_plan_items', '\lsx_health_plan\shortcodes\exercise_box' );
 	}
 }

@@ -539,14 +539,11 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
 }
 
 /**
- * Outputs the featured exercise shortcode
+ * Outputs the featured items of any type shortcode (intended for exercises)
  *
  * @return void
  */
 function lsx_health_plan_items( $args = array() ) {
-	if ( ! post_type_exists( 'exercise' ) ) {
-		return;
-	}
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
 }
 
