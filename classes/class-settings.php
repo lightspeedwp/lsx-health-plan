@@ -435,7 +435,7 @@ class Settings {
 	 * @return void
 	 */
 	public function post_type_toggles( $cmb ) {
-		$post_types = apply_filters( 'lsx_health_plan_post_types', $this->post_types );
+		$post_types = apply_filters( 'lsx_health_plan_post_types', isset( $this->post_types ) );
 
 		$cmb->add_field(
 			array(

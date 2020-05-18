@@ -107,7 +107,7 @@ class Core {
 	 * @return void
 	 */
 	public function get_post_types() {
-		$post_types = apply_filters( 'lsx_health_plan_post_types', $this->post_types );
+		$post_types = apply_filters( 'lsx_health_plan_post_types', isset( $this->post_types ) );
 		foreach ( $post_types as $index => $post_type ) {
 			$is_disabled = \cmb2_get_option( 'lsx_health_plan_options', $post_type . '_disabled', false );
 			if ( true === $is_disabled || 1 === $is_disabled || 'on' === $is_disabled ) {
