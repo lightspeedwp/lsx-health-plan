@@ -127,9 +127,10 @@ class Gallery {
 			$post_type = $this->post_type;
 		}
 		$this->defaults = array(
-			'columns'  => '3',
-			'layout'   => 'slider',
-			'interval' => false,
+			'columns'   => '3',
+			'layout'    => 'slider',
+			'interval'  => false,
+			'css_class' => false,
 		);
 		foreach ( $this->defaults as $key => $default ) {
 			$override = get_post_meta( $item_id, $this->post_type . '_gallery_' . $key, true );
@@ -168,10 +169,14 @@ class Gallery {
 
 				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
 					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
-				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
-					echo $gallery['exercise_gallery_embed']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
-					echo wp_oembed_get( $gallery['exercise_gallery_external'] ); // WPCS: XSS OK.
+					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
+				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
+					$embed_args = array(
+						'width' => '530',
+					);
+					$embed        = wp_oembed_get( $gallery['exercise_gallery_embed'], $embed_args );
+					$this->html[] = str_replace( 'width="530"', 'width="100%"', $embed ); // WPCS: XSS OK.
 				}
 
 				$this->loop_end();
@@ -208,7 +213,7 @@ class Gallery {
 	public function before_loop() {
 		if ( 'slider' === $this->args['layout'] ) {
 			$this->carousel_id = wp_rand( 20, 20000 );
-			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
+			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows {$this->args['css_class']} ' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
 		} else {
 			$this->html[] = "<div class='lsx-hp-widget-items'>";
 		}
