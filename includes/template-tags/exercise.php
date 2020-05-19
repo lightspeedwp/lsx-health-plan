@@ -95,7 +95,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		if ( ! empty( $equipment_group ) ) {
 			$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 		}
-		if ( '' !== $muscle_group ) {
+		if ( ! empty( $muscle_group ) ) {
 			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
 		}
 
@@ -143,7 +143,7 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 	if ( ! empty( $equipment_group ) ) {
 		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 	}
-	if ( '' !== $muscle_group ) {
+	if ( ! empty( $muscle_group ) ) {
 		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
 	}
 	$modal_body .= $content;
