@@ -23,9 +23,6 @@
 		.recipe-table,
 		.exercise-table {
 			margin-bottom: 0;
-			&:nth-child(2) {
-				margin-top: 2rem;
-			}
 			thead {
 				th {
 					color: #434343;
@@ -83,7 +80,10 @@
 						}
 					}
 				}
-				@media (min-width: 600px) {
+				&:nth-child(2) {
+					margin-top: 2rem;
+				}
+				@include media('>=custom') { 
 					&:nth-child(2) {
 						margin-top: 0;
 						border-left: 1px solid #DDDDDD;
@@ -106,10 +106,46 @@
 }
 
 #single-exercise {
+	.exercise-title-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 0;
+		margin-bottom: 4.24rem;
+		@include media('>=tablet') { 
+			flex-direction: row-reverse;
+		}
+		h2 {
+			margin-bottom: 10px;
+		}
+		.lsx-sharing-content {
+			>p {
+				@include media('>=tablet') { 
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
 	.exercise-image {
-		.exercise-table {
+		.exercise-data {
 			background: white;
-			margin: 0;
+			padding: 2.4rem 1.4rem;
+			.exercise-table {
+				margin: 0;
+				tbody {
+					text-transform: capitalize;
+					tr {
+						grid-template-columns: 30% 70%;
+					}
+				}
+			}
+		}
+		
+	}
+	.back-plan-btn {
+		@include media('>=tablet') { 
+			margin-top: 8.4rem;
 		}
 	}
 }
