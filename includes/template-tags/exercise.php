@@ -98,7 +98,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {
-			echo ( $play_button );
+			echo wp_kses_post( $play_button );
 		} else {
 			return $play_button;
 		}
