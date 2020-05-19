@@ -172,7 +172,11 @@ class Gallery {
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
 					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
-					$this->html[] = wp_oembed_get( $gallery['exercise_gallery_embed'] ); // WPCS: XSS OK.
+					$embed_args = array(
+						'width' => '530',
+					);
+					$embed        = wp_oembed_get( $gallery['exercise_gallery_embed'], $embed_args );
+					$this->html[] = str_replace( 'width="530"', 'width="100%"', $embed ); // WPCS: XSS OK.
 				}
 
 				$this->loop_end();
