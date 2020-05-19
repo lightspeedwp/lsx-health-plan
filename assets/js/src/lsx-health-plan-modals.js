@@ -25,6 +25,12 @@ var LSX_HP_MODALS = Object.create( null );
 					jQuery(this).attr('src', jQuery(this).attr('data-src') );
 				});
 			}
+
+			if ( 0 < jQuery('#'+e.target.id).find('.lsx-hp-widget-items.slick-slider' ).length ) {
+				LSX_HP_SLIDER.sliders.element = jQuery('#'+e.target.id).find('.lsx-hp-widget-items.slick-slider' );
+				LSX_HP_SLIDER.sliders.init();
+			}
+			console.log('running2');
 		 });
     };
     
