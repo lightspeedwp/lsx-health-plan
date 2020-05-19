@@ -169,10 +169,10 @@ class Gallery {
 
 				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
 					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
-				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
-					echo $gallery['exercise_gallery_embed']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
-					echo wp_oembed_get( $gallery['exercise_gallery_external'] ); // WPCS: XSS OK.
+					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
+				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
+					$this->html[] = wp_oembed_get( $gallery['exercise_gallery_embed'] ); // WPCS: XSS OK.
 				}
 
 				$this->loop_end();

@@ -49,6 +49,7 @@ class Frontend {
 		add_action( 'template_redirect', array( $this, 'redirect' ) );
 
 		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
+		add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
 	}
 
 	/**
@@ -155,5 +156,21 @@ class Frontend {
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
 			delete_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete' );
 		}
+	}
+
+	/**
+	 * Registers the rewrites.
+	 */
+	public function wpkses_post_tags( $tags, $context ) {
+		if ( 'post' === $context ) {
+			$tags['iframe'] = array(
+				'src'             => true,
+				'height'          => true,
+				'width'           => true,
+				'frameborder'     => true,
+				'allowfullscreen' => true,
+			);
+		}
+		return $tags;
 	}
 }
