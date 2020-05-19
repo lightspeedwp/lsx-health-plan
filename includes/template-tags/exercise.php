@@ -96,9 +96,9 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 			$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 		}
 		if ( ! empty( $muscle_group ) ) {
-			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
+			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
 		}
-
+		$modal_body .= '</div>';
 		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
 		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
@@ -144,8 +144,9 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 	}
 	if ( ! empty( $muscle_group ) ) {
-		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span></div>';
+		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
 	}
+	$modal_body .= '</div>';
 	$modal_body .= $content;
 	\lsx_health_plan\functions\register_modal( 'exercise-modal-' . $m, '', $modal_body );
 
