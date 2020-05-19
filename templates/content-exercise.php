@@ -8,6 +8,12 @@
 $type         = lsx_health_plan_exercise_type();
 $equipment    = lsx_health_plan_exercise_equipment();
 $muscle_group = lsx_health_plan_muscle_group_equipment();
+
+$sharing = 'sharing-disabled';
+if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) :
+	$sharing = 'sharing-enabled';
+endif;
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -22,7 +28,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 
 	<div id="single-exercise" class="entry-content">
 
-		<div class="exercise-title-section title-lined">
+		<div class="exercise-title-section title-lined <?php echo esc_html( $sharing ); ?>">
 			<?php if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
 
 					<?php

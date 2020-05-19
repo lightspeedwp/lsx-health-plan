@@ -107,14 +107,16 @@
 
 #single-exercise {
 	.exercise-title-section {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
 		padding-bottom: 0;
 		margin-bottom: 4.24rem;
-		@include media('>=tablet') { 
-			flex-direction: row-reverse;
+		&.sharing-enabled {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			@include media('>=tablet') { 
+				flex-direction: row-reverse;
+			}
 		}
 		h2 {
 			margin-bottom: 10px;

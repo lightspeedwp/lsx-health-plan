@@ -791,9 +791,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-recipe .bottom-single-recipe p { font-size: 24px; }
 
-#single-exercise .exercise-title-section { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; padding-bottom: 0; margin-bottom: 4.24rem; }
+#single-exercise .exercise-title-section { padding-bottom: 0; margin-bottom: 4.24rem; }
 
-@media (min-width: 992px) { #single-exercise .exercise-title-section { -ms-flex-direction: row-reverse; flex-direction: row-reverse; } }
+#single-exercise .exercise-title-section.sharing-enabled { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; }
+
+@media (min-width: 992px) { #single-exercise .exercise-title-section.sharing-enabled { -ms-flex-direction: row-reverse; flex-direction: row-reverse; } }
 
 #single-exercise .exercise-title-section h2 { margin-bottom: 10px; }
 
