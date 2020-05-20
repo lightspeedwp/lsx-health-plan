@@ -7,6 +7,8 @@
 
 global $group_name;
 $groups = get_post_meta( get_the_ID(), $group_name, true );
+$link_setting    = \lsx_health_plan\functions\get_option( 'workout_tab_link', 'single' );
+$content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_content', '' );
 
 if ( ! empty( $groups ) ) {
 	?>
@@ -19,12 +21,32 @@ if ( ! empty( $groups ) ) {
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
 					}
+					// Setup our link and content.
+					switch ( $link_setting ) {
+						case 'single':
+							$link_html  = '<a href="' . get_permalink( $group['connected_exercises'] ) . '">';
+							$link_close = '</a>';
+							break;
+
+						case 'modal':
+							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+							$link_close = '</a>';
+							// We call the button to register the modal, but we do not output it.
+							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
+							break;
+
+						case 'none':
+						default:
+							$link_html  = '';
+							$link_close = '';
+							break;
+					}
 					?>
 					<article class="lsx-slot box-shadow">
 						<div class="row">
 							<div class="col-sm-6 col-md-2">
 								<div class="exercise-feature-img">
-									<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
+									<?php echo wp_kses_post( $link_html ); ?>
 										<?php
 										// We call the button to register the modal, but we do not output it.
 										lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
@@ -40,13 +62,13 @@ if ( ! empty( $groups ) ) {
 											<?php
 										}
 										?>
-									</a>
+									<?php echo wp_kses_post( $link_close ); ?>
 								</div>
 							</div>
 							<div class="col-sm-6 col-md-10">
 								<div class="title">
 									<h3>
-										<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
+									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
 											if ( '' !== $reps ) {
@@ -54,10 +76,14 @@ if ( ! empty( $groups ) ) {
 											}
 											echo wp_kses_post( $exercise_title );
 											?>
-										</a>
+										<?php echo wp_kses_post( $link_close ); ?>
 									</h3>
 								</div>
-								<a href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn  border-btn"><?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?></a>
+								<?php if ( '' !== $link_html ) { ?>
+									<?php echo wp_kses_post( str_replace( '<a' ,'<a class="btn border-btn" ', $link_html ) ); ?>
+									<?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?>
+									<?php echo wp_kses_post( $link_close ); ?>
+								<?php } ?>
 							</div>
 						</div>
 					</article>

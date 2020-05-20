@@ -316,9 +316,10 @@ class Workout {
 					'id'          => 'workout_settings_title',
 					'type'        => 'title',
 					'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
-					'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
+					'description' => __( 'Choose the layout, content and link settings for your exercises.', 'lsx-health-plan' ),
 				)
 			);
+
 			$cmb->add_field(
 				array(
 					'id'          => 'workout_tab_layout',
@@ -332,6 +333,51 @@ class Workout {
 					),
 				)
 			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_link',
+					'type'        => 'select',
+					'name'        => __( 'Workout Tab Link', 'lsx-health-plan' ),
+					'description' => __( 'Choose to show the excerpt, full content or nothing.', 'lsx-health-plan' ),
+					'options'     => array(
+						''       => __( 'None', 'lsx-health-plan' ),
+						'single' => __( 'Single', 'lsx-health-plan' ),
+						'modal'  => __( 'Modal', 'lsx-health-plan' ),
+					),
+					'default' => 'modal',
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_columns',
+					'type'        => 'select',
+					'name'        => __( 'Grid Columns', 'lsx-health-plan' ),
+					'description' => __( 'If you are displaying a grid, set the amount of columns you want to use.', 'lsx-health-plan' ),
+					'options'     => array(
+						'12' => __( '1', 'lsx-health-plan' ),
+						'6'  => __( '2', 'lsx-health-plan' ),
+						'4'  => __( '3', 'lsx-health-plan' ),
+						'3'  => __( '4', 'lsx-health-plan' ),
+						'2'  => __( '6', 'lsx-health-plan' ),
+					),
+					'default' => '4',
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_content',
+					'type'        => 'select',
+					'name'        => __( 'Grid Content', 'lsx-health-plan' ),
+					'description' => __( 'Choose to show the excerpt, full content or nothing. For the grid layout only', 'lsx-health-plan' ),
+					'options'     => array(
+						''        => __( 'None', 'lsx-health-plan' ),
+						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
+						'full'    => __( 'Full Content', 'lsx-health-plan' ),
+					),
+					'default' => '',
+				)
+			);
+
 			do_action( 'lsx_hp_workout_settings_page', $cmb );
 		}
 	}
