@@ -336,7 +336,7 @@ class Workout {
 			$cmb->add_field(
 				array(
 					'id'          => 'workout_tab_columns',
-					'type'        => 'text',
+					'type'        => 'select',
 					'name'        => __( 'Workout Tab Columns', 'lsx-health-plan' ),
 					'description' => __( 'If you are displaying a grid, set the amount of columns you want to use.', 'lsx-health-plan' ),
 					'options'     => array(
@@ -346,6 +346,7 @@ class Workout {
 						'3'  => __( '4', 'lsx-health-plan' ),
 						'2'  => __( '6', 'lsx-health-plan' ),
 					),
+					'default' => '4',
 				)
 			);
 			$cmb->add_field(
@@ -359,6 +360,7 @@ class Workout {
 						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
 						'full'    => __( 'Full Content', 'lsx-health-plan' ),
 					),
+					'default' => '',
 				)
 			);
 			$cmb->add_field(
@@ -372,6 +374,7 @@ class Workout {
 						'single' => __( 'Single', 'lsx-health-plan' ),
 						'modal'  => __( 'Modal', 'lsx-health-plan' ),
 					),
+					'default' => 'modal',
 				)
 			);
 			do_action( 'lsx_hp_workout_settings_page', $cmb );

@@ -48,7 +48,6 @@ if ( ! empty( $groups ) ) {
 						<article class="lsx-slot box-shadow">
 							<div class="exercise-feature-img">
 								<?php echo wp_kses_post( $link_html ); ?>
-								<a data-toggle="modal" href="#workout-exercise-modal-<?php echo esc_attr( $group['connected_exercises'] ); ?>">
 									<?php
 									$thumbnail_args = array(
 										'class' => 'aligncenter',
@@ -87,7 +86,7 @@ if ( ! empty( $groups ) ) {
 									<?php
 								}
 								if ( 'full' === $content_setting ) {
-									echo wp_kses_post( get_the_content() );
+									echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
 								}
 							}
 							?>
