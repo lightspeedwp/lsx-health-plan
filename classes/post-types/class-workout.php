@@ -316,9 +316,10 @@ class Workout {
 					'id'          => 'workout_settings_title',
 					'type'        => 'title',
 					'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
-					'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
+					'description' => __( 'Choose the layout, content and link settings for your exercises.', 'lsx-health-plan' ),
 				)
 			);
+
 			$cmb->add_field(
 				array(
 					'id'          => 'workout_tab_layout',
@@ -329,6 +330,47 @@ class Workout {
 						'table' => __( 'Table', 'lsx-health-plan' ),
 						'list'  => __( 'List', 'lsx-health-plan' ),
 						'grid'  => __( 'Grid', 'lsx-health-plan' ),
+					),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_columns',
+					'type'        => 'text',
+					'name'        => __( 'Workout Tab Columns', 'lsx-health-plan' ),
+					'description' => __( 'If you are displaying a grid, set the amount of columns you want to use.', 'lsx-health-plan' ),
+					'options'     => array(
+						'12' => __( '1', 'lsx-health-plan' ),
+						'6'  => __( '2', 'lsx-health-plan' ),
+						'4'  => __( '3', 'lsx-health-plan' ),
+						'3'  => __( '4', 'lsx-health-plan' ),
+						'2'  => __( '6', 'lsx-health-plan' ),
+					),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_content',
+					'type'        => 'select',
+					'name'        => __( 'Workout Tab Content', 'lsx-health-plan' ),
+					'description' => __( 'Choose to show the excerpt, full content or nothing.', 'lsx-health-plan' ),
+					'options'     => array(
+						''        => __( 'None', 'lsx-health-plan' ),
+						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
+						'full'    => __( 'Full Content', 'lsx-health-plan' ),
+					),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'id'          => 'workout_tab_link',
+					'type'        => 'select',
+					'name'        => __( 'Workout Tab Link', 'lsx-health-plan' ),
+					'description' => __( 'Choose to show the excerpt, full content or nothing.', 'lsx-health-plan' ),
+					'options'     => array(
+						''       => __( 'None', 'lsx-health-plan' ),
+						'single' => __( 'Single', 'lsx-health-plan' ),
+						'modal'  => __( 'Modal', 'lsx-health-plan' ),
 					),
 				)
 			);
