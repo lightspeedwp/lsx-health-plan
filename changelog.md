@@ -1,6 +1,6 @@
 # Change log
 
-## [[1.4.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.2) - Unreleased
+## [[1.4.0]] - Unreleased
 
 ### Added
 - Extend the current single recipe post type to display additional fields.
@@ -14,6 +14,7 @@
 - Added a "side" field for exercises that displays left, right or nothing if left blank.
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
+
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.
 
