@@ -4,8 +4,14 @@
  *
  * @package lsx-health-plan
  */
+global $shortcode_args;
 $connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
 $args           = array();
+
+// Check for any shortcode overrides.
+if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
+	$connected_tips = array( get_the_ID() );
+}
 
 if ( empty( $connected_tips ) ) {
 	// Featured Tips Global
@@ -36,39 +42,13 @@ if ( ! empty( $args ) ) {
 	<div id="lsx-tips-shortcode" class="daily-plan-block content-box box-shadow">
 		<div class="lsx-tips-shortcode lsx-tips-slider slick-slider slick-dotted"  >
 		<?php
-		if ( $tips->have_posts() ) :
-			while ( $tips->have_posts() ) :
+		if ( $tips->have_posts() ) {
+			while ( $tips->have_posts() ) {
 				$tips->the_post();
-				$tip_id = get_the_id();
-
-				$featured_image = get_the_post_thumbnail( $tip_id, array( 600, 300 ) );
-				?>
-				<div class="diet-tip-wrapper quick-tip">
-					<h3 class="title-lined"><?php the_title(); ?></h3>
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<div class="tipimage">
-							<?php
-							if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-								?>
-								<div class="thumbnail tip-thumbnail"><?php echo wp_kses_post( $featured_image ); ?></div>
-								<?php
-							} else {
-								?>
-								<div class="thumbnail tip-thumbnail"><img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/TipPlaceholder.png' ); ?>"></div>
-								<?php
-							}
-							?>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<?php the_content(); ?>
-						</div> 
-					</div>
-				</div>
-			<?php endwhile; ?>
-		<?php endif; ?>
-		<?php wp_reset_postdata(); ?>
+				include LSX_HEALTH_PLAN_PATH . 'templates/content-archive-tip.php';
+			}
+		}
+		?>
 		</div>
 	</div>
 	<?php

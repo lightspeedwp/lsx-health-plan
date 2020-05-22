@@ -38,7 +38,6 @@ if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $t
 	);
 	$query_array['tax_query'] = $taxonomy_filter;
 }
-
 $exercises = new WP_Query( $query_array );
 ?>
 
@@ -57,6 +56,11 @@ $exercises = new WP_Query( $query_array );
 						include LSX_HEALTH_PLAN_PATH . 'templates/partials/content-shortcode-exercise.php';
 						break;
 
+					case 'recipe':
+					case 'tip':
+						include LSX_HEALTH_PLAN_PATH . 'templates/content-archive-' . $args['post_type'] . '.php';
+						break;
+
 					default:
 						break;
 				}
@@ -69,7 +73,7 @@ $exercises = new WP_Query( $query_array );
 	if ( isset( $args['view_more'] ) && false !== $args['view_more'] ) {
 		?>
 			<div class="col-md-12">
-				<a class="<?php echo esc_html( $link_class ); ?>" href="<?php echo esc_url( get_post_type_archive_link( 'exercise' ) ); ?>"><?php echo esc_html_e( 'Show More', 'lsx-health-plan' ); ?></a>
+				<a class="<?php echo esc_html( $link_class ); ?>" href="<?php echo esc_url( get_post_type_archive_link( $args['post_type'] ) ); ?>"><?php echo esc_html_e( 'Show More', 'lsx-health-plan' ); ?></a>
 			</div>
 		<?php
 	}
