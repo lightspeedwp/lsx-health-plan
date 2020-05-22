@@ -787,13 +787,19 @@ function lsx_health_plan_recipe_archive_description() {
  * @return void
  */
 function lsx_health_plan_workout_tab_content( $index = 1 ) {
-	global $group_name;
+	global $group_name,$shortcode_args;
 	$group_name = 'workout_section_' . $index;
 	if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 		$layout = strtolower( \lsx_health_plan\functions\get_option( 'workout_tab_layout', 'table' ) );
+
+		// Check for shortcode overrides.
+		if ( null !== $shortcode_args && isset( $shortcode_args['layout'] ) ) {
+			$layout = $shortcode_args['layout'];
+		}
 	} else {
 		$layout = 'table';
 	}
+
 	switch ( $layout ) {
 		case 'list':
 			$tab_template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-list.php';
