@@ -541,7 +541,9 @@ function lsx_health_plan_weekly_downloads( $weekly_downloads = array() ) {
  * @return void
  */
 function lsx_health_plan_items( $args = array() ) {
-	include LSX_HEALTH_PLAN_PATH . '/templates/featured-exercise.php';
+	global $shortcode_args;
+	$shortcode_args = $args;
+	include LSX_HEALTH_PLAN_PATH . '/templates/partials/shortcode-loop.php';
 }
 
 /**

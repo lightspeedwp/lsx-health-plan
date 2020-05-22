@@ -87,10 +87,10 @@ function exercise_box( $args = array() ) {
 		'description' => 'none',
 		'link'        => 'item',
 		'link_class'  => 'btn border-btn',
+		'layout'      => 'grid',
 		'image_size'  => 'lsx-thumbnail-square',
 	);
 	$args     = wp_parse_args( $args, $defaults );
-
 	ob_start();
 	echo lsx_health_plan_items( $args ); // WPCS: XSS OK.
 	$content = ob_get_clean();
