@@ -311,12 +311,22 @@
 	}
 	&.columns-2 {
 		.lsx-exercises-shortcode {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 	&.columns-4 {
 		.lsx-exercises-shortcode {
-			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	&.columns-5 {
+		.lsx-exercises-shortcode {
+			grid-template-columns: repeat(5, 1fr);
+		}
+	}
+	&.columns-6 {
+		.lsx-exercises-shortcode {
+			grid-template-columns: repeat(6, 1fr);
 		}
 	}
 	> .col-md-12 {

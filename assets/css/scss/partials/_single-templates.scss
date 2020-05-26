@@ -1,11 +1,13 @@
 // Single Recipe
-#single-recipe {
+#single-recipe,
+#single-exercise {
 	margin-bottom: -8.4rem;
 	> .row {
 		margin-right: 0;
 		margin-left: 0;
 	}
-	.recipe-image {
+	.recipe-image,
+	.exercise-image {
 		width: 100%;
 		padding: 0;
 		margin-bottom: 4.25rem;
@@ -18,61 +20,34 @@
 		@media (min-width: 1200px) {
 			max-width: 490px;	
 		}
-		.recipe-data {
-			background: white;
-			padding: 2.4rem 1.4rem;
-			@media (min-width: 600px) {
-				display: flex;
-			}
-			
-			.recipe-table {
-				margin-bottom: 0;
-				&:nth-child(2) {
-					margin-top: 2rem;
+		.recipe-table,
+		.exercise-table {
+			margin-bottom: 0;
+			thead {
+				th {
+					color: #434343;
 				}
-				thead {
-					th {
-						color: #434343;
+			}
+			tbody {
+				margin-top: 1rem;
+				display: grid;
+				td {
+					&:first-child {
+						color: #919191;
 					}
 				}
-				tbody {
-					margin-top: 1rem;
+				tr {
 					display: grid;
-					td {
-						&:first-child {
-							color: #919191;
-						}
-					}
-					tr {
-						display: grid;
-						grid-template-columns: 60% 40%;
-					}
-					@media (max-width:600px) {
-						display:block;
-					}
+					grid-template-columns: 60% 40%;
 				}
-				&:only-child {
-					tbody {
-						tr {
-							grid-template-columns: 40% 60%;
-						}
-					}
-				}
-				@media (min-width: 600px) {
-					&:nth-child(2) {
-						margin-top: 0;
-						border-left: 1px solid #DDDDDD;
-						margin-left: -10px;
-						th, td {
-							padding-left: 10px;
-						}
-					}
+				@media (max-width:600px) {
+					display:block;
 				}
 			}
-			
 		}
 	}
-	.recipe-content {
+	.recipe-content,
+	.exercise-content {
 		margin-bottom: 8.5rem;
 		float: right;
 		@media (min-width: 992px) {
@@ -87,10 +62,92 @@
 			}
 		}
 	}
+}
+
+#single-recipe {
+	.recipe-image {
+		.recipe-data {
+			background: white;
+			padding: 2.4rem 1.4rem;
+			@media (min-width: 600px) {
+				display: flex;
+			}
+			.recipe-table {
+				&:only-child {
+					tbody {
+						tr {
+							grid-template-columns: 40% 60%;
+						}
+					}
+				}
+				&:nth-child(2) {
+					margin-top: 2rem;
+				}
+				@include media('>=custom') { 
+					&:nth-child(2) {
+						margin-top: 0;
+						border-left: 1px solid #DDDDDD;
+						margin-left: -10px;
+						th, td {
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+			
+		}
+	}
 	.bottom-single-recipe {
 		margin-top: 4.25rem;
 		p {
 			font-size: 24px;
+		}
+	}
+}
+
+#single-exercise {
+	.exercise-title-section {
+		padding-bottom: 0;
+		margin-bottom: 4.24rem;
+		&.sharing-enabled {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			@include media('>=tablet') { 
+				flex-direction: row-reverse;
+			}
+		}
+		h2 {
+			margin-bottom: 10px;
+		}
+		.lsx-sharing-content {
+			>p {
+				@include media('>=tablet') { 
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.exercise-image {
+		.exercise-data {
+			background: white;
+			padding: 2.4rem 1.4rem;
+			.exercise-table {
+				margin: 0;
+				tbody {
+					text-transform: capitalize;
+					tr {
+						grid-template-columns: 30% 70%;
+					}
+				}
+			}
+		}
+		
+	}
+	.back-plan-btn {
+		@include media('>=tablet') { 
+			margin-top: 8.4rem;
 		}
 	}
 }
