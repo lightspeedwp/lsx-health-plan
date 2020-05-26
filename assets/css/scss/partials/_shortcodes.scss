@@ -235,12 +235,16 @@
 	margin-bottom: 1rem;
 	.lsx-exercises-shortcode {
 		width: 100%;
-		@include media('>=tablet') {
-			display: grid;
-			column-gap: 1rem;
-			row-gap: 1rem;
-			grid-template-columns: 1fr 1fr 1fr;
+
+		&.layout-grid {
+			@include media('>=tablet') {
+				display: grid;
+				column-gap: 1rem;
+				row-gap: 1rem;
+				grid-template-columns: 1fr 1fr 1fr;
+			}
 		}
+
 		.lsx-exercises-item {
 			min-height: 200px;
 			background-position: center;

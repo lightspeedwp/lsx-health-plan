@@ -11,6 +11,20 @@ $link_setting    = \lsx_health_plan\functions\get_option( 'workout_tab_link', 's
 $content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_content', '' );
 $column_setting  = \lsx_health_plan\functions\get_option( 'workout_tab_columns', '4' );
 
+// Check for shortcode overrides.
+if ( null !== $shortcode_args ) {
+	if ( isset( $shortcode_args['link'] ) ) {
+		$link_setting = $shortcode_args['link'];
+	}
+	if ( isset( $shortcode_args['description'] ) ) {
+		$content_setting = $shortcode_args['description'];
+	}
+	if ( isset( $shortcode_args['columns'] ) ) {
+		$column_setting = $shortcode_args['columns'];
+		$column_setting = \lsx_health_plan\functions\column_class( $column_setting );
+	}
+}
+
 if ( ! empty( $groups ) ) {
 	?>
 	<div class="set-grid">

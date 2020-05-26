@@ -353,3 +353,14 @@ function hp_excerpt( $post_id ) {
 	}
 	return $content;
 }
+
+/**
+ * Get the columns class for bootstrap.
+ *
+ * @param string $columns
+ * @return void
+ */
+function column_class( $columns = '3' ) {
+	$cols .= '5' === $columns ? '15' : 12 / $columns;
+	return $cols;
+}

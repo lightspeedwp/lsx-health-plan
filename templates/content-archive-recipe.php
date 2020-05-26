@@ -4,11 +4,23 @@
  *
  * @package lsx-health-plan
  */
+global $shortcode_args;
 ?>
 
 <?php lsx_entry_before(); ?>
 
-<div class="col-xs-12 col-sm-6 col-md-4">
+<?php
+$column_class = '4';
+// Check for shortcode overrides.
+if ( null !== $shortcode_args ) {
+	if ( isset( $shortcode_args['columns'] ) ) {
+		$column_class = $shortcode_args['columns'];
+		$column_class = \lsx_health_plan\functions\column_class( $column_class );
+	}
+}
+?>
+
+<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
 	<article class="lsx-slot box-shadow">
 		<span class="recipe-type"><?php echo esc_html( lsx_health_plan_recipe_type() ); ?></span>
 		<?php lsx_entry_top(); ?>

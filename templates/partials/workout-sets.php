@@ -4,11 +4,16 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts;
+global $group_name, $connected_workouts,$shortcode_args;
+
+// Check for any shortcode overrides.
+if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
+	$connected_workouts = array( get_the_ID() );
+}
 ?>
 <div class="sets">
 	<?php
-	if ( empty( $connected_workouts ) && null === $connected_workouts ) {
+	if ( empty( $connected_workouts ) || null === $connected_workouts ) {
 		$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
 		if ( empty( $connected_workouts ) ) {
 			$options = \lsx_health_plan\functions\get_option( 'all' );
