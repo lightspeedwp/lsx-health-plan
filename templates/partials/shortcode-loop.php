@@ -66,6 +66,7 @@ $exercises = new WP_Query( $query_array );
 						break;
 
 					default:
+						include LSX_HEALTH_PLAN_PATH . 'templates/partials/content-default.php';
 						break;
 				}
 			}
