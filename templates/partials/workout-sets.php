@@ -13,7 +13,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 ?>
 <div class="sets">
 	<?php
-	if ( empty( $connected_workouts ) && null === $connected_workouts ) {
+	if ( empty( $connected_workouts ) || null === $connected_workouts ) {
 		$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
 		if ( empty( $connected_workouts ) ) {
 			$options = \lsx_health_plan\functions\get_option( 'all' );
