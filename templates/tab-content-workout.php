@@ -27,12 +27,15 @@
 			);
 		?>
 		<div class="single-plan-inner workout-content">
-			<div class="single-plan-section-title workout">
-				<?php lsx_get_svg_icon( 'work.svg' ); ?>
-				<h2 class="title-lined"><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
-			</div>
 			<?php
-			if ( lsx_health_plan_has_warmup() ) {
+			if ( ! is_singular( 'workout' ) ) { ?>
+				<div class="single-plan-section-title workout">
+					<?php lsx_get_svg_icon( 'work.svg' ); ?>
+					<h2 class="title-lined"><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
+				</div>
+			<?php } ?>
+			<?php
+			if ( lsx_health_plan_has_warmup() && ( ! is_singular( 'workout' ) ) ) {
 				?>
 				<div class="workout-instructions">
 					<div class="row">
