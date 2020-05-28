@@ -108,6 +108,24 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (max-width: 400px) { .slick-slider .lsx-videos-slot iframe { max-height: 150px; } }
 
+.lsx-hp-widget-items.slick-slider { background-color: white; }
+
+.widget-item-grid-layout .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; padding: 1rem; -ms-flex-pack: center; justify-content: center; }
+
+.widget-item-grid-layout .row > .col-xs-12 { padding: 1rem; }
+
+.widget-item-grid-layout .row > .col-xs-12 img { width: 100%; }
+
+.widget-item-grid-layout .row > .col-xs-12:not(:first-child) { -ms-flex: 1; flex: 1; }
+
+.widget-item-grid-layout .row > .col-xs-12:not(:first-child) img { height: 100%; max-height: 230px; -o-object-fit: cover; object-fit: cover; }
+
+.widget-item-grid-layout .row > .col-xs-12:first-child { width: 100%; }
+
+.widget-item-grid-layout .row > .col-xs-12:first-child img { max-height: 320px; -o-object-fit: cover; object-fit: cover; }
+
+.widget-item-grid-layout .row > .col-xs-12:only-child { padding: 0; margin: -1rem; width: 490px; }
+
 #lsx-exercises-shortcode { margin-top: 1rem; margin-bottom: 1rem; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode { width: 100%; }

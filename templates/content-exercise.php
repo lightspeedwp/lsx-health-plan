@@ -53,8 +53,13 @@ endif;
 
 		<div class="row">
 			<div class="col-md-6 exercise-image lsx-hp-shadow">
-				<?php lsx_health_plan_gallery(); ?>
-				<?php
+
+			<?php
+			$lsx_hp = lsx_health_plan();
+
+			if ( $lsx_hp->frontend->gallery->has_gallery( get_the_ID() ) ) {
+				lsx_health_plan_gallery();
+			} else {
 				$featured_image = get_the_post_thumbnail();
 				if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 					the_post_thumbnail( 'large', array(
@@ -65,9 +70,8 @@ endif;
 					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 					<?php
 				}
-				?>
-
-
+			}
+			?>
 
 				<?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
 					<div class="exercise-data">

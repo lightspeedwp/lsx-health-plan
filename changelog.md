@@ -15,6 +15,9 @@
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
 
+### Changed
+- Changed the styling for the single exercise image depending if it is a slider of a gallery or a single image.
+
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.
 

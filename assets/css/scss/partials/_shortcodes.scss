@@ -230,6 +230,47 @@
 	}
 }
 
+.lsx-hp-widget-items {
+	&.slick-slider {
+		background-color: white;
+	}
+}
+.widget-item-grid-layout {
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 1rem;
+		justify-content: center;
+		>.col-xs-12 {
+			padding: 1rem;
+			img {
+				width: 100%;
+			}
+			&:not(:first-child) {
+				flex: 1;
+				img {
+					height: 100%;
+					max-height: 230px;
+					object-fit: cover;
+				}
+			}
+			&:first-child {
+				width: 100%;
+				img {
+					max-height: 320px;
+					object-fit: cover;
+				}
+			}
+			&:only-child {
+				padding: 0;
+				margin: -1rem;
+				width: 490px;
+			}
+		}
+	}
+}
+
 #lsx-exercises-shortcode {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
