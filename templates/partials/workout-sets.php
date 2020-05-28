@@ -45,6 +45,10 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 
 				$section_title = get_post_meta( get_the_ID(), $workout_section, true );
 				$description   = get_post_meta( get_the_ID(), $workout_desc, true );
+				if ( is_singular( 'workout' ) ) {
+					$section_title = get_post_meta( get_queried_object_id(), $workout_section, true );
+					$description   = get_post_meta( get_queried_object_id(), $workout_desc, true );
+				}
 
 				if ( '' === $section_title ) {
 					$i++;

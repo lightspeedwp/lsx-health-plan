@@ -14,6 +14,7 @@
 - Added a "side" field for exercises that displays left, right or nothing if left blank.
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
+- Added a template for the single workout pages.
 
 ### Fixed
 - Added in a statement to to check a video exists before outputting the video play button.

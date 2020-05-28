@@ -6,7 +6,11 @@
  */
 
 global $group_name;
-$groups          = get_post_meta( get_the_ID(), $group_name, true );
+$groups = get_post_meta( get_the_ID(), $group_name, true );
+if ( is_singular( 'workout' ) ) {
+	$groups = get_post_meta( get_queried_object_id(), $group_name, true );
+}
+
 $link_setting    = \lsx_health_plan\functions\get_option( 'workout_tab_link', 'single' );
 $content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_content', '' );
 $column_setting  = \lsx_health_plan\functions\get_option( 'workout_tab_columns', '4' );

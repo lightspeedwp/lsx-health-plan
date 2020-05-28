@@ -82,7 +82,9 @@ class Workout {
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
-			'rewrite'            => false,
+			'rewrite'            => array(
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
+			),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,

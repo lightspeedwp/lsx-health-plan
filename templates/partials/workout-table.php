@@ -7,6 +7,9 @@
 
 global $group_name;
 $groups = get_post_meta( get_the_ID(), $group_name, true );
+if ( is_singular( 'workout' ) ) {
+	$groups = get_post_meta( get_queried_object_id(), $group_name, true );
+}
 if ( ! empty( $groups ) ) {
 	?>
 	<div class="set-table">
