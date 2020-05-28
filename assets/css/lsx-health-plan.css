@@ -743,6 +743,12 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box, .tax-recipe-type.lsx-search-enabled .archive-plan .content-box, .post-type-archive-exercise.lsx-search-enabled .archive-plan .content-box, .tax-exercise-type.lsx-search-enabled .archive-plan .content-box, .tax-muscle-group.lsx-search-enabled .archive-plan .content-box, .tax-equipment.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
 
+.post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-feature-img img { width: 100%; }
+
+.post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-content-box .btn { width: 100%; }
+
+.post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-content-box .btn:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
+
 .tax-exercise-type .archive-header-wrapper .archive-header .archive-title, .tax-muscle-group .archive-header-wrapper .archive-header .archive-title, .tax-equipment .archive-header-wrapper .archive-header .archive-title { text-transform: capitalize; }
 
 .tax-exercise-type .archive-header-wrapper .archive-header p, .tax-muscle-group .archive-header-wrapper .archive-header p, .tax-equipment .archive-header-wrapper .archive-header p { display: none; }

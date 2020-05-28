@@ -38,6 +38,10 @@ class Workout {
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 8, 1 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+
+		// Template Redirects.
+		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
 	/**
@@ -86,11 +90,12 @@ class Workout {
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => false,
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', 'workouts' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'thumbnail',
 				'editor',
 				'excerpt',
 			),
@@ -125,6 +130,19 @@ class Workout {
 		$connections['workout']['connected_posts'] = 'connected_workouts';
 		$connections['post']['connected_workouts'] = 'connected_posts';
 		return $connections;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type workouts.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'workout' ) ) {
+			$title = __( 'Workouts', 'lsx-health-plan' );
+		}
+		return $title;
 	}
 
 	/**
