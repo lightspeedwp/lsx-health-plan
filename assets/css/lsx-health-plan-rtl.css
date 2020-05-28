@@ -108,7 +108,15 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (max-width: 400px) { .slick-slider .lsx-videos-slot iframe { max-height: 150px; } }
 
-.lsx-hp-widget-items.slick-slider { background-color: white; }
+.lsx-hp-widget-items.slick-slider { background-color: white; padding: 2rem; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow { border: none; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow.slick-next { left: 1rem; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow.slick-prev { right: 1rem; }
+
+.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #DDDDDD; padding-bottom: 3rem; }
 
 .widget-item-grid-layout .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; padding: 1rem; -ms-flex-pack: center; justify-content: center; }
 
@@ -826,5 +834,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #single-exercise .exercise-image .exercise-data .exercise-table tbody { text-transform: capitalize; }
 
 #single-exercise .exercise-image .exercise-data .exercise-table tbody tr { -ms-grid-columns: 30% 70%; grid-template-columns: 30% 70%; }
+
+#single-exercise .lsx-hp-widget-items.slick-slider + .exercise-data { padding-top: 0; }
 
 @media (min-width: 992px) { #single-exercise .back-plan-btn { margin-top: 8.4rem; } }
