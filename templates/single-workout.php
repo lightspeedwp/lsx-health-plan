@@ -25,7 +25,9 @@ get_header(); ?>
 				while ( have_posts() ) :
 					the_post();
 				?>
-
+					<div class="workout-content">
+					<?php the_content(); ?>
+					</div>
 					<?php include LSX_HEALTH_PLAN_PATH . '/templates/tab-content-workout.php'; ?>
 
 				<?php endwhile; ?>
