@@ -31,7 +31,11 @@ if ( false !== 'parent' && 'exercise' === $args['post_type'] ) {
 }
 
 if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
-	$include                 = explode( ',', $args['include'] );
+	if ( is_array( $args['include'] ) ) {
+		$include = $args['include'];
+	} else {
+		$include = explode( ',', $args['include'] );
+	}
 	$include_filter          = $include;
 	$query_array['post__in'] = $include_filter;
 }

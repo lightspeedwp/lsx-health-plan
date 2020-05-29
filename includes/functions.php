@@ -377,7 +377,7 @@ function get_exercises_by_workout( $workout = '' ) {
 	$section_counter = 6;
 	while ( $i <= $section_counter ) {
 		$group_name = 'workout_section_' . $i;
-		$groups     = get_post_meta( get_the_ID(), $group_name, true );
+		$groups     = get_post_meta( $workout, $group_name, true );
 		if ( ! empty( $groups ) ) {
 			foreach ( $groups as $group ) {
 				if ( isset( $group['connected_exercises'] ) ) {
