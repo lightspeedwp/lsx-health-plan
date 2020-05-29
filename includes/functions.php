@@ -364,3 +364,28 @@ function column_class( $columns = '3' ) {
 	$cols .= '5' === $columns ? '15' : 12 / $columns;
 	return $cols;
 }
+
+/**
+ * Gets the exercises by the workout ID.
+ *
+ * @param string $workout
+ * @return void
+ */
+function get_exercises_by_workout( $workout = '' ) {
+	$exercises = array();
+	$i               = 1;
+	$section_counter = 6;
+	while ( $i <= $section_counter ) {
+		$group_name = 'workout_section_' . $i;
+		$groups     = get_post_meta( get_the_ID(), $group_name, true );
+		if ( ! empty( $groups ) ) {
+			foreach ( $groups as $group ) {
+				if ( isset( $group['connected_exercises'] ) ) {
+					$exercises[] = $group['connected_exercises'];
+				}
+			}
+		}
+		$i++;
+	}
+	return $exercises;
+}

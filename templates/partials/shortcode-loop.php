@@ -22,6 +22,14 @@ $query_array = array(
 	'posts_per_page' => $limit,
 );
 
+// If we are calling the exercises with the parent workout.
+if ( false !== 'parent' && 'exercise' === $args['post_type'] ) {
+	$items = \lsx_health_plan\functions\get_exercises_by_workout( $args['parent'] );
+	if ( ! empty( $items ) ) {
+		$args['include'] = $items;
+	}
+}
+
 if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
 	$include                 = explode( ',', $args['include'] );
 	$include_filter          = $include;
@@ -38,6 +46,7 @@ if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $t
 	);
 	$query_array['tax_query'] = $taxonomy_filter;
 }
+
 $exercises = new WP_Query( $query_array );
 ?>
 

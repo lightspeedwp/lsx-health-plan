@@ -89,6 +89,7 @@ function exercise_box( $args = array() ) {
 		'link_class'  => 'btn border-btn',
 		'layout'      => 'grid',
 		'image_size'  => 'lsx-thumbnail-square',
+		'parent'      => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	ob_start();
