@@ -147,8 +147,12 @@ class Settings {
 				'description' => __( 'Set a default workout routine.', 'lsx-health-plan' ),
 				'id'          => 'connected_workouts',
 			);
+			$this->endpoints['endpoint_workout_archive'] = array(
+				'title'   => __( 'Workouts Archive Endpoint', 'lsx-health-plan' ),
+				'default' => '',
+			);
 			$this->endpoints['endpoint_workout'] = array(
-				'title'   => __( 'Workout Endpoint', 'lsx-health-plan' ),
+				'title'   => __( 'Single Workout Endpoint', 'lsx-health-plan' ),
 				'default' => 'workout',
 			);
 		}

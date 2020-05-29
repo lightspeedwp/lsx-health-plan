@@ -837,6 +837,33 @@
   }
 }
 
+.post-type-archive-workout {
+	.archive-plan {
+		.row {
+			.col-md-3 {
+				.lsx-slot {
+					.workout-feature-img {
+						img {
+							width: 100%;
+						}
+					}
+					.workout-content-box {
+						.btn {
+							width: 100%;
+							&:after {
+								content: '\f105';
+								font-family: FontAwesome;
+								margin-left: 2rem;
+								color: $blue;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .tax-exercise-type,
 .tax-muscle-group,
 .tax-equipment {
