@@ -108,6 +108,32 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (max-width: 400px) { .slick-slider .lsx-videos-slot iframe { max-height: 150px; } }
 
+.lsx-hp-widget-items.slick-slider { background-color: white; padding: 2rem; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow { border: none; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow.slick-next { right: 1rem; }
+
+.lsx-hp-widget-items.slick-slider button.slick-arrow.slick-prev { left: 1rem; }
+
+.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #DDDDDD; padding-bottom: 3rem; }
+
+.widget-item-grid-layout .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; padding: 1rem; -ms-flex-pack: center; justify-content: center; }
+
+.widget-item-grid-layout .row > .col-xs-12 { padding: 1rem; }
+
+.widget-item-grid-layout .row > .col-xs-12 img { width: 100%; }
+
+.widget-item-grid-layout .row > .col-xs-12:not(:first-child) { -ms-flex: 1; flex: 1; }
+
+.widget-item-grid-layout .row > .col-xs-12:not(:first-child) img { height: 100%; max-height: 230px; -o-object-fit: cover; object-fit: cover; }
+
+.widget-item-grid-layout .row > .col-xs-12:first-child { width: 100%; }
+
+.widget-item-grid-layout .row > .col-xs-12:first-child img { max-height: 320px; -o-object-fit: cover; object-fit: cover; }
+
+.widget-item-grid-layout .row > .col-xs-12:only-child { padding: 0; margin: -1rem; width: 490px; }
+
 #lsx-exercises-shortcode { margin-top: 1rem; margin-bottom: 1rem; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode { width: 100%; }
@@ -810,6 +836,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #single-exercise .exercise-image .exercise-data .exercise-table tbody { text-transform: capitalize; }
 
 #single-exercise .exercise-image .exercise-data .exercise-table tbody tr { -ms-grid-columns: 30% 70%; grid-template-columns: 30% 70%; }
+
+#single-exercise .lsx-hp-widget-items.slick-slider + .exercise-data { padding-top: 0; }
 
 @media (min-width: 992px) { #single-exercise .back-plan-btn { margin-top: 8.4rem; } }
 
