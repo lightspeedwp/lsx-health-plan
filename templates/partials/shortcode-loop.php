@@ -38,6 +38,7 @@ if ( isset( $args['include'] ) && ( '' !== $args['include'] ) ) {
 	}
 	$include_filter          = $include;
 	$query_array['post__in'] = $include_filter;
+	$query_array['order']    = 'post__in';
 }
 
 if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $term ) ) {
