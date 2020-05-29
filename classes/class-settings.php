@@ -149,7 +149,7 @@ class Settings {
 			);
 			$this->endpoints['endpoint_workout_archive'] = array(
 				'title'   => __( 'Workouts Archive Endpoint', 'lsx-health-plan' ),
-				'default' => 'workouts',
+				'default' => '',
 			);
 			$this->endpoints['endpoint_workout'] = array(
 				'title'   => __( 'Single Workout Endpoint', 'lsx-health-plan' ),

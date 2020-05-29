@@ -90,7 +90,7 @@ class Workout {
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', 'workouts' ),
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', false ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
