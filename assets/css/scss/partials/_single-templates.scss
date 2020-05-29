@@ -143,7 +143,11 @@
 				}
 			}
 		}
-		
+	}
+	.lsx-hp-widget-items.slick-slider {
+		+ .exercise-data {
+			padding-top: 0;
+		}
 	}
 	.back-plan-btn {
 		@include media('>=tablet') { 
