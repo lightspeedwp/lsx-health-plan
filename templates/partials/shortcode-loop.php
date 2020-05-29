@@ -56,10 +56,11 @@ $exercises = new WP_Query( $query_array );
 						include LSX_HEALTH_PLAN_PATH . 'templates/partials/meal-plans.php';
 						break;
 
-					case 'exercise':
+					/*case 'exercise':
 						include LSX_HEALTH_PLAN_PATH . 'templates/partials/content-shortcode-exercise.php';
-						break;
+						break;*/
 
+					case 'exercise':
 					case 'recipe':
 					case 'tip':
 						include LSX_HEALTH_PLAN_PATH . 'templates/content-archive-' . $args['post_type'] . '.php';
