@@ -290,7 +290,9 @@
 	margin-bottom: 1rem;
 	.lsx-exercises-shortcode {
 		width: 100%;
-
+		>.col-xs-12 {
+			margin-bottom: 3rem;
+		}
 		&.layout-grid {
 			@include media('>=tablet') {
 				display: grid;

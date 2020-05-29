@@ -14,6 +14,7 @@
 - Added a "side" field for exercises that displays left, right or nothing if left blank.
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
+- Added a template for the single workout pages.
 
 ### Changed
 - Changed the styling for the single exercise image depending if it is a slider of a gallery or a single image.
