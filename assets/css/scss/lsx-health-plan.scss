@@ -6,9 +6,13 @@
 
 @import 'include-media';
 @import 'partials/variables';
+@import 'partials/customizer-health-plan-body-colours';
 @import 'partials/helpers';
 @import 'partials/shortcodes';
 @import 'partials/woocommerce';
 @import 'partials/my-account';
 @import 'partials/single-plan';
-@import 'partials/single-templates'
+@import 'partials/single-templates';
+
+@include customizer-health-plan-body-colours(#F6F6F6, #DADDDF, #4A4A4A, #418AD0, #F7AE00, #919191);
+

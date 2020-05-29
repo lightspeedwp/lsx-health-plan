@@ -15,6 +15,7 @@
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
 - Added a template for the single workout pages.
+- Added support for LSX color customizer.
 
 ### Changed
 - Changed the styling for the single exercise image depending if it is a slider of a gallery or a single image.
