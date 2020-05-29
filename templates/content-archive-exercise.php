@@ -10,12 +10,42 @@ global $shortcode_args;
 <?php lsx_entry_before(); ?>
 
 <?php
-$column_class = '4';
+$content_setting = '';
+$column_class    = '4';
+$link_html       = '';
+$link_close      = '';
+
 // Check for shortcode overrides.
 if ( null !== $shortcode_args ) {
 	if ( isset( $shortcode_args['columns'] ) ) {
 		$column_class = $shortcode_args['columns'];
 		$column_class = \lsx_health_plan\functions\column_class( $column_class );
+	}
+	if ( isset( $shortcode_args['link'] ) ) {
+		$link_setting = $shortcode_args['link'];
+		// Setup our link and content.
+		switch ( $link_setting ) {
+			case 'single':
+				$link_html  = '<a href="' . get_permalink( $group['connected_exercises'] ) . '">';
+				$link_close = '</a>';
+				break;
+
+			case 'modal':
+				$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+				$link_close = '</a>';
+				// We call the button to register the modal, but we do not output it.
+				lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
+				break;
+
+			case 'none':
+			default:
+				$link_html  = '';
+				$link_close = '';
+				break;
+		}
+	}
+	if ( isset( $shortcode_args['description'] ) ) {
+		$content_setting = $shortcode_args['description'];
 	}
 }
 ?>
@@ -46,13 +76,15 @@ if ( null !== $shortcode_args ) {
 				<?php lsx_health_plan_exercise_data(); ?>
 			</div>
 			<?php
-			if ( ! has_excerpt() ) {
-				$content = wp_trim_words( get_the_content(), 20 );
-				$content = '<p>' . $content . '</p>';
-			} else {
-				$content = apply_filters( 'the_excerpt', get_the_excerpt() );
+			if ( '' !== $content_setting && 'excerpt' === $content_setting ) {
+				if ( ! has_excerpt() ) {
+					$content = wp_trim_words( get_the_content(), 20 );
+					$content = '<p>' . $content . '</p>';
+				} else {
+					$content = apply_filters( 'the_excerpt', get_the_excerpt() );
+				}
+				echo wp_kses_post( $content );
 			}
-			echo wp_kses_post( $content );
 			?>
 			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'See exercise', 'lsx-health-plan' ); ?></a>
 		</div>
