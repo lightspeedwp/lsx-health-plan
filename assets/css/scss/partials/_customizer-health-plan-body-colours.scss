@@ -1,0 +1,244 @@
+@mixin customizer-health-plan-link-colour ($color: #418AD0, $hover: #F7AE00) {
+	&,
+	&:active,
+	&:visited {
+		color: $color;
+	}
+
+	&:hover,
+	&:hover:active,
+	&:focus {
+		color: $hover;
+	}
+}
+@mixin customizer-health-plan-body-colours($bg: #F6F6F6, $breaker: #DADDDF, $color: #4A4A4A, $link: #418AD0, $hover: #F7AE00, $small: #919191) {
+
+	.svg {
+		svg {
+			> g {
+				fill: $link;
+				> g {
+					fill: $link;
+				}
+				&#Day-Plan-Meal,
+				&#My-Day-Plan-Download {
+					fill: transparent;
+					stroke: $link;
+					> g {
+						fill: transparent;
+					}
+				}
+				&#Week-Plan-Meal {
+					stroke: $link;
+				}
+				#overview-tab-icon-blue {
+					fill: transparent;
+					path {
+						stroke: $link;
+					}
+				}
+				#Day-Plan--Tab1 {
+					fill: $link;
+				}
+				#Day-Plan-Meal {
+					stroke: $link;
+					fill: transparent;
+				}
+			}
+		}
+	}
+
+	.title-lined {
+		border-bottom: 2px solid $breaker; 
+		@extend .svg;
+	}
+
+	.blue-title, .content-area h2.blue-title {
+		color: $link;
+	}
+ 
+	#account-nav {
+		.nav.nav-pills {
+			@media (max-width:600px) {
+				&::-webkit-scrollbar-thumb {
+					background-color: $link;
+				}
+			}
+			li {
+				a {
+					&::after {
+						color: $link;
+					}
+				}
+				&.active, &:hover {
+					a {
+						background: $link;
+					}
+				}
+			}
+		}
+	}
+
+	#single-plan-nav {
+		.nav.nav-pills {
+			li {
+				@extend .svg;
+				&.active,
+				&:hover {
+					a {
+						background: $link;
+					}
+				}
+			}
+		}
+	}
+
+	.daily-plan-block {
+		@extend .svg;
+		.day {
+			&:hover {
+				background-color: $link;
+			}
+		}
+		&.week-grid {
+			.week-row {
+				.week-row-inner {
+					.week-meals-recipes-box {
+						.week-meals-recipes-box-inner {
+							.day {
+								&:not(.completed) {
+									border-color: $link;
+									background: rgba($link, 0.5);
+								}
+								&:hover {
+									&:not(.completed) {
+										background: $link;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.my-profile-block {
+		.profile-navigation {
+			.profile-photo {
+				img {
+					border-color: $link;
+				}
+			}
+		}
+	}
+
+	#lsx-exercises-shortcode {
+		.lsx-exercises-shortcode {
+			.lsx-exercises-item {
+				&:before {
+					background-image: linear-gradient(120deg, $link, $link);
+				}
+			}
+		}
+	}
+
+
+	.single-plan, .archive-plan, .lsx-exercises-shortcode, .single-workout {
+		.extra-title {
+			span {
+				color: $link;
+			}
+		}
+		.sets {
+			.set-title {
+				color: $link;
+			}
+			.set-content, .set-table, .set-list, .set-grid {
+				color: $color;
+			}
+			
+			.set-table {
+				.workout-table {
+					tr {
+						th {
+							border-bottom: 2px solid $link;
+						}
+						td {
+							&.video-button-item  {
+								button {
+									.fa {
+										font-size: 40px;
+										color: $link;
+									}
+									&:hover {
+										.fa {
+											color: $hover;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.set-list,
+			.set-grid {
+				.workout-list,
+				.workout-grid {
+					article {
+						.title {
+							h3 {
+								a {
+									color: $color;
+									.reps {
+										color: $color;
+										&:before {
+											color: $link;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.single-plan-inner {
+			@extend .svg;
+			&.workout-content {
+				.workout-instructions {
+					.single-plan-inner-buttons {
+						.complete-plan-btn {
+							.download-link {
+								border-color: $link;
+								color: $link;
+								&:hover {
+									background-color: $link;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.single-plan-section-title {
+			@extend .svg;
+		}
+	}
+
+	#lsx-tips-shortcode {
+		.lsx-tips-shortcode {
+			.diet-tip-wrapper {
+				&.quick-tip {
+					h3 {
+						color: $link;
+					}
+					.tipimage .tip-thumbnail img {
+						border-color: $link;
+					}
+				}
+			}
+		}
+	}
+}
