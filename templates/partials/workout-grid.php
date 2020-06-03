@@ -81,33 +81,47 @@ if ( ! empty( $groups ) ) {
 									?>
 								<?php echo wp_kses_post( $link_close ); ?>
 							</div>
-							<div class="title">
-								<h3>
-								<?php echo wp_kses_post( $link_html ); ?>
-										<?php
-										$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
-										if ( '' !== $reps ) {
-											$exercise_title .= $reps;
-										}
-										echo wp_kses_post( $exercise_title );
-										?>
-									</a>
+							<div class="content-box exercise-content-box white-bg">
+								<h3 class="title-lined">
+									<?php echo wp_kses_post( $link_html ); ?>
+											<?php
+											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											echo wp_kses_post( $exercise_title );
+											?>
+										</a>
+									<?php echo wp_kses_post( $link_close ); ?>
 								</h3>
-								<?php echo wp_kses_post( $link_close ); ?>
-							</div>
-							<?php
-							if ( '' !== $content_setting ) {
-								if ( 'excerpt' === $content_setting ) {
-									$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
+								<div class="reps-container">
+									<?php
+									if ( '' !== $reps ) {
 									?>
-										<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $excerpt ); ?></p>
+										<?php echo wp_kses_post( $reps ); ?>
+									<?php
+									}
+									?>
+									<?php if ( '' !== $link_html ) { ?>
+										<?php echo wp_kses_post( str_replace( '<a' ,'<a class="btn-simple" ', $link_html ) ); ?>
+										<?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?>
+										<?php echo wp_kses_post( $link_close ); ?>
+									<?php } ?>
+								</div>
+								<?php
+								if ( '' !== $content_setting ) {
+									if ( 'excerpt' === $content_setting ) {
+										$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
+										?>
+											<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $excerpt ); ?></p>
+										<?php
+									}
+									if ( 'full' === $content_setting ) {
+										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
+									}
+									?>
+									<a href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn border-btn"><?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?></a>
 									<?php
 								}
-								if ( 'full' === $content_setting ) {
-									echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
-								}
-							}
-							?>
+								?>
+							</div>
 						</article>
 					</div>
 					<?php

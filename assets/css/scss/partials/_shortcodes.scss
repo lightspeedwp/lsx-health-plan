@@ -301,7 +301,27 @@
 				grid-template-columns: 1fr 1fr 1fr;
 			}
 		}
-
+		.lsx-slot {
+			.exercise-feature-img {
+				img {
+					width: 100%;
+				}
+			}
+			.exercise-content-box {
+				.title-lined {
+					margin-bottom: 10px;
+					.exercise-table {
+						margin: 0;
+					}
+				}
+				.moretag {
+					display: none;
+				}
+				.border-btn {
+					width: 100%;
+				}
+			}
+		}
 		.lsx-exercises-item {
 			min-height: 200px;
 			background-position: center;

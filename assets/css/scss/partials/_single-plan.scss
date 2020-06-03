@@ -296,34 +296,33 @@
 					margin-bottom: 19px;
 					background-color: white;
 					margin: 1.5rem 0;
-					.title {
-						h3 {
-							margin-top: 15px;
-							margin-bottom: 15px;
-							@include media('<=phone') {
-								margin-top: 0;
-							}
-							a {
-								display: flex;
-								flex-direction: column;
-								color: #434343;
-								.reps {
-									font-size: 15px;
-									color: #434343;
-									text-transform: uppercase;
-									font-family: 'Noto Sans', sans-serif;
-									font-weight: bold;
-									margin-top: 10px;
-									&:before {
-										content: '\f01e';
-										font-family: FontAwesome;
-										margin-right: 1rem;
-										color: $blue;
-										font-size: 20px;
-										font-weight: 200;
-									}
-								}
-							}
+					h3 {
+						margin-top: 15px;
+						margin-bottom: 15px;
+						@include media('<=phone') {
+							margin-top: 0;
+						}
+						a {
+							display: flex;
+							flex-direction: column;
+							color: #434343;
+							
+						}
+					}
+					.reps {
+						font-size: 15px;
+						color: #434343;
+						text-transform: uppercase;
+						font-family: 'Noto Sans', sans-serif;
+						font-weight: bold;
+						margin-top: 10px;
+						&:before {
+							content: '\f01e';
+							font-family: FontAwesome;
+							margin-right: 1rem;
+							color: $blue;
+							font-size: 20px;
+							font-weight: 200;
 						}
 					}
 					.btn {
@@ -378,7 +377,6 @@
 				}
 			}
 		}
-
 		.set-grid {
 			.workout-grid {
 				padding: 0 10px;
@@ -401,14 +399,29 @@
 							}
 						}
 					}
-					.title {
-						padding: 15px;
-						h3 {
-							margin-top: 0;
+					.title-lined {
+						margin-top: 0;
+					}
+					.reps-container {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.reps {
+							margin: 0;
 						}
-						.btn {
-							width: 100%;
+						.btn-simple {
+							text-transform: uppercase;
+							font-size: 14px;
+							font-weight: bold;
+							&:after {
+								content: '\f105';
+								font-family: FontAwesome;
+								margin-left: 5px;
+							}
 						}
+					}
+					.btn {
+						width: 100%;
 					}
 				}
 			}
@@ -630,6 +643,12 @@
 	}
 }
 
+#lsx-exercises-shortcode {
+	.btn-simple {
+		display: none;
+	}
+}
+
 .equipment-terms,
 .muscle-terms,
 .muscle-field-item,
@@ -834,6 +853,18 @@
       }
     }
   }
+}
+
+.post-type-archive-exercise {
+	.archive-plan {
+		.row {
+			.lsx-slot {
+				.title-lined {
+					border: none;
+				}
+			}
+		}
+	}
 }
 
 .post-type-archive-workout {
