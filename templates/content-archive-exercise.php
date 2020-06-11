@@ -59,7 +59,7 @@ if ( null !== $shortcode_args ) {
 			<?php
 			$featured_image = get_the_post_thumbnail();
 			if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-				the_post_thumbnail( 'lsx-thumbnail-square', array(
+				the_post_thumbnail( 'medium', array(
 					'class' => 'aligncenter',
 				) );
 			} else {

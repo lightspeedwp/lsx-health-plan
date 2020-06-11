@@ -78,7 +78,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #418ad0; text-transform: uppercase; font-weight: bold; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h4 { font-family: "Noto Sans"; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h4 { font-family: 'Noto Sans'; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tip-item { font-size: 16px; }
 
@@ -116,7 +116,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .lsx-hp-widget-items.slick-slider button.slick-arrow.slick-prev { right: 1rem; }
 
-.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #DDDDDD; padding-bottom: 3rem; }
+.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #dddddd; padding-bottom: 3rem; }
 
 .widget-item-grid-layout .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; padding: 1rem; -ms-flex-pack: center; justify-content: center; }
 
@@ -146,6 +146,8 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined { margin-bottom: 10px; }
 
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined.no-excerpt { border: none; }
+
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined .exercise-table { margin: 0; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .moretag { display: none; }
@@ -154,13 +156,13 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { min-height: 200px; background-position: center; background-repeat: no-repeat; display: -ms-flexbox; display: flex; position: relative; }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item a[data-toggle="modal"] { position: absolute; width: 100%; height: 100%; z-index: 1; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item a[data-toggle='modal'] { position: absolute; width: 100%; height: 100%; z-index: 1; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item.bg-full { background-size: cover; }
 
 @media (max-width: 991px) { #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { margin-bottom: 1rem; } }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-image: linear-gradient(-120deg, #418ad0, #418ad0); opacity: .4; transition: opacity .1s ease-in; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-image: linear-gradient(-120deg, #418ad0, #418ad0); opacity: 0.4; transition: opacity 0.1s ease-in; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:hover:before { content: '\f05d'; font-family: FontAwesome; color: rgba(255, 255, 255, 0.6); font-size: 6em; opacity: 1; display: -ms-flexbox; display: flex; -ms-flex-align: baseline; align-items: baseline; -ms-flex-pack: center; justify-content: center; }
 
