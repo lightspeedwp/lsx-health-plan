@@ -2,234 +2,238 @@
 
 .plan-template-default,
 .recipe-template-default {
-  .content-area,
-  .widget-area {
-    margin-top: 4.5rem;
-    @media (max-width: 768px) {
-      margin-top: 8.5rem;
-    }
-  }
+	.content-area,
+	.widget-area {
+		margin-top: 4.5rem;
+		@media (max-width: 768px) {
+			margin-top: 8.5rem;
+		}
+	}
 }
 
 #single-plan-nav {
-  margin-bottom: 15px;
-  .nav.nav-pills {
-    @media (max-width: 600px) {
-      width: 100vw;
-      margin-left: -15px;
-      margin-top: -55px;
-      height: 100%;
-      display: flex;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4);
-      &::-webkit-scrollbar {
-        width: 1px;
-        height: 5px;
-        background-color: $white;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: $blue;
-      }
-    }
-    @media (max-width: 319px) {
-      margin-top: -44px;
-    }
-    li {
-      @media (max-width: 600px) {
-        //width: 100%;
-        margin: 0;
-        width: 28%;
-        flex-shrink: 0;
-        height: 100%;
-        scroll-snap-align: start;
-        display: flex;
-        padding-right: 2px;
-        &:not(.active) {
-          a {
-            opacity: 0.7;
-          }
-        }
-      }
-      @media (max-width: 333px) {
-        min-height: 90px;
-      }
-      &.active {
-        svg {
-          g {
-            path {
-              stroke: white !important;
-            }
-            circle {
-              fill: white !important;
-            }
-          }
-        }
-      }
-      a {
-        border-radius: 0;
-        background: $white;
-        font-family: "Lora", serif;
-        font-weight: bold;
-        font-size: 18px;
-        color: $gray;
-        padding: 15px 35px;
-        display: flex;
-        @media (max-width: 600px) {
-          font-size: 13px;
-          width: 100%;
-          padding: 15px;
-          flex-direction: column;
-          text-align: center;
-        }
-        &.overview-tab {
-          svg {
-            position: relative;
-            top: 5px;
-          }
-        }
-        &.workout-tab {
-          svg {
-            max-width: 28px;
-          }
-        }
-        svg {
-          margin-right: 15px;
-          @media (max-width: 600px) {
-            margin: 0 auto;
-            width: 100%;
-            height: 20px;
-          }
-        }
-        &:hover {
-          svg {
-            g {
-              path {
-                stroke: white !important;
-              }
-              circle {
-                fill: white !important;
-              }
-            }
-          }
-          &.workout-tab {
-            svg {
-              g {
-                fill: white !important;
-              }
-            }
-          }
-          &.warm-up-tab,
-          &.recipes-tab {
-            svg {
-              g {
-                fill: white !important;
-              }
-              path {
-                stroke: transparent !important;
-              }
-              circle {
-                fill: transparent !important;
-              }
-            }
-          }
-        }
-      }
-      &.active,
-      &:hover {
-        a {
-          background: $blue;
-          color: $white;
-        }
-        .warm-up-tab,
-        .recipes-tab {
-          svg {
-            g {
-              fill: white !important;
-            }
-            path {
-              stroke: transparent !important;
-            }
-            circle {
-              fill: transparent !important;
-            }
-          }
-        }
-      }
-    }
-  }
+	margin-bottom: 15px;
+	.nav.nav-pills {
+		@media (max-width: 600px) {
+			width: 100vw;
+			margin-left: -15px;
+			margin-top: -55px;
+			height: 100%;
+			display: flex;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			overflow-scrolling: touch;
+			scroll-snap-type: x mandatory;
+			scroll-behavior: smooth;
+			box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4);
+			&::-webkit-scrollbar {
+				width: 1px;
+				height: 5px;
+				background-color: $white;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: $blue;
+			}
+		}
+		@media (max-width: 319px) {
+			margin-top: -44px;
+		}
+		li {
+			@media (max-width: 600px) {
+				//width: 100%;
+				margin: 0;
+				width: 28%;
+				flex-shrink: 0;
+				height: 100%;
+				scroll-snap-align: start;
+				display: flex;
+				padding-right: 2px;
+				&:not(.active) {
+					a {
+						opacity: 0.7;
+					}
+				}
+			}
+			@media (max-width: 333px) {
+				min-height: 90px;
+			}
+			&.active {
+				svg {
+					g {
+						path {
+							stroke: white !important;
+						}
+						circle {
+							fill: white !important;
+						}
+					}
+				}
+			}
+			a {
+				border-radius: 0;
+				background: $white;
+				font-family: 'Lora', serif;
+				font-weight: bold;
+				font-size: 18px;
+				color: $gray;
+				padding: 15px 35px;
+				display: flex;
+				@media (max-width: 600px) {
+					font-size: 13px;
+					width: 100%;
+					padding: 15px;
+					flex-direction: column;
+					text-align: center;
+				}
+				&.overview-tab {
+					svg {
+						position: relative;
+						top: 5px;
+					}
+				}
+				&.workout-tab {
+					svg {
+						max-width: 28px;
+					}
+				}
+				svg {
+					margin-right: 15px;
+					@media (max-width: 600px) {
+						margin: 0 auto;
+						width: 100%;
+						height: 20px;
+					}
+				}
+				&:hover {
+					svg {
+						g {
+							path {
+								stroke: white !important;
+							}
+							circle {
+								fill: white !important;
+							}
+						}
+					}
+					&.workout-tab {
+						svg {
+							g {
+								fill: white !important;
+							}
+						}
+					}
+					&.warm-up-tab,
+					&.recipes-tab {
+						svg {
+							g {
+								fill: white !important;
+							}
+							path {
+								stroke: transparent !important;
+							}
+							circle {
+								fill: transparent !important;
+							}
+						}
+					}
+				}
+			}
+			&.active,
+			&:hover {
+				a {
+					background: $blue;
+					color: $white;
+				}
+				.warm-up-tab,
+				.recipes-tab {
+					svg {
+						g {
+							fill: white !important;
+						}
+						path {
+							stroke: transparent !important;
+						}
+						circle {
+							fill: transparent !important;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .my-plan-container {
-  .lsx-container-content {
-    padding: 10px 2em;
-    .lsx-block-container {
-      .lsx-container-content {
-        padding: 15px 10px;
-      }
-    }
-  }
+	.lsx-container-content {
+		padding: 10px 2em;
+		.lsx-block-container {
+			.lsx-container-content {
+				padding: 15px 10px;
+			}
+		}
+	}
 }
 
 @media (max-width: 600px) {
-  #edit-account-tab {
-    padding: 0 10px 20px;
-    margin-top: 0px;
-    margin-top: -45px;
-  }
-  .wp-block-cover {
-	  + #edit-account-tab {
-		margin-top: 0;
-	  }
-  }
+	#edit-account-tab {
+		padding: 0 10px 20px;
+		margin-top: 0px;
+		margin-top: -45px;
+	}
+	.wp-block-cover {
+		+ #edit-account-tab {
+			margin-top: 0;
+		}
+	}
 }
 
 .woocommerce-edit-account {
-  .wp-block-lsx-blocks-lsx-banner-box {
-    min-height: 200px;
-  }
-  .lsx-banner-image-wrap {
-    img {
-      min-width: 100%;
-      min-height: 200px;
-      object-fit: cover;
-      @media (max-width: 600px) {
-        min-height: 440px;
-      }
-    }
-  }
+	.wp-block-lsx-blocks-lsx-banner-box {
+		min-height: 200px;
+	}
+	.lsx-banner-image-wrap {
+		img {
+			min-width: 100%;
+			min-height: 200px;
+			object-fit: cover;
+			@media (max-width: 600px) {
+				min-height: 440px;
+			}
+		}
+	}
 }
 
 .menu-my-account.lsx-block-container.alignfull {
-  @media (max-width: 600px) {
-    .lsx-container-content {
-      padding: 0em 3em 1em;
-    }
-  }
+	@media (max-width: 600px) {
+		.lsx-container-content {
+			padding: 0em 3em 1em;
+		}
+	}
 }
 
 .archive-plan {
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 .post-type-archive-recipe,
 .tax-recipe-type {
-  .bottom-single-recipe {
-    margin-top: 4.25rem;
-    margin-bottom: -8.4rem;
-  }
+	.bottom-single-recipe {
+		margin-top: 4.25rem;
+		margin-bottom: -8.4rem;
+	}
 }
 
-.single-plan, .archive-plan, .lsx-exercises-shortcode, .single-workout {
-	.entry-content, .tab-content-plan {
-		background: $white;    
+.single-plan,
+.archive-plan,
+.lsx-exercises-shortcode,
+.single-workout {
+	.entry-content,
+	.tab-content-plan {
+		background: $white;
 		padding: 25px 40px;
-		@media (max-width:992px) {
+		@media (max-width: 992px) {
 			padding: 15px 10px;
 		}
 	}
@@ -240,7 +244,7 @@
 		}
 	}
 	.box-shadow {
-		box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
 	}
 	.btn-full {
 		width: 100%;
@@ -250,15 +254,18 @@
 			padding: 20px 15px 10px;
 		}
 		.set-title {
-			font-family: "Noto Sans";
+			font-family: 'Noto Sans';
 			text-transform: uppercase;
 			color: $blue;
 		}
-		.set-content, .set-table, .set-list, .set-grid {
+		.set-content,
+		.set-table,
+		.set-list,
+		.set-grid {
 			font-size: 16px;
 			color: #222222;
 		}
-		
+
 		.set-table {
 			.workout-table {
 				tr {
@@ -267,9 +274,9 @@
 						padding: 5px 0;
 					}
 					td {
-						border-bottom: 1px solid #E1E1E1;
+						border-bottom: 1px solid #e1e1e1;
 						padding: 20px 0;
-						&.video-button-item  {
+						&.video-button-item {
 							button {
 								background-color: transparent;
 								border: none;
@@ -306,7 +313,6 @@
 							display: flex;
 							flex-direction: column;
 							color: #434343;
-							
 						}
 					}
 					.reps {
@@ -331,7 +337,7 @@
 							font-family: FontAwesome;
 							margin-left: 1rem;
 						}
-						@media (max-width:600px) {
+						@media (max-width: 600px) {
 							width: 100%;
 						}
 					}
@@ -344,7 +350,7 @@
 					@include media('<tablet') {
 						padding: 15px;
 					}
-					>.row {
+					> .row {
 						@include media('>=tablet') {
 							display: flex;
 							align-items: center;
@@ -357,7 +363,6 @@
 						.exercise-feature-img {
 							a {
 								img {
-									
 									@include media('>=tablet') {
 										max-width: 120px;
 									}
@@ -380,7 +385,7 @@
 		.set-grid {
 			.workout-grid {
 				padding: 0 10px;
-				>.col-md-4 {
+				> .col-md-4 {
 					padding: 5px;
 					@include media('<=phone') {
 						padding: 0;
@@ -393,7 +398,7 @@
 						}
 						@include media('>=tablet') {
 							img {
-								max-height: 250px;
+								//max-height: 250px;
 								width: 100%;
 								object-fit: cover;
 							}
@@ -430,14 +435,14 @@
 	.tab-content-plan {
 		margin-right: 0;
 		margin-left: 0;
-		@media (min-width:992px) {
+		@media (min-width: 992px) {
 			display: flex;
 			flex-wrap: wrap;
 			.col-md-4 {
 				display: flex;
 			}
 		}
-		@media (max-width:992px) {
+		@media (max-width: 992px) {
 			.col-md-4 {
 				padding: 0;
 			}
@@ -445,10 +450,10 @@
 		.lsx-health-plan-box {
 			background: $light_gray;
 			padding: 25px 20px;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
 			margin-bottom: 30px;
 			width: 100%;
-			@media (min-width:992px) {
+			@media (min-width: 992px) {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
@@ -457,7 +462,7 @@
 				font-size: 30px;
 				display: grid;
 				grid-template-columns: 80% 20%;
-    			grid-template-rows: 50% 50%;
+				grid-template-rows: 50% 50%;
 				&::after {
 					content: '';
 					margin-right: 10px;
@@ -481,13 +486,13 @@
 			}
 			.spacer {
 				+ .btn {
-					margin-bottom: 20px; 
+					margin-bottom: 20px;
 				}
 			}
 		}
 		.day-download-box {
 			.lsx-health-plan-box {
-				@media (min-width:992px) {
+				@media (min-width: 992px) {
 					justify-content: start;
 				}
 			}
@@ -520,7 +525,7 @@
 			max-width: 1000px;
 			.workout-instructions {
 				padding-left: 10px;
-    			padding-right: 10px;
+				padding-right: 10px;
 				h3 {
 					font-family: 'Noto Sans', sans-serif;
 					font-weight: bold;
@@ -562,11 +567,11 @@
 				.content-box {
 					.title-lined {
 						font-weight: bold;
-						font-family: "Noto Sans";
+						font-family: 'Noto Sans';
 					}
 				}
 			}
-			
+
 			.modal.in {
 				background-color: rgba(0, 0, 0, 0.5);
 			}
@@ -574,8 +579,9 @@
 		.eating-row {
 			.eating-column {
 				.content-box {
-					.eating-title, h3 {
-						font-family: "Noto Sans";
+					.eating-title,
+					h3 {
+						font-family: 'Noto Sans';
 						font-size: 22px;
 						font-weight: bold;
 					}
@@ -588,21 +594,24 @@
 		// 	}
 		// }
 		.tip-row {
-			@media (min-width:992px) {
+			@media (min-width: 992px) {
 				display: flex;
 			}
-			.tip-left, .tip-middle, .tip-right {
+			.tip-left,
+			.tip-middle,
+			.tip-right {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 				min-height: 240px;
 			}
-			.eating-title, h3 {
-				font-family: "Noto Sans";
+			.eating-title,
+			h3 {
+				font-family: 'Noto Sans';
 				font-size: 22px;
 			}
 			.tip-right {
-				@media (max-width:600px) {
+				@media (max-width: 600px) {
 					margin-top: 30px;
 				}
 			}
@@ -611,7 +620,7 @@
 			.recipe-column {
 				.recipe-title {
 					font-size: 22px;
-    				font-family: 'Noto Sans', sans-serif;
+					font-family: 'Noto Sans', sans-serif;
 				}
 				.recipe-table {
 					width: 100%;
@@ -626,14 +635,15 @@
 	}
 	.single-plan-inner-buttons {
 		padding: 45px 0;
-		@media (min-width:600px) {
+		@media (min-width: 600px) {
 			display: flex;
 			.complete-plan-btn {
 				margin-right: 40px;
 			}
 		}
-		@media (max-width:600px) {
-			.complete-plan-btn, .back-plan-btn {
+		@media (max-width: 600px) {
+			.complete-plan-btn,
+			.back-plan-btn {
 				margin-bottom: 20px;
 				.btn {
 					width: 100%;
@@ -659,49 +669,49 @@
 }
 
 .lsx-health-plan-modal {
-  .modal-header {
-    display: none;
-  }
-  .modal-content {
-    padding: 40px;
-  }
-  .modal-title {
-    margin-bottom: 25px;
-  }
-  .modal-body {
-	.exercise-modal {
-		&.title-lined {
-			padding-bottom: 15px;
-			margin-bottom: 20px;
+	.modal-header {
+		display: none;
+	}
+	.modal-content {
+		padding: 40px;
+	}
+	.modal-title {
+		margin-bottom: 25px;
+	}
+	.modal-body {
+		.exercise-modal {
+			&.title-lined {
+				padding-bottom: 15px;
+				margin-bottom: 20px;
+			}
+			.modal-title {
+				margin-bottom: 0;
+				margin-top: 15px;
+				padding-bottom: 5px;
+			}
+			.equipment-terms,
+			.muscle-terms {
+				display: block;
+				color: #919191;
+				font-size: 13px;
+			}
 		}
-		.modal-title {
-			margin-bottom: 0;
-			margin-top: 15px;
-			padding-bottom: 5px;
-		}
-		.equipment-terms,
-		.muscle-terms {
+		.moretag {
+			margin-top: 1rem;
 			display: block;
-			color: #919191;
-			font-size: 13px;
+			text-transform: uppercase;
+			&:after {
+				content: '\f105';
+				font-family: FontAwesome;
+				margin-left: 1rem;
+			}
+		}
+		@media (max-width: 600px) {
+			iframe {
+				height: 100%;
+			}
 		}
 	}
-	.moretag {
-		margin-top: 1rem;
-		display: block;
-		text-transform: uppercase;
-		&:after {
-			content: '\f105';
-			font-family: FontAwesome;
-			margin-left: 1rem;
-		}
-	}
-    @media (max-width: 600px) {
-      iframe {
-        height: 100%;
-      }
-    }
-  }
 }
 
 .post-type-archive-recipe,
@@ -745,7 +755,8 @@
 						tbody {
 							display: flex;
 						}
-						td, th {
+						td,
+						th {
 							vertical-align: top;
 						}
 						tr {
@@ -829,30 +840,30 @@
 		}
 	}
 
-  .lsx-hp-archive-description {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    display: flex;
-    .description-wrapper {
-      margin-top: 4.25rem;
-      text-align: center;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      p {
-        margin-bottom: 0px;
-      }
-    }
-  }
+	.lsx-hp-archive-description {
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		display: flex;
+		.description-wrapper {
+			margin-top: 4.25rem;
+			text-align: center;
+			max-width: 900px;
+			margin-left: auto;
+			margin-right: auto;
+			p {
+				margin-bottom: 0px;
+			}
+		}
+	}
 
-  &.lsx-search-enabled {
-    .archive-plan {
-      .content-box {
-        margin: 0px 0 30px;
-      }
-    }
-  }
+	&.lsx-search-enabled {
+		.archive-plan {
+			.content-box {
+				margin: 0px 0 30px;
+			}
+		}
+	}
 }
 
 .post-type-archive-exercise {
