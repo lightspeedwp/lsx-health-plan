@@ -678,6 +678,11 @@
 	.modal-title {
 		margin-bottom: 25px;
 	}
+	.modal-image {
+		img {
+			width: 100%;
+		}
+	}
 	.modal-body {
 		.exercise-modal {
 			&.title-lined {

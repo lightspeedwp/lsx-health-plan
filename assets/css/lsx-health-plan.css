@@ -721,6 +721,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .lsx-health-plan-modal .modal-title { margin-bottom: 25px; }
 
+.lsx-health-plan-modal .modal-image img { width: 100%; }
+
 .lsx-health-plan-modal .modal-body .exercise-modal.title-lined { padding-bottom: 15px; margin-bottom: 20px; }
 
 .lsx-health-plan-modal .modal-body .exercise-modal .modal-title { margin-bottom: 0; margin-top: 15px; padding-bottom: 5px; }
