@@ -78,7 +78,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #418ad0; text-transform: uppercase; font-weight: bold; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h4 { font-family: "Noto Sans"; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h4 { font-family: 'Noto Sans'; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tip-item { font-size: 16px; }
 
@@ -116,7 +116,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .lsx-hp-widget-items.slick-slider button.slick-arrow.slick-prev { left: 1rem; }
 
-.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #DDDDDD; padding-bottom: 3rem; }
+.lsx-hp-widget-items.slick-slider .slick-dots { border-bottom: 1px solid #dddddd; padding-bottom: 3rem; }
 
 .widget-item-grid-layout .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; padding: 1rem; -ms-flex-pack: center; justify-content: center; }
 
@@ -146,6 +146,8 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined { margin-bottom: 10px; }
 
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined.no-excerpt { border: none; }
+
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined .exercise-table { margin: 0; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .moretag { display: none; }
@@ -154,13 +156,13 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { min-height: 200px; background-position: center; background-repeat: no-repeat; display: -ms-flexbox; display: flex; position: relative; }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item a[data-toggle="modal"] { position: absolute; width: 100%; height: 100%; z-index: 1; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item a[data-toggle='modal'] { position: absolute; width: 100%; height: 100%; z-index: 1; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item.bg-full { background-size: cover; }
 
 @media (max-width: 991px) { #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item { margin-bottom: 1rem; } }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(120deg, #418ad0, #418ad0); opacity: .4; transition: opacity .1s ease-in; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(120deg, #418ad0, #418ad0); opacity: 0.4; transition: opacity 0.1s ease-in; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:hover:before { content: '\f05d'; font-family: FontAwesome; color: rgba(255, 255, 255, 0.6); font-size: 6em; opacity: 1; display: -ms-flexbox; display: flex; -ms-flex-align: baseline; align-items: baseline; -ms-flex-pack: center; justify-content: center; }
 
@@ -505,7 +507,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-plan-nav .nav.nav-pills li.active svg g circle { fill: white !important; }
 
-#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: "Lora", serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
+#single-plan-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Lora', serif; font-weight: bold; font-size: 18px; color: #4a4a4a; padding: 15px 35px; display: -ms-flexbox; display: flex; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 15px; -ms-flex-direction: column; flex-direction: column; text-align: center; } }
 
@@ -568,13 +570,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .sets .set-box.set, .archive-plan .sets .set-box.set, .lsx-exercises-shortcode .sets .set-box.set, .single-workout .sets .set-box.set { padding: 20px 15px 10px; }
 
-.single-plan .sets .set-title, .archive-plan .sets .set-title, .lsx-exercises-shortcode .sets .set-title, .single-workout .sets .set-title { font-family: "Noto Sans"; text-transform: uppercase; color: #418ad0; }
+.single-plan .sets .set-title, .archive-plan .sets .set-title, .lsx-exercises-shortcode .sets .set-title, .single-workout .sets .set-title { font-family: 'Noto Sans'; text-transform: uppercase; color: #418ad0; }
 
 .single-plan .sets .set-content, .single-plan .sets .set-table, .single-plan .sets .set-list, .single-plan .sets .set-grid, .archive-plan .sets .set-content, .archive-plan .sets .set-table, .archive-plan .sets .set-list, .archive-plan .sets .set-grid, .lsx-exercises-shortcode .sets .set-content, .lsx-exercises-shortcode .sets .set-table, .lsx-exercises-shortcode .sets .set-list, .lsx-exercises-shortcode .sets .set-grid, .single-workout .sets .set-content, .single-workout .sets .set-table, .single-workout .sets .set-list, .single-workout .sets .set-grid { font-size: 16px; color: #222222; }
 
 .single-plan .sets .set-table .workout-table tr th, .archive-plan .sets .set-table .workout-table tr th, .lsx-exercises-shortcode .sets .set-table .workout-table tr th, .single-workout .sets .set-table .workout-table tr th { border-bottom: 2px solid #418ad0; padding: 5px 0; }
 
-.single-plan .sets .set-table .workout-table tr td, .archive-plan .sets .set-table .workout-table tr td, .lsx-exercises-shortcode .sets .set-table .workout-table tr td, .single-workout .sets .set-table .workout-table tr td { border-bottom: 1px solid #E1E1E1; padding: 20px 0; }
+.single-plan .sets .set-table .workout-table tr td, .archive-plan .sets .set-table .workout-table tr td, .lsx-exercises-shortcode .sets .set-table .workout-table tr td, .single-workout .sets .set-table .workout-table tr td { border-bottom: 1px solid #e1e1e1; padding: 20px 0; }
 
 .single-plan .sets .set-table .workout-table tr td.video-button-item button, .archive-plan .sets .set-table .workout-table tr td.video-button-item button, .lsx-exercises-shortcode .sets .set-table .workout-table tr td.video-button-item button, .single-workout .sets .set-table .workout-table tr td.video-button-item button { background-color: transparent; border: none; }
 
@@ -616,7 +618,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 768px) { .single-plan .sets .set-grid .workout-grid article .exercise-feature-img, .archive-plan .sets .set-grid .workout-grid article .exercise-feature-img, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-feature-img, .single-workout .sets .set-grid .workout-grid article .exercise-feature-img { display: none; } }
 
-@media (min-width: 992px) { .single-plan .sets .set-grid .workout-grid article .exercise-feature-img img, .archive-plan .sets .set-grid .workout-grid article .exercise-feature-img img, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-feature-img img, .single-workout .sets .set-grid .workout-grid article .exercise-feature-img img { max-height: 250px; width: 100%; -o-object-fit: cover; object-fit: cover; } }
+@media (min-width: 992px) { .single-plan .sets .set-grid .workout-grid article .exercise-feature-img img, .archive-plan .sets .set-grid .workout-grid article .exercise-feature-img img, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-feature-img img, .single-workout .sets .set-grid .workout-grid article .exercise-feature-img img { width: 100%; -o-object-fit: cover; object-fit: cover; } }
 
 .single-plan .sets .set-grid .workout-grid article .title-lined, .archive-plan .sets .set-grid .workout-grid article .title-lined, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .title-lined, .single-workout .sets .set-grid .workout-grid article .title-lined { margin-top: 0; }
 
@@ -681,17 +683,17 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .archive-plan .single-plan-inner.workout-content .workout-snacks.pre-workout, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-snacks.pre-workout, .single-workout .single-plan-inner.workout-content .workout-snacks.pre-workout { margin-top: 4.25rem; }
 
-.single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .single-workout .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: "Noto Sans"; }
+.single-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .archive-plan .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-snacks .content-box .title-lined, .single-workout .single-plan-inner.workout-content .workout-snacks .content-box .title-lined { font-weight: bold; font-family: 'Noto Sans'; }
 
 .single-plan .single-plan-inner.workout-content .modal.in, .archive-plan .single-plan-inner.workout-content .modal.in, .lsx-exercises-shortcode .single-plan-inner.workout-content .modal.in, .single-workout .single-plan-inner.workout-content .modal.in { background-color: rgba(0, 0, 0, 0.5); }
 
-.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3, .archive-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box h3, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box .eating-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box h3, .single-workout .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: "Noto Sans"; font-size: 22px; font-weight: bold; }
+.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3, .archive-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box h3, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box .eating-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box h3, .single-workout .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: 'Noto Sans'; font-size: 22px; font-weight: bold; }
 
 @media (min-width: 992px) { .single-plan .single-plan-inner .tip-row, .archive-plan .single-plan-inner .tip-row, .lsx-exercises-shortcode .single-plan-inner .tip-row, .single-workout .single-plan-inner .tip-row { display: -ms-flexbox; display: flex; } }
 
 .single-plan .single-plan-inner .tip-row .tip-left, .single-plan .single-plan-inner .tip-row .tip-middle, .single-plan .single-plan-inner .tip-row .tip-right, .archive-plan .single-plan-inner .tip-row .tip-left, .archive-plan .single-plan-inner .tip-row .tip-middle, .archive-plan .single-plan-inner .tip-row .tip-right, .lsx-exercises-shortcode .single-plan-inner .tip-row .tip-left, .lsx-exercises-shortcode .single-plan-inner .tip-row .tip-middle, .lsx-exercises-shortcode .single-plan-inner .tip-row .tip-right, .single-workout .single-plan-inner .tip-row .tip-left, .single-workout .single-plan-inner .tip-row .tip-middle, .single-workout .single-plan-inner .tip-row .tip-right { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; min-height: 240px; }
 
-.single-plan .single-plan-inner .tip-row .eating-title, .single-plan .single-plan-inner .tip-row h3, .archive-plan .single-plan-inner .tip-row .eating-title, .archive-plan .single-plan-inner .tip-row h3, .lsx-exercises-shortcode .single-plan-inner .tip-row .eating-title, .lsx-exercises-shortcode .single-plan-inner .tip-row h3, .single-workout .single-plan-inner .tip-row .eating-title, .single-workout .single-plan-inner .tip-row h3 { font-family: "Noto Sans"; font-size: 22px; }
+.single-plan .single-plan-inner .tip-row .eating-title, .single-plan .single-plan-inner .tip-row h3, .archive-plan .single-plan-inner .tip-row .eating-title, .archive-plan .single-plan-inner .tip-row h3, .lsx-exercises-shortcode .single-plan-inner .tip-row .eating-title, .lsx-exercises-shortcode .single-plan-inner .tip-row h3, .single-workout .single-plan-inner .tip-row .eating-title, .single-workout .single-plan-inner .tip-row h3 { font-family: 'Noto Sans'; font-size: 22px; }
 
 @media (max-width: 600px) { .single-plan .single-plan-inner .tip-row .tip-right, .archive-plan .single-plan-inner .tip-row .tip-right, .lsx-exercises-shortcode .single-plan-inner .tip-row .tip-right, .single-workout .single-plan-inner .tip-row .tip-right { margin-top: 30px; } }
 
@@ -718,6 +720,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .lsx-health-plan-modal .modal-content { padding: 40px; }
 
 .lsx-health-plan-modal .modal-title { margin-bottom: 25px; }
+
+.lsx-health-plan-modal .modal-image img { width: 100%; }
 
 .lsx-health-plan-modal .modal-body .exercise-modal.title-lined { padding-bottom: 15px; margin-bottom: 20px; }
 

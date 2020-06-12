@@ -87,7 +87,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 			);
 			$modal_body .= $lsx_hp->frontend->gallery->get_gallery( '', '', $gallery_args );
 		} else {
-			$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'lsx-thumbnail-single' ) . '</div>';
+			$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'large' ) . '</div>';
 		}
 
 		$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $exercise_id ) . '</h5>';
@@ -136,7 +136,7 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 		);
 		$modal_body .= $lsx_hp->frontend->gallery->get_gallery( '', '', $gallery_args );
 	} else {
-		$modal_body .= '<div class="modal-image">' . get_the_post_thumbnail( $m, 'lsx-thumbnail-single' ) . '</div>';
+		$modal_body .= '<div class="modal-image">' . get_the_post_thumbnail( $m, 'large' ) . '</div>';
 	}
 	$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . $title . '</h5>';
 

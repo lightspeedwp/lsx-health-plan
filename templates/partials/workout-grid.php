@@ -40,7 +40,10 @@ if ( ! empty( $groups ) ) {
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
 					}
-
+					$class_excerpt = 'no-excerpt';
+					if ( 'excerpt' === $content_setting ) {
+						$class_excerpt = 'has-excerpt';
+					}
 					// Setup our link and content.
 					switch ( $link_setting ) {
 						case 'single':
@@ -70,7 +73,7 @@ if ( ! empty( $groups ) ) {
 									$thumbnail_args = array(
 										'class' => 'aligncenter',
 									);
-									$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'lsx-thumbnail-square', $thumbnail_args );
+									$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'medium', $thumbnail_args );
 									if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 										echo wp_kses_post( $featured_image );
 									} else {
@@ -82,7 +85,7 @@ if ( ! empty( $groups ) ) {
 								<?php echo wp_kses_post( $link_close ); ?>
 							</div>
 							<div class="content-box exercise-content-box white-bg">
-								<h3 class="title-lined">
+								<h3 class="title-lined <?php echo esc_html( $class_excerpt ); ?>">
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
@@ -100,7 +103,7 @@ if ( ! empty( $groups ) ) {
 									}
 									?>
 									<?php if ( '' !== $link_html ) { ?>
-										<?php echo wp_kses_post( str_replace( '<a' ,'<a class="btn-simple" ', $link_html ) ); ?>
+										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
 										<?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?>
 										<?php echo wp_kses_post( $link_close ); ?>
 									<?php } ?>

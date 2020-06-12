@@ -56,7 +56,7 @@ if ( ! empty( $groups ) ) {
 										$thumbnail_args = array(
 											'class' => 'aligncenter',
 										);
-										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'lsx-thumbnail-square', $thumbnail_args );
+										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'medium', $thumbnail_args );
 										if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 											echo wp_kses_post( $featured_image );
 										} else {
