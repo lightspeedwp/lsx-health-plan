@@ -18,6 +18,10 @@
 - Added a template for the single workout pages.
 - Added support for LSX color customizer.
 
+### Updated
+
+- Updated the translation files.
+
 ### Changed
 
 - Changed the styling for the single exercise image depending if it is a slider of a gallery or a single image.
