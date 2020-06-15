@@ -722,9 +722,15 @@ class Woocommerce {
 		<?php
 	}
 
+	/**
+	 * Adding the 'Home' link to the checkout.
+	 *
+	 * @return void
+	 */
 	public function hp_link_lsx_navbar_header() {
 		if ( is_checkout() ) {
-			echo '<nav class="checkout-navbar"><ul class="nav navbar-nav"><li><a href="' . esc_url( home_url() ) . '">Home</a></li></ul></nav>';
+			$home_ulr = '<nav class="checkout-navbar"><ul class="nav navbar-nav"><li><a href="' . home_url() . '">' . __( 'Home', 'lsx-health-plan' ) . '</a></li></ul></nav>';
+			echo wp_kses_post( $home_ulr );
 		}
 	}
 

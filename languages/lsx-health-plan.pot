@@ -560,6 +560,10 @@ msgstr ""
 msgid "Lost your password?"
 msgstr ""
 
+#: classes/integrations/class-woocommerce.php:727
+msgid "Home"
+msgstr ""
+
 #: classes/integrations/class-wp-user-avatar.php:50
 msgid "Please upload an image of yourself in .jpeg format. Images should be square, to best fit the cropping area, and files sizes kept below 500kb."
 msgstr ""
