@@ -11,9 +11,10 @@ if ( is_singular( 'workout' ) ) {
 	$groups = get_post_meta( get_queried_object_id(), $group_name, true );
 }
 
-$link_setting    = \lsx_health_plan\functions\get_option( 'workout_tab_link', 'single' );
-$content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_content', '' );
-$column_setting  = \lsx_health_plan\functions\get_option( 'workout_tab_columns', '4' );
+$link_setting          = \lsx_health_plan\functions\get_option( 'workout_tab_link', 'single' );
+$modal_content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_modal_content', 'excerpt' );
+$content_setting       = \lsx_health_plan\functions\get_option( 'workout_tab_content', '' );
+$column_setting        = \lsx_health_plan\functions\get_option( 'workout_tab_columns', '4' );
 
 // Check for shortcode overrides.
 if ( null !== $shortcode_args ) {
@@ -54,8 +55,11 @@ if ( ! empty( $groups ) ) {
 						case 'modal':
 							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
 							$link_close = '</a>';
+							$modal_args = array(
+								'modal_content' => $modal_content_setting,
+							);
 							// We call the button to register the modal, but we do not output it.
-							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false );
+							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
 							break;
 
 						case 'none':

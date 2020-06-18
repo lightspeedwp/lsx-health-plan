@@ -62,17 +62,22 @@ function lsx_health_plan_exercise_data() {
 function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $args = array() ) {
 	$defaults    = array(
 		'modal_trigger' => 'button',
+		'modal_content' => 'excerpt',
 	);
 	$args        = wp_parse_args( $args, $defaults );
+
 	$exercise_id = '';
 	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
 		$exercise_id     = esc_html( $group['connected_exercises'] );
 		$content         = get_post_field( 'post_content', $exercise_id );
-		$content         = wp_trim_words( $content, 40 );
 		$url             = get_permalink( $exercise_id );
 		$equipment_group = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
 		$muscle_group    = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
 		$lsx_hp          = lsx_health_plan();
+
+		if ( 'excerpt' === $args['modal_content'] ) {
+			$content = wp_trim_words( $content, 40 );
+		}
 
 		if ( 'link' ) {
 			$play_button = '<a data-toggle="modal" href="#workout-exercise-modal-' . $m . '">' . get_the_title( $exercise_id ) . '</a>';
@@ -99,8 +104,12 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
 		}
 		$modal_body .= '</div>';
-		$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
-		$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
+		if ( '' !== $args['modal_content'] ) {
+			$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
+		}
+		if ( 'excerpt' === $args['modal_content'] ) {
+			$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
+		}
 		\lsx_health_plan\functions\register_modal( 'workout-exercise-modal-' . $m, '', $modal_body );
 
 		if ( true === $echo ) {
