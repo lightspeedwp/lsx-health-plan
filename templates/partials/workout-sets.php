@@ -7,8 +7,8 @@
 global $group_name, $connected_workouts,$shortcode_args;
 
 // Check for any shortcode overrides.
-if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) && is_array( $shortcode_args['include'] ) ) {
-	$connected_workouts = $shortcode_args['include'];
+if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
+	$connected_workouts = array( get_the_ID() );
 }
 ?>
 <div class="sets">
