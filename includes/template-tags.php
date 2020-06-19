@@ -825,6 +825,10 @@ function lsx_health_plan_workout_tab_content( $index = 1 ) {
  * @return void
  */
 function lsx_health_plan_workout_sets() {
+	if ( is_singular( 'workout' ) ) {
+		global $connected_workouts;
+		$connected_workouts = array( get_the_ID() );
+	}
 	$template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-sets.php';
 	$template_path = apply_filters( 'lsx_health_plan_workout_set_template_path', $template_path );
 	if ( '' !== $template_path && ! empty( $template_path ) ) {
