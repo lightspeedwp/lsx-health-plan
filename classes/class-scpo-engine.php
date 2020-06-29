@@ -28,7 +28,7 @@ class SCPO_Engine {
 		return self::$instance;
 	}
 
-	function __construct() {
+	public function __construct() {
 		if ( ! get_option( 'lsx_to_scporder_install' ) ) {
 			$this->lsx_to_scporder_install();
 		}
@@ -81,7 +81,7 @@ class SCPO_Engine {
 		), 10, 4 );
 	}
 
-	function lsx_to_scporder_install() {
+	public function lsx_to_scporder_install() {
 		global $wpdb;
 		$result = $wpdb->query( "DESCRIBE $wpdb->terms `lsx_to_term_order`" );
 
@@ -92,7 +92,7 @@ class SCPO_Engine {
 		update_option( 'lsx_to_scporder_install', 1 );
 	}
 
-	function _check_load_script_css() {
+	public function _check_load_script_css() {
 		$active = false;
 
 		$objects = $this->get_to_scporder_options_objects();
@@ -124,7 +124,7 @@ class SCPO_Engine {
 		return $active;
 	}
 
-	function load_script_css() {
+	public function load_script_css() {
 		if ( $this->_check_load_script_css() ) {
 			wp_enqueue_script( 'scporderjs', LSX_HEALTH_PLAN_URL . '/assets/js/scporder.min.js', array( 'jquery', 'jquery-ui-sortable' ), null, true );
 
@@ -140,7 +140,7 @@ class SCPO_Engine {
 		}
 	}
 
-	function refresh() {
+	public function refresh() {
 		global $wpdb;
 		$objects = $this->get_to_scporder_options_objects();
 		$tags    = $this->get_to_scporder_options_tags();
@@ -214,7 +214,7 @@ class SCPO_Engine {
 		}
 	}
 
-	function update_menu_order() {
+	public function update_menu_order() {
 		check_ajax_referer( 'scporder', 'security' );
 
 		global $wpdb;
@@ -259,7 +259,7 @@ class SCPO_Engine {
 		}
 	}
 
-	function update_menu_order_tags() {
+	public function update_menu_order_tags() {
 		check_ajax_referer( 'scporder', 'security' );
 
 		global $wpdb;
@@ -312,7 +312,7 @@ class SCPO_Engine {
 		}
 	}
 
-	function lsx_to_scporder_previous_post_where( $where ) {
+	public function lsx_to_scporder_previous_post_where( $where ) {
 		global $post;
 		$objects = $this->get_to_scporder_options_objects();
 
@@ -328,7 +328,7 @@ class SCPO_Engine {
 		return $where;
 	}
 
-	function lsx_to_scporder_previous_post_sort( $orderby ) {
+	public function lsx_to_scporder_previous_post_sort( $orderby ) {
 		global $post;
 		$objects = $this->get_to_scporder_options_objects();
 
@@ -343,7 +343,7 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	function lsx_to_scporder_next_post_where( $where ) {
+	public function lsx_to_scporder_next_post_where( $where ) {
 		global $post;
 		$objects = $this->get_to_scporder_options_objects();
 
@@ -359,7 +359,7 @@ class SCPO_Engine {
 		return $where;
 	}
 
-	function lsx_to_scporder_next_post_sort( $orderby ) {
+	public function lsx_to_scporder_next_post_sort( $orderby ) {
 		global $post;
 		$objects = $this->get_to_scporder_options_objects();
 
@@ -374,7 +374,7 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	function lsx_to_scporder_pre_get_posts( $wp_query ) {
+	public function lsx_to_scporder_pre_get_posts( $wp_query ) {
 		$objects = $this->get_to_scporder_options_objects();
 
 		if ( empty( $objects ) ) {
@@ -429,7 +429,7 @@ class SCPO_Engine {
 		}
 	}
 
-	function lsx_to_scporder_get_terms_orderby( $orderby, $args ) {
+	public function lsx_to_scporder_get_terms_orderby( $orderby, $args ) {
 
 		if ( is_admin() ) {
 			return $orderby;
@@ -458,7 +458,7 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	function lsx_to_scporder_get_object_terms( $terms, $not_used, $args_1, $args_2 = null ) {
+	public function lsx_to_scporder_get_object_terms( $terms, $not_used, $args_1, $args_2 = null ) {
 		$tags = $this->get_to_scporder_options_tags();
 
 		if ( is_admin() && isset( $_GET['orderby'] ) ) {
@@ -485,23 +485,24 @@ class SCPO_Engine {
 		return $terms;
 	}
 
-	function taxcmp( $a, $b ) {
+	public function taxcmp( $a, $b ) {
 		if ( $a->lsx_to_term_order == $b->lsx_to_term_order ) {
 			return 0;
 		}
 		return ( $a->lsx_to_term_order < $b->lsx_to_term_order ) ? - 1 : 1;
 	}
 
-	function get_to_scporder_options_objects() {
+	public function get_to_scporder_options_objects() {
 		$ordering = array(
 			'plan' => 'plan',
 		);
 		return $ordering;
 	}
 
-	function get_to_scporder_options_tags() {
+	public function get_to_scporder_options_tags() {
 		$ordering = array(
 			'week' => 'week',
+			'recipe-type' => 'recipe-type',
 		);
 		return $ordering;
 	}
