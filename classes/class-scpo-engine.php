@@ -501,7 +501,7 @@ class SCPO_Engine {
 
 	function get_to_scporder_options_tags() {
 		$ordering = array(
-			'plan' => 'plan',
+			'week' => 'week',
 		);
 		return $ordering;
 	}
