@@ -38,7 +38,17 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			$this->setup_admin_scripts();
 			$field_name = $field->_name();
 
+			print_r('<pre>');
+			print_r($value);
+			print_r($field_name);
+			print_r('</pre>');
+
+			print_r('<pre>');
+			print_r($field->args( 'limit' ));
+			print_r('</pre>');
+
 			if ( $field->args( 'limit' ) > 1 ) {
+
 				echo '<ul class="cmb-post-search-ajax-results" id="' . $field_name . '_results">';
 				if ( isset( $value ) && ! empty( $value ) ) {
 					if ( ! is_array( $value ) ) {
@@ -65,6 +75,9 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				echo '</ul>';
 				$field_value = '';
 			} else {
+				print_r('<pre>');
+				print_r($value);
+				print_r('</pre>');
 				if ( is_array( $value ) ) {
 					$value = $value[0];
 				}
