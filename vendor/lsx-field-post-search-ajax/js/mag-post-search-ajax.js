@@ -7,7 +7,7 @@ var mag_ajax_js = Object.create( null );
 	mag_ajax_js.init_ajax = function( ) {
 		$('.cmb-post-search-ajax').each(
 			function () {
-				var fid 		= $(this).attr('id');
+				var fid 		= $(this).attr('name');
 				var name        = $(this).attr('id');
 				var query_args 	= $(this).attr('data-queryargs');
 				var object		= $(this).attr('data-object');
@@ -15,6 +15,26 @@ var mag_ajax_js = Object.create( null );
 				name = name.replace( "][", "_" );
 				name = name.replace( "]", "" );
 				name = name.replace( "[", "_" );
+
+				// We need to replace the _store with the new ID,
+				fid = fid.replace( "][", "_" );
+				fid = fid.replace( "]", "" );
+				fid = fid.replace( "[", "_" );
+
+				var storeReplace = $(this).parents('.cmb-row.cmb-type-post-search-ajax');
+				console.log('====== CMBROW =======');
+				console.log(storeReplace);
+				console.log(name);
+				console.log(fid);
+				if ( storeReplace.hasClass( 'cmb-repeat-group-field' ) ) {
+					console.log('====== hasClass =======');
+					console.log(storeReplace);
+					var fieldReplace = undefined;
+					fieldReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax-store');
+					if ( 0 < fieldReplace.length ) {
+						fieldReplace.attr('name',fid + '_store');
+					}
+				}
 	
 				$(this).devbridgeAutocomplete({
 					serviceUrl: psa.ajaxurl,
@@ -58,6 +78,7 @@ var mag_ajax_js = Object.create( null );
 						var lid 	 = $(this).attr('id') + '_results';
 						var name     = $(this).attr('id');
 						var original = $(this).attr('id');
+						var groupName = $(this).attr('name');
 						name = name.replace( "][", "_" );
 						name = name.replace( "]", "" );
 						name = name.replace( "[", "_" );
@@ -74,17 +95,17 @@ var mag_ajax_js = Object.create( null );
 						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).parents('.cmb-row').hasClass('lsx-field-connect-field') ) {
 							name = original;
 						}
-
+						console.log('====== Original =======');
+						console.log(original);
 						console.log('====== new name =======');
 						console.log(name);
-						console.log($('#workout_exercises[0][connected_exercises]_results'));
 	
 						var limit 	 = $(this).attr('data-limit');
 						var sortable = $(this).attr('data-sortable');
 						if ( limit > 1 ) {
 							var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';
 
-							$(this).parents('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');;
+							$(this).parents('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
 
 							$(this).val('');
 							if ( limit === $('input#'+name + '_results li').length ){
@@ -95,15 +116,14 @@ var mag_ajax_js = Object.create( null );
 						} else {
 							$('input#'+name).val( suggestion.data );
 						}
-	
-						console.log($(this).parents('.cmb-row'));
-						console.log($(this).parents('.cmb-row').hasClass('cmb-repeat-group-field'));
-
-
 
 						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
 							console.log('cmb-group');
-							$( 'input[name='+name+'_store]' ).val( suggestion.data );
+							groupName = groupName.replace( "][", "_" );
+							groupName = groupName.replace( "]", "" );
+							groupName = groupName.replace( "[", "_" );
+							console.log( groupName );
+							$( 'input[name='+groupName+'_store]' ).val( suggestion.data );
 						}
 	
 					}
