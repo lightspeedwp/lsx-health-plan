@@ -369,6 +369,20 @@ class Workout {
 			);
 			$cmb->add_field(
 				array(
+					'id'          => 'workout_tab_modal_content',
+					'type'        => 'select',
+					'name'        => __( 'Modal Content', 'lsx-health-plan' ),
+					'description' => __( 'Choose to show the excerpt, full content or nothing. For the modal content only', 'lsx-health-plan' ),
+					'options'     => array(
+						''        => __( 'None', 'lsx-health-plan' ),
+						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
+						'full'    => __( 'Full Content', 'lsx-health-plan' ),
+					),
+					'default' => '',
+				)
+			);
+			$cmb->add_field(
+				array(
 					'id'          => 'workout_tab_columns',
 					'type'        => 'select',
 					'name'        => __( 'Grid Columns', 'lsx-health-plan' ),

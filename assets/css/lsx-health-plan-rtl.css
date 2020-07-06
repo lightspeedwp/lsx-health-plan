@@ -136,7 +136,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-exercises-shortcode { margin-top: 1rem; margin-bottom: 1rem; }
 
-#lsx-exercises-shortcode .lsx-exercises-shortcode { width: 100%; }
+#lsx-exercises-shortcode .lsx-exercises-shortcode { width: 100%; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode > .col-xs-12 { margin-bottom: 3rem; }
 

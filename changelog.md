@@ -21,6 +21,7 @@
 ### Updated
 
 - Updated the translation files.
+- Updated the options for the workout grids, to have excerpts or full text for each exercise modal.
 
 ### Changed
 

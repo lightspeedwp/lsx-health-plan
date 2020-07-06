@@ -119,7 +119,7 @@ add_filter( 'woocommerce_login_redirect', 'lsx_login_redirect' );
 /**
  * Undocumented function
  *
- * @return void
+ * @return object lsx_health_plan\classes\Core::get_instance();
  */
 function lsx_health_plan() {
 	return \lsx_health_plan\classes\Core::get_instance();
