@@ -39,6 +39,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			$field_name = $field->_name();
 
 			if ( $field->args( 'limit' ) > 1 ) {
+
 				echo '<ul class="cmb-post-search-ajax-results" id="' . $field_name . '_results">';
 				if ( isset( $value ) && ! empty( $value ) ) {
 					if ( ! is_array( $value ) ) {
@@ -91,6 +92,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 							'type'  => 'hidden',
 							'id'    => $field_name . '_store',
 							'name'  => $store_name . '_store',
+							'class' => 'cmb-post-search-ajax-store',
 							'value' => $value,
 							'desc'  => false,
 						)
