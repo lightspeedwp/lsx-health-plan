@@ -60,11 +60,11 @@ function lsx_health_plan_exercise_data() {
  * @return void
  */
 function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $args = array() ) {
-	$defaults    = array(
+	$defaults = array(
 		'modal_trigger' => 'button',
 		'modal_content' => 'excerpt',
 	);
-	$args        = wp_parse_args( $args, $defaults );
+	$args     = wp_parse_args( $args, $defaults );
 
 	$exercise_id = '';
 	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {

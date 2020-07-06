@@ -5,7 +5,7 @@
  * @package lsx-health-plan
  */
 
-global $group_name;
+global $group_name,$shortcode_args;
 $groups = get_post_meta( get_the_ID(), $group_name, true );
 if ( is_singular( 'workout' ) ) {
 	$groups = get_post_meta( get_queried_object_id(), $group_name, true );
@@ -28,7 +28,14 @@ if ( null !== $shortcode_args ) {
 		$column_setting = $shortcode_args['columns'];
 		$column_setting = \lsx_health_plan\functions\column_class( $column_setting );
 	}
+	if ( isset( $shortcode_args['modal_content'] ) ) {
+		$modal_content_setting = $shortcode_args['modal_content'];
+	}
 }
+
+$modal_args = array(
+	'modal_content' => $modal_content_setting,
+);
 
 if ( ! empty( $groups ) ) {
 	?>
@@ -55,9 +62,6 @@ if ( ! empty( $groups ) ) {
 						case 'modal':
 							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
 							$link_close = '</a>';
-							$modal_args = array(
-								'modal_content' => $modal_content_setting,
-							);
 							// We call the button to register the modal, but we do not output it.
 							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
 							break;
@@ -123,9 +127,14 @@ if ( ! empty( $groups ) ) {
 									if ( 'full' === $content_setting ) {
 										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
 									}
-									?>
-									<a href="<?php echo esc_url( get_permalink( $group['connected_exercises'] ) ); ?>" class="btn border-btn"><?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?></a>
-									<?php
+
+									if ( '' !== $link_html ) {
+										?>
+										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn border-btn" ', $link_html ) ); ?>
+										<?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?>
+										<?php echo wp_kses_post( $link_close ); ?>
+										<?php
+									}
 								}
 								?>
 							</div>
