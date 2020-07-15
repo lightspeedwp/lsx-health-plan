@@ -5,10 +5,10 @@
  * @package lsx-health-plan
  */
 
-namespace lsx_health_plan\classes;
+namespace lsx_health_plan\classes\admin;
 
 /**
- * Contains the settings for each post type \lsx_health_plan\classes\Settings().
+ * Contains the settings for each post type \lsx_health_plan\classes\admin\Settings().
  */
 class Settings {
 
@@ -17,7 +17,7 @@ class Settings {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Settings()
+	 * @var      object \lsx_health_plan\classes\admin\Settings()
 	 */
 	protected static $instance = null;
 
@@ -68,7 +68,7 @@ class Settings {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Settings()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\admin\Settings()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -204,10 +204,10 @@ class Settings {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->screen_id,
-				'title'        => esc_html__( 'LSX Health Plan', 'cmb2' ),
+				'title'        => esc_html__( 'Settings', 'lsx-health-plan' ),
 				'object_types' => array( 'options-page' ),
 				'option_key'   => 'lsx_health_plan_options', // The option key and admin menu page slug.
-				'parent_slug'  => 'options-general.php', // Make options page a submenu item of the themes menu.
+				'parent_slug'  => 'edit.php?post_type=plan', // Make options page a submenu item of the themes menu.
 				'capability'   => 'manage_options', // Cap required to view options-page.
 			)
 		);

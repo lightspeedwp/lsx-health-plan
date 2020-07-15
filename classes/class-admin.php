@@ -32,16 +32,20 @@ class Admin {
 	public $previous_values = array();
 
 	/**
-	 * @var object \lsx_health_plan\classes\Settings();
+	 * @var object \lsx_health_plan\classes\admin\Settings();
 	 */
 	public $settings;
+
+	/**
+	 * @var object \lsx_health_plan\classes\admin\Help_Page();
+	 */
+	public $help;
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/class-settings.php';
-		$this->settings = Settings::get_instance();
+		$this->load_classes();
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
@@ -52,19 +56,25 @@ class Admin {
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since 1.0.0
-	 *
-	 * @return    object \lsx\member_directory\classes\Admin()    A single instance of this class.
+	 * @return object \lsx\member_directory\classes\Admin()    A single instance of this class.
 	 */
 	public static function get_instance() {
-
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
-
 		return self::$instance;
+	}
 
+	/**
+	 * Loads the admin subclasses
+	 */
+	private function load_classes() {
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/class-settings.php';
+		$this->settings = admin\Settings::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/class-help-page.php';
+		$this->help = admin\Help_Page::get_instance();
 	}
 
 	/**
@@ -73,7 +83,6 @@ class Admin {
 	 * @return void
 	 */
 	public function assets() {
-		//wp_enqueue_media();
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
