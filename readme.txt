@@ -3,7 +3,7 @@ Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
 Tags: lsx, meal plan, workout, blocks, recipes
 Requires at least: 5.1.1
-Tested up to: 5.4.1
+Tested up to: 5.4.2
 Requires PHP: 7.0
 Stable tag: 1.4.0
 License: GPLv3
