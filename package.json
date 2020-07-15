@@ -41,6 +41,7 @@
     "extend": "^3.0.2",
     "fstream": "^1.0.12",
     "hoek": "^4.2.1",
+    "kind-of": "^6.0.3",
     "lodash": "^4.17.16",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.5",
