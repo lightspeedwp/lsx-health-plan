@@ -223,10 +223,10 @@ class Exercise {
 	 * @return void
 	 */
 	public function register_menus() {
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Exercises', 'lsx-health-plan' ), esc_html__( 'Exercises', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=exercise' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Exercise Types', 'lsx-health-plan' ), esc_html__( 'Exercise Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=exercise-type&post_type=exercise' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Equipment', 'lsx-health-plan' ), esc_html__( 'Equipment', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=equipment&post_type=exercise' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Muscle Groups', 'lsx-health-plan' ), esc_html__( 'Muscle Groups', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=muscle-group&post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Exercises', 'lsx-health-plan' ), esc_html__( 'Exercises', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Exercise Types', 'lsx-health-plan' ), esc_html__( 'Exercise Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=exercise-type&post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Equipment', 'lsx-health-plan' ), esc_html__( 'Equipment', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=equipment&post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Muscle Groups', 'lsx-health-plan' ), esc_html__( 'Muscle Groups', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=muscle-group&post_type=exercise' );
 	}
 
 	/**

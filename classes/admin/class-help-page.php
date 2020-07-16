@@ -130,7 +130,29 @@ class Help_Page {
 	 * @subpackage hp-help-page
 	 */
 	public function body() {
-
+		?>
+		<div>
+			<ul>
+				<li>Getting started: Setup a new Health Plan site from scratch.</li>
+				<li>Settings overview: A thorough walkthrough of The Health Plan site configuration options and the settings that are available to you.</li>
+				<li>Features overview: A complete look at the features you can expect to see right out of the box as well as how to use them.</li>
+				<li>Plans (Parent Post Type)</li>
+				<li>Weeks (Global Taxonomy)</li>
+				<li>Tips (Global Post type connected to all other post types)</li>
+				<li>Workouts (Plans Child Post Type)</li>
+				<li>Exercises (Workouts Child Post Type)</li>
+				<li>Exercise Types (Exercises Taxonomy)</li>
+				<li>Equipment (Exercises Taxonomy)</li>
+				<li>Muscle Group (Exercises Taxonomy)</li>
+				<li>Meals (Plans Child Post Type)</li>
+				<li>Recipes (Meal Plans Child Post Type)</li>
+				<li>Types (Recipes Taxonomy)</li>
+				<li>Cuisines (Recipes Taxonomy)</li>
+				<li>Shortcodes: Insert content blocks for any content type.</li>
+				<li>Using stylesheets and page templates: An overview of the default templates and styles that are included in the plugin, as well as how to change them.</li>
+			</ul>
+		</div>
+		<?php
 	}
 
 	/**
