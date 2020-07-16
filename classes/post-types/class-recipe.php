@@ -41,6 +41,7 @@ class Recipe {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 
 		// Frontend Actions and Filters.
 		add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
@@ -100,7 +101,7 @@ class Recipe {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => true,
+			'show_in_menu'       => false,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-editor-ul',
 			'query_var'          => true,
@@ -121,9 +122,46 @@ class Recipe {
 	}
 
 	/**
+	 * Registers the Recipes under the Meals Post type menu.
+	 *
+	 * @return void
+	 */
+	public function register_menus() {
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Recipes', 'lsx-health-plan' ), esc_html__( 'Recipes', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=recipe' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Types', 'lsx-health-plan' ), esc_html__( 'Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-type&post_type=recipe' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Cuisines', 'lsx-health-plan' ), esc_html__( 'Cuisines', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-cuisine&post_type=recipe' );
+	}
+
+	/**
 	 * Register the Week taxonomy.
 	 */
 	public function taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Cuisine', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Cuisines', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Cuisines', 'lsx-health-plan' ),
+		);
+		$args   = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_menu'      => 'edit.php?post_type=meal',
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'recipe-cuisine',
+			),
+		);
+		register_taxonomy( 'recipe-cuisine', array( $this->slug ), $args );
+
 		$labels = array(
 			'name'              => esc_html_x( 'Type', 'taxonomy general name', 'lsx-health-plan' ),
 			'singular_name'     => esc_html_x( 'Types', 'taxonomy singular name', 'lsx-health-plan' ),
@@ -141,6 +179,7 @@ class Recipe {
 			'hierarchical'      => true,
 			'labels'            => $labels,
 			'show_ui'           => true,
+			'show_in_menu'      => 'edit.php?post_type=meal',
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(

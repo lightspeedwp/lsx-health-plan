@@ -46,6 +46,7 @@ class Admin {
 	 */
 	public function __construct() {
 		$this->load_classes();
+		add_action( 'admin_menu', array( $this, 'order_menus' ), 200 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
@@ -75,6 +76,63 @@ class Admin {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/class-help-page.php';
 		$this->help = admin\Help_Page::get_instance();
+	}
+
+	/**
+	 * Orders the HP menu Items
+	 *
+	 * @return void
+	 */
+	public function order_menus() {
+		global $menu, $submenu;
+		if ( ! empty( $submenu ) ) {
+			$parent_check = array(
+				'edit.php?post_type=plan',
+				'edit.php?post_type=workout',
+				'edit.php?post_type=meal',
+			);
+			foreach ( $submenu as $menu_id => $menu_values ) {
+				if ( in_array( $menu_id, $parent_check ) ) {
+					foreach ( $menu_values as $sub_menu_key => $sub_menu_values ) {
+						switch ( $sub_menu_values[0] ) {
+
+							case __( 'Add New', 'lsx-health-plan' ):
+								unset( $submenu[ $menu_id ][ $sub_menu_key ] );
+								break;
+
+							case __( 'All', 'lsx-health-plan' ):
+								$title = $sub_menu_values[0];
+								// Check and change the label.
+								switch ( $sub_menu_values[2] ) {
+									case 'edit.php?post_type=meal':
+										$title = esc_attr__( 'Meals', 'lsx-health-plan' );
+										break;
+
+									case 'edit.php?post_type=recipe':
+										$title = esc_attr__( 'Recipes', 'lsx-health-plan' );
+										break;
+
+									case 'edit.php?post_type=workout':
+										$title = esc_attr__( 'Workouts', 'lsx-health-plan' );
+										break;
+
+									case 'edit.php?post_type=plan':
+										$title = esc_attr__( 'Plans', 'lsx-health-plan' );
+										break;
+
+									default:
+										break;
+								}
+								$submenu[ $menu_id ][ $sub_menu_key ][0] = $title; // @codingStandardsIgnoreLine
+								break;
+
+							default:
+								break;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
