@@ -29,21 +29,14 @@ class Help_Page {
 	protected $screen_id = 'lsx_hp_help';
 
 	/**
-	 * An array of the endpoints for the Endpoint Translation field.
-	 *
-	 * @var array
-	 */
-	public $endpoints = array();
-
-	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_hp_help', array( $this, 'lsx_hp_help_footer', 30 ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'lsx_hp_help_style' ) );
-		add_action( 'admin_menu', array( $this, 'lsx_hp_help_register_menu' ) );
-		add_action( 'lsx_hp_help', array( $this, 'lsx_hp_help_header', 10 ) );
-		add_action( 'lsx_hp_help', array( $this, 'lsx_hp_help_enhance', 20 ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
+		add_action( 'admin_menu', array( $this, 'register_menu' ) );
+		add_action( 'lsx_hp_help', array( $this, 'header' ), 10 );
+		add_action( 'lsx_hp_help', array( $this, 'body' ), 20 );
+		add_action( 'lsx_hp_help', array( $this, 'footer' ), 30 );
 	}
 
 	/**
@@ -71,10 +64,9 @@ class Help_Page {
 	 *
 	 * @param string $hook_suffix the current page hook suffix.
 	 */
-	public function lsx_hp_help_style( $hook_suffix ) {
-		if ( 'appearance_page_lsx-hp-help' === $hook_suffix ) {
-			wp_enqueue_style( 'lsx-hp-help-screen-mailchimp', '//cdn-images.mailchimp.com/embedcode/classic-10_7.css', array(), LSX_VERSION );
-			wp_enqueue_style( 'lsx-hp-help-screen', get_template_directory_uri() . '/assets/css/admin/help.css', array( 'lsx-hp-help-screen-mailchimp' ), LSX_VERSION );
+	public function assets( $hook_suffix ) {
+		if ( 'plan_page_lsx_hp_help' === $hook_suffix ) {
+			wp_enqueue_style( 'lsx-hp-help-screen', get_template_directory_uri() . '/assets/css/admin/help.css', array(), LSX_VERSION );
 			wp_style_add_data( 'lsx-hp-help-screen', 'rtl', 'replace' );
 		}
 	}
@@ -85,8 +77,8 @@ class Help_Page {
 	 * @package    lsx
 	 * @subpackage hp-help-page
 	 */
-	public function lsx_hp_help_register_menu() {
-		add_submenu_page( 'edit.php?post_type=plan', __( 'Help', 'lsx-health-plan' ), __( 'Help', 'lsx-health-plan' ), 'manage_options', 'lsx-hp-help', 'lsx_hp_help_screen' );
+	public function register_menu() {
+		add_submenu_page( 'edit.php?post_type=plan', __( 'Help', 'lsx-health-plan' ), __( 'Help', 'lsx-health-plan' ), 'manage_options', 'lsx_hp_help', array( $this, 'screen' ) );
 	}
 
 
@@ -96,7 +88,7 @@ class Help_Page {
 	 * @package    lsx
 	 * @subpackage hp-help-page
 	 */
-	public function lsx_hp_help_screen() {
+	public function screen() {
 		require_once ABSPATH . 'wp-load.php';
 		require_once ABSPATH . 'wp-admin/admin.php';
 		require_once ABSPATH . 'wp-admin/admin-header.php';
@@ -107,7 +99,7 @@ class Help_Page {
 			 * Functions hooked into lsx_hp_help action
 			 *
 			 * @hooked lsx_hp_help_header  - 10
-			 * @hooked lsx_hp_help_enhance - 20
+			 * @hooked lsx_hp_help_body - 20
 			 * @hooked lsx_hp_help_footer  - 30
 			 */
 			do_action( 'lsx_hp_help' );
@@ -122,17 +114,22 @@ class Help_Page {
 	 * @package    lsx
 	 * @subpackage hp-help-page
 	 */
-	public function lsx_hp_help_header() {
-
+	public function header() {
+		?>
+		<div class="box enrich">
+			<h2><?php esc_html_e( 'Built to enrich your WordPress experience.', 'lsx-health-plan' ); ?></h2>
+			<p><?php esc_html_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis feugiat consectetur. Integer mollis ex lacus, sed ultrices felis mollis vitae.', 'lsx-health-plan' ); ?></p>
+		</div>
+		<?php
 	}
 
 	/**
-	 * Help screen enhance section.
+	 * Help screen body section.
 	 *
 	 * @package    lsx
 	 * @subpackage hp-help-page
 	 */
-	public function lsx_hp_help_enhance() {
+	public function body() {
 
 	}
 
@@ -142,7 +139,7 @@ class Help_Page {
 	 * @package    lsx
 	 * @subpackage hp-help-page
 	 */
-	public function lsx_hp_help_footer() {
+	public function footer() {
 
 	}
 }
