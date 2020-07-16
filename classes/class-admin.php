@@ -120,6 +120,18 @@ class Admin {
 										$title = esc_attr__( 'Plans', 'lsx-health-plan' );
 										break;
 
+									case 'edit.php?post_type=video':
+										$title = esc_attr__( 'Videos', 'lsx-health-plan' );
+										break;
+
+									case 'edit.php?post_type=exercise':
+										$title = esc_attr__( 'Exercises', 'lsx-health-plan' );
+										break;
+
+									case 'edit.php?post_type=tip':
+										$title = esc_attr__( 'Tips', 'lsx-health-plan' );
+										break;
+
 									default:
 										break;
 								}

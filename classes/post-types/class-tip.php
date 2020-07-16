@@ -31,6 +31,7 @@ class Tip {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'tips_connections' ), 15 );
@@ -74,7 +75,7 @@ class Tip {
 			'public'             => true,
 			'publicly_queryable' => false,
 			'show_ui'            => true,
-			'show_in_menu'       => true,
+			'show_in_menu'       => false,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-admin-post',
 			'query_var'          => true,
@@ -90,6 +91,15 @@ class Tip {
 			),
 		);
 		register_post_type( 'tip', $args );
+	}
+
+	/**
+	 * Registers the Recipes under the Meals Post type menu.
+	 *
+	 * @return void
+	 */
+	public function register_menus() {
+		add_submenu_page( 'edit.php?post_type=plan', esc_html__( 'Tips', 'lsx-health-plan' ), esc_html__( 'Tips', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=tip' );
 	}
 
 	/**

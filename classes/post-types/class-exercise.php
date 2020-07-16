@@ -36,6 +36,7 @@ class Exercise {
 			add_action( 'init', array( $this, 'exercise_type_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'equipment_taxonomy_setup' ) );
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
+			add_action( 'admin_menu', array( $this, 'register_menus' ) );
 
 			// Settings.
 			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
@@ -90,7 +91,7 @@ class Exercise {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => true,
+			'show_in_menu'       => false,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
@@ -214,6 +215,18 @@ class Exercise {
 		);
 
 		register_taxonomy( 'muscle-group', array( 'exercise' ), $args );
+	}
+
+	/**
+	 * Registers the Recipes under the Meals Post type menu.
+	 *
+	 * @return void
+	 */
+	public function register_menus() {
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Exercises', 'lsx-health-plan' ), esc_html__( 'Exercises', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Exercise Types', 'lsx-health-plan' ), esc_html__( 'Exercise Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=exercise-type&post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Equipment', 'lsx-health-plan' ), esc_html__( 'Equipment', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=equipment&post_type=exercise' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Muscle Groups', 'lsx-health-plan' ), esc_html__( 'Muscle Groups', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=muscle-group&post_type=exercise' );
 	}
 
 	/**
