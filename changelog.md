@@ -36,6 +36,12 @@
 
 - "View Cart" Message removed on Checkout.
 
+## [[1.3.2]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.2) - 2020-07-20
+
+### Fixed
+
+- Compatibility issue with WordPress SEO 14.5
+
 ## [[1.3.1]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.1) - 2020-03-31
 
 ### Added
