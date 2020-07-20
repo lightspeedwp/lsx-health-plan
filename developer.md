@@ -19,6 +19,7 @@ npm install -g <package>
 ```
 npm link gulp
 npm link gulp-autoprefixer
+npm link gulp-concat
 npm link gulp-gettext
 npm link gulp-jshint
 npm link gulp-plumber
