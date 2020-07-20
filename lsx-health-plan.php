@@ -4,7 +4,7 @@
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-health-plan
  * Description:	LSX Health Plan extension adds a meal and workout plan, with recipes.
  * Author:		LightSpeed
- * Version: 	1.3.1
+ * Version: 	1.3.2
  * Author URI: 	https://www.lsdev.biz/
  * License: 	GPL3
  * Text Domain: lsx-health-plan
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_HEALTH_PLAN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_HEALTH_PLAN_CORE', __FILE__ );
 define( 'LSX_HEALTH_PLAN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_HEALTH_PLAN_VER', '1.3.1' );
+define( 'LSX_HEALTH_PLAN_VER', '1.3.2' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
@@ -32,7 +32,7 @@ require_once LSX_HEALTH_PLAN_PATH . '/classes/class-core.php';
 function lsx_remove_extra_meta_box() {
 	global $wp_meta_boxes;
 	$all_post_types = [ 'plan', 'video', 'workout', 'tip', 'recipe', 'meal' ];
-	remove_meta_box( 'wpseo_meta', $all_post_types, 'normal' );
+	//remove_meta_box( 'wpseo_meta', $all_post_types, 'normal' );
 	remove_meta_box( 'commentsdiv', $all_post_types, 'normal' );
 	remove_meta_box( 'commentstatusdiv', $all_post_types, 'normal' );
 	remove_meta_box( 'lsx_blocks_title_meta', $all_post_types, 'side' );
