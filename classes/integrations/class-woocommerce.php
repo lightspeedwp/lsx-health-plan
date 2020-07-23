@@ -698,8 +698,13 @@ class Woocommerce {
 	 * @return void
 	 */
 	public function hp_add_body_classes( $classes = array() ) {
+		global $post;
 		if ( is_checkout() ) {
 			$classes[] = 'lsx-hp-simple-checkout';
+		}
+
+		if ( has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
+			$classes[] = 'my-plan-shortcode';
 		}
 		return $classes;
 	}

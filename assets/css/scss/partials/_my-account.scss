@@ -126,19 +126,52 @@
 	}
 }
 
-.my-profile-block {
-	background: $white;
-
-	max-width: 900px;
-	margin: 0 auto;
-	@media (min-width: 900px) {
-		display: flex;
-		padding: 35px 20px 20px;
+.my-plan-shortcode {
+	.breadcrumbs-container {
+		z-index: 5;
 	}
+	.entry-content {
+		&:first-child {
+			& .my-profile-block {
+				margin-top: -25px;
+			}
+		}
+	}
+}
+.my-profile-block {
+	overflow: initial !important;
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		min-height: auto;
+		.wp-block-cover__inner-container {
+			> h2 {
+				margin: 0;
+				font-size: 42px;
+				font-weight: bold;
+			}
+		}
+	}
+	> .wp-block-cover__inner-container {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		max-width: 1070px;
+	}
+	#dashboard-card {
+		max-width: 400px;
+		margin: 0;
+		position: relative;
+		top: 6.5rem;
+		@media (min-width: 900px) {
+			display: flex;
+			padding: 2rem;
+		}
+	}
+
 	.profile-navigation {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		margin: 0;
 		@media (max-width: 900px) {
 			margin-bottom: 20px;
 		}
@@ -148,45 +181,54 @@
 		.profile-photo {
 			img {
 				border-radius: 100px;
-				border: 2px solid $blue;
-				height: 130px;
+				border: 4px solid white;
+				height: 98px;
 				margin-bottom: 20px;
-				width: 130px;
+				width: 98px;
 				object-fit: cover;
 			}
 		}
 		.edit-profile {
 			.btn.btn-green {
-				background-color: $green;
-				box-shadow: 2px 2px 0 0 $dark_green;
-				color: $white;
+				background-color: transparent;
+				border: 2px solid $green;
+				box-shadow: none;
+				color: $green;
+				border-radius: 0;
+				height: 35px;
+				width: 100px;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				&:hover {
+					background-color: $green;
+					color: white;
+				}
 			}
 		}
 	}
 	.profile-details {
 		width: 100%;
-		h1 {
-			font-size: 30px;
-			text-transform: capitalize;
+		background: $white;
+		padding: 1.5rem;
+		min-width: 230px;
+		@extend .lsx-hp-shadow;
+		> div {
+			display: flex;
+			flex-direction: column;
+			span {
+				color: #333333;
+				line-height: 28px;
+			}
 		}
-		.table.personal-information {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 16px;
-			thead {
-				background-color: $light_gray;
-			}
-			tr {
-				th,
-				td {
-					border: none;
-				}
-				td {
-					font-weight: 300;
-				}
-				strong {
-					font-weight: 500;
-				}
-			}
+		h1 {
+			text-transform: capitalize;
+			color: #434343;
+			font-size: 20px;
+			line-height: 24px;
+			padding-bottom: 7px;
+			margin-bottom: 7px;
 		}
 	}
 }

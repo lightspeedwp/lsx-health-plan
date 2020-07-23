@@ -1,4 +1,4 @@
-@mixin customizer-health-plan-link-colour ($color: #418AD0, $hover: #F7AE00) {
+@mixin customizer-health-plan-link-colour($color: #418ad0, $hover: #f7ae00) {
 	&,
 	&:active,
 	&:visited {
@@ -11,8 +11,14 @@
 		color: $hover;
 	}
 }
-@mixin customizer-health-plan-body-colours($bg: #F6F6F6, $breaker: #DADDDF, $color: #4A4A4A, $link: #418AD0, $hover: #F7AE00, $small: #919191) {
-
+@mixin customizer-health-plan-body-colours(
+	$bg: #f6f6f6,
+	$breaker: #dadddf,
+	$color: #4a4a4a,
+	$link: #418ad0,
+	$hover: #f7ae00,
+	$small: #919191
+) {
 	.svg {
 		svg {
 			> g {
@@ -49,17 +55,18 @@
 	}
 
 	.title-lined {
-		border-bottom: 2px solid $breaker; 
+		border-bottom: 2px solid $breaker;
 		@extend .svg;
 	}
 
-	.blue-title, .content-area h2.blue-title {
+	.blue-title,
+	.content-area h2.blue-title {
 		color: $link;
 	}
- 
+
 	#account-nav {
 		.nav.nav-pills {
-			@media (max-width:600px) {
+			@media (max-width: 600px) {
 				&::-webkit-scrollbar-thumb {
 					background-color: $link;
 				}
@@ -70,7 +77,8 @@
 						color: $link;
 					}
 				}
-				&.active, &:hover {
+				&.active,
+				&:hover {
 					a {
 						background: $link;
 					}
@@ -124,12 +132,9 @@
 	}
 
 	.my-profile-block {
-		.profile-navigation {
-			.profile-photo {
-				img {
-					border-color: $link;
-				}
-			}
+		background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
+		.title-lined {
+			border-bottom: 5px solid $link;
 		}
 	}
 
@@ -143,8 +148,10 @@
 		}
 	}
 
-
-	.single-plan, .archive-plan, .lsx-exercises-shortcode, .single-workout {
+	.single-plan,
+	.archive-plan,
+	.lsx-exercises-shortcode,
+	.single-workout {
 		.extra-title {
 			span {
 				color: $link;
@@ -154,10 +161,13 @@
 			.set-title {
 				color: $link;
 			}
-			.set-content, .set-table, .set-list, .set-grid {
+			.set-content,
+			.set-table,
+			.set-list,
+			.set-grid {
 				color: $color;
 			}
-			
+
 			.set-table {
 				.workout-table {
 					tr {
@@ -165,7 +175,7 @@
 							border-bottom: 2px solid $link;
 						}
 						td {
-							&.video-button-item  {
+							&.video-button-item {
 								button {
 									.fa {
 										font-size: 40px;
