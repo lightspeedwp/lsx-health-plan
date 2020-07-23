@@ -310,29 +310,35 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .my-profile-block { overflow: initial !important; }
 
-.gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { min-height: auto; }
+.gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { min-height: 200px; }
+
+@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { margin-bottom: 15rem; min-height: 250px; } }
+
+@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container { padding: 10rem 1rem 1rem; height: 250px; } }
 
 .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container > h2 { margin: 0; font-size: 42px; font-weight: bold; }
 
 .my-profile-block > .wp-block-cover__inner-container { display: -ms-flexbox; display: flex; -ms-flex-align: baseline; align-items: baseline; -ms-flex-pack: justify; justify-content: space-between; max-width: 1070px; }
 
-.my-profile-block #dashboard-card { max-width: 400px; margin: 0; position: relative; top: 6.5rem; }
+@media (max-width: 768px) { .my-profile-block > .wp-block-cover__inner-container { -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; } }
 
-@media (min-width: 900px) { .my-profile-block #dashboard-card { display: -ms-flexbox; display: flex; padding: 2rem; } }
+.my-profile-block #dashboard-card { max-width: 400px; margin: 0; position: relative; top: 7rem; display: -ms-flexbox; display: flex; padding: 2rem; }
 
-.my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; margin: 0; }
+@media (max-width: 768px) { .my-profile-block #dashboard-card { max-width: 600px; top: 2.5rem; width: 100%; } }
+
+.my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; margin: 0; margin-left: 20px; }
 
 @media (max-width: 900px) { .my-profile-block .profile-navigation { margin-bottom: 20px; } }
 
-@media (min-width: 900px) { .my-profile-block .profile-navigation { margin-left: 20px; } }
+@media (max-width: 768px) { .my-profile-block .profile-navigation { margin-left: 15px; } }
 
 .my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 4px solid white; height: 98px; margin-bottom: 20px; width: 98px; -o-object-fit: cover; object-fit: cover; }
 
-.my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: transparent; border: 2px solid #6ba913; box-shadow: none; color: #6ba913; border-radius: 0; height: 35px; width: 100px; padding: 0; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; }
+.my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: white; border: 2px solid #6ba913; box-shadow: none; color: #6ba913; border-radius: 0; height: 35px; width: 100px; padding: 0; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; }
 
 .my-profile-block .profile-navigation .edit-profile .btn.btn-green:hover { background-color: #6ba913; color: white; }
 
-.my-profile-block .profile-details { width: 100%; background: #ffffff; padding: 1.5rem; min-width: 230px; }
+.my-profile-block .profile-details { width: 100%; background: #ffffff; padding: 1.5rem; min-width: 230px; height: -webkit-fit-content; height: fit-content; }
 
 .my-profile-block .profile-details > div { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 

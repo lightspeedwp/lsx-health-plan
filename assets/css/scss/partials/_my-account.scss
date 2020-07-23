@@ -141,8 +141,16 @@
 .my-profile-block {
 	overflow: initial !important;
 	.gutenberg-compatible-template.using-gutenberg .entry-content & {
-		min-height: auto;
+		min-height: 200px;
+		@media (max-width: 768px) {
+			margin-bottom: 15rem;
+			min-height: 250px;
+		}
 		.wp-block-cover__inner-container {
+			@media (max-width: 768px) {
+				padding: 10rem 1rem 1rem;
+				height: 250px;
+			}
 			> h2 {
 				margin: 0;
 				font-size: 42px;
@@ -155,15 +163,22 @@
 		align-items: baseline;
 		justify-content: space-between;
 		max-width: 1070px;
+		@media (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 	#dashboard-card {
 		max-width: 400px;
 		margin: 0;
 		position: relative;
-		top: 6.5rem;
-		@media (min-width: 900px) {
-			display: flex;
-			padding: 2rem;
+		top: 7rem;
+		display: flex;
+		padding: 2rem;
+		@media (max-width: 768px) {
+			max-width: 600px;
+			top: 2.5rem;
+			width: 100%;
 		}
 	}
 
@@ -172,11 +187,12 @@
 		flex-direction: column;
 		align-items: center;
 		margin: 0;
+		margin-right: 20px;
 		@media (max-width: 900px) {
 			margin-bottom: 20px;
 		}
-		@media (min-width: 900px) {
-			margin-right: 20px;
+		@media (max-width: 768px) {
+			margin-right: 15px;
 		}
 		.profile-photo {
 			img {
@@ -190,7 +206,7 @@
 		}
 		.edit-profile {
 			.btn.btn-green {
-				background-color: transparent;
+				background-color: white;
 				border: 2px solid $green;
 				box-shadow: none;
 				color: $green;
@@ -213,6 +229,7 @@
 		background: $white;
 		padding: 1.5rem;
 		min-width: 230px;
+		height: fit-content;
 		@extend .lsx-hp-shadow;
 		> div {
 			display: flex;
