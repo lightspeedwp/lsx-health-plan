@@ -314,7 +314,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (min-width: 900px) { .my-profile-block .profile-navigation { margin-right: 20px; } }
 
-.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 2px solid #418ad0; height: 180px; margin-bottom: 20px; width: 180px; -o-object-fit: cover; object-fit: cover; }
+.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 2px solid #418ad0; height: 130px; margin-bottom: 20px; width: 130px; -o-object-fit: cover; object-fit: cover; }
 
 .my-profile-block .profile-navigation .edit-profile .btn.btn-green { background-color: #6ba913; box-shadow: 2px 2px 0 0 #446b0c; color: #ffffff; }
 
@@ -383,11 +383,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block.week-grid a.week-title:hover, .daily-plan-block.week-grid a.week-title:focus { color: #418ad0; }
 
-.daily-plan-block.week-grid a.week-title:after { content: "\f0d7"; font-family: 'FontAwesome'; }
+.daily-plan-block.week-grid a.week-title:after { content: '\f0d7'; font-family: 'FontAwesome'; }
 
-.daily-plan-block.week-grid a.week-title[aria-expanded="true"]:after { content: "\f0d8"; font-family: 'FontAwesome'; }
+.daily-plan-block.week-grid a.week-title[aria-expanded='true']:after { content: '\f0d8'; font-family: 'FontAwesome'; }
 
-.daily-plan-block.week-grid a.week-title[aria-expanded="false"]:after { content: "\f0d7"; font-family: 'FontAwesome'; }
+.daily-plan-block.week-grid a.week-title[aria-expanded='false']:after { content: '\f0d7'; font-family: 'FontAwesome'; }
 
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -413,7 +413,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content { font-size: 0; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content:before { font-size: 50px; color: #F1F1F1; }
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content:before { font-size: 50px; color: #f1f1f1; }
 
 @media (max-width: 1024px) { .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box .week-meals-recipes-box-inner .day.completed .plan-content:before { font-size: 66px; } }
 

@@ -84,10 +84,11 @@ class Meal {
 			'rewrite'            => false,
 			'capability_type'    => 'post',
 			'has_archive'        => false,
-			'hierarchical'       => false,
+			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'page-attributes',
 			),
 		);
 		register_post_type( 'meal', $args );

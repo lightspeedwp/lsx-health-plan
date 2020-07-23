@@ -83,13 +83,14 @@ class Plan {
 				'slug' => \lsx_health_plan\functions\get_option( 'plan_single_slug', 'plan' ),
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => false,
-			'hierarchical'       => false,
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_plans_archive', 'plans' ),
+			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
 				'editor',
 				'thumbnail',
+				'page-attributes',
 			),
 		);
 		register_post_type( 'plan', $args );

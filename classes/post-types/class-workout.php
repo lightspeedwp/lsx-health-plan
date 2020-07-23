@@ -91,13 +91,14 @@ class Workout {
 			),
 			'capability_type'    => 'post',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', false ),
-			'hierarchical'       => false,
+			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
 				'thumbnail',
 				'editor',
 				'excerpt',
+				'page-attributes',
 			),
 		);
 		register_post_type( 'workout', $args );
