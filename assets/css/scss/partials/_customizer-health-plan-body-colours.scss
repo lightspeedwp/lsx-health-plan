@@ -73,14 +73,20 @@
 			}
 			li {
 				a {
+					border: 1px solid #dddddd;
 					&::after {
-						color: $link;
+						color: $gray_medium;
 					}
 				}
 				&.active,
 				&:hover {
 					a {
-						background: $link;
+						color: $link;
+						&::after {
+							color: $link;
+						}
+						background: white;
+						border: 1px solid $link;
 					}
 				}
 			}

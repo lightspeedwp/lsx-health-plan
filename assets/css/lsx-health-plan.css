@@ -277,14 +277,12 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
   #account-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
   #account-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418ad0; } }
 
-#account-nav .nav.nav-pills li { margin-right: 15px; }
+#account-nav .nav.nav-pills li { margin-right: 2px; }
 
 @media (max-width: 600px) { #account-nav .nav.nav-pills li { margin: 0; width: 40%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; padding-right: 2px; }
   #account-nav .nav.nav-pills li:not(.active) a { opacity: 0.7; } }
 
-#account-nav .nav.nav-pills li.active a::after { color: white; opacity: 1; }
-
-#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15px; color: #4a4a4a; padding: 15px; display: -ms-flexbox; display: flex; min-width: 200px; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #999999; padding: 15px; display: -ms-flexbox; display: flex; min-width: 200px; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
 
 @media (max-width: 600px) { #account-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 15px; -ms-flex-direction: column; flex-direction: column; text-align: center; min-width: auto; } }
 
@@ -292,9 +290,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { #account-nav .nav.nav-pills li a::after { width: 100%; height: 20px; margin: 5px 0 0 0; } }
 
-#account-nav .nav.nav-pills li a:hover::after { opacity: 1; color: white; }
-
-#account-nav .nav.nav-pills li a.my-plan-tab::after { content: '\f0e4'; }
+#account-nav .nav.nav-pills li a.my-plan-tab::after { content: '\f0e7'; }
 
 #account-nav .nav.nav-pills li a.account-details-tab::after { content: '\f007'; }
 
@@ -909,9 +905,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 600px) { #account-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418AD0; } }
 
-#account-nav .nav.nav-pills li a::after { color: #418AD0; }
+#account-nav .nav.nav-pills li a { border: 1px solid #dddddd; }
 
-#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { background: #418AD0; }
+#account-nav .nav.nav-pills li a::after { color: #999999; }
+
+#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { color: #418AD0; background: white; border: 1px solid #418AD0; }
+
+#account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
 
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418AD0; }
 
