@@ -122,7 +122,7 @@ class Frontend {
 	}
 
 	/**
-	 * Add 'lsx-simple-checkout' class to body if it is woocommerce checkout page.
+	 * Add body classes to body.
 	 *
 	 * @param array $classes
 	 * @return void
