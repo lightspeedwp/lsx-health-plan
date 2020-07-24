@@ -68,6 +68,7 @@ function day_plan_box( $args = array() ) {
 	$defaults = array(
 		'week_view'      => false,
 		'show_downloads' => false,
+		'plan'           => '',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	ob_start();
