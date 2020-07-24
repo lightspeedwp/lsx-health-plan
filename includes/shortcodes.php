@@ -47,6 +47,19 @@ function my_profile_box() {
 }
 
 /**
+ * Outputs all the plans on the frontpage.
+ *
+ * @return void
+ */
+function all_plans_box( $args = array() ) {
+
+	ob_start();
+	echo lsx_health_plan_all_plans_block(); // WPCS: XSS OK.
+	$content = ob_get_clean();
+	return $content;
+}
+
+/**
  * Outputs the my profile box on the frontpage.
  *
  * @return void

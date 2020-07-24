@@ -147,7 +147,7 @@
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		max-width: 1070px;
+		max-width: 1140px;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			align-items: center;
@@ -159,11 +159,11 @@
 		position: relative;
 		top: 7rem;
 		display: flex;
-		padding: 2rem;
 		@media (max-width: 768px) {
 			max-width: 600px;
 			top: 2.5rem;
 			width: 100%;
+			padding: 2rem;
 		}
 	}
 
@@ -231,6 +231,48 @@
 			line-height: 24px;
 			padding-bottom: 7px;
 			margin-bottom: 7px;
+		}
+	}
+}
+
+.all-plans-block {
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		max-width: 1140px;
+		width: 100%;
+		margin-top: 2.4rem;
+		margin-bottom: 2.4rem;
+	}
+	> .row {
+		display: flex;
+		flex-wrap: wrap;
+		> .col-xs-12 {
+			margin-bottom: 3rem;
+			article.lsx-slot {
+				background-color: white;
+				.content-box {
+					padding: 2rem 1.5rem;
+					h3.plan {
+						margin-bottom: 10px;
+					}
+					.plan-meta {
+						color: #919191;
+						font-size: 13px;
+					}
+					.progress progress[value] {
+						appearance: none;
+						width: 100%;
+						height: 20px;
+						&::-webkit-progress-bar {
+							background-color: white;
+							border-radius: 10px;
+							border: 1px solid #dddddd;
+						}
+						&::-webkit-progress-value {
+							border-radius: 10px;
+						}
+					}
+				}
+			}
 		}
 	}
 }

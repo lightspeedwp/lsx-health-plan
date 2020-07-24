@@ -292,6 +292,85 @@ function lsx_health_plan_my_profile_box() {
 }
 
 /**
+ * Outputs the my profile list of plans box
+ *
+ * @return void
+ */
+function lsx_health_plan_all_plans_block() {
+	$args      = array(
+		'orderby'        => 'menu_order',
+		'order'          => 'ASC',
+		'post_type'      => 'plan',
+		'nopagin'        => true,
+		'post_parent'    => 0,
+	);
+	$the_query = new WP_Query( $args );
+	?>
+	<div class="all-plans-block plan-grid block-all-plans-block">
+		<div class="row">
+			<?php
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) :
+					$the_query->the_post();
+					$completed_class = '';
+					if ( lsx_health_plan_is_day_complete() ) {
+						$completed_class = 'completed';
+					}
+					?>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<article class="lsx-slot lsx-hp-shadow">
+							<div class="plan-feature-img">
+								<a href="<?php echo esc_url( get_permalink() ); ?>">
+								<?php
+								$featured_image = get_the_post_thumbnail();
+								if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+									the_post_thumbnail( 'lsx-thumbnail', array(
+										'class' => 'aligncenter',
+									) );
+								} else {
+									?>
+									<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<?php
+								}
+								?>
+								</a>
+							</div>
+							<div class="content-box plan-content-box">
+								<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
+									<div class="plan-content"><?php the_title(); ?></div>
+								</h3>
+								<div class="plan-meta">
+									<span>Workout & Meal Plan</span>
+								</div>
+								<div class="excerpt">
+									<?php
+									if ( ! has_excerpt() ) {
+										$content = wp_trim_words( get_the_content(), 20 );
+										$content = '<p>' . $content . '</p>';
+									} else {
+										$content = apply_filters( 'the_excerpt', get_the_excerpt() );
+									}
+									echo wp_kses_post( $content );
+									?>
+								</div>
+								<span class="progress">
+									<progress id="file" value="32" max="100"> 32% </progress>
+								</span>
+							</div>
+							
+						</article>
+					</div>
+				<?php endwhile; ?>
+			<?php endif; ?>
+		</div>
+		
+		<?php wp_reset_postdata(); ?>
+	</div>
+
+<?php
+}
+
+/**
  * Outputs the my profile day view box
  *
  * @return void
