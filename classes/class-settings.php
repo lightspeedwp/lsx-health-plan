@@ -169,6 +169,10 @@ class Settings {
 			'title'   => __( 'Single Plan Slug', 'lsx-health-plan' ),
 			'default' => 'plan',
 		);
+		$this->endpoints['endpoint_plan_archive'] = array(
+			'title'   => __( 'Plans Archive Endpoint', 'lsx-health-plan' ),
+			'default' => 'plans',
+		);
 
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			$this->endpoints['exercise'] = array(

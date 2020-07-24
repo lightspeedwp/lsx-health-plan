@@ -89,9 +89,9 @@ class Workout {
 			'rewrite'            => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			),
-			'capability_type'    => 'post',
+			'capability_type'    => 'page',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', false ),
-			'hierarchical'       => false,
+			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',

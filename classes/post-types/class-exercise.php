@@ -97,7 +97,7 @@ class Exercise {
 			'rewrite'            => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' ),
 			),
-			'capability_type'    => 'post',
+			'capability_type'    => 'page',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_exercise_archive', 'exercises' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
