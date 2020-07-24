@@ -31,6 +31,19 @@ npm link gulp-sourcemaps
 npm link gulp-uglify
 npm link gulp-util
 npm link gulp-wp-pot
+npm link map-stream
+
+npm link hoek
+npm link include-media
+npm link js-yaml
+npm link jshint
+npm link minimatch
+npm link minimist
+npm link randomatic
+npm link sass-lint
+npm link shelljs
+npm link tough-cookie
+npm link webpack
 ```
 
 ### Tips
