@@ -32,9 +32,15 @@ class Plan {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
-		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+
+		// Template Redirects.
+		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
 	/**
@@ -129,17 +135,6 @@ class Plan {
 	}
 
 	/**
-	 * Adds the post type to the different arrays.
-	 *
-	 * @param array $post_types
-	 * @return array
-	 */
-	public function enable_post_type( $post_types = array() ) {
-		$post_types[] = $this->slug;
-		return $post_types;
-	}
-
-	/**
 	 * Define the metabox and field configurations.
 	 */
 	public function details_metaboxes() {
@@ -173,6 +168,17 @@ class Plan {
 	}
 
 	/**
+	 * Adds the post type to the different arrays.
+	 *
+	 * @param array $post_types
+	 * @return array
+	 */
+	public function enable_post_type( $post_types = array() ) {
+		$post_types[] = $this->slug;
+		return $post_types;
+	}
+
+	/**
 	 * Registers the workout connections on the plan post type.
 	 *
 	 * @return void
@@ -203,5 +209,18 @@ class Plan {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'plan' ) ) {
+			$title = __( 'Our health plans', 'lsx-health-plan' );
+		}
+		return $title;
 	}
 }

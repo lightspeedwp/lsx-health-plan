@@ -1,7 +1,10 @@
 // Account
 
 #account-nav {
-	margin-bottom: 15px;
+	max-width: 1140px;
+	width: 100%;
+	margin-top: 2.4rem;
+	margin-bottom: 2.4rem;
 	.nav.nav-pills {
 		@media (max-width: 600px) {
 			width: 100vw;
