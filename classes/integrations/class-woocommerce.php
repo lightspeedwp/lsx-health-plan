@@ -28,7 +28,7 @@ class Woocommerce {
 
 		// Checkout.
 		add_action( 'woocommerce_after_checkout_form', array( $this, 'payment_gateway_logos' ) );
-		add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
+		add_action( 'body_class', array( $this, 'hp_wc_add_body_classes' ) );
 		add_action( 'lsx_nav_before', array( $this, 'hp_link_lsx_navbar_header' ), 99 );
 		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
 
@@ -697,14 +697,10 @@ class Woocommerce {
 	 * @param array $classes
 	 * @return void
 	 */
-	public function hp_add_body_classes( $classes = array() ) {
+	public function hp_wc_add_body_classes( $classes = array() ) {
 		global $post;
 		if ( is_checkout() ) {
 			$classes[] = 'lsx-hp-simple-checkout';
-		}
-
-		if ( has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
-			$classes[] = 'my-plan-shortcode';
 		}
 		return $classes;
 	}

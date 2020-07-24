@@ -375,14 +375,23 @@ function lsx_health_plan_all_plans_block() {
  *
  * @return void
  */
-function lsx_health_plan_day_plan_block() {
+function lsx_health_plan_day_plan_block( $args = array() ) {
+	$defaults = array(
+		'plan'           => '',
+	);
+	if ( isset( $args['plan'] ) && '' !== $args['plan'] ) {
+		$parent = $args['plan'];
+	}
 	$args      = array(
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 		'post_type'      => 'plan',
 		'posts_per_page' => -1,
 		'nopagin'        => true,
+		'post_parent'    => $parent,
 	);
+	$args = wp_parse_args( $args, $defaults );
+
 	$the_query = new WP_Query( $args );
 	?>
 	<div class="daily-plan-block day-grid">

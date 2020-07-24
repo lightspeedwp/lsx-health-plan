@@ -11,6 +11,19 @@
 	}
 }
 
+.plan-template-default {
+	&.parent-plan-page {
+		background-color: white;
+	}
+	#main {
+		&.parent-plan {
+			max-width: 900px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
 #single-plan-nav {
 	margin-bottom: 15px;
 	.nav.nav-pills {

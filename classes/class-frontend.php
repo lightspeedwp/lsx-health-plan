@@ -46,6 +46,8 @@ class Frontend {
 			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 		}
 
+		add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
+
 		// Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
@@ -117,6 +119,44 @@ class Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Add 'lsx-simple-checkout' class to body if it is woocommerce checkout page.
+	 *
+	 * @param array $classes
+	 * @return void
+	 */
+	public function hp_add_body_classes( $classes = array() ) {
+		global $post;
+
+		if ( has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
+			$classes[] = 'my-plan-shortcode';
+		}
+		if ( is_single() && is_singular( 'plan' ) ) {
+			$args = array(
+				'post_parent' => get_the_ID(),
+				'post_type'   => 'plan',
+			);
+
+			$post_id      = get_the_ID();
+			$has_children = get_children( $args );
+			$has_parent   = wp_get_post_parent_id( $post_id );
+
+			if ( ! empty( $has_children ) ) {
+				$plan_type_class = 'parent-plan-page';
+				if ( 0 !== $has_parent ) {
+					$plan_type_class = 'parent-sub-plan-page';
+				}
+			} else {
+				$plan_type_class = 'unique-plan-page';
+				if ( 0 !== $has_parent ) {
+					$plan_type_class = 'child-plan-page';
+				}
+			}
+			$classes[] = $plan_type_class;
+		}
+		return $classes;
 	}
 
 	/**
