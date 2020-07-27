@@ -186,29 +186,9 @@
 			img {
 				border-radius: 100px;
 				border: 4px solid white;
-				height: 98px;
-				margin-bottom: 20px;
-				width: 98px;
+				min-height: 95px;
+				min-width: 95px;
 				object-fit: cover;
-			}
-		}
-		.edit-profile {
-			.btn.btn-green {
-				background-color: white;
-				border: 2px solid $green;
-				box-shadow: none;
-				color: $green;
-				border-radius: 0;
-				height: 35px;
-				width: 100px;
-				padding: 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				&:hover {
-					background-color: $green;
-					color: white;
-				}
 			}
 		}
 	}
@@ -219,6 +199,9 @@
 		min-width: 230px;
 		height: fit-content;
 		@extend .lsx-hp-shadow;
+		display: flex;
+		flex-direction: column;
+
 		> div {
 			display: flex;
 			flex-direction: column;
@@ -234,6 +217,14 @@
 			line-height: 24px;
 			padding-bottom: 7px;
 			margin-bottom: 7px;
+			margin-left: 0;
+			width: 100%;
+		}
+		.edit-profile {
+			align-self: flex-end;
+			text-transform: uppercase;
+			font-weight: bold;
+			margin-top: -2.5rem;
 		}
 	}
 }

@@ -93,6 +93,16 @@
 		}
 	}
 
+	.post-type-archive-plan,
+	.single-plan {
+		.wrap.container {
+			.archive-header {
+				background-color: $link;
+				background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
+			}
+		}
+	}
+
 	#single-plan-nav {
 		.nav.nav-pills {
 			li {

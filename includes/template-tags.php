@@ -233,16 +233,6 @@ function lsx_health_plan_my_profile_box() {
 						echo get_avatar( $current_user->ID, 240 );
 						?>
 					</div>
-					<div class="edit-profile">
-						<?php
-						if ( function_exists( 'wc_get_page_id' ) ) {
-							$url_id = wc_get_page_id( 'myaccount' );
-						} else {
-							$url_id = '';
-						}
-						?>
-						<a class="btn btn-green" href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
-					</div>
 				</div>
 				<div class="profile-details">
 					<h1 class="title-lined has-text-color"><?php echo esc_html( $current_user->display_name ); ?></h1>
@@ -284,6 +274,16 @@ function lsx_health_plan_my_profile_box() {
 					<?php
 					}
 					?>
+					<div class="edit-profile">
+						<?php
+						if ( function_exists( 'wc_get_page_id' ) ) {
+							$url_id = wc_get_page_id( 'myaccount' );
+						} else {
+							$url_id = '';
+						}
+						?>
+						<a href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
+					</div>
 				</div>
 			</section>
 		</div>
