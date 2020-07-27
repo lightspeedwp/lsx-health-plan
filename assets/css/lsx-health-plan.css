@@ -273,6 +273,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #account-nav { max-width: 1140px; width: 100%; margin-top: 2.4rem; margin-bottom: 2.4rem; }
 
+@media (min-width: 768px) and (max-width: 1140px) { #account-nav { padding-left: 30px; padding-right: 30px; } }
+
 @media (max-width: 600px) { #account-nav .nav.nav-pills { width: 100vw; margin-left: -15px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
   #account-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
   #account-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418ad0; } }
@@ -308,19 +310,23 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { min-height: 200px; }
 
-@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { margin-bottom: 15rem; min-height: 250px; } }
+@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block { min-height: 250px; } }
 
-@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container { padding: 10rem 1rem 1rem; height: 250px; } }
+@media (max-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container { padding: 10rem 3rem 3rem; min-height: 250px; -ms-flex-direction: row; flex-direction: row; } }
+
+@media (max-width: 600px) { .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container { -ms-flex-direction: column; flex-direction: column; -ms-flex-align: end; align-items: end; } }
 
 .gutenberg-compatible-template.using-gutenberg .entry-content .my-profile-block .wp-block-cover__inner-container > h2 { margin: 0; font-size: 42px; font-weight: bold; }
 
-.my-profile-block > .wp-block-cover__inner-container { display: -ms-flexbox; display: flex; -ms-flex-align: baseline; align-items: baseline; -ms-flex-pack: justify; justify-content: space-between; max-width: 1140px; }
+.my-profile-block > .wp-block-cover__inner-container { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; max-width: 1140px; -ms-flex-align: end; align-items: flex-end; }
 
 @media (max-width: 768px) { .my-profile-block > .wp-block-cover__inner-container { -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; } }
 
 .my-profile-block #dashboard-card { max-width: 400px; margin: 0; position: relative; top: 7rem; display: -ms-flexbox; display: flex; }
 
-@media (max-width: 768px) { .my-profile-block #dashboard-card { max-width: 600px; top: 2.5rem; width: 100%; padding: 2rem; } }
+@media (max-width: 768px) { .my-profile-block #dashboard-card { max-width: 600px; top: 0; width: 100%; padding: 2rem; -ms-flex-pack: end; justify-content: flex-end; } }
+
+@media (max-width: 600px) { .my-profile-block #dashboard-card { -ms-flex-pack: end; justify-content: end; } }
 
 .my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; margin: 0; margin-right: 20px; }
 
@@ -332,6 +338,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .my-profile-block .profile-details { width: 100%; background: #ffffff; padding: 1.5rem; min-width: 230px; height: -webkit-fit-content; height: fit-content; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 
+@media (max-width: 768px) { .my-profile-block .profile-details { min-width: auto; max-width: 230px; } }
+
 .my-profile-block .profile-details > div { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 
 .my-profile-block .profile-details > div span { color: #333333; line-height: 28px; }
@@ -341,6 +349,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .my-profile-block .profile-details .edit-profile { -ms-flex-item-align: end; align-self: flex-end; text-transform: uppercase; font-weight: bold; margin-top: -2.5rem; }
 
 .gutenberg-compatible-template.using-gutenberg .entry-content .all-plans-block { max-width: 1140px; width: 100%; margin-top: 2.4rem; margin-bottom: 2.4rem; }
+
+@media (min-width: 768px) and (max-width: 1140px) { .gutenberg-compatible-template.using-gutenberg .entry-content .all-plans-block { padding-left: 30px; padding-right: 30px; } }
 
 .all-plans-block > .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -462,6 +472,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; }
   #edit-account-tab #account-nav .nav-pills { margin-left: -25px; } }
 
+@media (min-width: 769px) and (max-width: 1140px) { #edit-account-tab #account-nav { padding-left: 0; padding-right: 0; } }
+
 #edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; }
 
 #edit-account-tab .edit-account-section .title-lined, #edit-account-tab .edit-account-section .woocommerce, #edit-account-tab .stat-section .title-lined, #edit-account-tab .stat-section .woocommerce { max-width: 900px; margin-left: 0; }
@@ -486,7 +498,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .my-stats p:last-child, #edit-account-tab .stat-section .my-stats p:last-child { margin-top: 0px !important; }
 
-#edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { padding-right: 15px !important; -ms-flex-positive: 1; flex-grow: 1; width: 50%; }
+#edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { padding-right: 15px !important; -ms-flex-positive: 1; flex-grow: 1; width: 50%; max-width: 240px; margin-left: 0; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn { width: 100%; color: #f7941d; border-color: #f7941d; }
+
+#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover { background-color: #f7941d; color: white; }
+
+#edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: -43px; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 

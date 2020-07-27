@@ -5,6 +5,10 @@
 	width: 100%;
 	margin-top: 2.4rem;
 	margin-bottom: 2.4rem;
+	@media (min-width: 768px) and (max-width: 1140px) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 	.nav.nav-pills {
 		@media (max-width: 600px) {
 			width: 100vw;
@@ -131,13 +135,17 @@
 	.gutenberg-compatible-template.using-gutenberg .entry-content & {
 		min-height: 200px;
 		@media (max-width: 768px) {
-			margin-bottom: 15rem;
 			min-height: 250px;
 		}
 		.wp-block-cover__inner-container {
 			@media (max-width: 768px) {
-				padding: 10rem 1rem 1rem;
-				height: 250px;
+				padding: 10rem 3rem 3rem;
+				min-height: 250px;
+				flex-direction: row;
+			}
+			@media (max-width: 600px) {
+				flex-direction: column;
+				align-items: end;
 			}
 			> h2 {
 				margin: 0;
@@ -148,9 +156,9 @@
 	}
 	> .wp-block-cover__inner-container {
 		display: flex;
-		align-items: baseline;
 		justify-content: space-between;
 		max-width: 1140px;
+		align-items: flex-end;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			align-items: center;
@@ -164,9 +172,13 @@
 		display: flex;
 		@media (max-width: 768px) {
 			max-width: 600px;
-			top: 2.5rem;
+			top: 0;
 			width: 100%;
 			padding: 2rem;
+			justify-content: flex-end;
+		}
+		@media (max-width: 600px) {
+			justify-content: end;
 		}
 	}
 
@@ -203,7 +215,10 @@
 		@extend .lsx-hp-shadow;
 		display: flex;
 		flex-direction: column;
-
+		@media (max-width: 768px) {
+			min-width: auto;
+			max-width: 230px;
+		}
 		> div {
 			display: flex;
 			flex-direction: column;
@@ -237,6 +252,10 @@
 		width: 100%;
 		margin-top: 2.4rem;
 		margin-bottom: 2.4rem;
+		@media (min-width: 768px) and (max-width: 1140px) {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
 	}
 	> .row {
 		display: flex;
@@ -551,6 +570,12 @@
 			}
 		}
 	}
+	#account-nav {
+		@media (min-width: 769px) and (max-width: 1140px) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
 	.edit-account-section,
 	.stat-section {
 		width: 100%;
@@ -597,12 +622,27 @@
 			p:last-child {
 				margin-top: 0px !important;
 			}
-
 			.form-row {
 				padding-right: 15px !important;
 				flex-grow: 1;
 				width: 50%;
+				max-width: 240px;
+				margin-left: 0;
+				&.calculate-bmi {
+					.btn {
+						width: 100%;
+						color: #f7941d;
+						border-color: #f7941d;
+						&:hover {
+							background-color: #f7941d;
+							color: white;
+						}
+					}
+				}
 			}
+		}
+		.description {
+			margin-top: -43px;
 		}
 		.wpua-edit-container {
 			margin-top: 60px;

@@ -198,7 +198,7 @@ class Woocommerce {
 
 		$all_disabled = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
 		if ( 'on' !== $all_disabled ) {
-			echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
+			echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2><p><strong>' . __( 'My physical info', 'lsx-health-plan' ) . '</strong></p>' );
 			echo wp_kses_post( '<div class="my-stats-wrap"><div class="my-stats">' );
 			foreach ( $fields as $key => $field_args ) {
 				$value = null;
@@ -212,9 +212,9 @@ class Woocommerce {
 				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 				woocommerce_form_field( $key, $field_args, $value );
 			}
-			echo wp_kses_post( '<button class="calculate-bmi btn">' . __( 'Calculate', 'lsx-health-plan' ) . '</button>' );
+			echo wp_kses_post( '<p class="form-row calculate-bmi"><label>BMI</label><button class="btn border-btn">' . __( 'Calculate', 'lsx-health-plan' ) . '<i class="fa fa-calculator" aria-hidden="true"></i></button></p>' );
 			echo wp_kses_post( '</div>' );
-			echo wp_kses_post( '<div class="description"><p class="title">' . __( 'Your BMI score', 'lsx-health-plan' ) . '</p>' );
+			echo wp_kses_post( '<div class="description"><p><strong>' . __( 'Your BMI score', 'lsx-health-plan' ) . '</strong></p>' );
 			echo wp_kses_post( '<p>' . __( "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.", 'lsx-health-plan' ) . '</p></div></div>' );
 		}
 	}
