@@ -41,8 +41,7 @@ get_header(); ?>
 										echo wp_kses_post( $block['innerHTML'] );
 									}
 								}
-							}
-							if ( in_array( 'has-block-cover', $classes ) ) {
+							} elseif ( in_array( 'has-block-cover', $classes ) ) {
 								$blocks = parse_blocks( get_the_content() );
 								foreach ( $blocks as $block ) {
 									//print( '<pre>' . print_r( $block, true ) . '</pre>' );
@@ -50,6 +49,9 @@ get_header(); ?>
 										echo wp_kses_post( render_block( $block ) );
 									}
 								}
+							} else {
+								$my_plan_string = esc_html__( 'My Plan', 'lsx-health-plan' );
+								echo wp_kses_post( '<div class="lsx-health-plan my-profile-block wp-block-cover alignfull"><div class="wp-block-cover__inner-container"><h2>' . $my_plan_string . '</h2></div></div>' );
 							}
 
 							$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );

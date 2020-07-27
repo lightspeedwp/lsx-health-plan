@@ -188,6 +188,8 @@
 				border: 4px solid white;
 				min-height: 95px;
 				min-width: 95px;
+				width: 95px;
+				height: 95px;
 				object-fit: cover;
 			}
 		}
@@ -552,11 +554,9 @@
 	.edit-account-section,
 	.stat-section {
 		width: 100%;
-		padding: 30px;
-		background: $white;
 		.title-lined,
 		.woocommerce {
-			max-width: 800px;
+			max-width: 900px;
 			margin-left: 0;
 		}
 		.woocommerce {
@@ -574,6 +574,17 @@
 				p:last-child {
 					margin-top: 20px;
 				}
+				fieldset {
+					legend {
+						display: none;
+					}
+				}
+			}
+		}
+		.my-stats-wrap {
+			display: flex;
+			.description {
+				width: 30%;
 			}
 		}
 		.my-stats-title {
@@ -582,22 +593,15 @@
 		.my-stats {
 			display: flex;
 			flex-wrap: wrap;
-
+			width: 70%;
 			p:last-child {
 				margin-top: 0px !important;
 			}
 
 			.form-row {
-				&:first-child,
-				&:nth-child(2),
-				&:nth-child(3) {
-					margin-bottom: 20px;
-					color: $blue;
-					font-size: 22px;
-				}
 				padding-right: 15px !important;
 				flex-grow: 1;
-				width: 33.333%;
+				width: 50%;
 			}
 		}
 		.wpua-edit-container {

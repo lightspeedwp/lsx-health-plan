@@ -199,11 +199,7 @@ class Woocommerce {
 		$all_disabled = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
 		if ( 'on' !== $all_disabled ) {
 			echo wp_kses_post( '<h2 class="title-lined my-stats-title">' . __( 'My Stats', 'lsx-health-plan' ) . '</h2>' );
-			echo wp_kses_post( '<div class="my-stats">' );
-
-			echo wp_kses_post( '<p class="form-row form-label">' . __( 'Start', 'lsx-health-plan' ) . '</p>' );
-			echo wp_kses_post( '<p class="form-row form-label">' . __( 'Goal', 'lsx-health-plan' ) . '</p>' );
-			echo wp_kses_post( '<p class="form-row form-label">' . __( 'End', 'lsx-health-plan' ) . '</p>' );
+			echo wp_kses_post( '<div class="my-stats-wrap"><div class="my-stats">' );
 			foreach ( $fields as $key => $field_args ) {
 				$value = null;
 				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
@@ -216,7 +212,10 @@ class Woocommerce {
 				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 				woocommerce_form_field( $key, $field_args, $value );
 			}
+			echo wp_kses_post( '<button class="calculate-bmi btn">' . __( 'Calculate', 'lsx-health-plan' ) . '</button>' );
 			echo wp_kses_post( '</div>' );
+			echo wp_kses_post( '<div class="description"><p class="title">' . __( 'Your BMI score', 'lsx-health-plan' ) . '</p>' );
+			echo wp_kses_post( '<p>' . __( "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.", 'lsx-health-plan' ) . '</p></div></div>' );
 		}
 	}
 
@@ -551,7 +550,17 @@ class Woocommerce {
 	 */
 	public function get_account_fields() {
 		$account_fields = apply_filters( 'iconic_account_fields', array(
-			'weight_start'  => array(
+			'age'  => array(
+				'type'                 => 'text',
+				'label'                => __( 'Age:', 'lsx-health-plan' ),
+				'placeholder'          => __( '#', 'lsx-health-plan' ),
+				'hide_in_account'      => false,
+				'hide_in_admin'        => false,
+				'hide_in_checkout'     => false,
+				'hide_in_registration' => false,
+				'required'             => false,
+			),
+			'weight'  => array(
 				'type'                 => 'text',
 				'label'                => __( 'Weight:', 'lsx-health-plan' ),
 				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
@@ -561,27 +570,21 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => false,
 			),
-			'weight_goal'   => array(
-				'type'                 => 'text',
-				'label'                => __( 'Weight:', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
+			'gender'   => array(
+				'type'                 => 'select',
+				'label'                => __( 'Gender:', 'lsx-health-plan' ),
+				'placeholder'          => __( 'm/f', 'lsx-health-plan' ),
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
 				'hide_in_registration' => false,
 				'required'             => false,
+				'options'     => array(
+					'male'   => __( 'Male', 'lsx-health-plan' ),
+					'female' => __( 'Female', 'lsx-health-plan' ),
+				),
 			),
-			'weight_end'    => array(
-				'type'                 => 'text',
-				'label'                => __( 'Weight:', 'lsx-health-plan' ),
-				'placeholder'          => __( 'kg', 'lsx-health-plan' ),
-				'hide_in_account'      => false,
-				'hide_in_admin'        => false,
-				'hide_in_checkout'     => false,
-				'hide_in_registration' => false,
-				'required'             => false,
-			),
-			'waist_start'   => array(
+			'waist'   => array(
 				'type'                 => 'text',
 				'label'                => __( 'Waist:', 'lsx-health-plan' ),
 				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
@@ -591,50 +594,10 @@ class Woocommerce {
 				'hide_in_registration' => false,
 				'required'             => false,
 			),
-			'waist_goal'    => array(
+			'height'     => array(
 				'type'                 => 'text',
-				'label'                => __( 'Waist:', 'lsx-health-plan' ),
+				'label'                => __( 'Height:', 'lsx-health-plan' ),
 				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
-				'hide_in_account'      => false,
-				'hide_in_admin'        => false,
-				'hide_in_checkout'     => false,
-				'hide_in_registration' => false,
-				'required'             => false,
-			),
-			'waist_end'     => array(
-				'type'                 => 'text',
-				'label'                => __( 'Waist:', 'lsx-health-plan' ),
-				'placeholder'          => __( 'cm', 'lsx-health-plan' ),
-				'hide_in_account'      => false,
-				'hide_in_admin'        => false,
-				'hide_in_checkout'     => false,
-				'hide_in_registration' => false,
-				'required'             => false,
-			),
-			'fitness_start' => array(
-				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
-				'placeholder'          => '#',
-				'hide_in_account'      => false,
-				'hide_in_admin'        => false,
-				'hide_in_checkout'     => false,
-				'hide_in_registration' => false,
-				'required'             => false,
-			),
-			'fitness_goal'  => array(
-				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
-				'placeholder'          => '#',
-				'hide_in_account'      => false,
-				'hide_in_admin'        => false,
-				'hide_in_checkout'     => false,
-				'hide_in_registration' => false,
-				'required'             => false,
-			),
-			'fitness_end'   => array(
-				'type'                 => 'text',
-				'label'                => __( 'Fitness Test Score:', 'lsx-health-plan' ),
-				'placeholder'          => '#',
 				'hide_in_account'      => false,
 				'hide_in_admin'        => false,
 				'hide_in_checkout'     => false,
@@ -645,15 +608,11 @@ class Woocommerce {
 
 		$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
 		if ( 'on' === $is_weight_disabled ) {
-			$account_fields['weight_start']['required'] = false;
-			$account_fields['weight_goal']['required']  = false;
-			$account_fields['weight_end']['required']   = false;
+			$account_fields['weight']['required'] = false;
 		}
 		$is_waist_disabled = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
 		if ( 'on' === $is_waist_disabled ) {
-			$account_fields['waist_start']['required'] = false;
-			$account_fields['waist_goal']['required']  = false;
-			$account_fields['waist_end']['required']   = false;
+			$account_fields['waist']['required'] = false;
 		}
 		return $account_fields;
 	}

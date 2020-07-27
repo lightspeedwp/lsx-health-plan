@@ -328,7 +328,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 768px) { .my-profile-block .profile-navigation { margin-right: 15px; } }
 
-.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 4px solid white; min-height: 95px; min-width: 95px; -o-object-fit: cover; object-fit: cover; }
+.my-profile-block .profile-navigation .profile-photo img { border-radius: 100px; border: 4px solid white; min-height: 95px; min-width: 95px; width: 95px; height: 95px; -o-object-fit: cover; object-fit: cover; }
 
 .my-profile-block .profile-details { width: 100%; background: #ffffff; padding: 1.5rem; min-width: 230px; height: -webkit-fit-content; height: fit-content; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 
@@ -462,9 +462,9 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; }
   #edit-account-tab #account-nav .nav-pills { margin-left: -25px; } }
 
-#edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; padding: 30px; background: #ffffff; }
+#edit-account-tab .edit-account-section, #edit-account-tab .stat-section { width: 100%; }
 
-#edit-account-tab .edit-account-section .title-lined, #edit-account-tab .edit-account-section .woocommerce, #edit-account-tab .stat-section .title-lined, #edit-account-tab .stat-section .woocommerce { max-width: 800px; margin-left: 0; }
+#edit-account-tab .edit-account-section .title-lined, #edit-account-tab .edit-account-section .woocommerce, #edit-account-tab .stat-section .title-lined, #edit-account-tab .stat-section .woocommerce { max-width: 900px; margin-left: 0; }
 
 #edit-account-tab .edit-account-section .woocommerce .woocommerce-MyAccount-content, #edit-account-tab .stat-section .woocommerce .woocommerce-MyAccount-content { width: 100%; }
 
@@ -474,15 +474,19 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm p:last-child, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm p:last-child { margin-top: 20px; }
 
+#edit-account-tab .edit-account-section .woocommerce .woocommerce-EditAccountForm fieldset legend, #edit-account-tab .stat-section .woocommerce .woocommerce-EditAccountForm fieldset legend { display: none; }
+
+#edit-account-tab .edit-account-section .my-stats-wrap, #edit-account-tab .stat-section .my-stats-wrap { display: -ms-flexbox; display: flex; }
+
+#edit-account-tab .edit-account-section .my-stats-wrap .description, #edit-account-tab .stat-section .my-stats-wrap .description { width: 30%; }
+
 #edit-account-tab .edit-account-section .my-stats-title, #edit-account-tab .stat-section .my-stats-title { margin-top: 60px; }
 
-#edit-account-tab .edit-account-section .my-stats, #edit-account-tab .stat-section .my-stats { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+#edit-account-tab .edit-account-section .my-stats, #edit-account-tab .stat-section .my-stats { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 70%; }
 
 #edit-account-tab .edit-account-section .my-stats p:last-child, #edit-account-tab .stat-section .my-stats p:last-child { margin-top: 0px !important; }
 
-#edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { padding-right: 15px !important; -ms-flex-positive: 1; flex-grow: 1; width: 33.333%; }
-
-#edit-account-tab .edit-account-section .my-stats .form-row:first-child, #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(2), #edit-account-tab .edit-account-section .my-stats .form-row:nth-child(3), #edit-account-tab .stat-section .my-stats .form-row:first-child, #edit-account-tab .stat-section .my-stats .form-row:nth-child(2), #edit-account-tab .stat-section .my-stats .form-row:nth-child(3) { margin-bottom: 20px; color: #418ad0; font-size: 22px; }
+#edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { padding-right: 15px !important; -ms-flex-positive: 1; flex-grow: 1; width: 50%; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 
@@ -921,7 +925,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .svg svg > g #Day-Plan-Meal, .title-lined svg > g #Day-Plan-Meal, #single-plan-nav .nav.nav-pills li svg > g #Day-Plan-Meal, .daily-plan-block svg > g #Day-Plan-Meal, .single-plan .single-plan-inner svg > g #Day-Plan-Meal, .archive-plan .single-plan-inner svg > g #Day-Plan-Meal, .lsx-exercises-shortcode .single-plan-inner svg > g #Day-Plan-Meal, .single-workout .single-plan-inner svg > g #Day-Plan-Meal, .single-plan .single-plan-section-title svg > g #Day-Plan-Meal, .archive-plan .single-plan-section-title svg > g #Day-Plan-Meal, .lsx-exercises-shortcode .single-plan-section-title svg > g #Day-Plan-Meal, .single-workout .single-plan-section-title svg > g #Day-Plan-Meal { stroke: #418AD0; fill: transparent; }
 
-.title-lined { border-bottom: 2px solid #DADDDF; }
+.title-lined { border-bottom: 5px solid #418AD0; width: 100%; }
 
 .blue-title, .content-area h2.blue-title { color: #418AD0; }
 

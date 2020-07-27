@@ -249,8 +249,8 @@ function lsx_health_plan_my_profile_box() {
 							<?php if ( 'on' !== $is_weight_disabled ) { ?>
 								<span><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong>
 								<?php
-								if ( '' !== get_user_meta( get_current_user_id(), 'weight_start', true ) ) {
-									echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight_start', true ) . ' kg' );
+								if ( '' !== get_user_meta( get_current_user_id(), 'weight', true ) ) {
+									echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight', true ) . ' kg' );
 								} else {
 									echo '/';
 								}
@@ -261,8 +261,8 @@ function lsx_health_plan_my_profile_box() {
 								?>
 								<span><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong>
 								<?php
-								if ( '' !== get_user_meta( get_current_user_id(), 'waist_start', true ) ) {
-									echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist_start', true ) . ' cm' );
+								if ( '' !== get_user_meta( get_current_user_id(), 'waist', true ) ) {
+									echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist', true ) . ' cm' );
 								} else {
 									echo '/';
 								}

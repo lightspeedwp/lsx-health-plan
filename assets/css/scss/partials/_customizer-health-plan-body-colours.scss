@@ -55,7 +55,8 @@
 	}
 
 	.title-lined {
-		border-bottom: 2px solid $breaker;
+		border-bottom: 5px solid $link;
+		width: 100%;
 		@extend .svg;
 	}
 
