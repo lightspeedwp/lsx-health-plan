@@ -31,7 +31,14 @@ class Plan {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'plan_type_taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'week_taxonomy_setup' ) );
+
+		// Icons for the plan types.
+		add_action( 'create_term', array( $this, 'save_meta' ), 10, 2 );
+		add_action( 'edit_term', array( $this, 'save_meta' ), 10, 2 );
+		$prefix_taxonomy = 'type';
+		add_action( sprintf( '%s_edit_form_fields', $prefix_taxonomy ), array( $this, 'add_thumbnail_form_field' ), 3, 1 );
 
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
@@ -103,9 +110,41 @@ class Plan {
 	}
 
 	/**
+	 * Register the Type taxonomy.
+	 */
+	public function plan_type_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Plan Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Plan Type', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Plan Types', 'lsx-health-plan' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'type',
+			),
+		);
+
+		register_taxonomy( 'type', array( 'plan' ), $args );
+	}
+
+	/**
 	 * Register the Week taxonomy.
 	 */
-	public function taxonomy_setup() {
+	public function week_taxonomy_setup() {
 		$labels = array(
 			'name'              => esc_html_x( 'Week', 'taxonomy general name', 'lsx-health-plan' ),
 			'singular_name'     => esc_html_x( 'Week', 'taxonomy singular name', 'lsx-health-plan' ),
@@ -132,6 +171,72 @@ class Plan {
 		);
 
 		register_taxonomy( 'week', array( 'plan' ), $args );
+	}
+
+	/**
+	 * Output the form field for this metadata when adding a new term
+	 *
+	 * @since 0.1.0
+	 */
+	public function add_thumbnail_form_field( $term = false ) {
+		if ( is_object( $term ) ) {
+			$value         = get_term_meta( $term->term_id, 'thumbnail', true );
+			$image_preview = wp_get_attachment_image_src( $value, 'thumbnail' );
+
+			if ( is_array( $image_preview ) ) {
+				$image_preview = '<img style="height: 50px; width: 50px;" src="' . esc_url( $image_preview[0] ) . '" width="' . $image_preview[1] . '" height="' . $image_preview[2] . '" class="alignnone size-thumbnail d wp-image-' . $value . '" />';
+			}
+		} else {
+			$image_preview = false;
+			$value         = false;
+		}
+		?>
+		<tr class="form-field form-required term-thumbnail-wrap">
+			<th scope="row"><label for="thumbnail"><?php esc_html_e( 'Icon Image', 'lsx-health-plan' ); ?></label></th>
+			<td>
+				<input class="input_image_id" type="hidden" name="thumbnail" value="<?php echo wp_kses_post( $value ); ?>">
+				<div class="thumbnail-preview">
+					<?php echo wp_kses_post( $image_preview ); ?>
+				</div>
+				<a style="<?php if ( '' !== $value && false !== $value ) { ?>display:none;<?php } ?>" class="button-secondary lsx-thumbnail-image-add"><?php esc_html_e( 'Choose Image', 'lsx-health-plan' ); ?></a>
+				<a style="<?php if ( '' === $value || false === $value ) { ?>display:none;<?php } ?>" class="button-secondary lsx-thumbnail-image-remove"><?php esc_html_e( 'Remove Image', 'lsx-health-plan' ); ?></a>
+				<?php wp_nonce_field( 'lsx_hp_term_thumbnail_nonce', 'lsx_hp_term_thumbnail_nonce' ); ?>
+			</td>
+		</tr>
+		<?php
+	}
+
+	/**
+	 * Saves the Taxonomy term icon image
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param  int    $term_id
+	 * @param  string $taxonomy
+	 */
+	public function save_meta( $term_id = 0, $taxonomy = '' ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['thumbnail'] ) ) {
+			return;
+		}
+
+		if ( check_admin_referer( 'lsx_hp_term_thumbnail_nonce', 'lsx_hp_term_thumbnail_nonce' ) ) {
+			if ( ! isset( $_POST['thumbnail'] ) ) {
+				return;
+			}
+
+			$thumbnail_meta = sanitize_text_field( $_POST['thumbnail'] );
+			$thumbnail_meta = ! empty( $thumbnail_meta ) ? $thumbnail_meta : '';
+
+			if ( empty( $thumbnail_meta ) ) {
+				delete_term_meta( $term_id, 'thumbnail' );
+			} else {
+				update_term_meta( $term_id, 'thumbnail', $thumbnail_meta );
+			}
+		}
 	}
 
 	/**

@@ -75,12 +75,10 @@ if ( null !== $shortcode_args ) {
 			</a>
 		</div>
 		<div class="content-box plan-content-box white-bg">
-			<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-				<div class="plan-content"><?php the_title(); ?></div>
-			</h3>
-			<div class="plan-meta">
-				<span>Workout & Meal Plan</span>
-			</div>
+			<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>"> <?php the_title(); ?> </h3>
+			<?php
+				echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
+			?>
 			<div class="excerpt">
 				<?php
 				if ( ! has_excerpt() ) {

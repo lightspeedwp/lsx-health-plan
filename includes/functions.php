@@ -327,6 +327,34 @@ function get_meta_amounts( $post_ids = array() ) {
 }
 
 /**
+ * Get the taxonomy plans type meta.
+ *
+ * @param [type] $post
+ * @return void
+ */
+function hp_get_plan_type_meta( $post ) {
+	$plan_meta = '';
+
+	$term_obj_list = get_the_terms( $post->ID, 'type' ); 
+	$terms_string  = join( ' & ', wp_list_pluck( $term_obj_list, 'name' ) );
+	$terms_ids     = wp_list_pluck( $term_obj_list, 'term_id' );
+
+	foreach ( $terms_ids as $terms_id ) {
+		$term_thumbnail_id = get_term_meta( $terms_id, 'thumbnail', true );
+		$img               = wp_get_attachment_image_src( $term_thumbnail_id, 'thumbnail' );
+		$image_url         = $img[0];
+		$img               = '<img alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
+		$img               = apply_filters( 'lsx_lazyload_slider_images', $img, $term_thumbnail_id, 'thumbnail', false, $image_url );
+
+		$plan_meta .= $img;
+	}
+
+	$plan_meta = '<div class="plan-meta">' . $plan_meta . '<span>' . $terms_string . '</span></div>';
+
+	return $plan_meta;
+}
+
+/**
  * Limit media library access
  */
 function set_only_author( $wp_query ) {

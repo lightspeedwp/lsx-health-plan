@@ -266,8 +266,16 @@
 						margin-bottom: 10px;
 					}
 					.plan-meta {
-						color: #919191;
-						font-size: 13px;
+						img {
+							margin-right: 5px;
+							+ span {
+								margin-left: 5px;
+							}
+						}
+						span {
+							color: #919191;
+							font-size: 13px;
+						}
 					}
 					.progress progress[value] {
 						appearance: none;

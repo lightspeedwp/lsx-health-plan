@@ -339,9 +339,9 @@ function lsx_health_plan_all_plans_block() {
 								<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
 									<div class="plan-content"><?php the_title(); ?></div>
 								</h3>
-								<div class="plan-meta">
-									<span>Workout & Meal Plan</span>
-								</div>
+								<?php
+									echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
+								?>
 								<div class="excerpt">
 									<?php
 									if ( ! has_excerpt() ) {

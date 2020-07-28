@@ -518,6 +518,18 @@
 		margin: 0 0 30px;
 		background: $light_gray;
 		padding: 12px 16px;
+		.plan-meta {
+			img {
+				margin-right: 5px;
+				+ span {
+					margin-left: 5px;
+				}
+			}
+			span {
+				color: #919191;
+				font-size: 13px;
+			}
+		}
 	}
 	.blue-title {
 		font-weight: bold;
