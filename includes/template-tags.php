@@ -357,13 +357,11 @@ function lsx_health_plan_all_plans_block() {
 									<progress id="file" value="32" max="100"> 32% </progress>
 								</span>
 							</div>
-							
 						</article>
 					</div>
 				<?php endwhile; ?>
 			<?php endif; ?>
 		</div>
-		
 		<?php wp_reset_postdata(); ?>
 	</div>
 
