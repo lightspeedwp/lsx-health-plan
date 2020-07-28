@@ -15,6 +15,7 @@ $args = array(
 	'post_parent'    => 0,
 );
 $the_query = new WP_Query( $args );
+
 ?>
 
 <?php lsx_content_wrap_before(); ?>
@@ -33,6 +34,10 @@ $the_query = new WP_Query( $args );
 		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $page_id ) ) {
 			?>
 			<main id="main" role="main">
+
+				<?php
+					echo wp_kses_post( \lsx_health_plan\functions\hp_get_type_tabs( 'plan', 'type' ) );
+				?>
 
 				<?php lsx_content_top(); ?>
 

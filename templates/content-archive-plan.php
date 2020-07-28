@@ -52,6 +52,7 @@ if ( null !== $shortcode_args ) {
 		$content_setting = $shortcode_args['description'];
 	}
 }
+
 ?>
 
 <div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
@@ -79,6 +80,7 @@ if ( null !== $shortcode_args ) {
 			<?php
 				echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
 			?>
+			<span class="hp-plan-price">R450.00</span>
 			<div class="excerpt">
 				<?php
 				if ( ! has_excerpt() ) {
@@ -90,7 +92,7 @@ if ( null !== $shortcode_args ) {
 				echo wp_kses_post( $content );
 				?>
 			</div>
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn"><?php esc_html_e( 'See plan', 'lsx-health-plan' ); ?></a>
+			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn"><?php esc_html_e( 'Add to Cart', 'lsx-health-plan' ); ?></a>
 		</div>
 		<?php lsx_entry_bottom(); ?>
 	</article>

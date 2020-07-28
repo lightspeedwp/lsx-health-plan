@@ -360,13 +360,17 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box { padding: 2rem 1.5rem; }
 
-.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan { margin-bottom: 10px; }
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan { margin-bottom: 8px; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img { margin-left: 5px; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img + span { margin-right: 5px; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span { color: #919191; font-size: 13px; }
+
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .hp-plan-price { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
+
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .excerpt { margin-top: 10px; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .progress progress[value] { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; height: 20px; }
 
@@ -719,11 +723,19 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .content-box, .archive-plan .content-box, .lsx-exercises-shortcode .content-box, .single-workout .content-box { margin: 0 0 30px; background: #f6f6f6; padding: 12px 16px; }
 
+.single-plan .content-box h3.plan, .archive-plan .content-box h3.plan, .lsx-exercises-shortcode .content-box h3.plan, .single-workout .content-box h3.plan { margin-bottom: 8px; }
+
 .single-plan .content-box .plan-meta img, .archive-plan .content-box .plan-meta img, .lsx-exercises-shortcode .content-box .plan-meta img, .single-workout .content-box .plan-meta img { margin-left: 5px; }
 
 .single-plan .content-box .plan-meta img + span, .archive-plan .content-box .plan-meta img + span, .lsx-exercises-shortcode .content-box .plan-meta img + span, .single-workout .content-box .plan-meta img + span { margin-right: 5px; }
 
 .single-plan .content-box .plan-meta span, .archive-plan .content-box .plan-meta span, .lsx-exercises-shortcode .content-box .plan-meta span, .single-workout .content-box .plan-meta span { color: #919191; font-size: 13px; }
+
+.single-plan .content-box .hp-plan-price, .archive-plan .content-box .hp-plan-price, .lsx-exercises-shortcode .content-box .hp-plan-price, .single-workout .content-box .hp-plan-price { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
+
+.single-plan .content-box .excerpt, .archive-plan .content-box .excerpt, .lsx-exercises-shortcode .content-box .excerpt, .single-workout .content-box .excerpt { margin-top: 10px; }
+
+.single-plan .content-box .btn, .archive-plan .content-box .btn, .lsx-exercises-shortcode .content-box .btn, .single-workout .content-box .btn { width: 100%; padding: 12px; height: 40px; }
 
 .single-plan .blue-title, .archive-plan .blue-title, .lsx-exercises-shortcode .blue-title, .single-workout .blue-title { font-weight: bold; }
 

@@ -263,7 +263,7 @@
 				.content-box {
 					padding: 2rem 1.5rem;
 					h3.plan {
-						margin-bottom: 10px;
+						margin-bottom: 8px;
 					}
 					.plan-meta {
 						img {
@@ -276,6 +276,15 @@
 							color: #919191;
 							font-size: 13px;
 						}
+					}
+					.hp-plan-price {
+						color: #30bb00;
+						font-size: 18px;
+						margin-top: 9px;
+						display: block;
+					}
+					.excerpt {
+						margin-top: 10px;
 					}
 					.progress progress[value] {
 						appearance: none;

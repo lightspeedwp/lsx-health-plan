@@ -518,6 +518,9 @@
 		margin: 0 0 30px;
 		background: $light_gray;
 		padding: 12px 16px;
+		h3.plan {
+			margin-bottom: 8px;
+		}
 		.plan-meta {
 			img {
 				margin-right: 5px;
@@ -529,6 +532,20 @@
 				color: #919191;
 				font-size: 13px;
 			}
+		}
+		.hp-plan-price {
+			color: #30bb00;
+			font-size: 18px;
+			margin-top: 9px;
+			display: block;
+		}
+		.excerpt {
+			margin-top: 10px;
+		}
+		.btn {
+			width: 100%;
+			padding: 12px;
+			height: 40px;
 		}
 	}
 	.blue-title {
