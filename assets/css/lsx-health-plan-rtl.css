@@ -271,36 +271,36 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
-#account-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
+#account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
 
-@media (min-width: 601px) and (max-width: 1140px) { #account-nav { padding-right: 30px; padding-left: 30px; margin-top: 30px; margin-bottom: 20px; } }
+@media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-right: 30px; padding-left: 30px; margin-top: 30px; margin-bottom: 20px; } }
 
-@media (max-width: 600px) { #account-nav { margin-top: 0; margin-bottom: 30px; } }
+@media (max-width: 600px) { #account-nav, #type-nav { margin-top: 0; margin-bottom: 30px; } }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills { width: 100vw; margin-right: -15px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills, #type-nav .nav.nav-pills { width: 100vw; margin-right: -15px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; } }
 
-#account-nav .nav.nav-pills li { margin-left: 2px; }
+#account-nav .nav.nav-pills li, #type-nav .nav.nav-pills li { margin-left: 2px; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills li { margin: 0; width: 33.333%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; padding-left: 2px; margin-top: 1px; }
-  #account-nav .nav.nav-pills li:not(.active) a { opacity: 0.7; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills li, #type-nav .nav.nav-pills li { margin: 0; width: 33.333%; -ms-flex-negative: 0; flex-shrink: 0; height: 100%; scroll-snap-align: start; display: -ms-flexbox; display: flex; padding-left: 2px; margin-top: 1px; }
+  #account-nav .nav.nav-pills li:not(.active) a, #type-nav .nav.nav-pills li:not(.active) a { opacity: 0.7; } }
 
-#account-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #999999; padding: 13px; display: -ms-flexbox; display: flex; min-width: 200px; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+#account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { border-radius: 0; background: #ffffff; font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #999999; padding: 13px; display: -ms-flexbox; display: flex; min-width: 200px; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 5px; -ms-flex-direction: column; flex-direction: column; text-align: center; min-width: auto; line-height: 25px; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { font-size: 13px; width: 100%; padding: 5px; -ms-flex-direction: column; flex-direction: column; text-align: center; min-width: auto; line-height: 25px; } }
 
-#account-nav .nav.nav-pills li a::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; font-family: FontAwesome; font-size: 15px; position: relative; color: #418ad0; opacity: 0.5; }
+#account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; font-family: FontAwesome; font-size: 15px; position: relative; color: #418ad0; opacity: 0.5; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills li a::after { width: 100%; height: 20px; margin: 5px 0 0 0; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { width: 100%; height: 20px; margin: 5px 0 0 0; } }
 
-#account-nav .nav.nav-pills li a.my-plan-tab::after { content: '\f0e7'; }
+#account-nav .nav.nav-pills li a.my-plan-tab::after, #type-nav .nav.nav-pills li a.my-plan-tab::after { content: '\f0e7'; }
 
-#account-nav .nav.nav-pills li a.account-details-tab::after { content: '\f007'; }
+#account-nav .nav.nav-pills li a.account-details-tab::after, #type-nav .nav.nav-pills li a.account-details-tab::after { content: '\f007'; }
 
-#account-nav .nav.nav-pills li a.logout-tab::after { content: '\f090'; }
+#account-nav .nav.nav-pills li a.logout-tab::after, #type-nav .nav.nav-pills li a.logout-tab::after { content: '\f090'; }
 
-@media (max-width: 334px) { #account-nav .nav.nav-pills li a { font-size: 11px; } }
+@media (max-width: 334px) { #account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { font-size: 11px; } }
 
-#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
 .my-plan-shortcode .breadcrumbs-container { z-index: 5; }
 
@@ -969,15 +969,15 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .blue-title, .content-area h2.blue-title { color: #418AD0; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418AD0; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills::-webkit-scrollbar-thumb, #type-nav .nav.nav-pills::-webkit-scrollbar-thumb { background-color: #418AD0; } }
 
-#account-nav .nav.nav-pills li a { border: 1px solid #dddddd; }
+#account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { border: 1px solid #dddddd; }
 
-#account-nav .nav.nav-pills li a::after { color: #999999; }
+#account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { color: #999999; }
 
-#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a { color: #418AD0; background: white; border: 1px solid #418AD0; }
+#account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { color: #418AD0; background: white; border: 1px solid #418AD0; }
 
-#account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
+#account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after, #type-nav .nav.nav-pills li.active a::after, #type-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
 
 .post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
 

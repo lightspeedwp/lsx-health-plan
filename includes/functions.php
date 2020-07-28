@@ -339,10 +339,10 @@ function hp_get_type_tabs( $post_type, $taxonomy ) {
 		'hide_empty' => true,
 	]);
 
-	$tab_content = '<div id="type-nav"><ul class="nav nav-pills">';
+	$tab_content = '<div id="type-nav"><ul class="nav nav-pills"><li><a href="#" class="active">All Plans</a></li>';
 
 	foreach ( $terms as $term ) {
-		$tab_content .= '<li><a>' . $term->name . '</a></li>';
+		$tab_content .= '<li><a href="#' . $term->name . '">' . $term->name . '</a></li>';
 	}
 
 	$tab_content .= '</ul></div>';

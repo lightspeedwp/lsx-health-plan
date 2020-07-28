@@ -65,7 +65,8 @@
 		color: $link;
 	}
 
-	#account-nav {
+	#account-nav,
+	#type-nav {
 		.nav.nav-pills {
 			@media (max-width: 600px) {
 				&::-webkit-scrollbar-thumb {
