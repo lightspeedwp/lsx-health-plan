@@ -275,7 +275,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
 
-@media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-right: 30px; padding-left: 30px; margin-top: 30px; margin-bottom: 20px; } }
+@media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-right: 0; padding-left: 0; margin-top: 30px; margin-bottom: 20px; } }
 
 @media (max-width: 600px) { #account-nav, #type-nav { margin-top: 0; margin-bottom: 30px; } }
 
@@ -303,6 +303,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 334px) { #account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { font-size: 11px; } }
 
 #account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+
+@media (min-width: 768px) and (max-width: 1140px) { body:not(.woocommerce-edit-account) #account-nav { padding-right: 30px; padding-left: 30px; } }
 
 .my-plan-shortcode .breadcrumbs-container { z-index: 5; }
 
@@ -479,7 +481,9 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab { max-width: 1140px; width: 100%; margin: 20px auto 140px; }
 
-@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; }
+@media (min-width: 601px) and (max-width: 1140px) { #edit-account-tab { padding-right: 30px; padding-left: 30px; margin-top: 30px; margin-bottom: 20px; } }
+
+@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; margin-bottom: 30px; }
   #edit-account-tab #account-nav .nav-pills { margin-right: -25px; } }
 
 @media (min-width: 769px) and (max-width: 1140px) { #edit-account-tab #account-nav { padding-right: 0; padding-left: 0; } }
@@ -614,6 +618,18 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #single-plan-nav .nav.nav-pills li.active .warm-up-tab svg path, #single-plan-nav .nav.nav-pills li.active .recipes-tab svg path, #single-plan-nav .nav.nav-pills li:hover .warm-up-tab svg path, #single-plan-nav .nav.nav-pills li:hover .recipes-tab svg path { stroke: transparent !important; }
 
 #single-plan-nav .nav.nav-pills li.active .warm-up-tab svg circle, #single-plan-nav .nav.nav-pills li.active .recipes-tab svg circle, #single-plan-nav .nav.nav-pills li:hover .warm-up-tab svg circle, #single-plan-nav .nav.nav-pills li:hover .recipes-tab svg circle { fill: transparent !important; }
+
+article.type-plan.type-workout-plan .entry-content { padding: 0; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .single-plan-section-title { display: -ms-flexbox; display: flex; padding: 1rem 3rem; -ms-flex-align: center; align-items: center; margin-bottom: 3rem; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .single-plan-section-title h2 { margin: 0; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .single-plan-section-title svg { margin-left: 15px; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .workout-instructions { padding: 1rem 3rem; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .sets .set-box.set { margin: 0; }
 
 .my-plan-container .lsx-container-content { padding: 10px 2em; }
 
@@ -757,7 +773,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-section-title.workput svg, .archive-plan .single-plan-section-title.workput svg, .lsx-exercises-shortcode .single-plan-section-title.workput svg, .single-workout .single-plan-section-title.workput svg { width: 80px; }
 
-.single-plan .single-plan-inner.workout-content, .archive-plan .single-plan-inner.workout-content, .lsx-exercises-shortcode .single-plan-inner.workout-content, .single-workout .single-plan-inner.workout-content { max-width: 1000px; }
+.single-plan .single-plan-inner.workout-content, .archive-plan .single-plan-inner.workout-content, .lsx-exercises-shortcode .single-plan-inner.workout-content, .single-workout .single-plan-inner.workout-content { max-width: 1140px; margin-right: auto; margin-left: auto; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions, .archive-plan .single-plan-inner.workout-content .workout-instructions, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions, .single-workout .single-plan-inner.workout-content .workout-instructions { padding-right: 10px; padding-left: 10px; }
 
@@ -994,6 +1010,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after, #type-nav .nav.nav-pills li.active a::after, #type-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
 
 .post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .sets .set-box.set { background: white; }
+
+article.type-plan.type-workout-plan .entry-content .workout-content .sets .set-box.set:nth-child(odd) { background: #edf4fa; }
 
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418AD0; }
 

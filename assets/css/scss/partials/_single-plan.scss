@@ -176,6 +176,38 @@
 	}
 }
 
+article.type-plan {
+	&.type-workout-plan {
+		.entry-content {
+			padding: 0;
+			.workout-content {
+				.single-plan-section-title {
+					display: flex;
+					padding: 1rem 3rem;
+					align-items: center;
+					margin-bottom: 3rem;
+					h2 {
+						margin: 0;
+					}
+					svg {
+						margin-right: 15px;
+					}
+				}
+				.workout-instructions {
+					padding: 1rem 3rem;
+				}
+				.sets {
+					.set-box {
+						&.set {
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .my-plan-container {
 	.lsx-container-content {
 		padding: 10px 2em;
@@ -564,7 +596,9 @@
 	}
 	.single-plan-inner {
 		&.workout-content {
-			max-width: 1000px;
+			max-width: 1140px;
+			margin-left: auto;
+			margin-right: auto;
 			.workout-instructions {
 				padding-left: 10px;
 				padding-right: 10px;

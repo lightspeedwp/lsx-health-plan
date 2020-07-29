@@ -14,8 +14,8 @@
 	margin-top: 43px;
 	margin-bottom: 30px;
 	@media (min-width: 601px) and (max-width: 1140px) {
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: 0;
+		padding-right: 0;
 		margin-top: 30px;
 		margin-bottom: 20px;
 	}
@@ -118,6 +118,15 @@
 					color: $white;
 				}
 			}
+		}
+	}
+}
+
+body:not(.woocommerce-edit-account) {
+	#account-nav {
+		@media (min-width: 768px) and (max-width: 1140px) {
+			padding-left: 30px;
+			padding-right: 30px;
 		}
 	}
 }
@@ -581,9 +590,16 @@
 	max-width: 1140px;
 	width: 100%;
 	margin: 20px auto 140px;
+	@media (min-width: 601px) and (max-width: 1140px) {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
 	@media (max-width: 600px) {
 		padding: 0 10px 20px;
 		margin-top: 0px;
+		margin-bottom: 30px;
 		#account-nav {
 			.nav-pills {
 				margin-left: -25px;
