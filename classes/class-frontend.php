@@ -44,18 +44,17 @@ class Frontend {
 
 		if ( is_admin() ) {
 			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
+		} else {
+			add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
+			// Handle the template redirects.
+			add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
+			add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
+			add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+			add_action( 'template_redirect', array( $this, 'redirect' ) );
+
+			add_action( 'init', array( $this, 'handle_day_action' ), 100 );
+			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
 		}
-
-		add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
-
-		// Handle the template redirects.
-		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
-		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
-		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
-		add_action( 'template_redirect', array( $this, 'redirect' ) );
-
-		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
-		add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
 	}
 
 	/**
@@ -130,9 +129,10 @@ class Frontend {
 	public function hp_add_body_classes( $classes = array() ) {
 		global $post;
 
-		if ( has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
+		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
 			$classes[] = 'my-plan-shortcode';
 		}
+
 		if ( is_single() && is_singular( 'plan' ) ) {
 			$args = array(
 				'post_parent' => get_the_ID(),
