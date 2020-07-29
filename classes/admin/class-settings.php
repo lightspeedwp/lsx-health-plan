@@ -223,6 +223,14 @@ class Settings {
 	public function general_settings( $cmb ) {
 		$cmb->add_field(
 			array(
+				'id'      => 'settings_general_title',
+				'type'    => 'title',
+				'name'    => __( 'General', 'lsx-health-plan' ),
+				'default' => __( 'General', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
 				'name'       => __( 'Membership Product', 'lsx-health-plan' ),
 				'id'         => 'membership_product',
 				'type'       => 'post_search_ajax',
@@ -278,6 +286,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_general_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -324,6 +338,13 @@ class Settings {
 				)
 			);
 		}
+
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_global_defaults_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -365,6 +386,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_global_downloads_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -398,6 +425,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_endpoints_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -429,6 +462,12 @@ class Settings {
 					)
 				);
 			}
+			$cmb->add_field(
+				array(
+					'id'   => 'settings_exercise_closing',
+					'type' => 'tab_closing',
+				)
+			);
 		}
 	}
 
@@ -466,6 +505,14 @@ class Settings {
 				)
 			);
 		}
+
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_post_type_toggles_closing',
+				'type' => 'tab_closing',
+			)
+		);
+
 		$cmb->add_field(
 			array(
 				'id'          => 'post_type_toggles_enable_title',
@@ -483,6 +530,12 @@ class Settings {
 				'value'       => 1,
 				'default'     => 0,
 				'description' => __( 'Enabling the exercise post type will automatically replace the Video post type.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_post_type_toggles_enable_closing',
+				'type' => 'tab_closing',
 			)
 		);
 	}
@@ -537,6 +590,12 @@ class Settings {
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_stat_disable_closing',
+				'type' => 'tab_closing',
 			)
 		);
 	}

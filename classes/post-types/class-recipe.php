@@ -466,5 +466,11 @@ class Recipe {
 			)
 		);
 		do_action( 'lsx_hp_recipe_settings_page', $cmb );
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_recipe_archive_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 }

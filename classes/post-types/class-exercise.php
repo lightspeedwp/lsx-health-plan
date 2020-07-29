@@ -340,6 +340,12 @@ class Exercise {
 			)
 		);
 		do_action( 'lsx_hp_exercise_settings_page', $cmb );
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_exercise_archive_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**

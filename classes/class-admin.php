@@ -42,6 +42,13 @@ class Admin {
 	public $help;
 
 	/**
+	 * Holds the settings page theme functions
+	 *
+	 * @var object \lsx_health_plan\classes\admin\Settings_Theme();
+	 */
+	public $settings_theme;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -76,6 +83,9 @@ class Admin {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/class-help-page.php';
 		$this->help = admin\Help_Page::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/class-settings-theme.php';
+		$this->settings_theme = admin\Settings_Theme::get_instance();
 	}
 
 	/**
