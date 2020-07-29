@@ -26,16 +26,16 @@ class Account {
 		// Redirect to the Edit Account Template.
 		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
 
-		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
+		add_action( 'woocommerce_edit_account_form', array( $this, 'print_user_frontend_fields' ), 10 );
 
-		add_filter( 'iconic_account_fields', array( $this, 'iconic_add_post_data_to_account_fields' ), 10, 1 );
-		add_action( 'show_user_profile', array( $this, 'iconic_print_user_admin_fields' ), 30 );
+		add_filter( 'lsx_hp_profile_fields', array( $this, 'add_post_data_to_account_fields' ), 10, 1 );
+		add_action( 'show_user_profile', array( $this, 'print_user_admin_fields' ), 30 );
 
-		add_action( 'personal_options_update', array( $this, 'iconic_save_account_fields' ) );
-		add_action( 'edit_user_profile_update', array( $this, 'iconic_save_account_fields' ) );
+		add_action( 'personal_options_update', array( $this, 'save_account_fields' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'save_account_fields' ) );
 
-		add_action( 'woocommerce_save_account_details', array( $this, 'iconic_save_account_fields' ) );
-		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'iconic_validate_user_frontend_fields' ), 10 );
+		add_action( 'woocommerce_save_account_details', array( $this, 'save_account_fields' ) );
+		add_filter( 'woocommerce_save_account_details_errors', array( $this, 'validate_user_frontend_fields' ), 10 );
 
 		// Profile Fields.
 		add_filter( 'woocommerce_form_field_text', array( $this, 'lsx_profile_photo_field_filter' ), 10, 4 );
@@ -47,7 +47,7 @@ class Account {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\integrations\woocommerce\Account()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\integration\woocommerce\Account()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -88,7 +88,7 @@ class Account {
 	 *
 	 * @return array
 	 */
-	public function iconic_add_post_data_to_account_fields( $fields ) {
+	public function add_post_data_to_account_fields( $fields ) {
 		if ( empty( $_POST ) && wp_verify_nonce( sanitize_key( $_POST ) ) ) {
 			return $fields;
 		}
@@ -110,7 +110,7 @@ class Account {
 	/**
 	 * Add fields to registration form and account area.
 	 */
-	public function iconic_print_user_frontend_fields() {
+	public function print_user_frontend_fields() {
 		$fields            = $this->get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
@@ -120,12 +120,12 @@ class Account {
 			echo wp_kses_post( '<div class="my-stats-wrap"><div class="my-stats">' );
 			foreach ( $fields as $key => $field_args ) {
 				$value = null;
-				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
+				if ( ! $this->is_field_visible( $field_args ) ) {
 					continue;
 				}
 				if ( $is_user_logged_in ) {
-					$user_id = $this->iconic_get_edit_user_id();
-					$value   = $this->iconic_get_userdata( $user_id, $key );
+					$user_id = $this->get_edit_user_id();
+					$value   = $this->get_userdata( $user_id, $key );
 				}
 				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 				woocommerce_form_field( $key, $field_args, $value );
@@ -145,8 +145,8 @@ class Account {
 	 *
 	 * @return mixed|string
 	 */
-	public function iconic_get_userdata( $user_id, $key ) {
-		if ( ! $this->iconic_is_userdata( $key ) ) {
+	public function get_userdata( $user_id, $key ) {
+		if ( ! $this->is_userdata( $key ) ) {
 			return get_user_meta( $user_id, $key, true );
 		}
 
@@ -164,7 +164,7 @@ class Account {
 	 *
 	 * @return int
 	 */
-	public function iconic_get_edit_user_id() {
+	public function get_edit_user_id() {
 		return ( isset( $_GET['user_id'] ) && wp_verify_nonce( sanitize_key( $_GET['user_id'] ) ) ) ? (int) $_GET['user_id'] : get_current_user_id();
 	}
 
@@ -174,7 +174,7 @@ class Account {
 	 *
 	 * @param int $customer_id
 	 */
-	public function iconic_save_account_fields( $customer_id ) {
+	public function save_account_fields( $customer_id ) {
 		$nonce_value = wc_get_var( $_REQUEST['save-account-details-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
 		if ( ! wp_verify_nonce( $nonce_value, 'save_account_details' ) ) {
 			return;
@@ -183,13 +183,13 @@ class Account {
 		$fields         = $this->get_account_fields();
 		$sanitized_data = array();
 		foreach ( $fields as $key => $field_args ) {
-			if ( ! $this->iconic_is_field_visible( $field_args ) ) {
+			if ( ! $this->is_field_visible( $field_args ) ) {
 				continue;
 			}
 
 			$sanitize = isset( $field_args['sanitize'] ) ? $field_args['sanitize'] : 'wc_clean';
 			$value    = ( isset( $_POST[ $key ] ) ) ? call_user_func( $sanitize, $_POST[ $key ] ) : '';
-			if ( $this->iconic_is_userdata( $key ) ) {
+			if ( $this->is_userdata( $key ) ) {
 
 				$sanitized_data[ $key ] = $value;
 				continue;
@@ -226,7 +226,7 @@ class Account {
 	 *
 	 * @return bool
 	 */
-	public function iconic_is_userdata( $key ) {
+	public function is_userdata( $key ) {
 		$userdata = array(
 			'user_pass',
 			'user_login',
@@ -257,7 +257,7 @@ class Account {
 	 *
 	 * @return bool
 	 */
-	public function iconic_is_field_visible( $field_args ) {
+	public function is_field_visible( $field_args ) {
 		$visible = true;
 		$action  = filter_input( INPUT_POST, 'action' );
 
@@ -305,7 +305,7 @@ class Account {
 	/**
 	 * Add fields to admin area.
 	 */
-	public function iconic_print_user_admin_fields() {
+	public function print_user_admin_fields() {
 		$fields = $this->get_account_fields();
 		?>
 		<h2><?php esc_html_e( 'Additional Information', 'lsx-health-plan' ); ?></h2>
@@ -313,11 +313,11 @@ class Account {
 			<tbody>
 			<?php foreach ( $fields as $key => $field_args ) { ?>
 				<?php
-				if ( ! $this->iconic_is_field_visible( $field_args ) ) {
+				if ( ! $this->is_field_visible( $field_args ) ) {
 					continue;
 				}
 
-				$user_id = $this->iconic_get_edit_user_id();
+				$user_id = $this->get_edit_user_id();
 				$value   = get_user_meta( $user_id, $key, true );
 				?>
 				<tr>
@@ -342,7 +342,7 @@ class Account {
 	 *
 	 * @return WP_Error
 	 */
-	public function iconic_validate_user_frontend_fields( $errors ) {
+	public function validate_user_frontend_fields( $errors ) {
 		$fields = $this->get_account_fields();
 
 		foreach ( $fields as $key => $field_args ) {
@@ -467,7 +467,7 @@ class Account {
 	 * @return array
 	 */
 	public function get_account_fields() {
-		$account_fields = apply_filters( 'iconic_account_fields', array(
+		$account_fields = apply_filters( 'lsx_hp_profile_fields', array(
 			'age'  => array(
 				'type'                 => 'text',
 				'label'                => __( 'Age:', 'lsx-health-plan' ),
