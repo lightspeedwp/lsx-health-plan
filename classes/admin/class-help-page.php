@@ -65,7 +65,7 @@ class Help_Page {
 	 * @param string $hook_suffix the current page hook suffix.
 	 */
 	public function assets( $hook_suffix ) {
-		if ( 'plan_page_lsx_hp_help' === $hook_suffix ) {
+		if ( 'plan_page_help' === $hook_suffix ) {
 			wp_enqueue_style( 'lsx-hp-help-screen', get_template_directory_uri() . '/assets/css/admin/help.css', array(), LSX_VERSION );
 			wp_style_add_data( 'lsx-hp-help-screen', 'rtl', 'replace' );
 		}
@@ -78,7 +78,7 @@ class Help_Page {
 	 * @subpackage hp-help-page
 	 */
 	public function register_menu() {
-		add_submenu_page( 'edit.php?post_type=plan', __( 'Help', 'lsx-health-plan' ), __( 'Help', 'lsx-health-plan' ), 'manage_options', 'lsx_hp_help', array( $this, 'screen' ) );
+		add_submenu_page( 'edit.php?post_type=plan', __( 'Help', 'lsx-health-plan' ), __( 'Help', 'lsx-health-plan' ), 'manage_options', 'help', array( $this, 'screen' ) );
 	}
 
 
