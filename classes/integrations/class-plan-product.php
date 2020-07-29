@@ -21,7 +21,7 @@ class Woocommerce {
 	 * Contructor
 	 */
 	public function __construct() {
-
+		add_action( 'init', array( $this, 'init' ), 20, 1 );
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
@@ -31,6 +31,9 @@ class Woocommerce {
 		add_action( 'body_class', array( $this, 'hp_wc_add_body_classes' ) );
 		add_action( 'lsx_nav_before', array( $this, 'hp_link_lsx_navbar_header' ), 99 );
 		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
+
+		// Redirect to the Edit Account Template.
+		add_filter( 'template_include', array( $this, 'account_endpoint_redirect' ), 99 );
 
 		add_action( 'woocommerce_edit_account_form', array( $this, 'iconic_print_user_frontend_fields' ), 10 );
 
@@ -68,6 +71,15 @@ class Woocommerce {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Runs on init
+	 *
+	 * @return void
+	 */
+	public function init() {
+		remove_action( 'woocommerce_account_navigation', 'woocommerce_account_navigation' );
 	}
 
 	/**
@@ -134,6 +146,21 @@ class Woocommerce {
 			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
+	}
+
+	/**
+	 * Redirects to the my account template.
+	 *
+	 * @param string $template
+	 * @return string
+	 */
+	public function account_endpoint_redirect( $template ) {
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			if ( empty( locate_template( array( 'page-template-my-plan.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/page-template-my-plan.php' ) ) {
+				$template = LSX_HEALTH_PLAN_PATH . 'templates/page-template-my-plan.php';
+			}
+		}
+		return $template;
 	}
 
 	/**
