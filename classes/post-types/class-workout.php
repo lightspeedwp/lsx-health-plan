@@ -89,7 +89,7 @@ class Workout {
 			'rewrite'            => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			),
-			'capability_type'    => 'post',
+			'capability_type'    => 'page',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', false ),
 			'hierarchical'       => true,
 			'menu_position'      => null,
@@ -414,6 +414,13 @@ class Workout {
 			);
 
 			do_action( 'lsx_hp_workout_settings_page', $cmb );
+
+			$cmb->add_field(
+				array(
+					'id'   => 'settings_workouts_closing',
+					'type' => 'tab_closing',
+				)
+			);
 		}
 	}
 }

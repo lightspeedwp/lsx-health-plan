@@ -5,10 +5,10 @@
  * @package lsx-health-plan
  */
 
-namespace lsx_health_plan\classes;
+namespace lsx_health_plan\classes\admin;
 
 /**
- * Contains the settings for each post type \lsx_health_plan\classes\Settings().
+ * Contains the settings for each post type \lsx_health_plan\classes\admin\Settings().
  */
 class Settings {
 
@@ -17,7 +17,7 @@ class Settings {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Settings()
+	 * @var      object \lsx_health_plan\classes\admin\Settings()
 	 */
 	protected static $instance = null;
 
@@ -68,7 +68,7 @@ class Settings {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Settings()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\admin\Settings()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -169,6 +169,10 @@ class Settings {
 			'title'   => __( 'Single Plan Slug', 'lsx-health-plan' ),
 			'default' => 'plan',
 		);
+		$this->endpoints['endpoint_plan_archive'] = array(
+			'title'   => __( 'Plans Archive Endpoint', 'lsx-health-plan' ),
+			'default' => 'plans',
+		);
 
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			$this->endpoints['exercise'] = array(
@@ -204,10 +208,10 @@ class Settings {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => $this->screen_id,
-				'title'        => esc_html__( 'LSX Health Plan', 'cmb2' ),
+				'title'        => esc_html__( 'Settings', 'lsx-health-plan' ),
 				'object_types' => array( 'options-page' ),
 				'option_key'   => 'lsx_health_plan_options', // The option key and admin menu page slug.
-				'parent_slug'  => 'options-general.php', // Make options page a submenu item of the themes menu.
+				'parent_slug'  => 'edit.php?post_type=plan', // Make options page a submenu item of the themes menu.
 				'capability'   => 'manage_options', // Cap required to view options-page.
 			)
 		);
@@ -221,6 +225,14 @@ class Settings {
 	 * @return void
 	 */
 	public function general_settings( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'      => 'settings_general_title',
+				'type'    => 'title',
+				'name'    => __( 'General', 'lsx-health-plan' ),
+				'default' => __( 'General', 'lsx-health-plan' ),
+			)
+		);
 		$cmb->add_field(
 			array(
 				'name'       => __( 'Membership Product', 'lsx-health-plan' ),
@@ -278,6 +290,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_general_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -324,6 +342,13 @@ class Settings {
 				)
 			);
 		}
+
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_global_defaults_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -365,6 +390,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_global_downloads_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -398,6 +429,12 @@ class Settings {
 				)
 			);
 		}
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_endpoints_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 
 	/**
@@ -429,6 +466,12 @@ class Settings {
 					)
 				);
 			}
+			$cmb->add_field(
+				array(
+					'id'   => 'settings_exercise_closing',
+					'type' => 'tab_closing',
+				)
+			);
 		}
 	}
 
@@ -466,6 +509,14 @@ class Settings {
 				)
 			);
 		}
+
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_post_type_toggles_closing',
+				'type' => 'tab_closing',
+			)
+		);
+
 		$cmb->add_field(
 			array(
 				'id'          => 'post_type_toggles_enable_title',
@@ -483,6 +534,12 @@ class Settings {
 				'value'       => 1,
 				'default'     => 0,
 				'description' => __( 'Enabling the exercise post type will automatically replace the Video post type.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_post_type_toggles_enable_closing',
+				'type' => 'tab_closing',
 			)
 		);
 	}
@@ -537,6 +594,12 @@ class Settings {
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_stat_disable_closing',
+				'type' => 'tab_closing',
 			)
 		);
 	}

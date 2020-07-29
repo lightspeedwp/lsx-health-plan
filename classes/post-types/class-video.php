@@ -31,6 +31,7 @@ class Video {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
@@ -74,7 +75,7 @@ class Video {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => true,
+			'show_in_menu'       => false,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-format-video',
 			'query_var'          => true,
@@ -89,6 +90,15 @@ class Video {
 			),
 		);
 		register_post_type( 'video', $args );
+	}
+
+	/**
+	 * Registers the Recipes under the Meals Post type menu.
+	 *
+	 * @return void
+	 */
+	public function register_menus() {
+		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Videos', 'lsx-health-plan' ), esc_html__( 'Videos', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=video' );
 	}
 
 	/**

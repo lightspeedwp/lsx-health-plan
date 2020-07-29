@@ -42,12 +42,12 @@ class Plan {
 
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
-
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Plan {
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Day Plans', 'lsx-health-plan' ),
+			'menu_name'          => esc_html__( 'Plans', 'lsx-health-plan' ),
 		);
 		$args   = array(
 			'labels'             => $labels,
@@ -95,8 +95,8 @@ class Plan {
 			'rewrite'            => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'plan_single_slug', 'plan' ),
 			),
-			'capability_type'    => 'post',
-			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_plans_archive', 'plans' ),
+			'capability_type'    => 'page',
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_plan_archive', 'plans' ),
 			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
@@ -327,5 +327,18 @@ class Plan {
 			$title = __( 'Our health plans', 'lsx-health-plan' );
 		}
 		return $title;
+	}
+
+	/**
+	 * Set the post type archive to show the parent plans only.
+	 *
+	 * @param object $wp_query
+	 * @return array
+	 */
+	public function set_parent_only( $wp_query ) {
+		if ( ! is_admin() && $wp_query->is_main_query() && $wp_query->is_post_type_archive() && 'plan' === $wp_query->get_query_var( 'post_type' ) ) {
+			$wp_query->set( 'parent', '0' );
+		}
+		return $wp_query;
 	}
 }
