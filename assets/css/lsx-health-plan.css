@@ -271,6 +271,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
+.gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { max-width: 1140px; width: 100%; margin-top: 43px; }
+
 #account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
 
 @media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-left: 30px; padding-right: 30px; margin-top: 30px; margin-bottom: 20px; } }

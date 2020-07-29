@@ -243,14 +243,23 @@ function lsx_health_plan_my_profile_box() {
 						$is_weight_disabled  = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
 						$is_waist_disabled   = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
 						$is_fitness_disabled = \lsx_health_plan\functions\get_option( 'disable_fitness_checkbox', false );
+
+						$weight = get_user_meta( get_current_user_id(), 'weight', true );
+						$waist = get_user_meta( get_current_user_id(), 'waist', true );
+						$height = get_user_meta( get_current_user_id(), 'height', true );
+
+						$height_m = $height / 100;
+
+						$bmi = $weight / ( $height_m * $height_m );
+
 						?>
 
 						<div>
 							<?php if ( 'on' !== $is_weight_disabled ) { ?>
 								<span><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong>
 								<?php
-								if ( '' !== get_user_meta( get_current_user_id(), 'weight', true ) ) {
-									echo wp_kses_post( get_user_meta( get_current_user_id(), 'weight', true ) . ' kg' );
+								if ( '' !== $weight ) {
+									echo wp_kses_post( $weight . ' kg' );
 								} else {
 									echo '/';
 								}
@@ -261,15 +270,15 @@ function lsx_health_plan_my_profile_box() {
 								?>
 								<span><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong>
 								<?php
-								if ( '' !== get_user_meta( get_current_user_id(), 'waist', true ) ) {
-									echo wp_kses_post( get_user_meta( get_current_user_id(), 'waist', true ) . ' cm' );
+								if ( '' !== $waist ) {
+									echo wp_kses_post( $waist . ' cm' );
 								} else {
 									echo '/';
 								}
 								?>
 								</span>
 							<?php } ?>
-							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> XXX</span>
+							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> <?php echo esc_html( number_format( $bmi, 1 ) ); ?></span>
 						</div>
 					<?php
 					}

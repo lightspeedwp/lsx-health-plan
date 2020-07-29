@@ -1,4 +1,11 @@
 // Account
+.gutenberg-compatible-template.using-gutenberg .entry-content {
+	div.woocommerce-message {
+		max-width: 1140px;
+		width: 100%;
+		margin-top: 43px;
+	}
+}
 
 #account-nav,
 #type-nav {
