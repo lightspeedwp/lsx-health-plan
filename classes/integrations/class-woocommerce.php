@@ -212,7 +212,7 @@ class Woocommerce {
 				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 				woocommerce_form_field( $key, $field_args, $value );
 			}
-			echo wp_kses_post( '<p class="form-row calculate-bmi"><label>BMI</label><button class="btn border-btn">' . __( 'Calculate', 'lsx-health-plan' ) . '<i class="fa fa-calculator" aria-hidden="true"></i></button></p>' );
+			echo wp_kses_post( '<p class="form-row calculate-bmi"><label>BMI</label><button name="data" type="button" class="btn border-btn">' . __( 'Calculate', 'lsx-health-plan' ) . '<i class="fa fa-calculator" aria-hidden="true"></i></button></p>' );
 			echo wp_kses_post( '</div>' );
 			echo wp_kses_post( '<div class="description"><p><strong>' . __( 'Your BMI score', 'lsx-health-plan' ) . '</strong></p>' );
 			echo wp_kses_post( '<p>' . __( "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.", 'lsx-health-plan' ) . '</p></div></div>' );

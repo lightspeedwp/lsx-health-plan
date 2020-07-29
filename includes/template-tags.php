@@ -250,7 +250,12 @@ function lsx_health_plan_my_profile_box() {
 
 						$height_m = $height / 100;
 
-						$bmi = $weight / ( $height_m * $height_m );
+						if ( 1 < $weight && 1 < $height_m ) {
+							$bmi = $weight / ( $height_m * $height_m );
+							$bmi = number_format( $bmi, 1 );
+						} else {
+							$bmi = __( 'Add more data', 'lsx-health-plan' );
+						}
 
 						?>
 
@@ -278,7 +283,7 @@ function lsx_health_plan_my_profile_box() {
 								?>
 								</span>
 							<?php } ?>
-							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> <?php echo esc_html( number_format( $bmi, 1 ) ); ?></span>
+							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> <?php echo esc_html( $bmi ); ?></span>
 						</div>
 					<?php
 					}

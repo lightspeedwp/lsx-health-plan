@@ -628,8 +628,14 @@
 		}
 		.my-stats-wrap {
 			display: flex;
+			@media (max-width: 767px) {
+				flex-direction: column;
+			}
 			.description {
 				width: 30%;
+				@media (max-width: 767px) {
+					width: 100%;
+				}
 			}
 		}
 		.my-stats-title {
@@ -639,6 +645,9 @@
 			display: flex;
 			flex-wrap: wrap;
 			width: 70%;
+			@media (max-width: 767px) {
+				width: 100%;
+			}
 			p:last-child {
 				margin-top: 0px !important;
 			}
@@ -648,6 +657,10 @@
 				width: 50%;
 				max-width: 240px;
 				margin-left: 0;
+				@media (max-width: 767px) {
+					width: 100%;
+					max-width: 100%;
+				}
 				&.calculate-bmi {
 					.btn {
 						width: 100%;
@@ -659,10 +672,23 @@
 						}
 					}
 				}
+				&.bmi-total {
+					font-size: 26px;
+					color: #30bb00;
+					font-weight: bold;
+					margin-right: 8rem;
+					width: 100%;
+					max-width: 100%;
+					display: flex;
+					justify-content: flex-end;
+				}
 			}
 		}
 		.description {
 			margin-top: -43px;
+			@media (max-width: 767px) {
+				margin-top: 0;
+			}
 		}
 		.wpua-edit-container {
 			margin-top: 60px;
