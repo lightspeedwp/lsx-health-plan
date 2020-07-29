@@ -106,16 +106,14 @@
 	}
 
 	article.type-plan {
-		&.type-workout-plan {
-			.entry-content {
-				.workout-content {
-					.sets {
-						.set-box {
-							&.set {
-								background: white;
-								&:nth-child(odd) {
-									background: lighten($link, 42%);
-								}
+		.entry-content {
+			.workout-content {
+				.sets {
+					.set-box {
+						&.set {
+							background: white;
+							&:nth-child(odd) {
+								background: lighten($link, 42%);
 							}
 						}
 					}
