@@ -413,6 +413,13 @@ class Workout {
 			);
 
 			do_action( 'lsx_hp_workout_settings_page', $cmb );
+
+			$cmb->add_field(
+				array(
+					'id'   => 'settings_workouts_closing',
+					'type' => 'tab_closing',
+				)
+			);
 		}
 	}
 }

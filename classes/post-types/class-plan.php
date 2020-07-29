@@ -69,7 +69,7 @@ class Plan {
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Day Plans', 'lsx-health-plan' ),
+			'menu_name'          => esc_html__( 'Plans', 'lsx-health-plan' ),
 		);
 		$args   = array(
 			'labels'             => $labels,
