@@ -4,6 +4,10 @@
 		max-width: 1140px;
 		width: 100%;
 		margin-top: 43px;
+		@media (min-width: 768px) and (max-width: 1140px) {
+			margin-left: 30px;
+			margin-right: 30px;
+		}
 	}
 }
 
@@ -678,10 +682,13 @@ body:not(.woocommerce-edit-account) {
 					max-width: 100%;
 				}
 				&.calculate-bmi {
-					.btn {
+					.btn,
+					.btn:active,
+					.btn:visited {
 						width: 100%;
 						color: #f7941d;
 						border-color: #f7941d;
+						background-color: transparent;
 						&:hover {
 							background-color: #f7941d;
 							color: white;

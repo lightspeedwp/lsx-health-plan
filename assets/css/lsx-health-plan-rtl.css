@@ -275,6 +275,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { max-width: 1140px; width: 100%; margin-top: 43px; }
 
+@media (min-width: 768px) and (max-width: 1140px) { .gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { margin-right: 30px; margin-left: 30px; } }
+
 #account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
 
 @media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-right: 0; padding-left: 0; margin-top: 30px; margin-bottom: 20px; } }
@@ -524,9 +526,9 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (max-width: 767px) { #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { width: 100%; max-width: 100%; } }
 
-#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn { width: 100%; color: #f7941d; border-color: #f7941d; }
+#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:active, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:visited, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:active, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:visited { width: 100%; color: #f7941d; border-color: #f7941d; background-color: transparent; }
 
-#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover { background-color: #f7941d; color: white; }
+#edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:visited:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:visited:hover { background-color: #f7941d; color: white; }
 
 #edit-account-tab .edit-account-section .my-stats .form-row.bmi-total, #edit-account-tab .stat-section .my-stats .form-row.bmi-total { font-size: 26px; color: #30bb00; font-weight: bold; margin-left: 8rem; width: 100%; max-width: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: end; justify-content: flex-end; }
 
