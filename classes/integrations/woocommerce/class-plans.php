@@ -36,8 +36,8 @@ class Plans {
 	 */
 	public function __construct() {
 		// Remove the default restrictions, as we will add our own.
-		add_action( 'wp', array( $this, 'set_screen' ) );
-		add_action( 'wp', array( $this, 'disable_wc_membership_course_restrictions' ), 999 );
+		add_action( 'wp', array( $this, 'set_screen' ), 1 );
+		add_action( 'wp', array( $this, 'disable_wc_membership_course_restrictions' ), 2 );
 
 		// Initiate the WP Head functions.
 		add_action( 'wp_head', array( $this, 'set_screen' ) );
@@ -85,9 +85,8 @@ class Plans {
 		if ( ! is_singular( 'plan' ) || 'parent_plan' !== $this->screen ) {
 			return;
 		}
-
 		$restrictions = wc_memberships()->get_restrictions_instance()->get_posts_restrictions_instance();
-		remove_action( 'the_post', [ $restrictions, 'restrict_post' ], 0 );
+		remove_action( 'wp', array( $restrictions, 'handle_restriction_modes' ) );
 	}
 
 	/**
