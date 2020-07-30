@@ -29,9 +29,9 @@
 		<div class="single-plan-inner workout-content">
 			<?php
 			if ( ! is_singular( 'workout' ) ) { ?>
-				<div class="single-plan-section-title workout">
+				<div class="single-plan-section-title workout title-lined">
 					<?php lsx_get_svg_icon( 'work.svg' ); ?>
-					<h2 class="title-lined"><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
+					<h2><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?></h2>
 				</div>
 			<?php } ?>
 			<?php
@@ -39,11 +39,11 @@
 				?>
 				<div class="workout-instructions">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
 							<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="single-plan-inner-buttons">
 								<?php
 								$download = \lsx_health_plan\functions\get_option( 'download_page', false );

@@ -17,6 +17,7 @@
 	</div><!-- .entry-meta -->
 
 	<div class="entry-content">
+		<div class="overview">
 		<?php
 			the_content();
 
@@ -27,6 +28,7 @@
 				'link_after'  => '</span>',
 			) );
 		?>
+		</div>
 	</div><!-- .entry-content -->
 
 	<footer class="footer-meta clearfix">

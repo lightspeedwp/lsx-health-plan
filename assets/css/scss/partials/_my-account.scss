@@ -1,4 +1,11 @@
 // Account
+.gutenberg-compatible-template.using-gutenberg .entry-content {
+	div.woocommerce-message {
+		max-width: 1140px;
+		width: 100%;
+		margin-top: 43px;
+	}
+}
 
 #account-nav,
 #type-nav {
@@ -7,8 +14,8 @@
 	margin-top: 43px;
 	margin-bottom: 30px;
 	@media (min-width: 601px) and (max-width: 1140px) {
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: 0;
+		padding-right: 0;
 		margin-top: 30px;
 		margin-bottom: 20px;
 	}
@@ -111,6 +118,15 @@
 					color: $white;
 				}
 			}
+		}
+	}
+}
+
+body:not(.woocommerce-edit-account) {
+	#account-nav {
+		@media (min-width: 768px) and (max-width: 1140px) {
+			padding-left: 30px;
+			padding-right: 30px;
 		}
 	}
 }
@@ -574,9 +590,16 @@
 	max-width: 1140px;
 	width: 100%;
 	margin: 20px auto 140px;
+	@media (min-width: 601px) and (max-width: 1140px) {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
 	@media (max-width: 600px) {
 		padding: 0 10px 20px;
 		margin-top: 0px;
+		margin-bottom: 30px;
 		#account-nav {
 			.nav-pills {
 				margin-left: -25px;
@@ -621,8 +644,14 @@
 		}
 		.my-stats-wrap {
 			display: flex;
+			@media (max-width: 767px) {
+				flex-direction: column;
+			}
 			.description {
 				width: 30%;
+				@media (max-width: 767px) {
+					width: 100%;
+				}
 			}
 		}
 		.my-stats-title {
@@ -632,6 +661,9 @@
 			display: flex;
 			flex-wrap: wrap;
 			width: 70%;
+			@media (max-width: 767px) {
+				width: 100%;
+			}
 			p:last-child {
 				margin-top: 0px !important;
 			}
@@ -641,6 +673,10 @@
 				width: 50%;
 				max-width: 240px;
 				margin-left: 0;
+				@media (max-width: 767px) {
+					width: 100%;
+					max-width: 100%;
+				}
 				&.calculate-bmi {
 					.btn {
 						width: 100%;
@@ -652,10 +688,23 @@
 						}
 					}
 				}
+				&.bmi-total {
+					font-size: 26px;
+					color: #30bb00;
+					font-weight: bold;
+					margin-right: 8rem;
+					width: 100%;
+					max-width: 100%;
+					display: flex;
+					justify-content: flex-end;
+				}
 			}
 		}
 		.description {
 			margin-top: -43px;
+			@media (max-width: 767px) {
+				margin-top: 0;
+			}
 		}
 		.wpua-edit-container {
 			margin-top: 60px;

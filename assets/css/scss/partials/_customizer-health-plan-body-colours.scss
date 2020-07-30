@@ -105,6 +105,23 @@
 		}
 	}
 
+	article.type-plan {
+		.entry-content {
+			.workout-content {
+				.sets {
+					.set-box {
+						&.set {
+							background: white;
+							&:nth-child(odd) {
+								background: lighten($link, 42%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	#single-plan-nav {
 		.nav.nav-pills {
 			li {

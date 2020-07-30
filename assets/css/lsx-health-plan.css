@@ -271,9 +271,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
+.gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { max-width: 1140px; width: 100%; margin-top: 43px; }
+
 #account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
 
-@media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-left: 30px; padding-right: 30px; margin-top: 30px; margin-bottom: 20px; } }
+@media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-left: 0; padding-right: 0; margin-top: 30px; margin-bottom: 20px; } }
 
 @media (max-width: 600px) { #account-nav, #type-nav { margin-top: 0; margin-bottom: 30px; } }
 
@@ -301,6 +303,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 334px) { #account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { font-size: 11px; } }
 
 #account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+
+@media (min-width: 768px) and (max-width: 1140px) { body:not(.woocommerce-edit-account) #account-nav { padding-left: 30px; padding-right: 30px; } }
 
 .my-plan-shortcode .breadcrumbs-container { z-index: 5; }
 
@@ -477,7 +481,9 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab { max-width: 1140px; width: 100%; margin: 20px auto 140px; }
 
-@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; }
+@media (min-width: 601px) and (max-width: 1140px) { #edit-account-tab { padding-left: 30px; padding-right: 30px; margin-top: 30px; margin-bottom: 20px; } }
+
+@media (max-width: 600px) { #edit-account-tab { padding: 0 10px 20px; margin-top: 0px; margin-bottom: 30px; }
   #edit-account-tab #account-nav .nav-pills { margin-left: -25px; } }
 
 @media (min-width: 769px) and (max-width: 1140px) { #edit-account-tab #account-nav { padding-left: 0; padding-right: 0; } }
@@ -498,21 +504,33 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .my-stats-wrap, #edit-account-tab .stat-section .my-stats-wrap { display: -ms-flexbox; display: flex; }
 
+@media (max-width: 767px) { #edit-account-tab .edit-account-section .my-stats-wrap, #edit-account-tab .stat-section .my-stats-wrap { -ms-flex-direction: column; flex-direction: column; } }
+
 #edit-account-tab .edit-account-section .my-stats-wrap .description, #edit-account-tab .stat-section .my-stats-wrap .description { width: 30%; }
+
+@media (max-width: 767px) { #edit-account-tab .edit-account-section .my-stats-wrap .description, #edit-account-tab .stat-section .my-stats-wrap .description { width: 100%; } }
 
 #edit-account-tab .edit-account-section .my-stats-title, #edit-account-tab .stat-section .my-stats-title { margin-top: 60px; }
 
 #edit-account-tab .edit-account-section .my-stats, #edit-account-tab .stat-section .my-stats { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 70%; }
 
+@media (max-width: 767px) { #edit-account-tab .edit-account-section .my-stats, #edit-account-tab .stat-section .my-stats { width: 100%; } }
+
 #edit-account-tab .edit-account-section .my-stats p:last-child, #edit-account-tab .stat-section .my-stats p:last-child { margin-top: 0px !important; }
 
 #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { padding-right: 15px !important; -ms-flex-positive: 1; flex-grow: 1; width: 50%; max-width: 240px; margin-left: 0; }
+
+@media (max-width: 767px) { #edit-account-tab .edit-account-section .my-stats .form-row, #edit-account-tab .stat-section .my-stats .form-row { width: 100%; max-width: 100%; } }
 
 #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn { width: 100%; color: #f7941d; border-color: #f7941d; }
 
 #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover { background-color: #f7941d; color: white; }
 
+#edit-account-tab .edit-account-section .my-stats .form-row.bmi-total, #edit-account-tab .stat-section .my-stats .form-row.bmi-total { font-size: 26px; color: #30bb00; font-weight: bold; margin-right: 8rem; width: 100%; max-width: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: end; justify-content: flex-end; }
+
 #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: -43px; }
+
+@media (max-width: 767px) { #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: 0; } }
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 
@@ -601,6 +619,20 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #single-plan-nav .nav.nav-pills li.active .warm-up-tab svg circle, #single-plan-nav .nav.nav-pills li.active .recipes-tab svg circle, #single-plan-nav .nav.nav-pills li:hover .warm-up-tab svg circle, #single-plan-nav .nav.nav-pills li:hover .recipes-tab svg circle { fill: transparent !important; }
 
+article.type-plan .entry-content { padding: 0; }
+
+article.type-plan .entry-content .overview { padding: 3rem; }
+
+article.type-plan .entry-content .workout-content .single-plan-section-title { display: -ms-flexbox; display: flex; padding: 1rem 3rem; -ms-flex-align: center; align-items: center; margin-bottom: 3rem; }
+
+article.type-plan .entry-content .workout-content .single-plan-section-title h2 { margin: 0; }
+
+article.type-plan .entry-content .workout-content .single-plan-section-title svg { margin-right: 15px; }
+
+article.type-plan .entry-content .workout-content .workout-instructions { padding: 1rem 3rem; }
+
+article.type-plan .entry-content .workout-content .sets .set-box.set { margin: 0; }
+
 .my-plan-container .lsx-container-content { padding: 10px 2em; }
 
 .my-plan-container .lsx-container-content .lsx-block-container .lsx-container-content { padding: 15px 10px; }
@@ -630,7 +662,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .btn-full, .archive-plan .btn-full, .lsx-exercises-shortcode .btn-full, .single-workout .btn-full { width: 100%; }
 
-.single-plan .sets .set-box.set, .archive-plan .sets .set-box.set, .lsx-exercises-shortcode .sets .set-box.set, .single-workout .sets .set-box.set { padding: 20px 15px 10px; }
+.single-plan .sets .set-box.set, .archive-plan .sets .set-box.set, .lsx-exercises-shortcode .sets .set-box.set, .single-workout .sets .set-box.set { padding: 3rem; }
 
 .single-plan .sets .set-title, .archive-plan .sets .set-title, .lsx-exercises-shortcode .sets .set-title, .single-workout .sets .set-title { font-family: 'Noto Sans'; text-transform: uppercase; color: #418ad0; }
 
@@ -743,7 +775,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .single-plan .single-plan-section-title.workput svg, .archive-plan .single-plan-section-title.workput svg, .lsx-exercises-shortcode .single-plan-section-title.workput svg, .single-workout .single-plan-section-title.workput svg { width: 80px; }
 
-.single-plan .single-plan-inner.workout-content, .archive-plan .single-plan-inner.workout-content, .lsx-exercises-shortcode .single-plan-inner.workout-content, .single-workout .single-plan-inner.workout-content { max-width: 1000px; }
+.single-plan .single-plan-inner.workout-content, .archive-plan .single-plan-inner.workout-content, .lsx-exercises-shortcode .single-plan-inner.workout-content, .single-workout .single-plan-inner.workout-content { max-width: 1140px; margin-left: auto; margin-right: auto; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions, .archive-plan .single-plan-inner.workout-content .workout-instructions, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions, .single-workout .single-plan-inner.workout-content .workout-instructions { padding-left: 10px; padding-right: 10px; }
 
@@ -980,6 +1012,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after, #type-nav .nav.nav-pills li.active a::after, #type-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
 
 .post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(213.95deg, #418AD0 0%, #225789 100%); }
+
+article.type-plan .entry-content .workout-content .sets .set-box.set { background: white; }
+
+article.type-plan .entry-content .workout-content .sets .set-box.set:nth-child(odd) { background: #edf4fa; }
 
 #single-plan-nav .nav.nav-pills li.active a, #single-plan-nav .nav.nav-pills li:hover a { background: #418AD0; }
 
