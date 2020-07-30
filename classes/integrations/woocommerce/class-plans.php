@@ -25,10 +25,18 @@ class Plans {
 	public $screen = '';
 
 	/**
+	 * Holds the current array of product IDS.
+	 *
+	 * @var array
+	 */
+	public $product_ids = array();
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'wp_head', array( $this, 'wp_head' ) );
+		add_action( 'lsx_content_top', 'lsx_hp_single_plan_products' );
 	}
 
 	/**
@@ -57,6 +65,19 @@ class Plans {
 			} else {
 				$this->screen = 'child_plan';
 			}
+			$product_ids = get_post_meta( get_the_ID(), 'plan_product', true );
+			if ( false !== $product_ids && ! empty( $product_ids ) ) {
+				$this->product_ids = $product_ids;
+			}
 		}
+	}
+
+	/**
+	 * Returns the ids of the attached products.
+	 *
+	 * @return array
+	 */
+	public function get_products() {
+		return $this->product_ids;
 	}
 }

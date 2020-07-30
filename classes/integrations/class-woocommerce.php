@@ -55,6 +55,7 @@ class Woocommerce {
 	 */
 	public function __construct() {
 		$this->load_classes();
+		$this->load_includes();
 	}
 
 	/**
@@ -90,5 +91,12 @@ class Woocommerce {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-checkout.php';
 		$this->checkout = integrations\woocommerce\Checkout::get_instance();
+	}
+	/**
+	 * Loads the includes
+	 */
+	private function load_includes() {
+		require_once LSX_HEALTH_PLAN_PATH . 'includes/functions/woocommerce.php';
+		require_once LSX_HEALTH_PLAN_PATH . 'includes/template-tags/woocommerce.php';
 	}
 }
