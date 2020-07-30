@@ -49,7 +49,7 @@ class Admin {
 				'title'        => __( 'Products', 'lsx-health-plan' ),
 				'object_types' => array( 'plan' ), // Post type.
 				'context'      => 'side',
-				'priority'     => 'normal',
+				'priority'     => 'low',
 				'show_names'   => true,
 			)
 		);
