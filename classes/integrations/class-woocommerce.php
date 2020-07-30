@@ -11,11 +11,44 @@ class Woocommerce {
 	/**
 	 * Holds class instance
 	 *
-	 * @since 1.0.0
-	 *
 	 * @var      object \lsx_health_plan\classes\Woocommerce()
 	 */
 	protected static $instance = null;
+
+	/**
+	 * Holds class Account functionality
+	 *
+	 * @var      object \lsx_health_plan\classes\integrations\woocommerce\Admin()
+	 */
+	public $admin = null;
+
+	/**
+	 * Holds class Account functionality
+	 *
+	 * @var      object \lsx_health_plan\classes\integrations\woocommerce\Account()
+	 */
+	public $account = null;
+
+	/**
+	 * Holds class Plans functionality
+	 *
+	 * @var      object \lsx_health_plan\classes\integrations\woocommerce\Plans()
+	 */
+	public $plans = null;
+
+	/**
+	 * Holds class Login functionality
+	 *
+	 * @var      object \lsx_health_plan\classes\integrations\woocommerce\Login()
+	 */
+	public $login = null;
+
+	/**
+	 * Holds class Checkout functionality
+	 *
+	 * @var      object \lsx_health_plan\classes\integrations\woocommerce\Checkout()
+	 */
+	public $checkout = null;
 
 	/**
 	 * Contructor
@@ -43,11 +76,14 @@ class Woocommerce {
 	 * Loads the variable classes and the static classes.
 	 */
 	private function load_classes() {
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-admin.php';
+		$this->admin = integrations\woocommerce\Admin::get_instance();
+
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-account.php';
 		$this->account = integrations\woocommerce\Account::get_instance();
 
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-my-plans.php';
-		$this->my_plans = integrations\woocommerce\My_Plans::get_instance();
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-plans.php';
+		$this->plans = integrations\woocommerce\Plans::get_instance();
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/woocommerce/class-login.php';
 		$this->login = integrations\woocommerce\Login::get_instance();

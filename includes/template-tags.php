@@ -474,6 +474,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 			}
 
 			// Determine if there are any weekly downloads.
+			$week_downloads_view = '';
 			if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
 				$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $week->slug );
 				if ( ! empty( $weekly_downloads ) ) {
