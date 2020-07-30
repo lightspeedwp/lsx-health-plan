@@ -47,7 +47,7 @@ class Plan {
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
-		add_filter( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
+		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 	}
 
 	/**
@@ -336,9 +336,8 @@ class Plan {
 	 * @return array
 	 */
 	public function set_parent_only( $wp_query ) {
-		if ( ! is_admin() && $wp_query->is_main_query() && $wp_query->is_post_type_archive() && 'plan' === $wp_query->get_query_var( 'post_type' ) ) {
-			$wp_query->set( 'parent', '0' );
+		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'plan' ) || $wp_query->is_tax( 'plan-type' ) ) ) {
+			$wp_query->set( 'post_parent', '0' );
 		}
-		return $wp_query;
 	}
 }

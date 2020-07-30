@@ -12,6 +12,7 @@ global $shortcode_args;
 <?php
 $content_setting = '';
 $column_class    = '4';
+$completed_class = '4';
 $link_html       = '';
 $link_close      = '';
 
