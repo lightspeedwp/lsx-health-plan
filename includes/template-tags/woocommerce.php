@@ -9,7 +9,11 @@
 function lsx_hp_single_plan_products() {
 	global $product;
 
-	if ( ! is_user_logged_in() && \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
+	$restricted = false;
+	if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+		$restricted = wc_memberships_is_post_content_restricted() && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+	}
+	if ( true === $restricted && \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
 		$products      = \lsx_health_plan\functions\woocommerce\get_plan_products();
 		$product_count = count( $products );
 		if ( 1 === (int) $product_count ) {
