@@ -32,12 +32,20 @@ class Plans {
 	public $product_ids = array();
 
 	/**
+	 * Holds the curret parent ID.
+	 *
+	 * @var int
+	 */
+	public $parent_id = 0;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		// Remove the default restrictions, as we will add our own.
 		add_action( 'wp', array( $this, 'set_screen' ), 1 );
-		add_action( 'wp', array( $this, 'disable_wc_membership_course_restrictions' ), 2 );
+		add_action( 'wp', array( $this, 'disable_parent_plan_restrictions' ), 2 );
+		add_action( 'wp', array( $this, 'child_plan_redirect_restrictions' ), 2 );
 
 		// Initiate the WP Head functions.
 		add_action( 'wp_head', array( $this, 'set_screen' ) );
@@ -63,9 +71,9 @@ class Plans {
 	 * Define the product metabox on the plan post type
 	 */
 	public function set_screen() {
-		global $post;
 		if ( is_singular( 'plan' ) ) {
-			if ( 0 === wp_get_post_parent_id( $post ) ) {
+			$this->parent_id = wp_get_post_parent_id( get_the_ID() );
+			if ( 0 === $this->parent_id ) {
 				$this->screen = 'parent_plan';
 			} else {
 				$this->screen = 'child_plan';
@@ -81,12 +89,27 @@ class Plans {
 	 * Disable WC Memberships restrictions for plan parents. We add our own custom
 	 * restriction functionality elsewhere.
 	 */
-	public function disable_wc_membership_course_restrictions() {
+	public function disable_parent_plan_restrictions() {
 		if ( ! is_singular( 'plan' ) || 'parent_plan' !== $this->screen ) {
 			return;
 		}
 		$restrictions = wc_memberships()->get_restrictions_instance()->get_posts_restrictions_instance();
 		remove_action( 'wp', array( $restrictions, 'handle_restriction_modes' ) );
+	}
+
+	/**
+	 * Disable WC Memberships restrictions for plan parents. We add our own custom
+	 * restriction functionality elsewhere.
+	 */
+	public function child_plan_redirect_restrictions() {
+		if ( ! is_singular( 'plan' ) || 'child_plan' !== $this->screen || ! function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+			return;
+		}
+		$restricted = wc_memberships_is_post_content_restricted() && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+		if ( true === $restricted ) {
+			wp_redirect( get_permalink( $this->parent_id ) );
+			exit;
+		}
 	}
 
 	/**
