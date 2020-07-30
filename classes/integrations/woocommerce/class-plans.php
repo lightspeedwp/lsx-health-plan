@@ -35,7 +35,12 @@ class Plans {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'wp_head', array( $this, 'wp_head' ) );
+		// Remove the default restrictions, as we will add our own.
+		add_action( 'wp', array( $this, 'set_screen' ) );
+		add_action( 'wp', array( $this, 'disable_wc_membership_course_restrictions' ), 999 );
+
+		// Initiate the WP Head functions.
+		add_action( 'wp_head', array( $this, 'set_screen' ) );
 		add_action( 'lsx_content_top', 'lsx_hp_single_plan_products' );
 	}
 
@@ -57,10 +62,10 @@ class Plans {
 	/**
 	 * Define the product metabox on the plan post type
 	 */
-	public function wp_head() {
+	public function set_screen() {
 		global $post;
 		if ( is_singular( 'plan' ) ) {
-			if ( false === wp_get_post_parent_id( $post ) ) {
+			if ( 0 === wp_get_post_parent_id( $post ) ) {
 				$this->screen = 'parent_plan';
 			} else {
 				$this->screen = 'child_plan';
@@ -70,6 +75,19 @@ class Plans {
 				$this->product_ids = $product_ids;
 			}
 		}
+	}
+
+	/**
+	 * Disable WC Memberships restrictions for plan parents. We add our own custom
+	 * restriction functionality elsewhere.
+	 */
+	public function disable_wc_membership_course_restrictions() {
+		if ( ! is_singular( 'plan' ) || 'parent_plan' !== $this->screen ) {
+			return;
+		}
+
+		$restrictions = wc_memberships()->get_restrictions_instance()->get_posts_restrictions_instance();
+		remove_action( 'the_post', [ $restrictions, 'restrict_post' ], 0 );
 	}
 
 	/**
