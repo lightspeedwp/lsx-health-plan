@@ -50,6 +50,9 @@ class Plans {
 		// Initiate the WP Head functions.
 		add_action( 'wp_head', array( $this, 'set_screen' ) );
 		add_action( 'lsx_content_top', 'lsx_hp_single_plan_products' );
+
+		// Plan Archive Actions.
+		add_action( 'lsx_entry_before', array( $this, 'set_product_ids' ) );
 	}
 
 	/**
@@ -83,6 +86,24 @@ class Plans {
 				$this->product_ids = $product_ids;
 			}
 		}
+		if ( is_post_type_archive( 'plan' ) ) {
+			$this->screen = 'plan_archive';
+		}
+	}
+
+	/**
+	 * Sets the post type archive product ids.
+	 *
+	 * @return void
+	 */
+	public function set_product_ids() {
+		$this->product_ids = false;
+		if ( 'plan' === get_post_type() ) {
+			$product_ids = get_post_meta( get_the_ID(), 'plan_product', true );
+			if ( false !== $product_ids && ! empty( $product_ids ) ) {
+				$this->product_ids = $product_ids;
+			}
+		}
 	}
 
 	/**
@@ -90,7 +111,7 @@ class Plans {
 	 * restriction functionality elsewhere.
 	 */
 	public function disable_parent_plan_restrictions() {
-		if ( ! is_singular( 'plan' ) || 'parent_plan' !== $this->screen ) {
+		if ( '' === $this->screen ) {
 			return;
 		}
 		$restrictions = wc_memberships()->get_restrictions_instance()->get_posts_restrictions_instance();
@@ -119,45 +140,5 @@ class Plans {
 	 */
 	public function get_products() {
 		return $this->product_ids;
-	}
-
-	/**
-	 * Required: Restrict lesson videos & quiz links until the member has access to the lesson.
-	 * Used to ensure content dripping from Memberships is compatible with Sensei.
-	 *
-	 * This will also remove the "complete lesson" button until the lesson is available.
-	 */
-	public static function restrict_plan_content() {
-		global $post;
-
-		// sanity checks.
-		if ( ! function_exists( 'wc_memberships_get_user_access_start_time' ) || ! function_exists( 'Sensei' ) || 'lesson' !== get_post_type( $post ) ) {
-			return;
-		}
-
-		// if access start time isn't set, or is after the current date, remove the video.
-		if ( ! wc_memberships_get_user_access_start_time(
-			get_current_user_id(),
-			'view',
-			[
-				'lesson' => $post->ID,
-			]
-		)
-			|| time() < wc_memberships_get_user_access_start_time(
-				get_current_user_id(),
-				'view',
-				[
-					'lesson' => $post->ID,
-				],
-				true
-			) ) {
-
-			remove_action( 'sensei_single_lesson_content_inside_after', [ 'Sensei_Lesson', 'footer_quiz_call_to_action' ] );
-			remove_action( 'sensei_single_lesson_content_inside_before', [ 'Sensei_Lesson', 'user_lesson_quiz_status_message' ], 20 );
-
-			remove_action( 'sensei_lesson_video', [ Sensei()->frontend, 'sensei_lesson_video' ], 10, 1 );
-			remove_action( 'sensei_lesson_meta', [ Sensei()->frontend, 'sensei_lesson_meta' ], 10 );
-			remove_action( 'sensei_complete_lesson_button', [ Sensei()->frontend, 'sensei_complete_lesson_button' ] );
-		}
 	}
 }

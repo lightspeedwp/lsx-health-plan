@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $shortcode_args;
+global $shortcode_args, $product;
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -15,6 +15,17 @@ $column_class    = '4';
 $completed_class = '4';
 $link_html       = '';
 $link_close      = '';
+$linked_product  = false;
+$restricted      = false;
+if ( \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
+	$products       = \lsx_health_plan\functions\woocommerce\get_plan_products();
+	$linked_product = wc_get_product( $products[0] );
+	$product        = $linked_product;
+
+	if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+		$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+	}
+}
 
 // Check for shortcode overrides.
 if ( null !== $shortcode_args ) {
@@ -53,7 +64,6 @@ if ( null !== $shortcode_args ) {
 		$content_setting = $shortcode_args['description'];
 	}
 }
-
 ?>
 
 <div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
@@ -77,11 +87,15 @@ if ( null !== $shortcode_args ) {
 			</a>
 		</div>
 		<div class="content-box plan-content-box white-bg">
-			<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>"> <?php the_title(); ?> </h3>
+			<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
 			<?php
 				echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
 			?>
-			<span class="hp-plan-price">R450.00</span>
+			<?php
+			if ( false !== $linked_product ) {
+				echo wp_kses_post( $linked_product->get_price_html() );
+			}
+			?>
 			<div class="excerpt">
 				<?php
 				if ( ! has_excerpt() ) {
@@ -93,7 +107,19 @@ if ( null !== $shortcode_args ) {
 				echo wp_kses_post( $content );
 				?>
 			</div>
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn"><?php esc_html_e( 'Add to Cart', 'lsx-health-plan' ); ?></a>
+			<?php
+			if ( false !== $linked_product ) {
+				if ( false !== $restricted ) {
+					?>
+					<a class="btn" href="<?php echo esc_attr( $linked_product->add_to_cart_url() ); ?>"><?php echo esc_attr( $linked_product->add_to_cart_text() ); ?></a>
+					<?php
+				} else {
+					?>
+					<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
+					<?php
+				}
+			}
+			?>
 		</div>
 		<?php lsx_entry_bottom(); ?>
 	</article>
