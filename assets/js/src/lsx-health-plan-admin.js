@@ -34,7 +34,8 @@ var LSX_HP_ADMIN = Object.create(null);
 	};
 
 	LSX_HP_ADMIN.calculateBMI = function() {
-		$('.woocommerce-MyAccount-content .my-stats-wrap .calculate-bmi .btn').on('click', function() {
+		$('.woocommerce-MyAccount-content .my-stats-wrap .calculate-bmi .btn').on('click', function(e) {
+			e.preventDefault();
 			var weight = $(
 				'.woocommerce-MyAccount-content .my-stats-wrap #weight_field .input-text'
 			).val();
