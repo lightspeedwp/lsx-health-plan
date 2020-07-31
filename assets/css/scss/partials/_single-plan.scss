@@ -761,14 +761,42 @@ article.type-plan {
 		}
 		&.recipes-content {
 			.recipe-column {
+				.recipe-feature-img {
+					width: 100px;
+				}
+				.recipe-box {
+					display: flex;
+					margin-bottom: 2rem;
+					.recipe-content {
+						padding: 12px 15px;
+					}
+				}
 				.recipe-title {
-					font-size: 22px;
-					font-family: 'Noto Sans', sans-serif;
+					font-size: 16px;
+					line-height: 19px;
+					margin-bottom: 10px;
 				}
 				.recipe-table {
 					width: 100%;
 					margin-bottom: 25px;
 					table-layout: fixed;
+					tbody {
+						display: flex;
+					}
+					tr {
+						margin-right: 10px;
+						td {
+							color: #919191;
+							font-size: 13px;
+							&:first-child {
+								display: none;
+							}
+						}
+						&.cooking-time,
+						&.portion-size {
+							display: none;
+						}
+					}
 				}
 				.btn {
 					margin-bottom: 25px;

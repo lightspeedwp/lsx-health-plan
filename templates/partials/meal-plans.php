@@ -14,6 +14,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 
 <div class="meals">
 <?php
+// Looking for meals.
 if ( empty( $connected_meals ) ) {
 	$connected_meals = get_post_meta( get_the_ID(), 'connected_meals', true );
 	if ( empty( $connected_meals ) ) {
@@ -33,6 +34,25 @@ if ( empty( $connected_meals ) ) {
 		'post__in'  => $connected_meals,
 	);
 	$meals = new WP_Query( $args );
+
+	// Looking for recipes.
+	$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
+	if ( empty( $connected_recipes ) ) {
+		$options = \lsx_health_plan\functions\get_option( 'all' );
+		if ( isset( $options['connected_recipes'] ) && '' !== $options['connected_recipes'] && ! empty( $options['connected_recipes'] ) ) {
+			$connected_recipes = $options['connected_recipes'];
+			if ( ! array( $connected_recipes ) ) {
+				$connected_recipes = array( $connected_recipes );
+			}
+		}
+	}
+	$args    = array(
+		'orderby'   => 'date',
+		'order'     => 'DESC',
+		'post_type' => 'recipe',
+		'post__in'  => $connected_recipes,
+	);
+	$recipes = new WP_Query( $args );
 
 	if ( $meals->have_posts() ) {
 		while ( $meals->have_posts() ) {
@@ -137,4 +157,48 @@ if ( empty( $connected_meals ) ) {
 	<?php wp_reset_postdata(); ?>
 
 </div>
+<div class="recipes">
+
+		<div class="single-plan-inner recipes-content">
+			<div class="recipes">
+			<div class="row eating-row">
+			<?php
+
+			if ( $recipes->have_posts() ) {
+				while ( $recipes->have_posts() ) {
+					$recipes->the_post();
+					$post_id = get_the_id();
+
+					?>
+					<div class="col-md-4 recipe-column">
+						<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
+							<div class="recipe-feature-img">
+								<?php
+								$featured_image = get_the_post_thumbnail();
+								if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+									the_post_thumbnail( 'lsx-thumbnail-square', array(
+										'class' => 'aligncenter',
+									) );
+								} else {
+									?>
+									<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<?php
+								}
+								?>
+							</div>
+							<div class="recipe-content">
+								<h3 class="recipe-title"><?php the_title(); ?></h3>
+								<?php lsx_health_plan_recipe_data(); ?>
+							</div>
+						</a>
+					</div>
+				<?php
+				}
+			}
+			?>
+			<?php wp_reset_postdata(); ?>
+			</div>
+			</div>
+		</div>
+	</div>
 <?php
