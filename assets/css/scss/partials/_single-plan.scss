@@ -246,6 +246,7 @@ article.type-plan {
 		.meal-content {
 			.meals {
 				.btn-shopping {
+					margin: 0 2rem;
 					@media (min-width: 1024px) {
 						float: right;
 						position: relative;
@@ -719,6 +720,10 @@ article.type-plan {
 			.eating-column {
 				padding: 0;
 				.content-box {
+					margin-bottom: 0;
+				}
+
+				.content-box {
 					.eating-title,
 					h3 {
 						font-family: 'Noto Sans';
@@ -759,10 +764,14 @@ article.type-plan {
 				}
 			}
 		}
-		&.recipes-content {
+		.recipes {
+			.eating-row {
+				padding: 0 2rem 3rem;
+			}
 			.recipe-column {
 				.recipe-feature-img {
 					width: 100px;
+					min-width: 100px;
 				}
 				.recipe-box {
 					display: flex;
@@ -778,7 +787,7 @@ article.type-plan {
 				}
 				.recipe-table {
 					width: 100%;
-					margin-bottom: 25px;
+					margin-bottom: 0;
 					table-layout: fixed;
 					tbody {
 						display: flex;

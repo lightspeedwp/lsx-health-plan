@@ -158,47 +158,41 @@ if ( empty( $connected_meals ) ) {
 
 </div>
 <div class="recipes">
+	<div class="row eating-row">
+	<?php
+	if ( $recipes->have_posts() ) {
+		while ( $recipes->have_posts() ) {
+			$recipes->the_post();
+			$post_id = get_the_id();
 
-		<div class="single-plan-inner recipes-content">
-			<div class="recipes">
-			<div class="row eating-row">
-			<?php
-
-			if ( $recipes->have_posts() ) {
-				while ( $recipes->have_posts() ) {
-					$recipes->the_post();
-					$post_id = get_the_id();
-
-					?>
-					<div class="col-md-4 recipe-column">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
-							<div class="recipe-feature-img">
-								<?php
-								$featured_image = get_the_post_thumbnail();
-								if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-									the_post_thumbnail( 'lsx-thumbnail-square', array(
-										'class' => 'aligncenter',
-									) );
-								} else {
-									?>
-									<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
-									<?php
-								}
-								?>
-							</div>
-							<div class="recipe-content">
-								<h3 class="recipe-title"><?php the_title(); ?></h3>
-								<?php lsx_health_plan_recipe_data(); ?>
-							</div>
-						</a>
-					</div>
-				<?php
-				}
-			}
 			?>
-			<?php wp_reset_postdata(); ?>
+			<div class="col-md-4 recipe-column">
+				<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
+					<div class="recipe-feature-img">
+						<?php
+						$featured_image = get_the_post_thumbnail();
+						if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+							the_post_thumbnail( 'lsx-thumbnail-square', array(
+								'class' => 'aligncenter',
+							) );
+						} else {
+							?>
+							<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
+							<?php
+						}
+						?>
+					</div>
+					<div class="recipe-content">
+						<h3 class="recipe-title"><?php the_title(); ?></h3>
+						<?php lsx_health_plan_recipe_data(); ?>
+					</div>
+				</a>
 			</div>
-			</div>
-		</div>
+		<?php
+		}
+	}
+	?>
+	<?php wp_reset_postdata(); ?>
 	</div>
+</div>
 <?php
