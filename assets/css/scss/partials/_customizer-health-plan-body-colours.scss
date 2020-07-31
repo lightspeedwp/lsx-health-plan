@@ -115,7 +115,28 @@
 							&:nth-child(odd) {
 								background: lighten($link, 42%);
 							}
+							.btn {
+								width: auto;
+								height: auto;
+							}
 						}
+					}
+				}
+			}
+		}
+	}
+	.warmup-container {
+		.sets {
+			.set-box {
+				&.set {
+					background: white;
+					margin-bottom: 0;
+					&:nth-child(odd) {
+						background: lighten($link, 42%);
+					}
+					.btn {
+						width: auto;
+						height: auto;
 					}
 				}
 			}

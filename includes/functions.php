@@ -359,7 +359,7 @@ function hp_get_type_tabs( $post_type, $taxonomy ) {
 function hp_get_plan_type_meta( $post ) {
 	$plan_meta = '';
 
-	$term_obj_list = get_the_terms( $post->ID, 'type' ); 
+	$term_obj_list = get_the_terms( $post->ID, 'plan-type' );
 	if ( false !== $term_obj_list ) {
 		$terms_string  = join( ' & ', wp_list_pluck( $term_obj_list, 'name' ) );
 		$terms_ids     = wp_list_pluck( $term_obj_list, 'term_id' );
