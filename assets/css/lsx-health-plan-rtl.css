@@ -380,11 +380,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .excerpt { margin-top: 10px; }
 
-.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .progress progress[value] { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; height: 20px; }
+.progress progress[value] { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; height: 20px; }
 
-.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .progress progress[value]::-webkit-progress-bar { background-color: white; border-radius: 10px; border: 1px solid #dddddd; }
+.progress progress[value]::-webkit-progress-bar { background-color: white; border-radius: 10px; border: 1px solid #dddddd; }
 
-.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .progress progress[value]::-webkit-progress-value { border-radius: 10px; }
+.progress progress[value]::-webkit-progress-value { border-radius: 10px; }
 
 .daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
