@@ -99,6 +99,7 @@ class Workout {
 				'editor',
 				'excerpt',
 				'page-attributes',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'workout', $args );

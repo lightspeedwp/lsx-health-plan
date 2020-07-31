@@ -89,6 +89,7 @@ class Meal {
 			'supports'           => array(
 				'title',
 				'page-attributes',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'meal', $args );
