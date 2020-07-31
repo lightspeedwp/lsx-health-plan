@@ -176,6 +176,41 @@
 	}
 }
 
+.warmup-container {
+	article {
+		.entry-content {
+			padding: 0;
+			.warmup-content {
+				> * {
+					padding: 1rem 3rem;
+				}
+				.single-plan-section-title {
+					display: flex;
+					padding: 1rem 3rem;
+					align-items: center;
+					margin-bottom: 3rem;
+					h2 {
+						margin: 0;
+					}
+					svg {
+						margin-right: 15px;
+					}
+				}
+				.workout-instructions {
+					padding: 1rem 3rem;
+				}
+				.sets {
+					.set-box {
+						&.set {
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 article.type-plan {
 	.entry-content {
 		padding: 0;
@@ -682,12 +717,16 @@ article.type-plan {
 		}
 		.eating-row {
 			.eating-column {
+				padding: 0;
 				.content-box {
 					.eating-title,
 					h3 {
 						font-family: 'Noto Sans';
 						font-size: 22px;
 						font-weight: bold;
+						&.snack-title {
+							font-weight: normal;
+						}
 					}
 				}
 			}

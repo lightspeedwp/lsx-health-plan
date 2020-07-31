@@ -14,6 +14,10 @@ if ( false === $warm_up || '' === $warm_up ) {
 	}
 }
 
+?>
+<div class="warmup-container">
+<?php
+
 if ( false !== $warm_up && '' !== $warm_up ) {
 	if ( ! is_array( $warm_up ) ) {
 		$warm_up = array( $warm_up );
@@ -37,6 +41,11 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
 					<div class="entry-content">
+						<div class="single-plan-inner warmup-content">
+							<div class="single-plan-section-title warmup-plan title-lined">
+								<?php lsx_get_svg_icon( 'warm.svg' ); ?>
+								<h2><?php esc_html_e( 'Warm Up', 'lsx-health-plan' ); ?></h2>
+							</div>
 						<?php
 							the_content();
 							wp_link_pages( array(
@@ -46,6 +55,7 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 								'link_after'  => '</span>',
 							) );
 						?>
+						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
 				</article><!-- #post-## -->
@@ -56,6 +66,11 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
 					<div class="entry-content">
+						<div class="single-plan-inner warmup-content">
+							<div class="single-plan-section-title warmup-plan title-lined">
+								<?php lsx_get_svg_icon( 'warm.svg' ); ?>
+								<h2><?php esc_html_e( 'Warm Up', 'lsx-health-plan' ); ?></h2>
+							</div>
 						<?php
 							the_content();
 							wp_link_pages( array(
@@ -65,6 +80,7 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 								'link_after'  => '</span>',
 							) );
 						?>
+						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
 				</article><!-- #post-## -->
@@ -76,3 +92,6 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 		wp_reset_postdata();
 	}
 }
+?>
+</div>
+<?php
