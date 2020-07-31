@@ -104,6 +104,7 @@ class Plan {
 				'editor',
 				'thumbnail',
 				'page-attributes',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'plan', $args );

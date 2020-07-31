@@ -87,6 +87,7 @@ class Video {
 			'supports'           => array(
 				'title',
 				'editor',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'video', $args );

@@ -107,6 +107,7 @@ class Exercise {
 				'thumbnail',
 				'editor',
 				'excerpt',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'exercise', $args );

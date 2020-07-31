@@ -116,6 +116,7 @@ class Recipe {
 				'title',
 				'editor',
 				'thumbnail',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'recipe', $args );

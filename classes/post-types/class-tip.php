@@ -88,6 +88,7 @@ class Tip {
 				'title',
 				'editor',
 				'thumbnail',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'tip', $args );
