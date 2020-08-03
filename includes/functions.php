@@ -456,6 +456,13 @@ function get_progress( $plan_id = false ) {
 	$complete = 0;
 	$count    = 0;
 	if ( false !== $plan_id ) {
+		// Find the plan parent, if 0 then it is the parent.
+		$plan_parent = wp_get_post_parent_id( $plan_id );
+		if ( 0 !== $plan_parent ) {
+			$plan_id = $plan_parent;
+		}
+
+		// Get the children to gather a count.
 		$plan_children = get_children( $plan_id );
 		$children_ids  = array();
 		if ( ! empty( $plan_children ) ) {
@@ -464,8 +471,8 @@ function get_progress( $plan_id = false ) {
 				$children_ids[] = 'day_' . $pid->ID . '_complete';
 			}
 			$complete = get_meta_amounts( $children_ids );
+			$progress = (int) $complete / (int) $count;
 		}
-		$progress = (int) $complete / (int) $count;
 	}
 	return $progress;
 }

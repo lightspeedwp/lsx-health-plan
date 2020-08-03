@@ -217,7 +217,12 @@ class Frontend {
 	public function handle_day_action() {
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'complete' ) ) {
 			update_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete', true );
-			wp_safe_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
+			$plan_id     = sanitize_key( $_POST['lsx-health-plan-id'] );
+			$plan_parent = wp_get_post_parent_id( $plan_id );
+			if ( 0 !== $plan_parent ) {
+				$plan_id = $plan_parent;
+			}
+			wp_safe_redirect( get_permalink( $plan_id ) );
 		}
 
 		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
