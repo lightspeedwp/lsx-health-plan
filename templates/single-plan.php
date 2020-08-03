@@ -18,6 +18,7 @@ $args = array(
 $post_id      = get_the_ID();
 $has_children = get_children( $args );
 $has_parent   = wp_get_post_parent_id( $post_id );
+$restricted   = false;
 
 if ( ! empty( $has_children ) ) {
 	$plan_type_class = 'parent-plan';
@@ -29,6 +30,11 @@ if ( ! empty( $has_children ) ) {
 	if ( 0 !== $has_parent ) {
 		$plan_type_class = 'child-plan-' . $has_parent;
 	}
+}
+
+// Get the plan restrictions.
+if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+	$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 }
 ?>
 
@@ -44,7 +50,9 @@ if ( ! empty( $has_children ) ) {
 		if ( ! empty( $has_children ) ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
 
-			echo wp_kses_post( '<span class="progress"><progress id="file" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+			if ( false === $restricted ) {
+				echo wp_kses_post( '<span class="progress"><progress id="file" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+			}
 
 			the_content();
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
