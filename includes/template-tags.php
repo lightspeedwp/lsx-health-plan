@@ -311,7 +311,7 @@ function lsx_health_plan_my_profile_box() {
  * @return void
  */
 function lsx_health_plan_all_plans_block() {
-	global $post;
+	global $post, $product;
 	$args      = array(
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
@@ -327,7 +327,20 @@ function lsx_health_plan_all_plans_block() {
 			if ( $the_query->have_posts() ) :
 				while ( $the_query->have_posts() ) :
 					$the_query->the_post();
+					lsx_entry_before();
 					$completed_class = '';
+					$linked_product  = false;
+					$restricted      = false;
+					$product         = null;
+					if ( \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
+						$products       = \lsx_health_plan\functions\woocommerce\get_plan_products();
+						$linked_product = wc_get_product( $products[0] );
+						$product        = $linked_product;
+					}
+					if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+						$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+					}
+
 					if ( lsx_health_plan_is_day_complete() ) {
 						$completed_class = 'completed';
 					}
@@ -355,7 +368,11 @@ function lsx_health_plan_all_plans_block() {
 								<?php
 									echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
 								?>
-								<span class="hp-plan-price">R450.00</span>
+								<?php
+								if ( false !== $linked_product && false !== $restricted ) {
+									echo wp_kses_post( $linked_product->get_price_html() );
+								}
+								?>
 								<div class="excerpt">
 									<?php
 									if ( ! has_excerpt() ) {
@@ -367,9 +384,11 @@ function lsx_health_plan_all_plans_block() {
 									echo wp_kses_post( $content );
 									?>
 								</div>
-								<span class="progress">
-									<progress id="file" value="32" max="100"> 32% </progress>
-								</span>
+								<?php
+								if ( false === $restricted ) {
+									echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+								}
+								?>
 							</div>
 						</article>
 					</div>
