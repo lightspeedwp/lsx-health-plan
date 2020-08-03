@@ -277,7 +277,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 @media (min-width: 768px) and (max-width: 1140px) { .gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { margin-right: 30px; margin-left: 30px; } }
 
-#account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 43px; margin-bottom: 30px; }
+#account-nav, #type-nav { max-width: 1140px; width: 100%; margin-top: 45px; margin-bottom: 30px; }
 
 @media (min-width: 601px) and (max-width: 1140px) { #account-nav, #type-nav { padding-right: 0; padding-left: 0; margin-top: 30px; margin-bottom: 20px; } }
 
@@ -816,11 +816,13 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .single-plan .content-box .plan-meta span, .archive-plan .content-box .plan-meta span, .lsx-exercises-shortcode .content-box .plan-meta span, .single-workout .content-box .plan-meta span { color: #919191; font-size: 13px; }
 
-.single-plan .content-box .hp-plan-price, .archive-plan .content-box .hp-plan-price, .lsx-exercises-shortcode .content-box .hp-plan-price, .single-workout .content-box .hp-plan-price { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
+.single-plan .content-box .amount, .archive-plan .content-box .amount, .lsx-exercises-shortcode .content-box .amount, .single-workout .content-box .amount { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
 
 .single-plan .content-box .excerpt, .archive-plan .content-box .excerpt, .lsx-exercises-shortcode .content-box .excerpt, .single-workout .content-box .excerpt { margin-top: 10px; }
 
 .single-plan .content-box .btn, .archive-plan .content-box .btn, .lsx-exercises-shortcode .content-box .btn, .single-workout .content-box .btn { width: 100%; padding: 10px; height: 40px; }
+
+.single-plan .content-box .btn.btn-disabled, .archive-plan .content-box .btn.btn-disabled, .lsx-exercises-shortcode .content-box .btn.btn-disabled, .single-workout .content-box .btn.btn-disabled { opacity: 0.4; }
 
 .single-plan .blue-title, .archive-plan .blue-title, .lsx-exercises-shortcode .blue-title, .single-workout .blue-title { font-weight: bold; }
 

@@ -710,7 +710,7 @@ article.type-plan {
 				font-size: 13px;
 			}
 		}
-		.hp-plan-price {
+		.amount {
 			color: #30bb00;
 			font-size: 18px;
 			margin-top: 9px;
@@ -723,6 +723,9 @@ article.type-plan {
 			width: 100%;
 			padding: 10px;
 			height: 40px;
+			&.btn-disabled {
+				opacity: 0.4;
+			}
 		}
 	}
 	.blue-title {

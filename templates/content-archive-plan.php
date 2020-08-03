@@ -132,7 +132,7 @@ if ( null !== $shortcode_args ) {
 					<?php
 				} else {
 					?>
-					<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
+					<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
 					<?php
 				}
 			}
