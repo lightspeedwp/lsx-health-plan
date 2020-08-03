@@ -1,45 +1,45 @@
 /** LSX Health Plan styles (admin). @package lsx-health-plan */
 /** The CMB2 Settings Page Tabbed Theme. @package lsx-search */
 /* CMB2 Settings Styles */
-.wp-admin.plan_page_lsx_health_plan_options span.version { font-size: .4em; font-weight: 700; position: relative; top: -4px; right: 5px; padding: 2px 5px; border: 1px solid #ccc; background: #f5f5f5; border-radius: 10px; background-clip: padding-box; }
+.wp-admin.settings_page_lsx-search-settings span.version { font-size: .4em; font-weight: 700; position: relative; top: -4px; right: 5px; padding: 2px 5px; border: 1px solid #ccc; background: #f5f5f5; border-radius: 10px; background-clip: padding-box; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter { background: none; border: none; box-shadow: none; margin: 0; padding-right: 0; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter { background: none; border: none; box-shadow: none; margin: 0; padding-right: 0; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter .filter-links .current { border-bottom: none; font-weight: 600; color: #23282d; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter .filter-links .current { border-bottom: none; font-weight: 600; color: #23282d; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter .filter-links .current:hover { color: #23282d; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter .filter-links .current:hover { color: #23282d; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter .filter-links > li > a { color: #0073aa; border-bottom: none; margin: 2px; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter .filter-links > li > a { color: #0073aa; border-bottom: none; margin: 2px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter .filter-links > li > a:hover { color: #00a0d2; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter .filter-links > li > a:hover { color: #00a0d2; }
 
-.wp-admin.plan_page_lsx_health_plan_options .wp-filter .filter-links > li:nth-of-type(1) > a { margin-right: 0; }
+.wp-admin.settings_page_lsx-search-settings .wp-filter .filter-links > li:nth-of-type(1) > a { margin-right: 0; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table { margin-top: 0; border: 1px solid transparent; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table { margin-top: 0; border: 1px solid transparent; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; }
 
-@media only screen and (min-width: 1000px) { .wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row.cmb-type-colorpicker .cmb-td { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; } }
+@media only screen and (min-width: 1000px) { .wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row.cmb-type-colorpicker .cmb-td { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; } }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row h3.cmb2-metabox-title { color: #23282d; font-size: 17px; margin: 1em 0; font-weight: 600; -webkit-font-smoothing: subpixel-antialiased; line-height: 1.4em; margin-bottom: 0px; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row h3.cmb2-metabox-title { color: #23282d; font-size: 17px; margin: 1em 0; font-weight: 600; -webkit-font-smoothing: subpixel-antialiased; line-height: 1.4em; margin-bottom: 0px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-th { text-align: right; padding: 20px 0 20px 10px; width: 200px; font-size: 14px; line-height: 1.3; font-weight: 600; color: #23282d; text-shadow: none; vertical-align: baseline; min-width: 210px !important; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-th { text-align: right; padding: 20px 0 20px 10px; width: 200px; font-size: 14px; line-height: 1.3; font-weight: 600; color: #23282d; text-shadow: none; vertical-align: baseline; min-width: 210px !important; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td { text-align: right !important; padding: 20px 0 20px 10px !important; margin-left: 15px; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td { text-align: right !important; padding: 20px 0 20px 10px !important; margin-left: 15px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td:nth-of-type(1) { padding-top: 0px !important; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td:nth-of-type(1) { padding-top: 0px !important; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td .cmb2-metabox-title { margin-top: 0px; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td .cmb2-metabox-title { margin-top: 0px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td select { font-size: 14px; line-height: 2; color: #32373c; border-color: #7e8993; box-shadow: none; border-radius: 3px; padding: 0 8px 0 24px; min-height: 30px; max-width: 25rem; -webkit-appearance: none; background-size: 16px 16px; cursor: pointer; vertical-align: middle; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td select { font-size: 14px; line-height: 2; color: #32373c; border-color: #7e8993; box-shadow: none; border-radius: 3px; padding: 0 8px 0 24px; min-height: 30px; max-width: 25rem; -webkit-appearance: none; background-size: 16px 16px; cursor: pointer; vertical-align: middle; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td .cmb2-media-status { padding-top: 10px; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td .cmb2-media-status { padding-top: 10px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td input.cmb2-upload-file { margin-left: 15px; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td input.cmb2-upload-file { margin-left: 15px; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row p.cmb2-metabox-description { margin: 2px 0 5px; color: #666; font-style: italic; line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row p.cmb2-metabox-description { margin: 2px 0 5px; color: #666; font-style: italic; line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
 
-.wp-admin.plan_page_lsx_health_plan_options .cmb2-wrap.form-table .tab.tab-nav .cmb-row input[type=radio] { margin-top: -4px; margin-left: 4px; float: none; }
+.wp-admin.settings_page_lsx-search-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row input[type=radio] { margin-top: -4px; margin-left: 4px; float: none; }
 
 .cmb-row.lsx-admin-row .lsx-field-col, .cmb-row.cmb2-id-exercise-tips .lsx-field-col, .cmb-row.cmb2-id-exercise-details .lsx-field-col { display: inline-block; vertical-align: top; border-bottom: 0px solid #e9e9e9 !important; }
 

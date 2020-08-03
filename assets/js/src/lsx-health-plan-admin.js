@@ -18,6 +18,7 @@ var LSX_HP_ADMIN = Object.create(null);
 		LSX_HP_ADMIN.changeName();
 		LSX_HP_ADMIN.singleExerciseRemoveClass();
 		LSX_HP_ADMIN.calculateBMI();
+		LSX_HP_ADMIN.setListLayout();
 	};
 
 	LSX_HP_ADMIN.changeName = function() {
@@ -33,6 +34,9 @@ var LSX_HP_ADMIN = Object.create(null);
 		$('body.single-exercise').removeClass('using-gutenberg');
 	};
 
+	/**
+	 * Calculate BMI
+	 */
 	LSX_HP_ADMIN.calculateBMI = function() {
 		$('.woocommerce-MyAccount-content .my-stats-wrap .calculate-bmi .btn').on('click', function(e) {
 			e.preventDefault();
@@ -50,6 +54,19 @@ var LSX_HP_ADMIN = Object.create(null);
 				$('.woocommerce-MyAccount-content .my-stats-wrap .my-stats').append(
 					'<p class="form-row bmi-total">BMI: ' + bmiRound + '</p>'
 				);
+			}
+		});
+	};
+
+	/**
+	 * Add extra class for list layout workouts
+	 */
+	LSX_HP_ADMIN.setListLayout = function() {
+		var workoutList = $('.set-box .set-list .workout-list');
+		workoutList.each(function() {
+			var listLength = $(this).children().length;
+			if (3 < listLength) {
+				$(this).addClass('longer-list');
 			}
 		});
 	};
