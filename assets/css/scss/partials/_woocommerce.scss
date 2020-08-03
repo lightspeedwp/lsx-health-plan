@@ -1,12 +1,11 @@
 .vertical-align {
-	@media (min-width:768px) {
+	@media (min-width: 768px) {
 		display: flex;
-    	align-items: center;
+		align-items: center;
 	}
-	
 }
 
-// Account 
+// Account
 
 body:not(.logged-in).woocommerce-account.my-plan {
 	.woocommerce {
@@ -41,8 +40,8 @@ body:not(.logged-in).woocommerce-account.my-plan {
 // Edit Account
 body.woocommerce-account.woocommerce-edit-account {
 	#primary.content-area {
-		margin-top:0px;
-		margin-bottom:0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 }
 
@@ -80,11 +79,10 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 		margin: 0 auto;
 
 		.woocommerce {
-
 			form {
 				.form-row-first label {
 					font-weight: 700 !important;
-				} 
+				}
 				.form-row-last {
 					float: none;
 					width: 100%;
@@ -95,20 +93,19 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 }
 
 body:not(.logged-in).woocommerce-login,
-body:not(.logged-in).content-restricted  {
+body:not(.logged-in).content-restricted {
 	.woocommerce {
 		max-width: 550px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	
 }
 
-// Banners 
+// Banners
 
 .page-banner-wrap {
 	.page-banner {
-		>.page-banner-image {
+		> .page-banner-image {
 			bottom: 0;
 			background-color: #2b3840;
 		}
@@ -134,10 +131,10 @@ body:not(.logged-in).content-restricted  {
 				margin-top: 5px;
 				float: initial;
 				width: 100%;
-				background-color: #F7AE00;
-				box-shadow: 2px 2px 0 0 #CE9100;
+				background-color: #f7ae00;
+				box-shadow: 2px 2px 0 0 #ce9100;
 				&:hover {
-					background-color: #CE9100;
+					background-color: #ce9100;
 				}
 			}
 		}
@@ -158,7 +155,7 @@ body:not(.logged-in).content-restricted  {
 				width: 100%;
 				display: flex;
 				justify-content: flex-end;
-				@media (max-width:1199px) {
+				@media (max-width: 1199px) {
 					display: none;
 				}
 				ul {
@@ -229,16 +226,16 @@ body:not(.logged-in).content-restricted  {
 				#main {
 					.checkout.woocommerce-checkout {
 						@media (min-width: 768px) {
-							>.col2-set {
+							> .col2-set {
 								float: left;
 								margin-right: 4.347826087%;
 								width: 47.826087%;
-								>.col-1 {
+								> .col-1 {
 									width: 100%;
 								}
 							}
-							>#order_review,
-							>#order_review_heading {
+							> #order_review,
+							> #order_review_heading {
 								float: right;
 								margin-left: 0;
 								margin-right: 0;
@@ -253,18 +250,21 @@ body:not(.logged-in).content-restricted  {
 }
 
 // Login page
-.page.login, .page.content-restricted,
+.page.login,
+.page.content-restricted,
 .recipe-template-default,
 .post-type-archive-recipe,
 .tax-recipe-type,
+.tax-recipe-cuisine,
 .my-plan,
 .single-plan {
-	#footer-cta, #footer-widgets {
+	#footer-cta,
+	#footer-widgets {
 		display: none;
 	}
 }
 
-// Single Plan 
+// Single Plan
 .plans-products-wrapper {
 	.plan-product {
 		text-align: center;

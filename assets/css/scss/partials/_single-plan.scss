@@ -330,7 +330,8 @@ article.type-plan {
 	}
 }
 .post-type-archive-recipe,
-.tax-recipe-type {
+.tax-recipe-type,
+.tax-recipe-cuisine {
 	.bottom-single-recipe {
 		margin-top: 4.25rem;
 		margin-bottom: -8.4rem;
@@ -914,8 +915,16 @@ article.type-plan {
 }
 
 #lsx-exercises-shortcode {
+	.reps {
+		font-size: 13px;
+		line-height: 15px;
+	}
 	.btn-simple {
-		display: none;
+		width: 16px;
+		height: 16px;
+		&:after {
+			font-size: 10px;
+		}
 	}
 }
 
@@ -981,6 +990,7 @@ article.type-plan {
 
 .post-type-archive-recipe,
 .tax-recipe-type,
+.tax-recipe-cuisine,
 .post-type-archive-exercise,
 .tax-exercise-type,
 .tax-muscle-group,

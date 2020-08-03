@@ -129,14 +129,6 @@ if ( ! empty( $groups ) ) {
 									if ( 'full' === $content_setting ) {
 										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
 									}
-
-									if ( '' !== $link_html ) {
-										?>
-										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn border-btn" ', $link_html ) ); ?>
-										<?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?>
-										<?php echo wp_kses_post( $link_close ); ?>
-										<?php
-									}
 								}
 								?>
 							</div>
