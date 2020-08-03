@@ -10,27 +10,26 @@ get_header(); ?>
 <?php lsx_content_wrap_before(); ?>
 
 <?php
-	$args = array(
-		'post_parent' => get_the_ID(),
-		'post_type'   => 'plan',
-	);
+$args = array(
+	'post_parent' => get_the_ID(),
+	'post_type'   => 'plan',
+);
 
-	$post_id      = get_the_ID();
-	$has_children = get_children( $args );
-	$has_parent   = wp_get_post_parent_id( $post_id );
+$post_id      = get_the_ID();
+$has_children = get_children( $args );
+$has_parent   = wp_get_post_parent_id( $post_id );
 
-
-	if ( ! empty( $has_children ) ) {
-		$plan_type_class = 'parent-plan';
-		if ( 0 !== $has_parent ) {
-			$plan_type_class = 'parent-sub-plan';
-		}
-	} else {
-		$plan_type_class = 'unique-plan';
-		if ( 0 !== $has_parent ) {
-			$plan_type_class = 'child-plan-' . $has_parent;
-		}
+if ( ! empty( $has_children ) ) {
+	$plan_type_class = 'parent-plan';
+	if ( 0 !== $has_parent ) {
+		$plan_type_class = 'parent-sub-plan';
 	}
+} else {
+	$plan_type_class = 'unique-plan';
+	if ( 0 !== $has_parent ) {
+		$plan_type_class = 'child-plan-' . $has_parent;
+	}
+}
 ?>
 
 <div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
