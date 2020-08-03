@@ -70,7 +70,7 @@ class Settings_Theme {
 	public function disable_cmb2_styles( $enabled ) {
 		if ( is_admin() ) {
 			$current_screen = get_current_screen();
-			if ( is_object( $current_screen ) && 'plan_page_lsx_health_plan_options' === $current_screen->id ) {
+			if ( is_object( $current_screen ) && 'plan_page_lsx_videos_options' === $current_screen->id ) {
 				$enabled = false;
 			}
 		}

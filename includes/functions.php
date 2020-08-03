@@ -443,3 +443,29 @@ function get_exercises_by_workout( $workout = '' ) {
 	}
 	return $exercises;
 }
+
+
+/**
+ * Gets the current users progress on a plan.
+ *
+ * @param  int $plan_id
+ * @return int
+ */
+function get_progress( $plan_id = false ) {
+	$progress = 0;
+	$complete = 0;
+	$count    = 0;
+	if ( false !== $plan_id ) {
+		$plan_children = get_children( $plan_id );
+		$children_ids  = array();
+		if ( ! empty( $plan_children ) ) {
+			$count = count( $plan_children );
+			foreach ( $plan_children as &$pid ) {
+				$children_ids[] = 'day_' . $pid->ID . '_complete';
+			}
+			$complete = get_meta_amounts( $children_ids );
+		}
+		$progress = (int) $complete / (int) $count;
+	}
+	return $progress;
+}

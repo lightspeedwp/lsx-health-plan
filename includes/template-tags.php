@@ -311,6 +311,7 @@ function lsx_health_plan_my_profile_box() {
  * @return void
  */
 function lsx_health_plan_all_plans_block() {
+	global $post;
 	$args      = array(
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
