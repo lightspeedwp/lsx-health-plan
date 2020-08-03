@@ -51,7 +51,7 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
 
 			if ( false === $restricted ) {
-				echo wp_kses_post( '<span class="progress"><progress id="file" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
 			}
 
 			the_content();
@@ -60,7 +60,8 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
 
 		if ( empty( $has_children ) ) {
 			lsx_health_plan_single_nav();
-			lsx_health_plan_single_tabs(); ?>
+			lsx_health_plan_single_tabs();
+			?>
 
 			<div class="row status-plan-buttons">
 				<?php lsx_health_plan_day_button(); ?>
