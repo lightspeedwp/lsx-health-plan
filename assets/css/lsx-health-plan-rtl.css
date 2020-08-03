@@ -820,7 +820,7 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .single-plan .content-box .excerpt, .archive-plan .content-box .excerpt, .lsx-exercises-shortcode .content-box .excerpt, .single-workout .content-box .excerpt { margin-top: 10px; }
 
-.single-plan .content-box .btn, .archive-plan .content-box .btn, .lsx-exercises-shortcode .content-box .btn, .single-workout .content-box .btn { width: 100%; padding: 12px; height: 40px; }
+.single-plan .content-box .btn, .archive-plan .content-box .btn, .lsx-exercises-shortcode .content-box .btn, .single-workout .content-box .btn { width: 100%; padding: 10px; height: 40px; }
 
 .single-plan .blue-title, .archive-plan .blue-title, .lsx-exercises-shortcode .blue-title, .single-workout .blue-title { font-weight: bold; }
 
