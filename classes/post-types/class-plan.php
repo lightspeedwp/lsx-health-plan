@@ -37,7 +37,7 @@ class Plan {
 		// Icons for the plan types.
 		add_action( 'create_term', array( $this, 'save_meta' ), 10, 2 );
 		add_action( 'edit_term', array( $this, 'save_meta' ), 10, 2 );
-		$prefix_taxonomy = 'type';
+		$prefix_taxonomy = 'plan-type';
 		add_action( sprintf( '%s_edit_form_fields', $prefix_taxonomy ), array( $this, 'add_thumbnail_form_field' ), 3, 1 );
 
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
@@ -135,11 +135,11 @@ class Plan {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'type',
+				'slug' => 'plan-type',
 			),
 		);
 
-		register_taxonomy( 'type', array( 'plan' ), $args );
+		register_taxonomy( 'plan-type', array( 'plan' ), $args );
 	}
 
 	/**

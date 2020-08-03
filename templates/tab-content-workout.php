@@ -65,13 +65,8 @@
 				<?php
 			}
 			?>
-			<!-- Pre Workout-->
-			<?php lsx_workout_snacks( 'pre' ); ?>
 
 			<?php lsx_health_plan_workout_sets(); ?>
-
-			<!-- Post Workout-->
-			<?php lsx_workout_snacks( 'post' ); ?>
 		</div>
 
 	</div><!-- .entry-content -->

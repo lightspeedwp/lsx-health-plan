@@ -17,7 +17,7 @@ get_header(); ?>
 		<main id="main" role="main">
 
 			<?php
-				echo wp_kses_post( \lsx_health_plan\functions\hp_get_type_tabs( 'plan', 'type' ) );
+				echo wp_kses_post( \lsx_health_plan\functions\hp_get_type_tabs( 'plan', 'plan-type' ) );
 			?>
 
 			<?php lsx_content_top(); ?>

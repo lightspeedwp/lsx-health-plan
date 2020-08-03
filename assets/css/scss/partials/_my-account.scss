@@ -307,22 +307,23 @@ body:not(.woocommerce-edit-account) {
 					.excerpt {
 						margin-top: 10px;
 					}
-					.progress progress[value] {
-						appearance: none;
-						width: 100%;
-						height: 20px;
-						&::-webkit-progress-bar {
-							background-color: white;
-							border-radius: 10px;
-							border: 1px solid #dddddd;
-						}
-						&::-webkit-progress-value {
-							border-radius: 10px;
-						}
-					}
 				}
 			}
 		}
+	}
+}
+
+.progress progress[value] {
+	appearance: none;
+	width: 100%;
+	height: 20px;
+	&::-webkit-progress-bar {
+		background-color: white;
+		border-radius: 10px;
+		border: 1px solid #dddddd;
+	}
+	&::-webkit-progress-value {
+		border-radius: 10px;
 	}
 }
 

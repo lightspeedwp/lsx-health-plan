@@ -37,15 +37,6 @@
 				<li class="<?php lsx_health_plan_nav_class( 'meal' ); ?>"><a class="meal-plan-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $meal ); ?>/"><?php lsx_get_svg_icon( 'meal.svg' ); ?> <?php esc_html_e( 'Meal Plan', 'lsx-health-plan' ); ?></a></li>
 			<?php
 		}
-		if ( lsx_health_plan_has_recipe() ) {
-			$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe', false );
-			if ( false === $recipe ) {
-				$recipe = 'recipes';
-			}
-			?>
-				<li class="<?php lsx_health_plan_nav_class( 'recipes' ); ?>"><a class="recipes-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $recipe ); ?>/"><?php lsx_get_svg_icon( 'recipes.svg' ); ?> <?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?></a></li>
-			<?php
-		}
 		?>
 	</ul>
 </div>
