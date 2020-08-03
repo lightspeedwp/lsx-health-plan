@@ -243,6 +243,11 @@ class Frontend {
 				'allowfullscreen' => true,
 			);
 		}
+		$tags['progress'] = array(
+			'id'    => true,
+			'value' => true,
+			'max'   => true,
+		);
 		return $tags;
 	}
 }

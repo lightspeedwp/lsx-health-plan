@@ -471,7 +471,7 @@ function get_progress( $plan_id = false ) {
 				$children_ids[] = 'day_' . $pid->ID . '_complete';
 			}
 			$complete = get_meta_amounts( $children_ids );
-			$progress = (int) $complete / (int) $count;
+			$progress = (int) $complete / (int) $count * 100;
 		}
 	}
 	return $progress;

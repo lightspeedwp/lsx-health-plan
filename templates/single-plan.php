@@ -41,10 +41,11 @@ if ( ! empty( $has_children ) ) {
 		<?php lsx_content_top(); ?>
 
 		<?php
-		$progress_bar = '<span class="progress"><progress id="file" value="32" max="100"> 32% </progress></span>';
 		if ( ! empty( $has_children ) ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
-			echo $progress_bar;
+
+			echo wp_kses_post( '<span class="progress"><progress id="file" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+
 			the_content();
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
 		}
