@@ -68,7 +68,7 @@
 
 			<?php lsx_health_plan_workout_sets(); ?>
 		</div>
-
+		<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 	</div><!-- .entry-content -->
 
 	<footer class="footer-meta clearfix">
