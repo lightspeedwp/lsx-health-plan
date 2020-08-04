@@ -170,69 +170,143 @@ class Meal {
 				'textarea_rows' => 5,
 			),
 		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Breakfast Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_breakfast_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Pre Lunch Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_pre_lunch_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Lunch', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_lunch',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Lunch Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_lunch_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Pre Dinner Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_pre_dinner_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Dinner', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_dinner',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Dinner Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_dinner_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Breakfast Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_breakfast_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Breakfast Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for breakfast.', 'lsx-health-plan' ),
+					'id'         => 'breakfast_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Pre Lunch Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_pre_lunch_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Lunch', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_lunch',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Lunch Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_lunch_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Lunch Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for lunch.', 'lsx-health-plan' ),
+					'id'         => 'lunch_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Pre Dinner Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_pre_dinner_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Dinner', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_dinner',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Dinner Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_dinner_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Dinner Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for dinner.', 'lsx-health-plan' ),
+					'id'         => 'dinner_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
 	}
 
 	/**
