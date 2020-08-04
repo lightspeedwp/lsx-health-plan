@@ -538,7 +538,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 
-#edit-account-tab .edit-account-section .wpua-edit-container h3, #edit-account-tab .stat-section .wpua-edit-container h3 { font-size: 0; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; font-size: 30px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 2px solid #418ad0; }
+#edit-account-tab .edit-account-section .wpua-edit-container h3, #edit-account-tab .stat-section .wpua-edit-container h3 { font-size: 0; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; font-size: 30px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 5px solid #418ad0; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container p.tagline, #edit-account-tab .stat-section .wpua-edit-container p.tagline { font-family: 'Noto Sans', sans-serif; font-size: 15px; }
 
