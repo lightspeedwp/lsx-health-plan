@@ -7,9 +7,7 @@
 global $shortcode_args;
 $connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
 
-if ( isset( $args['tab'] ) && '' !== $args['tab'] ) {
-	echo 'is set';
-}
+$tab = $args['tab'];
 
 // Check for any shortcode overrides.
 if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
@@ -23,8 +21,15 @@ if ( empty( $connected_tips ) ) {
 		'orderby'        => 'date',
 		'order'          => 'ASC',
 		'post_type'      => 'tip',
-		'posts_per_page' => 1,
+		'posts_per_page' => -1,
 		'meta_key'       => $connected_tips,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'tips-tab',
+				'field'    => 'slug',
+				'terms'    => $tab,
+			),
+		),
 	);
 } else {
 	$connected_tips = \lsx_health_plan\functions\check_posts_exist( $connected_tips );
@@ -33,8 +38,15 @@ if ( empty( $connected_tips ) ) {
 			'orderby'        => 'date',
 			'order'          => 'ASC',
 			'post_type'      => 'tip',
-			'posts_per_page' => 3,
+			'posts_per_page' => -1,
 			'post__in'       => $connected_tips,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'tips-tab',
+					'field'    => 'slug',
+					'terms'    => $tab,
+				),
+			),
 		);
 	}
 }
@@ -42,8 +54,8 @@ if ( empty( $connected_tips ) ) {
 if ( ! empty( $args ) ) {
 	$tips = new WP_Query( $args );
 	?>
-	<div id="lsx-tips-shortcode" class="daily-plan-block content-box box-shadow">
-		<div class="lsx-tips-shortcode lsx-tips-slider slick-slider slick-dotted"  >
+	<div id="lsx-tips-shortcode" class="daily-plan-block <?php echo esc_html( $tab ); ?>-tip">
+		<div class="lsx-tips-shortcode"  >
 		<?php
 		if ( $tips->have_posts() ) {
 			while ( $tips->have_posts() ) {

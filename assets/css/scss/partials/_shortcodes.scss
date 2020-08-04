@@ -138,61 +138,31 @@
 }
 
 #lsx-tips-shortcode {
+	margin-top: 40px;
+	justify-content: flex-end;
 	.lsx-tips-shortcode {
-		@media (min-width: 782px) {
-			max-width: 600px;
-		}
-		@media (min-width: 992px) {
-			max-width: 240px;
-		}
-		@media (min-width: 1200px) {
-			max-width: 300px;
+		@media (min-width: 768px) {
+			max-width: 380px;
 		}
 		.diet-tip-wrapper {
+			background: white;
+			@extend .box-shadow;
+			.col-md-1 {
+				padding: 0 0 0 10px;
+			}
 			&.quick-tip {
 				margin: 0;
 				h3 {
-					color: $blue;
-					text-transform: uppercase;
-					font-weight: bold;
-				}
-				h4 {
+					color: $gray;
 					font-family: 'Noto Sans';
-					font-size: 16px;
-					text-transform: uppercase;
+					font-size: 15px;
+					font-weight: bold;
+					margin-bottom: 5px;
+				}
+				p {
+					color: #919191;
+					font-size: 13px;
 					margin: 0;
-					font-weight: 600;
-				}
-				.tip-item {
-					font-size: 16px;
-				}
-				.tipimage {
-					.tip-thumbnail {
-						background: none;
-						border: none;
-						img {
-							border-radius: 50%;
-							border: 2px solid $blue;
-							height: 120px;
-							width: 120px;
-						}
-					}
-				}
-			}
-		}
-		.slick-dots {
-			li {
-				button {
-					width: 5px;
-					height: 18px;
-					background-color: transparent;
-					border: 2px solid #cdd0d7;
-					border-radius: 50%;
-				}
-				&.slick-active {
-					button {
-						background-color: #cdd0d7;
-					}
 				}
 			}
 		}

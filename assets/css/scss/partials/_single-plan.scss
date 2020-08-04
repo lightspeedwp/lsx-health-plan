@@ -237,6 +237,31 @@ article.type-plan {
 			}
 			.workout-instructions {
 				padding: 1rem 3rem;
+				> .row {
+					> .col-md-12 {
+						display: flex;
+						@media (max-width: 767px) {
+							flex-direction: column;
+						}
+						.content-intro {
+							width: 100%;
+							@media (min-width: 768px) {
+								width: 63%;
+								padding-right: 1rem;
+							}
+						}
+						.tip-row {
+							width: 100%;
+							margin-bottom: 3rem;
+							@media (min-width: 768px) {
+								width: 37%;
+							}
+							#lsx-tips-shortcode {
+								margin-top: 0;
+							}
+						}
+					}
+				}
 			}
 			.sets {
 				.set-box {

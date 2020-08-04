@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts;
+global $group_name, $connected_workouts, $shortcode_args;;
 
 $warm_up = get_post_meta( get_the_ID(), 'plan_warmup', true );
 if ( false === $warm_up || '' === $warm_up ) {
@@ -58,6 +58,15 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
+					<?php if ( null === $shortcode_args ) { ?>
+						<div class="tip-row extras-box">
+							<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
+								<div class="tip-right">
+									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="warm-up"]' ); ?>
+								</div>
+							<?php } ?>
+						</div>
+					<?php } ?>
 				</article><!-- #post-## -->
 				<?php
 				lsx_health_plan_workout_sets();

@@ -28,12 +28,10 @@ global $shortcode_args;
 		</div>
 	</div><!-- .entry-content -->
 	<?php if ( null === $shortcode_args ) { ?>
-		<div class="row tip-row extras-box">
+		<div class="tip-row extras-box">
 			<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
-				<div class="col-md-4">
-					<div class="tip-right">
-						<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
-					</div>
+				<div class="tip-right">
+					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="meal"]' ); ?>
 				</div>
 			<?php } ?>
 		</div>

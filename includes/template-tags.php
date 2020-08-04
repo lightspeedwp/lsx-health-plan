@@ -626,13 +626,8 @@ function lsx_health_plan_featured_recipes_block() {
  * @return void
  */
 function lsx_health_plan_featured_tips_block( $args = array() ) {
-	$defaults = array(
-		'tab' => '',
-	);
-	$args     = wp_parse_args( $args, $defaults );
-	if ( ! post_type_exists( 'tip' ) ) {
-		return;
-	}
+	global $shortcode_args;
+	$shortcode_args = $args;
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
