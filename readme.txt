@@ -29,6 +29,7 @@ The *LSX Health Plan* is a fully Gutenberg compatible [WordPress](https://wordpr
 The LSX Health Plan is designed for [LSX Theme](https://lsx.lsdev.biz/), improving internal linking, website SEO and user experience!
 
 == IT’S FREE, AND ALWAYS WILL BE ==
+
 We’re firm believers in open source – that’s why the LSX Health Plan plugin is free, and that won’t change. We are constantly maintaining and updating this plugin to be compatible with latest WordPress versions.
 
 
