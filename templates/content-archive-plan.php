@@ -5,6 +5,23 @@
  * @package lsx-health-plan
  */
 global $shortcode_args, $product;
+
+	$groups = '';
+	$groups_class = '';
+	$terms = get_the_terms( get_the_ID(), 'plan-type' );
+
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		$groups = array();
+		$groups_class = array();
+
+		foreach ( $terms as $term ) {
+			$groups[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
+			$groups_class[] = 'filter-' . $term->slug;
+		}
+
+		$groups = join( ', ', $groups );
+		$groups_class = join( ' ', $groups_class );
+	}
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -66,7 +83,7 @@ if ( null !== $shortcode_args ) {
 }
 ?>
 
-<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
+<div class="lsx-plan-column col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?> <?php echo esc_attr( $groups_class ); ?>">
 	<article class="lsx-slot box-shadow">
 		<?php lsx_entry_top(); ?>
 
@@ -115,7 +132,7 @@ if ( null !== $shortcode_args ) {
 					<?php
 				} else {
 					?>
-					<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
+					<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
 					<?php
 				}
 			}

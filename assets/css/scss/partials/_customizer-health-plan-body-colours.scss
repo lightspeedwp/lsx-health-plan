@@ -254,6 +254,9 @@
 				.workout-list,
 				.workout-grid {
 					article {
+						.exercise-counter {
+							color: $link;
+						}
 						.title {
 							h3 {
 								a {
@@ -264,6 +267,14 @@
 											color: $link;
 										}
 									}
+								}
+							}
+						}
+						.reps-container {
+							.btn-simple {
+								background-color: $link;
+								&:hover {
+									background-color: $hover;
 								}
 							}
 						}

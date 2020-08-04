@@ -19,6 +19,7 @@ var LSX_HP_ADMIN = Object.create(null);
 		LSX_HP_ADMIN.singleExerciseRemoveClass();
 		LSX_HP_ADMIN.calculateBMI();
 		LSX_HP_ADMIN.setListLayout();
+		LSX_HP_ADMIN.initIsotope();
 	};
 
 	LSX_HP_ADMIN.changeName = function() {
@@ -48,11 +49,29 @@ var LSX_HP_ADMIN = Object.create(null);
 			).val();
 
 			var height_m = height / 100;
+			var resultText = '';
+
 			if (1 < weight && 1 < height_m) {
 				var bmi = weight / (height_m * height_m);
 				var bmiRound = bmi.toFixed(1);
+
+				// (C) Show Results
+				if (bmiRound < 18.5) {
+					resultText = bmiRound + ' - Underweight';
+				} else if (bmiRound < 25) {
+					resultText = bmiRound + ' - Normal weight';
+				} else if (bmiRound < 30) {
+					resultText = bmiRound + ' - Pre-obesity';
+				} else if (bmiRound < 35) {
+					resultText = bmiRound + ' - Obesity class I';
+				} else if (bmiRound < 40) {
+					resultText = bmiRound + ' - Obesity class II';
+				} else {
+					resultText = bmiRound + ' - Obesity class III';
+				}
+
 				$('.woocommerce-MyAccount-content .my-stats-wrap .my-stats').append(
-					'<p class="form-row bmi-total">BMI: ' + bmiRound + '</p>'
+					'<p class="form-row bmi-total">BMI: ' + resultText + '</p>'
 				);
 			}
 		});
@@ -72,12 +91,62 @@ var LSX_HP_ADMIN = Object.create(null);
 	};
 
 	/**
-	 * On document ready.
-	 *
-	 * @package    lsx-health-plan
-	 * @subpackage scripts
+	 * Filter nav for archives
 	 */
-	LSX_HP_ADMIN.document.ready(function() {
-		LSX_HP_ADMIN.init();
-	});
+	(LSX_HP_ADMIN.initIsotope = function() {
+		if (
+			$('body')
+				.first()
+				.hasClass('archive')
+		) {
+			var $container = $('.lsx-plan-row');
+
+			$container.isotope({
+				itemSelector: '.lsx-plan-column',
+				layoutMode: 'fitRows',
+			});
+
+			var $option_sets = $('.lsx-type-nav-filter'),
+				$option_links = $option_sets.find('a');
+
+			$option_links.click(function() {
+				var $this = $(this);
+
+				if ($this.parent().hasClass('active')) {
+					return false;
+				}
+
+				$option_sets.find('.active').removeClass('active');
+				$this.parent().addClass('active');
+
+				var selector = $(this).attr('data-filter');
+				$container.isotope({ filter: selector });
+
+				return false;
+			});
+
+			setTimeout(function() {
+				$container.isotope();
+			}, 300);
+
+			$(document).on('lazybeforeunveil', function() {
+				setTimeout(function() {
+					$container.isotope();
+				}, 300);
+			});
+
+			$(window).load(function() {
+				$container.isotope();
+			});
+		}
+	}),
+		/**
+		 * On document ready.
+		 *
+		 * @package    lsx-health-plan
+		 * @subpackage scripts
+		 */
+		LSX_HP_ADMIN.document.ready(function() {
+			LSX_HP_ADMIN.init();
+		});
 })(jQuery, window, document);

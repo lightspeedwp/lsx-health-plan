@@ -37,6 +37,8 @@ $modal_args = array(
 	'modal_content' => $modal_content_setting,
 );
 
+$counter = 1;
+
 if ( ! empty( $groups ) ) {
 	?>
 	<div class="set-grid">
@@ -76,6 +78,7 @@ if ( ! empty( $groups ) ) {
 					<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_setting ); ?>">
 						<article class="lsx-slot box-shadow">
 							<div class="exercise-feature-img">
+								<span class="exercise-counter"><?php echo esc_html( $counter ); ?>.</span>
 								<?php echo wp_kses_post( $link_html ); ?>
 									<?php
 									$thumbnail_args = array(
@@ -93,7 +96,7 @@ if ( ! empty( $groups ) ) {
 								<?php echo wp_kses_post( $link_close ); ?>
 							</div>
 							<div class="content-box exercise-content-box white-bg">
-								<h3 class="title-lined <?php echo esc_html( $class_excerpt ); ?>">
+								<h3 class="content-box-title <?php echo esc_html( $class_excerpt ); ?>">
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
@@ -112,7 +115,6 @@ if ( ! empty( $groups ) ) {
 									?>
 									<?php if ( '' !== $link_html ) { ?>
 										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
-										<?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?>
 										<?php echo wp_kses_post( $link_close ); ?>
 									<?php } ?>
 								</div>
@@ -127,20 +129,13 @@ if ( ! empty( $groups ) ) {
 									if ( 'full' === $content_setting ) {
 										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
 									}
-
-									if ( '' !== $link_html ) {
-										?>
-										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn border-btn" ', $link_html ) ); ?>
-										<?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?>
-										<?php echo wp_kses_post( $link_close ); ?>
-										<?php
-									}
 								}
 								?>
 							</div>
 						</article>
 					</div>
 					<?php
+					$counter ++;
 				}
 			}
 			?>

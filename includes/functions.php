@@ -327,30 +327,6 @@ function get_meta_amounts( $post_ids = array() ) {
 }
 
 /**
- * Gets a tab with terms
- *
- * @return void
- */
-function hp_get_type_tabs( $post_type, $taxonomy ) {
-
-	$terms = get_terms([
-		'post_type'  => $post_type,
-		'taxonomy'   => $taxonomy,
-		'hide_empty' => true,
-	]);
-
-	$tab_content = '<div id="type-nav"><ul class="nav nav-pills"><li><a href="#" class="active">All Plans</a></li>';
-
-	foreach ( $terms as $term ) {
-		$tab_content .= '<li><a href="#' . $term->name . '">' . $term->name . '</a></li>';
-	}
-
-	$tab_content .= '</ul></div>';
-
-	return $tab_content;
-}
-
-/**
  * Get the taxonomy plans type meta.
  *
  * @param [type] $post

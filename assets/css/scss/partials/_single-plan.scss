@@ -330,7 +330,8 @@ article.type-plan {
 	}
 }
 .post-type-archive-recipe,
-.tax-recipe-type {
+.tax-recipe-type,
+.tax-recipe-cuisine {
 	.bottom-single-recipe {
 		margin-top: 4.25rem;
 		margin-bottom: -8.4rem;
@@ -418,6 +419,8 @@ article.type-plan {
 					h3 {
 						margin-top: 15px;
 						margin-bottom: 15px;
+						flex-direction: column;
+						display: flex;
 						@include media('<=phone') {
 							margin-top: 0;
 						}
@@ -515,6 +518,10 @@ article.type-plan {
 								.col-md-10 {
 									width: 70%;
 									padding-right: 1rem;
+									h3 {
+										flex-direction: column;
+										display: flex;
+									}
 								}
 							}
 							.btn {
@@ -542,20 +549,45 @@ article.type-plan {
 					}
 				}
 				article {
+					display: flex;
 					.exercise-feature-img {
-						@include media('<=phone') {
-							display: none;
+						width: 25%;
+						@include media('>=tablet') {
+							width: 40%;
+						}
+						.exercise-counter {
+							position: absolute;
+							font-size: 15px;
+							font-weight: bold;
+							margin-left: 5px;
+						}
+						img {
+							height: auto;
+							object-fit: contain;
+							max-height: 120px;
 						}
 						@include media('>=tablet') {
 							img {
-								//max-height: 250px;
 								width: 100%;
-								object-fit: cover;
+								object-fit: contain;
+								min-height: 125px;
+								max-height: 140px;
 							}
 						}
 					}
-					.title-lined {
-						margin-top: 0;
+					.exercise-content-box {
+						width: 75%;
+						@include media('>=tablet') {
+							width: 60%;
+						}
+						margin: 0;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-around;
+						h3 {
+							font-size: 15px;
+							margin: 0;
+						}
 					}
 					.reps-container {
 						display: flex;
@@ -568,10 +600,18 @@ article.type-plan {
 							text-transform: uppercase;
 							font-size: 14px;
 							font-weight: bold;
+							border-radius: 50%;
+							width: 36px;
+							height: 36px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
 							&:after {
-								content: '\f105';
+								content: '\f0da';
 								font-family: FontAwesome;
-								margin-left: 5px;
+								color: white;
+								font-size: 22px;
+								margin-left: 3px;
 							}
 						}
 					}
@@ -670,7 +710,7 @@ article.type-plan {
 				font-size: 13px;
 			}
 		}
-		.hp-plan-price {
+		.amount {
 			color: #30bb00;
 			font-size: 18px;
 			margin-top: 9px;
@@ -681,8 +721,11 @@ article.type-plan {
 		}
 		.btn {
 			width: 100%;
-			padding: 12px;
+			padding: 10px;
 			height: 40px;
+			&.btn-disabled {
+				opacity: 0.4;
+			}
 		}
 	}
 	.blue-title {
@@ -875,8 +918,16 @@ article.type-plan {
 }
 
 #lsx-exercises-shortcode {
+	.reps {
+		font-size: 13px;
+		line-height: 15px;
+	}
 	.btn-simple {
-		display: none;
+		width: 16px;
+		height: 16px;
+		&:after {
+			font-size: 10px;
+		}
 	}
 }
 
@@ -942,6 +993,7 @@ article.type-plan {
 
 .post-type-archive-recipe,
 .tax-recipe-type,
+.tax-recipe-cuisine,
 .post-type-archive-exercise,
 .tax-exercise-type,
 .tax-muscle-group,
