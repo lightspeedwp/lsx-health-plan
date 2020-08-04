@@ -3,20 +3,30 @@
 ## [[1.4.0]] - Unreleased
 
 ### Added
+- Added support for the cover block on the Edit My Account page.
+- Refactored the post type class locations.
+- Added support for LSX color customizer.
 
+#### Plans
+- Added in a setting to allow the translation of the `plan` single slug.
+
+#### Workouts
+- Added a template for the single workout pages.
+- Added in a connections box to allows news posts and pages to be attached to workouts.
+- Added in settings to control the link destination, the content display and the columns of the grid layout.
+- Added support and styling for a Grid and List views on the workout tab.
+
+#### Exercises
+- Added in the exercise post type which connects to the workouts, this replaces the "video" post type.
+- Added a "side" field for exercises that displays left, right or nothing if left blank.
+- Added the exercise shortcode `lsx_health_plan_items`.
+
+#### Meal Plans
+- Added in a field to connected additional recipes for breakfast, lunch and dinner.
+
+#### Recipes
 - Extend the current single recipe post type to display additional fields.
 - Added placeholder image for recipes.
-- Added in a connections box to allows news posts and pages to be attached to workouts.
-- Added in a setting to allow the translation of the `plan` single slug.
-- Added in the exercise post type.
-- Added the exercise shortcode `lsx_health_plan_items`.
-- Added support for the cover block on the Edit My Account page.
-- Added support and styling for a Grid and List views on the workout tab.
-- Added a "side" field for exercises that displays left, right or nothing if left blank.
-- Refactored the post type class locations.
-- Added in settings to control the link destination, the content display and the columns of the grid layout.
-- Added a template for the single workout pages.
-- Added support for LSX color customizer.
 
 ### Updated
 

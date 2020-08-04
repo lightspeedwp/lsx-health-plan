@@ -885,3 +885,62 @@ function lsx_health_plan_workout_sets() {
 		include $template_path;
 	}
 }
+
+/**
+ * Outputs the recipes connected to the meal plan.
+ *
+ * @param string $meal_time
+ * @return void
+ */
+function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
+	// Looking for recipes.
+	$connected_recipes = get_post_meta( $meal_id, $meal_time . '_recipes', true );
+	if ( ! empty( $connected_recipes ) ) {
+		$args    = array(
+			'orderby'   => 'date',
+			'order'     => 'DESC',
+			'post_type' => 'recipe',
+			'post__in'  => $connected_recipes,
+		);
+		$recipes = new WP_Query( $args );
+		?>
+		<div class="recipes">
+			<div class="row eating-row">
+			<?php
+			if ( $recipes->have_posts() ) {
+				while ( $recipes->have_posts() ) {
+					$recipes->the_post();
+					?>
+					<div class="col-md-4 recipe-column">
+						<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
+							<div class="recipe-feature-img">
+								<?php
+								$featured_image = get_the_post_thumbnail();
+								if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+									the_post_thumbnail( 'lsx-thumbnail-square', array(
+										'class' => 'aligncenter',
+									) );
+								} else {
+									?>
+									<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<?php
+								}
+								?>
+							</div>
+							<div class="recipe-content">
+								<h3 class="recipe-title"><?php the_title(); ?></h3>
+								<?php lsx_health_plan_recipe_data(); ?>
+							</div>
+						</a>
+					</div>
+				<?php
+				}
+			}
+			wp_reset_postdata();
+			?>
+			</div>
+		</div>
+		<?php
+
+	}
+}
