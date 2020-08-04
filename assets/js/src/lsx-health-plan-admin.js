@@ -20,6 +20,7 @@ var LSX_HP_ADMIN = Object.create(null);
 		LSX_HP_ADMIN.calculateBMI();
 		LSX_HP_ADMIN.setListLayout();
 		LSX_HP_ADMIN.initIsotope();
+		LSX_HP_ADMIN.progressBar();
 	};
 
 	LSX_HP_ADMIN.changeName = function() {
@@ -86,6 +87,25 @@ var LSX_HP_ADMIN = Object.create(null);
 			var listLength = $(this).children().length;
 			if (3 < listLength) {
 				$(this).addClass('longer-list');
+			}
+		});
+	};
+
+	/**
+	 * Add extra class for progress bar
+	 */
+	LSX_HP_ADMIN.progressBar = function() {
+		var progressBar = $('.progress progress');
+		progressBar.each(function() {
+			var progressBarLength = $(this).val();
+			if (50 > progressBarLength) {
+				$(this).addClass('less-progress');
+			}
+			if (50 < progressBarLength) {
+				$(this).addClass('half-progress');
+			}
+			if (100 == progressBarLength) {
+				$(this).addClass('completed-progress');
 			}
 		});
 	};

@@ -324,6 +324,22 @@ body:not(.woocommerce-edit-account) {
 	}
 	&::-webkit-progress-value {
 		border-radius: 10px;
+		background-color: transparent;
+	}
+	&.less-progress {
+		&::-webkit-progress-value {
+			background-color: #c32d37;
+		}
+	}
+	&.half-progress {
+		&::-webkit-progress-value {
+			background-color: #ff7a18;
+		}
+	}
+	&.completed-progress {
+		&::-webkit-progress-value {
+			background-color: #30bb00;
+		}
 	}
 }
 

@@ -376,7 +376,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .progress progress[value]::-webkit-progress-bar { background-color: white; border-radius: 10px; border: 1px solid #dddddd; }
 
-.progress progress[value]::-webkit-progress-value { border-radius: 10px; }
+.progress progress[value]::-webkit-progress-value { border-radius: 10px; background-color: transparent; }
+
+.progress progress[value].less-progress::-webkit-progress-value { background-color: #c32d37; }
+
+.progress progress[value].half-progress::-webkit-progress-value { background-color: #ff7a18; }
+
+.progress progress[value].completed-progress::-webkit-progress-value { background-color: #30bb00; }
 
 .daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
