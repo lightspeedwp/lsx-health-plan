@@ -5,6 +5,7 @@
  * @package lsx-health-plan
  */
 global $shortcode_args;
+
 $plans     = get_post_meta( get_the_ID(), 'connected_plans', true );
 $parent_plan = get_post( end($plans) );
 $has_parent   = wp_get_post_parent_id( $parent_plan );

@@ -8,6 +8,9 @@
 get_header(); ?>
 
 <?php lsx_content_wrap_before(); ?>
+<div class="archive-category-title hp-archive-category-title">
+	<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( 'exercise' ) ) ); ?>"><?php echo esc_html__( 'Back To Exercises', 'lsx' ); ?></a>
+</div>
 
 <?php
 	$page_id  = get_the_ID();

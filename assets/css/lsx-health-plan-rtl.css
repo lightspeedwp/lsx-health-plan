@@ -1024,6 +1024,10 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .tax-exercise-type .archive-header-wrapper .archive-header p, .tax-muscle-group .archive-header-wrapper .archive-header p, .tax-equipment .archive-header-wrapper .archive-header p { display: none; }
 
+.archive .archive-header-wrapper.banner-archive { float: none; }
+
+.archive .hp-archive-category-title { margin-top: 4.25rem; }
+
 #single-recipe, #single-exercise { margin-bottom: -8.4rem; }
 
 #single-recipe > .row, #single-exercise > .row { margin-left: 0; margin-right: 0; }

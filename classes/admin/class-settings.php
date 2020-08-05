@@ -252,7 +252,7 @@ class Settings {
 			array(
 				'name'    => __( 'Your Warm-up Intro', 'lsx-health-plan' ),
 				'id'      => 'warmup_intro',
-				'type'    => 'textarea',
+				'type'    => 'textarea_small',
 				'value'   => '',
 				'default' => __( "Don't forget your warm-up! It's a vital part of your daily workout routine.", 'lsx-health-plan' ),
 			)
@@ -262,7 +262,7 @@ class Settings {
 				array(
 					'name'    => __( 'Your Workout Intro', 'lsx-health-plan' ),
 					'id'      => 'workout_intro',
-					'type'    => 'textarea',
+					'type'    => 'textarea_small',
 					'value'   => '',
 					'default' => __( "Let's do this! Smash your daily workout and reach your fitness goals.", 'lsx-health-plan' ),
 				)
@@ -273,7 +273,7 @@ class Settings {
 				array(
 					'name'    => __( 'Your Meal Plan Intro', 'lsx-health-plan' ),
 					'id'      => 'meal_plan_intro',
-					'type'    => 'textarea',
+					'type'    => 'textarea_small',
 					'value'   => '',
 					'default' => __( 'Get the right mix of nutrients to keep muscles strong & healthy.', 'lsx-health-plan' ),
 				)
@@ -284,7 +284,7 @@ class Settings {
 				array(
 					'name'    => __( 'Recipes Intro', 'lsx-health-plan' ),
 					'id'      => 'recipes_intro',
-					'type'    => 'textarea',
+					'type'    => 'textarea_small',
 					'value'   => '',
 					'default' => __( "Let's get cooking! Delicious and easy to follow recipes.", 'lsx-health-plan' ),
 				)
@@ -311,6 +311,7 @@ class Settings {
 				'type'    => 'title',
 				'name'    => __( 'Global Defaults', 'lsx-health-plan' ),
 				'default' => __( 'Global Defaults', 'lsx-health-plan' ),
+				'description' => __( 'If you have not connected a specific post to your day plan, set a default option below.', 'lsx-health-plan' ),
 			)
 		);
 
@@ -411,7 +412,7 @@ class Settings {
 				'type'        => 'title',
 				'name'        => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
 				'default'     => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
-				'description' => __( 'You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
+				'description' => __( 'Endpoint is a web address (URL) at which the user can gain access to it. You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
 			)
 		);
 		foreach ( $this->endpoints as $slug => $endpoint_vars ) {
