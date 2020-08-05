@@ -274,12 +274,15 @@ article.type-plan {
 		.meal-content {
 			.meals {
 				.btn-shopping {
-					margin: 0 2rem;
+					margin: 0 2rem 3rem;
+					@media (max-width: 767px) {
+						width: 95%;
+					}
 					@media (min-width: 1024px) {
 						float: right;
 						position: relative;
 						top: -9.5rem;
-						margin-right: 1rem;
+						margin-right: 2rem;
 						margin-bottom: -9.5rem;
 					}
 				}

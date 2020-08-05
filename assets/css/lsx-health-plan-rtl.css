@@ -665,9 +665,11 @@ article.type-plan .entry-content .workout-content .workout-instructions > .row >
 
 article.type-plan .entry-content .workout-content .sets .set-box.set, article.type-plan .entry-content .recipes-content .sets .set-box.set, article.type-plan .entry-content .meal-content .sets .set-box.set { margin: 0; }
 
-article.type-plan .entry-content .meal-content .meals .btn-shopping { margin: 0 2rem; }
+article.type-plan .entry-content .meal-content .meals .btn-shopping { margin: 0 2rem 3rem; }
 
-@media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -9.5rem; margin-left: 1rem; margin-bottom: -9.5rem; } }
+@media (max-width: 767px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { width: 95%; } }
+
+@media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -9.5rem; margin-left: 2rem; margin-bottom: -9.5rem; } }
 
 article.type-plan .entry-content .meal-content .meals .eating-row { padding: 0 2rem 3rem; }
 
