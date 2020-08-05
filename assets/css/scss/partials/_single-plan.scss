@@ -1072,6 +1072,10 @@ article.type-plan {
 					padding: 5px 10px;
 					font-weight: bold;
 					border-radius: 1px;
+					&.recipe-parent {
+						background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%);
+						color: white;
+					}
 				}
 				.recipe-feature-img,
 				.exercise-feature-img {

@@ -5,6 +5,14 @@
  * @package lsx-health-plan
  */
 global $shortcode_args;
+$plans     = get_post_meta( get_the_ID(), 'connected_plans', true );
+$parent_plan = get_post( end($plans) );
+$has_parent   = wp_get_post_parent_id( $parent_plan );
+
+if ( 0 === $has_parent ) {
+	$tag_parent_plan = $parent_plan->post_title;
+}
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -22,7 +30,17 @@ if ( null !== $shortcode_args ) {
 
 <div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
 	<article class="lsx-slot box-shadow">
-		<span class="recipe-type"><?php echo esc_html( lsx_health_plan_recipe_type() ); ?></span>
+		<?php
+		if ( $tag_parent_plan ) {
+			?>
+				<span class="recipe-type recipe-parent"><?php echo esc_html( $tag_parent_plan ); ?></span>
+			<?php
+		} else {
+			?>
+				<span class="recipe-type"><?php echo esc_html( lsx_health_plan_recipe_type() ); ?></span>
+			<?php
+		}
+		?>
 		<?php lsx_entry_top(); ?>
 
 		<div class="recipe-feature-img">
