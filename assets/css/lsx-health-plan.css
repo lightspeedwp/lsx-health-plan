@@ -675,7 +675,21 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column:last-child { border: none; }
 
-article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box { background: white; }
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box { background: white; padding-top: 0; padding-bottom: 0; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box .eating-title { margin-bottom: 10px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes { margin: 0 10px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes tr { display: -ms-flexbox; display: flex; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes tr:before { font-family: FontAwesome; margin-right: 5px; color: #418ad0; font-size: 12px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .serves:before { content: '\f0f5'; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .prep-time:before { content: '\f017'; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .cooking-time, article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .portion-size { display: none; }
 
 .my-plan-container .lsx-container-content { padding: 10px 2em; }
 

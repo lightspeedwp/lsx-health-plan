@@ -59,7 +59,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 
 				if ( ! empty( $shopping_list ) ) {
 					?>
-					<a class="btn border-btn btn-shopping" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php esc_html_e( 'Download Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+					<a class="btn border-btn btn-shopping" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php esc_html_e( 'Download Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-download" aria-hidden="true"></i></a>
 					<?php } ?>
 				<div class="row eating-row">
 					<div class="col-md-4 eating-column">

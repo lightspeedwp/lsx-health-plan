@@ -292,6 +292,37 @@ article.type-plan {
 						}
 						.content-box {
 							background: white;
+							padding-top: 0;
+							padding-bottom: 0;
+							.eating-title {
+								margin-bottom: 10px;
+							}
+						}
+						.recipes {
+							margin: 0 10px;
+							tr {
+								display: flex;
+								&:before {
+									font-family: FontAwesome;
+									margin-right: 5px;
+									color: $blue;
+									font-size: 12px;
+								}
+							}
+							.serves {
+								&:before {
+									content: '\f0f5';
+								}
+							}
+							.prep-time {
+								&:before {
+									content: '\f017';
+								}
+							}
+							.cooking-time,
+							.portion-size {
+								display: none;
+							}
 						}
 					}
 				}
