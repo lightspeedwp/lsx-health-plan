@@ -7,10 +7,6 @@
 
 get_header(); ?>
 
-<div class="archive-category-title hp-archive-category-title">
-	<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( 'exercise' ) ) ); ?>"><?php echo esc_html__( 'Back To Exercises', 'lsx' ); ?></a>
-</div>
-
 <?php lsx_content_wrap_before(); ?>
 
 <?php
