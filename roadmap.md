@@ -6,18 +6,16 @@ This document outlines some of the features currently in development or being co
 
 ## Projects
 
-- **Blocks** — 
-- **Plan** — Add multi-plan functionality
+- **Blocks** — Convert shortcodes into blocks.
+- **Plan** — Add multi-plan functionality.
 - **Workouts** — Add a single and archive templates. 
-- **Exercises** — 
-- **Tips** — 
-- **Settings** — 
-- **Block Editor** — 
-- **Banners** — 
-- **Breadcrumbs** — 
-- **Mobile Support** — 
-- **Tablet Support** — 
-- **WooCommerce Templates** — 
+- **Exercises** — Improvements to all template designs.
+- **Tips** — Integration of tips into plans, meals,recipes, workouts and exercises.
+- **Settings** — Add tooltips to settings pages to improve usability.
+- **Banners** — Add banner image settings for custom post type archives and custom taxonomies to the settings page.
+- **Breadcrumbs** — Apply design improvements.
+- **Mobile & Tablet Support** — Create mobile-first designs that optimise mobile & tablet interfaces
+- **WooCommerce Templates** — Add integration with WooCommerce to allow creation "Plan Products" and restricting content.
 
 ## Timeline
 
