@@ -21,8 +21,8 @@ This document outlines some of the features currently in development or being co
 
 The projects outlined above indicate areas of interest but not necessarily development priorities. 
 
-- 2020 Q1: Version 1.3 of LSX Health Plan plugin released
-- 2020 Q2: Version 1.4 of LSX Health Plan plugin released
-- 2020 Q3: To be defined.
+- 2020 Q1: Version 1.2 of LSX Health Plan plugin released
+- 2020 Q2: Version 1.3 of LSX Health Plan plugin released
+- 2020 Q3: Version 1.4 of LSX Health Plan plugin released
 - 2020 Q4: To be defined.
 
