@@ -12,6 +12,8 @@
 	<article class="lsx-slot box-shadow">
 		<?php lsx_entry_top(); ?>
 
+		<?php lsx_hp_exercise_plan_meta(); ?>
+
 		<div class="workout-feature-img">
 			<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php

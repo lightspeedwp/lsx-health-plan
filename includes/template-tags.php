@@ -943,3 +943,71 @@ function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
 
 	}
 }
+
+/**
+ * Output the connected.
+ */
+function lsx_hp_recipe_plan_meta() {
+	$top_level_plans = array();
+	// Get meals this exercise is connected to.
+	$plans = get_post_meta( get_the_ID(), 'connected_plans', true );
+	if ( ! empty( $plans ) ) {
+		$plan       = end( $plans );
+		$has_parent = wp_get_post_parent_id( $plan );
+		if ( 0 === $has_parent ) {
+			$top_level_plans[] = $plan;
+		} elseif ( false !== $top_level_plans ) {
+			$top_level_plans[] = $has_parent;
+		}
+	}
+	if ( ! empty( $top_level_plans ) && ( '' !== $top_level_plans ) ) {
+		$top_level_plans = array_unique( $top_level_plans );
+		$top_level_plan  = end( $top_level_plans );
+		?>
+			<span class="recipe-type recipe-parent"><?php echo esc_html( get_the_title( $top_level_plan ) ); ?></span>
+		<?php
+	}
+}
+
+/**
+ * Output the connected.
+ */
+function lsx_hp_exercise_plan_meta() {
+
+	$top_level_plans = array();
+
+	// Get workouts this exercise is connected to.
+	$workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
+
+	if ( '' !== $workouts && ! is_array( $workouts ) ) {
+		$workouts = array( $workouts );
+	}
+	if ( ! empty( $workouts ) ) {
+		foreach ( $workouts as $workout ) {
+			// Get the plans this workout is connected to.
+			$plans = get_post_meta( $workout, 'connected_plans', true );
+
+			if ( '' !== $plans && ! is_array( $plans ) ) {
+				$plans = array( $plans );
+			}
+			if ( ! empty( $plans ) ) {
+				foreach ( $plans as $plan ) {
+					$has_parent = wp_get_post_parent_id( $plan );
+					if ( 0 === $has_parent ) {
+						$top_level_plans = $plan;
+					} else {
+						$top_level_plans = $has_parent;
+					}
+				}
+			}
+		}
+	}
+
+	if ( ! empty( $top_level_plans ) && ( '' !== $top_level_plans ) ) {
+		$top_level_plans = array_unique( $top_level_plans );
+		$top_level_plan  = end( $top_level_plans );
+		?>
+			<span class="recipe-type recipe-parent"><?php echo esc_html( get_the_title( $top_level_plan ) ); ?></span>
+		<?php
+	}
+}
