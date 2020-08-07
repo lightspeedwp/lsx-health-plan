@@ -4,6 +4,9 @@
  *
  * @package lsx-health-plan
  */
+
+global $shortcode_args;
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -39,27 +42,20 @@
 				?>
 				<div class="workout-instructions">
 					<div class="row">
-						<div class="col-md-8">
-							<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
-							<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
-						</div>
-						<div class="col-md-4">
-							<div class="single-plan-inner-buttons">
-								<?php
-								$download = \lsx_health_plan\functions\get_option( 'download_page', false );
-								if ( ! empty( $download ) ) {
-									?>
-									<div class="complete-plan-btn">
-										<?php
-										echo wp_kses_post( do_shortcode( '[download id="' . $download . '"]' ) );
-										?>
-									</div>
-								<?php } ?>
-								<div  class="back-plan-btn">
-									<a class="btn secondary-btn wrm-up-btn" href="<?php the_permalink(); ?>warm-up/"><?php esc_html_e( 'See Warm-Up', 'lsx-health-plan' ); ?></a>
-								</div>
+						<div class="col-md-12">
+							<div class="content-intro">
+								<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
+								<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
 							</div>
+							<?php if ( null === $shortcode_args ) { ?>
+								<div class="tip-row extras-box">
+									<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
+										<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="workout"]' ); ?>
+									<?php } ?>
+								</div>
+							<?php } ?>
 						</div>
+						
 					</div>
 				</div>
 				<?php
@@ -68,9 +64,7 @@
 
 			<?php lsx_health_plan_workout_sets(); ?>
 		</div>
-
 	</div><!-- .entry-content -->
-
 	<footer class="footer-meta clearfix">
 		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
 			<div class="post-tags-wrapper">

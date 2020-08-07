@@ -31,6 +31,7 @@ class Tip {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
@@ -101,6 +102,38 @@ class Tip {
 	 */
 	public function register_menus() {
 		add_submenu_page( 'edit.php?post_type=plan', esc_html__( 'Tips', 'lsx-health-plan' ), esc_html__( 'Tips', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=tip' );
+	}
+
+	/**
+	 * Register the Week taxonomy.
+	 */
+	public function taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Tips Tab', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Tips Tab', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Tips Tab', 'lsx-health-plan' ),
+		);
+		$args   = array(
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_menu'      => false,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'tips-tab',
+			),
+		);
+
+		register_taxonomy( 'tips-tab', array( $this->slug ), $args );
 	}
 
 	/**

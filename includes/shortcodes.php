@@ -147,12 +147,14 @@ function feature_recipes_box() {
  *
  * @return void
  */
-function feature_tips_box() {
+function feature_tips_box( $args = array() ) {
+	$defaults = array(
+		'tab' => '',
+	);
+	$args     = wp_parse_args( $args, $defaults );
 	ob_start();
-	echo lsx_health_plan_featured_tips_block(); // WPCS: XSS OK.
+	echo lsx_health_plan_featured_tips_block( $args ); // WPCS: XSS OK.
 	$content = ob_get_clean();
-	wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
-	wp_enqueue_script( 'lsx-health-plan-slider', LSX_HEALTH_PLAN_URL . 'assets/js/lsx-health-plan-slider.min.js', array( 'slick' ), LSX_HEALTH_PLAN_VER, true );
 	return $content;
 }
 

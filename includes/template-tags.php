@@ -625,10 +625,9 @@ function lsx_health_plan_featured_recipes_block() {
  *
  * @return void
  */
-function lsx_health_plan_featured_tips_block() {
-	if ( ! post_type_exists( 'tip' ) ) {
-		return;
-	}
+function lsx_health_plan_featured_tips_block( $args = array() ) {
+	global $shortcode_args;
+	$shortcode_args = $args;
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
@@ -911,7 +910,7 @@ function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
 				while ( $recipes->have_posts() ) {
 					$recipes->the_post();
 					?>
-					<div class="col-md-4 recipe-column">
+					<div class="recipe-column">
 						<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
 							<div class="recipe-feature-img">
 								<?php
@@ -922,7 +921,7 @@ function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
 									) );
 								} else {
 									?>
-									<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . 'assets/images/placeholder.jpg' ); ?>">
 									<?php
 								}
 								?>

@@ -5,6 +5,7 @@
  * @package lsx-health-plan
  */
 global $shortcode_args;
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -52,6 +53,7 @@ if ( null !== $shortcode_args ) {
 		$content_setting = $shortcode_args['description'];
 	}
 }
+
 ?>
 
 <div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">

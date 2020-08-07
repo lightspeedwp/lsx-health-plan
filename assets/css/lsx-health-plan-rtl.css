@@ -68,27 +68,19 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (max-width: 767px) { #lsx-recipes-shortcode .lsx-recipes-shortcode .col-md-7 img { margin-top: 2em; } }
 
-@media (min-width: 782px) { #lsx-tips-shortcode .lsx-tips-shortcode { max-width: 600px; } }
+#lsx-tips-shortcode { margin-top: 40px; -ms-flex-pack: end; justify-content: flex-end; }
 
-@media (min-width: 992px) { #lsx-tips-shortcode .lsx-tips-shortcode { max-width: 240px; } }
+@media (min-width: 768px) { #lsx-tips-shortcode .lsx-tips-shortcode { max-width: 380px; } }
 
-@media (min-width: 1200px) { #lsx-tips-shortcode .lsx-tips-shortcode { max-width: 300px; } }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper { background: white; }
+
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-md-1 { padding: 0 10px 0 0; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip { margin: 0; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #418ad0; text-transform: uppercase; font-weight: bold; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #4a4a4a; font-family: 'Noto Sans'; font-size: 15px; font-weight: bold; margin-bottom: 5px; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h4 { font-family: 'Noto Sans'; font-size: 16px; text-transform: uppercase; margin: 0; font-weight: 600; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tip-item { font-size: 16px; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail { background: none; border: none; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail img { border-radius: 50%; border: 2px solid #418ad0; height: 120px; width: 120px; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .slick-dots li button { width: 5px; height: 18px; background-color: transparent; border: 2px solid #cdd0d7; border-radius: 50%; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .slick-dots li.slick-active button { background-color: #cdd0d7; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip p { color: #919191; font-size: 13px; margin: 0; }
 
 @media (max-width: 782px) { .slick-slider { width: 100%; } }
 
@@ -384,7 +376,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .progress progress[value]::-webkit-progress-bar { background-color: white; border-radius: 10px; border: 1px solid #dddddd; }
 
-.progress progress[value]::-webkit-progress-value { border-radius: 10px; }
+.progress progress[value]::-webkit-progress-value { border-radius: 10px; background-color: transparent; }
+
+.progress progress[value].less-progress::-webkit-progress-value { background-color: #c32d37; }
+
+.progress progress[value].half-progress::-webkit-progress-value { background-color: #ff7a18; }
+
+.progress progress[value].completed-progress::-webkit-progress-value { background-color: #30bb00; }
 
 .daily-plan-block { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -651,11 +649,27 @@ article.type-plan .entry-content .workout-content .single-plan-section-title svg
 
 article.type-plan .entry-content .workout-content .workout-instructions, article.type-plan .entry-content .recipes-content .workout-instructions, article.type-plan .entry-content .meal-content .workout-instructions { padding: 1rem 3rem; }
 
+article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 { display: -ms-flexbox; display: flex; }
+
+@media (max-width: 767px) { article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 { -ms-flex-direction: column; flex-direction: column; } }
+
+article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12 .content-intro, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12 .content-intro, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 .content-intro { width: 100%; }
+
+@media (min-width: 768px) { article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12 .content-intro, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12 .content-intro, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 .content-intro { width: 63%; padding-left: 1rem; } }
+
+article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12 .tip-row, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12 .tip-row, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 .tip-row { width: 100%; margin-bottom: 3rem; }
+
+@media (min-width: 768px) { article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12 .tip-row, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12 .tip-row, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 .tip-row { width: 37%; } }
+
+article.type-plan .entry-content .workout-content .workout-instructions > .row > .col-md-12 .tip-row #lsx-tips-shortcode, article.type-plan .entry-content .recipes-content .workout-instructions > .row > .col-md-12 .tip-row #lsx-tips-shortcode, article.type-plan .entry-content .meal-content .workout-instructions > .row > .col-md-12 .tip-row #lsx-tips-shortcode { margin-top: 0; }
+
 article.type-plan .entry-content .workout-content .sets .set-box.set, article.type-plan .entry-content .recipes-content .sets .set-box.set, article.type-plan .entry-content .meal-content .sets .set-box.set { margin: 0; }
 
-article.type-plan .entry-content .meal-content .meals .btn-shopping { margin: 0 2rem; }
+article.type-plan .entry-content .meal-content .meals .btn-shopping { margin: 0 2rem 3rem; }
 
-@media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -9.5rem; margin-left: 1rem; margin-bottom: -9.5rem; } }
+@media (max-width: 767px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { width: 95%; } }
+
+@media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -9.5rem; margin-left: 2rem; margin-bottom: -9.5rem; } }
 
 article.type-plan .entry-content .meal-content .meals .eating-row { padding: 0 2rem 3rem; }
 
@@ -663,7 +677,21 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column:last-child { border: none; }
 
-article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box { background: white; }
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box { background: white; padding-top: 0; padding-bottom: 0; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .content-box .eating-title { margin-bottom: 10px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes { margin: 0 10px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes tr { display: -ms-flexbox; display: flex; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes tr:before { font-family: FontAwesome; margin-left: 5px; color: #418ad0; font-size: 12px; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .serves:before { content: '\f0f5'; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .prep-time:before { content: '\f017'; }
+
+article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .cooking-time, article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .portion-size { display: none; }
 
 .my-plan-container .lsx-container-content { padding: 10px 2em; }
 
@@ -690,7 +718,7 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .single-plan .extra-title span, .archive-plan .extra-title span, .lsx-exercises-shortcode .extra-title span, .single-workout .extra-title span { color: #418ad0; font-weight: bold; }
 
-.single-plan .box-shadow, .archive-plan .box-shadow, .lsx-exercises-shortcode .box-shadow, .single-workout .box-shadow { box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24); }
+.single-plan .box-shadow, .single-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-plan .diet-tip-wrapper, .archive-plan .box-shadow, .archive-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .archive-plan .diet-tip-wrapper, .lsx-exercises-shortcode .box-shadow, .lsx-exercises-shortcode #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .lsx-exercises-shortcode .diet-tip-wrapper, .single-workout .box-shadow, .single-workout #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-workout .diet-tip-wrapper { box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24); }
 
 .single-plan .btn-full, .archive-plan .btn-full, .lsx-exercises-shortcode .btn-full, .single-workout .btn-full { width: 100%; }
 
@@ -930,6 +958,8 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-type, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-type, .tax-recipe-cuisine .archive-plan .row .col-md-4 .recipe-type, .post-type-archive-exercise .archive-plan .row .col-md-4 .recipe-type, .tax-exercise-type .archive-plan .row .col-md-4 .recipe-type, .tax-muscle-group .archive-plan .row .col-md-4 .recipe-type, .tax-equipment .archive-plan .row .col-md-4 .recipe-type { position: absolute; left: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
 
+.post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .tax-recipe-cuisine .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .post-type-archive-exercise .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .tax-exercise-type .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .tax-muscle-group .archive-plan .row .col-md-4 .recipe-type.recipe-parent, .tax-equipment .archive-plan .row .col-md-4 .recipe-type.recipe-parent { background: linear-gradient(-270deg, #418ad0 0%, #2a5781 100%); color: white; }
+
 .post-type-archive-recipe .archive-plan .row .col-md-4 .recipe-feature-img img, .post-type-archive-recipe .archive-plan .row .col-md-4 .exercise-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-type .archive-plan .row .col-md-4 .exercise-feature-img img, .tax-recipe-cuisine .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-recipe-cuisine .archive-plan .row .col-md-4 .exercise-feature-img img, .post-type-archive-exercise .archive-plan .row .col-md-4 .recipe-feature-img img, .post-type-archive-exercise .archive-plan .row .col-md-4 .exercise-feature-img img, .tax-exercise-type .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-exercise-type .archive-plan .row .col-md-4 .exercise-feature-img img, .tax-muscle-group .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-muscle-group .archive-plan .row .col-md-4 .exercise-feature-img img, .tax-equipment .archive-plan .row .col-md-4 .recipe-feature-img img, .tax-equipment .archive-plan .row .col-md-4 .exercise-feature-img img { width: 100%; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box, .tax-recipe-type .archive-plan .row .col-md-4 .content-box, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box, .tax-exercise-type .archive-plan .row .col-md-4 .content-box, .tax-muscle-group .archive-plan .row .col-md-4 .content-box, .tax-equipment .archive-plan .row .col-md-4 .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
@@ -993,6 +1023,10 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 .tax-exercise-type .archive-header-wrapper .archive-header .archive-title, .tax-muscle-group .archive-header-wrapper .archive-header .archive-title, .tax-equipment .archive-header-wrapper .archive-header .archive-title { text-transform: capitalize; }
 
 .tax-exercise-type .archive-header-wrapper .archive-header p, .tax-muscle-group .archive-header-wrapper .archive-header p, .tax-equipment .archive-header-wrapper .archive-header p { display: none; }
+
+.archive .archive-header-wrapper.banner-archive { float: none; }
+
+.archive .hp-archive-category-title { margin-top: 4.25rem; }
 
 #single-recipe, #single-exercise { margin-bottom: -8.4rem; }
 
@@ -1149,7 +1183,3 @@ article.type-plan .entry-content .workout-content .sets .set-box.set .btn { widt
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { border-color: #418AD0; color: #418AD0; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { background-color: #418AD0; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #418AD0; }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .tipimage .tip-thumbnail img { border-color: #418AD0; }

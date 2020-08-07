@@ -452,3 +452,27 @@ function get_progress( $plan_id = false ) {
 	}
 	return $progress;
 }
+
+
+
+/**
+ * Link to back to archive for taxonomy pages
+ *
+ * @return void
+ */
+function hp_back_archive_link() {
+
+	$post_type = 'exercise';
+	if ( is_tax( 'recipe-cuisine' ) || is_tax( 'recipe-type' ) ) {
+		$post_type = 'recipe';
+	}
+
+	if ( is_tax() ) {
+		?>
+		<div class="archive-category-title hp-archive-category-title">
+			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type ); ?></a>
+		</div>
+		<?php
+	}
+}
+add_action( 'lsx_content_wrap_before', '\lsx_health_plan\functions\hp_back_archive_link', 20 );

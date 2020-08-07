@@ -237,6 +237,31 @@ article.type-plan {
 			}
 			.workout-instructions {
 				padding: 1rem 3rem;
+				> .row {
+					> .col-md-12 {
+						display: flex;
+						@media (max-width: 767px) {
+							flex-direction: column;
+						}
+						.content-intro {
+							width: 100%;
+							@media (min-width: 768px) {
+								width: 63%;
+								padding-right: 1rem;
+							}
+						}
+						.tip-row {
+							width: 100%;
+							margin-bottom: 3rem;
+							@media (min-width: 768px) {
+								width: 37%;
+							}
+							#lsx-tips-shortcode {
+								margin-top: 0;
+							}
+						}
+					}
+				}
 			}
 			.sets {
 				.set-box {
@@ -249,12 +274,15 @@ article.type-plan {
 		.meal-content {
 			.meals {
 				.btn-shopping {
-					margin: 0 2rem;
+					margin: 0 2rem 3rem;
+					@media (max-width: 767px) {
+						width: 95%;
+					}
 					@media (min-width: 1024px) {
 						float: right;
 						position: relative;
 						top: -9.5rem;
-						margin-right: 1rem;
+						margin-right: 2rem;
 						margin-bottom: -9.5rem;
 					}
 				}
@@ -267,6 +295,37 @@ article.type-plan {
 						}
 						.content-box {
 							background: white;
+							padding-top: 0;
+							padding-bottom: 0;
+							.eating-title {
+								margin-bottom: 10px;
+							}
+						}
+						.recipes {
+							margin: 0 10px;
+							tr {
+								display: flex;
+								&:before {
+									font-family: FontAwesome;
+									margin-right: 5px;
+									color: $blue;
+									font-size: 12px;
+								}
+							}
+							.serves {
+								&:before {
+									content: '\f0f5';
+								}
+							}
+							.prep-time {
+								&:before {
+									content: '\f017';
+								}
+							}
+							.cooking-time,
+							.portion-size {
+								display: none;
+							}
 						}
 					}
 				}
@@ -1013,6 +1072,10 @@ article.type-plan {
 					padding: 5px 10px;
 					font-weight: bold;
 					border-radius: 1px;
+					&.recipe-parent {
+						background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%);
+						color: white;
+					}
 				}
 				.recipe-feature-img,
 				.exercise-feature-img {
@@ -1195,5 +1258,14 @@ article.type-plan {
 				display: none;
 			}
 		}
+	}
+}
+
+.archive {
+	.archive-header-wrapper.banner-archive {
+		float: none;
+	}
+	.hp-archive-category-title {
+		margin-top: 4.25rem;
 	}
 }

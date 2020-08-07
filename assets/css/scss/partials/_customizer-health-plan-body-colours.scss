@@ -304,19 +304,4 @@
 			@extend .svg;
 		}
 	}
-
-	#lsx-tips-shortcode {
-		.lsx-tips-shortcode {
-			.diet-tip-wrapper {
-				&.quick-tip {
-					h3 {
-						color: $link;
-					}
-					.tipimage .tip-thumbnail img {
-						border-color: $link;
-					}
-				}
-			}
-		}
-	}
 }
