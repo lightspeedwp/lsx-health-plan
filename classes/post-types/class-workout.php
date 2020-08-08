@@ -63,8 +63,8 @@ class Workout {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Workout', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Workouts', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Workouts', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Workout', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),

@@ -52,7 +52,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			</div>
 			<div class="col-md-6 recipe-content">
 				<?php the_content(); ?>
-				<div  class="back-plan-btn">
+				<div class="back-plan-btn">
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {
 					?>
