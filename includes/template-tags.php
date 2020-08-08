@@ -888,20 +888,26 @@ function lsx_health_plan_workout_sets() {
 /**
  * Outputs the recipes connected to the meal plan.
  *
- * @param string $meal_time
+ * @param array $args
  * @return void
  */
-function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
+function lsx_hp_meal_plan_recipes( $args = array() ) {
+	$defaults = array(
+		'meal_id'   => false,
+		'meal_time' => '',
+		'modal'     => true,
+	);
+	$args     = wp_parse_args( $args, $defaults );
 	// Looking for recipes.
-	$connected_recipes = get_post_meta( $meal_id, $meal_time . '_recipes', true );
+	$connected_recipes = get_post_meta( $args['meal_id'], $args['meal_time'] . '_recipes', true );
 	if ( ! empty( $connected_recipes ) ) {
-		$args    = array(
+		$query_args    = array(
 			'orderby'   => 'date',
 			'order'     => 'DESC',
 			'post_type' => 'recipe',
 			'post__in'  => $connected_recipes,
 		);
-		$recipes = new WP_Query( $args );
+		$recipes = new WP_Query( $query_args );
 		?>
 		<div class="recipes">
 			<div class="row eating-row">
@@ -909,9 +915,12 @@ function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
 			if ( $recipes->have_posts() ) {
 				while ( $recipes->have_posts() ) {
 					$recipes->the_post();
+					if ( false !== $args['modal'] ) {
+						\lsx_health_plan\functions\recipes\register_recipe_modal();
+					}
 					?>
 					<div class="recipe-column">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="recipe-box box-shadow">
+						<a data-toggle="modal" data-target="#recipe-modal-<?php echo esc_attr( get_the_ID() ); ?>" href="#recipe-modal-<?php echo esc_attr( get_the_ID() ); ?>" class="recipe-box box-shadow">
 							<div class="recipe-feature-img">
 								<?php
 								$featured_image = get_the_post_thumbnail();
@@ -947,7 +956,8 @@ function lsx_hp_meal_plan_recipes( $meal_id = false, $meal_time = '' ) {
 /**
  * Output the connected.
  */
-function lsx_hp_recipe_plan_meta() {
+function lsx_hp_recipe_plan_meta( $args = array() ) {
+	$defaults = array();
 	$top_level_plans = array();
 	// Get meals this exercise is connected to.
 	$plans = get_post_meta( get_the_ID(), 'connected_plans', true );

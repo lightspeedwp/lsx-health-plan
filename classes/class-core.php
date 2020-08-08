@@ -94,6 +94,7 @@ class Core {
 	 */
 	private function load_includes() {
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions/recipes.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/conditionals.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/exercise.php';

@@ -79,7 +79,12 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 						echo wp_kses_post( apply_filters( 'the_content', $post_breakfast_snack ) );
 						echo '</div>';
 					}
-					lsx_hp_meal_plan_recipes( $meal_id, 'breakfast' );
+
+					$args = array(
+						'meal_id'   => $meal_id,
+						'meal_time' => 'breakfast',
+					);
+					lsx_hp_meal_plan_recipes( $args );
 					?>
 					</div>
 					<div class="col-md-4 eating-column">
@@ -99,7 +104,12 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 						echo wp_kses_post( apply_filters( 'the_content', $post_lunch_snack ) );
 						echo '</div>';
 					}
-					lsx_hp_meal_plan_recipes( $meal_id, 'lunch' );
+
+					$args = array(
+						'meal_id'   => $meal_id,
+						'meal_time' => 'lunch',
+					);
+					lsx_hp_meal_plan_recipes( $args );
 					?>
 					</div>
 					<div class="col-md-4 eating-column">
@@ -119,7 +129,12 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 							echo wp_kses_post( apply_filters( 'the_content', $post_dinner_snack ) );
 							echo '</div>';
 						}
-						lsx_hp_meal_plan_recipes( $meal_id, 'dinner' );
+
+						$args = array(
+							'meal_id'   => $meal_id,
+							'meal_time' => 'dinner',
+						);
+						lsx_hp_meal_plan_recipes( $args );
 						?>
 					</div>
 				</div>
