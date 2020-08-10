@@ -532,11 +532,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:visited:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:visited:hover { background-color: #f7941d; color: white; }
 
-#edit-account-tab .edit-account-section .my-stats .form-row.bmi-total, #edit-account-tab .stat-section .my-stats .form-row.bmi-total { font-size: 26px; color: #30bb00; font-weight: bold; margin-left: 8rem; width: 100%; max-width: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: end; justify-content: flex-end; }
-
 #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: -43px; }
 
 @media (max-width: 767px) { #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: 0; } }
+
+#edit-account-tab .edit-account-section .description .bmi-total, #edit-account-tab .stat-section .description .bmi-total { font-size: 14px; border: 2px solid #30bb00; color: #30bb00; width: 100%; margin-bottom: 0; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 
