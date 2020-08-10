@@ -101,7 +101,7 @@ var LSX_HP_ADMIN = Object.create(null);
 			if (50 > progressBarLength) {
 				$(this).addClass('less-progress');
 			}
-			if (50 < progressBarLength) {
+			if (50 <= progressBarLength) {
 				$(this).addClass('half-progress');
 			}
 			if (100 == progressBarLength) {
