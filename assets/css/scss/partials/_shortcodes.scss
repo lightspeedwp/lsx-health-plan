@@ -149,6 +149,9 @@
 			@extend .box-shadow;
 			.col-md-1 {
 				padding: 0 0 0 10px;
+				svg {
+					width: 30px;
+				}
 			}
 			&.quick-tip {
 				margin: 0;
