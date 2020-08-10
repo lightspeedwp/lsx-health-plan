@@ -94,6 +94,32 @@
 			}
 		}
 	}
+	.archive-plan,
+	.single-plan {
+		.content-box {
+			h3.plan {
+				a,
+				a:visited {
+					&:hover {
+						color: $hover;
+					}
+				}
+			}
+		}
+	}
+
+	.plans-products-wrapper {
+		.plan-product {
+			.title {
+				a,
+				a:visited {
+					&:hover {
+						color: $hover;
+					}
+				}
+			}
+		}
+	}
 
 	.post-type-archive-plan,
 	.single-plan {
