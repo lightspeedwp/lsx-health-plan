@@ -302,6 +302,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
 
+#type-nav { margin-top: 0; }
+
 @media (min-width: 768px) and (max-width: 1140px) { body:not(.woocommerce-edit-account) #account-nav { padding-left: 30px; padding-right: 30px; } }
 
 .my-plan-shortcode .breadcrumbs-container { z-index: 5; }

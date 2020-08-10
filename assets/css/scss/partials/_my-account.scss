@@ -125,7 +125,9 @@
 		}
 	}
 }
-
+#type-nav {
+	margin-top: 0;
+}
 body:not(.woocommerce-edit-account) {
 	#account-nav {
 		@media (min-width: 768px) and (max-width: 1140px) {
