@@ -756,6 +756,10 @@ article.type-plan {
 		padding: 12px 16px;
 		h3.plan {
 			margin-bottom: 8px;
+			a,
+			a:visited {
+				color: $gray;
+			}
 		}
 		.plan-meta {
 			img {

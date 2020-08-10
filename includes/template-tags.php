@@ -364,7 +364,7 @@ function lsx_health_plan_all_plans_block() {
 								</a>
 							</div>
 							<div class="content-box plan-content-box">
-								<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>"><?php the_title(); ?></h3>
+								<h3 class="plan id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
 								<?php
 									echo wp_kses_post( \lsx_health_plan\functions\hp_get_plan_type_meta( $post ) );
 								?>

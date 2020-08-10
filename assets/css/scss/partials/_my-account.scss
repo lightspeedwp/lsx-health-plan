@@ -287,6 +287,9 @@ body:not(.woocommerce-edit-account) {
 					padding: 2rem 1.5rem;
 					h3.plan {
 						margin-bottom: 8px;
+						a {
+							color: $gray;
+						}
 					}
 					.plan-meta {
 						img {

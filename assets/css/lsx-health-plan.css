@@ -366,6 +366,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan { margin-bottom: 8px; }
 
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan a { color: #4a4a4a; }
+
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img { margin-right: 5px; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img + span { margin-left: 5px; }
@@ -841,6 +843,8 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 .single-plan .content-box, .archive-plan .content-box, .lsx-exercises-shortcode .content-box, .single-workout .content-box { margin: 0 0 30px; background: #f6f6f6; padding: 12px 16px; }
 
 .single-plan .content-box h3.plan, .archive-plan .content-box h3.plan, .lsx-exercises-shortcode .content-box h3.plan, .single-workout .content-box h3.plan { margin-bottom: 8px; }
+
+.single-plan .content-box h3.plan a, .single-plan .content-box h3.plan a:visited, .archive-plan .content-box h3.plan a, .archive-plan .content-box h3.plan a:visited, .lsx-exercises-shortcode .content-box h3.plan a, .lsx-exercises-shortcode .content-box h3.plan a:visited, .single-workout .content-box h3.plan a, .single-workout .content-box h3.plan a:visited { color: #4a4a4a; }
 
 .single-plan .content-box .plan-meta img, .archive-plan .content-box .plan-meta img, .lsx-exercises-shortcode .content-box .plan-meta img, .single-workout .content-box .plan-meta img { margin-right: 5px; }
 
