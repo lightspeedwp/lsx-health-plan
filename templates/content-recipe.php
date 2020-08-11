@@ -29,7 +29,26 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 	</div><!-- .entry-meta -->
 
 	<div id="single-recipe" class="entry-content">
-		<h2 class="title-lined"><span class="recipe-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
+		<h2 class="title-lined"><?php the_title(); ?>
+		<?php if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
+			<div class="post-sharing-wrapper">
+
+				<?php
+				if ( class_exists( 'LSX_Sharing' ) ) {
+					lsx_content_sharing();
+				} else {
+					if ( function_exists( 'sharing_display' ) ) {
+						sharing_display( '', true );
+					}
+
+					if ( class_exists( 'Jetpack_Likes' ) ) {
+						$custom_likes = new Jetpack_Likes();
+						echo wp_kses_post( $custom_likes->post_likes( '' ) );
+					}
+				}
+				?>
+		<?php endif ?>
+		</h2>
 		<div class="row">
 			<div class="col-md-6 recipe-image lsx-hp-shadow">
 				<?php
@@ -76,24 +95,9 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 	</div><!-- .entry-content -->
 
 	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
+		<?php if ( has_tag() ) : ?>
 			<div class="post-tags-wrapper">
 				<?php lsx_content_post_tags(); ?>
-
-				<?php
-				if ( class_exists( 'LSX_Sharing' ) ) {
-					lsx_content_sharing();
-				} else {
-					if ( function_exists( 'sharing_display' ) ) {
-						sharing_display( '', true );
-					}
-
-					if ( class_exists( 'Jetpack_Likes' ) ) {
-						$custom_likes = new Jetpack_Likes();
-						echo wp_kses_post( $custom_likes->post_likes( '' ) );
-					}
-				}
-				?>
 		<?php endif ?>
 	</footer><!-- .footer-meta -->
 

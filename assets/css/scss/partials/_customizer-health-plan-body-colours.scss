@@ -213,7 +213,8 @@
 		}
 	}
 
-	.my-profile-block {
+	.my-profile-block,
+	.archive-header {
 		background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
 		.title-lined {
 			border-bottom: 5px solid $link;
@@ -328,6 +329,77 @@
 		}
 		.single-plan-section-title {
 			@extend .svg;
+		}
+	}
+	// Single Recipe
+	#single-recipe,
+	#single-exercise {
+		.title-lined {
+			.lsx-sharing-content {
+				.lsx-sharing-button {
+					a {
+						background: transparent;
+						color: $link;
+						border: 1px solid $link;
+						width: 25px;
+						height: 25px;
+					}
+				}
+			}
+		}
+		.recipe-data {
+			.recipe-table {
+				tbody {
+					tr {
+						td {
+							&:first-child {
+								&:before {
+									font-family: FontAwesome;
+									margin-right: 5px;
+									color: $link;
+									font-size: 12px;
+								}
+							}
+						}
+					}
+					.serves {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f0c0';
+								}
+							}
+						}
+					}
+					.prep-time {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f017';
+								}
+							}
+						}
+					}
+					.cooking-time {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f0f5';
+								}
+							}
+						}
+					}
+					.portion-size {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f200';
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

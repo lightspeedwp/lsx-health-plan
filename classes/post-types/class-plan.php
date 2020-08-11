@@ -44,6 +44,8 @@ class Plan {
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
+		add_filter( 'lsx_global_header_title',  array( $this, 'hp_recipe_header_title' ), 200, 1 );
+
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
@@ -327,6 +329,24 @@ class Plan {
 		if ( is_post_type_archive( 'plan' ) ) {
 			$title = __( 'Our health plans', 'lsx-health-plan' );
 		}
+		return $title;
+	}
+
+	/**
+	 * Remove the single recipe and exercise title
+	 */
+	public function hp_recipe_header_title( $title ) {
+
+		if ( is_single() && is_singular( 'recipe' ) ) {
+
+			$title = __( 'Recipe', 'lsx-health-plan' );
+		}
+
+		if ( is_single() && is_singular( 'exercise' ) ) {
+
+			$title = __( 'Exercise', 'lsx-health-plan' );
+		}
+
 		return $title;
 	}
 
