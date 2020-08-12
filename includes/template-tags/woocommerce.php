@@ -42,7 +42,7 @@ function lsx_hp_single_plan_products() {
 							<?php echo wp_kses_post( $product->get_price_html() ); ?>
 
 							<div class="add-to-cart">
-								<a class="btn btn-primary" href="<?php echo esc_attr( $product->add_to_cart_url() ); ?>"><?php echo esc_attr( $product->add_to_cart_text() ); ?></a>
+								<a class="btn cta-btn" href="<?php echo esc_attr( $product->add_to_cart_url() ); ?>"><?php echo esc_attr( $product->add_to_cart_text() ); ?></a>
 							</div>
 						</div>
 					<?php

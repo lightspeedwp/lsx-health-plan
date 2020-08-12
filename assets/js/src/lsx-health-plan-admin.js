@@ -71,8 +71,8 @@ var LSX_HP_ADMIN = Object.create(null);
 					resultText = bmiRound + ' - Obesity class III';
 				}
 
-				$('.woocommerce-MyAccount-content .my-stats-wrap .my-stats').append(
-					'<p class="form-row bmi-total">BMI: ' + resultText + '</p>'
+				$('.woocommerce-MyAccount-content .my-stats-wrap .description .bmi-title').append(
+					'<p class="btn border-btn bmi-total">BMI: ' + resultText + '</p>'
 				);
 			}
 		});
@@ -101,7 +101,7 @@ var LSX_HP_ADMIN = Object.create(null);
 			if (50 > progressBarLength) {
 				$(this).addClass('less-progress');
 			}
-			if (50 < progressBarLength) {
+			if (50 <= progressBarLength) {
 				$(this).addClass('half-progress');
 			}
 			if (100 == progressBarLength) {

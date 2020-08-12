@@ -76,6 +76,8 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-md-1 { padding: 0 0 0 10px; }
 
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-md-1 svg { width: 30px; }
+
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip { margin: 0; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #4a4a4a; font-family: 'Noto Sans'; font-size: 15px; font-weight: bold; margin-bottom: 5px; }
@@ -263,7 +265,15 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .tax-recipe-cuisine #footer-cta, .tax-recipe-cuisine #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
-.plans-products-wrapper .plan-product { text-align: center; }
+@media (min-width: 900px) { .content-area .plans-products-wrapper { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; } }
+
+.content-area .plans-products-wrapper .plan-product { text-align: center; margin-left: auto; margin-right: auto; padding: 2.4rem; margin-bottom: 4rem; background-color: white; -ms-flex-positive: 1; flex-grow: 1; min-width: 50%; }
+
+@media (min-width: 768px) { .content-area .plans-products-wrapper .plan-product { max-width: 440px; min-width: auto; } }
+
+.content-area .plans-products-wrapper .plan-product .title a { color: #4a4a4a; font-size: 22px; font-weight: bold; }
+
+.content-area .plans-products-wrapper .plan-product .amount { color: #30bb00; font-size: 22px; font-weight: bold; padding: 1rem; display: block; }
 
 .gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { max-width: 1140px; width: 100%; margin-top: 43px; }
 
@@ -299,6 +309,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 @media (max-width: 334px) { #account-nav .nav.nav-pills li a, #type-nav .nav.nav-pills li a { font-size: 11px; } }
 
 #account-nav .nav.nav-pills li.active a, #account-nav .nav.nav-pills li:hover a, #type-nav .nav.nav-pills li.active a, #type-nav .nav.nav-pills li:hover a { background: #418ad0; color: #ffffff; }
+
+#type-nav { margin-top: 0; }
 
 @media (min-width: 768px) and (max-width: 1140px) { body:not(.woocommerce-edit-account) #account-nav { padding-left: 30px; padding-right: 30px; } }
 
@@ -361,6 +373,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box { padding: 2rem 1.5rem; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan { margin-bottom: 8px; }
+
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box h3.plan a { color: #4a4a4a; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img { margin-right: 5px; }
 
@@ -528,11 +542,11 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .edit-account-section .my-stats .form-row.calculate-bmi .btn:visited:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:active:hover, #edit-account-tab .stat-section .my-stats .form-row.calculate-bmi .btn:visited:hover { background-color: #f7941d; color: white; }
 
-#edit-account-tab .edit-account-section .my-stats .form-row.bmi-total, #edit-account-tab .stat-section .my-stats .form-row.bmi-total { font-size: 26px; color: #30bb00; font-weight: bold; margin-right: 8rem; width: 100%; max-width: 100%; display: -ms-flexbox; display: flex; -ms-flex-pack: end; justify-content: flex-end; }
-
 #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: -43px; }
 
 @media (max-width: 767px) { #edit-account-tab .edit-account-section .description, #edit-account-tab .stat-section .description { margin-top: 0; } }
+
+#edit-account-tab .edit-account-section .description .bmi-total, #edit-account-tab .stat-section .description .bmi-total { font-size: 14px; border: 2px solid #30bb00; color: #30bb00; width: 100%; margin-bottom: 0; }
 
 #edit-account-tab .edit-account-section .wpua-edit-container, #edit-account-tab .stat-section .wpua-edit-container { margin-top: 60px; }
 
@@ -718,7 +732,7 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .single-plan .extra-title span, .archive-plan .extra-title span, .lsx-exercises-shortcode .extra-title span, .single-workout .extra-title span { color: #418ad0; font-weight: bold; }
 
-.single-plan .box-shadow, .single-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-plan .diet-tip-wrapper, .archive-plan .box-shadow, .archive-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .archive-plan .diet-tip-wrapper, .lsx-exercises-shortcode .box-shadow, .lsx-exercises-shortcode #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .lsx-exercises-shortcode .diet-tip-wrapper, .single-workout .box-shadow, .single-workout #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-workout .diet-tip-wrapper { box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24); }
+.single-plan .box-shadow, .single-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-plan .diet-tip-wrapper, .single-plan .content-area .plans-products-wrapper .plan-product, .content-area .plans-products-wrapper .single-plan .plan-product, .archive-plan .box-shadow, .archive-plan #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .archive-plan .diet-tip-wrapper, .archive-plan .content-area .plans-products-wrapper .plan-product, .content-area .plans-products-wrapper .archive-plan .plan-product, .lsx-exercises-shortcode .box-shadow, .lsx-exercises-shortcode #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .lsx-exercises-shortcode .diet-tip-wrapper, .lsx-exercises-shortcode .content-area .plans-products-wrapper .plan-product, .content-area .plans-products-wrapper .lsx-exercises-shortcode .plan-product, .single-workout .box-shadow, .single-workout #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper, #lsx-tips-shortcode .lsx-tips-shortcode .single-workout .diet-tip-wrapper, .single-workout .content-area .plans-products-wrapper .plan-product, .content-area .plans-products-wrapper .single-workout .plan-product { box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24); }
 
 .single-plan .btn-full, .archive-plan .btn-full, .lsx-exercises-shortcode .btn-full, .single-workout .btn-full { width: 100%; }
 
@@ -838,6 +852,8 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .single-plan .content-box h3.plan, .archive-plan .content-box h3.plan, .lsx-exercises-shortcode .content-box h3.plan, .single-workout .content-box h3.plan { margin-bottom: 8px; }
 
+.single-plan .content-box h3.plan a, .single-plan .content-box h3.plan a:visited, .archive-plan .content-box h3.plan a, .archive-plan .content-box h3.plan a:visited, .lsx-exercises-shortcode .content-box h3.plan a, .lsx-exercises-shortcode .content-box h3.plan a:visited, .single-workout .content-box h3.plan a, .single-workout .content-box h3.plan a:visited { color: #4a4a4a; }
+
 .single-plan .content-box .plan-meta img, .archive-plan .content-box .plan-meta img, .lsx-exercises-shortcode .content-box .plan-meta img, .single-workout .content-box .plan-meta img { margin-right: 5px; }
 
 .single-plan .content-box .plan-meta img + span, .archive-plan .content-box .plan-meta img + span, .lsx-exercises-shortcode .content-box .plan-meta img + span, .single-workout .content-box .plan-meta img + span { margin-left: 5px; }
@@ -936,11 +952,21 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .lsx-health-plan-modal .modal-header { display: none; }
 
-.lsx-health-plan-modal .modal-content { padding: 40px; }
+.lsx-health-plan-modal .modal-content { padding: 10px !important; border-width: 2px !important; }
 
 .lsx-health-plan-modal .modal-title { margin-bottom: 25px; }
 
 .lsx-health-plan-modal .modal-image img { width: 100%; }
+
+.lsx-health-plan-modal .modal-body .recipe #single-recipe { background: transparent; padding: 0; }
+
+.lsx-health-plan-modal .modal-body .recipe #single-recipe .recipe-image, .lsx-health-plan-modal .modal-body .recipe #single-recipe .recipe-content { width: 100%; max-width: 100%; padding: 0 1rem; margin: 1rem 0; }
+
+.lsx-health-plan-modal .modal-body .recipe #single-recipe .recipe-image { padding: 0; box-shadow: none; }
+
+.lsx-health-plan-modal .modal-body .recipe #single-recipe .recipe-image img { max-height: 280px; -o-object-fit: cover; object-fit: cover; }
+
+.lsx-health-plan-modal .modal-body .recipe #single-recipe .recipe-image .recipe-data { background: transparent; }
 
 .lsx-health-plan-modal .modal-body .exercise-modal.title-lined { padding-bottom: 15px; margin-bottom: 20px; }
 
@@ -1032,6 +1058,18 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 #single-recipe > .row, #single-exercise > .row { margin-right: 0; margin-left: 0; }
 
+#single-recipe .title-lined, #single-exercise .title-lined { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; font-weight: 700; }
+
+@media (max-width: 768px) { #single-recipe .title-lined, #single-exercise .title-lined { -ms-flex-direction: column-reverse; flex-direction: column-reverse; } }
+
+@media (max-width: 768px) { #single-recipe .title-lined .lsx-sharing-content, #single-exercise .title-lined .lsx-sharing-content { margin-bottom: 1rem; } }
+
+#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-label, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-label { font-size: 13px; color: #919191; font-family: 'Noto Sans', sans-serif; }
+
+#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-label:before, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-label:before { content: none; }
+
+#single-recipe .title-lined .lsx-sharing-content p, #single-exercise .title-lined .lsx-sharing-content p { margin: 0; }
+
 #single-recipe .recipe-image, #single-recipe .exercise-image, #single-exercise .recipe-image, #single-exercise .exercise-image { width: 100%; padding: 0; margin-bottom: 4.25rem; }
 
 #single-recipe .recipe-image img, #single-recipe .exercise-image img, #single-exercise .recipe-image img, #single-exercise .exercise-image img { width: 100%; }
@@ -1067,7 +1105,7 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) { margin-top: 2rem; }
 
-@media (min-width: 600px) { #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) { margin-top: 0; border-left: 1px solid #DDDDDD; margin-left: -10px; }
+@media (min-width: 600px) { #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) { margin-top: 0; border-left: 1px solid #dddddd; margin-left: -10px; }
   #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) th, #single-recipe .recipe-image .recipe-data .recipe-table:nth-child(2) td { padding-left: 10px; } }
 
 #single-recipe .bottom-single-recipe { margin-top: 4.25rem; }
@@ -1076,11 +1114,11 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 #single-exercise .exercise-title-section { padding-bottom: 0; margin-bottom: 4.24rem; }
 
-#single-exercise .exercise-title-section.sharing-enabled { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; }
+#single-exercise .exercise-title-section.sharing-enabled { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; }
 
 @media (min-width: 992px) { #single-exercise .exercise-title-section.sharing-enabled { -ms-flex-direction: row-reverse; flex-direction: row-reverse; } }
 
-#single-exercise .exercise-title-section h2 { margin-bottom: 10px; }
+#single-exercise .exercise-title-section h2 { margin-bottom: 10px; font-weight: 700; }
 
 @media (min-width: 992px) { #single-exercise .exercise-title-section .lsx-sharing-content > p { margin-bottom: 0; } }
 
@@ -1128,6 +1166,10 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 #account-nav .nav.nav-pills li.active a::after, #account-nav .nav.nav-pills li:hover a::after, #type-nav .nav.nav-pills li.active a::after, #type-nav .nav.nav-pills li:hover a::after { color: #418AD0; }
 
+.archive-plan .content-box h3.plan a:hover, .archive-plan .content-box h3.plan a:visited:hover, .single-plan .content-box h3.plan a:hover, .single-plan .content-box h3.plan a:visited:hover { color: #F7AE00; }
+
+.plans-products-wrapper .plan-product .title a:hover, .plans-products-wrapper .plan-product .title a:visited:hover { color: #F7AE00; }
+
 .post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(213.95deg, #418AD0 0%, #225789 100%); }
 
 article.type-plan .entry-content .workout-content .sets .set-box.set { background: white; }
@@ -1150,9 +1192,9 @@ article.type-plan .entry-content .workout-content .sets .set-box.set .btn { widt
 
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:hover:not(.completed) { background: #418AD0; }
 
-.my-profile-block { background: linear-gradient(213.95deg, #418AD0 0%, #225789 100%); }
+.my-profile-block, .archive-header { background: linear-gradient(213.95deg, #418AD0 0%, #225789 100%); }
 
-.my-profile-block .title-lined { border-bottom: 5px solid #418AD0; }
+.my-profile-block .title-lined, .archive-header .title-lined { border-bottom: 5px solid #418AD0; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { background-image: linear-gradient(120deg, #418AD0, #418AD0); }
 
@@ -1183,5 +1225,17 @@ article.type-plan .entry-content .workout-content .sets .set-box.set .btn { widt
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { border-color: #418AD0; color: #418AD0; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { background-color: #418AD0; }
+
+#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
+
+#single-recipe .recipe-data .recipe-table tbody tr td:first-child:before, #single-exercise .recipe-data .recipe-table tbody tr td:first-child:before { font-family: FontAwesome; margin-right: 5px; color: #418AD0; font-size: 12px; }
+
+#single-recipe .recipe-data .recipe-table tbody .serves td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .serves td:first-child:before { content: '\f0c0'; }
+
+#single-recipe .recipe-data .recipe-table tbody .prep-time td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .prep-time td:first-child:before { content: '\f017'; }
+
+#single-recipe .recipe-data .recipe-table tbody .cooking-time td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .cooking-time td:first-child:before { content: '\f0f5'; }
+
+#single-recipe .recipe-data .recipe-table tbody .portion-size td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .portion-size td:first-child:before { content: '\f200'; }
 
 /*# sourceMappingURL=maps/lsx-health-plan.css.map */

@@ -756,6 +756,10 @@ article.type-plan {
 		padding: 12px 16px;
 		h3.plan {
 			margin-bottom: 8px;
+			a,
+			a:visited {
+				color: $gray;
+			}
 		}
 		.plan-meta {
 			img {
@@ -1004,7 +1008,8 @@ article.type-plan {
 		display: none;
 	}
 	.modal-content {
-		padding: 40px;
+		padding: 10px !important;
+		border-width: 2px !important;
 	}
 	.modal-title {
 		margin-bottom: 25px;
@@ -1015,6 +1020,30 @@ article.type-plan {
 		}
 	}
 	.modal-body {
+		.recipe {
+			#single-recipe {
+				background: transparent;
+				padding: 0;
+				.recipe-image,
+				.recipe-content {
+					width: 100%;
+					max-width: 100%;
+					padding: 0 1rem;
+					margin: 1rem 0;
+				}
+				.recipe-image {
+					padding: 0;
+					box-shadow: none;
+					img {
+						max-height: 280px;
+						object-fit: cover;
+					}
+					.recipe-data {
+						background: transparent;
+					}
+				}
+			}
+		}
 		.exercise-modal {
 			&.title-lined {
 				padding-bottom: 15px;
