@@ -67,11 +67,11 @@ class Connected_Plans {
 					break;
 
 				case 'recipe':
-					//$return = $this->index_connected_plans( $params['defaults'] );
+					$return = $this->index_connected_plans( $params['defaults'] );
 					break;
 
 				case 'meal':
-					//$return = $this->index_connected_plans( $params['defaults'] );
+					$return = $this->index_connected_plans( $params['defaults'] );
 					break;
 
 				default:
