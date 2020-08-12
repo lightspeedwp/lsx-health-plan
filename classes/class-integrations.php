@@ -54,6 +54,15 @@ class Integrations {
 	public $wp_user_avatar = false;
 
 	/**
+	 * Holds class instance
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      object \lsx_health_plan\classes\FacetWP()
+	 */
+	public $facetwp = false;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -61,6 +70,7 @@ class Integrations {
 		add_action( 'init', array( $this, 'download_monitor_init' ) );
 		add_action( 'init', array( $this, 'woocommerce_init' ) );
 		add_action( 'init', array( $this, 'wp_user_avatar_init' ) );
+		add_action( 'init', array( $this, 'facetwp_init' ) );
 	}
 
 	/**
@@ -121,6 +131,18 @@ class Integrations {
 		if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-wp-user-avatar.php';
 			$this->wp_user_avatar = WP_User_Avatar::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the FacetWP Indexer Filters.
+	 *
+	 * @return void
+	 */
+	public function facetwp_init() {
+		if ( class_exists( 'FacetWP' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-facetwp.php';
+			$this->facetwp = FacetWP::get_instance();
 		}
 	}
 }
