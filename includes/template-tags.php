@@ -357,7 +357,7 @@ function lsx_health_plan_all_plans_block() {
 									) );
 								} else {
 									?>
-									<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 									<?php
 								}
 								?>
@@ -930,7 +930,7 @@ function lsx_hp_meal_plan_recipes( $args = array() ) {
 									) );
 								} else {
 									?>
-									<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . 'assets/images/placeholder.jpg' ); ?>">
+									<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . 'assets/images/placeholder.jpg' ); ?>">
 									<?php
 								}
 								?>

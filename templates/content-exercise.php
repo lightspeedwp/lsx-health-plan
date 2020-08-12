@@ -67,7 +67,7 @@ endif;
 					) );
 				} else {
 					?>
-					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+					<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 					<?php
 				}
 			}

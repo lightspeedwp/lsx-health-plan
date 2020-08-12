@@ -344,8 +344,7 @@ function hp_get_plan_type_meta( $post ) {
 			$term_thumbnail_id = get_term_meta( $terms_id, 'thumbnail', true );
 			$img               = wp_get_attachment_image_src( $term_thumbnail_id, 'thumbnail' );
 			$image_url         = $img[0];
-			$img               = '<img alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
-			$img               = apply_filters( 'lsx_lazyload_slider_images', $img, $term_thumbnail_id, 'thumbnail', false, $image_url );
+			$img               = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
 
 			$plan_meta .= $img;
 		}
