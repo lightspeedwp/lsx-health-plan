@@ -6,6 +6,7 @@
 - Added support for the cover block on the Edit My Account page.
 - Refactored the post type class locations.
 - Added support for LSX color customizer.
+- A "Connected Plans" FacetWP source was added which creates a connection to meals, recipes, workouts and exercises.
 
 #### Plans
 - Added in a setting to allow the translation of the `plan` single slug.

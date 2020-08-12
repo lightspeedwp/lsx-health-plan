@@ -18,6 +18,13 @@ class Connected_Plans {
 	protected static $instance = null;
 
 	/**
+	 * This hold the current plan IDS, in case they need to be used in additional functions.
+	 *
+	 * @var array
+	 */
+	public $current_plan_ids = array();
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -55,16 +62,16 @@ class Connected_Plans {
 			$post_type = get_post_type( $params['defaults']['post_id'] );
 			switch ( $post_type ) {
 				case 'workout':
-					break;
-
-				case 'exercise':
+					$return = $this->index_connected_plans( $params['defaults'] );
+					$this->index_exercises( $params['defaults'] );
 					break;
 
 				case 'recipe':
-					$return = $this->index_recipe( $params['defaults'] );
+					//$return = $this->index_connected_plans( $params['defaults'] );
 					break;
 
 				case 'meal':
+					//$return = $this->index_connected_plans( $params['defaults'] );
 					break;
 
 				default:
@@ -72,6 +79,8 @@ class Connected_Plans {
 			}
 		}
 
+		// Reset the current plan ids array.
+		$this->current_plan_ids = array();
 		return $return;
 	}
 
@@ -80,9 +89,9 @@ class Connected_Plans {
 	 *
 	 * @param array $rows
 	 * @param array $params
-	 * @return void
+	 * @return boolean
 	 */
-	public function index_recipe( $row ) {
+	public function index_connected_plans( $row ) {
 		$indexed         = false;
 		$top_level_plans = array();
 		// Get meals this exercise is connected to.
@@ -98,8 +107,9 @@ class Connected_Plans {
 			}
 		}
 		if ( ! empty( $top_level_plans ) && ( '' !== $top_level_plans ) ) {
-			$top_level_plans = array_unique( $top_level_plans );
-			$indexed         = true;
+			$top_level_plans        = array_unique( $top_level_plans );
+			$this->current_plan_ids = $top_level_plans;
+			$indexed                = true;
 			foreach ( $top_level_plans as $plan_id ) {
 				$row['facet_value']         = $plan_id;
 				$row['facet_display_value'] = get_the_title( $plan_id );
@@ -107,5 +117,64 @@ class Connected_Plans {
 			}
 		}
 		return $indexed;
+	}
+
+	/**
+	 * We index the exercises from the workouts.
+	 *
+	 * @param array $rows
+	 * @param array $params
+	 * @return void
+	 */
+	public function index_exercises( $row ) {
+		if ( empty( $this->current_plan_ids ) ) {
+			return;
+		}
+		$i                  = 1;
+		$section_counter    = 6;
+		$unique_connections = array();
+
+		while ( $i <= $section_counter ) {
+			// Here we grab the exercises and we add them to the index with the plan IDS.
+			$groups = get_post_meta( $row['post_id'], 'workout_section_' . $i, true );
+			if ( ! empty( $groups ) ) {
+				foreach ( $groups as $group ) {
+					if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+
+						if ( ! is_array( $group['connected_exercises'] ) ) {
+							$group['connected_exercises'] = array( $group['connected_exercises'] );
+						}
+
+						// Loop through each exercise and add it to the plan.
+						foreach ( $group['connected_exercises'] as $eid ) {
+							$exercise_default            = $row;
+							$exercise_default['post_id'] = $eid;
+
+							foreach ( $this->current_plan_ids as $plan_id ) {
+								// Check to see if this connection has been added already.
+								if ( isset( $unique_connections[ $eid . '_' . $plan_id ] ) ) {
+									continue;
+								}
+
+								$title = get_the_title( $plan_id );
+								if ( ! empty( $title ) ) {
+									$exercise_default['facet_value']             = $plan_id;
+									$exercise_default['facet_display_value']     = $title;
+									$unique_connections[ $eid . '_' . $plan_id ] = $exercise_default;
+								}
+							}
+						}
+					}
+				}
+			}
+			$i++;
+		}
+
+		// If we have some unique connections, we index them.
+		if ( ! empty( $unique_connections ) ) {
+			foreach ( $unique_connections as $unique_row ) {
+				FWP()->indexer->index_row( $unique_row );
+			}
+		}
 	}
 }
