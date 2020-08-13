@@ -312,13 +312,31 @@ function lsx_health_plan_my_profile_box() {
  */
 function lsx_health_plan_all_plans_block() {
 	global $post, $product;
-	$args      = array(
+
+	$args = array(
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 		'post_type'      => 'plan',
 		'nopagin'        => true,
 		'post_parent'    => 0,
 	);
+	$product_ids = \lsx_health_plan\functions\woocommerce\get_membership_products();
+
+	if ( ! empty( $product_ids ) ) {
+		$args['meta_query'] = array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_plan_product_id',
+				'value'   => $product_ids,
+				'compare' => 'IN',
+			),
+			array(
+				'key'     => '_plan_product_id',
+				'compare' => 'NOT EXISTS',
+			),
+		);
+	}
+
 	$the_query = new WP_Query( $args );
 	?>
 	<div class="all-plans-block plan-grid block-all-plans-block">
@@ -377,7 +395,7 @@ function lsx_health_plan_all_plans_block() {
 									<?php
 									if ( ! has_excerpt() ) {
 										$content = wp_trim_words( get_the_content(), 20 );
-										$content = '<p>' . $content . '</p>';
+										$content = '<p>' . $content . '</pre>';
 									} else {
 										$content = apply_filters( 'the_excerpt', get_the_excerpt() );
 									}
