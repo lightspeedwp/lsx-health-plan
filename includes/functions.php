@@ -343,8 +343,10 @@ function hp_get_plan_type_meta( $post ) {
 		foreach ( $terms_ids as $terms_id ) {
 			$term_thumbnail_id = get_term_meta( $terms_id, 'thumbnail', true );
 			$img               = wp_get_attachment_image_src( $term_thumbnail_id, 'thumbnail' );
-			$image_url         = $img[0];
-			$img               = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
+			if ( ! empty( $img ) ) {
+				$image_url         = $img[0];
+				$img               = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
+			}
 
 			$plan_meta .= $img;
 		}
