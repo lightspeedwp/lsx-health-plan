@@ -125,20 +125,18 @@ if ( null !== $shortcode_args ) {
 				?>
 			</div>
 			<?php
-			if ( false !== $linked_product ) {
-				if ( true === $restricted ) {
-					?>
-					<a class="btn" href="<?php echo esc_attr( $linked_product->add_to_cart_url() ); ?>"><?php echo esc_attr( $linked_product->add_to_cart_text() ); ?></a>
-					<?php
-				} elseif ( false === $restricted ) {
-					?>
-					<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
-					<?php
-				} else {
-					?>
-					<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
-					<?php
-				}
+			if ( true === $restricted ) {
+				?>
+				<a class="btn" href="<?php echo esc_attr( $linked_product->add_to_cart_url() ); ?>"><?php echo esc_attr( $linked_product->add_to_cart_text() ); ?></a>
+				<?php
+			} elseif ( false === $restricted ) {
+				?>
+				<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
+				<?php
+			} else {
+				?>
+				<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
+				<?php
 			}
 			?>
 		</div>
