@@ -564,13 +564,17 @@ article.type-plan {
 						.lsx-slot {
 							width: 49%;
 							> .row {
+								height: 100%;
 								.col-md-2 {
 									width: 27%;
+									height: 100%;
 									.exercise-feature-img {
-										a {
-											img {
-												max-width: 100px;
-											}
+										height: 100%;
+										img {
+											max-width: 100px;
+											height: fill-available;
+											object-fit: cover;
+											max-height: 120px;
 										}
 									}
 								}
@@ -628,9 +632,10 @@ article.type-plan {
 						@include media('>=tablet') {
 							img {
 								width: 100%;
-								object-fit: contain;
 								min-height: 125px;
-								max-height: 140px;
+								height: 100%;
+								max-height: 100%;
+								object-fit: cover;
 							}
 						}
 					}
@@ -673,6 +678,10 @@ article.type-plan {
 								margin-left: 3px;
 							}
 						}
+					}
+					.lsx-exercises-excerpt {
+						margin: 0;
+						font-size: 13px;
 					}
 					.btn {
 						width: 100%;

@@ -45,7 +45,28 @@ if ( ! empty( $groups ) ) {
 		<div class="workout-grid row">
 			<?php
 			foreach ( $groups as $group ) {
-				if ( isset( $group['connected_exercises'] ) ) {
+				$connected_exercise = false;
+				if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+					$connected_exercise = true;
+				}
+
+				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && '' !== $group['alt_title'] && isset( $group['alt_title'] ) ) ) {
+
+					$alt_title = '';
+					if ( isset( $group['alt_title'] ) && '' !== $group['alt_title'] ) {
+						$alt_title = '<span class="alt-title">' . esc_html( $group['alt_title'] ) . '</span>';
+					}
+
+					$alt_description = '';
+					if ( isset( $group['alt_description'] ) && '' !== $group['alt_description'] ) {
+						$alt_description = '<span class="alt-description">' . esc_html( $group['alt_description'] ) . '</span>';
+					}
+
+					$alt_image = '';
+					if ( isset( $group['exercise_alt_thumbnail'] ) && '' !== $group['exercise_alt_thumbnail'] ) {
+						$alt_image = $group['exercise_alt_thumbnail'];
+					}
+
 					$reps = '';
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
@@ -85,6 +106,9 @@ if ( ! empty( $groups ) ) {
 										'class' => 'aligncenter',
 									);
 									$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'medium', $thumbnail_args );
+									if ( $alt_image ) {
+										$featured_image = '<img alt="thumbnail" loading="lazy" class="aligncenter wp-post-image" src="' . $alt_image . '">';
+									}
 									if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 										echo wp_kses_post( $featured_image );
 									} else {
@@ -100,6 +124,9 @@ if ( ! empty( $groups ) ) {
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											if ( '' !== $alt_title ) {
+												$exercise_title = $alt_title;
+											}
 											echo wp_kses_post( $exercise_title );
 											?>
 										</a>
@@ -120,15 +147,23 @@ if ( ! empty( $groups ) ) {
 								</div>
 								<?php
 								if ( '' !== $content_setting ) {
-									if ( 'excerpt' === $content_setting ) {
-										$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
-										?>
-											<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $excerpt ); ?></p>
+									?>
+									<p class="lsx-exercises-excerpt">
 										<?php
-									}
-									if ( 'full' === $content_setting ) {
-										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
-									}
+										if ( 'excerpt' === $content_setting ) {
+											$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
+
+											if ( '' !== $alt_description ) {
+												$excerpt = $alt_description;
+											}
+											echo wp_kses_post( $excerpt );
+										}
+										if ( 'full' === $content_setting ) {
+											echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
+										}
+										?>
+									</p>
+									<?php
 								}
 								?>
 							</div>

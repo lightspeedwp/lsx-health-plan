@@ -375,8 +375,7 @@ add_action( 'pre_get_posts', '\lsx_health_plan\functions\set_only_author' );
  */
 function hp_excerpt( $post_id ) {
 	if ( ! has_excerpt( $post_id ) ) {
-		$content = wp_trim_words( get_the_content( $post_id ), 20 );
-		$content = '<p>' . $content . '</p>';
+		$content = wp_trim_words( get_post_field( 'post_content', $post_id ), 10 );
 	} else {
 		$content = get_the_excerpt( $post_id );
 	}
