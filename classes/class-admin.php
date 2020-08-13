@@ -58,6 +58,7 @@ class Admin {
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 20, 4 );
+		add_action( 'cmb2_save_field', array( $this, 'create_query_fields' ), 20, 4 );
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
 	}
 
@@ -344,6 +345,29 @@ class Admin {
 						update_post_meta( $con_id, $connected_key, $new_connections, $their_connections );
 					}
 				}
+			}
+		}
+	}
+
+	/**
+	 * Saves the serialized post ids in singular custom fields so they are easily queried using WP_Query
+	 *
+	 * @return    void
+	 */
+	public function create_query_fields( $field_id, $updated, $action, $cmb2 ) {
+		// If the connections are empty then skip this function.
+		$search_fields = array(
+			'plan_product',
+		);
+		if ( ! in_array( $field_id, $search_fields ) ) {
+			return;
+		}
+
+		// If the field has been updated.
+		if ( isset( $cmb2->data_to_save['ID'] ) && isset( $cmb2->data_to_save[ $field_id . '_results' ] ) && ! empty( $cmb2->data_to_save[ $field_id . '_results' ] ) ) {
+			delete_post_meta( $cmb2->data_to_save['ID'], '_' . $field_id . '_id' );
+			foreach ( $cmb2->data_to_save[ $field_id . '_results' ] as $temp ) {
+				add_post_meta( $cmb2->data_to_save['ID'], '_' . $field_id . '_id', $temp, false );
 			}
 		}
 	}
