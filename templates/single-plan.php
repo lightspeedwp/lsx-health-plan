@@ -33,8 +33,8 @@ if ( ! empty( $has_children ) ) {
 }
 
 // Get the plan restrictions.
-if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
-	$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_memberships_is_post_content_restricted( get_the_ID() ) ) {
+	$restricted = ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 }
 ?>
 

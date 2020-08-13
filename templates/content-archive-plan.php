@@ -6,22 +6,22 @@
  */
 global $shortcode_args, $product;
 
-	$groups = '';
-	$groups_class = '';
-	$terms = get_the_terms( get_the_ID(), 'plan-type' );
+$groups = '';
+$groups_class = '';
+$terms = get_the_terms( get_the_ID(), 'plan-type' );
 
-	if ( $terms && ! is_wp_error( $terms ) ) {
-		$groups = array();
-		$groups_class = array();
+if ( $terms && ! is_wp_error( $terms ) ) {
+	$groups = array();
+	$groups_class = array();
 
-		foreach ( $terms as $term ) {
-			$groups[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
-			$groups_class[] = 'filter-' . $term->slug;
-		}
-
-		$groups = join( ', ', $groups );
-		$groups_class = join( ' ', $groups_class );
+	foreach ( $terms as $term ) {
+		$groups[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
+		$groups_class[] = 'filter-' . $term->slug;
 	}
+
+	$groups = join( ', ', $groups );
+	$groups_class = join( ' ', $groups_class );
+}
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -33,14 +33,14 @@ $completed_class = '4';
 $link_html       = '';
 $link_close      = '';
 $linked_product  = false;
-$restricted      = false;
+$restricted      = '';
 if ( \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
 	$products       = \lsx_health_plan\functions\woocommerce\get_plan_products();
 	$linked_product = wc_get_product( $products[0] );
 	$product        = $linked_product;
 
-	if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
-		$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
+	if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_memberships_is_post_content_restricted( get_the_ID() ) ) {
+		$restricted = ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 	}
 }
 
@@ -126,13 +126,17 @@ if ( null !== $shortcode_args ) {
 			</div>
 			<?php
 			if ( false !== $linked_product ) {
-				if ( false !== $restricted ) {
+				if ( true === $restricted ) {
 					?>
 					<a class="btn" href="<?php echo esc_attr( $linked_product->add_to_cart_url() ); ?>"><?php echo esc_attr( $linked_product->add_to_cart_text() ); ?></a>
 					<?php
-				} else {
+				} elseif ( false === $restricted ) {
 					?>
 					<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
+					<?php
+				} else {
+					?>
+					<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
 					<?php
 				}
 			}
