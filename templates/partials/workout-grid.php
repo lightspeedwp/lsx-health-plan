@@ -89,7 +89,7 @@ if ( ! empty( $groups ) ) {
 										echo wp_kses_post( $featured_image );
 									} else {
 										?>
-										<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
+										<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
 										<?php
 									}
 									?>

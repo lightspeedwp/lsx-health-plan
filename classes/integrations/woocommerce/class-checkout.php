@@ -163,16 +163,16 @@ class Checkout {
 		?>
 		<div class="row text-center vertical-align lsx-full-width-base-small checkout-cta-bottom">
 			<div class="col-md-12 img-payfast">
-				<img src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
+				<img loading="lazy" src="<?php echo esc_url( $payfast_image ); ?>" alt="payfast"/>
 			</div>
 			<div class="col-md-12 img-payments hidden-xs">
-				<img src="<?php echo esc_url( $payment_logos ); ?>" alt="payments"/>
+				<img loading="lazy" src="<?php echo esc_url( $payment_logos ); ?>" alt="payments"/>
 			</div>
 			<div class="col-md-12 img-payments hidden-sm hidden-md hidden-lg">
-				<img src="<?php echo esc_url( $payment_logos_mobile ); ?>" alt="payments"/>
+				<img loading="lazy" src="<?php echo esc_url( $payment_logos_mobile ); ?>" alt="payments"/>
 			</div>
 			<div class="col-md-12 img-encrypt">
-				<img src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
+				<img loading="lazy" src="<?php echo esc_url( $encript_image ); ?>" alt="lets_encrypt"/>
 			</div>
 		</div>
 
