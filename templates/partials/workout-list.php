@@ -55,6 +55,11 @@ if ( ! empty( $groups ) ) {
 						$alt_description = '<span class="alt-description">' . esc_html( $group['alt_description'] ) . '</span>';
 					}
 
+					$alt_image = '';
+					if ( isset( $group['exercise_alt_thumbnail'] ) && '' !== $group['exercise_alt_thumbnail'] ) {
+						$alt_image = $group['exercise_alt_thumbnail'];
+					}
+
 					$reps = '';
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
@@ -100,6 +105,9 @@ if ( ! empty( $groups ) ) {
 											'class' => 'aligncenter',
 										);
 										$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'medium', $thumbnail_args );
+										if ( $alt_image ) {
+											$featured_image = '<img alt="thumbnail" loading="lazy" class="aligncenter wp-post-image" src="' . $alt_image . '">';
+										}
 										if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 											echo wp_kses_post( $featured_image );
 										} else {
