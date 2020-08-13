@@ -37,7 +37,24 @@ if ( ! empty( $groups ) ) {
 		<div class="workout-list">
 			<?php
 			foreach ( $groups as $group ) {
+
+				$connected_exercise = false;
 				if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+					$connected_exercise = true;
+				}
+
+				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && '' !== $group['alt_title'] && isset( $group['alt_title'] ) ) ) {
+
+					$alt_title = '';
+					if ( isset( $group['alt_title'] ) && '' !== $group['alt_title'] ) {
+						$alt_title = '<span class="alt-title">' . esc_html( $group['alt_title'] ) . '</span>';
+					}
+
+					$alt_description = '';
+					if ( isset( $group['alt_description'] ) && '' !== $group['alt_description'] ) {
+						$alt_description = '<span class="alt-description">' . esc_html( $group['alt_description'] ) . '</span>';
+					}
+
 					$reps = '';
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
@@ -45,15 +62,23 @@ if ( ! empty( $groups ) ) {
 					// Setup our link and content.
 					switch ( $link_setting ) {
 						case 'single':
-							$link_html  = '<a href="' . get_permalink( $group['connected_exercises'] ) . '">';
-							$link_close = '</a>';
+							$link_html  = '';
+							$link_close = '';
+							if ( $connected_exercise ) {
+								$link_html  = '<a href="' . get_permalink( $group['connected_exercises'] ) . '">';
+								$link_close = '</a>';
+							}
 							break;
 
 						case 'modal':
-							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
-							$link_close = '</a>';
-							// We call the button to register the modal, but we do not output it.
-							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							$link_html  = '';
+							$link_close = '';
+							if ( $connected_exercise ) {
+								$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+								$link_close = '</a>';
+								// We call the button to register the modal, but we do not output it.
+								lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							}
 							break;
 
 						case 'none':
@@ -92,6 +117,9 @@ if ( ! empty( $groups ) ) {
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											if ( '' !== $alt_title ) {
+												$exercise_title = $alt_title;
+											}
 											if ( '' !== $reps ) {
 												$exercise_title .= $reps;
 											}
