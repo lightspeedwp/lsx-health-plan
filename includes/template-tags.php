@@ -320,8 +320,8 @@ function lsx_health_plan_all_plans_block() {
 		'nopagin'        => true,
 		'post_parent'    => 0,
 	);
-	$product_ids = \lsx_health_plan\functions\woocommerce\get_membership_products();
 
+	$product_ids = \lsx_health_plan\functions\woocommerce\get_membership_products();
 	if ( ! empty( $product_ids ) ) {
 		$args['meta_query'] = array(
 			'relation' => 'OR',
