@@ -251,9 +251,9 @@ class Exercise {
 				'id'      => $this->slug . '_tips',
 				'type'    => 'group',
 				'options' => array(
-					'group_title'   => __( 'Tip', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
-					'add_button'    => __( 'Add another tip', 'your-text-domain' ),
-					'remove_button' => __( 'Remove tip', 'your-text-domain' ),
+					'group_title'   => __( 'Tip', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add another tip', 'lsx-health-plan' ),
+					'remove_button' => __( 'Remove tip', 'lsx-health-plan' ),
 					'sortable'      => true,
 				),
 				'classes' => 'lsx-admin-row',
@@ -264,7 +264,7 @@ class Exercise {
 		$cmb->add_group_field(
 			$tip_group,
 			array(
-				'name' => __( 'Thumbnail', 'your-text-domain' ),
+				'name' => __( 'Thumbnail', 'lsx-health-plan' ),
 				'id'   => $this->slug . '_tip_thumbnail',
 				'type' => 'file',
 				'text'        => array(
@@ -286,7 +286,7 @@ class Exercise {
 		$cmb->add_group_field(
 			$tip_group,
 			array(
-				'name'    => __( 'Description', 'your-text-domain' ),
+				'name'    => __( 'Description', 'lsx-health-plan' ),
 				'id'      => $this->slug . '_tip_content',
 				'type'    => 'textarea',
 				'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
@@ -370,8 +370,8 @@ class Exercise {
 				'id'      => $this->slug . '_gallery_layout',
 				'type'    => 'radio',
 				'options' => array(
-					'slider' => __( 'Slider', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
-					'grid'   => __( 'Grid', 'your-text-domain' ),
+					'slider' => __( 'Slider', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
+					'grid'   => __( 'Grid', 'lsx-health-plan' ),
 				),
 			)
 		);
@@ -391,9 +391,9 @@ class Exercise {
 				'id'      => $this->slug . '_gallery',
 				'type'    => 'group',
 				'options' => array(
-					'group_title'   => __( 'Gallery', 'your-text-domain' ) . ' {#}', // {#} gets replaced by row number
-					'add_button'    => __( 'Add Item', 'your-text-domain' ),
-					'remove_button' => __( 'Remove Item', 'your-text-domain' ),
+					'group_title'   => __( 'Gallery', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add Item', 'lsx-health-plan' ),
+					'remove_button' => __( 'Remove Item', 'lsx-health-plan' ),
 					'sortable'      => true,
 				),
 				'classes' => 'lsx-admin-row',
@@ -404,7 +404,7 @@ class Exercise {
 		$cmb->add_group_field(
 			$gallery_group,
 			array(
-				'name'       => __( 'Image', 'your-text-domain' ),
+				'name'       => __( 'Image', 'lsx-health-plan' ),
 				'id'         => $this->slug . '_gallery_image',
 				'type'       => 'file',
 				'text'       => array(
@@ -427,7 +427,7 @@ class Exercise {
 		$cmb->add_group_field(
 			$gallery_group,
 			array(
-				'name'         => __( 'oEmbed', 'your-text-domain' ),
+				'name'         => __( 'oEmbed', 'lsx-health-plan' ),
 				'id'           => $this->slug . '_gallery_embed',
 				'type'         => 'text',
 				'desc'         => __( 'Drop in the embed url for your video from YouTube, Vimeo or DailyMotion, e.g: "https://www.youtube.com/watch?v=9xwazD5SyVg". A full list of supports formats can be found at <a href="https://make.wordpress.org/support/user-manual/content/media/adding-media-to-your-pages-and-posts/embedding-media-from-other-sites/">WordPress</a>', 'lsx-health-plan' ),
@@ -438,7 +438,7 @@ class Exercise {
 		$cmb->add_group_field(
 			$gallery_group,
 			array(
-				'name'         => __( 'External Media', 'your-text-domain' ),
+				'name'         => __( 'External Media', 'lsx-health-plan' ),
 				'id'           => $this->slug . '_gallery_external',
 				'type'         => 'textarea_code',
 				'desc'         => __( 'Drop in the iFrame embed code from Giphy in this field, i.e: &lt;iframe src="https://giphy.com/embed/3o7527Rn1HxXWqgxuo" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;', 'lsx-health-plan' ),
@@ -470,9 +470,9 @@ class Exercise {
 				'id'      => $this->slug . '_side',
 				'type'    => 'select',
 				'options' => array(
-					''      => __( 'Select', 'your-text-domain' ),
-					'left'  => __( 'Left', 'your-text-domain' ),
-					'right' => __( 'Right', 'your-text-domain' ),
+					''      => __( 'Select', 'lsx-health-plan' ),
+					'left'  => __( 'Left', 'lsx-health-plan' ),
+					'right' => __( 'Right', 'lsx-health-plan' ),
 				),
 				'desc'    => __( 'Select which side this exercise uses. ', 'lsx-health-plan' ),
 			)

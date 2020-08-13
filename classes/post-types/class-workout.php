@@ -258,12 +258,50 @@ class Workout {
 				$cmb_group->add_group_field(
 					$group_field_id,
 					array(
+						'name' => esc_html__( 'Exercise title (Optional)', 'lsx-health-plan' ),
+						'id'   => 'alt_title',
+						'type' => 'text',
+					)
+				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
+						'name' => esc_html__( 'Exercise Description (Optional)', 'lsx-health-plan' ),
+						'id'   => 'alt_description',
+						'type' => 'textarea_small',
+					)
+				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
 						'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
 						'id'   => 'reps',
 						'type' => 'text',
 						// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 					)
 				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
+						'name'         => __( 'Exercise Image (Optional)', 'lsx-health-plan' ),
+						'id'           => 'exercise_alt_thumbnail',
+						'type'         => 'file',
+						'text'         => array(
+							'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
+						),
+						'desc'         => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
+						'query_args'   => array(
+							'type' => array(
+								'image/gif',
+								'image/jpeg',
+								'image/png',
+							),
+						),
+						'preview_size' => 'thumbnail',
+						'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+					)
+				);
+
 				$i++;
 			};
 		}
