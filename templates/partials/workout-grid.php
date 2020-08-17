@@ -132,19 +132,6 @@ if ( ! empty( $groups ) ) {
 										</a>
 									<?php echo wp_kses_post( $link_close ); ?>
 								</h3>
-								<div class="reps-container">
-									<?php
-									if ( '' !== $reps ) {
-									?>
-										<?php echo wp_kses_post( $reps ); ?>
-									<?php
-									}
-									?>
-									<?php if ( '' !== $link_html ) { ?>
-										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
-										<?php echo wp_kses_post( $link_close ); ?>
-									<?php } ?>
-								</div>
 								<?php
 								if ( '' !== $content_setting ) {
 									?>
@@ -166,6 +153,19 @@ if ( ! empty( $groups ) ) {
 									<?php
 								}
 								?>
+								<div class="reps-container">
+									<?php
+									if ( '' !== $reps ) {
+									?>
+										<?php echo wp_kses_post( $reps ); ?>
+									<?php
+									}
+									?>
+									<?php if ( '' !== $link_html ) { ?>
+										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
+										<?php echo wp_kses_post( $link_close ); ?>
+									<?php } ?>
+								</div>
 							</div>
 						</article>
 					</div>

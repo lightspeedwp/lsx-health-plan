@@ -381,7 +381,7 @@ class Exercise {
 				'name'    => __( 'Grid Columns', 'lsx-health-plan' ),
 				'id'      => $this->slug . '_gallery_columns',
 				'type'    => 'text',
-				'default' => '3',
+				'default' => '1',
 			)
 		);
 

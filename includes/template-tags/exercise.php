@@ -86,6 +86,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		}
 
 		$modal_body  = '';
+
 		if ( $lsx_hp->frontend->gallery->has_gallery( $exercise_id ) ) {
 			$gallery_args = array(
 				'css_class' => 'modal-slider',

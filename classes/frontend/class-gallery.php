@@ -93,17 +93,19 @@ class Gallery {
 	 * @return boolean
 	 */
 	public function has_gallery( $item_id = '', $post_type = '' ) {
+
 		if ( '' === $item_id ) {
 			$this->item_id = get_the_ID();
 		} else {
 			$this->item_id = $item_id;
 		}
-
+		$this->has_gallery = false;
 		if ( '' === $post_type ) {
 			$this->post_type = get_post_type( $this->item_id );
 		}
 		$gallery = get_post_meta( $this->item_id, $this->post_type . '_gallery', true );
-		if ( ! empty( $gallery ) ) {
+
+		if ( ! empty( $gallery ) && ( '' !== $gallery ) ) {
 			$this->gallery     = $gallery;
 			$this->has_gallery = true;
 			wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/src/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
