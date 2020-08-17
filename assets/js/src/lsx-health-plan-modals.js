@@ -30,7 +30,6 @@ var LSX_HP_MODALS = Object.create( null );
 				LSX_HP_SLIDER.sliders.element = jQuery('#'+e.target.id).find('.lsx-hp-widget-items.slick-slider' );
 				LSX_HP_SLIDER.sliders.init();
 			}
-			console.log('running2');
 		 });
     };
     

@@ -39,46 +39,51 @@ var LSX_HP_SLIDER = Object.create( null );
      */
     LSX_HP_SLIDER.sliders.init = function( ) {
         LSX_HP_SLIDER.sliders.element.each( function() {
-            var slidesToShow = 1;
-            var slidesToScroll = 1;
-            var slickData = $(this).attr('data-slick');
-            if ( undefined !== slickData) {
 
-                if ( undefined !== slickData.slidesToShow ) {
-                    slidesToShow = slickData.slidesToShow;
-                }
-                if ( undefined !== slickData.slidesToScroll ) {
-                    slidesToScroll = slickData.slidesToScroll;
-                }
-            }
-
-            $(this).slick({
-                dots: true,
-                infinite: false,
-                speed: 300,
-                slidesToShow: slidesToShow,
-				slidesToScroll: slidesToScroll,
-				adaptiveHeight: true,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: slidesToShow,
-                            slidesToScroll: slidesToScroll,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1,
-							slidesToScroll: 1,
-							arrows: false
-                        }
-                    }
-                ]
-            });
+			// Determine the number of slides, if mroe than 1, then run the slider.
+			var itemCount = $(this).find( '.lsx-hp-widget-item-wrap' );
+			if ( 1 < itemCount ) {
+				var slidesToShow = 1;
+				var slidesToScroll = 1;
+				var slickData = $(this).attr('data-slick');
+				if ( undefined !== slickData) {
+	
+					if ( undefined !== slickData.slidesToShow ) {
+						slidesToShow = slickData.slidesToShow;
+					}
+					if ( undefined !== slickData.slidesToScroll ) {
+						slidesToScroll = slickData.slidesToScroll;
+					}
+				}
+	
+				$(this).slick({
+					dots: true,
+					infinite: false,
+					speed: 300,
+					slidesToShow: slidesToShow,
+					slidesToScroll: slidesToScroll,
+					adaptiveHeight: true,
+					responsive: [
+						{
+							breakpoint: 1024,
+							settings: {
+								slidesToShow: slidesToShow,
+								slidesToScroll: slidesToScroll,
+								infinite: true,
+								dots: true
+							}
+						},
+						{
+							breakpoint: 600,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+								arrows: false
+							}
+						}
+					]
+				});
+			}
 		} );
 	};
 
