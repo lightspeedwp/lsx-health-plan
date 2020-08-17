@@ -81,9 +81,11 @@ class Meal {
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-carrot',
 			'query_var'          => true,
-			'rewrite'            => false,
+			'rewrite'            => array(
+				'slug' => \lsx_health_plan\functions\get_option( 'meal_single_slug', 'meal' ),
+			),
 			'capability_type'    => 'post',
-			'has_archive'        => false,
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_meal_archive', 'meals' ),
 			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(

@@ -118,7 +118,16 @@ class Settings {
 				'id'          => 'connected_meals',
 			);
 			$this->endpoints['endpoint_meal'] = array(
-				'title'   => __( 'Meal Endpoint', 'lsx-health-plan' ),
+				'title'       => __( 'Meal Endpoint', 'lsx-health-plan' ),
+				'default'     => 'meal',
+				'description' => __( 'Define the tab slug which shows on the single plan page.', 'lsx-health-plan' ),
+			);
+			$this->endpoints['endpoint_meal_archive'] = array(
+				'title'   => __( 'Meals Archive Endpoint', 'lsx-health-plan' ),
+				'default' => 'meals',
+			);
+			$this->endpoints['meal_single_slug'] = array(
+				'title'   => __( 'Single Meal Slug', 'lsx-health-plan' ),
 				'default' => 'meal',
 			);
 		}
