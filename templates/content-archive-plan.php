@@ -81,6 +81,8 @@ if ( null !== $shortcode_args ) {
 		$content_setting = $shortcode_args['description'];
 	}
 }
+
+$featured      = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
 ?>
 
 <div class="lsx-plan-column col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?> <?php echo esc_attr( $groups_class ); ?>">
@@ -88,6 +90,9 @@ if ( null !== $shortcode_args ) {
 		<?php lsx_entry_top(); ?>
 
 		<div class="plan-feature-img">
+			<?php if ( $featured ) { ?>
+				<span class="featured-plan"><?php lsx_get_svg_icon( 'icon-featured.svg' ); ?></span>
+			<?php } ?>
 			<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php
 			$featured_image = get_the_post_thumbnail();
@@ -97,7 +102,7 @@ if ( null !== $shortcode_args ) {
 				) );
 			} else {
 				?>
-				<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+				<img loading="lazy" class="placeholder" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 				<?php
 			}
 			?>

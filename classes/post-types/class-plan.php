@@ -40,6 +40,7 @@ class Plan {
 		$prefix_taxonomy = 'plan-type';
 		add_action( sprintf( '%s_edit_form_fields', $prefix_taxonomy ), array( $this, 'add_thumbnail_form_field' ), 3, 1 );
 
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
@@ -360,5 +361,30 @@ class Plan {
 		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'plan' ) || $wp_query->is_tax( 'plan-type' ) ) ) {
 			$wp_query->set( 'post_parent', '0' );
 		}
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function featured_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox_plan',
+				'title'        => __( 'Featured Plan', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Plan', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable a featured plan' ),
+				'id'         => $this->slug . '_featured_plan',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>featured badge</title>
+    <g id="My-Plan---Desktop-+-Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Health-Plans---Landing-page---Logged-in" transform="translate(-158.000000, -444.000000)">
+            <g id="Group-10-Copy" transform="translate(160.000000, 446.000000)">
+                <circle id="Oval" stroke="#F7AE00" stroke-width="2.35846154" fill="#FFFFFF" cx="36.3664396" cy="36.3664396" r="36.3664396"></circle>
+                <polygon id="Star" fill="#F7AE00" points="36.1841346 33.7118056 26.9469261 38.5680935 28.7110759 28.2823106 21.2380173 20.9978788 31.5655304 19.4972033 36.1841346 10.1388889 40.8027389 19.4972033 51.130252 20.9978788 43.6571933 28.2823106 45.4213431 38.5680935"></polygon>
+                <text id="Featured" font-family="NotoSans, Noto Sans" font-size="12" font-weight="normal" fill="#F7AE00">
+                    <tspan x="11.2666016" y="53.291453">Featured</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

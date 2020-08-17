@@ -724,6 +724,10 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 .archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
+.archive-plan .row .lsx-slot .plan-feature-img .featured-plan { position: absolute; margin: 1rem; }
+
+.archive-plan .row .lsx-slot .plan-feature-img img.placeholder { width: 100%; max-height: 200px; -o-object-fit: cover; object-fit: cover; }
+
 .post-type-archive-recipe .bottom-single-recipe, .tax-recipe-type .bottom-single-recipe, .tax-recipe-cuisine .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan, .lsx-exercises-shortcode .entry-content, .lsx-exercises-shortcode .tab-content-plan, .single-workout .entry-content, .single-workout .tab-content-plan { background: #ffffff; padding: 25px 40px; }
