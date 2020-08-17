@@ -168,7 +168,9 @@ class Gallery {
 				$this->loop_start();
 
 				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
-					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
+					$size         = apply_filters( 'lsx_hp_exercise_gallery_size', 'lsx-thumbnail-single' );
+					$thumbnail    = wp_get_attachment_image( $gallery['exercise_gallery_image_id'], $size );
+					$this->html[] = $thumbnail;
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
 					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
