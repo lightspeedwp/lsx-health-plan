@@ -214,7 +214,8 @@
 	}
 }
 
-article.type-plan {
+article.type-plan,
+article.type-meal {
 	.entry-content {
 		padding: 0;
 		.overview {
@@ -415,7 +416,8 @@ article.type-plan {
 .single-plan,
 .archive-plan,
 .lsx-exercises-shortcode,
-.single-workout {
+.single-workout,
+.single-meal {
 	.entry-content,
 	.tab-content-plan {
 		background: $white;
