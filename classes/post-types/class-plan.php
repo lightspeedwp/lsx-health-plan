@@ -169,6 +169,7 @@ class Plan {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
+			'show_in_rest'      => true,
 			'rewrite'           => array(
 				'slug' => 'week',
 			),

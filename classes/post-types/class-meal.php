@@ -90,6 +90,8 @@ class Meal {
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'editor',
+				'thumbnail',
 				'page-attributes',
 				'custom-fields',
 			),
