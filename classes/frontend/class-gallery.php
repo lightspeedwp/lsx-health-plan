@@ -93,6 +93,8 @@ class Gallery {
 	 * @return boolean
 	 */
 	public function has_gallery( $item_id = '', $post_type = '' ) {
+		$this->gallery     = array();
+		$this->has_gallery = false;
 		if ( '' === $item_id ) {
 			$this->item_id = get_the_ID();
 		} else {

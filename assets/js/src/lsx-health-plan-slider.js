@@ -18,7 +18,7 @@ var LSX_HP_SLIDER = Object.create( null );
     LSX_HP_SLIDER.init = function() {
 		LSX_HP_SLIDER.sliders.element = [];
 		LSX_HP_SLIDER.sliders.element = jQuery('.lsx-videos-shortcode.slick-slider, .lsx-hp-widget-items.slick-slider:not(.modal-slider)');
-		console.log(LSX_HP_SLIDER.sliders.element);
+
         if ( 0 <  LSX_HP_SLIDER.sliders.element.length && undefined !== LSX_HP_SLIDER.sliders.element ) {
             LSX_HP_SLIDER.sliders.init();
 		}
@@ -42,7 +42,7 @@ var LSX_HP_SLIDER = Object.create( null );
 
 			// Determine the number of slides, if mroe than 1, then run the slider.
 			var itemCount = $(this).find( '.lsx-hp-widget-item-wrap' );
-			if ( 1 < itemCount ) {
+			if ( 1 < itemCount.length ) {
 				var slidesToShow = 1;
 				var slidesToScroll = 1;
 				var slickData = $(this).attr('data-slick');
