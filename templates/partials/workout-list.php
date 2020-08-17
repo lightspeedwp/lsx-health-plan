@@ -79,10 +79,17 @@ if ( ! empty( $groups ) ) {
 							$link_html  = '';
 							$link_close = '';
 							if ( $connected_exercise ) {
-								$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
-								$link_close = '</a>';
-								// We call the button to register the modal, but we do not output it.
-								lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+								if ( ( '' !== $alt_title ) || ( '' !== $alt_description ) || ( '' !== $alt_image ) ) {
+									$link_html  = '<a class="alt-modal" data-toggle="modal" href="#workout-alt-exercise-modal-' . $group['connected_exercises'] . '">';
+									$link_close = '</a>';
+									// We call the button to register the alt modal, but we do not output it.
+									lsx_health_plan_workout_exercise_alt_button( $group['connected_exercises'], $group, false, $modal_args, $alt_title, $alt_description, $alt_image );
+								} else {
+									$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+									$link_close = '</a>';
+									// We call the button to register the modal, but we do not output it.
+									lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+								}
 							}
 							break;
 

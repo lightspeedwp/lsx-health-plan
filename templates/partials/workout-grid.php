@@ -50,6 +50,10 @@ if ( ! empty( $groups ) ) {
 					$connected_exercise = true;
 				}
 
+				if ( ! $connected_exercise ) {
+					$group['connected_exercises'] = '';
+				}
+
 				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && '' !== $group['alt_title'] && isset( $group['alt_title'] ) ) ) {
 
 					$alt_title = '';
@@ -83,10 +87,18 @@ if ( ! empty( $groups ) ) {
 							break;
 
 						case 'modal':
-							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
-							$link_close = '</a>';
-							// We call the button to register the modal, but we do not output it.
-							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							if ( ( '' !== $alt_title ) || ( '' !== $alt_description ) || ( '' !== $alt_image ) ) {
+								$link_html  = '<a class="alt-modal" data-toggle="modal" href="#workout-alt-exercise-modal-' . $group['connected_exercises'] . '">';
+								$link_close = '</a>';
+								// We call the button to register the alt modal, but we do not output it.
+								lsx_health_plan_workout_exercise_alt_button( $group['connected_exercises'], $group, false, $modal_args, $alt_title, $alt_description, $alt_image );
+							} else {
+								$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+								$link_close = '</a>';
+								// We call the button to register the modal, but we do not output it.
+								lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							}
+
 							break;
 
 						case 'none':
@@ -161,7 +173,7 @@ if ( ! empty( $groups ) ) {
 									<?php
 									}
 									?>
-									<?php if ( '' !== $link_html ) { ?>
+									<?php if ( ( '' !== $link_html ) && ( $connected_exercise ) ) { ?>
 										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
 										<?php echo wp_kses_post( $link_close ); ?>
 									<?php } ?>

@@ -316,7 +316,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .my-plan-shortcode .breadcrumbs-container { z-index: 5; }
 
-.my-plan-shortcode .entry-content:first-child .my-profile-block { margin-top: -25px; }
+.my-plan-shortcode .entry-content:first-child .my-profile-block { margin-top: -70px; }
 
 .my-profile-block { overflow: initial !important; }
 
@@ -722,11 +722,11 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 @media (max-width: 600px) { .menu-my-account.lsx-block-container.alignfull .lsx-container-content { padding: 0em 3em 1em; } }
 
-.archive-plan .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+.archive-plan .row, .all-plans-block .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.archive-plan .row .lsx-slot .plan-feature-img .featured-plan { position: absolute; margin: 1rem; }
+.archive-plan .row .lsx-slot .plan-feature-img .featured-plan, .all-plans-block .row .lsx-slot .plan-feature-img .featured-plan { position: absolute; margin: 1rem; }
 
-.archive-plan .row .lsx-slot .plan-feature-img img.placeholder { width: 100%; max-height: 200px; -o-object-fit: cover; object-fit: cover; }
+.archive-plan .row .lsx-slot .plan-feature-img img.placeholder, .all-plans-block .row .lsx-slot .plan-feature-img img.placeholder { width: 100%; max-height: 200px; -o-object-fit: cover; object-fit: cover; }
 
 .post-type-archive-recipe .bottom-single-recipe, .tax-recipe-type .bottom-single-recipe, .tax-recipe-cuisine .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
