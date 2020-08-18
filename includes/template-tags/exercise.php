@@ -50,6 +50,80 @@ function lsx_health_plan_exercise_data() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/table-exercise-data.php';
 }
 
+function lsx_health_plan_workout_exercise_alt_button( $m, $group, $echo = true, $args = array(), $alt_title, $alt_description, $alt_image ) {
+	$defaults = array(
+		'modal_trigger' => 'button',
+		'modal_content' => 'excerpt',
+	);
+	$args     = wp_parse_args( $args, $defaults );
+
+	$exercise_id = '';
+	if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+		$exercise_id     = esc_html( $group['connected_exercises'] );
+		$content         = get_post_field( 'post_content', $exercise_id );
+		$url             = get_permalink( $exercise_id );
+		$equipment_group = get_the_term_list( $exercise_id, 'equipment', '', ', ' );
+		$muscle_group    = get_the_term_list( $exercise_id, 'muscle-group', '', ', ' );
+		$lsx_hp          = lsx_health_plan();
+
+		if ( 'excerpt' === $args['modal_content'] ) {
+			$content = wp_trim_words( $content, 40 );
+		}
+
+		if ( 'link' ) {
+			$play_button = '<a data-toggle="modal" href="#workout-alt-exercise-modal-' . $m . '">' . get_the_title( $exercise_id ) . '</a>';
+		} else {
+			$play_button = '<button data-toggle="alt-modal" data-target="#workout-alt-exercise-modal-' . $m . '"><span class="fa fa-play-circle"></span></button>';
+		}
+
+		$modal_body  = '';
+
+		if ( '' !== $alt_image ) {
+			$modal_body .= '<div class="modal-image"/><img alt="thumbnail" loading="lazy" class="aligncenter wp-post-image" src="' . $alt_image . '"></div>';
+		} else {
+			if ( $lsx_hp->frontend->gallery->has_gallery( $exercise_id ) ) {
+				$gallery_args = array(
+					'css_class' => 'modal-slider',
+				);
+				$modal_body .= $lsx_hp->frontend->gallery->get_gallery( '', '', $gallery_args );
+			} else {
+				$modal_body .= '<div class="modal-image"/>' . get_the_post_thumbnail( $exercise_id, 'large' ) . '</div>';
+			}
+		}
+
+		if ( '' !== $alt_title ) {
+			$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . $alt_title . '</h5>';
+		} else {
+			$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $exercise_id ) . '</h5>';
+		}
+
+		if ( ! empty( $equipment_group ) ) {
+			$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+		}
+		if ( ! empty( $muscle_group ) ) {
+			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
+		}
+		$modal_body .= '</div>';
+		if ( '' !== $args['modal_content'] ) {
+			if ( '' !== $alt_description ) {
+				$modal_body .= '<div class="modal-excerpt"/>' . $alt_description . '</div>';
+			} else {
+				$modal_body .= '<div class="modal-excerpt"/>' . $content . '</div>';
+			}
+		}
+		if ( 'excerpt' === $args['modal_content'] ) {
+			$modal_body .= '<a class="moretag" target="_blank" href="' . $url . '">' . __( 'Read More', 'lsx-heal-plan' ) . '</a>';
+		}
+		\lsx_health_plan\functions\register_modal( 'workout-alt-exercise-modal-' . $m, '', $modal_body );
+
+		if ( true === $echo ) {
+			echo wp_kses_post( $play_button );
+		} else {
+			return $play_button;
+		}
+	}
+}
+
 /**
  * A function to call the play button
  *

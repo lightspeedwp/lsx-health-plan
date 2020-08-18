@@ -214,7 +214,8 @@
 	}
 }
 
-article.type-plan {
+article.type-plan,
+article.type-meal {
 	.entry-content {
 		padding: 0;
 		.overview {
@@ -382,10 +383,26 @@ article.type-plan {
 	}
 }
 
-.archive-plan {
+.archive-plan,
+.all-plans-block {
 	.row {
 		display: flex;
 		flex-wrap: wrap;
+		.lsx-slot {
+			.plan-feature-img {
+				.featured-plan {
+					position: absolute;
+					margin: 1rem;
+				}
+				img {
+					&.placeholder {
+						width: 100%;
+						max-height: 200px;
+						object-fit: cover;
+					}
+				}
+			}
+		}
 	}
 }
 .post-type-archive-recipe,
@@ -400,7 +417,8 @@ article.type-plan {
 .single-plan,
 .archive-plan,
 .lsx-exercises-shortcode,
-.single-workout {
+.single-workout,
+.single-meal {
 	.entry-content,
 	.tab-content-plan {
 		background: $white;

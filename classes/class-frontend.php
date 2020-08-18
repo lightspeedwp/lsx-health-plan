@@ -80,7 +80,7 @@ class Frontend {
 	public function assets() {
 
 		if ( is_archive() ) {
-			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_PROJECTS_VER, true );
+			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_HEALTH_PLAN_URL, true );
 		}
 
 		wp_enqueue_style( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan.css', array(), LSX_HEALTH_PLAN_VER );

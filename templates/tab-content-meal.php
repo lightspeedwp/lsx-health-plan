@@ -19,13 +19,22 @@ global $shortcode_args;
 
 	<div class="entry-content">
 		<div class="single-plan-inner meal-content">
-			<div class="single-plan-section-title meal-plan title-lined">
-				<?php lsx_get_svg_icon( 'meal.svg' ); ?>
-				<h2><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <?php the_title(); ?></h2>
-			</div>
+			<?php
+			if ( is_singular( 'meal' ) ) { ?>
+				<div class="single-plan-section-title meal-plan title-lined">
+					<?php lsx_get_svg_icon( 'meal.svg' ); ?>
+					<h2><?php the_title(); ?></h2>
+				</div>
+			<?php } else { ?>
+				<div class="single-plan-section-title meal-plan title-lined">
+					<?php lsx_get_svg_icon( 'meal.svg' ); ?>
+					<h2><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <?php the_title(); ?></h2>
+				</div>
+			<?php } ?>
 			<?php require LSX_HEALTH_PLAN_PATH . 'templates/partials/meal-plans.php'; ?>
 
 		</div>
+
 	</div><!-- .entry-content -->
 	<?php if ( null === $shortcode_args ) { ?>
 		<div class="tip-row extras-box">

@@ -375,7 +375,7 @@ function lsx_health_plan_all_plans_block() {
 									) );
 								} else {
 									?>
-									<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+									<img loading="lazy"  class="placeholder" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 									<?php
 								}
 								?>

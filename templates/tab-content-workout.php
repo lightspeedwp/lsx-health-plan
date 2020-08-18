@@ -31,7 +31,12 @@ global $shortcode_args;
 		?>
 		<div class="single-plan-inner workout-content">
 			<?php
-			if ( ! is_singular( 'workout' ) ) { ?>
+			if ( is_singular( 'workout' ) ) { ?>
+				<div class="single-plan-section-title workout title-lined">
+					<?php lsx_get_svg_icon( 'work.svg' ); ?>
+					<h2><?php the_title(); ?></h2>
+				</div>
+			<?php } else { ?>
 				<div class="single-plan-section-title workout title-lined">
 					<?php lsx_get_svg_icon( 'work.svg' ); ?>
 					<h2><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?></h2>

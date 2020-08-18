@@ -14,6 +14,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 
 <div class="meals">
 	<?php
+
 	// Looking for meals.
 	if ( empty( $connected_meals ) ) {
 		$connected_meals = get_post_meta( get_the_ID(), 'connected_meals', true );
@@ -28,7 +29,14 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 			}
 		}
 	}
+
+	// This is for the meal single template.
+	if ( is_single() && is_singular( 'meal' ) ) {
+		$connected_meals = explode( ', ', get_the_ID() );
+	}
+
 	if ( false !== $connected_meals && '' !== $connected_meals && ! empty( $connected_meals ) ) {
+
 		$args  = array(
 			'orderby'   => 'date',
 			'order'     => 'DESC',
