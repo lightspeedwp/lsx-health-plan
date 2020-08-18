@@ -62,7 +62,7 @@ class Video {
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All Videos', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
