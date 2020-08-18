@@ -18,10 +18,14 @@ class Checkout {
 	protected static $instance = null;
 
 	/**
+	 * @var string
+	 */
+	public $plan_id = '';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
 
 		// Checkout.
@@ -32,6 +36,7 @@ class Checkout {
 
 		// Cart Messages.
 		add_action( 'lsx_content_top', array( $this, 'cart_notices' ) );
+		add_filter( 'wc_add_to_cart_message_html', array( $this, 'add_to_cart_message' ), 10, 3 );
 	}
 
 	/**
@@ -47,17 +52,6 @@ class Checkout {
 			self::$instance = new self();
 		}
 		return self::$instance;
-	}
-	/**
-	 * Empties the cart before a product is added
-	 *
-	 * @param [type] $passed
-	 * @param [type] $added_product_id
-	 * @return void
-	 */
-	public function only_one_in_cart( $passed, $added_product_id ) {
-		wc_empty_cart();
-		return $passed;
 	}
 
 	/**
@@ -137,13 +131,54 @@ class Checkout {
 	}
 
 	/**
+	 * Saves the Plan ID to the cart data, so we can attach it to the order later.
+	 *
+	 * @param array $cart_item_data
+	 * @param string $product_id
+	 * @param string $variation_id
+	 * @return void
+	 */
+	public function add_plan_id_to_cart( $cart_item_data, $product_id, $variation_id ) {
+		$plan_id = filter_input( INPUT_GET, 'plan_id' );
+		if ( empty( $plan_id ) || '' === $plan_id ) {
+			return $cart_item_data;
+		}
+		$cart_item_data['plan_id'] = $plan_id;
+		return $cart_item_data;
+	}
+
+	/**
 	 * Output the WooCommerce Cart Notices.
 	 *
 	 * @return void
 	 */
 	public function cart_notices() {
-		if ( function_exists( 'woocommerce_output_all_notices' ) ) {
+		if ( function_exists( 'woocommerce_output_all_notices' ) && is_post_type_archive( 'plan' ) ) {
 			woocommerce_output_all_notices();
 		}
+	}
+
+	/**
+	 * Changes the add to cart message and adds our course name.
+	 *
+	 * @param  string  $message
+	 * @param  array   $products
+	 * @param  boolean $show_qty
+	 * @return string
+	 */
+	public function add_to_cart_message( $message, $products, $show_qty ) {
+		if ( '' !== $this->plan_id ) {
+			$title = '<strong>' . get_the_title( $this->plan_id ) . '</strong>';
+			$title = sprintf( _n( '%s has been added to your cart.', '%s have been added to your cart.', 1, 'lsx-health-plan' ), $title );
+
+			// Output success messages.
+			if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
+				$return_to = apply_filters( 'woocommerce_continue_shopping_redirect', wc_get_raw_referer() ? wp_validate_redirect( wc_get_raw_referer(), false ) : wc_get_page_permalink( 'shop' ) );
+				$message   = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( $return_to ), esc_html__( 'Continue shopping', 'lsx-health-plan' ), $title );
+			} else {
+				$message = sprintf( '<a href="%s" tabindex="1" class="button wc-forward">%s</a> %s', esc_url( wc_get_cart_url() ), esc_html__( 'View cart', 'lsx-health-plan' ), $title );
+			}
+		}
+		return $message;
 	}
 }

@@ -139,7 +139,7 @@ $featured      = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
 				if ( 1 < count( $products ) ) {
 					$button_text = __( 'Select Options', 'lsx-health-plan' );
 				} else {
-					$button_link = $linked_product->add_to_cart_url();
+					$button_link = $linked_product->add_to_cart_url() . '&plan_id=' . get_the_ID();
 					$button_text = $linked_product->add_to_cart_text();
 				}
 				?>
