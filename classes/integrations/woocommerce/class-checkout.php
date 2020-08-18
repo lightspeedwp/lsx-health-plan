@@ -23,7 +23,6 @@ class Checkout {
 	public function __construct() {
 		add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'only_one_in_cart' ), 99, 2 );
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );
-		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'breadcrumbs' ), 30, 1 );
 
 		// Checkout.
 		add_action( 'woocommerce_after_checkout_form', array( $this, 'payment_gateway_logos' ) );
@@ -31,7 +30,8 @@ class Checkout {
 		add_action( 'lsx_nav_before', array( $this, 'hp_link_lsx_navbar_header' ), 99 );
 		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
 
-		add_filter( 'wc_add_to_cart_message_html', '__return_false' );
+		// Cart Messages.
+		add_action( 'lsx_content_top', array( $this, 'cart_notices' ) );
 	}
 
 	/**
@@ -69,49 +69,6 @@ class Checkout {
 	public function checkout_button_text( $label = '' ) {
 		$label = __( 'Place order', 'lsx-health-plan' );
 		return $label;
-	}
-
-	/**
-	 * Add the "Blog" link to the breadcrumbs
-	 * @param $crumbs
-	 * @return array
-	 */
-	public function breadcrumbs( $crumbs ) {
-
-		if ( is_singular( 'plan' ) ) {
-
-			$new_crumbs    = array();
-			$new_crumbs[0] = $crumbs[0];
-
-			$new_crumbs[1] = array(
-				0 => get_the_title( wc_get_page_id( 'myaccount' ) ),
-				1 => get_permalink( wc_get_page_id( 'myaccount' ) ),
-			);
-
-			$endpoint = get_query_var( 'endpoint' );
-			if ( '' === $endpoint || false === $endpoint ) {
-				$new_crumbs[2] = array(
-					0 => get_the_title(),
-					1 => false,
-				);
-			} else {
-				$endpoint_translation = \lsx_health_plan\functions\get_option( 'endpoint_' . $endpoint, false );
-				if ( false !== $endpoint_translation && '' !== $endpoint_translation ) {
-					$endpoint = $endpoint_translation;
-				}
-				$new_crumbs[2] = array(
-					0 => get_the_title(),
-					1 => get_permalink(),
-				);
-				$new_crumbs[3] = array(
-					0 => ucwords( $endpoint ),
-					1 => false,
-				);
-			}
-
-			$crumbs = $new_crumbs;
-		}
-		return $crumbs;
 	}
 
 	/**
@@ -177,5 +134,16 @@ class Checkout {
 		</div>
 
 		<?php
+	}
+
+	/**
+	 * Output the WooCommerce Cart Notices.
+	 *
+	 * @return void
+	 */
+	public function cart_notices() {
+		if ( function_exists( 'woocommerce_output_all_notices' ) ) {
+			woocommerce_output_all_notices();
+		}
 	}
 }
