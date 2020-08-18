@@ -124,21 +124,27 @@ if ( null !== $shortcode_args ) {
 				echo wp_kses_post( $content );
 				?>
 			</div>
+
 			<?php
+			$button_link  = get_permalink();
+			$button_text  = __( 'View', 'lsx-health-plan' );
+			$button_class = '';
+
 			if ( true === $restricted ) {
+				if ( 1 < count( $products ) ) {
+					$button_text = __( 'Select Options', 'lsx-health-plan' );
+				} else {
+					$button_link = $linked_product->add_to_cart_url();
+					$button_text = $linked_product->add_to_cart_text();
+				}
 				?>
-				<a class="btn" href="<?php echo esc_attr( $linked_product->add_to_cart_url() ); ?>"><?php echo esc_attr( $linked_product->add_to_cart_text() ); ?></a>
 				<?php
 			} elseif ( false === $restricted ) {
-				?>
-				<a class="btn btn-disabled" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'Already Signed Up' ); ?></a>
-				<?php
-			} else {
-				?>
-				<a class="btn" href="<?php echo esc_attr( get_permalink() ); ?>"><?php esc_attr_e( 'View' ); ?></a>
-				<?php
+				$button_text  = __( 'Already Signed Up', 'lsx-health-plan' );
+				$button_class = 'btn-disabled';
 			}
 			?>
+			<a class="btn <?php echo esc_attr( $button_class ); ?>" href="<?php echo esc_attr( $button_link ); ?>"><?php echo esc_attr( $button_text ); ?></a>
 		</div>
 		<?php lsx_entry_bottom(); ?>
 	</article>
