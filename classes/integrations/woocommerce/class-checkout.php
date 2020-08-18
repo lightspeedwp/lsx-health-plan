@@ -35,7 +35,7 @@ class Checkout {
 		add_action( 'wp_head', array( $this, 'hp_simple_checkout' ), 99 );
 
 		// Cart Messages.
-		add_action( 'lsx_content_top', array( $this, 'cart_notices' ) );
+		add_action( 'lsx_content_wrap_before', array( $this, 'cart_notices' ) );
 		add_filter( 'wc_add_to_cart_message_html', array( $this, 'add_to_cart_message' ), 10, 3 );
 	}
 
@@ -154,7 +154,9 @@ class Checkout {
 	 */
 	public function cart_notices() {
 		if ( function_exists( 'woocommerce_output_all_notices' ) && is_post_type_archive( 'plan' ) ) {
-			woocommerce_output_all_notices();
+			echo wp_kses_post( '<div class="col-md-12 col-sm-12 woocommerce-notices-wrapper">' );
+			wc_print_notices();
+			echo wp_kses_post( '</div>' );
 		}
 	}
 

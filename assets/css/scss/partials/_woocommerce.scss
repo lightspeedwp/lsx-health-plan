@@ -302,3 +302,14 @@ body:not(.logged-in).content-restricted {
 		}
 	}
 }
+
+// Plan Archive
+.post-type-archive-plan {
+	.woocommerce-notices-wrapper {
+		margin-top: 4.25rem;
+
+		.woocommerce-message {
+			margin-bottom: 0;
+		}
+	}
+}
