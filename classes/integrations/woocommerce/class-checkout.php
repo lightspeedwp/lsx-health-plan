@@ -169,7 +169,9 @@ class Checkout {
 	 * @return string
 	 */
 	public function add_to_cart_message( $message, $products, $show_qty ) {
-		if ( '' !== $this->plan_id ) {
+		if ( isset( $_GET['plan_id'] ) ) { // @codingStandardsIgnoreLine.
+			$this->plan_id = sanitize_text_field( wp_slash( $_GET['plan_id'] ) ); // @codingStandardsIgnoreLine.
+
 			$title = '<strong>' . get_the_title( $this->plan_id ) . '</strong>';
 			$title = sprintf( _n( '%s has been added to your cart.', '%s have been added to your cart.', 1, 'lsx-health-plan' ), $title );
 
