@@ -164,8 +164,8 @@ class Recipe {
 		register_taxonomy( 'recipe-cuisine', array( $this->slug ), $args );
 
 		$labels = array(
-			'name'              => esc_html_x( 'Type', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Types', 'taxonomy singular name', 'lsx-health-plan' ),
+			'name'              => esc_html_x( 'Recipe Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Recipe Types', 'taxonomy singular name', 'lsx-health-plan' ),
 			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
 			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
 			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
