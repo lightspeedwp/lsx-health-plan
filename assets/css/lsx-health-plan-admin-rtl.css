@@ -53,7 +53,7 @@
 
 .cmb-row.lsx-admin-row .lsx-field-col-25, .cmb-row.cmb2-id-exercise-tips .lsx-field-col-25, .cmb-row.cmb2-id-exercise-details .lsx-field-col-25 { width: 25%; }
 
-.cmb-row.lsx-admin-row .lsx-field-col-33, .cmb-row.cmb2-id-exercise-tips .lsx-field-col-33, .cmb-row.cmb2-id-exercise-details .lsx-field-col-33 { width: 33.333%; }
+.cmb-row.lsx-admin-row .lsx-field-col-33, .cmb-row.cmb2-id-exercise-tips .lsx-field-col-33, .cmb-row.cmb2-id-exercise-details .lsx-field-col-33 { width: 31.333%; padding-left: 2%; }
 
 .cmb-row.lsx-admin-row .lsx-field-col-50, .cmb-row.cmb2-id-exercise-tips .lsx-field-col-50, .cmb-row.cmb2-id-exercise-details .lsx-field-col-50 { width: 50%; }
 
