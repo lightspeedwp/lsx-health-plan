@@ -477,5 +477,25 @@ class Plan {
 				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
+
+		if ( post_type_exists( 'meal' ) ) {
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Meals', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect the meal that applies to this day plan using the field provided.', 'lsx-health-plan' ),
+					'id'         => 'connected_meals',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15, // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( $this->slug ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
 	}
 }

@@ -36,7 +36,6 @@ class Meal {
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ), 15 );
 	}
 
 	/**
@@ -311,42 +310,5 @@ class Meal {
 				)
 			);
 		}
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function meal_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_meals_connections_metabox',
-			'title'        => __( 'Meal Plan', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		/*$cmb->add_field( array(
-			'name'       => __( 'Box Description', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_box_description',
-			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
-			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );*/
-		$cmb->add_field( array(
-			'name'       => __( 'Meals', 'lsx-health-plan' ),
-			'desc'       => __( 'Connect the meal that applies to this day plan using the field provided.', 'lsx-health-plan' ),
-			'id'         => 'connected_meals',
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15, // Limit selection to X items only (default 1)
-			'sortable'   => true, // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( $this->slug ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
 	}
 }
