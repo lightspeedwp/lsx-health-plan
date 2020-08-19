@@ -423,7 +423,7 @@ class Plan {
 			array(
 				'name'       => __( 'Workouts', 'lsx-health-plan' ),
 				'id'         => 'connected_workouts',
-				'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the workout(s) that apply to this section.', 'lsx-health-plan' ),
 				'type'       => 'post_search_ajax',
 				'limit'      => 15,
 				'sortable'   => true,
@@ -483,7 +483,7 @@ class Plan {
 				$group,
 				array(
 					'name'       => __( 'Meals', 'lsx-health-plan' ),
-					'desc'       => __( 'Connect the meal that applies to this day plan using the field provided.', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect the meal(s) that apply to this section.', 'lsx-health-plan' ),
 					'id'         => 'connected_meals',
 					'type'       => 'post_search_ajax',
 					// Optional :
@@ -494,6 +494,7 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
 			);
 		}
@@ -502,7 +503,7 @@ class Plan {
 				$group,
 				array(
 					'name'       => __( 'Recipes', 'lsx-health-plan' ),
-					'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect the recipe(s) that apply to this section.', 'lsx-health-plan' ),
 					'id'         => 'connected_recipes',
 					'type'       => 'post_search_ajax',
 					// Optional :
@@ -513,6 +514,27 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				)
+			);
+		}
+		if ( post_type_exists( 'tip' ) ) {
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Tips', 'lsx-health-plan' ),
+					'id'         => 'connected_tips',
+					'desc'       => __( 'Connect the tip(s) that apply to this section.', 'lsx-health-plan' ),
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true,  // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'tip' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
 			);
 		}

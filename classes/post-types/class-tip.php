@@ -35,7 +35,6 @@ class Tip {
 		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'tips_connections' ), 15 );
 	}
 
 	/**
@@ -146,36 +145,6 @@ class Tip {
 		$connections['tip']['connected_plans'] = 'connected_tips';
 		$connections['plan']['connected_tips'] = 'connected_plans';
 		return $connections;
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function tips_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_tips_connections_metabox',
-			'title'        => __( 'Tips', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => false,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Tips', 'lsx-health-plan' ),
-			'id'         => 'connected_tips',
-			'desc'       => __( 'Connect the tips that apply to this day plan using the field provided.', 'lsx-health-plan' ),
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15,  // Limit selection to X items only (default 1)
-			'sortable'   => true,  // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( 'tip' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
 	}
 
 	/**
