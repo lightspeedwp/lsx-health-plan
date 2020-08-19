@@ -421,62 +421,73 @@ class Plan {
 		$cmb->add_group_field(
 			$group,
 			array(
-				'name'       => __( 'Workouts', 'lsx-health-plan' ),
-				'id'         => 'connected_workouts',
-				'desc'       => __( 'Connect the workout(s) that apply to this section.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'workout' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				'name' => __( 'Overview', 'lsx-health-plan' ),
+				'id'   => 'description',
+				'type' => 'textarea',
 			)
 		);
 
-		$cmb->add_group_field(
-			$group,
-			array(
-				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'pre_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-			)
-		);
+		if ( post_type_exists( 'workout' ) ) {
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Workouts', 'lsx-health-plan' ),
+					'id'         => 'connected_workouts',
+					'desc'       => __( 'Connect the workout(s) that apply to this section.', 'lsx-health-plan' ),
+					'type'       => 'post_search_ajax',
+					'limit'      => 15,
+					'sortable'   => true,
+					'query_args' => array(
+						'post_type'      => array( 'workout' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				)
+			);
 
-		$cmb->add_group_field(
-			$group,
-			array(
-				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'pre_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-			)
-		);
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+					'id'         => 'pre_workout_snack',
+					'type'       => 'wysiwyg',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+					'options'    => array(
+						'textarea_rows' => 5,
+					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				)
+			);
 
-		$cmb->add_group_field(
-			$group,
-			array(
-				'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'post_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-			)
-		);
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+					'id'         => 'pre_workout_snack',
+					'type'       => 'wysiwyg',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+					'options'    => array(
+						'textarea_rows' => 5,
+					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				)
+			);
+
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
+					'id'         => 'post_workout_snack',
+					'type'       => 'wysiwyg',
+					'show_on_cb' => 'cmb2_hide_if_no_cats',
+					'options'    => array(
+						'textarea_rows' => 5,
+					),
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+				)
+			);
+		}
 
 		if ( post_type_exists( 'meal' ) ) {
 			$cmb->add_group_field(
