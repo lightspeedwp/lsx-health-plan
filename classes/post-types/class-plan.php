@@ -46,16 +46,13 @@ class Plan {
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'sections_metabox_loop' ), 1 );
 
-		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
-
-		add_filter( 'lsx_global_header_title',  array( $this, 'hp_recipe_header_title' ), 200, 1 );
-
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 
 		// Plan Archive Actions.
 		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_action( 'lsx_content_top', 'lsx_hp_plan_archive_filters', 10, 1 );
 		add_filter( 'lsx_hp_disable_plan_archive_filters', '\lsx_health_plan\functions\plan\is_search_enabled', 10, 1 );
 	}
@@ -342,24 +339,6 @@ class Plan {
 	}
 
 	/**
-	 * Remove the single recipe and exercise title
-	 */
-	public function hp_recipe_header_title( $title ) {
-
-		if ( is_single() && is_singular( 'recipe' ) ) {
-
-			$title = __( 'Recipe', 'lsx-health-plan' );
-		}
-
-		if ( is_single() && is_singular( 'exercise' ) ) {
-
-			$title = __( 'Exercise', 'lsx-health-plan' );
-		}
-
-		return $title;
-	}
-
-	/**
 	 * Set the post type archive to show the parent plans only.
 	 *
 	 * @param object $wp_query
@@ -425,6 +404,7 @@ class Plan {
 					'remove_button' => __( 'Remove section', 'lsx-health-plan' ),
 					'sortable'      => true,
 				),
+				'classes' => 'lsx-admin-row',
 			)
 		);
 
@@ -452,6 +432,7 @@ class Plan {
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => -1,
 				),
+				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
 
@@ -465,6 +446,7 @@ class Plan {
 				'options'    => array(
 					'textarea_rows' => 5,
 				),
+				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
 
@@ -478,6 +460,7 @@ class Plan {
 				'options'    => array(
 					'textarea_rows' => 5,
 				),
+				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
 
@@ -491,6 +474,7 @@ class Plan {
 				'options'    => array(
 					'textarea_rows' => 5,
 				),
+				'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 			)
 		);
 	}

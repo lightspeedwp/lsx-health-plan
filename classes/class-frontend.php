@@ -54,6 +54,7 @@ class Frontend {
 
 			add_action( 'init', array( $this, 'handle_day_action' ), 100 );
 			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
+			add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
 		}
 	}
 
@@ -255,5 +256,23 @@ class Frontend {
 			'max'   => true,
 		);
 		return $tags;
+	}
+
+	/**
+	 * Remove the single recipe and exercise title
+	 */
+	public function single_title( $title ) {
+
+		if ( is_single() && is_singular( 'recipe' ) ) {
+
+			$title = __( 'Recipe', 'lsx-health-plan' );
+		}
+
+		if ( is_single() && is_singular( 'exercise' ) ) {
+
+			$title = __( 'Exercise', 'lsx-health-plan' );
+		}
+
+		return $title;
 	}
 }
