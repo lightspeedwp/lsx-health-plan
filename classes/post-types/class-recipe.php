@@ -55,7 +55,6 @@ class Recipe {
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 5 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 	}
 
@@ -405,40 +404,6 @@ class Recipe {
 				'desc'       => __( 'Add the fat amount for the entire meal i.e: 20 g', 'lsx-health-plan' ),
 				'type'       => 'text',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
-			)
-		);
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function recipes_connections() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_recipes_connections_metabox',
-				'title'        => __( 'Recipes', 'lsx-health-plan' ),
-				'object_types' => array( 'plan' ), // Post type
-				'context'      => 'normal',
-				'priority'     => 'high',
-				'show_names'   => true,
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Recipes', 'lsx-health-plan' ),
-				'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
-				'id'         => 'connected_recipes',
-				'type'       => 'post_search_ajax',
-				// Optional :
-				'limit'      => 15,  // Limit selection to X items only (default 1)
-				'sortable'   => true, // Allow selected items to be sortable (default false)
-				'query_args' => array(
-					'post_type'      => array( $this->slug ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
 			)
 		);
 	}
