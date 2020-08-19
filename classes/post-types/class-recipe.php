@@ -129,7 +129,7 @@ class Recipe {
 	 */
 	public function register_menus() {
 		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Recipes', 'lsx-health-plan' ), esc_html__( 'Recipes', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=recipe' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Types', 'lsx-health-plan' ), esc_html__( 'Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-type&post_type=recipe' );
+		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Recipe Types', 'lsx-health-plan' ), esc_html__( 'Recipe Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-type&post_type=recipe' );
 		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Cuisines', 'lsx-health-plan' ), esc_html__( 'Cuisines', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-cuisine&post_type=recipe' );
 	}
 

@@ -23,12 +23,36 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		protected static $url = '';
 
 		/**
+		 * Holds class instance
+		 *
+		 * @since 1.0.0
+		 *
+		 * @var      object \MAG_CMB2_Field_Post_Search_Ajax
+		 */
+		protected static $instance = null;
+
+		/**
 		 * Initialize the plugin by hooking into CMB2
 		 */
 		public function __construct() {
 			add_action( 'cmb2_render_post_search_ajax', array( $this, 'render' ), 10, 5 );
 			add_action( 'cmb2_sanitize_post_search_ajax', array( $this, 'sanitize' ), 10, 4 );
 			add_action( 'wp_ajax_cmb_post_search_ajax_get_results', array( $this, 'cmb_post_search_ajax_get_results' ) );
+		}
+
+		/**
+		 * Return an instance of this class.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return    object \MAG_CMB2_Field_Post_Search_Ajax    A single instance of this class.
+		 */
+		public static function get_instance() {
+			// If the single instance hasn't been set, set it now.
+			if ( null === self::$instance ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
 		}
 
 		/**
@@ -200,8 +224,8 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		 */
 		public function setup_admin_scripts() {
 
-			wp_register_script( 'jquery-autocomplete', self::url( 'js/jquery.autocomplete.min.js' ), array( 'jquery' ), self::VERSION );
-			wp_register_script( 'mag-post-search-ajax', self::url( 'js/mag-post-search-ajax.js' ), array( 'jquery', 'jquery-autocomplete', 'jquery-ui-sortable' ), self::VERSION );
+			wp_register_script( 'jquery-devautocomplete', self::url( 'js/jquery.autocomplete.min.js' ), array( 'jquery' ), self::VERSION );
+			wp_register_script( 'mag-post-search-ajax', self::url( 'js/mag-post-search-ajax.js' ), array( 'jquery', 'jquery-devautocomplete', 'jquery-ui-sortable' ), self::VERSION );
 			wp_localize_script( 'mag-post-search-ajax', 'psa', array(
 				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
 				'nonce'		=> wp_create_nonce( 'mag_cmb_post_search_ajax_get_results' )
