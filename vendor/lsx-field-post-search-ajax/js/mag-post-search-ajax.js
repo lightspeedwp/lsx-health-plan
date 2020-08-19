@@ -104,8 +104,7 @@ var mag_ajax_js = Object.create( null );
 						var sortable = $(this).attr('data-sortable');
 						if ( limit > 1 ) {
 							var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';
-
-							$(this).parents('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
+							$(this).closest('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
 
 							$(this).val('');
 							if ( limit === $('input#'+name + '_results li').length ){
@@ -117,7 +116,7 @@ var mag_ajax_js = Object.create( null );
 							$('input#'+name).val( suggestion.data );
 						}
 
-						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
 							console.log('cmb-group');
 							groupName = groupName.replace( "][", "_" );
 							groupName = groupName.replace( "]", "" );

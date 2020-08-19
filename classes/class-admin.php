@@ -371,4 +371,31 @@ class Admin {
 			}
 		}
 	}
+
+	/**
+	 * Extract the plan sections into indexable fields.
+	 */
+	public function extract_plan_fields( $field_id, $updated, $action, $cmb2 ) {
+		// If the connections are empty then skip this function.
+		$search_fields = array(
+			'plan_sections',
+		);
+		$connections   = $this->get_connections();
+		if ( ! in_array( $field_id, $search_fields ) || empty( $connections ) ) {
+			return;
+		}
+
+		// If the field has been updated.
+		if ( isset( $cmb2->data_to_save['ID'] ) && isset( $cmb2->data_to_save['plan_sections'] ) && ! empty( $cmb2->data_to_save['plan_sections'] ) ) {
+			print_r('<pre>');
+			print_r($connections);
+			print_r($cmb2->data_to_save);
+			print_r('</pre>');
+
+			foreach ( $cmb2->data_to_save[ $field_id . '_results' ] as $temp ) {
+				add_post_meta( $cmb2->data_to_save['ID'], '_' . $field_id . '_id', $temp, false );
+			}
+		}
+		die();
+	}
 }
