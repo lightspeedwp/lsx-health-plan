@@ -9,6 +9,8 @@ $type         = lsx_health_plan_exercise_type();
 $equipment    = lsx_health_plan_exercise_equipment();
 $muscle_group = lsx_health_plan_muscle_group_equipment();
 
+$connected_articles = get_post_meta( get_the_ID(), 'exercise_connected_articles', true );
+
 $sharing = 'sharing-disabled';
 if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) :
 	$sharing = 'sharing-enabled';
@@ -92,27 +94,18 @@ endif;
 				</div>
 			</div>
 		</div>
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
 	</div><!-- .entry-content -->
-
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() ) : ?>
-			<?php lsx_content_post_tags(); ?>
-		<?php endif ?>
-	</footer>
 
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, 'Related Articles' );
+}
+?>
+
 
 <?php
 lsx_entry_after();

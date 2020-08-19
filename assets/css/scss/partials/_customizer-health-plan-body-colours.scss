@@ -403,4 +403,33 @@
 			}
 		}
 	}
+
+	#lsx-hp-related {
+		.lsx-related-posts-content {
+			.col-xs-12 {
+				.lsx-related-posts-wrapper {
+					.lsx-slot {
+						.entry-layout {
+							.entry-layout-content {
+								.entry-header {
+									.entry-meta {
+										.post-categories {
+											a {
+												color: $small;
+											}
+										}
+									}
+									.entry-title {
+										a {
+											color: $color;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

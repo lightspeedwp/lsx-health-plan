@@ -179,6 +179,24 @@ table, .table { width: 100%; table-layout: fixed; }
 @media (max-width: 991px) { #lsx-exercises-shortcode > .col-md-12 { width: 100%; padding: 0; }
   #lsx-exercises-shortcode > .col-md-12 .btn { width: 100%; } }
 
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 { text-align: center; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 h2 { font-weight: bold; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper { -ms-flex-align: start; align-items: flex-start; display: -ms-flexbox; display: flex; -ms-flex-flow: row wrap; flex-flow: row wrap; -ms-flex-pack: start; justify-content: flex-start; margin-right: -15px; margin-left: -15px; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot { width: 100%; padding-right: 15px; padding-left: 15px; }
+
+@media (min-width: 993px) { #lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot { width: 33.33%; margin: 0; } }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-image img { width: 100%; max-height: 170px; -o-object-fit: cover; object-fit: cover; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-meta { padding: 15px 15px 0 15px; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-meta .post-categories a { font-size: 13px; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title { padding: 10px 15px; margin: 0; }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
@@ -1249,3 +1267,7 @@ article.type-plan .entry-content .workout-content .sets .set-box.set .btn, artic
 #single-recipe .recipe-data .recipe-table tbody .cooking-time td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .cooking-time td:first-child:before { content: '\f0f5'; }
 
 #single-recipe .recipe-data .recipe-table tbody .portion-size td:first-child:before, #single-exercise .recipe-data .recipe-table tbody .portion-size td:first-child:before { content: '\f200'; }
+
+#lsx-hp-related .lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-meta .post-categories a { color: #919191; }
+
+#lsx-hp-related .lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title a { color: #4A4A4A; }

@@ -1039,3 +1039,75 @@ function lsx_hp_exercise_plan_meta() {
 		<?php
 	}
 }
+
+/**
+ * Template for related content box for all singles.
+ *
+ * @param [type] $related_content
+ * @return void
+ */
+function lsx_hp_single_related( $related_content, $post_type_text ) {
+	?>
+	<section id="lsx-hp-related">
+		<div class="row lsx-related-posts lsx-related-posts-title">
+			<div class="col-xs-12">
+				<h2 class="lsx-related-posts-headline"><?php echo esc_html( $post_type_text ); ?></h2>
+			</div>
+		</div>
+		<div class="row lsx-related-posts lsx-related-posts-content">
+			<div class="col-xs-12">
+				<div class="lsx-related-posts-wrapper">
+					<?php
+					foreach ( $related_content as $article ) {
+						$post_title      = get_the_title( $article );
+						$post_categories = wp_get_post_categories( $article );
+						$post_link       = get_permalink( $article );
+
+						$cats = array();
+						?>
+						<article id="post-<?php echo esc_html( $article ); ?>" class="lsx-slot post">
+							<div class="entry-layout lsx-hp-shadow">
+								<div class="entry-layout-content">
+									<header class="entry-header">
+										<div class="entry-image">
+											<a href="<?php echo esc_url( $post_link ); ?>" class="thumbnail">
+											<?php
+											$featured_image = get_the_post_thumbnail( $article, 'lsx-thumbnail-wide' );
+											if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+												echo wp_kses_post( $featured_image );
+											} else {
+												?>
+												<img loading="lazy" class="placeholder" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+												<?php
+											}
+											?>
+											</a>
+										</div>
+										<div class="entry-meta">
+										<?php
+										foreach ( $post_categories as $c ) {
+											$cat = get_category( $c );
+											/* Translators: %s: category name */
+											$cats[] = '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . sprintf( esc_html__( 'Posts in %s', 'lsx-blog-customizer' ), $cat->name ) . '">' . $cat->name . '</a>';
+										}
+										if ( ! empty( $cats ) ) { ?>
+											<div class="post-categories"><span></span><?php echo wp_kses_post( implode( ', ', $cats ) ); ?></div>
+										<?php } ?>
+										</div>
+										<h2 class="entry-title">
+											<a href="<?php echo esc_url( $post_link ); ?>">
+												<?php echo esc_html( $post_title ); ?>
+											</a>
+										</h2>
+									</header>
+								</div>
+							</div>
+						</article>
+
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php
+}
