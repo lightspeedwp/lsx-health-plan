@@ -56,6 +56,7 @@ class Recipe {
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 5 );
+		add_action( 'cmb2_admin_init', array( $this, 'related_articles_metabox' ) );
 		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 	}
 
@@ -405,6 +406,38 @@ class Recipe {
 				'desc'       => __( 'Add the fat amount for the entire meal i.e: 20 g', 'lsx-health-plan' ),
 				'type'       => 'text',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+	}
+
+	/**
+	 * Define the related articles metabox and field configurations.
+	 */
+	public function related_articles_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_related_articles_metabox',
+				'title'        => __( 'Related Articles', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Related Articles', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the related articles that applies to this recipe by entering the name of the article in the field provided.' ),
+				'id'         => $this->slug . '_connected_articles',
+				'type'       => 'post_search_ajax',
+				'limit'      => 3,  // Limit selection to X items only (default 1).
+				'sortable'   => true, // Allow selected items to be sortable (default false).
+				'query_args' => array(
+					'post_type'      => array( 'post' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
 			)
 		);
 	}

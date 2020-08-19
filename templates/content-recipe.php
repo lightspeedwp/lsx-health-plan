@@ -16,6 +16,8 @@ $protein       = get_post_meta( get_the_ID(), 'recipe_protein', true );
 $carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
 $fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
 $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
+
+$connected_articles = get_post_meta( get_the_ID(), 'recipe_connected_articles', true );
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -94,16 +96,15 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() ) : ?>
-			<div class="post-tags-wrapper">
-				<?php lsx_content_post_tags(); ?>
-		<?php endif ?>
-	</footer><!-- .footer-meta -->
-
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, 'Related Articles' );
+}
+?>
 
 <?php
 lsx_entry_after();
