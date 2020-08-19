@@ -102,7 +102,7 @@ $connected_articles = get_post_meta( get_the_ID(), 'recipe_connected_articles', 
 
 <?php
 if ( ! empty( $connected_articles ) ) {
-	lsx_hp_single_related( $connected_articles, 'Related Articles' );
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
 }
 ?>
 

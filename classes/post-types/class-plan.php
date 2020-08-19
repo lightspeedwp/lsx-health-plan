@@ -43,6 +43,7 @@ class Plan {
 		// Register the Metaboxes.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
+		add_action( 'cmb2_admin_init', array( $this, 'related_articles_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
@@ -319,6 +320,38 @@ class Plan {
 				'sortable'   => true,
 				'query_args' => array(
 					'post_type'      => array( 'plan' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+	}
+
+	/**
+	 * Define the related articles metabox and field configurations.
+	 */
+	public function related_articles_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_related_articles_metabox',
+				'title'        => __( 'Related Articles', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Related Articles', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the related articles that applies to this plan by entering the name of the article in the field provided.' ),
+				'id'         => $this->slug . '_connected_articles',
+				'type'       => 'post_search_ajax',
+				'limit'      => 3,  // Limit selection to X items only (default 1).
+				'sortable'   => true, // Allow selected items to be sortable (default false).
+				'query_args' => array(
+					'post_type'      => array( 'post' ),
 					'post_status'    => array( 'publish' ),
 					'posts_per_page' => -1,
 				),

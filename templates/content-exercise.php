@@ -102,7 +102,7 @@ endif;
 
 <?php
 if ( ! empty( $connected_articles ) ) {
-	lsx_hp_single_related( $connected_articles, 'Related Articles' );
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
 }
 ?>
 

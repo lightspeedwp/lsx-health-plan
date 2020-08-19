@@ -20,6 +20,8 @@ $has_children = get_children( $args );
 $has_parent   = wp_get_post_parent_id( $post_id );
 $restricted   = false;
 
+$connected_articles = get_post_meta( get_the_ID(), 'plan_connected_articles', true );
+
 if ( ! empty( $has_children ) ) {
 	$plan_type_class = 'parent-plan';
 	if ( 0 !== $has_parent ) {
@@ -69,6 +71,13 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		<?php } ?>
 
 		<?php lsx_content_bottom(); ?>
+
+		<?php
+		if ( ! empty( $connected_articles ) ) {
+			lsx_hp_single_related( $connected_articles, __( 'Latest articles', 'lsx-health-plan' ) );
+		}
+		?>
+
 
 	</main><!-- #main -->
 
