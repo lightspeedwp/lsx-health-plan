@@ -18,46 +18,6 @@ get_header(); ?>
 
 			<?php lsx_content_top(); ?>
 
-			<?php
-				$args = array(
-					'taxonomy'   => 'plan-type',
-					'hide_empty' => false,
-				);
-
-				$groups = get_terms( $args );
-				$group_selected = get_query_var( 'plan-type' );
-
-				if ( count( $groups ) > 0 ) :
-				?>
-				<div id="type-nav">
-					<ul class="nav nav-pills lsx-type-nav-filter">
-						<?php
-						$group_selected_class = '';
-
-						if ( empty( $group_selected ) ) {
-							$group_selected_class = ' class="active"';
-						}
-						?>
-
-						<li<?php echo wp_kses_post( $group_selected_class ); ?>><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_post_type_archive_link( 'plan' ) ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-health-plan' ); ?></a></li>
-
-						<?php foreach ( $groups as $group ) : ?>
-							<?php
-								$group_selected_class = '';
-
-								if ( (string) $group_selected === (string) $group->slug ) {
-									$group_selected_class = ' class="active"';
-								}
-							?>
-
-							<li<?php echo wp_kses_post( $group_selected_class ); ?>><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_term_link( $group ) ); ?>" data-filter=".filter-<?php echo esc_attr( $group->slug ); ?>"><?php echo esc_attr( $group->name ); ?></a></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-				<?php
-				endif;
-			?>
-
 			<div class="post-wrapper plan-archive-plan archive-plan">
 				<div class="row lsx-plan-row">
 					<?php if ( have_posts() ) : ?>

@@ -99,6 +99,7 @@ class Core {
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/exercise.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/gallery.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/plan.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/shortcodes.php';
 	}
 

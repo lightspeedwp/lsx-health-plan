@@ -40,6 +40,7 @@ class Plan {
 		$prefix_taxonomy = 'plan-type';
 		add_action( sprintf( '%s_edit_form_fields', $prefix_taxonomy ), array( $this, 'add_thumbnail_form_field' ), 3, 1 );
 
+		// Register the Metaboxes.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
@@ -50,7 +51,10 @@ class Plan {
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+
+		// Plan Archive Actions.
 		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
+		add_action( 'lsx_content_top', 'lsx_hp_plan_archive_filters', 10, 1 );
 	}
 
 	/**
