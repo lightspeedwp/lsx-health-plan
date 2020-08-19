@@ -11,7 +11,7 @@
  * @return void
  */
 function lsx_hp_plan_archive_filters() {
-	if ( function_exists( 'wc_get_page_id' ) && false === apply_filters( 'lsx_hp_disable_plan_archive_filters', false ) ) {
+	if ( is_post_type_archive( 'plan' ) && function_exists( 'wc_get_page_id' ) && false === apply_filters( 'lsx_hp_disable_plan_archive_filters', false ) ) {
 		?>
 		<div id="type-nav">
 			<ul class="nav nav-pills lsx-type-nav-filter">

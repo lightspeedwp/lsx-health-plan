@@ -55,6 +55,7 @@ class Plan {
 		// Plan Archive Actions.
 		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 		add_action( 'lsx_content_top', 'lsx_hp_plan_archive_filters', 10, 1 );
+		add_filter( 'lsx_hp_disable_plan_archive_filters', '\lsx_health_plan\functions\plan\is_search_enabled', 10, 1 );
 	}
 
 	/**
