@@ -454,10 +454,27 @@
 									.entry-title {
 										padding: 10px 15px;
 										margin: 0;
+										line-height: 22px;
+										a {
+											font-size: 18px;
+										}
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+	body.single-plan & {
+		margin-top: 4.25rem;
+		.lsx-related-posts {
+			&.lsx-related-posts-title {
+				.col-xs-12 {
+					text-align: left;
+					.lsx-related-posts-headline {
+						font-size: 22px;
 					}
 				}
 			}

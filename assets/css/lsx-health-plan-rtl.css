@@ -195,7 +195,15 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-meta .post-categories a { font-size: 13px; }
 
-#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title { padding: 10px 15px; margin: 0; }
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title { padding: 10px 15px; margin: 0; line-height: 22px; }
+
+#lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title a { font-size: 18px; }
+
+body.single-plan #lsx-hp-related { margin-top: 4.25rem; }
+
+body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 { text-align: right; }
+
+body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline { font-size: 22px; }
 
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
