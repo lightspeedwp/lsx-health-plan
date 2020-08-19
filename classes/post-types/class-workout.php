@@ -37,7 +37,6 @@ class Workout {
 		add_action( 'init', array( $this, 'recipe_type_taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 8, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
@@ -338,62 +337,6 @@ class Workout {
 				$i++;
 			};
 		}
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function workout_connections() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_workout_connections_metabox',
-				'title'        => __( 'Workouts', 'lsx-health-plan' ),
-				'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-				'object_types' => array( 'plan' ),
-				'context'      => 'normal',
-				'priority'     => 'high',
-				'show_names'   => true,
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Workouts', 'lsx-health-plan' ),
-				'id'         => 'connected_workouts',
-				'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'workout' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'pre_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'post_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-			)
-		);
 	}
 
 	/**
