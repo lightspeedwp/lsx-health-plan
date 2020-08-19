@@ -16,10 +16,10 @@ namespace lsx_health_plan\functions\plan;
 function is_search_enabled() {
 	$enabled = false;
 	if ( function_exists( 'lsx_search' ) ) {
-		$search_instance = lsx_search();
-		//print_r('<pre>');
-		//print_r($search_instance);
-		//print_r('</pre>');
+		$search_instance = \LSX_Search::get_instance();
+		if ( null !== $search_instance ) {
+			$enabled = $search_instance->frontend->is_search_enabled();
+		}
 	}
 	return $enabled;
 }
