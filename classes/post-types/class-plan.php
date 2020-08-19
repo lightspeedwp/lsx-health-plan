@@ -44,6 +44,8 @@ class Plan {
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'plan_connections' ), 5 );
+		add_action( 'cmb2_admin_init', array( $this, 'sections_metabox_loop' ), 1 );
+
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
 		add_filter( 'lsx_global_header_title',  array( $this, 'hp_recipe_header_title' ), 200, 1 );
@@ -390,6 +392,105 @@ class Plan {
 				'id'         => $this->slug . '_featured_plan',
 				'type'       => 'checkbox',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function sections_metabox_loop() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_sections_metabox',
+				'title'        => __( 'Sections', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type.
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		/*
+		This is where the repeatable group is defined, each field has the same ID as the legacy field.
+		There is a function which runs and adds to looped fields to individual fields for WP Query compatability.
+		*/
+		$group = $cmb->add_field(
+			array(
+				'id'      => $this->slug . '_sections',
+				'type'    => 'group',
+				'options' => array(
+					'group_title'   => __( 'Section', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
+					'add_button'    => __( 'Add section', 'lsx-health-plan' ),
+					'remove_button' => __( 'Remove section', 'lsx-health-plan' ),
+					'sortable'      => true,
+				),
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name' => __( 'Title', 'lsx-health-plan' ),
+				'id'   => 'title',
+				'type' => 'text',
+				'desc' => __( 'e.g Day 1 / Week 1', 'lsx-health-plan' ),
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name'       => __( 'Workouts', 'lsx-health-plan' ),
+				'id'         => 'connected_workouts',
+				'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
+				'type'       => 'post_search_ajax',
+				'limit'      => 15,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'workout' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+				'id'         => 'pre_workout_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
+				'id'         => 'pre_workout_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
+				'id'         => 'post_workout_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
 			)
 		);
 	}
