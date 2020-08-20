@@ -1019,10 +1019,10 @@ article.type-meal {
 				@include media('<=phone') {
 					width: 100%;
 				}
-				&:after {
-					content: '\f105';
+				&:before {
+					content: '\f104';
 					font-family: 'FontAwesome';
-					margin-left: 1rem;
+					margin-right: 1rem;
 				}
 			}
 		}

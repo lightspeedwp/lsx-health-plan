@@ -80,6 +80,7 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 
 		if ( empty( $has_children ) ) {
 			lsx_health_plan_single_nav();
+			echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'plan' ) );
 			lsx_health_plan_single_tabs();
 			?>
 

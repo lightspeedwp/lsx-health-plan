@@ -213,6 +213,10 @@ body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col
 
 #hp-connected-members p .lsx-team-name { font-size: 13px; }
 
+body.single-meal #hp-connected-members { padding: 0 20px; }
+
+@media (min-width: 1024px) { body.single-meal #hp-connected-members + .meals .btn-shopping { top: -14.2rem; } }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
@@ -1002,7 +1006,7 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 
 @media (max-width: 768px) { .single-plan .status-plan-buttons.main-plan-btn .border-btn { width: 100%; } }
 
-.single-plan .status-plan-buttons.main-plan-btn .border-btn:after { content: '\f105'; font-family: 'FontAwesome'; margin-right: 1rem; }
+.single-plan .status-plan-buttons.main-plan-btn .border-btn:before { content: '\f104'; font-family: 'FontAwesome'; margin-left: 1rem; }
 
 #lsx-exercises-shortcode .reps { font-size: 13px; line-height: 15px; }
 
