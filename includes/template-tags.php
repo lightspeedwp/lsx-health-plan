@@ -468,105 +468,83 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 		'show_downloads' => false,
 		'plan'           => '',
 	);
-	if ( isset( $args['plan'] ) && '' !== $args['plan'] ) {
-		$parent = $args['plan'];
-	}
 	$args     = wp_parse_args( $args, $defaults );
-	$weeks    = get_terms(
-		array(
-			'taxonomy' => 'week',
-			'orderby'  => 'menu_order',
-			'order'    => 'ASC',
-		)
-	);
-	if ( ! empty( $weeks ) ) {
-		$counter      = 1;
-		$section_open = false;
 
-		foreach ( $weeks as $week ) {
-			// Grab the days of the week.
-			$query_args      = array(
-				'orderby'        => 'menu_order',
-				'order'          => 'ASC',
-				'post_type'      => 'plan',
-				'posts_per_page' => -1,
-				'post_parent'    => $parent,
-				'nopagin'        => true,
-				'tax_query'      => array(
-					array(
-						'taxonomy' => 'week',
-						'field'    => 'slug',
-						'terms'    => array( $week->slug ),
-					),
-				),
-			);
-			$the_query      = new WP_Query( $query_args );
-			$collapse_class = '';
+	if ( isset( $args['plan'] ) && '' !== $args['plan'] && \lsx_health_plan\functions\plan\has_sections( $args['plan'] ) ) {
+		$groups = \lsx_health_plan\functions\plan\get_sections( $args['plan'], true );
 
-			// Determine if the current week is complete.
-			if ( $the_query->have_posts() ) {
-				$day_ids = wp_list_pluck( $the_query->posts, 'ID' );
+		if ( ! empty( $groups ) ) {
+			$counter    = 1;
+			$group_open = false;
 
-				if ( false === $section_open ) {
+			foreach ( $groups as $group_key => $sections ) {
+				$collapse_class = '';
+				// Determine if the current week is complete.
+
+				$day_ids = wp_list_pluck( $sections, 'title' );
+
+				if ( false === $group_open ) {
 					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
 						$collapse_class = 'in';
-						$section_open   = true;
+						$group_open   = true;
 					} elseif ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
 						$collapse_class = 'in';
-						$section_open   = true;
+						$group_open   = true;
 					}
 				}
-			}
 
-			// Determine if there are any weekly downloads.
-			$week_downloads_view = '';
-			if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
-				$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $week->slug );
-				if ( ! empty( $weekly_downloads ) ) {
-					$week_downloads_view = 'week-downloads-view-on';
-				}
-			}
-			if ( $the_query->have_posts() ) {
-			?>
+				// Determine if there are any weekly downloads.
+				$week_downloads_view = '';
+				/*if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
+					$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $group_key );
+					if ( ! empty( $weekly_downloads ) ) {
+						$week_downloads_view = 'week-downloads-view-on';
+					}
+				}*/
+				?>
 				<div class="daily-plan-block week-grid">
-					<a href="#week-<?php echo esc_attr( $week->slug ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $week->name ); ?></a>
-					<div id="week-<?php echo esc_attr( $week->slug ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
+					<a href="#group-<?php echo esc_attr( $group_key ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( \lsx_health_plan\functions\plan\get_group_title( $sections ) ); ?></a>
+					<div id="group-<?php echo esc_attr( $group_key ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 						<div class="week-row-inner <?php echo esc_html( $week_downloads_view ); ?>">
 							<div class="week-meals-recipes-box">
+
 								<?php if ( ! empty( $week_downloads_view ) ) { ?>
 									<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
 								<?php } ?>
+
 								<div class="week-meals-recipes-box-inner">
 								<?php
-								if ( $the_query->have_posts() ) :
-									while ( $the_query->have_posts() ) :
-										$the_query->the_post();
-										$completed_class = '';
-										if ( lsx_health_plan_is_day_complete() ) {
-											$completed_class = 'completed';
-										}
-										?>
-										<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-											<div class="plan-content"><?php the_title(); ?></div>
-										</a>
-										<?php
-									endwhile;
-								endif;
-								wp_reset_postdata();
+
+								foreach ( $sections as $section_key => $section_values ) {
+
+									$defaults    = array(
+										'title' => __( 'Day', 'lsx-health-plan' ) . ' ' . ( $section_key + 1 ),
+									);
+									$section_args = wp_parse_args( $section_values, $defaults );
+
+									$completed_class = '';
+									if ( lsx_health_plan_is_day_complete() ) {
+										$completed_class = 'completed';
+									}
+									?>
+									<a href="<?php echo esc_attr( \lsx_health_plan\functions\plan\get_permalink( $args['plan'], $section_args['title'] ) ); ?>" class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
+										<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
+									</a>
+									<?php
+								}
 								?>
 								</div>
 							</div>
 							<?php
 							if ( ! empty( $week_downloads_view ) ) {
-								lsx_health_plan_weekly_downloads( $weekly_downloads );
+								//lsx_health_plan_weekly_downloads( $weekly_downloads );
 							}
 							?>
 						</div>
 					</div>
 				</div>
-			<?php
+				<?php
 			}
-			++$counter;
 		}
 	}
 }
