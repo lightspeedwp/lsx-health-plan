@@ -59,7 +59,7 @@ class Admin {
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'create_query_fields' ), 20, 4 );
-		//add_action( 'cmb2_save_field', array( $this, 'extract_plan_fields' ), 20, 4 );
+		//add_action( 'cmb2_save_field_plan_sections', array( $this, 'extract_plan_fields' ), 20, 4 );
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
 	}
 
@@ -383,16 +383,24 @@ class Admin {
 		);
 		$connections   = $this->get_connections();
 
-		if ( ! in_array( $field_id, $search_fields ) || ! empty( $connections ) ) {
+		if ( ! in_array( $field_id, $search_fields ) ) {
 			return;
 		}
 
 		// If the field has been updated.
 		if ( isset( $cmb2->data_to_save['ID'] ) && isset( $cmb2->data_to_save['plan_sections'] ) && ! empty( $cmb2->data_to_save['plan_sections'] ) ) {
 			// Run through each section.
+			$counter = 0;
 			foreach ( $cmb2->data_to_save['plan_sections'] as $temp ) {
+
 				// Run through each field in that section.
 				foreach ( $temp as $temp_key => $temp_value ) {
+
+					// Make sure we only delete the items once.
+					if ( 0 === $counter ) {
+						delete_post_meta( $cmb2->data_to_save['ID'], $temp_key );
+					}
+
 					if ( array_key_exists( $temp_key, $connections['plan'] ) ) {
 						// Make sure we have an array of ids to loop through.
 						$temp_values = $temp_value;
@@ -403,7 +411,8 @@ class Admin {
 						}
 					}
 				}
+				$counter++;
 			}
-		}	
+		}
 	}
 }

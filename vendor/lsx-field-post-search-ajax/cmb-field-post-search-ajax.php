@@ -38,6 +38,9 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			add_action( 'cmb2_render_post_search_ajax', array( $this, 'render' ), 10, 5 );
 			add_action( 'cmb2_sanitize_post_search_ajax', array( $this, 'sanitize' ), 10, 4 );
 			add_action( 'wp_ajax_cmb_post_search_ajax_get_results', array( $this, 'cmb_post_search_ajax_get_results' ) );
+
+			// Debugging.
+			//add_action( 'cmb2_save_post_fields', array( $this, 'debugger' ), 10, 4 );
 		}
 
 		/**
@@ -190,6 +193,10 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					}
 				}
 
+				if ( isset( $field_args['render_row_cb'][0]->group->index ) ) {
+					$new_index = $field_args['render_row_cb'][0]->group->index;
+				}
+
 				if ( '' !== $new_index ) {
 					$new_index = $oid . '_' . $new_index . '_' . $iid . '_store';
 					if ( ! empty( $data_to_save[ $new_index ] ) ) {
@@ -205,7 +212,24 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			} else {
 				$value = false;
 			}
-			//die();
+
+			/*print_r( '<pre>' );
+			print_r( 'FID' . $fid );
+			print_r( '</pre>' );
+
+			print_r( '<pre>' );
+			print_r( 'OID' . $oid );
+			print_r( '</pre>' );
+
+			print_r( '<pre>' );
+			print_r( 'IID' . $iid );
+			print_r( '</pre>' );
+
+			print_r( '<pre>' );
+			print_r( 'Value' );
+			print_r( $value );
+			print_r( '</pre>' );*/
+
 			return $value;
 		}
 
@@ -296,6 +320,26 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				wp_reset_postdata();
 				die( json_encode( $datas ) );
 			}
+		}
+
+		public function debugger( $object_id, $cmb_id, $updated, $cmb ) {
+			print_r( '<pre>' );
+			print_r( 'Object ID' . $object_id . '<br />' );
+			print_r( '============' );
+			print_r( '</pre>' );
+			print_r( '<pre>' );
+			print_r( 'CMB ID' . $cmb_id . '<br />' );
+			print_r( '============' );
+			print_r( '</pre>' );
+			print_r( '<pre>' );
+			print_r( 'Updated' );
+			print_r( $updated );
+			print_r( '</pre>' );
+			print_r( '<pre>' );
+			print_r( '============<br />' );
+			print_r( $cmb );
+			print_r( '</pre>' );
+			die();
 		}
 	}
 }

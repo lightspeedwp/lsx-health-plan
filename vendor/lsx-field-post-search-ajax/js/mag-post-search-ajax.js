@@ -38,7 +38,6 @@ var mag_ajax_js = Object.create( null );
 						fieldReplace.attr('name',fid + '_store');
 					}
 
-					console.log( fieldReplace.val() );
 					if ( '' === fieldReplace.val() ) {
 						storeReplace.find( '.cmb-post-search-ajax-results' ).empty();
 					}
