@@ -6,6 +6,12 @@
  */
 
 global $shortcode_args;
+$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
+if ( false === $meal ) {
+	$meal = 'meal';
+}
+$connected_post_type = $meal . '_connected_team_member';
+$connected_members = get_post_meta( get_the_ID(), $connected_post_type, true );
 
 ?>
 
@@ -24,6 +30,7 @@ global $shortcode_args;
 				<div class="single-plan-section-title meal-plan title-lined">
 					<?php lsx_get_svg_icon( 'meal.svg' ); ?>
 					<h2><?php the_title(); ?></h2>
+
 				</div>
 			<?php } else { ?>
 				<div class="single-plan-section-title meal-plan title-lined">
@@ -31,8 +38,9 @@ global $shortcode_args;
 					<h2><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <?php the_title(); ?></h2>
 				</div>
 			<?php } ?>
-			<?php require LSX_HEALTH_PLAN_PATH . 'templates/partials/meal-plans.php'; ?>
 
+			<?php require LSX_HEALTH_PLAN_PATH . 'templates/partials/meal-plans.php'; ?>
+			<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, $meal ) ); ?>
 		</div>
 
 	</div><!-- .entry-content -->
@@ -40,7 +48,7 @@ global $shortcode_args;
 		<div class="tip-row extras-box">
 			<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
 				<div class="tip-right">
-					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="meal"]' ); ?>
+					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="' . $meal . '"]' ); ?>
 				</div>
 			<?php } ?>
 		</div>

@@ -10,6 +10,7 @@ $equipment    = lsx_health_plan_exercise_equipment();
 $muscle_group = lsx_health_plan_muscle_group_equipment();
 
 $connected_articles = get_post_meta( get_the_ID(), 'exercise_connected_articles', true );
+$connected_members  = get_post_meta( get_the_ID(), 'exercise_connected_team_member', true );
 
 $sharing = 'sharing-disabled';
 if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) :
@@ -50,9 +51,8 @@ endif;
 			<?php endif ?>
 
 			<?php lsx_health_plan_exercise_title( '<h2>', '</h2>' ); ?>
-
 		</div>
-
+		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'exercise' ) ); ?>
 		<div class="row">
 			<div class="col-md-6 exercise-image lsx-hp-shadow">
 

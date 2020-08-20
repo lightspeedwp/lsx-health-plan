@@ -205,6 +205,14 @@ body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col
 
 body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline { font-size: 22px; }
 
+#hp-connected-members { display: -ms-flexbox; display: flex; }
+
+#hp-connected-members p { margin-right: 3rem; }
+
+#hp-connected-members p .lsx-team-roles { text-transform: uppercase; font-size: 13px; }
+
+#hp-connected-members p .lsx-team-name { font-size: 13px; }
+
 @media (min-width: 768px) { .vertical-align { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; } }
 
 body:not(.logged-in).woocommerce-account.my-plan .woocommerce { max-width: 550px; margin-left: auto; margin-right: auto; }
@@ -1281,5 +1289,11 @@ article.type-plan .entry-content .workout-content .sets .set-box.set .btn, artic
 #lsx-hp-related .lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-meta .post-categories a { color: #919191; }
 
 #lsx-hp-related .lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title a { color: #4A4A4A; }
+
+#hp-connected-members p { color: #919191; }
+
+#hp-connected-members p .lsx-team-roles { color: #919191; }
+
+#hp-connected-members p .lsx-team-name { color: #418AD0; }
 
 /*# sourceMappingURL=maps/lsx-health-plan.css.map */

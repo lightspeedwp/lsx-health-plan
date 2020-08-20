@@ -18,6 +18,7 @@ $fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
 $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 
 $connected_articles = get_post_meta( get_the_ID(), 'recipe_connected_articles', true );
+$connected_members  = get_post_meta( get_the_ID(), 'recipe_connected_team_member', true );
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -51,6 +52,7 @@ $connected_articles = get_post_meta( get_the_ID(), 'recipe_connected_articles', 
 				?>
 		<?php endif ?>
 		</h2>
+		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'recipe' ) ); ?>
 		<div class="row">
 			<div class="col-md-6 recipe-image lsx-hp-shadow">
 				<?php

@@ -13,6 +13,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 ?>
 
 <div class="meals">
+
 	<?php
 
 	// Looking for meals.

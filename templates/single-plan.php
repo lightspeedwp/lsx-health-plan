@@ -21,6 +21,7 @@ $has_parent   = wp_get_post_parent_id( $post_id );
 $restricted   = false;
 
 $connected_articles = get_post_meta( get_the_ID(), 'plan_connected_articles', true );
+$connected_members  = get_post_meta( get_the_ID(), 'plan_connected_team_member', true );
 
 if ( ! empty( $has_children ) ) {
 	$plan_type_class = 'parent-plan';
@@ -51,6 +52,8 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		<?php
 		if ( ! empty( $has_children ) ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
+
+			echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'plan' ) );
 
 			if ( false === $restricted ) {
 				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );

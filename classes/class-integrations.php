@@ -71,6 +71,7 @@ class Integrations {
 		add_action( 'init', array( $this, 'woocommerce_init' ) );
 		add_action( 'init', array( $this, 'wp_user_avatar_init' ) );
 		add_action( 'init', array( $this, 'facetwp_init' ) );
+		add_action( 'init', array( $this, 'lsx_team_init' ) );
 	}
 
 	/**
@@ -145,6 +146,18 @@ class Integrations {
 		if ( class_exists( 'FacetWP' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-facetwp.php';
 			$this->facetwp = FacetWP::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the LSX Team Integration.
+	 *
+	 * @return void
+	 */
+	public function lsx_team_init() {
+		if ( class_exists( 'LSX_Team' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-team.php';
+			$this->team = LSX_Team::get_instance();
 		}
 	}
 }

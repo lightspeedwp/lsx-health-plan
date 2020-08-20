@@ -433,4 +433,15 @@
 			}
 		}
 	}
+	#hp-connected-members {
+		p {
+			color: $small;
+			.lsx-team-roles {
+				color: $small;
+			}
+			.lsx-team-name {
+				color: $link;
+			}
+		}
+	}
 }

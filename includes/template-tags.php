@@ -1111,3 +1111,40 @@ function lsx_hp_single_related( $related_content, $post_type_text ) {
 	</section>
 	<?php
 }
+
+/**
+ * Template for connected members.
+ *
+ * @param [type] $connected_members
+ * @return void
+ */
+function lsx_hp_member_connected( $connected_members, $post_type ) {
+	if ( ! empty( $connected_members ) ) {
+		$content = '<div id="hp-connected-members" class="hp-connected-members connected-' . $post_type . '">';
+		foreach ( $connected_members as $member ) {
+			$post_link   = get_permalink( $member );
+			$member_name = get_the_title( $member );
+			$member_name = '<span class="lsx-team-name">' . $member_name . '</span>';
+
+			$member_link = '<a href="' . $post_link . '" >' . $member_name . '</a>';
+
+			$roles = '';
+			$terms = get_the_terms( $member, 'team_role' );
+
+			if ( $terms && ! is_wp_error( $terms ) ) {
+				$roles = array();
+
+				foreach ( $terms as $term ) {
+					$roles[] = $term->name;
+				}
+
+				$roles = join( ', ', $roles );
+			}
+			$member_roles = '' !== $roles ? "<small class='lsx-team-roles'>$roles</small>" : '';
+
+			$content .= '<p>' . $member_roles . ': ' . $member_link . '</p>';
+		}
+		$content .= '</div>';
+		return $content;
+	}
+}

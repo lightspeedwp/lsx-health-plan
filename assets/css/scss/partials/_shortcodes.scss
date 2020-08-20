@@ -481,3 +481,17 @@
 		}
 	}
 }
+
+#hp-connected-members {
+	display: flex;
+	p {
+		margin-right: 3rem;
+		.lsx-team-roles {
+			text-transform: uppercase;
+			font-size: 13px;
+		}
+		.lsx-team-name {
+			font-size: 13px;
+		}
+	}
+}
