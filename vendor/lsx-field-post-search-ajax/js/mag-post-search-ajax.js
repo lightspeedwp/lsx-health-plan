@@ -29,10 +29,18 @@ var mag_ajax_js = Object.create( null );
 				if ( storeReplace.hasClass( 'cmb-repeat-group-field' ) ) {
 					console.log('====== hasClass =======');
 					console.log(storeReplace);
-					var fieldReplace = undefined;
+					var fieldReplace     = undefined;
+					var emptyResultsList = false;
+
+					// Run through the store fields and replace the results list.
 					fieldReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax-store');
 					if ( 0 < fieldReplace.length ) {
 						fieldReplace.attr('name',fid + '_store');
+					}
+
+					console.log( fieldReplace.val() );
+					if ( '' === fieldReplace.val() ) {
+						storeReplace.find( '.cmb-post-search-ajax-results' ).empty();
 					}
 				}
 	
