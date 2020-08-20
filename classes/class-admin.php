@@ -61,6 +61,9 @@ class Admin {
 		add_action( 'cmb2_save_field', array( $this, 'create_query_fields' ), 20, 4 );
 		//add_action( 'cmb2_save_field_plan_sections', array( $this, 'extract_plan_fields' ), 20, 4 );
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
+
+		// Debugging.
+		add_action( 'cmb2_save_post_fields', array( $this, 'extract_plan_fields' ), 10, 4 );
 	}
 
 	/**
@@ -374,44 +377,56 @@ class Admin {
 	}
 
 	/**
-	 * Extract the plan sections into indexable fields.
+	 * Extract the plan fields so they save to an indexable array.
+	 *
+	 * @param [type] $object_id
+	 * @param [type] $cmb_id
+	 * @param [type] $updated
+	 * @param [type] $cmb2
+	 * @return void
 	 */
-	public function extract_plan_fields( $field_id, $updated, $action, $cmb2 ) {
-		// If the connections are empty then skip this function.
-		$search_fields = array(
-			'plan_sections',
-		);
-		$connections   = $this->get_connections();
-
-		if ( ! in_array( $field_id, $search_fields ) ) {
-			return;
-		}
-
-		// If the field has been updated.
-		if ( isset( $cmb2->data_to_save['ID'] ) && isset( $cmb2->data_to_save['plan_sections'] ) && ! empty( $cmb2->data_to_save['plan_sections'] ) ) {
-			// Run through each section.
-			$counter = 0;
-			foreach ( $cmb2->data_to_save['plan_sections'] as $temp ) {
-
-				// Run through each field in that section.
-				foreach ( $temp as $temp_key => $temp_value ) {
-
-					// Make sure we only delete the items once.
-					if ( 0 === $counter ) {
-						delete_post_meta( $cmb2->data_to_save['ID'], $temp_key );
-					}
-
-					if ( array_key_exists( $temp_key, $connections['plan'] ) ) {
-						// Make sure we have an array of ids to loop through.
-						$temp_values = $temp_value;
-						if ( ! is_array( $temp_values ) ) {
-							foreach ( $temp_values as $id_to_save ) {
-								add_post_meta( $cmb2->data_to_save['ID'], $temp_key, $id_to_save, false );
+	public function extract_plan_fields( $object_id, $cmb_id, $updated, $cmb2 ) {
+		if ( 'plan_sections_metabox' === $cmb_id ) {
+			// Check if our fields are available, and cycle through them.
+			if ( isset( $cmb2->data_to_save['plan_sections'] ) && ! empty( $cmb2->data_to_save['plan_sections'] ) ) {
+				$fields_to_save = array();
+				// Run through each row of fields.
+				foreach ( $cmb2->data_to_save['plan_sections'] as $field_index => $fields ) {
+					// Run through each field in that section.
+					foreach ( $fields as $field_key => $field_value ) {
+						$stored_values_key = 'plan_sections_' . $field_index . '_' . $field_key . '_store';
+						if ( isset( $cmb2->data_to_save[ $stored_values_key ] ) && ! empty( $cmb2->data_to_save[ $stored_values_key ] ) ) {
+							$stored_values = $cmb2->data_to_save[ $stored_values_key ];
+							$stored_values = explode( ',', $stored_values );
+							foreach ( $stored_values as $id_to_save ) {
+								$fields_to_save[ $field_key ][] = $id_to_save;
 							}
 						}
 					}
 				}
-				$counter++;
+				$this->save_field_array( $object_id, $fields_to_save );
+			}
+		}
+	}
+
+	/**
+	 * Runs through the supplied array and saved the fields to the current Object.
+	 *
+	 * @param integer $object_id
+	 * @param array   $fields_to_save
+	 * @return void
+	 */
+	public function save_field_array( $object_id = 0, $fields_to_save = array() ) {
+
+		// Run through the fields and save the meta items.
+		if ( ! empty( $fields_to_save ) ) {
+			foreach ( $fields_to_save as $field_key => $field_values ) {
+				delete_post_meta( $object_id, $field_key );
+
+				$field_values = array_unique( $field_values );
+				foreach ( $field_values as $field_value ) {
+					add_post_meta( $object_id, $field_key, $field_value, false );
+				}
 			}
 		}
 	}

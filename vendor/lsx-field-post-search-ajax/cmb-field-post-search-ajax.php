@@ -38,9 +38,6 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			add_action( 'cmb2_render_post_search_ajax', array( $this, 'render' ), 10, 5 );
 			add_action( 'cmb2_sanitize_post_search_ajax', array( $this, 'sanitize' ), 10, 4 );
 			add_action( 'wp_ajax_cmb_post_search_ajax_get_results', array( $this, 'cmb_post_search_ajax_get_results' ) );
-
-			// Debugging.
-			//add_action( 'cmb2_save_post_fields', array( $this, 'debugger' ), 10, 4 );
 		}
 
 		/**
@@ -320,26 +317,6 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				wp_reset_postdata();
 				die( json_encode( $datas ) );
 			}
-		}
-
-		public function debugger( $object_id, $cmb_id, $updated, $cmb ) {
-			print_r( '<pre>' );
-			print_r( 'Object ID' . $object_id . '<br />' );
-			print_r( '============' );
-			print_r( '</pre>' );
-			print_r( '<pre>' );
-			print_r( 'CMB ID' . $cmb_id . '<br />' );
-			print_r( '============' );
-			print_r( '</pre>' );
-			print_r( '<pre>' );
-			print_r( 'Updated' );
-			print_r( $updated );
-			print_r( '</pre>' );
-			print_r( '<pre>' );
-			print_r( '============<br />' );
-			print_r( $cmb );
-			print_r( '</pre>' );
-			die();
 		}
 	}
 }

@@ -30,6 +30,7 @@ class Plan {
 	 * Contructor
 	 */
 	public function __construct() {
+
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'plan_type_taxonomy_setup' ) );
 		add_action( 'init', array( $this, 'week_taxonomy_setup' ) );
