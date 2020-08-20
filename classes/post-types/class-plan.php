@@ -412,10 +412,22 @@ class Plan {
 		$cmb->add_group_field(
 			$group,
 			array(
-				'name' => __( 'Title', 'lsx-health-plan' ),
-				'id'   => 'title',
-				'type' => 'text',
-				'desc' => __( 'e.g Day 1 / Week 1', 'lsx-health-plan' ),
+				'name'       => __( 'Title', 'lsx-health-plan' ),
+				'id'         => 'title',
+				'type'       => 'text',
+				'desc'       => __( 'e.g Day 1 / Week 1', 'lsx-health-plan' ),
+				'classes'    => 'lsx-field-col  lsx-field-col-50',
+			)
+		);
+
+		$cmb->add_group_field(
+			$group,
+			array(
+				'name'       => __( 'Group', 'lsx-health-plan' ),
+				'id'         => 'group',
+				'type'       => 'text',
+				'desc'       => __( 'e.g Week 1 / January', 'lsx-health-plan' ),
+				'classes'    => 'lsx-field-col  lsx-field-col-50',
 			)
 		);
 

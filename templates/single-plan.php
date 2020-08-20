@@ -56,7 +56,6 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 			}
 
 			the_content();
-			echo do_shortcode( '[lsx_health_plan_day_plan_block show_downloads="true" plan="' . get_the_ID() . '"]' );
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
 
 		} else {
