@@ -56,7 +56,7 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 			echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'plan' ) );
 
 			if ( false === $restricted ) {
-				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
 			}
 
 			the_content();

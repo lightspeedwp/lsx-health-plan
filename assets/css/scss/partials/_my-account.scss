@@ -318,32 +318,48 @@ body:not(.woocommerce-edit-account) {
 	}
 }
 
-.progress progress[value] {
-	appearance: none;
-	width: 100%;
-	height: 20px;
-	&::-webkit-progress-bar {
-		background-color: white;
-		border-radius: 10px;
-		border: 1px solid #dddddd;
+.progress {
+	position: relative;
+	span {
+		position: absolute;
+		left: 8px;
+		bottom: 6px;
+		font-size: 10px;
+		font-weight: bold;
+		color: white;
 	}
-	&::-webkit-progress-value {
-		border-radius: 10px;
-		background-color: transparent;
-	}
-	&.less-progress {
+	progress[value] {
+		appearance: none;
+		width: 100%;
+		height: 20px;
+		&::-webkit-progress-bar {
+			background-color: white;
+			border-radius: 10px;
+			border: 1px solid #dddddd;
+		}
 		&::-webkit-progress-value {
-			background-color: #c32d37;
+			border-radius: 10px;
+			background-color: transparent;
+		}
+		&.less-progress {
+			&::-webkit-progress-value {
+				background-color: #c32d37;
+			}
+		}
+		&.half-progress {
+			&::-webkit-progress-value {
+				background-color: #ff7a18;
+			}
+		}
+		&.completed-progress {
+			&::-webkit-progress-value {
+				background-color: #30bb00;
+			}
 		}
 	}
-	&.half-progress {
-		&::-webkit-progress-value {
-			background-color: #ff7a18;
-		}
-	}
-	&.completed-progress {
-		&::-webkit-progress-value {
-			background-color: #30bb00;
+	progress[value='0'] {
+		+ span {
+			color: black;
 		}
 	}
 }

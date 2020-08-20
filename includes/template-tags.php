@@ -404,7 +404,7 @@ function lsx_health_plan_all_plans_block() {
 								</div>
 								<?php
 								if ( false === $restricted ) {
-									echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+									echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
 								}
 								?>
 							</div>
