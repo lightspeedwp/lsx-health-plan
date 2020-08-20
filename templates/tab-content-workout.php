@@ -7,6 +7,12 @@
 
 global $shortcode_args;
 
+// Getting translated endpoint.
+$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $workout . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_articles' ), true );
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -42,6 +48,7 @@ global $shortcode_args;
 					<h2><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?></h2>
 				</div>
 			<?php } ?>
+			<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, $workout ) ); ?>
 			<?php
 			if ( lsx_health_plan_has_warmup() && ( ! is_singular( 'workout' ) ) ) {
 				?>
@@ -55,12 +62,11 @@ global $shortcode_args;
 							<?php if ( null === $shortcode_args ) { ?>
 								<div class="tip-row extras-box">
 									<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
-										<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="workout"]' ); ?>
+										<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="' . $workout . '"]' ); ?>
 									<?php } ?>
 								</div>
 							<?php } ?>
 						</div>
-						
 					</div>
 				</div>
 				<?php
@@ -74,6 +80,12 @@ global $shortcode_args;
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
+}
+?>
 
 <?php
 lsx_entry_after();

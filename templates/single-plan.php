@@ -15,13 +15,16 @@ $args = array(
 	'post_type'   => 'plan',
 );
 
-$post_id      = get_the_ID();
+$plan_id      = get_the_ID();
 $has_children = get_children( $args );
-$has_parent   = wp_get_post_parent_id( $post_id );
+$has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
 
-$connected_articles = get_post_meta( get_the_ID(), 'plan_connected_articles', true );
-$connected_members  = get_post_meta( get_the_ID(), 'plan_connected_team_member', true );
+// Getting translated endpoint.
+$plan = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $plan . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $plan . '_connected_articles' ), true );
 
 if ( ! empty( $has_children ) ) {
 	$plan_type_class = 'parent-plan';

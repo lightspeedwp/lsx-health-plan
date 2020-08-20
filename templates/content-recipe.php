@@ -17,8 +17,12 @@ $carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
 $fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
 $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 
-$connected_articles = get_post_meta( get_the_ID(), 'recipe_connected_articles', true );
-$connected_members  = get_post_meta( get_the_ID(), 'recipe_connected_team_member', true );
+
+// Getting translated endpoint.
+$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe_single', 'recipe' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $recipe . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $recipe . '_connected_articles' ), true );
 ?>
 
 <?php lsx_entry_before(); ?>

@@ -46,7 +46,6 @@ class Exercise {
 			add_action( 'cmb2_admin_init', array( $this, 'exercise_details' ), 8 );
 			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
 			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
-			add_action( 'cmb2_admin_init', array( $this, 'related_articles_metabox' ) );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 
 			// Template Redirects.
@@ -295,38 +294,6 @@ class Exercise {
 				'id'      => $this->slug . '_tip_content',
 				'type'    => 'textarea',
 				'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
-			)
-		);
-	}
-
-	/**
-	 * Define the related articles metabox and field configurations.
-	 */
-	public function related_articles_metabox() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_related_articles_metabox',
-				'title'        => __( 'Related Articles', 'lsx-health-plan' ),
-				'object_types' => array( $this->slug ), // Post type
-				'context'      => 'normal',
-				'priority'     => 'low',
-				'show_names'   => true,
-			)
-		);
-
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Related Articles', 'lsx-health-plan' ),
-				'desc'       => __( 'Connect the related articles that applies to this exercise by entering the name of the article in the field provided.' ),
-				'id'         => $this->slug . '_connected_articles',
-				'type'       => 'post_search_ajax',
-				'limit'      => 3,  // Limit selection to X items only (default 1).
-				'sortable'   => true, // Allow selected items to be sortable (default false).
-				'query_args' => array(
-					'post_type'      => array( 'post' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
 			)
 		);
 	}

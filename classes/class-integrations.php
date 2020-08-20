@@ -72,6 +72,7 @@ class Integrations {
 		add_action( 'init', array( $this, 'wp_user_avatar_init' ) );
 		add_action( 'init', array( $this, 'facetwp_init' ) );
 		add_action( 'init', array( $this, 'lsx_team_init' ) );
+		add_action( 'init', array( $this, 'lsx_article_init' ) );
 	}
 
 	/**
@@ -158,6 +159,18 @@ class Integrations {
 		if ( class_exists( 'LSX_Team' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-team.php';
 			$this->team = LSX_Team::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the Blog Integration.
+	 *
+	 * @return void
+	 */
+	public function lsx_article_init() {
+		if ( wp_count_posts()->publish > 0 ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-blog.php';
+			$this->article = Articles::get_instance();
 		}
 	}
 }

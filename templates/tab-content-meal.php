@@ -6,12 +6,12 @@
  */
 
 global $shortcode_args;
-$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
-if ( false === $meal ) {
-	$meal = 'meal';
-}
-$connected_post_type = $meal . '_connected_team_member';
-$connected_members = get_post_meta( get_the_ID(), $connected_post_type, true );
+
+// Getting translated endpoint.
+$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $meal . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_articles' ), true );
 
 ?>
 
@@ -57,6 +57,12 @@ $connected_members = get_post_meta( get_the_ID(), $connected_post_type, true );
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
+}
+?>
 
 <?php
 lsx_entry_after();

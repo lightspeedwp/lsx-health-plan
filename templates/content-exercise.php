@@ -5,12 +5,15 @@
  * @package lsx-health-plan
  */
 
-$type         = lsx_health_plan_exercise_type();
-$equipment    = lsx_health_plan_exercise_equipment();
-$muscle_group = lsx_health_plan_muscle_group_equipment();
+$exercise_type = lsx_health_plan_exercise_type();
+$equipment     = lsx_health_plan_exercise_equipment();
+$muscle_group  = lsx_health_plan_muscle_group_equipment();
 
-$connected_articles = get_post_meta( get_the_ID(), 'exercise_connected_articles', true );
-$connected_members  = get_post_meta( get_the_ID(), 'exercise_connected_team_member', true );
+// Getting translated endpoint.
+$exercise = \lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $exercise . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $exercise . '_connected_articles' ), true );
 
 $sharing = 'sharing-disabled';
 if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) :
@@ -75,7 +78,7 @@ endif;
 			}
 			?>
 
-				<?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
+				<?php if ( ( ! empty( $exercise_type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
 					<div class="exercise-data">
 						<?php lsx_health_plan_exercise_data(); ?>
 					</div>
@@ -105,7 +108,6 @@ if ( ! empty( $connected_articles ) ) {
 	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
 }
 ?>
-
 
 <?php
 lsx_entry_after();
