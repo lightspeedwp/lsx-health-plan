@@ -119,6 +119,9 @@ var mag_ajax_js = Object.create( null );
 							} else {
 								$(this).focus();
 							}
+
+							mag_ajax_js.populateStoreField( $(this), name );
+
 						} else {
 							$('input#'+name).val( suggestion.data );
 						}
@@ -130,12 +133,7 @@ var mag_ajax_js = Object.create( null );
 							groupName = groupName.replace( "]", "" );
 							groupName = groupName.replace( "[", "_" );
 							
-							var resultValues = $(this).closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
-							if ( 0 === resultValues.length ) {
-								$( 'input[name='+groupName+'_store]' ).val( '' );
-							} else {
-								$( 'input[name='+groupName+'_store]' ).val( resultValues.join(',') );
-							}
+							mag_ajax_js.populateStoreField( $(this), groupName );
 						}
 					}
 				});			
@@ -164,6 +162,18 @@ var mag_ajax_js = Object.create( null );
 		);
 	};
 
+	mag_ajax_js.populateStoreField = function( ele, name ) {
+		var resultValues = ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
+		console.log(ele);
+		console.log(ele.closest('.cmb-row'));
+		console.log(resultValues);
+		if ( 0 === resultValues.length ) {
+			$( 'input[name='+name+'_store]' ).val( '' );
+		} else {
+			$( 'input[name='+name+'_store]' ).val( resultValues.join(',') );
+		}
+	};
+
 	mag_ajax_js.watch_remove_click = function() {
 		$('.cmb-post-search-ajax-results').on( 'click', 'a.remover', function(){
 			$(this).parent('li').fadeOut( 0, function(){ 
@@ -176,14 +186,15 @@ var mag_ajax_js = Object.create( null );
 				$('#' + iid).devbridgeAutocomplete('clearCache');
 
 				if ( cmb_row.hasClass('cmb-repeat-group-field') ) {				
-					var resultValues = cmb_row.find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
-					if ( 0 === resultValues.length ) {
-						cmb_row.find( '.cmb-post-search-ajax-store' ).val( '' );
-					} else {
-						console.log( resultValues );
-						console.log( resultValues.join(',') );
-						cmb_row.find( '.cmb-post-search-ajax-store' ).val( resultValues.join(',') );
-					}
+					var groupName = $(this).find('input').attr('name').replace('_results[]', '');
+					groupName = groupName.replace( "][", "_" );
+					groupName = groupName.replace( "]", "" );
+					groupName = groupName.replace( "[", "_" );
+					console.log( groupName );
+					console.log( cmb_row );
+					mag_ajax_js.populateStoreField( cmb_row, groupName );
+				} else {
+					mag_ajax_js.populateStoreField( cmb_row, iid );
 				}
 			});
 		});

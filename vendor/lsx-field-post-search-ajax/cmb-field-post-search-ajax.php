@@ -65,7 +65,10 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			if ( $field->args( 'limit' ) > 1 ) {
 				echo '<ul class="cmb-post-search-ajax-results" id="' . $field_name . '_results">';
 				if ( isset( $value ) && ! empty( $value ) ) {
-					$value = explode( ',', $value );
+
+					if ( ! is_array( $value ) ) {
+						$value = explode( ',', $value );
+					}
 					if ( ! is_array( $value ) ) {
 						$value = array( $value );
 					}
