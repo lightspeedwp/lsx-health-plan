@@ -15,12 +15,12 @@ $args = array(
 	'post_type'   => 'plan',
 );
 
-$post_id      = get_the_ID();
-$has_children = get_children( $args );
-$has_parent   = wp_get_post_parent_id( $post_id );
+$plan_id      = get_the_ID();
+$has_sections = \lsx_health_plan\functions\plan\has_sections();
+$has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
 
-if ( ! empty( $has_children ) ) {
+if ( ! empty( $has_sections ) ) {
 	$plan_type_class = 'parent-plan';
 	if ( 0 !== $has_parent ) {
 		$plan_type_class = 'parent-sub-plan';
@@ -47,7 +47,7 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		<?php lsx_content_top(); ?>
 
 		<?php
-		if ( ! empty( $has_children ) ) {
+		if ( ! empty( $has_sections ) ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
 
 			if ( false === $restricted ) {
@@ -56,17 +56,18 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 
 			the_content();
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
-		}
 
-		if ( empty( $has_children ) ) {
+		} else {
+
 			lsx_health_plan_single_nav();
 			lsx_health_plan_single_tabs();
 			?>
-
 			<div class="row status-plan-buttons">
 				<?php lsx_health_plan_day_button(); ?>
 			</div>
-		<?php } ?>
+			<?php
+		}
+		?>
 
 		<?php lsx_content_bottom(); ?>
 
