@@ -199,11 +199,11 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-hp-related .lsx-related-posts.lsx-related-posts-content .col-xs-12 .lsx-related-posts-wrapper .lsx-slot .entry-layout .entry-layout-content .entry-header .entry-title a { font-size: 18px; }
 
-body.single-plan #lsx-hp-related { margin-top: 4.25rem; }
+body.single-plan #lsx-hp-related, body.single-workout #lsx-hp-related, body.single-meal #lsx-hp-related { margin-top: 4.25rem; }
 
-body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 { text-align: right; }
+body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12, body.single-workout #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12, body.single-meal #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 { text-align: right; }
 
-body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline { font-size: 22px; }
+body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline, body.single-workout #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline, body.single-meal #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline { font-size: 22px; }
 
 #hp-connected-members { display: -ms-flexbox; display: flex; }
 

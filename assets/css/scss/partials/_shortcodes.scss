@@ -467,7 +467,9 @@
 			}
 		}
 	}
-	body.single-plan & {
+	body.single-plan &,
+	body.single-workout &,
+	body.single-meal & {
 		margin-top: 4.25rem;
 		.lsx-related-posts {
 			&.lsx-related-posts-title {
