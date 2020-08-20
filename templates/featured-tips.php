@@ -55,7 +55,7 @@ if ( ! empty( $args ) ) {
 	$tips = new WP_Query( $args );
 	?>
 	<div id="lsx-tips-shortcode" class="daily-plan-block <?php echo esc_html( $tab ); ?>-tip">
-		<div class="lsx-tips-shortcode"  >
+		<div class="lsx-tips-shortcode lsx-tips-slider slick-slider slick-dotted"  >
 		<?php
 		if ( $tips->have_posts() ) {
 			while ( $tips->have_posts() ) {
