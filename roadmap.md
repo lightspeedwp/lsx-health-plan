@@ -1,6 +1,6 @@
 # Upcoming Projects & Roadmap
 
-_Complementary to [Version 1.4 Scope & Requirements](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/123)._
+_Complementary to [Version 2.0 Scope & Requirements](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/123)._
 
 This document outlines some of the features currently in development or being considered for the project. 
 
