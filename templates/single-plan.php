@@ -19,6 +19,7 @@ $plan_id      = get_the_ID();
 $has_sections = \lsx_health_plan\functions\plan\has_sections();
 $has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
+$is_section   = get_query_var( 'section', false );
 
 if ( ! empty( $has_sections ) ) {
 	$plan_type_class = 'parent-plan';
@@ -47,7 +48,7 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		<?php lsx_content_top(); ?>
 
 		<?php
-		if ( ! empty( $has_sections ) ) {
+		if ( ! empty( $has_sections ) && false === $is_section ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
 
 			if ( false === $restricted ) {
