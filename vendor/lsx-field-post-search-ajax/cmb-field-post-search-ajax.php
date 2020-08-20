@@ -63,9 +63,9 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			$field_name = $field->_name();
 
 			if ( $field->args( 'limit' ) > 1 ) {
-
 				echo '<ul class="cmb-post-search-ajax-results" id="' . $field_name . '_results">';
 				if ( isset( $value ) && ! empty( $value ) ) {
+					$value = explode( ',', $value );
 					if ( ! is_array( $value ) ) {
 						$value = array( $value );
 					}
@@ -89,6 +89,22 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				}
 				echo '</ul>';
 				$field_value = '';
+				if ( isset( $field->group ) ) {
+					$store_name = str_replace( '][', '_', $field_name );
+					$store_name = str_replace( ']', '', $store_name );
+					$store_name = str_replace( '[', '_', $store_name );
+
+					echo $field_type->input(
+						array(
+							'type'  => 'hidden',
+							'id'    => $field_name . '_store',
+							'name'  => $store_name . '_store',
+							'class' => 'cmb-post-search-ajax-store',
+							'value' => implode( ',', $value ),
+							'desc'  => false,
+						)
+					);
+				}
 			} else {
 				if ( is_array( $value ) ) {
 					$value = $value[0];
@@ -156,12 +172,12 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 
 			// IF the field is in a repeatable group, then get the info from the post data.
 			if ( isset( $field_args['render_row_cb'][0]->group ) && ! empty( $field_args['render_row_cb'][0]->group ) ) {
-				$new_index = '';
-
+				$new_index    = '';
 				$data_to_save = $field_args['render_row_cb'][0]->group->args['render_row_cb'][0]->data_to_save;
 				$oid          = $field_args['_name'];
 				$iid          = $field_args['_id'];
 				$oid          = explode( '[', $oid );
+
 				if ( is_array( $oid ) ) {
 					$oid = $oid[0];
 				}
@@ -176,7 +192,6 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 
 				if ( '' !== $new_index ) {
 					$new_index = $oid . '_' . $new_index . '_' . $iid . '_store';
-
 					if ( ! empty( $data_to_save[ $new_index ] ) ) {
 						$value = $data_to_save[ $new_index ];
 					}
@@ -185,10 +200,12 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				}
 			} else if ( ! empty( $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ] ) ) {
 				$value = $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ];
+			} else if ( ! empty( $field_args['render_row_cb'][0]->data_to_save[ $fid . '_store' ] ) ) {
+				$value = $field_args['render_row_cb'][0]->data_to_save[ $fid . '_store' ];
 			} else {
 				$value = false;
 			}
-
+			//die();
 			return $value;
 		}
 

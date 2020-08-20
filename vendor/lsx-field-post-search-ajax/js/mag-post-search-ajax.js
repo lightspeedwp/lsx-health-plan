@@ -21,7 +21,7 @@ var mag_ajax_js = Object.create( null );
 				fid = fid.replace( "]", "" );
 				fid = fid.replace( "[", "_" );
 
-				var storeReplace = $(this).parents('.cmb-row.cmb-type-post-search-ajax');
+				var storeReplace = $(this).closest('.cmb-row.cmb-type-post-search-ajax');
 				console.log('====== CMBROW =======');
 				console.log(storeReplace);
 				console.log(name);
@@ -90,9 +90,9 @@ var mag_ajax_js = Object.create( null );
 						console.log('====== suggestion =======');
 						console.log(suggestion);
 
-						console.log($(this).parents('.cmb-row').hasClass('cmb-repeat-group-field'));
-						console.log($(this).parents('.cmb-row').hasClass('lsx-field-connect-field'));
-						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).parents('.cmb-row').hasClass('lsx-field-connect-field') ) {
+						console.log($(this).closest('.cmb-row').hasClass('cmb-repeat-group-field'));
+						console.log($(this).closest('.cmb-row').hasClass('lsx-field-connect-field'));
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).closest('.cmb-row').hasClass('lsx-field-connect-field') ) {
 							name = original;
 						}
 						console.log('====== Original =======');
@@ -116,15 +116,20 @@ var mag_ajax_js = Object.create( null );
 							$('input#'+name).val( suggestion.data );
 						}
 
-						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') ) {
 							console.log('cmb-group');
+							console.log( groupName );
 							groupName = groupName.replace( "][", "_" );
 							groupName = groupName.replace( "]", "" );
 							groupName = groupName.replace( "[", "_" );
-							console.log( groupName );
-							$( 'input[name='+groupName+'_store]' ).val( suggestion.data );
+							
+							var resultValues = $(this).closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
+							if ( 0 === resultValues.length ) {
+								$( 'input[name='+groupName+'_store]' ).val( '' );
+							} else {
+								$( 'input[name='+groupName+'_store]' ).val( resultValues.join(',') );
+							}
 						}
-	
 					}
 				});			
 			
@@ -154,11 +159,25 @@ var mag_ajax_js = Object.create( null );
 
 	mag_ajax_js.watch_remove_click = function() {
 		$('.cmb-post-search-ajax-results').on( 'click', 'a.remover', function(){
-			$(this).parent('li').fadeOut( 400, function(){ 
-				var iid = $(this).parents('ul').attr('id').replace('_results', '');
+			$(this).parent('li').fadeOut( 0, function(){ 
+				var iid     = $(this).parent('ul').attr('id').replace('_results', '');
+				var cmb_row = $(this).closest('.cmb-row');
+
+				console.log( iid );
 				$(this).remove(); 
 				$('#' + iid).removeProp( 'disabled' );
 				$('#' + iid).devbridgeAutocomplete('clearCache');
+
+				if ( cmb_row.hasClass('cmb-repeat-group-field') ) {				
+					var resultValues = cmb_row.find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
+					if ( 0 === resultValues.length ) {
+						cmb_row.find( '.cmb-post-search-ajax-store' ).val( '' );
+					} else {
+						console.log( resultValues );
+						console.log( resultValues.join(',') );
+						cmb_row.find( '.cmb-post-search-ajax-store' ).val( resultValues.join(',') );
+					}
+				}
 			});
 		});
 	};
