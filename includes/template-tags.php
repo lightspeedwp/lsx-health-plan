@@ -426,42 +426,35 @@ function lsx_health_plan_all_plans_block() {
  */
 function lsx_health_plan_day_plan_block( $args = array() ) {
 	$defaults = array(
-		'plan'           => '',
+		'plan' => '',
 	);
-	if ( isset( $args['plan'] ) && '' !== $args['plan'] ) {
-		$parent = $args['plan'];
-	}
-	$args      = array(
-		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
-		'post_type'      => 'plan',
-		'posts_per_page' => -1,
-		'nopagin'        => true,
-		'post_parent'    => $parent,
-	);
-	$args = wp_parse_args( $args, $defaults );
+	$args     = wp_parse_args( $args, $defaults );
 
-	$the_query = new WP_Query( $args );
-	?>
-	<div class="daily-plan-block day-grid">
-		<?php
-		if ( $the_query->have_posts() ) :
-			while ( $the_query->have_posts() ) :
-				$the_query->the_post();
+	if ( isset( $args['plan'] ) && '' !== $args['plan'] && \lsx_health_plan\functions\plan\has_sections( $args['plan'] ) ) {
+		$sections = \lsx_health_plan\functions\plan\get_sections( $args['plan'] );
+		?>
+		<div class="daily-plan-block day-grid">
+			<?php
+			foreach ( $sections as $section_key => $section_values ) {
+				$defaults    = array(
+					'title' => __( 'Day', 'lsx-health-plan' ) . ' ' . ( $section_key + 1 ),
+				);
+				$section_args = wp_parse_args( $section_values, $defaults );
+
 				$completed_class = '';
 				if ( lsx_health_plan_is_day_complete() ) {
 					$completed_class = 'completed';
 				}
 				?>
-				<a href="<?php the_permalink(); ?>" class="day id-<?php the_ID(); ?> <?php echo esc_attr( $completed_class ); ?>">
-					<div class="plan-content"><?php the_title(); ?></div>
+				<a href="<?php echo esc_attr( \lsx_health_plan\functions\plan\get_permalink( $args['plan'], $section_args['title'] ) ); ?>" class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
+					<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
 				</a>
-			<?php endwhile; ?>
-		<?php endif; ?>
-		<?php wp_reset_postdata(); ?>
-	</div>
-
-<?php
+				<?php
+			}
+			?>
+		</div>
+		<?php
+	}
 }
 
 /**

@@ -43,3 +43,41 @@ function has_sections( $plan_id = 0 ) {
 	}
 	return $sections;
 }
+
+/**
+ * Returns the sections for a plan
+ *
+ * @param  integer $plan_id
+ * @return array
+ */
+function get_sections( $plan_id = 0 ) {
+	$sections = array();
+	if ( 0 === $plan_id ) {
+		$plan_id = get_the_ID();
+	}
+
+	$section_array = get_post_meta( $plan_id, 'plan_sections', true );
+
+	if ( ! empty( $section_array ) ) {
+		$sections = $section_array;
+	}
+	return $sections;
+}
+
+/**
+ * Returns the sections for a plan
+ *
+ * @param  integer $plan_id
+ * @param  string  $title
+ * @return array
+ */
+function get_permalink( $plan_id = 0, $title = '' ) {
+	if ( 0 === $plan_id ) {
+		$plan_id = get_the_ID();
+	}
+	$url = \get_permalink( $plan_id );
+	if ( '' !== $title ) {
+		$url .= sanitize_title( $title ) . '/';
+	}
+	return $url;
+}
