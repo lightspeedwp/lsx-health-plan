@@ -1,4 +1,10 @@
 <?php
+/**
+ * Tips Class
+ *
+ * @package lsx-health-plan
+ */
+
 namespace lsx_health_plan\classes;
 
 /**
@@ -27,14 +33,21 @@ class Tip {
 	public $slug = 'tip';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
+		$this->default_types = array(
+			\lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' ),
+			\lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' ),
+			\lsx_health_plan\functions\get_option( 'endpoint_recipe_single', 'recipe' ),
+			\lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
+			\lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' ),
+		);
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
+		//add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'tips_connections' ), 15 );
 	}
 
@@ -143,8 +156,8 @@ class Tip {
 	 * @return void
 	 */
 	public function enable_connections( $connections = array() ) {
-		$connections['tip']['connected_plans'] = 'connected_tips';
-		$connections['plan']['connected_tips'] = 'connected_plans';
+		$connections['tip']['connected_plans']      = 'plan_connected_tips';
+		$connections['plan']['plan_connected_tips'] = 'connected_plans';
 		return $connections;
 	}
 
@@ -154,49 +167,33 @@ class Tip {
 	 * @return void
 	 */
 	public function tips_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_tips_connections_metabox',
-			'title'        => __( 'Tips', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => false,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Tips', 'lsx-health-plan' ),
-			'id'         => 'connected_tips',
-			'desc'       => __( 'Connect the tips that apply to this day plan using the field provided.', 'lsx-health-plan' ),
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15,  // Limit selection to X items only (default 1)
-			'sortable'   => true,  // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( 'tip' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
-	}
-
-	/**
-	 * Define the metabox and field configurations.
-	 */
-	public function featured_metabox() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_featured_metabox_tip',
-			'title'        => __( 'Featured', 'lsx-health-plan' ),
-			'object_types' => array( $this->slug ), // Post type
-			'context'      => 'side',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Featured', 'lsx-health-plan' ),
-			'desc'       => __( 'Enable the checkbox to feature this tip, featured tips display in any page that has the tip shortcode: [lsx_health_plan_featured_tips_block]' ),
-			'id'         => $this->slug . '_featured_tip',
-			'type'       => 'checkbox',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );
+		foreach ( $this->default_types as $type => $default_type ) {
+			$cmb = new_cmb2_box(
+				array(
+					'id'           => $default_type . '_tips_connections_metabox',
+					'title'        => __( 'Related Tips', 'lsx-health-plan' ),
+					'object_types' => array( $default_type ), // Post types.
+					'context'      => 'normal',
+					'priority'     => 'high',
+					'show_names'   => false,
+				)
+			);
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Tips', 'lsx-health-plan' ),
+					'id'         => $default_type . '_connected_tips',
+					'desc'       => __( 'Connect the tips that apply to this', 'lsx-health-plan' ) . $default_type,
+					'type'       => 'post_search_ajax',
+					'limit'      => 15,
+					'sortable'   => true,
+					'query_args' => array(
+						'post_type'      => array( 'tip' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
 	}
 
 }

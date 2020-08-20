@@ -5,8 +5,6 @@
  * @package lsx-health-plan
  */
 
-global $shortcode_args;
-
 // Getting translated endpoint.
 $meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' );
 
@@ -43,15 +41,7 @@ $connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_article
 		</div>
 
 	</div><!-- .entry-content -->
-	<?php if ( null === $shortcode_args ) { ?>
-		<div class="tip-row extras-box">
-			<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
-				<div class="tip-right">
-					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="' . $meal . '"]' ); ?>
-				</div>
-			<?php } ?>
-		</div>
-	<?php } ?>
+	<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 
 	<?php lsx_entry_bottom(); ?>
 

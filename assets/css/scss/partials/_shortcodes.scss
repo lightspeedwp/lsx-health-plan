@@ -169,6 +169,39 @@
 				}
 			}
 		}
+		&.slick-slider {
+			button {
+				&.slick-arrow {
+					border: none;
+					color: #dddddd;
+					&.slick-next {
+						right: -3.2rem;
+					}
+					&.slick-prev {
+						left: -3.2rem;
+					}
+				}
+			}
+			.slick-dots {
+				margin-top: 0;
+				> li {
+					padding: 0 3px;
+					> button {
+						border-color: #dddddd;
+						width: 9px;
+						height: 9px;
+						border-radius: 50%;
+						padding: 0;
+						background: #dddddd;
+					}
+					&.slick-active {
+						> button {
+							background: #919191;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

@@ -643,9 +643,7 @@ function lsx_health_plan_featured_recipes_block() {
  *
  * @return void
  */
-function lsx_health_plan_featured_tips_block( $args = array() ) {
-	global $shortcode_args;
-	$shortcode_args = $args;
+function lsx_health_plan_featured_tips_block() {
 	include LSX_HEALTH_PLAN_PATH . '/templates/featured-tips.php';
 }
 
@@ -845,6 +843,30 @@ function lsx_health_plan_recipe_archive_description() {
 		</div>
 		<?php
 	}
+}
+
+/**
+ * Outputs the Single Plan Workout main content.
+ *
+ * @return void
+ */
+function lsx_health_plan_workout_main_content() {
+	// Getting translated endpoint.
+	$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
+
+	$connected_members = get_post_meta( get_the_ID(), ( $workout . '_connected_team_member' ), true );
+
+	$content = '';
+	if ( get_the_content() || $connected_members ) {
+		$content .= '<div class="set-box set content-box entry-content">';
+		$content .= '<div class="the-content">';
+		$content .= lsx_hp_member_connected( $connected_members, $workout );
+		$content .= get_the_content();
+		$content .= '</div>';
+		$content .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
+		$content .= '</div>';
+	}
+	return $content;
 }
 
 /**

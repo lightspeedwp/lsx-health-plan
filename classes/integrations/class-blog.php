@@ -70,7 +70,7 @@ class Articles {
 			$cmb->add_field(
 				array(
 					'name'       => __( 'Related Articles', 'lsx-health-plan' ),
-					'desc'       => __( 'Connect the related articles member that applies to this ' ) . $default_type,
+					'desc'       => __( 'Connect the related articles that applies to this ', 'lsx-health-plan' ) . $default_type,
 					'id'         => $default_type . '_connected_articles',
 					'type'       => 'post_search_ajax',
 					'limit'      => 3,  // Limit selection to X items only (default 1).

@@ -5,56 +5,31 @@
  * @package lsx-health-plan
  */
 global $shortcode_args;
-$connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
 
-$tab = $args['tab'];
+$this_post_type = get_post_type( get_the_ID() );
+
+$connected_tips = get_post_meta( get_the_ID(), ( $this_post_type . '_connected_tips' ), true );
 
 // Check for any shortcode overrides.
 if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	$connected_tips = array( get_the_ID() );
 }
 
-if ( empty( $connected_tips ) ) {
-	// Featured Tips Global
-	$connected_tips = 'tip_featured_tip';
+if ( ! empty( $connected_tips ) ) {
 	$args = array(
 		'orderby'        => 'date',
 		'order'          => 'ASC',
 		'post_type'      => 'tip',
 		'posts_per_page' => -1,
-		'meta_key'       => $connected_tips,
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'tips-tab',
-				'field'    => 'slug',
-				'terms'    => $tab,
-			),
-		),
+		'post__in'       => $connected_tips,
 	);
-} else {
-	$connected_tips = \lsx_health_plan\functions\check_posts_exist( $connected_tips );
-	if ( ! empty( $connected_tips ) ) {
-		$args = array(
-			'orderby'        => 'date',
-			'order'          => 'ASC',
-			'post_type'      => 'tip',
-			'posts_per_page' => -1,
-			'post__in'       => $connected_tips,
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'tips-tab',
-					'field'    => 'slug',
-					'terms'    => $tab,
-				),
-			),
-		);
-	}
 }
 
 if ( ! empty( $args ) ) {
 	$tips = new WP_Query( $args );
+
 	?>
-	<div id="lsx-tips-shortcode" class="daily-plan-block <?php echo esc_html( $tab ); ?>-tip">
+	<div id="lsx-tips-shortcode" class="daily-plan-block">
 		<div class="lsx-tips-shortcode lsx-tips-slider slick-slider slick-dotted"  >
 		<?php
 		if ( $tips->have_posts() ) {

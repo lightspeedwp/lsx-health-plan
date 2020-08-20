@@ -86,6 +86,7 @@ endif;
 			</div>
 			<div class="col-md-6 exercise-content">
 				<?php the_content(); ?>
+				<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 				<div  class="back-plan-btn">
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {

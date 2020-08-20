@@ -63,7 +63,7 @@ class LSX_Team {
 			$cmb->add_field(
 				array(
 					'name'       => __( 'Related Team Member', 'lsx-health-plan' ),
-					'desc'       => __( 'Connect the related team member that applies to this ' ) . $default_type,
+					'desc'       => __( 'Connect the related team member that applies to this ', 'lsx-health-plan' ) . $default_type,
 					'id'         => $default_type . '_connected_team_member',
 					'type'       => 'post_search_ajax',
 					'limit'      => 4,  // Limit selection to X items only (default 1).

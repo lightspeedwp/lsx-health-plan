@@ -79,6 +79,7 @@ $connected_articles = get_post_meta( get_the_ID(), ( $recipe . '_connected_artic
 			</div>
 			<div class="col-md-6 recipe-content">
 				<?php the_content(); ?>
+				<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 				<div class="back-plan-btn">
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {
@@ -90,16 +91,7 @@ $connected_articles = get_post_meta( get_the_ID(), ( $recipe . '_connected_artic
 				</div>
 			</div>
 		</div>
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
+
 	</div><!-- .entry-content -->
 
 	<?php lsx_entry_bottom(); ?>

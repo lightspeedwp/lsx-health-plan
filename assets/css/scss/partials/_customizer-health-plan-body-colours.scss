@@ -132,14 +132,15 @@
 	}
 
 	article.type-plan,
-	article.type-meal {
+	article.type-meal,
+	article.type-workout {
 		.entry-content {
 			.workout-content {
 				.sets {
 					.set-box {
 						&.set {
 							background: white;
-							&:nth-child(odd) {
+							&:nth-child(even) {
 								background: lighten($link, 42%);
 							}
 							.btn {
@@ -158,7 +159,7 @@
 				&.set {
 					background: white;
 					margin-bottom: 0;
-					&:nth-child(odd) {
+					&:nth-child(even) {
 						background: lighten($link, 42%);
 					}
 					.btn {

@@ -45,7 +45,7 @@ class Exercise {
 			// Custom Fields.
 			add_action( 'cmb2_admin_init', array( $this, 'exercise_details' ), 8 );
 			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
-			add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
+			//add_action( 'cmb2_admin_init', array( $this, 'tips_metabox' ) );
 			add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 
 			// Template Redirects.
@@ -237,66 +237,66 @@ class Exercise {
 	/**
 	 * Define the metabox and field configurations.
 	 */
-	public function tips_metabox() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_tips_details_metabox',
-				'title'        => __( 'Exercise Tips', 'lsx-health-plan' ),
-				'object_types' => array( $this->slug ), // Post type
-				'context'      => 'normal',
-				'priority'     => 'low',
-				'show_names'   => true,
-			)
-		);
+	// public function tips_metabox() {
+	// 	$cmb = new_cmb2_box(
+	// 		array(
+	// 			'id'           => $this->slug . '_tips_details_metabox',
+	// 			'title'        => __( 'Exercise Tips', 'lsx-health-plan' ),
+	// 			'object_types' => array( $this->slug ), // Post type
+	// 			'context'      => 'normal',
+	// 			'priority'     => 'low',
+	// 			'show_names'   => true,
+	// 		)
+	// 	);
 
-		// Repeatable group.
-		$tip_group = $cmb->add_field(
-			array(
-				'id'      => $this->slug . '_tips',
-				'type'    => 'group',
-				'options' => array(
-					'group_title'   => __( 'Tip', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
-					'add_button'    => __( 'Add another tip', 'lsx-health-plan' ),
-					'remove_button' => __( 'Remove tip', 'lsx-health-plan' ),
-					'sortable'      => true,
-				),
-				'classes' => 'lsx-admin-row',
-			)
-		);
+	// 	// Repeatable group.
+	// 	$tip_group = $cmb->add_field(
+	// 		array(
+	// 			'id'      => $this->slug . '_tips',
+	// 			'type'    => 'group',
+	// 			'options' => array(
+	// 				'group_title'   => __( 'Tip', 'lsx-health-plan' ) . ' {#}', // {#} gets replaced by row number
+	// 				'add_button'    => __( 'Add another tip', 'lsx-health-plan' ),
+	// 				'remove_button' => __( 'Remove tip', 'lsx-health-plan' ),
+	// 				'sortable'      => true,
+	// 			),
+	// 			'classes' => 'lsx-admin-row',
+	// 		)
+	// 	);
 
-		// Title.
-		$cmb->add_group_field(
-			$tip_group,
-			array(
-				'name' => __( 'Thumbnail', 'lsx-health-plan' ),
-				'id'   => $this->slug . '_tip_thumbnail',
-				'type' => 'file',
-				'text'        => array(
-					'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
-				),
-				'desc'        => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
-				'query_args' => array(
-					'type' => array(
-						'image/gif',
-						'image/jpeg',
-						'image/png',
-					),
-				),
-				'preview_size' => 'thumbnail',
-				'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
-			)
-		);
+	// 	// Title.
+	// 	$cmb->add_group_field(
+	// 		$tip_group,
+	// 		array(
+	// 			'name' => __( 'Thumbnail', 'lsx-health-plan' ),
+	// 			'id'   => $this->slug . '_tip_thumbnail',
+	// 			'type' => 'file',
+	// 			'text'        => array(
+	// 				'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
+	// 			),
+	// 			'desc'        => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
+	// 			'query_args' => array(
+	// 				'type' => array(
+	// 					'image/gif',
+	// 					'image/jpeg',
+	// 					'image/png',
+	// 				),
+	// 			),
+	// 			'preview_size' => 'thumbnail',
+	// 			'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+	// 		)
+	// 	);
 
-		$cmb->add_group_field(
-			$tip_group,
-			array(
-				'name'    => __( 'Description', 'lsx-health-plan' ),
-				'id'      => $this->slug . '_tip_content',
-				'type'    => 'textarea',
-				'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
-			)
-		);
-	}
+	// 	$cmb->add_group_field(
+	// 		$tip_group,
+	// 		array(
+	// 			'name'    => __( 'Description', 'lsx-health-plan' ),
+	// 			'id'      => $this->slug . '_tip_content',
+	// 			'type'    => 'textarea',
+	// 			'classes' => 'lsx-field-col lsx-field-connect-field lsx-field-col-75',
+	// 		)
+	// 	);
+	// }
 
 	/**
 	 * Adds the post type to the different arrays.
