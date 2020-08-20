@@ -64,6 +64,18 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 
 			the_content();
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
+
+			?>
+			<div class="row status-plan-buttons main-plan-btn">
+				<?php
+				if ( function_exists( 'wc_get_page_id' ) ) {
+					?>
+					<a class="btn border-btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a>
+					<?php
+				}
+				?>
+			</div>
+			<?php
 		}
 
 		if ( empty( $has_children ) ) {

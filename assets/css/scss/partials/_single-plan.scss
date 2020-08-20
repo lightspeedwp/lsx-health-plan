@@ -1009,6 +1009,26 @@ article.type-meal {
 	}
 }
 
+.single-plan {
+	.status-plan-buttons {
+		padding: 15px;
+		margin-top: 3rem;
+		margin-bottom: 6rem;
+		&.main-plan-btn {
+			.border-btn {
+				@include media('<=phone') {
+					width: 100%;
+				}
+				&:after {
+					content: '\f105';
+					font-family: 'FontAwesome';
+					margin-left: 1rem;
+				}
+			}
+		}
+	}
+}
+
 #lsx-exercises-shortcode {
 	.reps {
 		font-size: 13px;

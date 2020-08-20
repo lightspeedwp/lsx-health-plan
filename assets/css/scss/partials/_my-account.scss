@@ -525,6 +525,9 @@ body:not(.woocommerce-edit-account) {
 						justify-content: space-between;
 						align-items: center;
 						flex-wrap: wrap;
+						@include media('<=phone') {
+							justify-content: end;
+						}
 						.day {
 							background: none;
 							&:not(.completed) {
@@ -544,6 +547,9 @@ body:not(.woocommerce-edit-account) {
 										color: $white;
 									}
 								}
+							}
+							@include media('<=phone') {
+								margin-right: 1rem;
 							}
 							.plan-content {
 								font-family: 'Noto Sans', sans-serif;
