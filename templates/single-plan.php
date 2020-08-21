@@ -21,6 +21,12 @@ $has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
 $is_section   = get_query_var( 'section', false );
 
+// Getting translated endpoint.
+$plan = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $plan . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $plan . '_connected_articles' ), true );
+
 if ( ! empty( $has_sections ) ) {
 	$plan_type_class = 'parent-plan';
 	if ( 0 !== $has_parent ) {
@@ -51,12 +57,26 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		if ( ! empty( $has_sections ) && false === $is_section ) {
 			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
 
+			echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'plan' ) );
+
 			if ( false === $restricted ) {
-				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress></span>' );
+				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
 			}
 
 			the_content();
 			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
+
+			?>
+			<div class="row status-plan-buttons main-plan-btn">
+				<?php
+				if ( function_exists( 'wc_get_page_id' ) ) {
+					?>
+					<a class="btn border-btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a>
+					<?php
+				}
+				?>
+			</div>
+			<?php
 
 		} else {
 
@@ -71,6 +91,13 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 		?>
 
 		<?php lsx_content_bottom(); ?>
+
+		<?php
+		if ( ! empty( $connected_articles ) ) {
+			lsx_hp_single_related( $connected_articles, __( 'Latest articles', 'lsx-health-plan' ) );
+		}
+		?>
+
 
 	</main><!-- #main -->
 

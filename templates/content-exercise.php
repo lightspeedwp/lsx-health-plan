@@ -5,9 +5,15 @@
  * @package lsx-health-plan
  */
 
-$type         = lsx_health_plan_exercise_type();
-$equipment    = lsx_health_plan_exercise_equipment();
-$muscle_group = lsx_health_plan_muscle_group_equipment();
+$exercise_type = lsx_health_plan_exercise_type();
+$equipment     = lsx_health_plan_exercise_equipment();
+$muscle_group  = lsx_health_plan_muscle_group_equipment();
+
+// Getting translated endpoint.
+$exercise = \lsx_health_plan\functions\get_option( 'endpoint_exercise_single', 'exercise' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $exercise . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $exercise . '_connected_articles' ), true );
 
 $sharing = 'sharing-disabled';
 if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) :
@@ -48,9 +54,8 @@ endif;
 			<?php endif ?>
 
 			<?php lsx_health_plan_exercise_title( '<h2>', '</h2>' ); ?>
-
 		</div>
-
+		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'exercise' ) ); ?>
 		<div class="row">
 			<div class="col-md-6 exercise-image lsx-hp-shadow">
 
@@ -73,7 +78,7 @@ endif;
 			}
 			?>
 
-				<?php if ( ( ! empty( $type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
+				<?php if ( ( ! empty( $exercise_type ) ) || ( ! empty( $equipment ) ) || ( ! empty( $muscle_group ) ) ) { ?>
 					<div class="exercise-data">
 						<?php lsx_health_plan_exercise_data(); ?>
 					</div>
@@ -81,6 +86,7 @@ endif;
 			</div>
 			<div class="col-md-6 exercise-content">
 				<?php the_content(); ?>
+				<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 				<div  class="back-plan-btn">
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {
@@ -92,27 +98,17 @@ endif;
 				</div>
 			</div>
 		</div>
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
 	</div><!-- .entry-content -->
-
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() ) : ?>
-			<?php lsx_content_post_tags(); ?>
-		<?php endif ?>
-	</footer>
 
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
+}
+?>
 
 <?php
 lsx_entry_after();

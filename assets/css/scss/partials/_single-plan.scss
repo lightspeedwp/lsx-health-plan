@@ -215,7 +215,8 @@
 }
 
 article.type-plan,
-article.type-meal {
+article.type-meal,
+article.type-workout {
 	.entry-content {
 		padding: 0;
 		.overview {
@@ -268,6 +269,13 @@ article.type-meal {
 				.set-box {
 					&.set {
 						margin: 0;
+					}
+					&.entry-content {
+						display: flex;
+						align-items: end;
+						#lsx-tips-shortcode {
+							min-width: 330px;
+						}
 					}
 				}
 			}
@@ -330,6 +338,11 @@ article.type-meal {
 						}
 					}
 				}
+			}
+		}
+		.workout-content {
+			.single-plan-section-title {
+				margin-bottom: 0;
 			}
 		}
 	}
@@ -1006,6 +1019,32 @@ article.type-meal {
 				}
 			}
 		}
+	}
+}
+
+.single-plan {
+	.status-plan-buttons {
+		padding: 15px;
+		margin-top: 3rem;
+		margin-bottom: 6rem;
+		&.main-plan-btn {
+			.border-btn {
+				@include media('<=phone') {
+					width: 100%;
+				}
+				&:before {
+					content: '\f104';
+					font-family: 'FontAwesome';
+					margin-right: 1rem;
+				}
+			}
+		}
+	}
+}
+
+.single-workout {
+	.entry-content {
+		padding: 0;
 	}
 }
 

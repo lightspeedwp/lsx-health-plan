@@ -31,6 +31,7 @@ class Frontend {
 	 * Contructor
 	 */
 	public function __construct() {
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
@@ -55,6 +56,19 @@ class Frontend {
 			add_action( 'init', array( $this, 'handle_day_action' ), 100 );
 			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
 			add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
+		}
+
+		add_action( 'wp_head', array( $this, 'remove_hp_single_posts_footer' ), 99 );
+	}
+
+	/**
+	 * Removing footer for HP single pages.
+	 *
+	 * @return void
+	 */
+	public function remove_hp_single_posts_footer() {
+		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) ) ) {
+			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
 		}
 	}
 

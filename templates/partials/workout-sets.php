@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts,$shortcode_args;
+global $group_name, $connected_workouts, $shortcode_args;
 
 // Check for any shortcode overrides.
 if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
@@ -36,6 +36,10 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	if ( $workouts->have_posts() ) {
 		while ( $workouts->have_posts() ) {
 			$workouts->the_post();
+
+			// Brings the workout post content first.
+			echo wp_kses_post( lsx_health_plan_workout_main_content() );
+
 			$i               = 1;
 			$section_counter = 6;
 			while ( $i <= $section_counter ) {

@@ -132,14 +132,15 @@
 	}
 
 	article.type-plan,
-	article.type-meal {
+	article.type-meal,
+	article.type-workout {
 		.entry-content {
 			.workout-content {
 				.sets {
 					.set-box {
 						&.set {
 							background: white;
-							&:nth-child(odd) {
+							&:nth-child(even) {
 								background: lighten($link, 42%);
 							}
 							.btn {
@@ -158,7 +159,7 @@
 				&.set {
 					background: white;
 					margin-bottom: 0;
-					&:nth-child(odd) {
+					&:nth-child(even) {
 						background: lighten($link, 42%);
 					}
 					.btn {
@@ -400,6 +401,47 @@
 						}
 					}
 				}
+			}
+		}
+	}
+
+	#lsx-hp-related {
+		.lsx-related-posts-content {
+			.col-xs-12 {
+				.lsx-related-posts-wrapper {
+					.lsx-slot {
+						.entry-layout {
+							.entry-layout-content {
+								.entry-header {
+									.entry-meta {
+										.post-categories {
+											color: $small;
+											a {
+												color: $small;
+											}
+										}
+									}
+									.entry-title {
+										a {
+											color: $color;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#hp-connected-members {
+		p {
+			color: $small;
+			.lsx-team-roles {
+				color: $small;
+			}
+			.lsx-team-name {
+				color: $link;
 			}
 		}
 	}

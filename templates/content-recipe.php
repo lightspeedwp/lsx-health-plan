@@ -16,6 +16,13 @@ $protein       = get_post_meta( get_the_ID(), 'recipe_protein', true );
 $carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
 $fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
 $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
+
+
+// Getting translated endpoint.
+$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe_single', 'recipe' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $recipe . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $recipe . '_connected_articles' ), true );
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -49,6 +56,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 				?>
 		<?php endif ?>
 		</h2>
+		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'recipe' ) ); ?>
 		<div class="row">
 			<div class="col-md-6 recipe-image lsx-hp-shadow">
 				<?php
@@ -71,6 +79,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			</div>
 			<div class="col-md-6 recipe-content">
 				<?php the_content(); ?>
+				<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 				<div class="back-plan-btn">
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {
@@ -82,28 +91,18 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 				</div>
 			</div>
 		</div>
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
 
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() ) : ?>
-			<div class="post-tags-wrapper">
-				<?php lsx_content_post_tags(); ?>
-		<?php endif ?>
-	</footer><!-- .footer-meta -->
+	</div><!-- .entry-content -->
 
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
+}
+?>
 
 <?php
 lsx_entry_after();

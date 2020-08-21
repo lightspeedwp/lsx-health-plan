@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts, $shortcode_args;;
+global $group_name, $connected_workouts, $shortcode_args;
 
 $warm_up = get_post_meta( get_the_ID(), 'plan_warmup', true );
 if ( false === $warm_up || '' === $warm_up ) {
