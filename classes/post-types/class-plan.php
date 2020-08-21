@@ -461,34 +461,6 @@ class Plan {
 					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
 			);
-
-			$cmb->add_group_field(
-				$group,
-				array(
-					'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-					'id'         => 'pre_workout_snack',
-					'type'       => 'wysiwyg',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',
-					'options'    => array(
-						'textarea_rows' => 5,
-					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-				)
-			);
-
-			$cmb->add_group_field(
-				$group,
-				array(
-					'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
-					'id'         => 'post_workout_snack',
-					'type'       => 'wysiwyg',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',
-					'options'    => array(
-						'textarea_rows' => 5,
-					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-				)
-			);
 		}
 
 		if ( post_type_exists( 'meal' ) ) {
@@ -504,26 +476,6 @@ class Plan {
 					'sortable'   => true, // Allow selected items to be sortable (default false)
 					'query_args' => array(
 						'post_type'      => array( 'meal' ),
-						'post_status'    => array( 'publish' ),
-						'posts_per_page' => -1,
-					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-				)
-			);
-		}
-		if ( post_type_exists( 'recipe' ) ) {
-			$cmb->add_group_field(
-				$group,
-				array(
-					'name'       => __( 'Recipes', 'lsx-health-plan' ),
-					'desc'       => __( 'Connect the recipe(s) that apply to this section.', 'lsx-health-plan' ),
-					'id'         => 'connected_recipes',
-					'type'       => 'post_search_ajax',
-					// Optional :
-					'limit'      => 15,  // Limit selection to X items only (default 1)
-					'sortable'   => true, // Allow selected items to be sortable (default false)
-					'query_args' => array(
-						'post_type'      => array( 'recipe' ),
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
