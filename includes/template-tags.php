@@ -825,6 +825,31 @@ function lsx_health_plan_workout_main_content() {
 }
 
 /**
+ * Outputs the Single Plan Workout main content.
+ *
+ * @return void
+ */
+function lsx_health_plan_meal_main_content() {
+	// Getting translated endpoint.
+	$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' );
+
+	$connected_members = get_post_meta( get_the_ID(), ( $meal . '_connected_team_member' ), true );
+
+	$content_meal = '';
+	if ( get_the_content() || $connected_members ) {
+		$content_meal .= '<div class="set-box set content-box entry-content">';
+		$content_meal .= '<div class="the-content">';
+		$content_meal .= lsx_hp_member_connected( $connected_members, $meal );
+		$content_meal .= get_the_content();
+		$content_meal .= '</div>';
+		$content_meal .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
+		$content_meal .= '</div>';
+	}
+	return $content_meal;
+}
+
+
+/**
  * Outputs the Single Plan Workout Tab based on the layout selected.
  *
  * @param  string $index

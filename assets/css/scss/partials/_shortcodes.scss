@@ -170,6 +170,9 @@
 			}
 		}
 		&.slick-slider {
+			.slick-list {
+				@extend .box-shadow;
+			}
 			button {
 				&.slick-arrow {
 					border: none;

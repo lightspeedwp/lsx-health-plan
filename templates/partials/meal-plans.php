@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $connected_meals,$shortcode_args;
+global $connected_meals, $shortcode_args;
 
 if ( is_singular( 'plan' ) ) {
 	$section_key = get_query_var( 'section' );
@@ -22,6 +22,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	$connected_meals = array( get_the_ID() );
 }
 ?>
+
 <div class="meals">
 
 	<?php
@@ -45,6 +46,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	if ( is_single() && is_singular( 'meal' ) ) {
 		$connected_meals = array( get_the_ID() );
 	}
+	echo wp_kses_post( wp_kses_post( lsx_health_plan_meal_main_content() ) );
 
 	if ( false !== $connected_meals && '' !== $connected_meals && ! empty( $connected_meals ) ) {
 

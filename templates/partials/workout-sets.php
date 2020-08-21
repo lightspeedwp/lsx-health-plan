@@ -36,7 +36,6 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	if ( $workouts->have_posts() ) {
 		while ( $workouts->have_posts() ) {
 			$workouts->the_post();
-
 			// Brings the workout post content first.
 			echo wp_kses_post( lsx_health_plan_workout_main_content() );
 
