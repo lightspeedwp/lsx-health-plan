@@ -436,7 +436,7 @@ class Plan {
 			array(
 				'name' => __( 'Overview', 'lsx-health-plan' ),
 				'id'   => 'description',
-				'type' => 'textarea',
+				'type' => 'wysiwyg',
 			)
 		);
 
@@ -455,20 +455,6 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 						'post_parent'    => 0,
-					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
-				)
-			);
-
-			$cmb->add_group_field(
-				$group,
-				array(
-					'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-					'id'         => 'pre_workout_snack',
-					'type'       => 'wysiwyg',
-					'show_on_cb' => 'cmb2_hide_if_no_cats',
-					'options'    => array(
-						'textarea_rows' => 5,
 					),
 					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
