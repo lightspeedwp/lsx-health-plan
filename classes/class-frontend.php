@@ -67,7 +67,7 @@ class Frontend {
 	 * @return void
 	 */
 	public function remove_hp_single_posts_footer() {
-		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) ) ) {
+		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) || is_singular( 'workout' ) || is_singular( 'meal' ) ) ) {
 			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
 		}
 	}

@@ -40,69 +40,6 @@ function lsx_remove_extra_meta_box() {
 add_action( 'add_meta_boxes', 'lsx_remove_extra_meta_box', 100 );
 
 /**
- * Create Login page with woocommerce shortcode if the page is not created
- */
-if ( ( isset( $_GET['activated'] ) && function_exists( 'wp_verify_nonce' ) && wp_verify_nonce( sanitize_key( $_GET['activated'] ) ) ) && is_admin() ) {
-
-	$new_page_title = 'Login';
-	// Content to add spacing and woocommerce login shortcode
-	$new_page_content  = '<!-- wp:lsx-blocks/lsx-container {"containerMaxWidth":600} -->
-	<div style="background-color:transparent;padding-left:3%;padding-right:3%;padding-bottom:3%;padding-top:3%;margin-top:3%;margin-bottom:3%" class="wp-block-lsx-blocks-lsx-container aligncenter lsx-block-container"><div class="lsx-container-inside"><div class="lsx-container-content" style="max-width:600px"><!-- wp:paragraph -->
-	<p></p>
-	<!-- /wp:paragraph -->
-	
-	<!-- wp:shortcode -->
-	[woocommerce_my_account]
-	<!-- /wp:shortcode --></div></div></div>
-	<!-- /wp:lsx-blocks/lsx-container -->';
-	$new_page_template = '';
-
-	$page_check = get_page_by_title( $new_page_title );
-	$new_page   = array(
-		'post_type'    => 'page',
-		'post_title'   => $new_page_title,
-		'post_content' => $new_page_content,
-		'post_status'  => 'publish',
-		'post_author'  => 1,
-	);
-	if ( ! isset( $page_check->ID ) ) {
-		$new_page_id = wp_insert_post( $new_page );
-		if ( ! empty( $new_page_template ) ) {
-			update_post_meta( $new_page_id, '_wp_page_template', $new_page_template );
-		}
-	}
-}
-
-/**
- * Add Login Logout Button to Main Menu
- *
- * @param [type] $items
- * @param [type] $args
- * @return void
- */
-function lsx_add_login_logout_register_menu( $items, $args ) {
-	if ( 'primary' === $args->theme_location ) {
-		ob_start();
-		wp_loginout( get_permalink() );
-		$loginoutlink = ob_get_contents();
-		ob_end_clean();
-		if ( ! is_user_logged_in() ) {
-			$login_slug = \lsx_health_plan\functions\get_option( 'login_slug', false );
-			if ( false === $login_slug ) {
-				$login_slug = 'login';
-			}
-			$items .= '<li class="my-login menu-item"><a rel="nofollow" href="/' . $login_slug . '/">' . __( 'Login', 'lsx-health-plan' ) . '</a></li>';
-		} else {
-			$items .= '<li class="my-login menu-item">' . $loginoutlink . '</li>';
-		}
-		return $items;
-	} else {
-		return $items;
-	}
-}
-add_filter( 'wp_nav_menu_items', 'lsx_add_login_logout_register_menu', 199, 2 );
-
-/**
  * Redirect user after login or redirect
  *
  * @return void
@@ -141,34 +78,4 @@ function lsx_get_svg_icon( $icon ) {
 
 	// Return a blank string if we can't find the file.
 	return '';
-}
-
-/**
- * Workout Snacks
- *
- * @return void
- */
-function lsx_workout_snacks( $snack ) {
-	$workout_snack = get_post_meta( get_the_ID(), $snack . '_workout_snack', true );
-	if ( ! empty( $workout_snack ) ) {
-	?>
-	<div class="<?php echo esc_html( $snack ); ?>-workout workout-snacks">
-			<div class="content-box">
-				<?php
-				$snack_title = ucfirst( $snack );
-				if ( 'pre' === $snack ) {
-					/* Translators: %s: snack */
-					$title_text = esc_attr_x( 'Pre-Workout Snack', 'pre workout', 'lsx-health-plan' );
-				} else {
-					/* Translators: %s: snack */
-					$title_text = esc_attr_x( 'Post-Workout Snack', 'post workout', 'lsx-health-plan' );
-				}
-				$title = sprintf( $title_text, $snack_title );
-				?>
-				<h3 class="title-lined"><?php echo esc_html( $title ); ?></h3>
-				<?php echo wp_kses_post( apply_filters( 'the_content', $workout_snack ) ); ?>
-			</div>
-		</div>
-	<?php
-	}
 }
