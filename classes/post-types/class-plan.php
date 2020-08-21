@@ -407,8 +407,10 @@ class Plan {
 					'add_button'    => __( 'Add section', 'lsx-health-plan' ),
 					'remove_button' => __( 'Remove section', 'lsx-health-plan' ),
 					'sortable'      => true,
+					'closed'        => true, // true to have the groups closed by default
 				),
 				'classes' => 'lsx-admin-row',
+				
 			)
 		);
 
