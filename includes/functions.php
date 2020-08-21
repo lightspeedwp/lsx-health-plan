@@ -479,3 +479,19 @@ function hp_back_archive_link() {
 	}
 }
 add_action( 'lsx_content_wrap_before', '\lsx_health_plan\functions\hp_back_archive_link', 20 );
+
+/**
+ * Returns an array.
+ *
+ * @param  mixed $item
+ * @return array
+ */
+function prep_array( $item ) {
+	if ( ! is_array( $item ) ) {
+		$item = explode( ',', $item );
+		if ( ! is_array( $item ) ) {
+			$item = array( $item );
+		}
+	}
+	return $item;
+}

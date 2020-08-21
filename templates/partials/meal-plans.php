@@ -6,12 +6,25 @@
  */
 global $connected_meals,$shortcode_args;
 
+if ( is_singular( 'plan' ) ) {
+
+	global $connected_meals;
+
+	$section_key = get_query_var( 'section' );
+	if ( '' !== $section && \lsx_health_plan\functions\plan\has_sections() ) {
+		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
+		if ( isset( $section_info['connected_meals'] ) && '' !== $section_info['connected_meals'] ) {
+
+			$connected_meals = \lsx_health_plan\functions\prep_array( $section_info['connected_meals'] );
+		}
+	}
+}
+
 // Check for any shortcode overrides.
 if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	$connected_meals = array( get_the_ID() );
 }
 ?>
-
 <div class="meals">
 	<?php
 
@@ -32,7 +45,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 
 	// This is for the meal single template.
 	if ( is_single() && is_singular( 'meal' ) ) {
-		$connected_meals = explode( ', ', get_the_ID() );
+		$connected_meals = array( get_the_ID() );
 	}
 
 	if ( false !== $connected_meals && '' !== $connected_meals && ! empty( $connected_meals ) ) {

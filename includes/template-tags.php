@@ -867,6 +867,19 @@ function lsx_health_plan_workout_sets() {
 		global $connected_workouts;
 		$connected_workouts = array( get_the_ID() );
 	}
+	if ( is_singular( 'plan' ) ) {
+
+		global $connected_workouts;
+
+		$section_key  = get_query_var( 'section' );
+		if ( '' !== $section && \lsx_health_plan\functions\plan\has_sections() ) {
+			$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
+			if ( isset( $section_info['connected_workouts'] ) && '' !== $section_info['connected_workouts'] ) {
+
+				$connected_workouts = \lsx_health_plan\functions\prep_array( $section_info['connected_workouts'] );
+			}
+		}
+	}
 	$template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-sets.php';
 	$template_path = apply_filters( 'lsx_health_plan_workout_set_template_path', $template_path );
 	if ( '' !== $template_path && ! empty( $template_path ) ) {
