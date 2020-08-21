@@ -5,10 +5,16 @@
 * @package lsx-health-plan
 */
 
+$plan_link       = get_permalink();
+$current_section = get_query_var( 'section' );
+if ( '' !== $current_section ) {
+	$plan_link = \lsx_health_plan\functions\plan\get_permalink( get_the_ID(), $current_section );
+}
+
 ?>
 <div id="single-plan-nav">
 	<ul class="nav nav-pills">
-		<li class="<?php lsx_health_plan_nav_class( '' ); ?>"><a class="overview-tab" href="<?php the_permalink(); ?>"><?php lsx_get_svg_icon( 'eye.svg' ); ?> <?php esc_html_e( 'Overview', 'lsx-health-plan' ); ?></a></li>
+		<li class="<?php lsx_health_plan_nav_class( '' ); ?>"><a class="overview-tab" href="<?php echo esc_attr( $plan_link ); ?>"><?php lsx_get_svg_icon( 'eye.svg' ); ?> <?php esc_html_e( 'Overview', 'lsx-health-plan' ); ?></a></li>
 		<?php
 		if ( lsx_health_plan_has_warmup() ) {
 			$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
@@ -16,7 +22,7 @@
 				$warm_up = 'warm-up';
 			}
 			?>
-				<li class="<?php lsx_health_plan_nav_class( 'warm-up' ); ?>"><a class="warm-up-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $warm_up ); ?>/"><?php lsx_get_svg_icon( 'warm.svg' ); ?> <?php esc_html_e( 'Warm-up', 'lsx-health-plan' ); ?></a></li>				
+				<li class="<?php lsx_health_plan_nav_class( 'warm-up' ); ?>"><a class="warm-up-tab" href="<?php echo esc_attr( $plan_link ); ?><?php echo esc_attr( $warm_up ); ?>/"><?php lsx_get_svg_icon( 'warm.svg' ); ?> <?php esc_html_e( 'Warm-up', 'lsx-health-plan' ); ?></a></li>				
 			<?php
 		}
 		if ( lsx_health_plan_has_workout() ) {
@@ -25,7 +31,7 @@
 				$workout = 'workout';
 			}
 			?>
-				<li class="<?php lsx_health_plan_nav_class( 'workout' ); ?>"><a class="workout-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $workout ); ?>/"><?php lsx_get_svg_icon( 'work.svg' ); ?> <?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></a></li>
+				<li class="<?php lsx_health_plan_nav_class( 'workout' ); ?>"><a class="workout-tab" href="<?php echo esc_attr( $plan_link ); ?><?php echo esc_attr( $workout ); ?>/"><?php lsx_get_svg_icon( 'work.svg' ); ?> <?php esc_html_e( 'Workout', 'lsx-health-plan' ); ?></a></li>
 			<?php
 		}
 		if ( lsx_health_plan_has_meal() ) {
@@ -34,7 +40,7 @@
 				$meal = 'meal';
 			}
 			?>
-				<li class="<?php lsx_health_plan_nav_class( 'meal' ); ?>"><a class="meal-plan-tab" href="<?php the_permalink(); ?><?php echo esc_attr( $meal ); ?>/"><?php lsx_get_svg_icon( 'meal.svg' ); ?> <?php esc_html_e( 'Meal Plan', 'lsx-health-plan' ); ?></a></li>
+				<li class="<?php lsx_health_plan_nav_class( 'meal' ); ?>"><a class="meal-plan-tab" href="<?php echo esc_attr( $plan_link ); ?><?php echo esc_attr( $meal ); ?>/"><?php lsx_get_svg_icon( 'meal.svg' ); ?> <?php esc_html_e( 'Meal Plan', 'lsx-health-plan' ); ?></a></li>
 			<?php
 		}
 		?>

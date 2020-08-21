@@ -23,6 +23,9 @@ function has_attached_post( $post_id = '', $meta_key = '', $single = true ) {
 	}
 	$items = get_post_meta( $post_id, $meta_key, $single );
 	if ( '' !== $items && false !== $items && 0 !== $items ) {
+		if ( ! is_array( $items ) ) {
+			$items = array( $items );
+		}
 		$items = check_posts_exist( $items );
 		if ( ! empty( $items ) ) {
 			$has_post = true;

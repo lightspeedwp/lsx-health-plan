@@ -67,6 +67,27 @@ function get_sections( $plan_id = 0, $group_sections = false ) {
 }
 
 /**
+ * Gets the current sections array values.
+ *
+ * @param  string $section_key
+ * @return array
+ */
+function get_section_info( $section_key = '' ) {
+	$section_info = array();
+
+	$sections = get_sections();
+	if ( ! empty( $sections ) ) {
+		foreach ( $sections as $key => $values ) {
+			$current_key = sanitize_title( $values['title'] );
+			if ( $current_key === $section_key ) {
+				return $values;
+			}
+		}
+	}
+	return $section_info;
+}
+
+/**
  * This will group the sections by their "Group" field.
  *
  * @param  array $sections
@@ -76,7 +97,7 @@ function group_sections( $sections = array() ) {
 	$groups = array();
 	if ( ! empty( $sections ) ) {
 		foreach ( $sections as $section_key => $section_values ) {
-			$group_key = apply_filters( 'lsx_hp_default_plan_group', __( 'Your Plan', 'lsx-health-plan' ) );
+			$group_key = apply_filters( 'lsx_hp_default_plan_group', __( 'Daily Plan', 'lsx-health-plan' ) );
 			if ( isset( $section_values['group'] ) && '' !== $section_values['group'] ) {
 				$group_key = $section_values['group'];
 			}
@@ -94,10 +115,10 @@ function group_sections( $sections = array() ) {
  * @return array
  */
 function get_group_title( $sections = array() ) {
-	$group_title = apply_filters( 'lsx_hp_default_plan_group', __( 'Your Plan', 'lsx-health-plan' ) );
+	$group_title = apply_filters( 'lsx_hp_default_plan_group', __( 'Daily Plan', 'lsx-health-plan' ) );
 	if ( ! empty( $sections ) ) {
 		$first_section = reset( $sections );
-		if ( isset( $first_section['group'] ) ) {
+		if ( isset( $first_section['group'] ) && '' !== $first_section['group'] ) {
 			$group_title = $first_section['group'];
 		}
 	}
