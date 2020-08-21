@@ -229,7 +229,6 @@ article.type-workout {
 				display: flex;
 				padding: 1rem 3rem;
 				align-items: center;
-				margin-bottom: 3rem;
 				h2 {
 					margin: 0;
 				}
@@ -282,17 +281,48 @@ article.type-workout {
 		}
 		.meal-content {
 			.meals {
+				.set-box {
+					background: white;
+					padding: 0px 8px 0 8px;
+					margin-bottom: 0;
+					@include media('>=tablet') {
+						padding: 30px 20px 0 20px;
+						display: flex;
+						align-items: end;
+						justify-content: space-between;
+					}
+					.the-content {
+						@include media('>=tablet') {
+							padding-right: 4rem;
+						}
+						#hp-connected-members {
+							padding: 0;
+						}
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+						width: 100%;
+						@include media('>=tablet') {
+							max-width: 345px;
+						}
+					}
+				}
+				.meals-section-title {
+					padding: 40px 20px 0;
+					font-weight: bold;
+				}
 				.btn-shopping {
 					margin: 0 2rem 3rem;
 					@media (max-width: 767px) {
 						width: 95%;
+						margin-top: 5rem;
 					}
 					@media (min-width: 1024px) {
 						float: right;
 						position: relative;
-						top: -9.5rem;
+						top: -6.5rem;
 						margin-right: 2rem;
-						margin-bottom: -9.5rem;
+						margin-bottom: -6.5rem;
 					}
 				}
 				.eating-row {

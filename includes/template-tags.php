@@ -810,13 +810,14 @@ function lsx_health_plan_workout_main_content() {
 	$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
 
 	$connected_members = get_post_meta( get_the_ID(), ( $workout . '_connected_team_member' ), true );
+	$small_description = get_post_meta( get_the_ID(), ( $workout . '_short_description' ), true );
 
 	$content = '';
 	if ( get_the_content() || $connected_members ) {
 		$content .= '<div class="set-box set content-box entry-content">';
 		$content .= '<div class="the-content">';
 		$content .= lsx_hp_member_connected( $connected_members, $workout );
-		$content .= get_the_content();
+		$content .= '<span>' . $small_description . '</span>';
 		$content .= '</div>';
 		$content .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
 		$content .= '</div>';
@@ -834,13 +835,14 @@ function lsx_health_plan_meal_main_content() {
 	$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' );
 
 	$connected_members = get_post_meta( get_the_ID(), ( $meal . '_connected_team_member' ), true );
+	$small_description = get_post_meta( get_the_ID(), ( $meal . '_short_description' ), true );
 
 	$content_meal = '';
-	if ( get_the_content() || $connected_members ) {
+	if ( $small_description || $connected_members ) {
 		$content_meal .= '<div class="set-box set content-box entry-content">';
 		$content_meal .= '<div class="the-content">';
 		$content_meal .= lsx_hp_member_connected( $connected_members, $meal );
-		$content_meal .= get_the_content();
+		$content_meal .= '<span>' . $small_description . '</span>';
 		$content_meal .= '</div>';
 		$content_meal .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
 		$content_meal .= '</div>';

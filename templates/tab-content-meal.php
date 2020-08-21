@@ -41,8 +41,6 @@ $connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_article
 		</div>
 
 	</div><!-- .entry-content -->
-	<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
-
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->

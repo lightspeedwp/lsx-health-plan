@@ -46,6 +46,16 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	if ( is_single() && is_singular( 'meal' ) ) {
 		$connected_meals = array( get_the_ID() );
 	}
+
+	// Shoping list
+	$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
+	if ( ! empty( $shopping_list ) ) {
+		?>
+		<a class="btn border-btn btn-shopping" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php esc_html_e( 'Download Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-download" aria-hidden="true"></i></a>
+	<?php
+	}
+
+	// The top part
 	echo wp_kses_post( wp_kses_post( lsx_health_plan_meal_main_content() ) );
 
 	if ( false !== $connected_meals && '' !== $connected_meals && ! empty( $connected_meals ) ) {
@@ -61,7 +71,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 			while ( $meals->have_posts() ) {
 				$meals->the_post();
 				$meal_id       = get_the_ID();
-				$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
+				
 
 				// Breakfast.
 				$pre_breakfast_snack  = get_post_meta( get_the_ID(), 'meal_pre_breakfast_snack', true );
@@ -78,15 +88,14 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 				$dinner            = get_post_meta( get_the_ID(), 'meal_dinner', true );
 				$post_dinner_snack = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
 
-				if ( ! empty( $shopping_list ) ) {
-					?>
-					<a class="btn border-btn btn-shopping" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php esc_html_e( 'Download Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-download" aria-hidden="true"></i></a>
-					<?php } ?>
+				//Main Meals Title
+				echo '<h3 class="meals-section-title">' . esc_html__( 'Meal Plan', 'lsx-health-plan' ) . '</h3>';
+				?>
 				<div class="row eating-row">
 					<div class="col-md-4 eating-column">
 					<?php
 					if ( ! empty( $pre_breakfast_snack ) ) {
-						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'A.M. Snack', 'lsx-health-plan' ) . '</h3>';
+						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
 						echo wp_kses_post( apply_filters( 'the_content', $pre_breakfast_snack ) );
 						echo '</div>';
 					}
@@ -96,7 +105,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 						echo '</div>';
 					}
 					if ( ! empty( $post_breakfast_snack ) ) {
-						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'A.M. Snack', 'lsx-health-plan' ) . '</h3>';
+						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
 						echo wp_kses_post( apply_filters( 'the_content', $post_breakfast_snack ) );
 						echo '</div>';
 					}
@@ -111,7 +120,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 					<div class="col-md-4 eating-column">
 					<?php
 					if ( ! empty( $pre_lunch_snack ) ) {
-						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'P.M. Snack', 'lsx-health-plan' ) . '</h3>';
+						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
 						echo wp_kses_post( apply_filters( 'the_content', $pre_lunch_snack ) );
 						echo '</div>';
 					}
@@ -121,7 +130,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 						echo '</div>';
 					}
 					if ( ! empty( $post_lunch_snack ) ) {
-						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'P.M. Snack', 'lsx-health-plan' ) . '</h3>';
+						echo '<div class="content-box"><h3 class="eating-title snack-title">' . esc_html__( 'Snack', 'lsx-health-plan' ) . '</h3>';
 						echo wp_kses_post( apply_filters( 'the_content', $post_lunch_snack ) );
 						echo '</div>';
 					}
