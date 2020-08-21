@@ -82,9 +82,13 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 							$title = $user->display_name;
 						} else {
 							$guid  = get_edit_post_link( $val );
-							$title = get_the_title( $val );
+							$title = get_the_title( $val ) . ' - ' . '#' . $val;
 							if ( 'trash' === get_post_status( $val ) ) {
 								$li_css = 'display:none;';
+							}
+							$post_parent = wp_get_post_parent_id( $val );
+							if ( 0 !== $post_parent && false !== $post_parent ) {
+								$title = get_the_title( $post_parent ) . ' -> ' . $title;
 							}
 						}
 						echo '<li style="' . $li_css . '">' . $handle . '<input type="hidden" name="' . $field_name . '_results[]" value="' . $val . '"><a href="' . $guid . '" target="_blank" class="edit-link">' . $title . '</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>';
@@ -309,8 +313,15 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					if ( $results->have_posts() ) :
 						while ( $results->have_posts() ) : $results->the_post();
 							// Define filter "mag_cmb_post_search_ajax_result" to allow customize ajax results.
+
+							$title       = get_the_title() . ' - ' . '#' . get_the_ID();
+							$post_parent = wp_get_post_parent_id( get_the_ID() );
+							if ( 0 !== $post_parent && false !== $post_parent ) {
+								$title = get_the_title( $post_parent ) . ' -> ' . $title;
+							}
+
 							$datas[] = apply_filters( 'mag_cmb_post_search_ajax_result', array(
-								'value' => get_the_title() . ' - ' . '#' . get_the_ID(),
+								'value' => $title,
 								'data'	=> get_the_ID(),
 								'guid'	=> get_edit_post_link(),
 							) );

@@ -457,7 +457,6 @@ class Plan {
 						'post_type'      => array( 'workout' ),
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
-						'post_parent'    => 0,
 					),
 					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
@@ -507,7 +506,6 @@ class Plan {
 						'post_type'      => array( 'meal' ),
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
-						'post_parent'    => 0,
 					),
 					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
 				)
