@@ -43,3 +43,11 @@ function lsx_hp_plan_get_classes() {
 	}
 	return $classes;
 }
+
+function lsx_health_plan_back_to_plan_button() {
+	?>
+	<div  class="back-plan-btn">
+		<a class="btn" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Back To Plan', 'lsx-health-plan' ); ?></a>
+	</div>
+	<?php
+}
