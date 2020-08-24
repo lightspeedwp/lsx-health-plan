@@ -8,10 +8,9 @@ global $connected_meals, $shortcode_args;
 
 if ( is_singular( 'plan' ) ) {
 	$section_key = get_query_var( 'section' );
-	if ( '' !== $section && \lsx_health_plan\functions\plan\has_sections() ) {
+	if ( '' !== $section_key && \lsx_health_plan\functions\plan\has_sections() ) {
 		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
 		if ( isset( $section_info['connected_meals'] ) && '' !== $section_info['connected_meals'] ) {
-
 			$connected_meals = \lsx_health_plan\functions\prep_array( $section_info['connected_meals'] );
 		}
 	}

@@ -642,7 +642,7 @@ function lsx_health_plan_complete_button() {
 	<div class="single-plan-inner-buttons">
 		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
 			<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
-			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( get_the_ID() ); ?>" />
+			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( \lsx_health_plan\functions\plan\generate_section_id() ); ?>" />
 			<button class="btn cta-btn" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
 		</form>
 		<?php lsx_health_plan_back_to_plan_button(); ?>

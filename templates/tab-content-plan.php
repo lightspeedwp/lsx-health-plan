@@ -7,7 +7,7 @@
 
 $section_key  = get_query_var( 'section' );
 $endpoint_key = get_query_var( 'endpoint' );
-if ( '' !== $section && '' === $endpoint && \lsx_health_plan\functions\plan\has_sections() ) {
+if ( '' !== $section_key && '' === $endpoint && \lsx_health_plan\functions\plan\has_sections() ) {
 	$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
 	if ( isset( $section_info['description'] ) && '' !== $section_info['description'] ) {
 		global $shortcode_args;
