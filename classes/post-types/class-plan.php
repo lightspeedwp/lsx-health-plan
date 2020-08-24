@@ -108,7 +108,7 @@ class Plan {
 			),
 			'capability_type'    => 'page',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_plan_archive', 'plans' ),
-			'hierarchical'       => true,
+			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
