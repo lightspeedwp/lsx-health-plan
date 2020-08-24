@@ -22,7 +22,8 @@ class General {
 	 */
 	public function __construct() {
 		// Before Output
-		
+		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_html_tags_attributes' ), 100, 2 );
+
 		// Output
 		add_action( 'body_class', array( $this, 'body_classes' ) );
 		add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
@@ -42,6 +43,27 @@ class General {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Adds the iframe and the progress HTML tags to the allowed WordPress list.
+	 */
+	public function allow_html_tags_attributes( $tags, $context ) {
+		if ( 'post' === $context ) {
+			$tags['iframe'] = array(
+				'src'             => true,
+				'height'          => true,
+				'width'           => true,
+				'frameborder'     => true,
+				'allowfullscreen' => true,
+			);
+		}
+		$tags['progress'] = array(
+			'id'    => true,
+			'value' => true,
+			'max'   => true,
+		);
+		return $tags;
 	}
 
 	/**

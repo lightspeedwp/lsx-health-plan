@@ -50,7 +50,7 @@ class Frontend {
 			add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 			add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
 			add_action( 'template_redirect', array( $this, 'redirect' ) );
-			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
+			
 		}	
 	}
 
@@ -172,26 +172,5 @@ class Frontend {
 			wp_redirect( home_url() );
 			die;
 		}
-	}
-
-	/**
-	 * Registers the rewrites.
-	 */
-	public function wpkses_post_tags( $tags, $context ) {
-		if ( 'post' === $context ) {
-			$tags['iframe'] = array(
-				'src'             => true,
-				'height'          => true,
-				'width'           => true,
-				'frameborder'     => true,
-				'allowfullscreen' => true,
-			);
-		}
-		$tags['progress'] = array(
-			'id'    => true,
-			'value' => true,
-			'max'   => true,
-		);
-		return $tags;
 	}
 }
