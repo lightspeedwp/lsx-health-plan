@@ -1,6 +1,8 @@
 <?php
 namespace lsx_health_plan\classes;
 
+use function lsx_health_plan\functions\get_option;
+
 /**
  * Contains the meal_plan post type
  *
@@ -59,6 +61,7 @@ class Plan {
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_action( 'lsx_content_top', 'lsx_hp_plan_archive_filters', 10, 1 );
 		add_filter( 'lsx_hp_disable_plan_archive_filters', '\lsx_health_plan\functions\plan\is_search_enabled', 10, 1 );
+		add_filter( 'lsx_hp_disable_plan_archive_filters', '\lsx_health_plan\functions\plan\is_filters_disabled', 10, 1 );
 	}
 
 	/**

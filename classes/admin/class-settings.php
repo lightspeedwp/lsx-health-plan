@@ -53,8 +53,11 @@ class Settings {
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_classes();
 		add_action( 'cmb2_admin_init', array( $this, 'register_settings_page' ) );
-		add_action( 'lsx_hp_settings_page', array( $this, 'general_settings' ), 1, 1 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'generate_tabs' ), 1, 1 );
+
+		add_action( 'lsx_hp_settings_page_general_top', array( $this, 'general_settings' ), 1, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_defaults' ), 3, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'global_downloads' ), 5, 1 );
 		add_action( 'lsx_hp_settings_page', array( $this, 'stat_disable' ), 6, 1 );
@@ -76,6 +79,25 @@ class Settings {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+
+		$this->post_types = array(
+			'plan',
+			//'workout',
+			//'exercise',
+			//'meal',
+			//'recipe',
+			//'tip',
+		);
+
+		foreach ( $this->post_types as $post_type ) {
+			$this->$post_type = require_once LSX_HEALTH_PLAN_PATH . 'classes/admin/settings/class-' . $post_type . '.php';
+		}
 	}
 
 	/**
@@ -236,14 +258,6 @@ class Settings {
 	public function general_settings( $cmb ) {
 		$cmb->add_field(
 			array(
-				'id'      => 'settings_general_title',
-				'type'    => 'title',
-				'name'    => __( 'General', 'lsx-health-plan' ),
-				'default' => __( 'General', 'lsx-health-plan' ),
-			)
-		);
-		$cmb->add_field(
-			array(
 				'name'       => __( 'Membership Product', 'lsx-health-plan' ),
 				'id'         => 'membership_product',
 				'type'       => 'post_search_ajax',
@@ -299,12 +313,6 @@ class Settings {
 				)
 			);
 		}
-		$cmb->add_field(
-			array(
-				'id'   => 'settings_general_closing',
-				'type' => 'tab_closing',
-			)
-		);
 	}
 
 	/**
@@ -612,5 +620,80 @@ class Settings {
 				'type' => 'tab_closing',
 			)
 		);
+	}
+
+	/**
+	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
+	 *
+	 * @param object $cmb The CMB2() class.
+	 * @param string $section either engine,archive or single.
+	 * @return void
+	 */
+	public function generate_tabs( $cmb ) {
+		$tabs = $this->get_settings_tabs();
+
+		foreach ( $tabs as $tab_key => $tab ) {
+			$cmb->add_field(
+				array(
+					'id'          => 'settings_' . $tab_key . '_title',
+					'type'        => 'title',
+					'name'        => $tab['title'],
+					'default'     => $tab['title'],
+					'description' => $tab['desc'],
+				)
+			);
+			do_action( 'lsx_hp_settings_page_' . $tab_key . '_top', $cmb );
+
+			do_action( 'lsx_hp_settings_page_' . $tab_key . '_middle', $cmb );
+
+			do_action( 'lsx_hp_settings_page_' . $tab_key . '_bottom', $cmb );
+
+			$cmb->add_field(
+				array(
+					'id'   => 'settings_' . $tab_key . '_closing',
+					'type' => 'tab_closing',
+				)
+			);
+		}
+	}
+
+
+	/**
+	 * Returns the tabs and their descriptions.
+	 *
+	 * @return array
+	 */
+	public function get_settings_tabs() {
+		$tabs = array(
+			'general' => array(
+				'title' => __( 'General', 'lsx-health-plan' ),
+				'desc'  => __( 'Control the sitewide settings for the LSX HP site.', 'lsx-health-plan' ),
+			),
+		);
+
+		foreach ( $this->post_types as $post_type ) {
+			switch ( $post_type ) {
+				default:
+					if ( ! in_array( $post_type, \lsx\search\includes\get_restricted_post_types() ) ) {
+						$temp_post_type = get_post_type_object( $post_type );
+						if ( ! is_wp_error( $temp_post_type ) ) {
+							$page_url    = get_post_type_archive_link( $temp_post_type->name );
+							$description = sprintf(
+								/* translators: %s: The subscription info */
+								__( 'Control the settings for your <a target="_blank" href="%1$s">%2$s</a> archive.', 'lsx-search' ),
+								$page_url,
+								$temp_post_type->label
+							);
+
+							$tabs[ $post_type ] = array(
+								'title' => $temp_post_type->label,
+								'desc'  => $description,
+							);
+						}
+					}
+					break;
+			}
+		}
+		return $tabs;
 	}
 }

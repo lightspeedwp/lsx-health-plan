@@ -142,3 +142,16 @@ function get_permalink( $plan_id = 0, $title = '' ) {
 	}
 	return $url;
 }
+
+/**
+ * Return a true or false if the search is enabled.
+ *
+ * @return boolean
+ */
+function is_filters_disabled( $disabled = false ) {
+	$is_disabled = \lsx_health_plan\functions\get_option( 'plan_filters_disabled', false );
+	if ( false !== $is_disabled ) {
+		$disabled = true;
+	}
+	return $disabled;
+}

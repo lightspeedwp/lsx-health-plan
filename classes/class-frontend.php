@@ -94,7 +94,7 @@ class Frontend {
 	 */
 	public function assets() {
 
-		if ( is_archive() ) {
+		if ( is_post_type_archive( 'plan' ) && false === \lsx_health_plan\functions\plan\is_filters_disabled() ) {
 			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_HEALTH_PLAN_URL, true );
 		}
 
