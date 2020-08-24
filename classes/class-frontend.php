@@ -42,7 +42,7 @@ class Frontend {
 	 */
 	public function __construct() {
 		$this->load_classes();
-		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
+		
 
 		if ( ! is_admin() ) {
 			// Handle the template redirects.
@@ -88,23 +88,6 @@ class Frontend {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-general.php';
 		$this->general = frontend\General::get_instance();
-
-	}
-
-	/**
-	 * Registers the plugin frontend assets
-	 *
-	 * @return void
-	 */
-	public function assets() {
-
-		if ( is_post_type_archive( 'plan' ) && false === \lsx_health_plan\functions\plan\is_filters_disabled() ) {
-			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_HEALTH_PLAN_URL, true );
-		}
-
-		wp_enqueue_style( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan.css', array(), LSX_HEALTH_PLAN_VER );
-		wp_style_add_data( 'lsx-health-plan', 'rtl', 'replace' );
-		wp_enqueue_script( 'lsx-health-plan-scripts', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-admin.js', array( 'jquery' ) );
 
 	}
 

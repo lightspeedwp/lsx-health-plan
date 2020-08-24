@@ -21,10 +21,11 @@ class General {
 	 * Contructor
 	 */
 	public function __construct() {
-		// Before Output
+		// Before Output.
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_html_tags_attributes' ), 100, 2 );
 
-		// Output
+		// Output.
 		add_action( 'body_class', array( $this, 'body_classes' ) );
 		add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
 		add_action( 'wp_head', array( $this, 'remove_single_footer' ), 99 );
@@ -43,6 +44,23 @@ class General {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Registers the plugin frontend assets
+	 *
+	 * @return void
+	 */
+	public function assets() {
+
+		if ( is_post_type_archive( 'plan' ) && false === \lsx_health_plan\functions\plan\is_filters_disabled() ) {
+			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_HEALTH_PLAN_URL, true );
+		}
+
+		wp_enqueue_style( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan.css', array(), LSX_HEALTH_PLAN_VER );
+		wp_style_add_data( 'lsx-health-plan', 'rtl', 'replace' );
+		wp_enqueue_script( 'lsx-health-plan-scripts', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-admin.js', array( 'jquery' ) );
+
 	}
 
 	/**
