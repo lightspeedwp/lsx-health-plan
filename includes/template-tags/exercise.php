@@ -98,10 +98,10 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 		$modal_body .= '<div class="title-lined exercise-modal"><h5 class="modal-title">' . get_the_title( $exercise_id ) . '</h5>';
 
 		if ( ! empty( $equipment_group ) ) {
-			$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
+			$modal_body .= '<span class="equipment-terms">' . __( 'Equipment', 'lsx-heal-plan' ) . ': ' . $equipment_group . '</span>';
 		}
 		if ( ! empty( $muscle_group ) ) {
-			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
+			$modal_body .= '<span class="muscle-terms">' . __( 'Muscle Group', 'lsx-heal-plan' ) . ': ' . $muscle_group . '</span>';
 		}
 		$modal_body .= '</div>';
 		if ( '' !== $args['modal_content'] ) {
