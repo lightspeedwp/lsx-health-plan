@@ -34,7 +34,7 @@ class Meal {
 
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 	}
 
@@ -119,6 +119,31 @@ class Meal {
 		$connections['meal']['connected_plans'] = 'connected_meals';
 		$connections['plan']['connected_meals'] = 'connected_plans';
 		return $connections;
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function featured_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox_meal',
+				'title'        => __( 'Featured Meal', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Meal', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable a featured meal' ),
+				'id'         => $this->slug . '_featured_meal',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 
 	/**

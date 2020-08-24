@@ -181,9 +181,4 @@
 			padding-top: 0;
 		}
 	}
-	.back-plan-btn {
-		@include media('>=tablet') {
-			margin-top: 8.4rem;
-		}
-	}
 }

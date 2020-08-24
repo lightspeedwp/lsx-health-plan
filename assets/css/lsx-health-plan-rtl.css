@@ -327,11 +327,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .tax-recipe-cuisine #footer-cta, .tax-recipe-cuisine #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
-@media (min-width: 900px) { .content-area .plans-products-wrapper { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; } }
+@media (min-width: 992px) { .content-area .plans-products-wrapper { max-width: 1140px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; } }
+
+@media (max-width: 768px) { .content-area .plans-products-wrapper { padding: 0 2rem; } }
 
 .content-area .plans-products-wrapper .plan-product { text-align: center; margin-right: auto; margin-left: auto; padding: 2.4rem; margin-bottom: 4rem; background-color: white; -ms-flex-positive: 1; flex-grow: 1; min-width: 50%; }
 
-@media (min-width: 768px) { .content-area .plans-products-wrapper .plan-product { max-width: 440px; min-width: auto; } }
+@media (min-width: 768px) { .content-area .plans-products-wrapper .plan-product { max-width: 540px; min-width: auto; width: 50%; } }
 
 .content-area .plans-products-wrapper .plan-product .title a { color: #4a4a4a; font-size: 22px; font-weight: bold; }
 
@@ -1266,8 +1268,6 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 #single-exercise .exercise-image .exercise-data .exercise-table tbody tr { -ms-grid-columns: 30% 70%; grid-template-columns: 30% 70%; }
 
 #single-exercise .lsx-hp-widget-items.slick-slider + .exercise-data { padding-top: 0; }
-
-@media (min-width: 992px) { #single-exercise .back-plan-btn { margin-top: 8.4rem; } }
 
 .svg svg > g, .title-lined svg > g, #single-plan-nav .nav.nav-pills li svg > g, .daily-plan-block svg > g, .single-plan .single-plan-inner svg > g, .archive-plan .single-plan-inner svg > g, .lsx-exercises-shortcode .single-plan-inner svg > g, .single-workout .single-plan-inner svg > g, .single-plan .single-plan-section-title svg > g, .archive-plan .single-plan-section-title svg > g, .lsx-exercises-shortcode .single-plan-section-title svg > g, .single-workout .single-plan-section-title svg > g { fill: #418AD0; }
 
