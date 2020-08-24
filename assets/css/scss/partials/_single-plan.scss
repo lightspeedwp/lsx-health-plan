@@ -293,8 +293,23 @@ article.type-workout {
 						justify-content: space-between;
 					}
 				}
+				#hp-connected-members {
+					padding-top: 2rem;
+				}
+				@include media('>=tablet') {
+					.the-content {
+						padding-right: 4rem;
+					}
+					#hp-connected-members {
+						padding: 0;
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+					}
+				}
+
 				.my-plan-title {
-					padding: 40px 20px 0;
+					padding: 20px 20px 0;
 					font-weight: bold;
 					margin-bottom: 0;
 				}
@@ -304,6 +319,15 @@ article.type-workout {
 						margin-top: 1rem;
 						margin-bottom: 3rem;
 						display: block;
+					}
+					.daily-plan-block {
+						&.week-grid {
+							.week-row {
+								@include media('>=tablet') {
+									padding: 0 4rem;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -355,7 +379,7 @@ article.type-workout {
 					}
 				}
 				.eating-row {
-					padding: 2rem 2rem 3rem;
+					padding: 2rem 1rem 3rem;
 					margin: 3rem 0 0 0;
 					.eating-column {
 						border-right: 3px solid rgba(65, 138, 208, 0.1);
@@ -983,18 +1007,10 @@ article.type-workout {
 						font-family: 'Noto Sans';
 						font-size: 22px;
 						font-weight: bold;
-						&.snack-title {
-							font-weight: normal;
-						}
 					}
 				}
 			}
 		}
-		// .extras-box {
-		// 	@media (max-width:992px) {
-		// 		padding: 10px 15px;
-		// 	}
-		// }
 		.tip-row {
 			@media (min-width: 992px) {
 				display: flex;

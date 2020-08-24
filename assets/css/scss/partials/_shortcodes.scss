@@ -140,9 +140,13 @@
 #lsx-tips-shortcode {
 	margin-top: 40px;
 	justify-content: flex-end;
+	@include media('>=tablet') {
+		width: 380px;
+	}
 	.lsx-tips-shortcode {
-		@media (min-width: 768px) {
-			max-width: 380px;
+		width: 100%;
+		@include media('>=tablet') {
+			width: 380px;
 		}
 		.diet-tip-wrapper {
 			background: white;
