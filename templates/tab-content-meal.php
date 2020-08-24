@@ -36,13 +36,11 @@ $connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_article
 					<h2><?php esc_html_e( 'My Meal Plan', 'lsx-health-plan' ); ?> <?php the_title(); ?></h2>
 				</div>
 			<?php } ?>
-			<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, $meal ) ); ?>
+
 			<?php require LSX_HEALTH_PLAN_PATH . 'templates/partials/meal-plans.php'; ?>
 		</div>
 
 	</div><!-- .entry-content -->
-	<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
-
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->

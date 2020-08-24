@@ -48,7 +48,7 @@ class Plan {
 		add_action( 'cmb2_admin_init', array( $this, 'sections_metabox_loop' ), 1 );
 
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
-		add_filter( 'lsx_global_header_title', array( $this, 'hp_recipe_header_title' ), 200, 1 );
+		//add_filter( 'lsx_global_header_title', array( $this, 'hp_recipe_header_title' ), 200, 1 );
 
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );

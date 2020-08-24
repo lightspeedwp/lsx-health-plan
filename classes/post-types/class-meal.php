@@ -155,6 +155,14 @@ class Meal {
 			'priority'     => 'high',
 			'show_names'   => true,
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Meal Short Description', 'lsx-health-plan' ),
+			'id'   => $this->slug . '_short_description',
+			'type' => 'textarea_small',
+			'desc' => __( 'Add a small description for this meal (optional)', 'lsx-health-plan' ),
+		) );
+
 		$cmb->add_field( array(
 			'name'       => __( 'Pre Breakfast Snack', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_pre_breakfast_snack',

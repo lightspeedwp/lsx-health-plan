@@ -19,6 +19,8 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 
 	<?php lsx_entry_top(); ?>
 
+	<?php the_content(); ?>
+
 	<div class="entry-meta">
 		<?php lsx_post_meta_single_bottom(); ?>
 	</div><!-- .entry-meta -->

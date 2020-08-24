@@ -183,6 +183,23 @@ class Workout {
 	 * Define the metabox and field configurations.
 	 */
 	public function details_metaboxes() {
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $this->slug . '_details_metabox',
+			'title'        => __( 'Workout Details', 'lsx-health-plan' ),
+			'object_types' => array( $this->slug ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Workout Short Description', 'lsx-health-plan' ),
+			'id'   => $this->slug . '_short_description',
+			'type' => 'textarea_small',
+			'desc' => __( 'Add a small description for this workout (optional)', 'lsx-health-plan' ),
+		) );
+
 		$workout_sections = apply_filters( 'lsx_health_plan_workout_sections_amount', 6 );
 		if ( false !== $workout_sections && null !== $workout_sections ) {
 			$i = 1;
