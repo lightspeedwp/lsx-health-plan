@@ -209,7 +209,7 @@ class Exercise {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_muscle_group', 'muscle-group' ),
+				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_exercise_musclegroup', 'muscle-group' ),
 			),
 			'show_in_rest'      => true,
 		);
