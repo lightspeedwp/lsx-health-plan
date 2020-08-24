@@ -70,7 +70,11 @@ table, .table { width: 100%; table-layout: fixed; }
 
 #lsx-tips-shortcode { margin-top: 40px; -ms-flex-pack: end; justify-content: flex-end; }
 
-@media (min-width: 768px) { #lsx-tips-shortcode .lsx-tips-shortcode { max-width: 380px; } }
+@media (min-width: 992px) { #lsx-tips-shortcode { width: 380px; } }
+
+#lsx-tips-shortcode .lsx-tips-shortcode { width: 100%; }
+
+@media (min-width: 992px) { #lsx-tips-shortcode .lsx-tips-shortcode { width: 380px; } }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper { background: white; }
 
@@ -787,7 +791,7 @@ article.type-plan .entry-content .meal-content .meals .btn-shopping, article.typ
 
 @media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping, article.type-meal .entry-content .meal-content .meals .btn-shopping, article.type-workout .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -6.5rem; margin-left: 2rem; margin-bottom: -6.5rem; } }
 
-article.type-plan .entry-content .meal-content .meals .eating-row, article.type-meal .entry-content .meal-content .meals .eating-row, article.type-workout .entry-content .meal-content .meals .eating-row { padding: 2rem 2rem 3rem; margin: 3rem 0 0 0; }
+article.type-plan .entry-content .meal-content .meals .eating-row, article.type-meal .entry-content .meal-content .meals .eating-row, article.type-workout .entry-content .meal-content .meals .eating-row { padding: 2rem 1rem 3rem; margin: 3rem 0 0 0; }
 
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column, article.type-meal .entry-content .meal-content .meals .eating-row .eating-column, article.type-workout .entry-content .meal-content .meals .eating-row .eating-column { border-left: 3px solid rgba(65, 138, 208, 0.1); }
 
@@ -1014,9 +1018,7 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .single-plan .single-plan-inner .eating-row .eating-column .content-box, .archive-plan .single-plan-inner .eating-row .eating-column .content-box, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box, .single-workout .single-plan-inner .eating-row .eating-column .content-box, .single-meal .single-plan-inner .eating-row .eating-column .content-box { margin-bottom: 0; }
 
-.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3, .archive-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box h3, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box .eating-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box h3, .single-workout .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box h3, .single-meal .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-meal .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: 'Noto Sans'; font-size: 22px; }
-
-.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title.snack-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3.snack-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title.snack-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box h3.snack-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box .eating-title.snack-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box h3.snack-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box .eating-title.snack-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box h3.snack-title, .single-meal .single-plan-inner .eating-row .eating-column .content-box .eating-title.snack-title, .single-meal .single-plan-inner .eating-row .eating-column .content-box h3.snack-title { font-weight: normal; }
+.single-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-plan .single-plan-inner .eating-row .eating-column .content-box h3, .archive-plan .single-plan-inner .eating-row .eating-column .content-box .eating-title, .archive-plan .single-plan-inner .eating-row .eating-column .content-box h3, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box .eating-title, .lsx-exercises-shortcode .single-plan-inner .eating-row .eating-column .content-box h3, .single-workout .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-workout .single-plan-inner .eating-row .eating-column .content-box h3, .single-meal .single-plan-inner .eating-row .eating-column .content-box .eating-title, .single-meal .single-plan-inner .eating-row .eating-column .content-box h3 { font-family: 'Noto Sans'; font-size: 22px; font-weight: bold; }
 
 @media (min-width: 992px) { .single-plan .single-plan-inner .tip-row, .archive-plan .single-plan-inner .tip-row, .lsx-exercises-shortcode .single-plan-inner .tip-row, .single-workout .single-plan-inner .tip-row, .single-meal .single-plan-inner .tip-row { display: -ms-flexbox; display: flex; } }
 

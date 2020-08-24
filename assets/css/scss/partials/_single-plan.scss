@@ -379,7 +379,7 @@ article.type-workout {
 					}
 				}
 				.eating-row {
-					padding: 2rem 2rem 3rem;
+					padding: 2rem 1rem 3rem;
 					margin: 3rem 0 0 0;
 					.eating-column {
 						border-right: 3px solid rgba(65, 138, 208, 0.1);
@@ -1006,18 +1006,11 @@ article.type-workout {
 					h3 {
 						font-family: 'Noto Sans';
 						font-size: 22px;
-						&.snack-title {
-							font-weight: normal;
-						}
+						font-weight: bold;
 					}
 				}
 			}
 		}
-		// .extras-box {
-		// 	@media (max-width:992px) {
-		// 		padding: 10px 15px;
-		// 	}
-		// }
 		.tip-row {
 			@media (min-width: 992px) {
 				display: flex;
