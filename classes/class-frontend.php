@@ -38,17 +38,16 @@ class Frontend {
 	public $general;
 
 	/**
+	 * @var object \lsx_health_plan\classes\frontend\Template_Redirects();
+	 */
+	public $template_redirects;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		$this->load_classes();
-		
-
 		if ( ! is_admin() ) {
-			// Handle the template redirects.
-			add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
-			add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
-			add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+			$this->load_classes();
 			add_action( 'template_redirect', array( $this, 'redirect' ) );
 			
 		}	
@@ -73,7 +72,6 @@ class Frontend {
 	 * Loads the variable classes and the static classes.
 	 */
 	private function load_classes() {
-
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
 		$this->endpoints = Endpoints::get_instance();
 
@@ -89,51 +87,8 @@ class Frontend {
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-general.php';
 		$this->general = frontend\General::get_instance();
 
-	}
-
-	/**
-	 * Archive template.
-	 */
-	public function archive_template_include( $template ) {
-		$applicable_post_types = apply_filters( 'lsx_health_plan_archive_template', array() );
-		if ( ! empty( $applicable_post_types ) && is_main_query() && is_post_type_archive( $applicable_post_types ) ) {
-			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'archive-' . $post_type . '.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/archive-' . $post_type . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/archive-' . $post_type . '.php';
-			}
-		}
-		return $template;
-	}
-
-	/**
-	 * Single template.
-	 */
-	public function single_template_include( $template ) {
-		$applicable_post_types = apply_filters( 'lsx_health_plan_single_template', array() );
-		if ( ! empty( $applicable_post_types ) && is_main_query() && is_singular( $applicable_post_types ) ) {
-			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'single-' . $post_type . '.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/single-' . $post_type . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/single-' . $post_type . '.php';
-			}
-		}
-		return $template;
-	}
-
-	/**
-	 * Redirect WordPress to the taxonomy located in the plugin
-	 *
-	 * @param     $template string
-	 * @return    string
-	 */
-	public function taxonomy_template_include( $template ) {
-		$applicable_taxonomies = apply_filters( 'lsx_health_plan_taxonomies_template', array() );
-		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
-			$current_taxonomy = get_query_var( 'taxonomy' );
-			if ( '' === locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
-			}
-		}
-		return $template;
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-template-redirects.php';
+		$this->template_redirects = frontend\Template_Redirects::get_instance();
 	}
 
 	/**
