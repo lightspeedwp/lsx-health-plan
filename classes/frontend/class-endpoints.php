@@ -1,5 +1,5 @@
 <?php
-namespace lsx_health_plan\classes;
+namespace lsx_health_plan\classes\frontend;
 
 /**
  * Contains the endpoints
@@ -13,7 +13,7 @@ class Endpoints {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Endpoints()
+	 * @var      object \lsx_health_plan\classes\frontend\Endpoints()
 	 */
 	protected static $instance = null;
 
@@ -29,7 +29,7 @@ class Endpoints {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Endpoints()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\frontend\Endpoints()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

@@ -18,7 +18,7 @@ class Frontend {
 	protected static $instance = null;
 
 	/**
-	 * @var object \lsx_health_plan\classes\Endpoints();
+	 * @var object \lsx_health_plan\classes\frontend\Endpoints();
 	 */
 	public $endpoints;
 
@@ -73,7 +73,7 @@ class Frontend {
 	 */
 	private function load_classes() {
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
-		$this->endpoints = Endpoints::get_instance();
+		$this->endpoints = frontend\Endpoints::get_instance();
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
 		$this->modals = Modals::get_instance();
