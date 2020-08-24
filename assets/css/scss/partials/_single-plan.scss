@@ -5,9 +5,6 @@
 	.content-area,
 	.widget-area {
 		margin-top: 4.5rem;
-		@media (max-width: 768px) {
-			margin-top: 8.5rem;
-		}
 	}
 }
 
@@ -1304,6 +1301,12 @@ article.type-workout {
 						.cooking-time,
 						.portion-size {
 							display: none;
+						}
+					}
+					.recipe-title-link {
+						margin: 0;
+						&::after {
+							content: none;
 						}
 					}
 					.recipe-title,

@@ -31,7 +31,9 @@
 			</a>
 		</div>
 		<div class="content-box workout-content-box white-bg">
-			<?php the_title( '<h3 class="workout-title">', '</h3>' ); ?>
+			<a href="<?php echo esc_url( get_permalink() ); ?>">
+				<?php the_title( '<h3 class="workout-title">', '</h3>' ); ?>
+			</a>
 			<?php
 			if ( ! has_excerpt() ) {
 				$content = wp_trim_words( get_the_content(), 20 );

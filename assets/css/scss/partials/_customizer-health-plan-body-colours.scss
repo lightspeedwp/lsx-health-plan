@@ -122,11 +122,16 @@
 	}
 
 	.post-type-archive-plan,
-	.single-plan {
+	.single-plan,
+	.single,
+	.archive {
 		.wrap.container {
 			.archive-header {
 				background-color: $link;
 				background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
+				.archive-title {
+					font-weight: bold;
+				}
 			}
 		}
 	}
@@ -377,6 +382,10 @@
 						border: 1px solid $link;
 						width: 25px;
 						height: 25px;
+						&:hover {
+							color: $hover;
+							border: 1px solid $hover;
+						}
 					}
 				}
 			}

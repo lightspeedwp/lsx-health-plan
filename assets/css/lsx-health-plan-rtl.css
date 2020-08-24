@@ -501,7 +501,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .daily-plan-block .day.completed .plan-content { font-size: 0; }
 
-.daily-plan-block .day.completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 82px; color: #dcdcdc; font-weight: 300; }
+.daily-plan-block .day.completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 70px; color: #dcdcdc; font-weight: 300; }
 
 .daily-plan-block .day.current-day { background-color: transparent; border: 2px solid #418ad0; }
 
@@ -657,8 +657,6 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 #__wp-uploader-id-2 button.button { box-shadow: none; min-height: initial; color: #0071a1; border: 1px solid #0071a1; background: #f3f5f6; vertical-align: top; text-transform: initial; font-weight: 400; font-size: 13px; padding: 0 10px; height: 30px; line-height: inherit; }
 
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
-
-@media (max-width: 768px) { .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 8.5rem; } }
 
 .plan-template-default.parent-plan-page { background-color: white; }
 
@@ -1142,6 +1140,10 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .tax-recipe-type .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .tax-exercise-type .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .tax-exercise-type .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .tax-muscle-group .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .tax-muscle-group .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size, .tax-equipment .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .cooking-time, .tax-equipment .archive-plan .row .col-md-4 .content-box table:not(.exercise-table) .portion-size { display: none; }
 
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .recipe-title-link, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .recipe-title-link, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box .recipe-title-link, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box .recipe-title-link, .tax-exercise-type .archive-plan .row .col-md-4 .content-box .recipe-title-link, .tax-muscle-group .archive-plan .row .col-md-4 .content-box .recipe-title-link, .tax-equipment .archive-plan .row .col-md-4 .content-box .recipe-title-link { margin: 0; }
+
+.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .tax-exercise-type .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .tax-muscle-group .archive-plan .row .col-md-4 .content-box .recipe-title-link::after, .tax-equipment .archive-plan .row .col-md-4 .content-box .recipe-title-link::after { content: none; }
+
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .recipe-title, .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box .exercise-title, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-recipe-type .archive-plan .row .col-md-4 .content-box .exercise-title, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box .exercise-title, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box .recipe-title, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box .exercise-title, .tax-exercise-type .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-exercise-type .archive-plan .row .col-md-4 .content-box .exercise-title, .tax-muscle-group .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-muscle-group .archive-plan .row .col-md-4 .content-box .exercise-title, .tax-equipment .archive-plan .row .col-md-4 .content-box .recipe-title, .tax-equipment .archive-plan .row .col-md-4 .content-box .exercise-title { margin-bottom: 15px; }
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box a, .tax-recipe-cuisine .archive-plan .row .col-md-4 .content-box a, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box a, .tax-exercise-type .archive-plan .row .col-md-4 .content-box a, .tax-muscle-group .archive-plan .row .col-md-4 .content-box a, .tax-equipment .archive-plan .row .col-md-4 .content-box a { margin-bottom: 15px; }
@@ -1187,6 +1189,8 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 .archive .archive-header-wrapper.banner-archive { float: none; }
 
 .archive .hp-archive-category-title { margin-top: 4.25rem; }
+
+.single-recipe .content-area, .single-exercise .content-area { margin-top: 4.25rem; }
 
 #single-recipe, #single-exercise { margin-bottom: -8.4rem; }
 
@@ -1305,7 +1309,9 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .plans-products-wrapper .plan-product .title a:hover, .plans-products-wrapper .plan-product .title a:visited:hover { color: #F7AE00; }
 
-.post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
+.post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header, .single .wrap.container .archive-header, .archive .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
+
+.post-type-archive-plan .wrap.container .archive-header .archive-title, .single-plan .wrap.container .archive-header .archive-title, .single .wrap.container .archive-header .archive-title, .archive .wrap.container .archive-header .archive-title { font-weight: bold; }
 
 article.type-plan .entry-content .workout-content .sets .set-box.set, article.type-meal .entry-content .workout-content .sets .set-box.set, article.type-workout .entry-content .workout-content .sets .set-box.set { background: white; }
 
@@ -1376,6 +1382,8 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { background-color: #418AD0; }
 
 #single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
+
+#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a:hover, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a:hover { color: #F7AE00; border: 1px solid #F7AE00; }
 
 #single-recipe .recipe-data .recipe-table tbody tr td:first-child:before, #single-exercise .recipe-data .recipe-table tbody tr td:first-child:before { font-family: FontAwesome; margin-left: 5px; color: #418AD0; font-size: 12px; }
 
