@@ -44,9 +44,7 @@ class Frontend {
 		$this->load_classes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
-		if ( is_admin() ) {
-			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
-		} else {
+		if ( ! is_admin() ) {
 			
 			// Handle the template redirects.
 			add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
@@ -112,29 +110,6 @@ class Frontend {
 		wp_style_add_data( 'lsx-health-plan', 'rtl', 'replace' );
 		wp_enqueue_script( 'lsx-health-plan-scripts', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-admin.js', array( 'jquery' ) );
 
-	}
-
-	/**
-	 * Handle body colours that might be change by LSX Customizer.
-	 */
-	public function customizer_body_colours_handler( $css, $colors ) {
-		$css .= '
-			@import "' . LSX_HEALTH_PLAN_PATH . '/assets/css/scss/partials/customizer-health-plan-body-colours";
-
-			/**
-			 * LSX Customizer - Body (LSX Health Plan)
-			 */
-			@include customizer-health-plan-body-colours (
-				$bg: 		' . $colors['background_color'] . ',
-				$breaker: 	' . $colors['body_line_color'] . ',
-				$color:    	' . $colors['body_text_color'] . ',
-				$link:    	' . $colors['body_link_color'] . ',
-				$hover:    	' . $colors['body_link_hover_color'] . ',
-				$small:    	' . $colors['body_text_small_color'] . '
-			);
-		';
-
-		return $css;
 	}
 
 	/**
