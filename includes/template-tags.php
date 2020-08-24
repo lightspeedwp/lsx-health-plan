@@ -479,15 +479,15 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 
 			foreach ( $groups as $group_key => $sections ) {
 				$collapse_class = '';
+				$group_title    = \lsx_health_plan\functions\plan\get_group_title( $sections );
+
 				// Determine if the current week is complete.
-
 				$day_ids = wp_list_pluck( $sections, 'title' );
-
 				if ( false === $group_open ) {
-					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
+					if ( 1 === $counter && ! \lsx_health_plan\functions\is_week_complete( false, $day_ids, $group_title ) ) {
 						$collapse_class = 'in';
 						$group_open   = true;
-					} elseif ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids ) ) {
+					} elseif ( ! \lsx_health_plan\functions\is_week_complete( false, $day_ids, $group_title ) ) {
 						$collapse_class = 'in';
 						$group_open   = true;
 					}
@@ -503,7 +503,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 				}*/
 				?>
 				<div class="daily-plan-block week-grid">
-					<a href="#group-<?php echo esc_attr( $group_key ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( \lsx_health_plan\functions\plan\get_group_title( $sections ) ); ?></a>
+					<a href="#group-<?php echo esc_attr( $group_key ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $group_title ); ?></a>
 					<div id="group-<?php echo esc_attr( $group_key ); ?>" class="week-row collapse <?php echo esc_attr( $collapse_class ); ?>">
 						<div class="week-row-inner <?php echo esc_html( $week_downloads_view ); ?>">
 							<div class="week-meals-recipes-box">
