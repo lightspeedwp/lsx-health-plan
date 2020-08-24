@@ -91,7 +91,7 @@ endif;
 				<?php
 				if ( function_exists( 'wc_get_page_id' ) ) {
 					?>
-					<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Smashed it! Back to my exercises', 'lsx-health-plan' ); ?></a>
+					<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back to my exercises', 'lsx-health-plan' ); ?></a>
 					<?php
 				}
 				?>

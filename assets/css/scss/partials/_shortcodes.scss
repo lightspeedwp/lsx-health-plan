@@ -137,81 +137,6 @@
 	}
 }
 
-#lsx-tips-shortcode {
-	margin-top: 40px;
-	justify-content: flex-end;
-	@include media('>=tablet') {
-		width: 380px;
-	}
-	.lsx-tips-shortcode {
-		width: 100%;
-		@include media('>=tablet') {
-			width: 380px;
-		}
-		.diet-tip-wrapper {
-			background: white;
-			@extend .box-shadow;
-			.col-md-1 {
-				padding: 0 0 0 10px;
-				svg {
-					width: 30px;
-				}
-			}
-			&.quick-tip {
-				margin: 0;
-				h3 {
-					color: $gray;
-					font-family: 'Noto Sans';
-					font-size: 15px;
-					font-weight: bold;
-					margin-bottom: 5px;
-				}
-				p {
-					color: #919191;
-					font-size: 13px;
-					margin: 0;
-				}
-			}
-		}
-		&.slick-slider {
-			.slick-list {
-				@extend .box-shadow;
-			}
-			button {
-				&.slick-arrow {
-					border: none;
-					color: #dddddd;
-					&.slick-next {
-						right: -3.2rem;
-					}
-					&.slick-prev {
-						left: -3.2rem;
-					}
-				}
-			}
-			.slick-dots {
-				margin-top: 0;
-				> li {
-					padding: 0 3px;
-					> button {
-						border-color: #dddddd;
-						width: 9px;
-						height: 9px;
-						border-radius: 50%;
-						padding: 0;
-						background: #dddddd;
-					}
-					&.slick-active {
-						> button {
-							background: #919191;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 .slick-slider {
 	@media (max-width: 782px) {
 		width: 100%;
@@ -247,6 +172,90 @@
 			max-height: 300px;
 			@media (max-width: 400px) {
 				max-height: 150px;
+			}
+		}
+	}
+}
+
+#lsx-tips-shortcode {
+	margin-top: 3rem;
+	justify-content: flex-end;
+	@include media('>=tablet') {
+		width: 380px;
+	}
+	.lsx-tips-shortcode {
+		width: 100%;
+		@include media('>=tablet') {
+			width: 380px;
+		}
+		.diet-tip-wrapper {
+			background: white;
+			box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
+			.col-md-1 {
+				padding: 0 0 0 10px;
+				svg {
+					width: 30px;
+				}
+			}
+			&.quick-tip {
+				margin: 0;
+				h3 {
+					color: $gray;
+					font-family: 'Noto Sans';
+					font-size: 15px;
+					font-weight: bold;
+					margin-bottom: 5px;
+				}
+				p {
+					color: #919191;
+					font-size: 13px;
+					margin: 0;
+				}
+			}
+		}
+		&.slick-slider {
+			.slick-list {
+				box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
+			}
+			button {
+				&.slick-arrow {
+					border: none;
+					color: #dddddd;
+					&.slick-next {
+						right: -3.2rem;
+					}
+					&.slick-prev {
+						left: -3.2rem;
+					}
+				}
+			}
+			.slick-dots {
+				margin-top: 0;
+				> li {
+					padding: 0 3px;
+					> button {
+						border-color: #dddddd;
+						width: 9px;
+						height: 9px;
+						border-radius: 50%;
+						padding: 0;
+						background: #dddddd;
+					}
+					&.slick-active {
+						> button {
+							background: #919191;
+						}
+					}
+				}
+			}
+		}
+	}
+	body.single & {
+		margin-bottom: 2rem;
+		.lsx-tips-shortcode {
+			.diet-tip-wrapper {
+				padding: 1rem;
+				box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
 			}
 		}
 	}

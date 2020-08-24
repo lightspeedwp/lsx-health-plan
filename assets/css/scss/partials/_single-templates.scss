@@ -85,6 +85,14 @@
 				}
 			}
 		}
+		.back-plan-btn {
+			@include media('>=tablet') {
+				width: 380px;
+				a {
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
