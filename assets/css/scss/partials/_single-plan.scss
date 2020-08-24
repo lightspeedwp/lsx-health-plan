@@ -293,8 +293,23 @@ article.type-workout {
 						justify-content: space-between;
 					}
 				}
+				#hp-connected-members {
+					padding-top: 2rem;
+				}
+				@include media('>=tablet') {
+					.the-content {
+						padding-right: 4rem;
+					}
+					#hp-connected-members {
+						padding: 0;
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+					}
+				}
+
 				.my-plan-title {
-					padding: 40px 20px 0;
+					padding: 20px 20px 0;
 					font-weight: bold;
 					margin-bottom: 0;
 				}
@@ -304,6 +319,15 @@ article.type-workout {
 						margin-top: 1rem;
 						margin-bottom: 3rem;
 						display: block;
+					}
+					.daily-plan-block {
+						&.week-grid {
+							.week-row {
+								@include media('>=tablet') {
+									padding: 0 4rem;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -982,7 +1006,6 @@ article.type-workout {
 					h3 {
 						font-family: 'Noto Sans';
 						font-size: 22px;
-						font-weight: bold;
 						&.snack-title {
 							font-weight: normal;
 						}
