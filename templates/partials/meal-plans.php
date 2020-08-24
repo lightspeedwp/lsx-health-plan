@@ -88,7 +88,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 				$post_dinner_snack = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
 
 				//Main Meals Title
-				echo '<h3 class="meals-section-title">' . esc_html__( 'Meal Plan', 'lsx-health-plan' ) . '</h3>';
+				//echo '<h3 class="meals-section-title">' . esc_html__( 'Meal Plan', 'lsx-health-plan' ) . '</h3>';
 				?>
 				<div class="row eating-row">
 					<div class="col-md-4 eating-column">

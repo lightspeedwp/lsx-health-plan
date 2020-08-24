@@ -17,7 +17,7 @@
 	}
 	#main {
 		&.parent-plan {
-			max-width: 900px;
+			max-width: 1140px;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -224,7 +224,8 @@ article.type-workout {
 		}
 		.workout-content,
 		.recipes-content,
-		.meal-content {
+		.meal-content,
+		.main-plan-content {
 			.single-plan-section-title {
 				display: flex;
 				padding: 1rem 3rem;
@@ -279,6 +280,34 @@ article.type-workout {
 				}
 			}
 		}
+		.main-plan-content {
+			.plan {
+				.set-box {
+					background: white;
+					padding: 0px 8px 0 8px;
+					margin-bottom: 0;
+					@include media('>=tablet') {
+						padding: 30px 20px 0 20px;
+						display: flex;
+						align-items: end;
+						justify-content: space-between;
+					}
+				}
+				.my-plan-title {
+					padding: 40px 20px 0;
+					font-weight: bold;
+					margin-bottom: 0;
+				}
+				.the-plan-content {
+					padding: 20px;
+					.progress {
+						margin-top: 1rem;
+						margin-bottom: 3rem;
+						display: block;
+					}
+				}
+			}
+		}
 		.meal-content {
 			.meals {
 				.set-box {
@@ -326,14 +355,15 @@ article.type-workout {
 					}
 				}
 				.eating-row {
-					padding: 0 2rem 3rem;
+					padding: 2rem 2rem 3rem;
+					margin: 3rem 0 0 0;
 					.eating-column {
 						border-right: 3px solid rgba(65, 138, 208, 0.1);
 						&:last-child {
 							border: none;
 						}
 						.content-box {
-							background: white;
+							background: transparent;
 							padding-top: 0;
 							padding-bottom: 0;
 							.eating-title {
@@ -341,7 +371,13 @@ article.type-workout {
 							}
 						}
 						.recipes {
-							margin: 0 10px;
+							margin: 0 15px;
+							.row.eating-row {
+								padding: 0;
+							}
+							.recipe-column {
+								background: white;
+							}
 							tr {
 								display: flex;
 								&:before {
@@ -465,7 +501,7 @@ article.type-workout {
 	.entry-content,
 	.tab-content-plan {
 		background: $white;
-		padding: 25px 40px;
+		padding: 0;
 		@media (max-width: 992px) {
 			padding: 15px 10px;
 		}
@@ -695,9 +731,8 @@ article.type-workout {
 						@include media('>=tablet') {
 							img {
 								width: 100%;
-								min-height: 125px;
+								min-height: 100px;
 								height: 100%;
-								max-height: 160px;
 								object-fit: cover;
 							}
 						}
@@ -1056,7 +1091,6 @@ article.type-workout {
 	.status-plan-buttons {
 		padding: 15px;
 		margin-top: 3rem;
-		margin-bottom: 6rem;
 		&.main-plan-btn {
 			.border-btn {
 				@include media('<=phone') {

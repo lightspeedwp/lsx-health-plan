@@ -37,7 +37,7 @@ global $shortcode_args;
 		<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
 			<div class="tip-row extras-box">
 				<div class="tip-right">
-					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="overview"]' ); ?>
+					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block' ); ?>
 				</div>
 			</div>
 		<?php } ?>

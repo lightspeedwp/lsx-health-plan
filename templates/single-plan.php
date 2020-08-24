@@ -55,27 +55,55 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 
 		<?php
 		if ( ! empty( $has_sections ) && false === $is_section ) {
-			echo wp_kses_post( '<h2 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h2>' );
-
-			echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'plan' ) );
-
-			if ( false === $restricted ) {
-				echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
-			}
-
-			the_content();
-			echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
-
 			?>
-			<div class="row status-plan-buttons main-plan-btn">
-				<?php
-				if ( function_exists( 'wc_get_page_id' ) ) {
-					?>
-					<a class="btn border-btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a>
-					<?php
-				}
-				?>
+			<div class="post-wrapper">
+				<div class="plan-content">
+					<?php the_content(); ?>
+				</div>				
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<div class="entry-content">
+						<div class="single-plan-inner main-plan-content">
+							<div class="single-plan-section-title title-lined">
+								<?php lsx_get_svg_icon( 'meal.svg' ); ?>
+								<h2><?php the_title(); ?></h2>
+
+							</div>
+							<div class="plan">
+								<?php
+								
+								// The top part
+								echo wp_kses_post( wp_kses_post( lsx_health_plan_main_content() ) );
+								
+								echo wp_kses_post( '<h3 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h3>' );
+
+								?>
+								<div class="the-plan-content">
+									<?php
+									
+									if ( false === $restricted ) {
+										echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
+									}
+									
+									echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
+
+									?>
+									<div class="row status-plan-buttons main-plan-btn">
+										<?php
+										if ( function_exists( 'wc_get_page_id' ) ) {
+											?>
+											<a class="btn border-btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a>
+											<?php
+										}
+										?>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div><!-- .entry-content -->
+				</article>
 			</div>
+			
 			<?php
 
 		} else {

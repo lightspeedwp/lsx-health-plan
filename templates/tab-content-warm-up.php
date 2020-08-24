@@ -62,7 +62,7 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 						<div class="tip-row extras-box">
 							<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
 								<div class="tip-right">
-									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="warm-up"]' ); ?>
+									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 								</div>
 							<?php } ?>
 						</div>

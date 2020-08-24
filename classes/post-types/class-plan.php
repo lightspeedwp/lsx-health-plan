@@ -268,6 +268,13 @@ class Plan {
 			'show_names'   => true,
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'Plan Short Description', 'lsx-health-plan' ),
+			'id'   => $this->slug . '_short_description',
+			'type' => 'textarea_small',
+			'desc' => __( 'Add a small description for this plan (optional)', 'lsx-health-plan' ),
+		) );
+
 		$warmup_type = 'page';
 		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
 			$warmup_type = array( 'page', 'workout' );
