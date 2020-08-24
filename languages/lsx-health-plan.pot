@@ -617,7 +617,7 @@ msgctxt "taxonomy singular name"
 msgid "Equipment"
 msgstr ""
 
-#: classes/post-types/class-exercise.php:167, classes/post-types/class-exercise.php:228, classes/post-types/class-exercise.php:228, templates/partials/workout-table.php:96
+#: classes/post-types/class-exercise.php:167, classes/post-types/class-exercise.php:228, classes/post-types/class-exercise.php:228, includes/template-tags/exercise.php:101, templates/partials/workout-table.php:96
 msgid "Equipment"
 msgstr ""
 
@@ -1093,6 +1093,14 @@ msgstr ""
 msgid "Choose to show the excerpt, full content or nothing. For the grid layout only"
 msgstr ""
 
+#: includes/template-tags/exercise.php:104, templates/partials/workout-table.php:99
+msgid "Muscle Group"
+msgstr ""
+
+#: includes/template-tags/exercise.php:111
+msgid "Read More"
+msgstr ""
+
 #: templates/partials/meal-plans.php:63, templates/partials/meal-plans.php:77, templates/partials/meal-plans.php:86, templates/partials/meal-plans.php:98, templates/partials/meal-plans.php:107, templates/partials/meal-plans.php:121
 msgid "Snack"
 msgstr ""
@@ -1131,10 +1139,6 @@ msgstr ""
 
 #: templates/partials/workout-grid.php:134
 msgid "View exercise"
-msgstr ""
-
-#: templates/partials/workout-table.php:99
-msgid "Muscle Group"
 msgstr ""
 
 #: templates/partials/workout-table.php:102, templates/partials/workout-table.php:105
