@@ -179,6 +179,11 @@
 					}
 				}
 			}
+			.meals {
+				.eating-row {
+					background: lighten($link, 42%);
+				}
+			}
 		}
 	}
 	.warmup-container {

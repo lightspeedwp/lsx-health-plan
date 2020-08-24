@@ -18,58 +18,44 @@ class Frontend {
 	protected static $instance = null;
 
 	/**
-	 * @var object \lsx_health_plan\classes\Endpoints();
+	 * @var object \lsx_health_plan\classes\frontend\Endpoints();
 	 */
 	public $endpoints;
 
 	/**
-	 * @var object \lsx_health_plan\classes\Modals();
+	 * @var object \lsx_health_plan\classes\frontend\Modals();
 	 */
 	public $modals;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\Gallery();
+	 */
+	public $gallery;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\Plan_Status();
+	 */
+	public $plan_status;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\General();
+	 */
+	public $general;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\Template_Redirects();
+	 */
+	public $template_redirects;
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
-		$this->endpoints = Endpoints::get_instance();
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
-		$this->modals = Modals::get_instance();
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-gallery.php';
-		$this->gallery = frontend\Gallery::get_instance();
-
-		if ( is_admin() ) {
-			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
-		} else {
-			add_action( 'body_class', array( $this, 'hp_add_body_classes' ) );
-			// Handle the template redirects.
-			add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
-			add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
-			add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+		if ( ! is_admin() ) {
+			$this->load_classes();
 			add_action( 'template_redirect', array( $this, 'redirect' ) );
-
-			add_action( 'init', array( $this, 'handle_day_action' ), 100 );
-			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
-			add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
-		}
-
-		add_action( 'wp_head', array( $this, 'remove_hp_single_posts_footer' ), 99 );
-	}
-
-	/**
-	 * Removing footer for HP single pages.
-	 *
-	 * @return void
-	 */
-	public function remove_hp_single_posts_footer() {
-		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) || is_singular( 'workout' ) || is_singular( 'meal' ) ) ) {
-			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
-		}
+			
+		}	
 	}
 
 	/**
@@ -88,127 +74,26 @@ class Frontend {
 	}
 
 	/**
-	 * Registers the plugin frontend assets
-	 *
-	 * @return void
+	 * Loads the variable classes and the static classes.
 	 */
-	public function assets() {
+	private function load_classes() {
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
+		$this->endpoints = frontend\Endpoints::get_instance();
 
-		if ( is_archive() ) {
-			wp_enqueue_script( 'isotope', LSX_HEALTH_PLAN_URL . 'assets/js/vendor/isotope.pkgd.min.js', array( 'jquery' ), null, LSX_HEALTH_PLAN_URL, true );
-		}
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
+		$this->modals = Modals::get_instance();
 
-		wp_enqueue_style( 'lsx-health-plan', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan.css', array(), LSX_HEALTH_PLAN_VER );
-		wp_style_add_data( 'lsx-health-plan', 'rtl', 'replace' );
-		wp_enqueue_script( 'lsx-health-plan-scripts', LSX_HEALTH_PLAN_URL . 'assets/js/src/lsx-health-plan-admin.js', array( 'jquery' ) );
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-gallery.php';
+		$this->gallery = frontend\Gallery::get_instance();
 
-	}
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-plan-status.php';
+		$this->plan_status = frontend\Plan_Status::get_instance();
 
-	/**
-	 * Handle body colours that might be change by LSX Customizer.
-	 */
-	public function customizer_body_colours_handler( $css, $colors ) {
-		$css .= '
-			@import "' . LSX_HEALTH_PLAN_PATH . '/assets/css/scss/partials/customizer-health-plan-body-colours";
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-general.php';
+		$this->general = frontend\General::get_instance();
 
-			/**
-			 * LSX Customizer - Body (LSX Health Plan)
-			 */
-			@include customizer-health-plan-body-colours (
-				$bg: 		' . $colors['background_color'] . ',
-				$breaker: 	' . $colors['body_line_color'] . ',
-				$color:    	' . $colors['body_text_color'] . ',
-				$link:    	' . $colors['body_link_color'] . ',
-				$hover:    	' . $colors['body_link_hover_color'] . ',
-				$small:    	' . $colors['body_text_small_color'] . '
-			);
-		';
-
-		return $css;
-	}
-
-	/**
-	 * Archive template.
-	 */
-	public function archive_template_include( $template ) {
-		$applicable_post_types = apply_filters( 'lsx_health_plan_archive_template', array() );
-		if ( ! empty( $applicable_post_types ) && is_main_query() && is_post_type_archive( $applicable_post_types ) ) {
-			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'archive-' . $post_type . '.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/archive-' . $post_type . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/archive-' . $post_type . '.php';
-			}
-		}
-		return $template;
-	}
-
-	/**
-	 * Add body classes to body.
-	 *
-	 * @param array $classes
-	 * @return void
-	 */
-	public function hp_add_body_classes( $classes = array() ) {
-		global $post;
-
-		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'lsx_health_plan_my_profile_block' ) ) {
-			$classes[] = 'my-plan-shortcode';
-		}
-
-		if ( is_single() && is_singular( 'plan' ) ) {
-			$args = array(
-				'post_parent' => get_the_ID(),
-				'post_type'   => 'plan',
-			);
-
-			$post_id      = get_the_ID();
-			$has_children = get_children( $args );
-			$has_parent   = wp_get_post_parent_id( $post_id );
-
-			if ( ! empty( $has_children ) ) {
-				$plan_type_class = 'parent-plan-page';
-				if ( 0 !== $has_parent ) {
-					$plan_type_class = 'parent-sub-plan-page';
-				}
-			} else {
-				$plan_type_class = 'unique-plan-page';
-				if ( 0 !== $has_parent ) {
-					$plan_type_class = 'child-plan-page';
-				}
-			}
-			$classes[] = $plan_type_class;
-		}
-		return $classes;
-	}
-
-	/**
-	 * Single template.
-	 */
-	public function single_template_include( $template ) {
-		$applicable_post_types = apply_filters( 'lsx_health_plan_single_template', array() );
-		if ( ! empty( $applicable_post_types ) && is_main_query() && is_singular( $applicable_post_types ) ) {
-			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'single-' . $post_type . '.php' ) ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/single-' . $post_type . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/single-' . $post_type . '.php';
-			}
-		}
-		return $template;
-	}
-
-	/**
-	 * Redirect WordPress to the taxonomy located in the plugin
-	 *
-	 * @param     $template string
-	 * @return    string
-	 */
-	public function taxonomy_template_include( $template ) {
-		$applicable_taxonomies = apply_filters( 'lsx_health_plan_taxonomies_template', array() );
-		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
-			$current_taxonomy = get_query_var( 'taxonomy' );
-			if ( '' === locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
-				$template = LSX_HEALTH_PLAN_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
-			}
-		}
-		return $template;
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-template-redirects.php';
+		$this->template_redirects = frontend\Template_Redirects::get_instance();
 	}
 
 	/**
@@ -228,65 +113,7 @@ class Frontend {
 		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );
 		if ( false !== $product_id && is_single( $product_id ) ) {
 			wp_redirect( home_url() );
-			die;
+			wp_die();
 		}
-	}
-
-	/**
-	 * Registers the rewrites.
-	 */
-	public function handle_day_action() {
-		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'complete' ) ) {
-			update_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete', true );
-			$plan_id     = sanitize_key( $_POST['lsx-health-plan-id'] );
-			$plan_parent = wp_get_post_parent_id( $plan_id );
-			if ( 0 !== $plan_parent ) {
-				$plan_id = $plan_parent;
-			}
-			wp_safe_redirect( get_permalink( $plan_id ) );
-		}
-
-		if ( isset( $_POST['lsx-health-plan-actions'] ) && wp_verify_nonce( $_POST['lsx-health-plan-actions'], 'unlock' ) ) {
-			delete_user_meta( get_current_user_id(), 'day_' . sanitize_key( $_POST['lsx-health-plan-id'] ) . '_complete' );
-		}
-	}
-
-	/**
-	 * Registers the rewrites.
-	 */
-	public function wpkses_post_tags( $tags, $context ) {
-		if ( 'post' === $context ) {
-			$tags['iframe'] = array(
-				'src'             => true,
-				'height'          => true,
-				'width'           => true,
-				'frameborder'     => true,
-				'allowfullscreen' => true,
-			);
-		}
-		$tags['progress'] = array(
-			'id'    => true,
-			'value' => true,
-			'max'   => true,
-		);
-		return $tags;
-	}
-
-	/**
-	 * Remove the single recipe and exercise title
-	 */
-	public function single_title( $title ) {
-
-		if ( is_single() && is_singular( 'recipe' ) ) {
-
-			$title = __( 'Recipe', 'lsx-health-plan' );
-		}
-
-		if ( is_single() && is_singular( 'exercise' ) ) {
-
-			$title = __( 'Exercise', 'lsx-health-plan' );
-		}
-
-		return $title;
 	}
 }

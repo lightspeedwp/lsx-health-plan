@@ -113,12 +113,9 @@ var LSX_HP_ADMIN = Object.create(null);
 	/**
 	 * Filter nav for archives
 	 */
-	(LSX_HP_ADMIN.initIsotope = function() {
-		if (
-			$('body')
-				.first()
-				.hasClass('archive')
-		) {
+	LSX_HP_ADMIN.initIsotope = function() {
+
+		if ( $('body').first().hasClass('archive') && $.isFunction( $.fn.isotope ) ) {
 			var $container = $('.lsx-plan-row');
 
 			$container.isotope({
@@ -159,14 +156,15 @@ var LSX_HP_ADMIN = Object.create(null);
 				$container.isotope();
 			});
 		}
-	}),
-		/**
-		 * On document ready.
-		 *
-		 * @package    lsx-health-plan
-		 * @subpackage scripts
-		 */
-		LSX_HP_ADMIN.document.ready(function() {
-			LSX_HP_ADMIN.init();
-		});
+	};
+
+	/**
+	 * On document ready.
+	 *
+	 * @package    lsx-health-plan
+	 * @subpackage scripts
+	 */
+	LSX_HP_ADMIN.document.ready(function() {
+		LSX_HP_ADMIN.init();
+	});
 })(jQuery, window, document);

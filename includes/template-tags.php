@@ -642,7 +642,7 @@ function lsx_health_plan_complete_button() {
 	<div class="single-plan-inner-buttons">
 		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
 			<?php wp_nonce_field( 'complete', 'lsx-health-plan-actions' ); ?>
-			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( get_the_ID() ); ?>" />
+			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( \lsx_health_plan\functions\plan\generate_section_id() ); ?>" />
 			<button class="btn cta-btn" type="submit"><?php esc_html_e( 'Complete Day', 'lsx-health-plan' ); ?></button>
 		</form>
 		<?php lsx_health_plan_back_to_plan_button(); ?>
@@ -660,7 +660,7 @@ function lsx_health_plan_unlock_button() {
 	<div class="single-plan-inner-buttons">
 		<form action="<?php the_permalink(); ?>" method="post" class="form-complete-day complete-plan-btn">
 			<?php wp_nonce_field( 'unlock', 'lsx-health-plan-actions' ); ?>
-			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( get_the_ID() ); ?>" />
+			<input type="hidden" name="lsx-health-plan-id" value="<?php echo esc_attr( \lsx_health_plan\functions\plan\generate_section_id() ); ?>" />
 			<button class="btn secondary-btn" type="submit"><?php esc_html_e( 'Im not done!', 'lsx-health-plan' ); ?></button>
 		</form>
 		<?php lsx_health_plan_back_to_plan_button(); ?>
@@ -814,12 +814,14 @@ function lsx_health_plan_main_content() {
 
 	$content_plan = '';
 	if ( $small_description || $connected_members ) {
-		$content .= '<div class="set-box set content-box entry-content">';
+		$content_plan .= '<div class="set-box set content-box entry-content">';
 		$content_plan .= '<div class="the-content">';
 		$content_plan .= lsx_hp_member_connected( $connected_members, $plan );
-		//$content .= '<span>' . $small_description . '</span>';
+		//$content_plan .= '<span>' . $small_description . '</span>';
 		$content_plan .= '</div>';
-		//$content_plan .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
+		if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) {
+			$content_plan .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
+		}
 		$content_plan .= '</div>';
 	}
 	return $content_plan;

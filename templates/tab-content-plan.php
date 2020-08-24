@@ -7,7 +7,7 @@
 
 $section_key  = get_query_var( 'section' );
 $endpoint_key = get_query_var( 'endpoint' );
-if ( '' !== $section && '' === $endpoint && \lsx_health_plan\functions\plan\has_sections() ) {
+if ( '' !== $section_key && '' === $endpoint && \lsx_health_plan\functions\plan\has_sections() ) {
 	$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
 	if ( isset( $section_info['description'] ) && '' !== $section_info['description'] ) {
 		global $shortcode_args;
@@ -40,7 +40,7 @@ if ( '' !== $section && '' === $endpoint && \lsx_health_plan\functions\plan\has_
 				<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
 					<div class="tip-row extras-box">
 						<div class="tip-right">
-							<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block tab="overview"]' ); ?>
+							<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
 						</div>
 					</div>
 				<?php } ?>

@@ -8,10 +8,9 @@ global $connected_meals, $shortcode_args;
 
 if ( is_singular( 'plan' ) ) {
 	$section_key = get_query_var( 'section' );
-	if ( '' !== $section && \lsx_health_plan\functions\plan\has_sections() ) {
+	if ( '' !== $section_key && \lsx_health_plan\functions\plan\has_sections() ) {
 		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
 		if ( isset( $section_info['connected_meals'] ) && '' !== $section_info['connected_meals'] ) {
-
 			$connected_meals = \lsx_health_plan\functions\prep_array( $section_info['connected_meals'] );
 		}
 	}
@@ -89,7 +88,7 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 				$post_dinner_snack = get_post_meta( get_the_ID(), 'meal_dinner_snack', true );
 
 				//Main Meals Title
-				echo '<h3 class="meals-section-title">' . esc_html__( 'Meal Plan', 'lsx-health-plan' ) . '</h3>';
+				//echo '<h3 class="meals-section-title">' . esc_html__( 'Meal Plan', 'lsx-health-plan' ) . '</h3>';
 				?>
 				<div class="row eating-row">
 					<div class="col-md-4 eating-column">

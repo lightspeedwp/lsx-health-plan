@@ -166,12 +166,12 @@ function lsx_health_plan_is_day_complete( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	if ( is_user_logged_in() ) {
-		$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $post_id . '_complete', true );
-		if ( false !== $is_day_complete && '' !== $is_day_complete ) {
-			$is_complete = true;
-		}
+	$key             = \lsx_health_plan\functions\plan\generate_section_id();
+	$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $key . '_complete', true );
+	if ( false !== $is_day_complete && '' !== $is_day_complete ) {
+		$is_complete = true;
 	}
+
 	return $is_complete;
 }
 

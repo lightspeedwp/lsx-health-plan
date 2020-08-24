@@ -59,11 +59,11 @@ class Admin {
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'create_query_fields' ), 20, 4 );
-		//add_action( 'cmb2_save_field_plan_sections', array( $this, 'extract_plan_fields' ), 20, 4 );
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
-
-		// Debugging.
 		add_action( 'cmb2_save_post_fields', array( $this, 'extract_plan_fields' ), 10, 4 );
+
+		// Customizer.
+		add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 	}
 
 	/**
@@ -429,5 +429,28 @@ class Admin {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Handle body colours that might be change by LSX Customizer.
+	 */
+	public function customizer_body_colours_handler( $css, $colors ) {
+		$css .= '
+			@import "' . LSX_HEALTH_PLAN_PATH . '/assets/css/scss/partials/customizer-health-plan-body-colours";
+
+			/**
+			 * LSX Customizer - Body (LSX Health Plan)
+			 */
+			@include customizer-health-plan-body-colours (
+				$bg: 		' . $colors['background_color'] . ',
+				$breaker: 	' . $colors['body_line_color'] . ',
+				$color:    	' . $colors['body_text_color'] . ',
+				$link:    	' . $colors['body_link_color'] . ',
+				$hover:    	' . $colors['body_link_hover_color'] . ',
+				$small:    	' . $colors['body_text_small_color'] . '
+			);
+		';
+
+		return $css;
 	}
 }
