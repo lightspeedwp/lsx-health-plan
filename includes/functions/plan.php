@@ -160,19 +160,21 @@ function is_filters_disabled( $disabled = false ) {
  * Generates a unique ID for the current section item you are viewing,  e.g Day 1 of Week 1.
  * Can only be used on the single plan pages and endpoints.
  *
+ * @param  string  $section_key
  * @return string
  */
-function generate_section_id() {
-	$key = '';
-	if ( is_singular( 'plan' ) ) {
-		$key          = get_the_ID();
+function generate_section_id( $section_key = '' ) {
+	$key          = get_the_ID();
+	if ( '' === $section_key ) {
 		$section_key  = get_query_var( 'section' );
-		
-		if ( '' !== $section_key && \lsx_health_plan\functions\plan\has_sections() ) {
-			$group_title  = apply_filters( 'lsx_hp_default_plan_group', __( 'Daily Plan', 'lsx-health-plan' ) );
-			$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
-			$key         .= '_' . sanitize_key( $group_title ) . '_' . sanitize_key( $section_info['title'] );
-		}
+	}
+
+	$section_key = sanitize_title( $section_key );
+	
+	if ( '' !== $section_key && \lsx_health_plan\functions\plan\has_sections() ) {
+		$group_title  = apply_filters( 'lsx_hp_default_plan_group', __( 'Daily Plan', 'lsx-health-plan' ) );
+		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
+		$key         .= '_' . sanitize_key( $group_title ) . '_' . sanitize_key( $section_info['title'] );
 	}
 	return $key;
 }
