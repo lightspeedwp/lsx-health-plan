@@ -23,25 +23,26 @@ class Frontend {
 	public $endpoints;
 
 	/**
-	 * @var object \lsx_health_plan\classes\Modals();
+	 * @var object \lsx_health_plan\classes\frontend\Gallery();
 	 */
-	public $modals;
+	public $gallery;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\Plan_Status();
+	 */
+	public $plan_status;
+
+	/**
+	 * @var object \lsx_health_plan\classes\frontend\General();
+	 */
+	public $general;
 
 	/**
 	 * Contructor
 	 */
 	public function __construct() {
-
+		$this->load_classes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
-		$this->endpoints = Endpoints::get_instance();
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
-		$this->modals = Modals::get_instance();
-
-		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-gallery.php';
-		$this->gallery = frontend\Gallery::get_instance();
 
 		if ( is_admin() ) {
 			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
@@ -62,17 +63,6 @@ class Frontend {
 	}
 
 	/**
-	 * Removing footer for HP single pages.
-	 *
-	 * @return void
-	 */
-	public function remove_hp_single_posts_footer() {
-		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) || is_singular( 'workout' ) || is_singular( 'meal' ) ) ) {
-			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
-		}
-	}
-
-	/**
 	 * Return an instance of this class.
 	 *
 	 * @since 1.0.0
@@ -85,6 +75,28 @@ class Frontend {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-endpoints.php';
+		$this->endpoints = Endpoints::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-modals.php';
+		$this->modals = Modals::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-gallery.php';
+		$this->gallery = frontend\Gallery::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-plan-status.php';
+		$this->plan_status = frontend\Plan_Status::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-general.php';
+		$this->general = frontend\General::get_instance();
+
 	}
 
 	/**
@@ -288,5 +300,16 @@ class Frontend {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Removing footer for HP single pages.
+	 *
+	 * @return void
+	 */
+	public function remove_hp_single_posts_footer() {
+		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) || is_singular( 'workout' ) || is_singular( 'meal' ) ) ) {
+			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
+		}
 	}
 }
