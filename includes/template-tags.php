@@ -359,7 +359,7 @@ function lsx_health_plan_all_plans_block() {
 						$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 					}
 
-					if ( lsx_health_plan_is_day_complete() ) {
+					if ( lsx_health_plan_is_plan_complete() ) {
 						$completed_class = 'completed';
 					}
 					?>
@@ -523,7 +523,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 									$section_args = wp_parse_args( $section_values, $defaults );
 
 									$completed_class = '';
-									if ( lsx_health_plan_is_day_complete() ) {
+									if ( lsx_health_plan_is_day_complete( $args['plan'], $section_args['title'] ) ) {
 										$completed_class = 'completed';
 									}
 									?>

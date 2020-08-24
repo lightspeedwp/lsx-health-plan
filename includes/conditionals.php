@@ -161,18 +161,23 @@ function lsx_health_plan_is_current_tab( $needle = '' ) {
  * @param string $post_id
  * @return boolean
  */
-function lsx_health_plan_is_day_complete( $post_id = '' ) {
+function lsx_health_plan_is_day_complete( $post_id = '', $section_key = '' ) {
 	$is_complete = false;
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	$key             = \lsx_health_plan\functions\plan\generate_section_id();
+	$key             = \lsx_health_plan\functions\plan\generate_section_id( $section_key );
 	$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $key . '_complete', true );
 	if ( false !== $is_day_complete && '' !== $is_day_complete ) {
 		$is_complete = true;
 	}
 
 	return $is_complete;
+}
+
+function lsx_health_plan_is_plan_complete() {
+	$complete = false;
+	return $complete;
 }
 
 /**
