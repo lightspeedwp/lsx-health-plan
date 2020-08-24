@@ -55,7 +55,7 @@ class Frontend {
 			add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
 		}
 
-		add_action( 'wp_head', array( $this, 'remove_hp_single_posts_footer' ), 99 );
+		
 	}
 
 	/**
@@ -215,16 +215,5 @@ class Frontend {
 		}
 
 		return $title;
-	}
-
-	/**
-	 * Removing footer for HP single pages.
-	 *
-	 * @return void
-	 */
-	public function remove_hp_single_posts_footer() {
-		if ( is_single() && ( is_singular( 'exercise' ) || is_singular( 'recipe' ) || is_singular( 'workout' ) || is_singular( 'meal' ) ) ) {
-			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
-		}
 	}
 }

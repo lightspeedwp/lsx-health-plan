@@ -22,6 +22,7 @@ class General {
 	 */
 	public function __construct() {
 		add_action( 'body_class', array( $this, 'body_classes' ) );
+		add_action( 'wp_head', array( $this, 'remove_single_footer' ), 99 );
 	}
 
 	/**
@@ -76,5 +77,16 @@ class General {
 			$classes[] = $plan_type_class;
 		}
 		return $classes;
+	}
+
+	/**
+	 * Removing footer for HP single pages.
+	 *
+	 * @return void
+	 */
+	public function remove_single_footer() {
+		if ( is_single() && is_singular( array( 'exercise', 'recipe', 'workout', 'meal' ) ) ) {
+			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
+		}
 	}
 }
