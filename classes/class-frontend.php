@@ -45,17 +45,13 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		if ( ! is_admin() ) {
-			
 			// Handle the template redirects.
 			add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 			add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 			add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
 			add_action( 'template_redirect', array( $this, 'redirect' ) );
 			add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
-			add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
-		}
-
-		
+		}	
 	}
 
 	/**
@@ -197,23 +193,5 @@ class Frontend {
 			'max'   => true,
 		);
 		return $tags;
-	}
-
-	/**
-	 * Remove the single recipe and exercise title
-	 */
-	public function single_title( $title ) {
-
-		if ( is_single() && is_singular( 'recipe' ) ) {
-
-			$title = __( 'Recipe', 'lsx-health-plan' );
-		}
-
-		if ( is_single() && is_singular( 'exercise' ) ) {
-
-			$title = __( 'Exercise', 'lsx-health-plan' );
-		}
-
-		return $title;
 	}
 }

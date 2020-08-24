@@ -21,7 +21,11 @@ class General {
 	 * Contructor
 	 */
 	public function __construct() {
+		// Before Output
+		
+		// Output
 		add_action( 'body_class', array( $this, 'body_classes' ) );
+		add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
 		add_action( 'wp_head', array( $this, 'remove_single_footer' ), 99 );
 	}
 
@@ -77,6 +81,24 @@ class General {
 			$classes[] = $plan_type_class;
 		}
 		return $classes;
+	}
+
+	/**
+	 * Remove the single recipe and exercise title
+	 */
+	public function single_title( $title ) {
+
+		if ( is_single() && is_singular( 'recipe' ) ) {
+
+			$title = __( 'Recipe', 'lsx-health-plan' );
+		}
+
+		if ( is_single() && is_singular( 'exercise' ) ) {
+
+			$title = __( 'Exercise', 'lsx-health-plan' );
+		}
+
+		return $title;
 	}
 
 	/**
