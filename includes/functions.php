@@ -433,26 +433,17 @@ function get_exercises_by_workout( $workout = '' ) {
  */
 function get_progress( $plan_id = false ) {
 	$progress = 0;
-	$complete = 0;
+	$complete = array();
 	$count    = 0;
-	if ( false !== $plan_id ) {
-		// Find the plan parent, if 0 then it is the parent.
-		$plan_parent = wp_get_post_parent_id( $plan_id );
-		if ( 0 !== $plan_parent ) {
-			$plan_id = $plan_parent;
-		}
-
-		// Get the children to gather a count.
-		$plan_children = get_children( $plan_id );
-		$children_ids  = array();
-		if ( ! empty( $plan_children ) ) {
-			$count = count( $plan_children );
-			foreach ( $plan_children as &$pid ) {
-				$children_ids[] = 'day_' . $pid->ID . '_complete';
+	if ( false !== $plan_id &&  \lsx_health_plan\functions\plan\has_sections( $plan_id ) ) {
+		$sections = \lsx_health_plan\functions\plan\get_sections( $plan_id );
+		$all_count = count( $sections );
+		foreach ( $sections as $section_key => $section_values ) {
+			if ( lsx_health_plan_is_day_complete( $plan_id, $section_values['title'] ) ) {
+				$complete[] = true;
 			}
-			$complete = get_meta_amounts( $children_ids );
-			$progress = (int) $complete / (int) $count * 100;
 		}
+		$progress = (int) count( $complete ) / (int) $all_count * 100;
 	}
 	return $progress;
 }
