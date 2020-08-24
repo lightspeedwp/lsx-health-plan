@@ -288,14 +288,15 @@ function get_video_url( $embed ) {
  * @param array $post_ids
  * @return boolean
  */
-function is_week_complete( $term_id = false, $post_ids = array() ) {
+function is_week_complete( $term_id = false, $section_keys = array(), $group_title = '' ) {
 	$return = false;
-	if ( ! empty( $post_ids ) ) {
-		foreach ( $post_ids as &$pid ) {
-			$pid = 'day_' . $pid . '_complete';
+	if ( ! empty( $section_keys ) ) {
+		$group_count = count( $section_keys );
+		foreach ( $section_keys as &$pid ) {
+			$pid = 'day_' . \lsx_health_plan\functions\plan\generate_section_id( $pid ) . '_complete';
 		}
-		$days_complete = get_meta_amounts( $post_ids );
-		if ( 7 === $days_complete || '7' === $days_complete ) {
+		$days_complete = get_meta_amounts( $section_keys );
+		if ( (int) $group_count === (int) $days_complete ) {
 			$return = true;
 		}
 	}
