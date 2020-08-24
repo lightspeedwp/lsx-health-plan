@@ -23,6 +23,11 @@ class Frontend {
 	public $endpoints;
 
 	/**
+	 * @var object \lsx_health_plan\classes\frontend\Modals();
+	 */
+	public $modals;
+
+	/**
 	 * @var object \lsx_health_plan\classes\frontend\Gallery();
 	 */
 	public $gallery;
@@ -108,7 +113,7 @@ class Frontend {
 		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );
 		if ( false !== $product_id && is_single( $product_id ) ) {
 			wp_redirect( home_url() );
-			die;
+			wp_die();
 		}
 	}
 }
