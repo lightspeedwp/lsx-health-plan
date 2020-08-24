@@ -813,17 +813,16 @@ function lsx_health_plan_main_content() {
 	$small_description = get_post_meta( get_the_ID(), ( $plan . '_short_description' ), true );
 
 	$content_plan = '';
-	if ( $small_description || $connected_members ) {
+	if ( $small_description || $connected_members || lsx_health_plan_has_tips() ) {
 		$content_plan .= '<div class="set-box set content-box entry-content">';
 		$content_plan .= '<div class="the-content">';
 		$content_plan .= lsx_hp_member_connected( $connected_members, $plan );
-		//$content_plan .= '<span>' . $small_description . '</span>';
+		$content_plan .= '<span>' . $small_description . '</span>';
 		$content_plan .= '</div>';
-		if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) {
-			$content_plan .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
-		}
+		$content_plan .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
 		$content_plan .= '</div>';
 	}
+
 	return $content_plan;
 }
 
@@ -840,7 +839,7 @@ function lsx_health_plan_workout_main_content() {
 	$small_description = get_post_meta( get_the_ID(), ( $workout . '_short_description' ), true );
 
 	$content = '';
-	if ( $small_description || $connected_members ) {
+	if ( $small_description || $connected_members || lsx_health_plan_has_tips() ) {
 		$content .= '<div class="set-box set content-box entry-content">';
 		$content .= '<div class="the-content">';
 		$content .= lsx_hp_member_connected( $connected_members, $workout );
@@ -865,7 +864,7 @@ function lsx_health_plan_meal_main_content() {
 	$small_description = get_post_meta( get_the_ID(), ( $meal . '_short_description' ), true );
 
 	$content_meal = '';
-	if ( $small_description || $connected_members ) {
+	if ( $small_description || $connected_members || lsx_health_plan_has_tips() ) {
 		$content_meal .= '<div class="set-box set content-box entry-content">';
 		$content_meal .= '<div class="the-content">';
 		$content_meal .= lsx_hp_member_connected( $connected_members, $meal );

@@ -70,18 +70,20 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 							</div>
 							<div class="plan">
 								<?php
-
+								
 								// The top part
 								echo wp_kses_post( wp_kses_post( lsx_health_plan_main_content() ) );
+								
 								echo wp_kses_post( '<h3 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h3>' );
 
 								?>
 								<div class="the-plan-content">
 									<?php
+									
 									if ( false === $restricted ) {
 										echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
 									}
-
+									
 									echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
 
 									?>
