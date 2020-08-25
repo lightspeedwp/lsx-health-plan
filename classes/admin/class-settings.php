@@ -449,8 +449,8 @@ class Settings {
 		}
 		$cmb->add_field(
 			array(
-				'id'   => 'settings_endpoints_closing',
-				'type' => 'tab_closing',
+				'id'            => 'settings_endpoints_closing',
+				'type'          => 'tab_closing',
 				'before_row'    => '<p style="margin-top:20px; font-style: italic;">Endpoint is a web address (URL) at which the user can gain access to it. You need to resave your permalinks after changing the endpoint settings.</p>',
 			)
 		);
@@ -488,8 +488,8 @@ class Settings {
 
 			$cmb->add_field(
 				array(
-					'id'   => 'settings_exercise_closing',
-					'type' => 'tab_closing',
+					'id'            => 'settings_exercise_endpoints_closing',
+					'type'          => 'tab_closing',
 					'before_row'    => '<p style="margin-top:20px; font-style: italic;">If you need to translate the exercise URL endpoints, do so below.</p>',
 				)
 			);
