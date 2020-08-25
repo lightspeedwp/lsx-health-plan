@@ -164,6 +164,8 @@ body.single #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper { padding:
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode > .col-xs-12 { margin-bottom: 3rem; }
 
+#lsx-exercises-shortcode .lsx-exercises-shortcode > .col-xs-12:first-child:last-child { width: 100%; }
+
 @media (min-width: 992px) { #lsx-exercises-shortcode .lsx-exercises-shortcode.layout-grid { display: -ms-grid; display: grid; column-gap: 1rem; row-gap: 1rem; -ms-grid-columns: 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; } }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-feature-img img { width: 100%; }
@@ -281,9 +283,11 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page 
 
 body:not(.logged-in).woocommerce-account.woocommerce-lost-password article.page .woocommerce form .form-row-last { float: none; width: 100%; }
 
-body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).content-restricted .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
+body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).content-restricted .woocommerce, body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.woocommerce-login .woocommerce, body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restricted .woocommerce { max-width: 550px; margin-right: auto; margin-left: auto; }
 
 .page-banner-wrap .page-banner > .page-banner-image { bottom: 0; background-color: #2b3840; }
+
+.mobile-header-hamburger.checkout #masthead #searchform { display: none; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order { background: #fff; padding: 0px 20px 20px 20px !important; }
 

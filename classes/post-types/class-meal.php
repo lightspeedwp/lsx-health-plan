@@ -31,7 +31,7 @@ class Meal {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-
+		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
@@ -96,6 +96,37 @@ class Meal {
 			),
 		);
 		register_post_type( 'meal', $args );
+	}
+
+	/**
+	 * Register the Week taxonomy.
+	 */
+	public function taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Meal Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Meal Types', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Meal Types', 'lsx-health-plan' ),
+		);
+		$args   = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_in_menu'      => 'edit.php?post_type=meal',
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'meal-type',
+			),
+		);
+		register_taxonomy( 'meal-type', array( $this->slug ), $args );
 	}
 
 	/**

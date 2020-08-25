@@ -332,6 +332,11 @@
 		flex-wrap: wrap;
 		> .col-xs-12 {
 			margin-bottom: 3rem;
+			&:first-child {
+				&:last-child {
+					width: 100%;
+				}
+			}
 		}
 		&.layout-grid {
 			@include media('>=tablet') {

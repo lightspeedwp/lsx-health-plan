@@ -93,7 +93,9 @@ body:not(.logged-in).woocommerce-account.woocommerce-lost-password {
 }
 
 body:not(.logged-in).woocommerce-login,
-body:not(.logged-in).content-restricted {
+body:not(.logged-in).content-restricted,
+body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.woocommerce-login,
+body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restricted {
 	.woocommerce {
 		max-width: 550px;
 		margin-left: auto;
@@ -113,7 +115,13 @@ body:not(.logged-in).content-restricted {
 }
 
 // Checkout
-
+.mobile-header-hamburger.checkout {
+	#masthead {
+		#searchform {
+			display: none;
+		}
+	}
+}
 #payment {
 	&.woocommerce-checkout-payment {
 		.form-row.place-order {
