@@ -378,10 +378,11 @@ class Settings {
 	public function global_downloads( $cmb ) {
 		$cmb->add_field(
 			array(
-				'id'      => 'global_downloads_title',
-				'type'    => 'title',
-				'name'    => __( 'Global Downloads', 'lsx-health-plan' ),
-				'default' => __( 'Global Downloads', 'lsx-health-plan' ),
+				'id'          => 'global_downloads_title',
+				'type'        => 'title',
+				'name'        => __( 'Global Downloads', 'lsx-health-plan' ),
+				'default'     => __( 'Global Downloads', 'lsx-health-plan' ),
+				'description' => __( 'If you have not connected a specific download file to your plans, set a default option below', 'lsx-health-plan' ),
 			)
 		);
 
@@ -429,7 +430,6 @@ class Settings {
 				'type'        => 'title',
 				'name'        => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
 				'default'     => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
-				'description' => __( 'Endpoint is a web address (URL) at which the user can gain access to it. You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
 			)
 		);
 		foreach ( $this->endpoints as $slug => $endpoint_vars ) {
@@ -451,6 +451,7 @@ class Settings {
 			array(
 				'id'   => 'settings_endpoints_closing',
 				'type' => 'tab_closing',
+				'before_row'    => '<p style="margin-top:20px; font-style: italic;">Endpoint is a web address (URL) at which the user can gain access to it. You need to resave your permalinks after changing the endpoint settings.</p>',
 			)
 		);
 	}
@@ -469,7 +470,7 @@ class Settings {
 					'type'        => 'title',
 					'name'        => __( 'Set Exercise Translations', 'lsx-health-plan' ),
 					'default'     => __( 'Set Exercise Translations', 'lsx-health-plan' ),
-					'description' => __( 'You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
+					'description' => __( 'Change the exercise endpoints.', 'lsx-health-plan' ),
 				)
 			);
 
@@ -484,10 +485,12 @@ class Settings {
 					)
 				);
 			}
+
 			$cmb->add_field(
 				array(
 					'id'   => 'settings_exercise_closing',
 					'type' => 'tab_closing',
+					'before_row'    => '<p style="margin-top:20px; font-style: italic;">If you need to translate the exercise URL endpoints, do so below.</p>',
 				)
 			);
 		}
