@@ -242,6 +242,7 @@ class Workout {
 							'add_button'    => esc_html__( 'Add New', 'lsx-health-plan' ),
 							'remove_button' => esc_html__( 'Delete', 'lsx-health-plan' ),
 							'sortable'      => true,
+							'closed'        => true, // true to have the groups closed by default
 						),
 					)
 				);
