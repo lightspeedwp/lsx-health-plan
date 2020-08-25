@@ -241,8 +241,9 @@ function lsx_health_plan_my_profile_box() {
 					if ( 'on' !== $disable_stats ) {
 
 						$is_weight_disabled  = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
+						$is_height_disabled  = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
 						$is_waist_disabled   = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
-						$is_fitness_disabled = \lsx_health_plan\functions\get_option( 'disable_fitness_checkbox', false );
+						$is_bmi_disabled = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
 
 						$weight = get_user_meta( get_current_user_id(), 'weight', true );
 						$waist = get_user_meta( get_current_user_id(), 'waist', true );
@@ -282,8 +283,19 @@ function lsx_health_plan_my_profile_box() {
 								}
 								?>
 								</span>
+							<?php }
+							if ( 'on' !== $is_bmi_disabled ) {
+								?>
+								<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong>
+								<?php
+								if ( '' !== $bmi ) {
+									echo wp_kses_post( $bmi );
+								} else {
+									echo '/';
+								}
+								?>
+								</span>
 							<?php } ?>
-							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> <?php echo esc_html( $bmi ); ?></span>
 						</div>
 					<?php
 					}

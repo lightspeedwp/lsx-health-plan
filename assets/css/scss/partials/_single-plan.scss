@@ -505,6 +505,18 @@ article.type-workout {
 		}
 	}
 }
+.post-type-archive-workout {
+	.row {
+		.lsx-slot {
+			.workout-feature-img {
+				.featured-workout {
+					position: absolute;
+					margin: 1rem;
+				}
+			}
+		}
+	}
+}
 .post-type-archive-recipe,
 .tax-recipe-type,
 .tax-recipe-cuisine {
@@ -734,9 +746,9 @@ article.type-workout {
 				article {
 					display: flex;
 					.exercise-feature-img {
-						width: 25%;
+						width: 40%;
 						@include media('>=tablet') {
-							width: 40%;
+							width: 30%;
 						}
 						.exercise-counter {
 							position: absolute;
@@ -746,7 +758,7 @@ article.type-workout {
 						}
 						img {
 							height: auto;
-							object-fit: contain;
+							object-fit: cover;
 							max-height: 120px;
 						}
 						@include media('>=tablet') {
@@ -759,9 +771,9 @@ article.type-workout {
 						}
 					}
 					.exercise-content-box {
-						width: 75%;
+						width: 60%;
 						@include media('>=tablet') {
-							width: 60%;
+							width: 70%;
 						}
 						margin: 0;
 						display: flex;
@@ -774,8 +786,11 @@ article.type-workout {
 					}
 					.reps-container {
 						display: flex;
-						justify-content: space-between;
+						justify-content: flex-end;
 						align-items: center;
+						&.have-reps {
+							justify-content: space-between;
+						}
 						.reps {
 							margin: 0;
 						}
@@ -1255,6 +1270,9 @@ article.type-workout {
 				.exercise-feature-img {
 					img {
 						width: 100%;
+						height: 250px;
+						max-height: 250px;
+						object-fit: cover;
 					}
 				}
 				.content-box {

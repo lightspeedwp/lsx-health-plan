@@ -598,6 +598,15 @@ class Settings {
 		);
 		$cmb->add_field(
 			array(
+				'name'    => __( 'Disable Height', 'lsx-health-plan' ),
+				'id'      => 'disable_height_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
 				'name'    => __( 'Disable Waist', 'lsx-health-plan' ),
 				'id'      => 'disable_waist_checkbox',
 				'type'    => 'checkbox',
@@ -607,8 +616,8 @@ class Settings {
 		);
 		$cmb->add_field(
 			array(
-				'name'    => __( 'Disable Fitness', 'lsx-health-plan' ),
-				'id'      => 'disable_fitness_checkbox',
+				'name'    => __( 'Disable BMI', 'lsx-health-plan' ),
+				'id'      => 'disable_bmi_checkbox',
 				'type'    => 'checkbox',
 				'value'   => 1,
 				'default' => 0,
