@@ -39,9 +39,6 @@ class Exercise {
 			add_action( 'init', array( $this, 'muscle_group_taxonomy_setup' ) );
 			add_action( 'admin_menu', array( $this, 'register_menus' ) );
 
-			// Settings.
-			add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 10, 1 );
-
 			// Custom Fields.
 			add_action( 'cmb2_admin_init', array( $this, 'exercise_details' ), 8 );
 			add_action( 'cmb2_admin_init', array( $this, 'gallery_metabox' ), 9 );
@@ -254,38 +251,6 @@ class Exercise {
 		$connections['exercise']['connected_workouts'] = 'connected_exercises';
 		$connections['workout']['connected_exercises'] = 'connected_workouts';
 		return $connections;
-	}
-
-	/**
-	 * Registers the lsx_search_settings
-	 *
-	 * @param object $cmb new_cmb2_box().
-	 * @return void
-	 */
-	public function register_settings( $cmb ) {
-		$cmb->add_field(
-			array(
-				'id'          => 'exercise_archive_settings_title',
-				'type'        => 'title',
-				'name'        => __( 'Exercises Archive', 'lsx-health-plan' ),
-				'description' => __( 'All of the settings relating to the exercises post type archive.', 'lsx-health-plan' ),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'id'          => 'exercise_archive_description',
-				'type'        => 'wysiwyg',
-				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
-				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
-			)
-		);
-		do_action( 'lsx_hp_exercise_settings_page', $cmb );
-		$cmb->add_field(
-			array(
-				'id'   => 'settings_exercise_archive_closing',
-				'type' => 'tab_closing',
-			)
-		);
 	}
 
 	/**

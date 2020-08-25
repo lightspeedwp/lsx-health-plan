@@ -88,10 +88,10 @@ class Settings {
 
 		$this->post_types = array(
 			'plan',
-			//'workout',
-			//'exercise',
+			'workout',
+			'exercise',
 			//'meal',
-			//'recipe',
+			'recipe',
 			//'tip',
 		);
 

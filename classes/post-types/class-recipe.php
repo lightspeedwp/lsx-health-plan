@@ -55,7 +55,6 @@ class Recipe {
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 	}
 
 	/**
@@ -404,38 +403,6 @@ class Recipe {
 				'desc'       => __( 'Add the fat amount for the entire meal i.e: 20 g', 'lsx-health-plan' ),
 				'type'       => 'text',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
-			)
-		);
-	}
-
-	/**
-	 * Registers the lsx_search_settings
-	 *
-	 * @param object $cmb new_cmb2_box().
-	 * @return void
-	 */
-	public function register_settings( $cmb ) {
-		$cmb->add_field(
-			array(
-				'id'          => 'recipe_archive_settings_title',
-				'type'        => 'title',
-				'name'        => __( 'Recipes Archive', 'lsx-health-plan' ),
-				'description' => __( 'All of the settings relating to the recipes post type archive.', 'lsx-health-plan' ),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'id'          => 'recipe_archive_description',
-				'type'        => 'wysiwyg',
-				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
-				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
-			)
-		);
-		do_action( 'lsx_hp_recipe_settings_page', $cmb );
-		$cmb->add_field(
-			array(
-				'id'   => 'settings_recipe_archive_closing',
-				'type' => 'tab_closing',
 			)
 		);
 	}
