@@ -430,7 +430,6 @@ class Settings {
 				'type'        => 'title',
 				'name'        => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
 				'default'     => __( 'Set Endpoint Translations', 'lsx-health-plan' ),
-				// 'description' => __( 'Endpoint is a web address (URL) at which the user can gain access to it. You need to resave your permalinks after changing the endpoint settings.', 'lsx-health-plan' ),
 			)
 		);
 		foreach ( $this->endpoints as $slug => $endpoint_vars ) {
