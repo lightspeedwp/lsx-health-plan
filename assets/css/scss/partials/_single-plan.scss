@@ -1247,114 +1247,6 @@ article.type-workout {
 .tax-muscle-group,
 .tax-equipment {
 	.archive-plan {
-		.row {
-			.col-md-4 {
-				.lsx-slot {
-					position: relative;
-				}
-				.recipe-type {
-					position: absolute;
-					right: 10px;
-					top: 15px;
-					font-size: 13px;
-					background: white;
-					padding: 5px 10px;
-					font-weight: bold;
-					border-radius: 1px;
-					&.recipe-parent {
-						background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%);
-						color: white;
-					}
-				}
-				.recipe-feature-img,
-				.exercise-feature-img {
-					img {
-						width: 100%;
-						height: 250px;
-						max-height: 250px;
-						object-fit: cover;
-					}
-				}
-				.content-box {
-					//min-height: 290px;
-					display: flex;
-					flex-direction: column;
-					justify-content: space-between;
-					padding: 10px 15px 0;
-					table:not(.exercise-table) {
-						flex-grow: 2;
-						display: flex;
-						margin-bottom: 10px;
-						tbody {
-							display: flex;
-						}
-						td,
-						th {
-							vertical-align: top;
-						}
-						tr {
-							display: flex;
-							margin-right: 10px;
-							&:before {
-								font-family: FontAwesome;
-								margin-right: 5px;
-								color: $blue;
-							}
-							td {
-								&:first-child {
-									display: none;
-								}
-							}
-						}
-						.serves {
-							&:before {
-								content: '\f0f5';
-							}
-						}
-						.prep-time {
-							&:before {
-								content: '\f017';
-							}
-						}
-						.cooking-time,
-						.portion-size {
-							display: none;
-						}
-					}
-					.recipe-title-link {
-						margin: 0;
-						&::after {
-							content: none;
-						}
-					}
-					.recipe-title,
-					.exercise-title {
-						margin-bottom: 15px;
-					}
-					a {
-						margin-bottom: 15px;
-						&:after {
-							content: '\f105';
-							font-family: FontAwesome;
-							margin-left: 2rem;
-							color: $blue;
-						}
-					}
-					&.exercise-content-box {
-						.exercise-table {
-							font-size: 13px;
-							color: #919191;
-							a {
-								text-transform: capitalize;
-								&:after {
-									content: none;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 		&.exercise-archive-plan {
 			.lsx-slot {
 				.title-lined {
@@ -1411,6 +1303,114 @@ article.type-workout {
 			.lsx-slot {
 				.title-lined {
 					border: none;
+				}
+			}
+		}
+	}
+}
+
+#lsx-exercises-shortcode,
+.archive-plan {
+	.lsx-slot {
+		position: relative;
+	}
+	.recipe-type {
+		position: absolute;
+		right: 10px;
+		top: 15px;
+		font-size: 13px;
+		background: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		border-radius: 1px;
+		&.recipe-parent {
+			background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%);
+			color: white;
+		}
+	}
+	.recipe-feature-img,
+	.exercise-feature-img {
+		img {
+			width: 100%;
+			height: 250px;
+			max-height: 250px;
+			object-fit: cover;
+		}
+	}
+	.content-box {
+		//min-height: 290px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 10px 15px 0;
+		table:not(.exercise-table) {
+			flex-grow: 2;
+			display: flex;
+			margin-bottom: 10px;
+			tbody {
+				display: flex;
+			}
+			td,
+			th {
+				vertical-align: top;
+			}
+			tr {
+				display: flex;
+				margin-right: 10px;
+				&:before {
+					font-family: FontAwesome;
+					margin-right: 5px;
+					color: $blue;
+				}
+				td {
+					&:first-child {
+						display: none;
+					}
+				}
+			}
+			.serves {
+				&:before {
+					content: '\f0f5';
+				}
+			}
+			.prep-time {
+				&:before {
+					content: '\f017';
+				}
+			}
+			.cooking-time,
+			.portion-size {
+				display: none;
+			}
+		}
+		.recipe-title-link {
+			margin: 0;
+			&::after {
+				content: none;
+			}
+		}
+		.recipe-title,
+		.exercise-title {
+			margin-bottom: 15px;
+		}
+		a {
+			margin-bottom: 15px;
+			&:after {
+				content: '\f105';
+				font-family: FontAwesome;
+				margin-left: 2rem;
+				color: $blue;
+			}
+		}
+		&.exercise-content-box {
+			.exercise-table {
+				font-size: 13px;
+				color: #919191;
+				a {
+					text-transform: capitalize;
+					&:after {
+						content: none;
+					}
 				}
 			}
 		}
