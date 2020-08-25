@@ -1,4 +1,12 @@
 // Single Recipe
+
+.single-recipe,
+.single-exercise {
+	.content-area {
+		margin-top: 4.25rem;
+	}
+}
+
 #single-recipe,
 #single-exercise {
 	margin-bottom: -8.4rem;
@@ -81,6 +89,14 @@
 			.back-plan-btn {
 				margin-top: 4.25rem;
 				.btn {
+					width: 100%;
+				}
+			}
+		}
+		.back-plan-btn {
+			@include media('>=tablet') {
+				width: 380px;
+				a {
 					width: 100%;
 				}
 			}
@@ -171,11 +187,6 @@
 	.lsx-hp-widget-items.slick-slider {
 		+ .exercise-data {
 			padding-top: 0;
-		}
-	}
-	.back-plan-btn {
-		@include media('>=tablet') {
-			margin-top: 8.4rem;
 		}
 	}
 }

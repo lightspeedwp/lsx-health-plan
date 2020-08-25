@@ -267,9 +267,13 @@ body:not(.logged-in).content-restricted {
 // Single Plan
 .content-area {
 	.plans-products-wrapper {
-		@media (min-width: 900px) {
+		@include media('>=tablet') {
+			max-width: 1140px;
 			display: flex;
 			justify-content: space-between;
+		}
+		@include media('<=phone') {
+			padding: 0 2rem;
 		}
 		.plan-product {
 			text-align: center;
@@ -282,8 +286,9 @@ body:not(.logged-in).content-restricted {
 			min-width: 50%;
 			@extend .box-shadow;
 			@media (min-width: 768px) {
-				max-width: 440px;
+				max-width: 540px;
 				min-width: auto;
+				width: 50%;
 			}
 			.title {
 				a {

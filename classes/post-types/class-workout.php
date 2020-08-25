@@ -36,6 +36,7 @@ class Workout {
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_action( 'init', array( $this, 'recipe_type_taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
@@ -176,6 +177,31 @@ class Workout {
 			$title = __( 'Workouts', 'lsx-health-plan' );
 		}
 		return $title;
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function featured_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox_workout',
+				'title'        => __( 'Featured Workout', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Workout', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable a featured plan' ),
+				'id'         => $this->slug . '_featured_workout',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 
 	/**

@@ -200,7 +200,7 @@ function lsx_health_plan_my_profile_tabs() {
 				echo esc_attr( 'active' );
 			}
 			?>
-			"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plan', 'lsx-health-plan' ); ?></a></li>
+			"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a></li>
 			<li class="
 			<?php
 			if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {

@@ -44,7 +44,9 @@ if ( null !== $shortcode_args ) {
 		</div>
 		<div class="content-box white-bg">
 			<?php lsx_health_plan_recipe_data(); ?>
-			<h3 class="recipe-title"><?php the_title(); ?></h3>
+			<a class="recipe-title-link" href="<?php echo esc_url( get_permalink() ); ?>">
+				<?php the_title( '<h3 class="recipe-title">', '</h3>' ); ?>
+			</a>
 			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
 		</div>
 		<?php lsx_entry_bottom(); ?>

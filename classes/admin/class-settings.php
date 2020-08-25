@@ -50,7 +50,7 @@ class Settings {
 	public $endpoints = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_classes();
@@ -541,7 +541,7 @@ class Settings {
 				'type'        => 'title',
 				'name'        => __( 'Enable Post Types', 'lsx-health-plan' ),
 				'default'     => __( 'Enable Post Types', 'lsx-health-plan' ),
-				'description' => __( 'Enable new functionailty like the "exercise" post type.', 'lsx-health-plan' ),
+				'description' => __( 'Enable new functionality like the "exercise" post type.', 'lsx-health-plan' ),
 			)
 		);
 		$cmb->add_field(
@@ -674,7 +674,7 @@ class Settings {
 		foreach ( $this->post_types as $post_type ) {
 			switch ( $post_type ) {
 				default:
-					if ( ! in_array( $post_type, \lsx\search\includes\get_restricted_post_types() ) ) {
+					//if ( ! in_array( $post_type, \lsx\search\includes\get_restricted_post_types() ) ) {
 						$temp_post_type = get_post_type_object( $post_type );
 						if ( ! is_wp_error( $temp_post_type ) ) {
 							$page_url    = get_post_type_archive_link( $temp_post_type->name );
@@ -690,7 +690,7 @@ class Settings {
 								'desc'  => $description,
 							);
 						}
-					}
+					//}
 					break;
 			}
 		}
