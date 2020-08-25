@@ -351,6 +351,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .post-type-archive-plan .woocommerce-notices-wrapper { margin-top: 4.25rem; }
 
+.post-type-archive-plan .woocommerce-notices-wrapper:empty { display: none; }
+
 .post-type-archive-plan .woocommerce-notices-wrapper .woocommerce-message { margin-bottom: 0; }
 
 .gutenberg-compatible-template.using-gutenberg .entry-content div.woocommerce-message { max-width: 1140px; width: 100%; margin-top: 43px; }
@@ -858,7 +860,7 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .archive-plan .row .lsx-slot .plan-feature-img .featured-plan, .all-plans-block .row .lsx-slot .plan-feature-img .featured-plan { position: absolute; margin: 1rem; }
 
-.archive-plan .row .lsx-slot .plan-feature-img img.placeholder, .all-plans-block .row .lsx-slot .plan-feature-img img.placeholder { width: 100%; max-height: 200px; -o-object-fit: cover; object-fit: cover; }
+.archive-plan .row .lsx-slot .plan-feature-img img, .all-plans-block .row .lsx-slot .plan-feature-img img { width: 100%; height: 180px; max-height: 180px; -o-object-fit: cover; object-fit: cover; }
 
 .post-type-archive-workout .row .lsx-slot .workout-feature-img .featured-workout { position: absolute; margin: 1rem; }
 
@@ -1150,49 +1152,49 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-exercise .archive-plan .row .lsx-slot .title-lined { border: none; }
 
-#lsx-exercises-shortcode .lsx-slot, .archive-plan .lsx-slot { position: relative; }
+#lsx-exercises-shortcode .lsx-slot, .post-type-archive-recipe .lsx-slot { position: relative; }
 
-#lsx-exercises-shortcode .recipe-type, .archive-plan .recipe-type { position: absolute; right: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
+#lsx-exercises-shortcode .recipe-type, .post-type-archive-recipe .recipe-type { position: absolute; right: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
 
-#lsx-exercises-shortcode .recipe-type.recipe-parent, .archive-plan .recipe-type.recipe-parent { background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%); color: white; }
+#lsx-exercises-shortcode .recipe-type.recipe-parent, .post-type-archive-recipe .recipe-type.recipe-parent { background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%); color: white; }
 
-#lsx-exercises-shortcode .recipe-feature-img img, #lsx-exercises-shortcode .exercise-feature-img img, .archive-plan .recipe-feature-img img, .archive-plan .exercise-feature-img img { width: 100%; height: 250px; max-height: 250px; -o-object-fit: cover; object-fit: cover; }
+#lsx-exercises-shortcode .recipe-feature-img img, #lsx-exercises-shortcode .exercise-feature-img img, .post-type-archive-recipe .recipe-feature-img img, .post-type-archive-recipe .exercise-feature-img img { width: 100%; height: 250px; max-height: 250px; -o-object-fit: cover; object-fit: cover; }
 
-#lsx-exercises-shortcode .content-box, .archive-plan .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
+#lsx-exercises-shortcode .content-box, .post-type-archive-recipe .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table), .archive-plan .content-box table:not(.exercise-table) { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table), .post-type-archive-recipe .content-box table:not(.exercise-table) { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tbody, .archive-plan .content-box table:not(.exercise-table) tbody { display: -ms-flexbox; display: flex; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tbody, .post-type-archive-recipe .content-box table:not(.exercise-table) tbody { display: -ms-flexbox; display: flex; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) td, #lsx-exercises-shortcode .content-box table:not(.exercise-table) th, .archive-plan .content-box table:not(.exercise-table) td, .archive-plan .content-box table:not(.exercise-table) th { vertical-align: top; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) td, #lsx-exercises-shortcode .content-box table:not(.exercise-table) th, .post-type-archive-recipe .content-box table:not(.exercise-table) td, .post-type-archive-recipe .content-box table:not(.exercise-table) th { vertical-align: top; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr, .archive-plan .content-box table:not(.exercise-table) tr { display: -ms-flexbox; display: flex; margin-right: 10px; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr, .post-type-archive-recipe .content-box table:not(.exercise-table) tr { display: -ms-flexbox; display: flex; margin-right: 10px; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr:before, .archive-plan .content-box table:not(.exercise-table) tr:before { font-family: FontAwesome; margin-right: 5px; color: #418ad0; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr:before, .post-type-archive-recipe .content-box table:not(.exercise-table) tr:before { font-family: FontAwesome; margin-right: 5px; color: #418ad0; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr td:first-child, .archive-plan .content-box table:not(.exercise-table) tr td:first-child { display: none; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr td:first-child, .post-type-archive-recipe .content-box table:not(.exercise-table) tr td:first-child { display: none; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .serves:before, .archive-plan .content-box table:not(.exercise-table) .serves:before { content: '\f0f5'; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .serves:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .serves:before { content: '\f0f5'; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .prep-time:before, .archive-plan .content-box table:not(.exercise-table) .prep-time:before { content: '\f017'; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .prep-time:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .prep-time:before { content: '\f017'; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .cooking-time, #lsx-exercises-shortcode .content-box table:not(.exercise-table) .portion-size, .archive-plan .content-box table:not(.exercise-table) .cooking-time, .archive-plan .content-box table:not(.exercise-table) .portion-size { display: none; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .cooking-time, #lsx-exercises-shortcode .content-box table:not(.exercise-table) .portion-size, .post-type-archive-recipe .content-box table:not(.exercise-table) .cooking-time, .post-type-archive-recipe .content-box table:not(.exercise-table) .portion-size { display: none; }
 
-#lsx-exercises-shortcode .content-box .recipe-title-link, .archive-plan .content-box .recipe-title-link { margin: 0; }
+#lsx-exercises-shortcode .content-box .recipe-title-link, .post-type-archive-recipe .content-box .recipe-title-link { margin: 0; }
 
-#lsx-exercises-shortcode .content-box .recipe-title-link::after, .archive-plan .content-box .recipe-title-link::after { content: none; }
+#lsx-exercises-shortcode .content-box .recipe-title-link::after, .post-type-archive-recipe .content-box .recipe-title-link::after { content: none; }
 
-#lsx-exercises-shortcode .content-box .recipe-title, #lsx-exercises-shortcode .content-box .exercise-title, .archive-plan .content-box .recipe-title, .archive-plan .content-box .exercise-title { margin-bottom: 15px; }
+#lsx-exercises-shortcode .content-box .recipe-title, #lsx-exercises-shortcode .content-box .exercise-title, .post-type-archive-recipe .content-box .recipe-title, .post-type-archive-recipe .content-box .exercise-title { margin-bottom: 15px; }
 
-#lsx-exercises-shortcode .content-box a, .archive-plan .content-box a { margin-bottom: 15px; }
+#lsx-exercises-shortcode .content-box a, .post-type-archive-recipe .content-box a { margin-bottom: 15px; }
 
-#lsx-exercises-shortcode .content-box a:after, .archive-plan .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
+#lsx-exercises-shortcode .content-box a:after, .post-type-archive-recipe .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
 
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table, .archive-plan .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
 
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a, .archive-plan .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
 
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a:after, .archive-plan .content-box.exercise-content-box .exercise-table a:after { content: none; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a:after { content: none; }
 
 .post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-feature-img img { width: 100%; }
 

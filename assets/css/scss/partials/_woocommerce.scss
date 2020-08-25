@@ -320,7 +320,9 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 .post-type-archive-plan {
 	.woocommerce-notices-wrapper {
 		margin-top: 4.25rem;
-
+		&:empty {
+			display: none;
+		}
 		.woocommerce-message {
 			margin-bottom: 0;
 		}

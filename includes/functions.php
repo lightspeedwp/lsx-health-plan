@@ -465,7 +465,7 @@ function hp_back_archive_link() {
 	if ( is_tax() ) {
 		?>
 		<div class="archive-category-title hp-archive-category-title">
-			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type ); ?></a>
+			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type ) . 's'; ?></a>
 		</div>
 		<?php
 	}
