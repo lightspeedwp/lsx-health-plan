@@ -75,11 +75,11 @@ class Plans {
 	 */
 	public function set_screen() {
 		if ( is_singular( 'plan' ) ) {
-			$this->parent_id = wp_get_post_parent_id( get_the_ID() );
-			if ( 0 === $this->parent_id ) {
-				$this->screen = 'parent_plan';
-			} else {
+			$section = get_query_var( 'section' );
+			if ( ! empty( $section ) ) {
 				$this->screen = 'child_plan';
+			} else {
+				$this->screen = 'parent_plan';
 			}
 			$product_ids = get_post_meta( get_the_ID(), 'plan_product', true );
 			if ( false !== $product_ids && ! empty( $product_ids ) ) {
@@ -128,7 +128,7 @@ class Plans {
 		}
 		$restricted = wc_memberships_is_post_content_restricted() && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 		if ( true === $restricted ) {
-			wp_redirect( get_permalink( $this->parent_id ) );
+			wp_redirect( get_permalink( get_the_ID() ) );
 			exit;
 		}
 	}

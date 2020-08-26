@@ -16,7 +16,7 @@ $args = array(
 );
 
 $plan_id      = get_the_ID();
-$has_sections = \lsx_health_plan\functions\plan\has_sections();
+$has_sections = \lsx_health_plan\functions\plan\has_sections( $plan_id );
 $has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
 $is_section   = get_query_var( 'section', false );
