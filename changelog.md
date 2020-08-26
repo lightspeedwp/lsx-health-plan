@@ -6,13 +6,18 @@
 
 - Added support for the cover block on the Edit My Account page.
 - Refactored the post type class locations.
+- Added in settings to control the link destination, the content display and the columns of the grid layout.
 - Added support for LSX color customizer.
 - A "Connected Plans" FacetWP source was added which creates a connection to meals, recipes, workouts and exercises.
-- Added default WP 5.5 lazyloading.
+- Added default WP 5.5 lazy loading.
+- Added support for multiple plans.
+- Added support for multiple subscriptions.
 
 #### Plans
 
 - Added in a setting to allow the translation of the `plan` single slug.
+- Added tips for single plans.
+- Updated layout.
 
 #### Workouts
 
@@ -20,21 +25,28 @@
 - Added in a connections box to allows news posts and pages to be attached to workouts.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
 - Added support and styling for a Grid and List views on the workout tab.
+- Added tips for single workouts.
+- Updated layout.
 
 #### Exercises
 
 - Added in the exercise post type which connects to the workouts, this replaces the "video" post type.
 - Added a "side" field for exercises that displays left, right or nothing if left blank.
 - Added the exercise shortcode `lsx_health_plan_items`.
+- Added tips for single exercises.
+- Updated layout.
 
 #### Meal Plans
 
 - Added in a field to connected additional recipes for breakfast, lunch and dinner.
+- Updated layout.
 
 #### Recipes
 
 - Extend the current single recipe post type to display additional fields.
 - Added placeholder image for recipes.
+- Added tips for single recipes.
+- Updated layout.
 
 ### Updated
 
