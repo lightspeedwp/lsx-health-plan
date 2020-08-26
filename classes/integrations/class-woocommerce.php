@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -51,7 +51,7 @@ class Woocommerce {
 	public $checkout = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_classes();

@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes\integrations\woocommerce;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -18,7 +18,7 @@ class Login {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		// Lost Password fields

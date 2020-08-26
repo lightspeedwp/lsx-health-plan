@@ -18,7 +18,7 @@ class Template_Redirects {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );

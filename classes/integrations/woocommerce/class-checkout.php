@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes\integrations\woocommerce;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -23,7 +23,7 @@ class Checkout {
 	public $plan_id = '';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_filter( 'woocommerce_order_button_text', array( $this, 'checkout_button_text' ), 10, 1 );

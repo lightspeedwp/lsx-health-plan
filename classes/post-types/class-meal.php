@@ -27,7 +27,7 @@ class Meal {
 	public $slug = 'meal';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );

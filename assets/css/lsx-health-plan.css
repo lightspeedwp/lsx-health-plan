@@ -1407,6 +1407,16 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { background-color: #418AD0; }
 
+.single.single-team #primary .lsx-team-socials > li > a { border: 1px solid #418AD0; background: transparent; }
+
+.single.single-team #primary .lsx-team-socials > li > a i { color: #418AD0; }
+
+.single.single-team #primary .lsx-team-socials > li > a:hover { border: 1px solid #F7AE00; }
+
+.single.single-team #primary .lsx-team-socials > li > a:hover i { color: #F7AE00; }
+
+.single.single-team #primary .lsx-team-job-title { color: #919191; }
+
 #single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
 
 #single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a:hover, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a:hover { color: #F7AE00; border: 1px solid #F7AE00; }

@@ -18,7 +18,7 @@ class General {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		// Before Output.

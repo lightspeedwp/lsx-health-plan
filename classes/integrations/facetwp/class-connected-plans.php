@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes\integrations\facetwp;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -25,7 +25,7 @@ class Connected_Plans {
 	public $current_plan_ids = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		//add_filter( 'facetwp_index_row', array( $this, 'facetwp_index_row' ), 10, 2 );

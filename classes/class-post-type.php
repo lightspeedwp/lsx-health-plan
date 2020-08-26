@@ -33,7 +33,7 @@ class Post_Type {
 	public $connections = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->enable_post_types();

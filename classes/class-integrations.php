@@ -63,7 +63,7 @@ class Integrations {
 	public $facetwp = false;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'cmb2_post_search_ajax' ) );

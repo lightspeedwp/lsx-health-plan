@@ -43,7 +43,7 @@ class Core {
 	public $scpo_engine;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_includes();

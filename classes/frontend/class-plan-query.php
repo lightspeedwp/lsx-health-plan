@@ -32,7 +32,7 @@ class Plan_Query {
 	public $has_sections = false;	
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 	}

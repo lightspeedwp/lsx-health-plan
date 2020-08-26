@@ -26,6 +26,7 @@ class LSX_Team {
 			\lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			\lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' ),
 		);
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'related_team_metabox' ) );
 	}
 
@@ -42,6 +43,17 @@ class LSX_Team {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Load lsx team related css.
+	 *
+	 * @package    lsx
+	 * @subpackage lsx-health-plan
+	 *
+	 */
+	public function assets() {
+		wp_enqueue_style( 'lsx-health-plan-team', LSX_HEALTH_PLAN_URL . 'assets/css/lsx-health-plan-team.css', array(), LSX_HEALTH_PLAN_VER );
 	}
 
 	/**

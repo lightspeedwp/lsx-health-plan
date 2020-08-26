@@ -65,7 +65,7 @@ class Gallery {
 	public $args = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 	}

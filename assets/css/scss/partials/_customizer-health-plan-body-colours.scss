@@ -370,6 +370,30 @@
 			@extend .svg;
 		}
 	}
+	.single.single-team {
+		#primary {
+			.lsx-team-socials {
+				> li {
+					> a {
+						border: 1px solid $link;
+						background: transparent;
+						i {
+							color: $link;
+						}
+						&:hover {
+							border: 1px solid $hover;
+							i {
+								color: $hover;
+							}
+						}
+					}
+				}
+			}
+			.lsx-team-job-title {
+				color: $small;
+			}
+		}
+	}
 	// Single Recipe
 	#single-recipe,
 	#single-exercise {
