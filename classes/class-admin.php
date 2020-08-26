@@ -62,6 +62,8 @@ class Admin {
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
 		add_action( 'cmb2_save_post_fields', array( $this, 'extract_plan_fields' ), 10, 4 );
 
+		//add_action( 'cmb2_save_post_fields', array( $this, 'debugger_for_cmb2' ), 10, 4 );
+
 		// Customizer.
 		add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 	}
@@ -428,6 +430,12 @@ class Admin {
 					add_post_meta( $object_id, $field_key, $field_value, false );
 				}
 			}
+		}
+	}
+
+	public function debugger_for_cmb2( $object_id, $cmb_id, $updated, $cmb2 ) {
+		if ( 'workout_section_1_metabox' === $cmb_id ) {
+			die();
 		}
 	}
 

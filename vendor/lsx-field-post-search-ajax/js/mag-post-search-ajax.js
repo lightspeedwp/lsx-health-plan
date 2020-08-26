@@ -30,7 +30,14 @@ var mag_ajax_js = Object.create( null );
 					console.log('====== hasClass =======');
 					console.log(storeReplace);
 					var fieldReplace     = undefined;
+					var searchReplace    = undefined;
 					var emptyResultsList = false;
+
+					// Replace the ajax search input ID.
+					searchReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax');
+					if ( 0 < searchReplace.length ) {
+						searchReplace.attr('ID', searchReplace.attr('name') );
+					}
 
 					// Run through the store fields and replace the results list.
 					fieldReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax-store');
@@ -163,10 +170,15 @@ var mag_ajax_js = Object.create( null );
 	};
 
 	mag_ajax_js.populateStoreField = function( ele, name ) {
-		var resultValues = ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
-		console.log(ele);
-		console.log(ele.closest('.cmb-row'));
+		console.log(name);
+
+		if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results').length ) {
+			var resultValues = ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
+		} else if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-store').length ) {
+			var resultValues = ele.closest('.cmb-row').find( 'input#'+name ).map( function(){return $(this).val();} ).get();
+		}
 		console.log(resultValues);
+		console.log(name);
 		if ( 0 === resultValues.length ) {
 			$( 'input[name='+name+'_store]' ).val( '' );
 		} else {
