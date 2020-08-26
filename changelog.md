@@ -66,6 +66,13 @@
 
 - "View Cart" Message removed on Checkout.
 
+### Security
+
+- Updating dependencies to prevent vulnerabilities.
+- Updating PHPCS options for better code and meeting WordPress coding standards.
+- General testing to ensure compatibility with latest WordPress version (5.5).
+- General testing to ensure compatibility with latest LSX Theme version (2.9).
+
 ## [[1.3.2]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.2) - 2020-07-20
 
 ### Fixed
