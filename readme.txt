@@ -1,4 +1,4 @@
-=== LSX Health Plan ===
+=== LSX Health ===
 Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
 Tags: lsx, meal plan, workout, blocks, recipes
