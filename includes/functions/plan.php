@@ -35,12 +35,8 @@ function has_sections( $plan_id = 0 ) {
 	if ( 0 === $plan_id ) {
 		$plan_id = get_the_ID();
 	}
-
-	$section_array = get_post_meta( $plan_id, 'plan_sections', true );
-
-	if ( ! empty( $section_array ) ) {
-		$sections = true;
-	}
+	$lsx_hp   = lsx_health_plan();
+	$sections = $lsx_hp->frontend->plan_query->query_sections( $plan_id );
 	return $sections;
 }
 
@@ -51,18 +47,9 @@ function has_sections( $plan_id = 0 ) {
  * @param  boolean $group_sections
  * @return array
  */
-function get_sections( $plan_id = 0, $group_sections = false ) {
-	$sections = array();
-	if ( 0 === $plan_id ) {
-		$plan_id = get_the_ID();
-	}
-	$section_array = get_post_meta( $plan_id, 'plan_sections', true );
-	if ( ! empty( $section_array ) ) {
-		$sections = $section_array;
-		if ( false !== $group_sections ) {
-			$sections = group_sections( $sections );
-		}
-	}
+function get_sections( $group_sections = false ) {
+	$lsx_hp   = lsx_health_plan();
+	$sections = $lsx_hp->frontend->plan_query->get_sections( $group_sections );
 	return $sections;
 }
 
@@ -85,27 +72,6 @@ function get_section_info( $section_key = '' ) {
 		}
 	}
 	return $section_info;
-}
-
-/**
- * This will group the sections by their "Group" field.
- *
- * @param  array $sections
- * @return array
- */
-function group_sections( $sections = array() ) {
-	$groups = array();
-	if ( ! empty( $sections ) ) {
-		foreach ( $sections as $section_key => $section_values ) {
-			$group_key = apply_filters( 'lsx_hp_default_plan_group', __( 'Daily Plan', 'lsx-health-plan' ) );
-			if ( isset( $section_values['group'] ) && '' !== $section_values['group'] ) {
-				$group_key = $section_values['group'];
-			}
-			$group_key                            = sanitize_title( $group_key );
-			$groups[ $group_key ][ $section_key ] = $section_values;
-		}
-	}
-	return $groups;
 }
 
 /**

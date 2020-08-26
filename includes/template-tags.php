@@ -451,7 +451,7 @@ function lsx_health_plan_day_plan_block( $args = array() ) {
 	$args     = wp_parse_args( $args, $defaults );
 
 	if ( isset( $args['plan'] ) && '' !== $args['plan'] && \lsx_health_plan\functions\plan\has_sections( $args['plan'] ) ) {
-		$sections = \lsx_health_plan\functions\plan\get_sections( $args['plan'] );
+		$sections = \lsx_health_plan\functions\plan\get_sections();
 		?>
 		<div class="daily-plan-block day-grid">
 			<?php
@@ -491,7 +491,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 	$args     = wp_parse_args( $args, $defaults );
 
 	if ( isset( $args['plan'] ) && '' !== $args['plan'] && \lsx_health_plan\functions\plan\has_sections( $args['plan'] ) ) {
-		$groups = \lsx_health_plan\functions\plan\get_sections( $args['plan'], true );
+		$groups = \lsx_health_plan\functions\plan\get_sections( true );
 
 		if ( ! empty( $groups ) ) {
 			$counter    = 1;

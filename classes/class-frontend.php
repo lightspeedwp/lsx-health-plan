@@ -38,6 +38,11 @@ class Frontend {
 	public $plan_status;
 
 	/**
+	 * @var object \lsx_health_plan\classes\frontend\Plan_Query();
+	 */
+	public $plan_query;
+
+	/**
 	 * @var object \lsx_health_plan\classes\frontend\General();
 	 */
 	public $general;
@@ -88,6 +93,9 @@ class Frontend {
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-plan-status.php';
 		$this->plan_status = frontend\Plan_Status::get_instance();
+
+		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-plan-query.php';
+		$this->plan_query = frontend\Plan_Query::get_instance();
 
 		require_once LSX_HEALTH_PLAN_PATH . 'classes/frontend/class-general.php';
 		$this->general = frontend\General::get_instance();

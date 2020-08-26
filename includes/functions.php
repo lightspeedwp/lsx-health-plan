@@ -436,7 +436,7 @@ function get_progress( $plan_id = false ) {
 	$complete = array();
 	$count    = 0;
 	if ( false !== $plan_id &&  \lsx_health_plan\functions\plan\has_sections( $plan_id ) ) {
-		$sections = \lsx_health_plan\functions\plan\get_sections( $plan_id );
+		$sections = \lsx_health_plan\functions\plan\get_sections();
 		$all_count = count( $sections );
 		foreach ( $sections as $section_key => $section_values ) {
 			if ( lsx_health_plan_is_day_complete( $plan_id, $section_values['title'] ) ) {
