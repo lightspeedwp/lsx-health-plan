@@ -130,10 +130,14 @@ class Account {
 				$value = ( isset( $field_args['value'] ) && '' !== $field_args['value'] ) ? $field_args['value'] : $value;
 				woocommerce_form_field( $key, $field_args, $value );
 			}
-			echo wp_kses_post( '<p class="form-row calculate-bmi"><label>BMI</label><button class="btn border-btn">' . __( 'Calculate', 'lsx-health-plan' ) . '<i class="fa fa-calculator" aria-hidden="true"></i></button></p>' );
-			echo wp_kses_post( '</div>' );
-			echo wp_kses_post( '<div class="description"><p class="bmi-title"><strong>' . __( 'Your BMI score', 'lsx-health-plan' ) . '</strong></p>' );
-			echo wp_kses_post( '<p>' . __( "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.", 'lsx-health-plan' ) . '</p></div></div>' );
+			$is_bmi_disabled = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
+			if ( 'on' !== $is_bmi_disabled ) {
+				echo wp_kses_post( '<p class="form-row calculate-bmi"><label>BMI</label><button class="btn border-btn">' . __( 'Calculate', 'lsx-health-plan' ) . '<i class="fa fa-calculator" aria-hidden="true"></i></button></p>' );
+				echo wp_kses_post( '</div>' );
+				echo wp_kses_post( '<div class="description"><p class="bmi-title"><strong>' . __( 'Your BMI score', 'lsx-health-plan' ) . '</strong></p>' );
+				echo wp_kses_post( '<p>' . __( "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.", 'lsx-health-plan' ) . '</p></div></div>' );
+			}
+			
 		}
 	}
 
@@ -274,7 +278,7 @@ class Account {
 		// Disable the fitness fields if needed.
 		$weight_key  = __( 'Weight:' );
 		$waist_key   = __( 'Waist:' );
-		$fitness_key = __( 'Fitness Test Score:' );
+		$fitness_key = __( 'BMI Score:' );
 		if ( $weight_key === $field_args['label'] || $waist_key === $field_args['label'] || $fitness_key === $field_args['label'] ) {
 
 			// Check if all stats are disabled.
@@ -286,12 +290,16 @@ class Account {
 					$option_key = 'disable_weight_checkbox';
 					break;
 
+				case $weight_key:
+					$option_key = 'disable_height_checkbox';
+					break;
+				
 				case $waist_key:
 					$option_key = 'disable_waist_checkbox';
 					break;
 
 				case $fitness_key:
-					$option_key = 'disable_fitness_checkbox';
+					$option_key = 'disable_bmi_checkbox';
 					break;
 			}
 			$is_disabled = \lsx_health_plan\functions\get_option( $option_key, false );
@@ -527,6 +535,10 @@ class Account {
 		$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
 		if ( 'on' === $is_weight_disabled ) {
 			$account_fields['weight']['required'] = false;
+		}
+		$is_height_disabled = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
+		if ( 'on' === $is_height_disabled ) {
+			$account_fields['height']['required'] = false;
 		}
 		$is_waist_disabled = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
 		if ( 'on' === $is_waist_disabled ) {

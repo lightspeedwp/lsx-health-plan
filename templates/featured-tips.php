@@ -23,10 +23,10 @@ $connected_tips = get_post_meta( get_the_ID(), ( $this_post_type . '_connected_t
 		?>
 		<div class="content-box diet-tip-wrapper quick-tip">
 			<div class="row">
-				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+				<div class="col-xs-2">
 					<img loading="lazy" src="<?php echo esc_url( $icon ); ?>" alt="tip"/>
 				</div>
-				<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+				<div class="col-xs-10">
 					<h3 class="tip-title"><?php echo esc_html( $tip_name ); ?></h3>
 					<?php echo wp_kses_post( $tip_content ); ?>
 				</div> 

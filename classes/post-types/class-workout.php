@@ -196,7 +196,7 @@ class Workout {
 		$cmb->add_field(
 			array(
 				'name'       => __( 'Featured Workout', 'lsx-health-plan' ),
-				'desc'       => __( 'Enable a featured plan' ),
+				'desc'       => __( 'Enable a featured workout' ),
 				'id'         => $this->slug . '_featured_workout',
 				'type'       => 'checkbox',
 				'show_on_cb' => 'cmb2_hide_if_no_cats',

@@ -165,7 +165,13 @@ if ( ! empty( $groups ) ) {
 									<?php
 								}
 								?>
-								<div class="reps-container">
+								<?php
+								$repsclass = '';
+								if ( '' !== $reps ) {
+									$repsclass = 'have-reps';
+								}
+								?>
+								<div class="reps-container <?php echo esc_html( $repsclass ); ?>">
 									<?php
 									if ( '' !== $reps ) {
 									?>

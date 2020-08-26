@@ -262,6 +262,11 @@ body:not(.woocommerce-edit-account) {
 			font-weight: bold;
 			margin-top: -2.5rem;
 		}
+		.title-lined {
+			+ .edit-profile {
+				margin-top: 0;
+			}
+		}
 	}
 }
 
@@ -752,6 +757,10 @@ body:not(.woocommerce-edit-account) {
 				color: #30bb00;
 				width: 100%;
 				margin-bottom: 0;
+				cursor: auto;
+				&:hover {
+					background: transparent;
+				}
 			}
 		}
 		.wpua-edit-container {

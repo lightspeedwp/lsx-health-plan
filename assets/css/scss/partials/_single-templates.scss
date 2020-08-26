@@ -29,6 +29,7 @@
 				font-size: 13px;
 				color: #919191;
 				font-family: 'Noto Sans', sans-serif;
+				font-weight: normal;
 				&:before {
 					content: none;
 				}
@@ -38,11 +39,21 @@
 			}
 		}
 	}
+	#hp-connected-members {
+		p {
+			@include media('<=tablet') {
+				margin-bottom: 2rem;
+			}
+		}
+	}
 	.recipe-image,
 	.exercise-image {
 		width: 100%;
 		padding: 0;
 		margin-bottom: 4.25rem;
+		@include media('<=tablet') {
+			max-width: 490px;
+		}
 		img {
 			width: 100%;
 		}
@@ -80,9 +91,13 @@
 	}
 	.recipe-content,
 	.exercise-content {
-		margin-bottom: 8.5rem;
+		margin-bottom: 60px;
 		float: right;
-		@media (min-width: 992px) {
+		@include media('<=tablet') {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		@include media('>=tablet') {
 			margin-right: 2rem;
 		}
 		@media (max-width: 600px) {
@@ -148,13 +163,14 @@
 #single-exercise {
 	.exercise-title-section {
 		padding-bottom: 0;
-		margin-bottom: 4.24rem;
+		margin-bottom: 2.4rem;
 		&.sharing-enabled {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			@include media('>=tablet') {
 				flex-direction: row-reverse;
+				align-items: center;
 			}
 		}
 		h2 {

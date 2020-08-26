@@ -191,11 +191,14 @@
 		.diet-tip-wrapper {
 			background: white;
 			box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
-			.col-md-1 {
-				padding: 0 0 0 10px;
+			.col-xs-2 {
+				padding: 0 0 0 15px;
 				svg {
 					width: 30px;
 				}
+			}
+			.col-xs-10 {
+				padding-left: 5px;
 			}
 			&.quick-tip {
 				margin: 0;
@@ -285,8 +288,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin: 0;
-		padding: 1rem;
 		justify-content: center;
+		@include media('>=tablet') {
+			padding: 1rem;
+		}
 		> .col-xs-12 {
 			padding: 1rem;
 			img {
@@ -310,7 +315,9 @@
 			&:only-child {
 				padding: 0;
 				margin: -1rem;
-				width: 490px;
+				@include media('>=tablet') {
+					width: 490px;
+				}
 			}
 		}
 	}
@@ -325,6 +332,11 @@
 		flex-wrap: wrap;
 		> .col-xs-12 {
 			margin-bottom: 3rem;
+			&:first-child {
+				&:last-child {
+					width: 100%;
+				}
+			}
 		}
 		&.layout-grid {
 			@include media('>=tablet') {

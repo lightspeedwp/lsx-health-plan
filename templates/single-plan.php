@@ -43,6 +43,9 @@ if ( ! empty( $has_sections ) ) {
 if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_memberships_is_post_content_restricted( get_the_ID() ) ) {
 	$restricted = ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
 }
+if ( false === $restricted ) {
+	$round_progress = round( \lsx_health_plan\functions\get_progress( get_the_ID() ), 0 );
+}
 ?>
 
 <div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
@@ -66,7 +69,6 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 							<div class="single-plan-section-title title-lined">
 								<?php lsx_get_svg_icon( 'meal.svg' ); ?>
 								<h2><?php the_title(); ?></h2>
-
 							</div>
 							<div class="plan">
 								<?php
@@ -79,9 +81,8 @@ if ( function_exists( 'wc_memberships_is_post_content_restricted' ) && wc_member
 								?>
 								<div class="the-plan-content">
 									<?php
-									
 									if ( false === $restricted ) {
-										echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
+										echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . $round_progress . '%</span></span>' );
 									}
 									
 									echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );

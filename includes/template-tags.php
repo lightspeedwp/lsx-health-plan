@@ -241,8 +241,9 @@ function lsx_health_plan_my_profile_box() {
 					if ( 'on' !== $disable_stats ) {
 
 						$is_weight_disabled  = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
+						$is_height_disabled  = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
 						$is_waist_disabled   = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
-						$is_fitness_disabled = \lsx_health_plan\functions\get_option( 'disable_fitness_checkbox', false );
+						$is_bmi_disabled = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
 
 						$weight = get_user_meta( get_current_user_id(), 'weight', true );
 						$waist = get_user_meta( get_current_user_id(), 'waist', true );
@@ -282,8 +283,19 @@ function lsx_health_plan_my_profile_box() {
 								}
 								?>
 								</span>
+							<?php }
+							if ( 'on' !== $is_bmi_disabled ) {
+								?>
+								<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong>
+								<?php
+								if ( '' !== $bmi ) {
+									echo wp_kses_post( $bmi );
+								} else {
+									echo '/';
+								}
+								?>
+								</span>
 							<?php } ?>
-							<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong> <?php echo esc_html( $bmi ); ?></span>
 						</div>
 					<?php
 					}
@@ -362,10 +374,18 @@ function lsx_health_plan_all_plans_block() {
 					if ( lsx_health_plan_is_plan_complete() ) {
 						$completed_class = 'completed';
 					}
+					$round_progress     = '';
+					$completed_progress = '100';
+					if ( false === $restricted ) {
+						$round_progress = round( \lsx_health_plan\functions\get_progress( get_the_ID() ), 0 );
+					}
 					?>
 					<div class="col-xs-12 col-sm-6 col-md-4">
-						<article class="lsx-slot lsx-hp-shadow">
+						<article class="lsx-slot lsx-hp-shadow <?php echo esc_html( 'progress-') . $round_progress; ?>">
 							<div class="plan-feature-img">
+								<?php if ( (int)$completed_progress === (int)$round_progress ) { ?>
+									<span class="featured-plan"><?php lsx_get_svg_icon( 'icon-completed.svg' ); ?></span>
+								<?php } ?>
 								<a href="<?php echo esc_url( get_permalink() ); ?>">
 								<?php
 								$featured_image = get_the_post_thumbnail();
@@ -404,7 +424,7 @@ function lsx_health_plan_all_plans_block() {
 								</div>
 								<?php
 								if ( false === $restricted ) {
-									echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '%</span></span>' );
+									echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '" max="100"> ' . \lsx_health_plan\functions\get_progress( get_the_ID() ) . '% </progress><span>' . $round_progress . '%</span></span>' );
 								}
 								?>
 							</div>
