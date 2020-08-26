@@ -36,10 +36,10 @@ The LSX Health Plan plugin has been designed to work with the LSX theme, and add
 * You can link shopping list download files or a page with the shopping list.
 * Add tips to your Meal plans and Recipes, reuse tip content easily on other plans.
 * Categorise Meal posts by "Meal Type" category.
-* Categorise Recipe posts by "Exercise Type", "Muscle Group" & "Equipment" categories.
+* Categorise Recipe posts by "Cuisine" & "Recipe Type" categories.
 
 == Workout Plans ==
-* The Workouts menu in the backend allows you to 
+* The Workouts menu in the backend allows you to load workout plans, connect entire warm up routines and connect exercises to workout sets.
 * Exercises are added to a workout plan or to your webpage using a shortcode.
 * Add a video or gallery to exercises to enhance the instructional value.
 * Add a warm up routine as a standalone workout, then reuse the warm up content easily when creating full Workouts.
