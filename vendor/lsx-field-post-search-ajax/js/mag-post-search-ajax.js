@@ -32,17 +32,25 @@ var mag_ajax_js = Object.create( null );
 					var fieldReplace     = undefined;
 					var searchReplace    = undefined;
 					var emptyResultsList = false;
+					var searchID         = false;
 
 					// Replace the ajax search input ID.
 					searchReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax');
 					if ( 0 < searchReplace.length ) {
-						searchReplace.attr('ID', searchReplace.attr('name') );
+						searchID = searchReplace.attr('name');
+						searchReplace.attr('ID', searchID );
 					}
 
 					// Run through the store fields and replace the results list.
 					fieldReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax-store');
+					console.log(fieldReplace);
 					if ( 0 < fieldReplace.length ) {
 						fieldReplace.attr('name',fid + '_store');
+						console.log('store replaced');
+
+						if ( false !== searchID ) {
+							fieldReplace.attr('id',searchID + '_store');
+						}
 					}
 
 					if ( '' === fieldReplace.val() ) {
@@ -130,10 +138,13 @@ var mag_ajax_js = Object.create( null );
 							mag_ajax_js.populateStoreField( $(this), name );
 
 						} else {
-							$('input#'+name).val( suggestion.data );
+							$( 'input#'+name ).val( suggestion.data );
+							$( 'input[name="'+name + '_store"]' ).val( suggestion.data );
+							console.log('limit store' + limit);
+							console.log($( 'input#'+name + '_store' ));
 						}
 
-						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') ) {
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && limit > 1 ) {
 							console.log('cmb-group');
 							console.log( groupName );
 							groupName = groupName.replace( "][", "_" );
@@ -175,7 +186,7 @@ var mag_ajax_js = Object.create( null );
 		if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results').length ) {
 			var resultValues = ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
 		} else if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-store').length ) {
-			var resultValues = ele.closest('.cmb-row').find( 'input#'+name ).map( function(){return $(this).val();} ).get();
+			var resultValues = ele.closest('.cmb-row').find( 'input#'+name + '_store' ).map( function(){return $(this).val();} ).get();
 		}
 		console.log(resultValues);
 		console.log(name);

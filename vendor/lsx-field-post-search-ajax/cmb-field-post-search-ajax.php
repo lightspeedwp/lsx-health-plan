@@ -210,7 +210,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					$value = false;
 				}
 
-				/*print_r( '<pre>' );
+				print_r( '<pre>' );
 				print_r( 'FID' . $fid );
 				print_r( '</pre>' );
 	
@@ -228,7 +228,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 	
 				print_r( '<pre>' );
 				print_r( $data_to_save );
-				print_r( '</pre>' );*/
+				print_r( '</pre>' );
 
 			} else if ( ! empty( $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ] ) ) {
 				$value = $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ];
@@ -237,12 +237,11 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			} else {
 				$value = false;
 			}
-			
-			/*print_r( '<pre>' );
+			print_r( '<pre>' );
 			print_r( 'Value' );
 			print_r( $value );
-			print_r( '</pre>' );*/
-
+			print_r( '</pre>' );
+			
 			return $value;
 		}
 

@@ -434,7 +434,7 @@ class Admin {
 	}
 
 	public function debugger_for_cmb2( $object_id, $cmb_id, $updated, $cmb2 ) {
-		if ( 'workout_section_1_metabox' === $cmb_id ) {
+		if ( 'workout_section_6_metabox' === $cmb_id ) {
 			die();
 		}
 	}
