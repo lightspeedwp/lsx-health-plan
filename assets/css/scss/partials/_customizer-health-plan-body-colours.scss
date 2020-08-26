@@ -392,6 +392,20 @@
 			.lsx-team-job-title {
 				color: $small;
 			}
+			.entry-tabs,
+			.hp-entry-tabs {
+				.nav-tabs {
+					> li {
+						&.active {
+							> a {
+								background-color: transparent;
+								color: $link;
+								border: 1px solid $link;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	// Single Recipe

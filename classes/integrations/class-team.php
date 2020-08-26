@@ -28,6 +28,8 @@ class LSX_Team {
 		);
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'related_team_metabox' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'additional_single_team_metabox' ) );
+		add_action( 'lsx_entry_bottom', array( $this, 'hp_team_member_tabs' ) );
 	}
 
 	/**
@@ -89,6 +91,59 @@ class LSX_Team {
 			);
 		}
 
+	}
+
+	/**
+	 * Adding additional custom fields to the single members, related with Health Plan.
+	 */
+	public function additional_single_team_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => 'lsx__team',
+				'title'        => '',
+				'object_types' => array( 'team' ), // Post type.
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Team Member Experience', 'lsx-health-plan' ),
+				'desc'       => __( 'Add additional experience to this team member', 'lsx-health-plan' ),
+				'id'         => 'team_member_experience',
+				'type'       => 'wysiwyg',
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Plans', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the related plans to this team member', 'lsx-health-plan' ),
+				'id'         => 'connected_team_member_plan',
+				'type'       => 'post_search_ajax',
+				'limit'      => 3,
+				'sortable'   => true,
+				'query_args' => array(
+					'post_type'      => array( 'plan' ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+
+	}
+
+	/**
+	 * Adds custom tabs to the team member single pages.
+	 *
+	 * @return void
+	 */
+	public function hp_team_member_tabs() {
+		if ( is_single() && is_singular( 'team' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/team.php';
+		}	
 	}
 
 }

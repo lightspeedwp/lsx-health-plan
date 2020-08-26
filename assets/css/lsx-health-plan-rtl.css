@@ -1417,6 +1417,8 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 
 .single.single-team #primary .lsx-team-job-title { color: #919191; }
 
+.single.single-team #primary .entry-tabs .nav-tabs > li.active > a, .single.single-team #primary .hp-entry-tabs .nav-tabs > li.active > a { background-color: transparent; color: #418AD0; border: 1px solid #418AD0; }
+
 #single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
 
 #single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a:hover, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a:hover { color: #F7AE00; border: 1px solid #F7AE00; }

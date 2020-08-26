@@ -1,4 +1,5 @@
 .single.single-team {
+	background: white;
 	#primary {
 		.lsx-team-avatar {
 			border-radius: 0;
@@ -8,6 +9,18 @@
 		}
 		.lsx-team-job-title {
 			font-family: 'Noto Sans', sans-serif;
+		}
+		.entry-tabs,
+		.hp-entry-tabs {
+			.nav-tabs {
+				> li {
+					> a {
+						background-color: transparent;
+						color: #999999;
+						border: 1px solid #dddddd;
+					}
+				}
+			}
 		}
 	}
 }
