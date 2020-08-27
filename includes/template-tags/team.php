@@ -1,5 +1,5 @@
 <?php
-
+global $product;
 $tabs = array();
 
 // Tab Experience
