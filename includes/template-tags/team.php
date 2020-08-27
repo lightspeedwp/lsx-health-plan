@@ -1,4 +1,5 @@
 <?php
+
 global $product;
 $tabs = array();
 
@@ -27,61 +28,20 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 		'post_type'      => 'plan',
 		'post__in'       => $tab_plans['posts'],
 	);
-	//$the_query = new WP_Query( $args );
+	$plan_query = new WP_Query( $args );
 
-	$plan_content = '<div class="all-plans-block plan-grid block-all-plans-block team-member-plans">
-	<div class="row">';
+	$plan_content = '<div class="all-plans-block plan-grid block-all-plans-block team-member-plans"><div class="row">';
 
-	foreach ( $tab_plans['posts'] as $index => $post ) {
-
-		do_action( 'lsx_entry_before' );
-
-		$plan_content .= '<div class="col-xs-12 col-sm-6 col-md-4">';
-		$plan_content .= '<article class="lsx-slot lsx-hp-shadow">';
-		$plan_content .= '<div class="plan-feature-img">';
-		$plan_content .= '<a href="' . get_permalink( $post ) . '">';
-
-		$linked_product  = false;
-		$restricted      = false;
-		$product         = null;
-		if ( \lsx_health_plan\functions\woocommerce\plan_has_products( $post ) ) {
-			$products       = \lsx_health_plan\functions\woocommerce\get_plan_products( $post );
-			$linked_product = wc_get_product( $products[0] );
-			$product        = $linked_product;
+	if ( $plan_query->have_posts() ) {
+		add_action( 'lsx_sharing_is_disabled', '\lsx_health_plan\functions\triggers\disable_sharing', 10 );
+		while ( $plan_query->have_posts() ) {
+			$plan_query->the_post();
+			ob_start();
+			include LSX_HEALTH_PLAN_PATH . '/templates/content-archive-plan.php';
+			$plan_content .= ob_get_clean();
 		}
-		if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
-			$restricted = wc_memberships_is_post_content_restricted( get_the_ID() ) && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
-		}
-
-		$featured_image = get_the_post_thumbnail( $post );
-		if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-			$plan_content .= $featured_image;
-		} else {
-			$plan_content .= '<img loading="lazy" class="placeholder" src="' . plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' . '">';
-		}
-		$plan_content .= '</a>';
-		$plan_content .= '</div>';
-
-		$plan_content .= '<div class="content-box plan-content-box">';
-		$plan_content .= '<h3 class="plan"><a href="' . get_permalink( $post ) . '">' . get_the_title( $post ) . '</a></h3>';
-
-		if ( false !== $linked_product && false !== $restricted ) {
-			$plan_content .= $linked_product->get_price_html();
-		}
-
-		$plan_content .= '<div class="excerpt">';
-		if ( ! has_excerpt( $post ) ) {
-			$content = wp_trim_words( get_the_content( $post ), 20 );
-			$plan_content .= '<p>' . $content . '</p>';
-		} else {
-			$plan_content .= apply_filters( 'the_excerpt', get_the_excerpt( $post ) );
-		}
-		$plan_content .= '</div>';
-
-		$plan_content .= '</div>';
-		$plan_content .= '</article>';
-		$plan_content .= '</div>';
-
+		wp_reset_postdata();
+		remove_action( 'lsx_sharing_is_disabled', '\lsx_health_plan\functions\triggers\disable_sharing', 10 );
 	}
 	$plan_content .= '</div></div>';
 

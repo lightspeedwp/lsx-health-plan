@@ -27,6 +27,8 @@
 	<exclude-pattern>*/build/*</exclude-pattern>
 	<exclude-pattern>gulpfile\.js</exclude-pattern>
 	<exclude-pattern>*/wp-content/*</exclude-pattern>
+	<exclude-pattern>*.css*</exclude-pattern>
+	<exclude-pattern>*.js*</exclude-pattern>
 	
 	<!-- Check up to 8 files simultaneously. -->
 	<arg name="parallel" value="8" />
@@ -47,7 +49,7 @@
 		<exclude-pattern>*\.js</exclude-pattern>
 	</rule>
 	<rule ref="WordPress.WhiteSpace">
-		<exclude-pattern>*\.css</exclude-pattern>
+		<exclude-pattern>*\</exclude-pattern>
 		<exclude-pattern>*\.js</exclude-pattern>
 	</rule>	
 

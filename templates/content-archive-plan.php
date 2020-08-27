@@ -74,7 +74,7 @@ $featured      = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
 
 		<div class="plan-feature-img">
 			<?php if ( $featured ) { ?>
-				<span class="featured-plan"><?php lsx_get_svg_icon( 'icon-featured.svg' ); ?></span>
+				<span class="featured-plan"><?php //lsx_get_svg_icon( 'icon-featured.svg' ); ?></span>
 			<?php } ?>
 			<a href="<?php echo esc_url( get_permalink() ); ?>">
 			<?php
