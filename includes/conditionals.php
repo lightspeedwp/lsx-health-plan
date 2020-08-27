@@ -208,7 +208,8 @@ function lsx_health_plan_has_tips( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	$connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
+	$post_type      = get_post_type( $post_id );
+	$connected_tips = get_post_meta( get_the_ID(), $post_type . '_connected_tips', true );
 	$connected_tips = \lsx_health_plan\functions\check_posts_exist( $connected_tips );
 	if ( ! empty( $connected_tips ) ) {
 		$has_tips = true;

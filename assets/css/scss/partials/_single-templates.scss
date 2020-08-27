@@ -25,15 +25,6 @@
 			@include media('<=phone') {
 				margin-bottom: 1rem;
 			}
-			.lsx-sharing-label {
-				font-size: 13px;
-				color: #919191;
-				font-family: 'Noto Sans', sans-serif;
-				font-weight: normal;
-				&:before {
-					content: none;
-				}
-			}
 			p {
 				margin: 0;
 			}
@@ -176,13 +167,6 @@
 		h2 {
 			margin-bottom: 10px;
 			font-weight: 700;
-		}
-		.lsx-sharing-content {
-			> p {
-				@include media('>=tablet') {
-					margin-bottom: 0;
-				}
-			}
 		}
 	}
 	.exercise-image {

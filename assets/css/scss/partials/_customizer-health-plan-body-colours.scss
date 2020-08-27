@@ -408,26 +408,26 @@
 			}
 		}
 	}
-	// Single Recipe
-	#single-recipe,
-	#single-exercise {
-		.title-lined {
-			.lsx-sharing-content {
-				.lsx-sharing-button {
-					a {
-						background: transparent;
-						color: $link;
-						border: 1px solid $link;
-						width: 25px;
-						height: 25px;
-						&:hover {
-							color: $hover;
-							border: 1px solid $hover;
-						}
+	#main {
+		.lsx-sharing-content {
+			.lsx-sharing-button {
+				a {
+					background: transparent;
+					color: $link;
+					border: 1px solid $link;
+					width: 25px;
+					height: 25px;
+					&:hover {
+						color: $hover;
+						border: 1px solid $hover;
 					}
 				}
 			}
 		}
+	}
+	// Single Recipe
+	#single-recipe,
+	#single-exercise {
 		.recipe-data {
 			.recipe-table {
 				tbody {

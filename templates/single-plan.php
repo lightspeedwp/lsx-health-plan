@@ -26,6 +26,7 @@ $plan = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
 
 $connected_members  = get_post_meta( get_the_ID(), ( $plan . '_connected_team_member' ), true );
 $connected_articles = get_post_meta( get_the_ID(), ( $plan . '_connected_articles' ), true );
+$small_description = get_post_meta( get_the_ID(), ( $plan . '_short_description' ), true );
 
 if ( ! empty( $has_sections ) ) {
 	$plan_type_class = 'parent-plan';
@@ -70,23 +71,38 @@ if ( false === $restricted ) {
 							<div class="single-plan-inner main-plan-content">
 								<div class="single-plan-section-title title-lined">
 									<?php lsx_get_svg_icon( 'meal.svg' ); ?>
-									<h2><?php the_title(); ?></h2>
+									<h2><?php echo esc_html_e( 'Your Plan', 'lsx-health-plan' ); ?></h2>
+									<?php if ( class_exists( 'LSX_Sharing' ) ) {
+										lsx_content_sharing();
+									} ?>
 								</div>
 								<div class="plan">
-									<?php
-									
-									// The top part
-									echo wp_kses_post( wp_kses_post( lsx_health_plan_main_content() ) );
-									
-									echo wp_kses_post( '<h3 class="my-plan-title">' . __( 'Your Game Plan', 'lsx-health-plan' ) . '</h3>' );
-
-									?>
-									<div class="the-plan-content">
+									<div class="set-box set content-box entry-content">
+										<div class="plan-top-content">
 										<?php
+										if ( $connected_members ) {
+											echo wp_kses_post( lsx_hp_member_connected( $connected_members, $plan ) );
+										}
 										if ( false === $restricted ) {
 											echo wp_kses_post( '<span class="progress"><progress class="bar" value="' . $round_progress . '" max="100"> ' . $round_progress . '% </progress><span>' . $round_progress . '%</span></span>' );
 										}
-										
+										if ( $small_description ) {
+											?>
+											<div class="the-content">
+												<span><?php echo esc_html( $small_description ); ?></span>
+											</div>
+											<?php
+											
+										}
+										?>
+										</div>
+										<?php
+										if ( lsx_health_plan_has_tips() ) {
+											echo wp_kses_post( do_shortcode( '[lsx_health_plan_featured_tips_block]' ) );
+										} ?>
+									</div>
+									<div class="the-plan-content">
+										<?php
 										echo do_shortcode( '[lsx_health_plan_day_plan_block week_view="true" show_downloads="true" plan="' . get_the_ID() . '"]' );
 
 										?>

@@ -821,32 +821,6 @@ function lsx_health_plan_recipe_archive_description() {
 }
 
 /**
- * Outputs the Single Plan main content.
- *
- * @return void
- */
-function lsx_health_plan_main_content() {
-	// Getting translated endpoint.
-	$plan = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
-
-	$connected_members = get_post_meta( get_the_ID(), ( $plan . '_connected_team_member' ), true );
-	$small_description = get_post_meta( get_the_ID(), ( $plan . '_short_description' ), true );
-
-	$content_plan = '';
-	if ( $small_description || $connected_members || lsx_health_plan_has_tips() ) {
-		$content_plan .= '<div class="set-box set content-box entry-content">';
-		$content_plan .= '<div class="the-content">';
-		$content_plan .= lsx_hp_member_connected( $connected_members, $plan );
-		$content_plan .= '<span>' . $small_description . '</span>';
-		$content_plan .= '</div>';
-		$content_plan .= do_shortcode( '[lsx_health_plan_featured_tips_block]' );
-		$content_plan .= '</div>';
-	}
-
-	return $content_plan;
-}
-
-/**
  * Outputs the Single Plan Workout main content.
  *
  * @return void

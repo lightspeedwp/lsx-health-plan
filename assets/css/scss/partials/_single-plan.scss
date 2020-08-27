@@ -17,6 +17,16 @@
 			max-width: 1140px;
 			margin-left: auto;
 			margin-right: auto;
+			.plan-content {
+				@include media('>=phone') {
+					margin-bottom: 2.4rem;
+				}
+			}
+			> .post-wrapper {
+				> .plan {
+					clear: both;
+				}
+			}
 		}
 	}
 }
@@ -216,6 +226,7 @@ article.type-meal,
 article.type-workout {
 	.entry-content {
 		padding: 0;
+		clear: both;
 		.overview {
 			padding: 3rem;
 		}
@@ -232,6 +243,10 @@ article.type-workout {
 				}
 				svg {
 					margin-right: 15px;
+				}
+
+				.lsx-sharing-content {
+					margin-left: auto;
 				}
 			}
 			.workout-instructions {
@@ -290,6 +305,9 @@ article.type-workout {
 						justify-content: space-between;
 					}
 				}
+				.plan-top-content {
+					width: 100%;
+				}
 				#hp-connected-members {
 					padding-top: 2rem;
 				}
@@ -302,9 +320,9 @@ article.type-workout {
 					}
 					#lsx-tips-shortcode {
 						margin-top: 0;
+						margin-left: 50px;
 					}
 				}
-
 				.my-plan-title {
 					padding: 20px 20px 0;
 					font-weight: bold;

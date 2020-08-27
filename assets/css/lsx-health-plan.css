@@ -14,6 +14,12 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .lsx-hp-shadow, .my-profile-block .profile-details { box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
 
+@media (min-width: 992px) { #main .lsx-sharing-content > p { margin-bottom: 0; } }
+
+#main .lsx-sharing-content .lsx-sharing-label { font-size: 13px; color: #919191; font-family: 'Noto Sans', sans-serif; font-weight: normal; }
+
+#main .lsx-sharing-content .lsx-sharing-label:before { content: none; }
+
 @media (min-width: 600px) { .shopping-list-container { column-count: 2; column-gap: 4em; width: 100%; height: 100%; } }
 
 .shopping-list-container table { background-color: #f8f8f8; border: 20px solid #f8f8f8; border-top: none; display: block; }
@@ -26,7 +32,7 @@ table, .table { width: 100%; table-layout: fixed; }
 
 .shopping-list-container table tbody tr td.column-1 span { font-size: 12px; line-height: 15px; display: block; font-weight: 400; }
 
-.shopping-list-container table tbody tr td.column-2 { color: #9B9B9B; text-align: right; }
+.shopping-list-container table tbody tr td.column-2 { color: #9b9b9b; text-align: right; }
 
 .shopping-list-container.white-list table { background-color: #ffffff; border: 20px solid #ffffff; }
 
@@ -678,6 +684,10 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .plan-template-default #main.parent-plan { max-width: 1140px; margin-left: auto; margin-right: auto; }
 
+@media (min-width: 768px) { .plan-template-default #main.parent-plan .plan-content { margin-bottom: 2.4rem; } }
+
+.plan-template-default #main.parent-plan > .post-wrapper > .plan { clear: both; }
+
 #single-plan-nav { margin-bottom: 15px; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-left: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
@@ -743,7 +753,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .warmup-container article .entry-content .warmup-content .sets .set-box.set { margin: 0; }
 
-article.type-plan .entry-content, article.type-meal .entry-content, article.type-workout .entry-content { padding: 0; }
+article.type-plan .entry-content, article.type-meal .entry-content, article.type-workout .entry-content { padding: 0; clear: both; }
 
 article.type-plan .entry-content .overview, article.type-meal .entry-content .overview, article.type-workout .entry-content .overview { padding: 3rem; }
 
@@ -752,6 +762,8 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 article.type-plan .entry-content .workout-content .single-plan-section-title h2, article.type-plan .entry-content .recipes-content .single-plan-section-title h2, article.type-plan .entry-content .meal-content .single-plan-section-title h2, article.type-plan .entry-content .main-plan-content .single-plan-section-title h2, article.type-meal .entry-content .workout-content .single-plan-section-title h2, article.type-meal .entry-content .recipes-content .single-plan-section-title h2, article.type-meal .entry-content .meal-content .single-plan-section-title h2, article.type-meal .entry-content .main-plan-content .single-plan-section-title h2, article.type-workout .entry-content .workout-content .single-plan-section-title h2, article.type-workout .entry-content .recipes-content .single-plan-section-title h2, article.type-workout .entry-content .meal-content .single-plan-section-title h2, article.type-workout .entry-content .main-plan-content .single-plan-section-title h2 { margin: 0; }
 
 article.type-plan .entry-content .workout-content .single-plan-section-title svg, article.type-plan .entry-content .recipes-content .single-plan-section-title svg, article.type-plan .entry-content .meal-content .single-plan-section-title svg, article.type-plan .entry-content .main-plan-content .single-plan-section-title svg, article.type-meal .entry-content .workout-content .single-plan-section-title svg, article.type-meal .entry-content .recipes-content .single-plan-section-title svg, article.type-meal .entry-content .meal-content .single-plan-section-title svg, article.type-meal .entry-content .main-plan-content .single-plan-section-title svg, article.type-workout .entry-content .workout-content .single-plan-section-title svg, article.type-workout .entry-content .recipes-content .single-plan-section-title svg, article.type-workout .entry-content .meal-content .single-plan-section-title svg, article.type-workout .entry-content .main-plan-content .single-plan-section-title svg { margin-right: 15px; }
+
+article.type-plan .entry-content .workout-content .single-plan-section-title .lsx-sharing-content, article.type-plan .entry-content .recipes-content .single-plan-section-title .lsx-sharing-content, article.type-plan .entry-content .meal-content .single-plan-section-title .lsx-sharing-content, article.type-plan .entry-content .main-plan-content .single-plan-section-title .lsx-sharing-content, article.type-meal .entry-content .workout-content .single-plan-section-title .lsx-sharing-content, article.type-meal .entry-content .recipes-content .single-plan-section-title .lsx-sharing-content, article.type-meal .entry-content .meal-content .single-plan-section-title .lsx-sharing-content, article.type-meal .entry-content .main-plan-content .single-plan-section-title .lsx-sharing-content, article.type-workout .entry-content .workout-content .single-plan-section-title .lsx-sharing-content, article.type-workout .entry-content .recipes-content .single-plan-section-title .lsx-sharing-content, article.type-workout .entry-content .meal-content .single-plan-section-title .lsx-sharing-content, article.type-workout .entry-content .main-plan-content .single-plan-section-title .lsx-sharing-content { margin-left: auto; }
 
 article.type-plan .entry-content .workout-content .workout-instructions, article.type-plan .entry-content .recipes-content .workout-instructions, article.type-plan .entry-content .meal-content .workout-instructions, article.type-plan .entry-content .main-plan-content .workout-instructions, article.type-meal .entry-content .workout-content .workout-instructions, article.type-meal .entry-content .recipes-content .workout-instructions, article.type-meal .entry-content .meal-content .workout-instructions, article.type-meal .entry-content .main-plan-content .workout-instructions, article.type-workout .entry-content .workout-content .workout-instructions, article.type-workout .entry-content .recipes-content .workout-instructions, article.type-workout .entry-content .meal-content .workout-instructions, article.type-workout .entry-content .main-plan-content .workout-instructions { padding: 1rem 3rem; }
 
@@ -779,11 +791,13 @@ article.type-plan .entry-content .main-plan-content .plan .set-box, article.type
 
 @media (min-width: 992px) { article.type-plan .entry-content .main-plan-content .plan .set-box, article.type-meal .entry-content .main-plan-content .plan .set-box, article.type-workout .entry-content .main-plan-content .plan .set-box { padding: 30px 20px 0 20px; display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: end; -ms-flex-pack: justify; justify-content: space-between; } }
 
+article.type-plan .entry-content .main-plan-content .plan .plan-top-content, article.type-meal .entry-content .main-plan-content .plan .plan-top-content, article.type-workout .entry-content .main-plan-content .plan .plan-top-content { width: 100%; }
+
 article.type-plan .entry-content .main-plan-content .plan #hp-connected-members, article.type-meal .entry-content .main-plan-content .plan #hp-connected-members, article.type-workout .entry-content .main-plan-content .plan #hp-connected-members { padding-top: 2rem; }
 
 @media (min-width: 992px) { article.type-plan .entry-content .main-plan-content .plan .the-content, article.type-meal .entry-content .main-plan-content .plan .the-content, article.type-workout .entry-content .main-plan-content .plan .the-content { padding-right: 4rem; }
   article.type-plan .entry-content .main-plan-content .plan #hp-connected-members, article.type-meal .entry-content .main-plan-content .plan #hp-connected-members, article.type-workout .entry-content .main-plan-content .plan #hp-connected-members { padding: 0; }
-  article.type-plan .entry-content .main-plan-content .plan #lsx-tips-shortcode, article.type-meal .entry-content .main-plan-content .plan #lsx-tips-shortcode, article.type-workout .entry-content .main-plan-content .plan #lsx-tips-shortcode { margin-top: 0; } }
+  article.type-plan .entry-content .main-plan-content .plan #lsx-tips-shortcode, article.type-meal .entry-content .main-plan-content .plan #lsx-tips-shortcode, article.type-workout .entry-content .main-plan-content .plan #lsx-tips-shortcode { margin-top: 0; margin-left: 50px; } }
 
 article.type-plan .entry-content .main-plan-content .plan .my-plan-title, article.type-meal .entry-content .main-plan-content .plan .my-plan-title, article.type-workout .entry-content .main-plan-content .plan .my-plan-title { padding: 20px 20px 0; font-weight: bold; margin-bottom: 0; }
 
@@ -1220,10 +1234,6 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 @media (max-width: 768px) { #single-recipe .title-lined .lsx-sharing-content, #single-exercise .title-lined .lsx-sharing-content { margin-bottom: 1rem; } }
 
-#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-label, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-label { font-size: 13px; color: #919191; font-family: 'Noto Sans', sans-serif; font-weight: normal; }
-
-#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-label:before, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-label:before { content: none; }
-
 #single-recipe .title-lined .lsx-sharing-content p, #single-exercise .title-lined .lsx-sharing-content p { margin: 0; }
 
 @media (max-width: 992px) { #single-recipe #hp-connected-members p, #single-exercise #hp-connected-members p { margin-bottom: 2rem; } }
@@ -1284,8 +1294,6 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 @media (min-width: 992px) { #single-exercise .exercise-title-section.sharing-enabled { -ms-flex-direction: row-reverse; flex-direction: row-reverse; -ms-flex-align: center; align-items: center; } }
 
 #single-exercise .exercise-title-section h2 { margin-bottom: 10px; font-weight: 700; }
-
-@media (min-width: 992px) { #single-exercise .exercise-title-section .lsx-sharing-content > p { margin-bottom: 0; } }
 
 #single-exercise .exercise-image .exercise-data { background: white; padding: 2.4rem 1.4rem; }
 
@@ -1417,9 +1425,9 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 
 .single.single-team #primary .entry-tabs .nav-tabs > li.active > a, .single.single-team #primary .hp-entry-tabs .nav-tabs > li.active > a { background-color: transparent; color: #418AD0; border: 1px solid #418AD0; }
 
-#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
+#main .lsx-sharing-content .lsx-sharing-button a { background: transparent; color: #418AD0; border: 1px solid #418AD0; width: 25px; height: 25px; }
 
-#single-recipe .title-lined .lsx-sharing-content .lsx-sharing-button a:hover, #single-exercise .title-lined .lsx-sharing-content .lsx-sharing-button a:hover { color: #F7AE00; border: 1px solid #F7AE00; }
+#main .lsx-sharing-content .lsx-sharing-button a:hover { color: #F7AE00; border: 1px solid #F7AE00; }
 
 #single-recipe .recipe-data .recipe-table tbody tr td:first-child:before, #single-exercise .recipe-data .recipe-table tbody tr td:first-child:before { font-family: FontAwesome; margin-right: 5px; color: #418AD0; font-size: 12px; }
 
