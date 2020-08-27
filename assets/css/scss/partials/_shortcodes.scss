@@ -180,19 +180,17 @@
 #lsx-tips-shortcode {
 	margin-top: 3rem;
 	justify-content: flex-end;
+	background: white;
+	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
 	@include media('>=tablet') {
 		width: 380px;
+		min-width: 350px;
 	}
 	.lsx-tips-shortcode {
 		width: 100%;
-		@include media('>=tablet') {
-			width: 380px;
-		}
 		.diet-tip-wrapper {
-			background: white;
-			box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
 			.col-xs-2 {
-				padding: 0 0 0 15px;
+				padding: 0;
 				svg {
 					width: 30px;
 				}
@@ -202,6 +200,10 @@
 			}
 			&.quick-tip {
 				margin: 0;
+				background: white;
+				.row {
+					margin: 0;
+				}
 				h3 {
 					color: $gray;
 					font-family: 'Noto Sans';
@@ -217,23 +219,21 @@
 			}
 		}
 		&.slick-slider {
-			.slick-list {
-				box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
-			}
 			button {
 				&.slick-arrow {
 					border: none;
 					color: #dddddd;
 					&.slick-next {
-						right: -3.2rem;
+						right: -1rem;
 					}
 					&.slick-prev {
-						left: -3.2rem;
+						left: 0;
 					}
 				}
 			}
 			.slick-dots {
 				margin-top: 0;
+				margin-bottom: 8px;
 				> li {
 					padding: 0 3px;
 					> button {
@@ -255,12 +255,6 @@
 	}
 	body.single & {
 		margin-bottom: 2rem;
-		.lsx-tips-shortcode {
-			.diet-tip-wrapper {
-				padding: 1rem;
-				box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
-			}
-		}
 	}
 }
 
@@ -547,9 +541,11 @@
 
 #hp-connected-members {
 	display: flex;
+	margin-bottom: 1rem;
 	p {
 		margin-right: 3rem;
 		margin-bottom: 1rem;
+		line-height: 6px;
 		.lsx-team-roles {
 			text-transform: uppercase;
 			font-size: 13px;

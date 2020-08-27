@@ -92,37 +92,33 @@ table, .table { width: 100%; table-layout: fixed; }
 
 @media (max-width: 400px) { .slick-slider .lsx-videos-slot iframe { max-height: 150px; } }
 
-#lsx-tips-shortcode { margin-top: 3rem; -ms-flex-pack: end; justify-content: flex-end; }
+#lsx-tips-shortcode { margin-top: 3rem; -ms-flex-pack: end; justify-content: flex-end; background: white; box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
 
-@media (min-width: 992px) { #lsx-tips-shortcode { width: 380px; } }
+@media (min-width: 992px) { #lsx-tips-shortcode { width: 380px; min-width: 350px; } }
 
 #lsx-tips-shortcode .lsx-tips-shortcode { width: 100%; }
 
-@media (min-width: 992px) { #lsx-tips-shortcode .lsx-tips-shortcode { width: 380px; } }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper { background: white; box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
-
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-xs-2 { padding: 0 15px 0 0; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-xs-2 { padding: 0; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-xs-2 svg { width: 30px; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper .col-xs-10 { padding-right: 5px; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip { margin: 0; }
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip { margin: 0; background: white; }
+
+#lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip .row { margin: 0; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip h3 { color: #4a4a4a; font-family: 'Noto Sans'; font-size: 15px; font-weight: bold; margin-bottom: 5px; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper.quick-tip p { color: #919191; font-size: 13px; margin: 0; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider .slick-list { box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
-
 #lsx-tips-shortcode .lsx-tips-shortcode.slick-slider button.slick-arrow { border: none; color: #dddddd; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider button.slick-arrow.slick-next { left: -3.2rem; }
+#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider button.slick-arrow.slick-next { left: -1rem; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider button.slick-arrow.slick-prev { right: -3.2rem; }
+#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider button.slick-arrow.slick-prev { right: 0; }
 
-#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider .slick-dots { margin-top: 0; }
+#lsx-tips-shortcode .lsx-tips-shortcode.slick-slider .slick-dots { margin-top: 0; margin-bottom: 8px; }
 
 #lsx-tips-shortcode .lsx-tips-shortcode.slick-slider .slick-dots > li { padding: 0 3px; }
 
@@ -131,8 +127,6 @@ table, .table { width: 100%; table-layout: fixed; }
 #lsx-tips-shortcode .lsx-tips-shortcode.slick-slider .slick-dots > li.slick-active > button { background: #919191; }
 
 body.single #lsx-tips-shortcode { margin-bottom: 2rem; }
-
-body.single #lsx-tips-shortcode .lsx-tips-shortcode .diet-tip-wrapper { padding: 1rem; box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
 
 .lsx-hp-widget-items.slick-slider { background-color: white; padding: 2rem; }
 
@@ -243,9 +237,9 @@ body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col
 
 body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline, body.single-workout #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline, body.single-meal #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col-xs-12 .lsx-related-posts-headline { font-size: 22px; }
 
-#hp-connected-members { display: -ms-flexbox; display: flex; }
+#hp-connected-members { display: -ms-flexbox; display: flex; margin-bottom: 1rem; }
 
-#hp-connected-members p { margin-left: 3rem; margin-bottom: 1rem; }
+#hp-connected-members p { margin-left: 3rem; margin-bottom: 1rem; line-height: 6px; }
 
 #hp-connected-members p .lsx-team-roles { text-transform: uppercase; font-size: 13px; }
 
@@ -827,7 +821,7 @@ article.type-plan .entry-content .meal-content .meals .btn-shopping, article.typ
 
 @media (min-width: 1024px) { article.type-plan .entry-content .meal-content .meals .btn-shopping, article.type-meal .entry-content .meal-content .meals .btn-shopping, article.type-workout .entry-content .meal-content .meals .btn-shopping { float: left; position: relative; top: -6.5rem; margin-left: 2rem; margin-bottom: -6.5rem; } }
 
-article.type-plan .entry-content .meal-content .meals .eating-row, article.type-meal .entry-content .meal-content .meals .eating-row, article.type-workout .entry-content .meal-content .meals .eating-row { padding: 2rem 1rem 3rem; margin: 3rem 0 0 0; }
+article.type-plan .entry-content .meal-content .meals .eating-row, article.type-meal .entry-content .meal-content .meals .eating-row, article.type-workout .entry-content .meal-content .meals .eating-row { padding: 2rem 1rem 3rem; margin: 0; }
 
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column, article.type-meal .entry-content .meal-content .meals .eating-row .eating-column, article.type-workout .entry-content .meal-content .meals .eating-row .eating-column { border-left: 3px solid rgba(65, 138, 208, 0.1); }
 
@@ -852,6 +846,8 @@ article.type-plan .entry-content .meal-content .meals .eating-row .eating-column
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .prep-time:before, article.type-meal .entry-content .meal-content .meals .eating-row .eating-column .recipes .prep-time:before, article.type-workout .entry-content .meal-content .meals .eating-row .eating-column .recipes .prep-time:before { content: '\f017'; }
 
 article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .cooking-time, article.type-plan .entry-content .meal-content .meals .eating-row .eating-column .recipes .portion-size, article.type-meal .entry-content .meal-content .meals .eating-row .eating-column .recipes .cooking-time, article.type-meal .entry-content .meal-content .meals .eating-row .eating-column .recipes .portion-size, article.type-workout .entry-content .meal-content .meals .eating-row .eating-column .recipes .cooking-time, article.type-workout .entry-content .meal-content .meals .eating-row .eating-column .recipes .portion-size { display: none; }
+
+article.type-plan .entry-content .meal-content .meals .set-box.entry-content + .eating-row, article.type-meal .entry-content .meal-content .meals .set-box.entry-content + .eating-row, article.type-workout .entry-content .meal-content .meals .set-box.entry-content + .eating-row { margin: 3rem 0 0 0; }
 
 article.type-plan .entry-content .workout-content .single-plan-section-title, article.type-meal .entry-content .workout-content .single-plan-section-title, article.type-workout .entry-content .workout-content .single-plan-section-title { margin-bottom: 0; }
 
@@ -1450,3 +1446,5 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 #hp-connected-members p .lsx-team-roles { color: #919191; }
 
 #hp-connected-members p .lsx-team-name { color: #418AD0; }
+
+#hp-connected-members p .lsx-team-name:hover { color: #F7AE00; }

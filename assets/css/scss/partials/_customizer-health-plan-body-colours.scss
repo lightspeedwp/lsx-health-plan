@@ -521,6 +521,9 @@
 			}
 			.lsx-team-name {
 				color: $link;
+				&:hover {
+					color: $hover;
+				}
 			}
 		}
 	}

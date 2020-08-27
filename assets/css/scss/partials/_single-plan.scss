@@ -395,7 +395,7 @@ article.type-workout {
 				}
 				.eating-row {
 					padding: 2rem 1rem 3rem;
-					margin: 3rem 0 0 0;
+					margin: 0;
 					.eating-column {
 						border-right: 3px solid rgba(65, 138, 208, 0.1);
 						&:last-child {
@@ -441,6 +441,11 @@ article.type-workout {
 								display: none;
 							}
 						}
+					}
+				}
+				.set-box.entry-content {
+					+ .eating-row {
+						margin: 3rem 0 0 0;
 					}
 				}
 			}
