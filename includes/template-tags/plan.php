@@ -18,6 +18,7 @@ function lsx_hp_plan_archive_filters() {
 				<li class="active"><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_post_type_archive_link( 'plan' ) ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-health-plan' ); ?></a></li>
 				<li><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_post_type_archive_link( 'plan' ) ); ?>" data-filter=".filter-free"><?php esc_html_e( 'Free', 'lsx-health-plan' ); ?></a></li>
 				<li><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_post_type_archive_link( 'plan' ) ); ?>" data-filter=".filter-paid"><?php esc_html_e( 'Paid', 'lsx-health-plan' ); ?></a></li>
+				<li><a href="<?php echo empty( $group_selected ) ? '#' : esc_url( get_post_type_archive_link( 'plan' ) ); ?>" data-filter=".filter-featured"><?php esc_html_e( 'Featured', 'lsx-health-plan' ); ?></a></li>
 			</ul>
 		</div>
 		<?php
@@ -39,6 +40,11 @@ function lsx_hp_plan_get_classes() {
 			$classes = 'filter-free';
 		} else {
 			$classes = 'filter-paid';
+		}
+
+		$featured = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
+		if ( false !== $featured && '' !== $featured ) {
+			$classes .= ' filter-featured';
 		}
 	}
 	return $classes;
