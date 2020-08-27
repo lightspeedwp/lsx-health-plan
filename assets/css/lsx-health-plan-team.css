@@ -6,6 +6,14 @@
 
 .single.single-team #primary .lsx-team-job-title { font-family: 'Noto Sans', sans-serif; }
 
+.single.single-team #primary .lsx-team-socials-header { display: none; }
+
 .single.single-team #primary .entry-tabs .nav-tabs > li > a, .single.single-team #primary .hp-entry-tabs .nav-tabs > li > a { background-color: transparent; color: #999999; border: 1px solid #dddddd; }
+
+.single.single-team #primary .entry-tabs #experience, .single.single-team #primary .hp-entry-tabs #experience { padding-left: 0; padding-right: 0; }
+
+.single.single-team #primary .entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot, .single.single-team #primary .hp-entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot { box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
+
+.single.single-team #primary .entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .btn, .single.single-team #primary .hp-entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .btn { width: 100%; padding: 10px; height: 100%; }
 
 /*# sourceMappingURL=maps/lsx-health-plan-team.css.map */

@@ -116,6 +116,7 @@ var LSX_HP_ADMIN = Object.create(null);
 	 */
 	LSX_HP_ADMIN.removeOriginalTeamTabs = function() {
 		$('.single-team .entry-tabs:not(.hp-entry-tabs)').remove();
+		$('.single-team .entry-tabs.hp-entry-tabs .lsx-sharing-wrapper').remove();
 	};
 
 	/**
