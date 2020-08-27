@@ -32,10 +32,14 @@ class Meal {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
-		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+
+		// Template Redirects.
+		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
 	/**

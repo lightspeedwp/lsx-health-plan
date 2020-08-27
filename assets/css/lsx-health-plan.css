@@ -866,6 +866,8 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-workout .row .lsx-slot .workout-feature-img .featured-workout { position: absolute; margin: 1rem; }
 
+.post-type-archive-meal .row .lsx-slot .meal-feature-img .featured-meal { position: absolute; margin: 1rem; }
+
 .post-type-archive-recipe .bottom-single-recipe, .tax-recipe-type .bottom-single-recipe, .tax-recipe-cuisine .bottom-single-recipe { margin-top: 4.25rem; margin-bottom: -8.4rem; }
 
 .single-plan .entry-content, .single-plan .tab-content-plan, .archive-plan .entry-content, .archive-plan .tab-content-plan, .lsx-exercises-shortcode .entry-content, .lsx-exercises-shortcode .tab-content-plan, .single-workout .entry-content, .single-workout .tab-content-plan, .single-meal .entry-content, .single-meal .tab-content-plan { background: #ffffff; padding: 0; }

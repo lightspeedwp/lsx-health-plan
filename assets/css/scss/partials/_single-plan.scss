@@ -539,6 +539,18 @@ article.type-workout {
 		}
 	}
 }
+.post-type-archive-meal {
+	.row {
+		.lsx-slot {
+			.meal-feature-img {
+				.featured-meal {
+					position: absolute;
+					margin: 1rem;
+				}
+			}
+		}
+	}
+}
 .post-type-archive-recipe,
 .tax-recipe-type,
 .tax-recipe-cuisine {
