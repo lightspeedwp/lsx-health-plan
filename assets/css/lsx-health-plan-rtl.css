@@ -1202,8 +1202,6 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-content-box .btn:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
 
-.tax-exercise-type .archive-header-wrapper .archive-header .archive-title, .tax-muscle-group .archive-header-wrapper .archive-header .archive-title, .tax-equipment .archive-header-wrapper .archive-header .archive-title { text-transform: capitalize; }
-
 .tax-exercise-type .archive-header-wrapper .archive-header p, .tax-muscle-group .archive-header-wrapper .archive-header p, .tax-equipment .archive-header-wrapper .archive-header p { display: none; }
 
 .archive .archive-header-wrapper.banner-archive { float: none; }
