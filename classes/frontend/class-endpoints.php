@@ -18,7 +18,7 @@ class Endpoints {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'setup' ) );

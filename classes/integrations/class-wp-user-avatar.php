@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -18,7 +18,7 @@ class WP_User_Avatar {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_filter( 'wpua_profile_title', array( $this, 'profile_title' ), 10, 1 );

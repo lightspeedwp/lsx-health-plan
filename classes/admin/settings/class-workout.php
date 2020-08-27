@@ -22,7 +22,7 @@ class Workout {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'lsx_hp_settings_page_workout_top', array( $this, 'settings' ), 1, 1 );

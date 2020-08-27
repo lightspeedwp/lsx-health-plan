@@ -34,7 +34,7 @@ class Settings_Theme {
 	public $navigation = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_filter( 'cmb2_enqueue_css', array( $this, 'disable_cmb2_styles' ), 1, 1 );

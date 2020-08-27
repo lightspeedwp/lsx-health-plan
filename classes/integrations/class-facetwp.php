@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -23,7 +23,7 @@ class FacetWP {
 	public $workouts = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_classes();

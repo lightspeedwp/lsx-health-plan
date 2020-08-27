@@ -20,6 +20,7 @@ var LSX_HP_ADMIN = Object.create(null);
 		LSX_HP_ADMIN.calculateBMI();
 		LSX_HP_ADMIN.setListLayout();
 		LSX_HP_ADMIN.initIsotope();
+		LSX_HP_ADMIN.removeOriginalTeamTabs();
 		LSX_HP_ADMIN.progressBar();
 	};
 
@@ -111,11 +112,22 @@ var LSX_HP_ADMIN = Object.create(null);
 	};
 
 	/**
+	 * Removes the original team tabs in favor of the HP tabs
+	 */
+	LSX_HP_ADMIN.removeOriginalTeamTabs = function() {
+		$('.single-team .entry-tabs:not(.hp-entry-tabs)').remove();
+	};
+
+	/**
 	 * Filter nav for archives
 	 */
 	LSX_HP_ADMIN.initIsotope = function() {
-
-		if ( $('body').first().hasClass('archive') && $.isFunction( $.fn.isotope ) ) {
+		if (
+			$('body')
+				.first()
+				.hasClass('archive') &&
+			$.isFunction($.fn.isotope)
+		) {
 			var $container = $('.lsx-plan-row');
 
 			$container.isotope({

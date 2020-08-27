@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes\integrations\woocommerce;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -39,7 +39,7 @@ class Plans {
 	public $parent_id = 0;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		// Remove the default restrictions, as we will add our own.

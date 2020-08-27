@@ -18,7 +18,7 @@ class Plan_Status {
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'handle_day_action' ), 100 );

@@ -53,7 +53,7 @@ class Frontend {
 	public $template_redirects;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		if ( ! is_admin() ) {

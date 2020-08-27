@@ -29,7 +29,7 @@ class Plan {
 	public $slug = 'plan';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 

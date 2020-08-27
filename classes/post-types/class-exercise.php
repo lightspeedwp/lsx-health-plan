@@ -27,7 +27,7 @@ class Exercise {
 	public $slug = 'exercise';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 

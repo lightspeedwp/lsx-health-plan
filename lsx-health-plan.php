@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name:	LSX Health Plan
+ * Plugin Name:	LSX Health
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-health-plan
  * Description:	LSX Health Plan extension adds a meal and workout plan, with recipes.
  * Author:		LightSpeed

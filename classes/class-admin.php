@@ -49,7 +49,7 @@ class Admin {
 	public $settings_theme;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_classes();

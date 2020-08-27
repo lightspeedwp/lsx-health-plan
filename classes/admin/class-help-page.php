@@ -29,7 +29,7 @@ class Help_Page {
 	protected $screen_id = 'lsx_hp_help';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
