@@ -143,7 +143,6 @@ class LSX_Team {
 	public function hp_team_member_tabs() {
 		if ( is_single() && is_singular( 'team' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/team.php';
-		}	
+		}
 	}
-
 }

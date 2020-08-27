@@ -7,7 +7,6 @@
 
 namespace lsx_health_plan\functions\plan;
 
-
 /**
  * Return a true or false if the search is enabled.
  *

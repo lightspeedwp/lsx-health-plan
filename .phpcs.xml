@@ -35,20 +35,11 @@
 	<config name="testVersion" value="7.0-" />
 
 	<rule ref="WordPress">
-		<!-- @TODO remove this exclusion: -->
-		<exclude name="Squiz.Commenting" />
-		<exclude name="Generic.Commenting" />
-		<exclude name="Generic.WhiteSpace" />
-		<exclude name="Squiz.WhiteSpace" />
-		<exclude name="Squiz.Scope.MethodScope.Missing" />
-		<exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion" />
 		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited" />
-		
-		<!-- Not interested in whitespace issues at the moment -->
-		<exclude name="PEAR.Functions.FunctionCallSignature" />
-		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma" />
 		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
 	</rule>
+		
+	<rule ref="WordPress-Extra" />
 
 		<!-- Not interested in whitespace issues in JS and CSS files at the moment -->
 	<rule ref="Squiz.WhiteSpace">
@@ -59,6 +50,11 @@
 		<exclude-pattern>*\.css</exclude-pattern>
 		<exclude-pattern>*\.js</exclude-pattern>
 	</rule>	
+
+	<rule ref="Generic.Files.EndFileNewline">
+		<exclude-pattern>*\.css</exclude-pattern>
+		<exclude-pattern>*\.js</exclude-pattern>
+	</rule>
 	
     <rule ref="Generic.PHP.Syntax"/>
 	

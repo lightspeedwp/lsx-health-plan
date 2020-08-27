@@ -5,7 +5,7 @@ $tabs = array();
 // Tab Experience
 $tab_experience['title']     = esc_html__( 'Experience', 'lsx-team' );
 $tab_experience['content']   = get_post_meta( get_the_ID(), 'team_member_experience', true );
-$tab_experience['shortcode'] = ''; 
+$tab_experience['shortcode'] = '';
 if ( ! empty( $tab_experience['content'] ) ) {
 	$tabs[] = $tab_experience;
 }
@@ -33,6 +33,8 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 	<div class="row">';
 
 	foreach ( $tab_plans['posts'] as $index => $post ) {
+
+		do_action( 'lsx_entry_before' );
 
 		$plan_content .= '<div class="col-xs-12 col-sm-6 col-md-4">';
 		$plan_content .= '<article class="lsx-slot lsx-hp-shadow">';
@@ -120,10 +122,9 @@ if ( count( $tabs ) > 0 ) : ?>
 			<?php foreach ( $tabs as $i => $tab ) : ?>
 				<div id="<?php echo esc_attr( sanitize_title( $tab['title'] ) ); ?>" class="tab-pane fade<?php if ( 0 === $i ) echo ' in active'; ?>">
 					<?php echo do_shortcode( $tab['shortcode'] ); ?>
-					<?php echo $tab['content']; ?>
+					<?php echo wp_kses_post( $tab['content'] ); ?>
 				</div>
 			<?php endforeach; ?>
 		</div>
 	</div>
 <?php endif;
-

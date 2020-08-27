@@ -29,7 +29,7 @@ class Plan_Query {
 	 *
 	 * @var array
 	 */
-	public $has_sections = false;	
+	public $has_sections = false;
 
 	/**
 	 * Constructor

@@ -157,7 +157,7 @@ class Integrations {
 	 */
 	public function lsx_team_init() {
 		if ( class_exists( 'LSX_Team' ) ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-team.php';
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-lsx-team.php';
 			$this->team = LSX_Team::get_instance();
 		}
 	}
@@ -169,7 +169,7 @@ class Integrations {
 	 */
 	public function lsx_article_init() {
 		if ( wp_count_posts()->publish > 0 ) {
-			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-blog.php';
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-articles.php';
 			$this->article = Articles::get_instance();
 		}
 	}
