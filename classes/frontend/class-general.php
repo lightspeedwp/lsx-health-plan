@@ -29,6 +29,7 @@ class General {
 		add_action( 'body_class', array( $this, 'body_classes' ) );
 		add_filter( 'lsx_global_header_title',  array( $this, 'single_title' ), 200, 1 );
 		add_action( 'wp_head', array( $this, 'remove_single_footer' ), 99 );
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 9 );
 	}
 
 	/**
@@ -150,5 +151,26 @@ class General {
 		if ( is_single() && is_singular( array( 'exercise', 'recipe', 'workout', 'meal' ) ) ) {
 			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
 		}
+	}
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'recipe' ) ) {
+			$title = __( 'Recipes', 'lsx-health-plan' );
+		}
+		if ( is_post_type_archive( 'exercise' ) ) {
+			$title = __( 'Exercises', 'lsx-health-plan' );
+		}
+		if ( is_tax() ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name;
+			}
+		}
+		return $title;
 	}
 }
