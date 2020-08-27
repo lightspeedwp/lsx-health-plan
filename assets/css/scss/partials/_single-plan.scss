@@ -379,20 +379,20 @@ article.type-workout {
 					padding: 40px 20px 0;
 					font-weight: bold;
 				}
-				.btn-shopping {
-					margin: 0 2rem 3rem;
-					@media (max-width: 767px) {
-						width: 95%;
-						margin-top: 5rem;
-					}
-					@media (min-width: 1024px) {
-						float: right;
-						position: relative;
-						top: -6.5rem;
-						margin-right: 2rem;
-						margin-bottom: -6.5rem;
-					}
-				}
+				// .btn-shopping {
+				// 	margin: 0 2rem 3rem;
+				// 	@media (max-width: 767px) {
+				// 		width: 95%;
+				// 		margin-top: 5rem;
+				// 	}
+				// 	@media (min-width: 1024px) {
+				// 		float: right;
+				// 		position: relative;
+				// 		top: -6.5rem;
+				// 		margin-right: 2rem;
+				// 		margin-bottom: -6.5rem;
+				// 	}
+				// }
 				.eating-row {
 					padding: 2rem 1rem 3rem;
 					margin: 0;
@@ -559,6 +559,20 @@ article.type-workout {
 		padding: 0;
 		@media (max-width: 992px) {
 			padding: 15px 10px;
+		}
+	}
+	.back-plan-btn {
+		margin-top: 2.4rem;
+		@include media('<=phone') {
+			.btn {
+				width: 100%;
+				margin-bottom: 2.4rem;
+			}
+		}
+		.btn-shopping {
+			@include media('>phone') {
+				margin-left: 2rem;
+			}
 		}
 	}
 	.extra-title {

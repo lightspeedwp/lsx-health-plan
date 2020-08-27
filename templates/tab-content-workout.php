@@ -8,7 +8,8 @@
 global $shortcode_args;
 
 // Getting translated endpoint.
-$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
+$archive_workout = \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', 'workout' );
+$workout         = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
 
 $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_articles' ), true );
 
@@ -42,6 +43,9 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 				<div class="single-plan-section-title workout title-lined">
 					<?php lsx_get_svg_icon( 'work.svg' ); ?>
 					<h2><?php the_title(); ?></h2>
+					<?php if ( class_exists( 'LSX_Sharing' ) ) {
+						lsx_content_sharing();
+					} ?>
 				</div>
 			<?php } else { ?>
 				<div class="single-plan-section-title workout title-lined">
@@ -73,7 +77,11 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
-
+<?php if ( is_singular( $workout ) ) { ?>
+	<div  class="back-plan-btn">
+		<a class="btn" href="/<?php echo $archive_workout; ?>"><?php esc_html_e( 'Back to workouts', 'lsx-health-plan' ); ?></a>
+	</div>
+<?php } ?>
 <?php
 if ( ! empty( $connected_articles ) ) {
 	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );

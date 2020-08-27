@@ -46,14 +46,6 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 		$connected_meals = array( get_the_ID() );
 	}
 
-	// Shoping list
-	$shopping_list = get_post_meta( get_the_ID(), 'meal_shopping_list', true );
-	if ( ! empty( $shopping_list ) ) {
-		?>
-		<a class="btn border-btn btn-shopping" href="<?php echo esc_url( get_page_link( $shopping_list ) ); ?>" target="_blank"><?php esc_html_e( 'Download Shopping List', 'lsx-health-plan' ); ?><i class="fa fa-download" aria-hidden="true"></i></a>
-	<?php
-	}
-
 	// The top part
 	echo wp_kses_post( wp_kses_post( lsx_health_plan_meal_main_content() ) );
 

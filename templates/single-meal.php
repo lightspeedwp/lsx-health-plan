@@ -29,7 +29,6 @@ get_header(); ?>
 					<?php the_content(); ?>
 					</div>
 					<?php include LSX_HEALTH_PLAN_PATH . '/templates/tab-content-meal.php'; ?>
-
 				<?php endwhile; ?>
 
 			</div>

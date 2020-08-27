@@ -556,12 +556,5 @@
 	}
 	body.single-meal & {
 		padding: 0 20px;
-		+ .meals {
-			.btn-shopping {
-				@media (min-width: 1024px) {
-					top: -14.2rem;
-				}
-			}
-		}
 	}
 }

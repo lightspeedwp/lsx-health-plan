@@ -117,7 +117,7 @@ if ( false === $restricted ) {
 										</div>
 									</div>
 								</div>
-								
+
 							</div>
 						</div><!-- .entry-content -->
 					</article>
