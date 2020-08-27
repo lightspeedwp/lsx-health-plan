@@ -25,15 +25,14 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 		'post_type'      => 'plan',
-		'post__in' => $tab_plans['posts'],
+		'post__in'       => $tab_plans['posts'],
 	);
 	//$the_query = new WP_Query( $args );
 
-	
 	$plan_content = '<div class="all-plans-block plan-grid block-all-plans-block team-member-plans">
 	<div class="row">';
 
-	foreach( $tab_plans['posts'] as $index => $post ) {
+	foreach ( $tab_plans['posts'] as $index => $post ) {
 
 		$plan_content .= '<div class="col-xs-12 col-sm-6 col-md-4">';
 		$plan_content .= '<article class="lsx-slot lsx-hp-shadow">';
@@ -43,8 +42,8 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 		$linked_product  = false;
 		$restricted      = false;
 		$product         = null;
-		if ( \lsx_health_plan\functions\woocommerce\plan_has_products($post) ) {
-			$products       = \lsx_health_plan\functions\woocommerce\get_plan_products($post);
+		if ( \lsx_health_plan\functions\woocommerce\plan_has_products( $post ) ) {
+			$products       = \lsx_health_plan\functions\woocommerce\get_plan_products( $post );
 			$linked_product = wc_get_product( $products[0] );
 			$product        = $linked_product;
 		}
@@ -56,7 +55,7 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 		if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 			$plan_content .= $featured_image;
 		} else {
-			$plan_content .= '<img loading="lazy"  class="placeholder" src="' . plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' . '">';
+			$plan_content .= '<img loading="lazy" class="placeholder" src="' . plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' . '">';
 		}
 		$plan_content .= '</a>';
 		$plan_content .= '</div>';
@@ -83,7 +82,7 @@ if ( ! empty( $tab_plans['posts'] ) ) {
 
 	}
 	$plan_content .= '</div></div>';
-	
+
 	$tab_plans['content'] = $plan_content;
 }
 if ( ! empty( $tab_plans['content'] ) ) {
