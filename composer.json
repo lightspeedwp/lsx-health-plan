@@ -1,0 +1,24 @@
+{
+    "name": "lightspeeddevelopment/lsx-health-plan",
+    "description": "LSX Health Plan plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions.",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=7.2",
+        "composer/installers": "^1.7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "wpackagist-plugin/tour-operator": "^1.4.1",
+        "wpackagist-theme/lsx": "^2.8.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1.0"
+    },
+    "repositories":[{
+        "type":"composer",
+        "url":"https://wpackagist.org"
+    }],
+    "license": "GPL-3.0-or-later",
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
