@@ -713,8 +713,6 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 #lsx-exercises-shortcode .btn-simple { display: none; }
 
-.equipment-terms a, .muscle-terms a, .muscle-field-item a, .equipment-field-item a { text-transform: capitalize; }
-
 .lsx-health-plan-modal .modal-header { display: none; }
 
 .lsx-health-plan-modal .modal-content { padding: 40px; }
@@ -769,8 +767,6 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-muscle-group .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table, .tax-equipment .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
 
-.post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-muscle-group .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a, .tax-equipment .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
-
 .post-type-archive-recipe .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-recipe-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-exercise .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-exercise-type .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-muscle-group .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after, .tax-equipment .archive-plan .row .col-md-4 .content-box.exercise-content-box .exercise-table a:after { content: none; }
 
 .post-type-archive-recipe .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-recipe-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .post-type-archive-exercise .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-exercise-type .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-muscle-group .archive-plan.exercise-archive-plan .lsx-slot .title-lined, .tax-equipment .archive-plan.exercise-archive-plan .lsx-slot .title-lined { margin-bottom: 10px; padding-bottom: 10px; }
@@ -798,8 +794,6 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 .post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-content-box .btn { width: 100%; }
 
 .post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-content-box .btn:after { content: '\f105'; font-family: FontAwesome; margin-left: 2rem; color: #418ad0; }
-
-.tax-exercise-type .archive-header-wrapper .archive-header .archive-title, .tax-muscle-group .archive-header-wrapper .archive-header .archive-title, .tax-equipment .archive-header-wrapper .archive-header .archive-title { text-transform: capitalize; }
 
 .tax-exercise-type .archive-header-wrapper .archive-header p, .tax-muscle-group .archive-header-wrapper .archive-header p, .tax-equipment .archive-header-wrapper .archive-header p { display: none; }
 

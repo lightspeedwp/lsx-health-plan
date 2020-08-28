@@ -659,15 +659,6 @@
 	}
 }
 
-.equipment-terms,
-.muscle-terms,
-.muscle-field-item,
-.equipment-field-item {
-	a {
-		text-transform: capitalize;
-	}
-}
-
 .lsx-health-plan-modal {
 	.modal-header {
 		display: none;
@@ -811,7 +802,6 @@
 							font-size: 13px;
 							color: #919191;
 							a {
-								text-transform: capitalize;
 								&:after {
 									content: none;
 								}
@@ -915,9 +905,6 @@
 .tax-equipment {
 	.archive-header-wrapper {
 		.archive-header {
-			.archive-title {
-				text-transform: capitalize;
-			}
 			p {
 				display: none;
 			}
