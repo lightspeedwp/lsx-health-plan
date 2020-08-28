@@ -148,7 +148,7 @@ class Tip {
 				array(
 					'name'       => __( 'Tips', 'lsx-health-plan' ),
 					'id'         => $default_type . '_connected_tips',
-					'desc'       => __( 'Connect the tips that apply to this', 'lsx-health-plan' ) . $default_type,
+					'desc'       => __( 'Connect the tips that apply to this ', 'lsx-health-plan' ) . $default_type,
 					'type'       => 'post_search_ajax',
 					'limit'      => 15,
 					'sortable'   => true,

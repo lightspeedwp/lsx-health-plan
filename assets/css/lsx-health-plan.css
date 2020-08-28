@@ -241,6 +241,8 @@ body.single-plan #lsx-hp-related .lsx-related-posts.lsx-related-posts-title .col
 
 #hp-connected-members p { margin-right: 3rem; margin-bottom: 1rem; line-height: 6px; }
 
+@media (max-width: 992px) { #hp-connected-members p { margin-top: 3rem; } }
+
 #hp-connected-members p .lsx-team-roles { text-transform: uppercase; font-size: 13px; }
 
 #hp-connected-members p .lsx-team-name { font-size: 13px; }

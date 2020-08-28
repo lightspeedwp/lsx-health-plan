@@ -546,6 +546,9 @@
 		margin-right: 3rem;
 		margin-bottom: 1rem;
 		line-height: 6px;
+		@include media('<=tablet') {
+			margin-top: 3rem;
+		}
 		.lsx-team-roles {
 			text-transform: uppercase;
 			font-size: 13px;
