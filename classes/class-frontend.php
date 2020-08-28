@@ -54,6 +54,8 @@ class Frontend {
 
 		add_action( 'init', array( $this, 'handle_day_action' ), 100 );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wpkses_post_tags' ), 100, 2 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 99, 1 );
 	}
 
 	/**
@@ -199,5 +201,20 @@ class Frontend {
 			);
 		}
 		return $tags;
+	}
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_tax() ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name;
+			}
+		}
+		return $title;
 	}
 }
