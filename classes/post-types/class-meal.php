@@ -40,6 +40,8 @@ class Meal {
 		// Template Redirects.
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
 	/**
@@ -154,6 +156,19 @@ class Meal {
 		$connections['meal']['connected_plans'] = 'connected_meals';
 		$connections['plan']['connected_meals'] = 'connected_plans';
 		return $connections;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type meal.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'meal' ) ) {
+			$title = __( 'Meals', 'lsx-health-plan' );
+		}
+		return $title;
 	}
 
 	/**
