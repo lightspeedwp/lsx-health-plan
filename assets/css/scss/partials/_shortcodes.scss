@@ -340,6 +340,13 @@
 				grid-template-columns: 1fr 1fr 1fr;
 			}
 		}
+		.has-content-none {
+			.exercise-content-box {
+				.title-lined {
+					border-bottom: none;
+				}
+			}
+		}
 		.lsx-slot {
 			.exercise-feature-img {
 				img {

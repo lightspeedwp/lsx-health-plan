@@ -1329,7 +1329,6 @@ article.type-workout {
 			}
 		}
 	}
-
 	.lsx-hp-archive-description {
 		margin-left: auto;
 		margin-right: auto;
@@ -1346,7 +1345,14 @@ article.type-workout {
 			}
 		}
 	}
-
+	a.border-btn {
+		&:after {
+			content: '\f105';
+			font-family: FontAwesome;
+			margin-left: 2rem;
+			color: $blue;
+		}
+	}
 	&.lsx-search-enabled {
 		.archive-plan {
 			.content-box {
@@ -1356,20 +1362,10 @@ article.type-workout {
 	}
 }
 
-.post-type-archive-exercise {
-	.archive-plan {
-		.row {
-			.lsx-slot {
-				.title-lined {
-					border: none;
-				}
-			}
-		}
-	}
-}
-
 #lsx-exercises-shortcode,
-.post-type-archive-recipe {
+.post-type-archive-recipe,
+.tax-recipe-type,
+.tax-recipe-cuisine {
 	.lsx-slot {
 		position: relative;
 	}

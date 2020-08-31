@@ -168,6 +168,8 @@ body.single #lsx-tips-shortcode { margin-bottom: 2rem; }
 
 @media (min-width: 992px) { #lsx-exercises-shortcode .lsx-exercises-shortcode.layout-grid { display: -ms-grid; display: grid; column-gap: 1rem; row-gap: 1rem; -ms-grid-columns: 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; } }
 
+#lsx-exercises-shortcode .lsx-exercises-shortcode .has-content-none .exercise-content-box .title-lined { border-bottom: none; }
+
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-feature-img img { width: 100%; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-slot .exercise-content-box .title-lined { margin-bottom: 10px; }
@@ -1164,53 +1166,53 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-recipe .lsx-hp-archive-description .description-wrapper p, .tax-recipe-type .lsx-hp-archive-description .description-wrapper p, .tax-recipe-cuisine .lsx-hp-archive-description .description-wrapper p, .post-type-archive-exercise .lsx-hp-archive-description .description-wrapper p, .tax-exercise-type .lsx-hp-archive-description .description-wrapper p, .tax-muscle-group .lsx-hp-archive-description .description-wrapper p, .tax-equipment .lsx-hp-archive-description .description-wrapper p { margin-bottom: 0px; }
 
+.post-type-archive-recipe a.border-btn:after, .tax-recipe-type a.border-btn:after, .tax-recipe-cuisine a.border-btn:after, .post-type-archive-exercise a.border-btn:after, .tax-exercise-type a.border-btn:after, .tax-muscle-group a.border-btn:after, .tax-equipment a.border-btn:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
+
 .post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box, .tax-recipe-type.lsx-search-enabled .archive-plan .content-box, .tax-recipe-cuisine.lsx-search-enabled .archive-plan .content-box, .post-type-archive-exercise.lsx-search-enabled .archive-plan .content-box, .tax-exercise-type.lsx-search-enabled .archive-plan .content-box, .tax-muscle-group.lsx-search-enabled .archive-plan .content-box, .tax-equipment.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
 
-.post-type-archive-exercise .archive-plan .row .lsx-slot .title-lined { border: none; }
+#lsx-exercises-shortcode .lsx-slot, .post-type-archive-recipe .lsx-slot, .tax-recipe-type .lsx-slot, .tax-recipe-cuisine .lsx-slot { position: relative; }
 
-#lsx-exercises-shortcode .lsx-slot, .post-type-archive-recipe .lsx-slot { position: relative; }
+#lsx-exercises-shortcode .recipe-type, .post-type-archive-recipe .recipe-type, .tax-recipe-type .recipe-type, .tax-recipe-cuisine .recipe-type { position: absolute; left: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
 
-#lsx-exercises-shortcode .recipe-type, .post-type-archive-recipe .recipe-type { position: absolute; left: 10px; top: 15px; font-size: 13px; background: white; padding: 5px 10px; font-weight: bold; border-radius: 1px; }
+#lsx-exercises-shortcode .recipe-type.recipe-parent, .post-type-archive-recipe .recipe-type.recipe-parent, .tax-recipe-type .recipe-type.recipe-parent, .tax-recipe-cuisine .recipe-type.recipe-parent { background: linear-gradient(-270deg, #418ad0 0%, #2a5781 100%); color: white; }
 
-#lsx-exercises-shortcode .recipe-type.recipe-parent, .post-type-archive-recipe .recipe-type.recipe-parent { background: linear-gradient(-270deg, #418ad0 0%, #2a5781 100%); color: white; }
+#lsx-exercises-shortcode .recipe-feature-img img, #lsx-exercises-shortcode .exercise-feature-img img, .post-type-archive-recipe .recipe-feature-img img, .post-type-archive-recipe .exercise-feature-img img, .tax-recipe-type .recipe-feature-img img, .tax-recipe-type .exercise-feature-img img, .tax-recipe-cuisine .recipe-feature-img img, .tax-recipe-cuisine .exercise-feature-img img { width: 100%; height: 250px; max-height: 250px; -o-object-fit: cover; object-fit: cover; }
 
-#lsx-exercises-shortcode .recipe-feature-img img, #lsx-exercises-shortcode .exercise-feature-img img, .post-type-archive-recipe .recipe-feature-img img, .post-type-archive-recipe .exercise-feature-img img { width: 100%; height: 250px; max-height: 250px; -o-object-fit: cover; object-fit: cover; }
+#lsx-exercises-shortcode .content-box, .post-type-archive-recipe .content-box, .tax-recipe-type .content-box, .tax-recipe-cuisine .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
 
-#lsx-exercises-shortcode .content-box, .post-type-archive-recipe .content-box { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 15px 0; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table), .post-type-archive-recipe .content-box table:not(.exercise-table), .tax-recipe-type .content-box table:not(.exercise-table), .tax-recipe-cuisine .content-box table:not(.exercise-table) { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table), .post-type-archive-recipe .content-box table:not(.exercise-table) { -ms-flex-positive: 2; flex-grow: 2; display: -ms-flexbox; display: flex; margin-bottom: 10px; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tbody, .post-type-archive-recipe .content-box table:not(.exercise-table) tbody, .tax-recipe-type .content-box table:not(.exercise-table) tbody, .tax-recipe-cuisine .content-box table:not(.exercise-table) tbody { display: -ms-flexbox; display: flex; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tbody, .post-type-archive-recipe .content-box table:not(.exercise-table) tbody { display: -ms-flexbox; display: flex; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) td, #lsx-exercises-shortcode .content-box table:not(.exercise-table) th, .post-type-archive-recipe .content-box table:not(.exercise-table) td, .post-type-archive-recipe .content-box table:not(.exercise-table) th, .tax-recipe-type .content-box table:not(.exercise-table) td, .tax-recipe-type .content-box table:not(.exercise-table) th, .tax-recipe-cuisine .content-box table:not(.exercise-table) td, .tax-recipe-cuisine .content-box table:not(.exercise-table) th { vertical-align: top; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) td, #lsx-exercises-shortcode .content-box table:not(.exercise-table) th, .post-type-archive-recipe .content-box table:not(.exercise-table) td, .post-type-archive-recipe .content-box table:not(.exercise-table) th { vertical-align: top; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr, .post-type-archive-recipe .content-box table:not(.exercise-table) tr, .tax-recipe-type .content-box table:not(.exercise-table) tr, .tax-recipe-cuisine .content-box table:not(.exercise-table) tr { display: -ms-flexbox; display: flex; margin-left: 10px; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr, .post-type-archive-recipe .content-box table:not(.exercise-table) tr { display: -ms-flexbox; display: flex; margin-left: 10px; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr:before, .post-type-archive-recipe .content-box table:not(.exercise-table) tr:before, .tax-recipe-type .content-box table:not(.exercise-table) tr:before, .tax-recipe-cuisine .content-box table:not(.exercise-table) tr:before { font-family: FontAwesome; margin-left: 5px; color: #418ad0; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr:before, .post-type-archive-recipe .content-box table:not(.exercise-table) tr:before { font-family: FontAwesome; margin-left: 5px; color: #418ad0; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr td:first-child, .post-type-archive-recipe .content-box table:not(.exercise-table) tr td:first-child, .tax-recipe-type .content-box table:not(.exercise-table) tr td:first-child, .tax-recipe-cuisine .content-box table:not(.exercise-table) tr td:first-child { display: none; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) tr td:first-child, .post-type-archive-recipe .content-box table:not(.exercise-table) tr td:first-child { display: none; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .serves:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .serves:before, .tax-recipe-type .content-box table:not(.exercise-table) .serves:before, .tax-recipe-cuisine .content-box table:not(.exercise-table) .serves:before { content: '\f0f5'; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .serves:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .serves:before { content: '\f0f5'; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .prep-time:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .prep-time:before, .tax-recipe-type .content-box table:not(.exercise-table) .prep-time:before, .tax-recipe-cuisine .content-box table:not(.exercise-table) .prep-time:before { content: '\f017'; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .prep-time:before, .post-type-archive-recipe .content-box table:not(.exercise-table) .prep-time:before { content: '\f017'; }
+#lsx-exercises-shortcode .content-box table:not(.exercise-table) .cooking-time, #lsx-exercises-shortcode .content-box table:not(.exercise-table) .portion-size, .post-type-archive-recipe .content-box table:not(.exercise-table) .cooking-time, .post-type-archive-recipe .content-box table:not(.exercise-table) .portion-size, .tax-recipe-type .content-box table:not(.exercise-table) .cooking-time, .tax-recipe-type .content-box table:not(.exercise-table) .portion-size, .tax-recipe-cuisine .content-box table:not(.exercise-table) .cooking-time, .tax-recipe-cuisine .content-box table:not(.exercise-table) .portion-size { display: none; }
 
-#lsx-exercises-shortcode .content-box table:not(.exercise-table) .cooking-time, #lsx-exercises-shortcode .content-box table:not(.exercise-table) .portion-size, .post-type-archive-recipe .content-box table:not(.exercise-table) .cooking-time, .post-type-archive-recipe .content-box table:not(.exercise-table) .portion-size { display: none; }
+#lsx-exercises-shortcode .content-box .recipe-title-link, .post-type-archive-recipe .content-box .recipe-title-link, .tax-recipe-type .content-box .recipe-title-link, .tax-recipe-cuisine .content-box .recipe-title-link { margin: 0; }
 
-#lsx-exercises-shortcode .content-box .recipe-title-link, .post-type-archive-recipe .content-box .recipe-title-link { margin: 0; }
+#lsx-exercises-shortcode .content-box .recipe-title-link::after, .post-type-archive-recipe .content-box .recipe-title-link::after, .tax-recipe-type .content-box .recipe-title-link::after, .tax-recipe-cuisine .content-box .recipe-title-link::after { content: none; }
 
-#lsx-exercises-shortcode .content-box .recipe-title-link::after, .post-type-archive-recipe .content-box .recipe-title-link::after { content: none; }
+#lsx-exercises-shortcode .content-box .recipe-title, #lsx-exercises-shortcode .content-box .exercise-title, .post-type-archive-recipe .content-box .recipe-title, .post-type-archive-recipe .content-box .exercise-title, .tax-recipe-type .content-box .recipe-title, .tax-recipe-type .content-box .exercise-title, .tax-recipe-cuisine .content-box .recipe-title, .tax-recipe-cuisine .content-box .exercise-title { margin-bottom: 15px; }
 
-#lsx-exercises-shortcode .content-box .recipe-title, #lsx-exercises-shortcode .content-box .exercise-title, .post-type-archive-recipe .content-box .recipe-title, .post-type-archive-recipe .content-box .exercise-title { margin-bottom: 15px; }
+#lsx-exercises-shortcode .content-box a, .post-type-archive-recipe .content-box a, .tax-recipe-type .content-box a, .tax-recipe-cuisine .content-box a { margin-bottom: 15px; }
 
-#lsx-exercises-shortcode .content-box a, .post-type-archive-recipe .content-box a { margin-bottom: 15px; }
+#lsx-exercises-shortcode .content-box a:after, .post-type-archive-recipe .content-box a:after, .tax-recipe-type .content-box a:after, .tax-recipe-cuisine .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
 
-#lsx-exercises-shortcode .content-box a:after, .post-type-archive-recipe .content-box a:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table, .tax-recipe-type .content-box.exercise-content-box .exercise-table, .tax-recipe-cuisine .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
 
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table { font-size: 13px; color: #919191; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a, .tax-recipe-type .content-box.exercise-content-box .exercise-table a, .tax-recipe-cuisine .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
 
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a { text-transform: capitalize; }
-
-#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a:after { content: none; }
+#lsx-exercises-shortcode .content-box.exercise-content-box .exercise-table a:after, .post-type-archive-recipe .content-box.exercise-content-box .exercise-table a:after, .tax-recipe-type .content-box.exercise-content-box .exercise-table a:after, .tax-recipe-cuisine .content-box.exercise-content-box .exercise-table a:after { content: none; }
 
 .post-type-archive-workout .archive-plan .row .col-md-3 .lsx-slot .workout-feature-img img { width: 100%; }
 
