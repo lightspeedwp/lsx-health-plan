@@ -44,7 +44,9 @@ class Recipe {
 		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 
 		// Frontend Actions and Filters.
-		add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
+		add_action( 'wp_head', array( $this, 'remove_archive_original_header' ), 99 );
+		add_action( 'lsx_content_wrap_before', array( $this, 'hp_lsx_archive_header' ) );
+
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
@@ -231,6 +233,38 @@ class Recipe {
 			}
 		}
 		return $title;
+	}
+
+	public function remove_archive_original_header() {
+		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
+			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
+		}
+		if ( ! is_post_type_archive() ) {
+			add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
+		}
+	}
+
+	public function hp_lsx_archive_header() {
+		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
+		?>
+			<div class="archive-header-wrapper banner-archive col-<?php echo esc_attr( $size ); ?>-12">
+				<?php lsx_global_header_inner_bottom(); ?>
+				<header class="archive-header">
+					<h1 class="archive-title">
+						<?php if ( has_post_format() && ! is_category() && ! is_tag() && ! is_date() && ! is_tax( 'post_format' ) ) { ?>
+							<?php the_archive_title( esc_html__( 'Type:', 'lsx' ) ); ?>
+						<?php } else { ?>
+							<?php echo wp_kses_post( apply_filters( 'lsx_global_header_title', get_the_archive_title() ) ); ?>
+						<?php } ?>
+					</h1>
+
+					<?php
+					lsx_health_plan_recipe_archive_description();
+					?>
+				</header>
+			</div>
+		<?php
+		}
 	}
 
 	/**

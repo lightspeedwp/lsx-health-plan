@@ -814,7 +814,7 @@ function lsx_health_plan_recipe_archive_description() {
 	if ( '' !== $description ) {
 		?>
 		<div class="lsx-hp-archive-description row">
-			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( $description ); ?></div>
+			<div class="col-xs-12 description-wrapper"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
 		</div>
 		<?php
 	}

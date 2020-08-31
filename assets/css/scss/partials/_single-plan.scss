@@ -1294,6 +1294,17 @@ article.type-workout {
 .tax-exercise-type,
 .tax-muscle-group,
 .tax-equipment {
+	.archive-header-wrapper {
+		.archive-header {
+			.lsx-hp-archive-description {
+				color: white;
+				font-size: 18px;
+				.description-wrapper {
+					margin-top: 5px;
+				}
+			}
+		}
+	}
 	.archive-plan {
 		&.exercise-archive-plan {
 			.lsx-slot {
