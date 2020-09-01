@@ -43,9 +43,6 @@
 						<li><strong><a href="<?php echo wp_kses_post( $lsx_hp_recipes ); ?>" target="_blank"><?php esc_html_e( 'Types', 'lsx-health-plan' ); ?></a></strong> <?php esc_html_e( '(Recipes Taxonomy)', 'lsx-health-plan' ); ?></li>
 						<li><strong><a href="<?php echo wp_kses_post( $lsx_hp_recipes ); ?>" target="_blank"><?php esc_html_e( 'Cuisines', 'lsx-health-plan' ); ?></a></strong> <?php esc_html_e( '(Recipes Taxonomy)', 'lsx-health-plan' ); ?></li>
 						<li><strong><a href="<?php echo wp_kses_post( $lsx_hp_shortcodes ); ?>" target="_blank"><?php esc_html_e( 'Shortcodes:', 'lsx-health-plan' ); ?></a></strong> <?php esc_html_e( 'Insert content blocks for any content type.', 'lsx-health-plan' ); ?></li>
-						<li><strong><a href="<?php echo wp_kses_post( $lsx_hp_features ); ?>" target="_blank"><?php esc_html_e( 'Using stylesheets and page templates:', 'lsx-health-plan' ); ?></a></strong> <?php esc_html_e( 'Insert content blocks for any content type.', 'lsx-health-plan' ); ?></li>
-
-
 					</ul>
 				</div>
 			</div>
