@@ -119,6 +119,12 @@
 				display: flex;
 			}
 			.recipe-table {
+				width: 50%;
+				&:first-child {
+					&:last-child {
+						width: 100%;
+					}
+				}
 				&:only-child {
 					tbody {
 						tr {

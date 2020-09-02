@@ -973,6 +973,9 @@ article.type-workout {
 		}
 		.excerpt {
 			margin-top: 10px;
+			.moretag {
+				display: none;
+			}
 		}
 		.btn {
 			width: 100%;
