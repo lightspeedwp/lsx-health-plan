@@ -53,8 +53,8 @@ if ( ! empty( $groups ) ) {
 				if ( ! $connected_exercise ) {
 					$group['connected_exercises'] = '';
 				}
-
-				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && '' !== $group['alt_title'] && isset( $group['alt_title'] ) ) ) {
+				$alt_title_value = $group['alt_title'] ?? '';
+				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && $alt_title_value ) ) {
 
 					$alt_title = '';
 					if ( isset( $group['alt_title'] ) && '' !== $group['alt_title'] ) {

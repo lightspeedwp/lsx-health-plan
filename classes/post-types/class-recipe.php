@@ -247,7 +247,7 @@ class Recipe {
 	public function hp_lsx_archive_header() {
 		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
 		?>
-			<div class="archive-header-wrapper banner-archive col-<?php echo esc_attr( $size ); ?>-12">
+			<div class="archive-header-wrapper banner-archive">
 				<?php lsx_global_header_inner_bottom(); ?>
 				<header class="archive-header">
 					<h1 class="archive-title">

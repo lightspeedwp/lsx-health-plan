@@ -395,6 +395,7 @@ function hp_excerpt( $post_id ) {
  * @return void
  */
 function column_class( $columns = '3' ) {
+	$cols  = '';
 	$cols .= '5' === $columns ? '15' : 12 / $columns;
 	return $cols;
 }
