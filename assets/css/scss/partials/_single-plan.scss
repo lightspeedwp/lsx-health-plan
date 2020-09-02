@@ -33,6 +33,7 @@
 
 #single-plan-nav {
 	margin-bottom: 15px;
+	clear: both;
 	.nav.nav-pills {
 		@media (max-width: 600px) {
 			width: 100vw;
@@ -1364,6 +1365,144 @@ article.type-workout {
 		.archive-plan {
 			.content-box {
 				margin: 0px 0 30px;
+			}
+		}
+	}
+}
+
+#lsx-exercises-shortcode.shortcode-type-meal {
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		width: 100%;
+		max-width: 80%;
+	}
+	.meals {
+		.set-box {
+			background: white;
+			padding: 0px 8px 0 8px;
+			margin-bottom: 0;
+			@include media('>=tablet') {
+				padding: 30px 20px 0 20px;
+				display: flex;
+				align-items: end;
+				justify-content: space-between;
+			}
+			.the-content {
+				@include media('>=tablet') {
+					padding-right: 4rem;
+				}
+				#hp-connected-members {
+					padding: 0;
+				}
+			}
+			#lsx-tips-shortcode {
+				margin-top: 0;
+				width: 100%;
+				@include media('>=tablet') {
+					max-width: 345px;
+				}
+			}
+		}
+		.eating-row {
+			padding: 2rem 1rem 3rem;
+			margin: 0;
+			.eating-column {
+				border-right: 3px solid rgba(65, 138, 208, 0.1);
+				&:last-child {
+					border: none;
+				}
+				.content-box {
+					background: transparent;
+					padding-top: 0;
+					padding-bottom: 0;
+					.eating-title {
+						margin-bottom: 10px;
+					}
+				}
+				.recipes {
+					margin: 0 15px;
+					.row.eating-row {
+						padding: 0;
+					}
+					.recipe-column {
+						background: white;
+					}
+					tr {
+						display: flex;
+						&:before {
+							font-family: FontAwesome;
+							margin-right: 5px;
+							color: $blue;
+							font-size: 12px;
+						}
+					}
+					.serves {
+						&:before {
+							content: '\f0f5';
+						}
+					}
+					.prep-time {
+						&:before {
+							content: '\f017';
+						}
+					}
+					.cooking-time,
+					.portion-size {
+						display: none;
+					}
+				}
+				.recipes {
+					.eating-row {
+						padding: 0 2rem 3rem;
+					}
+					.recipe-column {
+						.recipe-feature-img {
+							width: 100px;
+							min-width: 100px;
+						}
+						.recipe-box {
+							display: flex;
+							margin-bottom: 2rem;
+							.recipe-content {
+								padding: 12px 15px;
+							}
+						}
+						.recipe-title {
+							font-size: 16px;
+							line-height: 19px;
+							margin-bottom: 10px;
+						}
+						.recipe-table {
+							width: 100%;
+							margin-bottom: 0;
+							table-layout: fixed;
+							tbody {
+								display: flex;
+							}
+							tr {
+								margin-right: 10px;
+								td {
+									color: #919191;
+									font-size: 13px;
+									&:first-child {
+										display: none;
+									}
+								}
+								&.cooking-time,
+								&.portion-size {
+									display: none;
+								}
+							}
+						}
+						.btn {
+							margin-bottom: 25px;
+						}
+					}
+				}
+			}
+		}
+		.set-box.entry-content {
+			+ .eating-row {
+				margin: 3rem 0 0 0;
 			}
 		}
 	}

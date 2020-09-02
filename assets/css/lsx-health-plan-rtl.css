@@ -686,7 +686,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).conten
 
 .plan-template-default #main.parent-plan > .post-wrapper > .plan { clear: both; }
 
-#single-plan-nav { margin-bottom: 15px; }
+#single-plan-nav { margin-bottom: 15px; clear: both; }
 
 @media (max-width: 600px) { #single-plan-nav .nav.nav-pills { width: 100vw; margin-right: -15px; margin-top: -55px; height: 100%; display: -ms-flexbox; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -ms-scroll-snap-type: x mandatory; scroll-snap-type: x mandatory; scroll-behavior: smooth; box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4); }
   #single-plan-nav .nav.nav-pills::-webkit-scrollbar { width: 1px; height: 5px; background-color: #ffffff; }
@@ -1173,6 +1173,72 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 .post-type-archive-recipe a.border-btn:after, .tax-recipe-type a.border-btn:after, .tax-recipe-cuisine a.border-btn:after, .post-type-archive-exercise a.border-btn:after, .tax-exercise-type a.border-btn:after, .tax-muscle-group a.border-btn:after, .tax-equipment a.border-btn:after { content: '\f105'; font-family: FontAwesome; margin-right: 2rem; color: #418ad0; }
 
 .post-type-archive-recipe.lsx-search-enabled .archive-plan .content-box, .tax-recipe-type.lsx-search-enabled .archive-plan .content-box, .tax-recipe-cuisine.lsx-search-enabled .archive-plan .content-box, .post-type-archive-exercise.lsx-search-enabled .archive-plan .content-box, .tax-exercise-type.lsx-search-enabled .archive-plan .content-box, .tax-muscle-group.lsx-search-enabled .archive-plan .content-box, .tax-equipment.lsx-search-enabled .archive-plan .content-box { margin: 0px 0 30px; }
+
+.gutenberg-compatible-template.using-gutenberg .entry-content #lsx-exercises-shortcode.shortcode-type-meal { width: 100%; max-width: 80%; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .set-box { background: white; padding: 0px 8px 0 8px; margin-bottom: 0; }
+
+@media (min-width: 992px) { #lsx-exercises-shortcode.shortcode-type-meal .meals .set-box { padding: 30px 20px 0 20px; display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: end; -ms-flex-pack: justify; justify-content: space-between; } }
+
+@media (min-width: 992px) { #lsx-exercises-shortcode.shortcode-type-meal .meals .set-box .the-content { padding-left: 4rem; } }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .set-box .the-content #hp-connected-members { padding: 0; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .set-box #lsx-tips-shortcode { margin-top: 0; width: 100%; }
+
+@media (min-width: 992px) { #lsx-exercises-shortcode.shortcode-type-meal .meals .set-box #lsx-tips-shortcode { max-width: 345px; } }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row { padding: 2rem 1rem 3rem; margin: 0; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column { border-left: 3px solid rgba(65, 138, 208, 0.1); }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column:last-child { border: none; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .content-box { background: transparent; padding-top: 0; padding-bottom: 0; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .content-box .eating-title { margin-bottom: 10px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes { margin: 0 15px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .row.eating-row { padding: 0; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column { background: white; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes tr { display: -ms-flexbox; display: flex; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes tr:before { font-family: FontAwesome; margin-left: 5px; color: #418ad0; font-size: 12px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .serves:before { content: '\f0f5'; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .prep-time:before { content: '\f017'; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .cooking-time, #lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .portion-size { display: none; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .eating-row { padding: 0 2rem 3rem; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-feature-img { width: 100px; min-width: 100px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-box { display: -ms-flexbox; display: flex; margin-bottom: 2rem; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-box .recipe-content { padding: 12px 15px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-title { font-size: 16px; line-height: 19px; margin-bottom: 10px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table { width: 100%; margin-bottom: 0; table-layout: fixed; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tbody { display: -ms-flexbox; display: flex; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tr { margin-left: 10px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tr td { color: #919191; font-size: 13px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tr td:first-child { display: none; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tr.cooking-time, #lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .recipe-table tr.portion-size { display: none; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .eating-row .eating-column .recipes .recipe-column .btn { margin-bottom: 25px; }
+
+#lsx-exercises-shortcode.shortcode-type-meal .meals .set-box.entry-content + .eating-row { margin: 3rem 0 0 0; }
 
 .post-type-archive-recipe .lsx-slot, .post-type-archive-exercise .lsx-slot, .tax-recipe-type .lsx-slot, .tax-recipe-cuisine .lsx-slot, #lsx-exercises-shortcode.shortcode-type-recipe .lsx-slot { position: relative; }
 
