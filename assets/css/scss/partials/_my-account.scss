@@ -308,7 +308,8 @@ body:not(.woocommerce-edit-account) {
 							font-size: 13px;
 						}
 					}
-					.hp-plan-price {
+					.hp-plan-price,
+					.amount {
 						color: #30bb00;
 						font-size: 18px;
 						margin-top: 9px;
@@ -316,6 +317,9 @@ body:not(.woocommerce-edit-account) {
 					}
 					.excerpt {
 						margin-top: 10px;
+					}
+					.moretag {
+						display: none;
 					}
 				}
 			}
