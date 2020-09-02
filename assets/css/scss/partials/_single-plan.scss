@@ -1161,6 +1161,13 @@ article.type-workout {
 			}
 		}
 	}
+	&:not(.logged-in) {
+		.single-plan-inner {
+			> .plan {
+				opacity: 0.3;
+			}
+		}
+	}
 }
 
 .single-plan {
@@ -1362,7 +1369,6 @@ article.type-workout {
 	}
 }
 
-#lsx-exercises-shortcode,
 .post-type-archive-recipe,
 .tax-recipe-type,
 .tax-recipe-cuisine {
@@ -1450,11 +1456,13 @@ article.type-workout {
 		}
 		a {
 			margin-bottom: 15px;
-			&:after {
-				content: '\f105';
-				font-family: FontAwesome;
-				margin-left: 2rem;
-				color: $blue;
+			&.btn {
+				&:after {
+					content: '\f105';
+					font-family: FontAwesome;
+					margin-left: 5px;
+					color: $blue;
+				}
 			}
 		}
 		&.exercise-content-box {
@@ -1466,6 +1474,15 @@ article.type-workout {
 					&:after {
 						content: none;
 					}
+				}
+			}
+		}
+	}
+	.col-md-3 {
+		.content-box {
+			table:not(.exercise-table) {
+				tbody {
+					display: block;
 				}
 			}
 		}
