@@ -148,7 +148,7 @@ class General {
 	 * @return void
 	 */
 	public function remove_single_footer() {
-		if ( is_single() && is_singular( array( 'exercise', 'recipe', 'workout', 'meal' ) ) ) {
+		if ( ( is_single() && is_singular( array( 'exercise', 'recipe', 'workout', 'meal' ) ) ) || ( is_archive() && is_post_type_archive( array( 'exercise', 'recipe', 'workout', 'meal' ) ) )) {
 			remove_action( 'lsx_footer_before', 'lsx_add_footer_sidebar_area' );
 		}
 	}

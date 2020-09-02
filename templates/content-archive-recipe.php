@@ -47,7 +47,7 @@ if ( null !== $shortcode_args ) {
 			<a class="recipe-title-link" href="<?php echo esc_url( get_permalink() ); ?>">
 				<?php the_title( '<h3 class="recipe-title">', '</h3>' ); ?>
 			</a>
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
+			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'See Recipe', 'lsx-health-plan' ); ?></a>
 		</div>
 		<?php lsx_entry_bottom(); ?>
 	</article>

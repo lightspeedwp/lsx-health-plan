@@ -12,6 +12,8 @@ table, .table { width: 100%; table-layout: fixed; }
 @media (max-width: 600px) { .reverse-mobile { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; }
   .reverse-mobile .col-md-6:last-child { margin-bottom: 2em; } }
 
+body:not(.search-no-results) .lsx-search-title.lsx-search-title-results .clear-facets { margin-left: 6px; }
+
 .lsx-hp-shadow, .my-profile-block .profile-details { box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
 
 @media (min-width: 992px) { #main .lsx-sharing-content > p { margin-bottom: 0; } }
@@ -21,6 +23,8 @@ table, .table { width: 100%; table-layout: fixed; }
 #main .lsx-sharing-content .lsx-sharing-label:before { content: none; }
 
 .breadcrumbs-container a { text-transform: capitalize; }
+
+.lsx-pagination > .page-numbers:not(.dots) + .page-numbers:not(.dots):hover { color: white; }
 
 @media (min-width: 600px) { .shopping-list-container { column-count: 2; column-gap: 4em; width: 100%; height: 100%; } }
 
@@ -659,6 +663,8 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 #__wp-uploader-id-2 button.button { box-shadow: none; min-height: initial; color: #0071a1; border: 1px solid #0071a1; background: #f3f5f6; vertical-align: top; text-transform: initial; font-weight: 400; font-size: 13px; padding: 0 10px; height: 30px; line-height: inherit; }
 
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
+
+.single .content-area { margin-top: 4.25rem; }
 
 .plan-template-default.parent-plan-page { background-color: white; }
 

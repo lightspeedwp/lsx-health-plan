@@ -34,6 +34,13 @@ table,
 		}
 	}
 }
+body:not(.search-no-results) {
+	.lsx-search-title.lsx-search-title-results {
+		.clear-facets {
+			margin-left: 6px;
+		}
+	}
+}
 
 .lsx-hp-shadow {
 	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
@@ -61,6 +68,20 @@ table,
 .breadcrumbs-container {
 	a {
 		text-transform: capitalize;
+	}
+}
+
+.lsx-pagination {
+	> .page-numbers {
+		&:not(.dots) {
+			+ .page-numbers {
+				&:not(.dots) {
+					&:hover {
+						color: white;
+					}
+				}
+			}
+		}
 	}
 }
 

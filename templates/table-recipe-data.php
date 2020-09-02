@@ -28,7 +28,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		}
 		?>
 		<tr class="serves">
-			<td><?php esc_html_e( 'Serves:', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Serves:', 'lsx-health-plan' ); ?>&nbsp;</td>
 			<td>
 			<?php
 				echo wp_kses_post( $serves ) . ' ' . esc_html( $serves_label );
@@ -39,7 +39,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		if ( ! empty( $prep_time ) ) {
 		?>
 		<tr class="prep-time">
-		<td><?php esc_html_e( 'Prep time: ', 'lsx-health-plan' ); ?>&nbsp</td>
+		<td><?php esc_html_e( 'Prep time: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 			<td>
 			<?php
 				echo wp_kses_post( $prep_time );
@@ -53,7 +53,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		if ( ! empty( $cooking_time ) ) {
 		?>
 		<tr class="cooking-time">
-			<td><?php esc_html_e( 'Cooking time: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Cooking time: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 			<td>
 			<?php
 				echo wp_kses_post( $cooking_time );
@@ -67,7 +67,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 		if ( ! empty( $portion ) ) {
 		?>
 		<tr class="portion-size">
-			<td><?php esc_html_e( 'Portion size: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Portion size: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 			<td>
 			<?php
 				echo wp_kses_post( $portion );
@@ -92,7 +92,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			if ( ! empty( $energy ) ) {
 			?>
 			<tr class="energy">
-			<td><?php esc_html_e( 'Energy: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Energy: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $energy );
@@ -106,7 +106,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			if ( ! empty( $protein ) ) {
 			?>
 			<tr class="protein">
-			<td><?php esc_html_e( 'Protein: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Protein: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $protein );
@@ -120,7 +120,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			if ( ! empty( $carbohydrates ) ) {
 			?>
 			<tr class="carbohydrates">
-			<td><?php esc_html_e( 'Carbohydrates: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Carbohydrates: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $carbohydrates );
@@ -134,7 +134,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			if ( ! empty( $fibre ) ) {
 			?>
 			<tr class="fibre">
-			<td><?php esc_html_e( 'Fibre: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Fibre: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $fibre );
@@ -148,7 +148,7 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 			if ( ! empty( $fat ) ) {
 			?>
 			<tr class="fat">
-			<td><?php esc_html_e( 'Fat: ', 'lsx-health-plan' ); ?>&nbsp</td>
+			<td><?php esc_html_e( 'Fat: ', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $fat );
