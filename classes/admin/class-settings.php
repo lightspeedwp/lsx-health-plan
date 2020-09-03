@@ -376,13 +376,24 @@ class Settings {
 	 * @return void
 	 */
 	public function global_downloads( $cmb ) {
+		if ( ! function_exists( 'download_monitor' ) ) {
+			return;
+		}
+		$page_url    = 'https://wordpress.org/plugins/download-monitor/';
+		$plugin_name = 'Download Monitor';
+		$description = sprintf(
+			/* translators: %s: The subscription info */
+			__( 'If you are using <a target="_blank" href="%1$s">%2$s</a> you can set a default download file for your plan here.', 'lsx-search' ),
+			$page_url,
+			$plugin_name
+		);
 		$cmb->add_field(
 			array(
 				'id'          => 'global_downloads_title',
 				'type'        => 'title',
 				'name'        => __( 'Global Downloads', 'lsx-health-plan' ),
 				'default'     => __( 'Global Downloads', 'lsx-health-plan' ),
-				'description' => __( 'If you have not connected a specific download file to your plans, set a default option below', 'lsx-health-plan' ),
+				'description' => $description,
 			)
 		);
 
