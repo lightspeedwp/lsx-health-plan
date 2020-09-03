@@ -287,20 +287,40 @@ class Recipe {
 	 * @return array
 	 */
 	public function recipes_breadcrumb_filter( $crumbs ) {
-		if ( is_tax( 'recipe-type' ) ) {
-			$text = $this->labels['singular_name'];
-			$url  = get_post_type_archive_link( 'recipe' );
-			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-				$crumbs[1] = array(
-					0 => $text,
-					1 => $url,
-				);
-			} else {
-				$crumbs[1] = array(
-					'text' => $text,
-					'url'  => $url,
-				);
-			}
+		$recipe  = \lsx_health_plan\functions\get_option( 'endpoint_recipe', 'recipe' );
+		$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipe_archive', 'recipes' );
+		$url     = get_post_type_archive_link( 'recipe' );
+
+		if ( is_singular( 'recipe' ) ) {
+			$recipe_name     = get_the_title();
+			$term_obj_list   = get_the_terms( get_the_ID(), 'recipe-type' );
+			$recipe_type     = $term_obj_list[0]->name;
+			$recipe_type_url = get_term_link( $term_obj_list[0]->term_id );
+		
+			$crumbs[1] = array(
+				0 => $recipes,
+				1 => $url,
+			);
+			$crumbs[2] = array(
+				0 => $recipe_type,
+				1 => $recipe_type_url,
+			);
+			$crumbs[3] = array(
+				0 => $recipe_name,
+			);
+		}
+		if ( is_tax( 'recipe-type' ) || is_tax( 'recipe-cuisine' ) ) {
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
+
+			$single_term_title = str_replace( '-', ' ', $term->taxonomy ) . ': ' . $term->name;
+
+			$crumbs[1] = array(
+				0 => $recipes,
+				1 => $url,
+			);
+			$crumbs[2] = array(
+				0 => $single_term_title,
+			);
 		}
 		return $crumbs;
 	}

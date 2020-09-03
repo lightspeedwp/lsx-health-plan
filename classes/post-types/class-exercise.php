@@ -48,6 +48,9 @@ class Exercise {
 			add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 
+			//Breadcrumbs
+			add_filter( 'woocommerce_get_breadcrumb', array( $this, 'exercise_breadcrumb_filter' ), 30, 1 );
+
 		}
 
 	}
@@ -379,5 +382,50 @@ class Exercise {
 				'desc'    => __( 'Select which side this exercise uses. ', 'lsx-health-plan' ),
 			)
 		);
+	}
+
+	/**
+	 * Holds the array for the single exercise breadcrumbs.
+	 *
+	 * @var array $crumbs
+	 * @return array
+	 */
+	public function exercise_breadcrumb_filter( $crumbs ) {
+		$exercise  = \lsx_health_plan\functions\get_option( 'endpoint_exercise', 'exercise' );
+		$exercises = \lsx_health_plan\functions\get_option( 'endpoint_exercise_archive', 'exercise' );
+		$url       = get_post_type_archive_link( $exercise );
+
+		if ( is_singular( 'exercise' ) ) {
+			$exercise_name     = get_the_title();	
+			$term_obj_list     = get_the_terms( get_the_ID(), 'exercise-type' );
+			$exercise_type     = $term_obj_list[0]->name;
+			$exercise_type_url = get_term_link( $term_obj_list[0]->term_id );
+		
+			$crumbs[1] = array(
+				0 => $exercises,
+				1 => $url,
+			);
+			$crumbs[2] = array(
+				0 => $exercise_type,
+				1 => $exercise_type_url,
+			);
+			$crumbs[3] = array(
+				0 => $exercise_name,
+			);
+		}
+		if ( is_tax( 'exercise-type' ) || is_tax( 'muscle-group' ) || is_tax( 'equipment' ) ) {
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
+
+			$single_term_title = str_replace( '-', ' ', $term->taxonomy ) . ': ' . $term->name;
+
+			$crumbs[1] = array(
+				0 => $exercises,
+				1 => $url,
+			);
+			$crumbs[2] = array(
+				0 => $single_term_title,
+			);
+		}
+		return $crumbs;
 	}
 }

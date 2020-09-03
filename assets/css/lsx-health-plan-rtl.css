@@ -22,7 +22,7 @@ body:not(.search-no-results) .lsx-search-title.lsx-search-title-results .clear-f
 
 #main .lsx-sharing-content .lsx-sharing-label:before { content: none; }
 
-.breadcrumbs-container a { text-transform: capitalize; }
+.breadcrumbs-container * { text-transform: capitalize; }
 
 .lsx-pagination > .page-numbers:not(.dots) + .page-numbers:not(.dots):hover { color: white; }
 
