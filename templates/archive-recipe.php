@@ -51,6 +51,9 @@ get_header(); ?>
 			</main><!-- #main -->
 
 			<?php
+		} else {
+			wp_redirect( $redirect );
+			exit;
 		}
 		?>
 
