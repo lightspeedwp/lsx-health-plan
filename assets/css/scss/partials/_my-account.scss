@@ -93,7 +93,7 @@
 					@media (max-width: 600px) {
 						width: 100%;
 						height: 20px;
-						margin: 5px 0 0 0;
+						margin: 0 0 5px 0;
 					}
 				}
 				&.my-plan-tab {
@@ -198,6 +198,8 @@ body:not(.woocommerce-edit-account) {
 		}
 		@media (max-width: 600px) {
 			justify-content: end;
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 
@@ -236,7 +238,6 @@ body:not(.woocommerce-edit-account) {
 		flex-direction: column;
 		@media (max-width: 768px) {
 			min-width: auto;
-			max-width: 230px;
 		}
 		> div {
 			display: flex;
@@ -307,6 +308,9 @@ body:not(.woocommerce-edit-account) {
 							color: #919191;
 							font-size: 13px;
 						}
+						@include media('<=phone') {
+							margin-bottom: 2.4rem;
+						}
 					}
 					.hp-plan-price,
 					.amount {
@@ -317,6 +321,9 @@ body:not(.woocommerce-edit-account) {
 					}
 					.excerpt {
 						margin-top: 10px;
+						@include media('<=phone') {
+							display: none;
+						}
 					}
 					.moretag {
 						display: none;
@@ -455,7 +462,7 @@ body:not(.woocommerce-edit-account) {
 					content: '\f05d';
 					font-family: FontAwesome;
 					font-size: 70px;
-					color: #dcdcdc;
+					color: #f1f1f1;
 					font-weight: 300;
 				}
 			}

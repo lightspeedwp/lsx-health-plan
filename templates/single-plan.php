@@ -70,7 +70,7 @@ if ( false === $restricted ) {
 						<div class="entry-content">
 							<div class="single-plan-inner main-plan-content">
 								<div class="single-plan-section-title title-lined">
-									<?php lsx_get_svg_icon( 'meal.svg' ); ?>
+									<?php lsx_get_svg_icon( 'my-plan.svg' ); ?>
 									<h2><?php echo esc_html_e( 'Your Plan', 'lsx-health-plan' ); ?></h2>
 									<?php if ( class_exists( 'LSX_Sharing' ) ) {
 										lsx_content_sharing();

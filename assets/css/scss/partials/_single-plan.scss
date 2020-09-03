@@ -21,11 +21,11 @@
 			max-width: 1140px;
 			margin-left: auto;
 			margin-right: auto;
-			.plan-content {
-				@include media('>=phone') {
-					margin-bottom: 2.4rem;
-				}
-			}
+			// .plan-content {
+			// 	@include media('>=phone') {
+			// 		margin-bottom: 2.4rem;
+			// 	}
+			// }
 			> .post-wrapper {
 				> .plan {
 					clear: both;

@@ -337,7 +337,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 .content-area .plans-products-wrapper .plan-product .amount { color: #30bb00; font-size: 22px; font-weight: bold; padding: 1rem; display: block; }
 
-.post-type-archive-plan .woocommerce-notices-wrapper { margin-top: 4.25rem; }
+.post-type-archive-plan .woocommerce-notices-wrapper { margin-top: 4.25rem; padding-right: 5px; padding-left: 5px; }
 
 .post-type-archive-plan .woocommerce-notices-wrapper:empty { display: none; }
 
@@ -366,7 +366,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 #account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { content: ''; margin-right: 10px; background-size: contain; display: inline-block; width: 25px; height: 25px; background-repeat: no-repeat; background-position: center; font-family: FontAwesome; font-size: 15px; position: relative; color: #418ad0; opacity: 0.5; }
 
-@media (max-width: 600px) { #account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { width: 100%; height: 20px; margin: 5px 0 0 0; } }
+@media (max-width: 600px) { #account-nav .nav.nav-pills li a::after, #type-nav .nav.nav-pills li a::after { width: 100%; height: 20px; margin: 0 0 5px 0; } }
 
 #account-nav .nav.nav-pills li a.my-plan-tab::after, #type-nav .nav.nav-pills li a.my-plan-tab::after { content: '\f0e7'; }
 
@@ -406,7 +406,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 @media (max-width: 768px) { .my-profile-block #dashboard-card { max-width: 600px; top: 0; width: 100%; padding: 2rem; -ms-flex-pack: end; justify-content: flex-end; } }
 
-@media (max-width: 600px) { .my-profile-block #dashboard-card { -ms-flex-pack: end; justify-content: end; } }
+@media (max-width: 600px) { .my-profile-block #dashboard-card { -ms-flex-pack: end; justify-content: end; padding-right: 0; padding-left: 0; } }
 
 .my-profile-block .profile-navigation { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; margin: 0; margin-left: 20px; }
 
@@ -418,7 +418,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 .my-profile-block .profile-details { width: 100%; background: #ffffff; padding: 1.5rem; min-width: 230px; height: -webkit-fit-content; height: fit-content; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 
-@media (max-width: 768px) { .my-profile-block .profile-details { min-width: auto; max-width: 230px; } }
+@media (max-width: 768px) { .my-profile-block .profile-details { min-width: auto; } }
 
 .my-profile-block .profile-details > div { display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; }
 
@@ -452,9 +452,13 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span { color: #919191; font-size: 13px; }
 
+@media (max-width: 768px) { .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta { margin-bottom: 2.4rem; } }
+
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .hp-plan-price, .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .amount { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .excerpt { margin-top: 10px; }
+
+@media (max-width: 768px) { .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .excerpt { display: none; } }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .moretag { display: none; }
 
@@ -505,7 +509,7 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 
 .daily-plan-block .day.completed .plan-content { font-size: 0; }
 
-.daily-plan-block .day.completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 70px; color: #dcdcdc; font-weight: 300; }
+.daily-plan-block .day.completed .plan-content:before { content: '\f05d'; font-family: FontAwesome; font-size: 70px; color: #f1f1f1; font-weight: 300; }
 
 .daily-plan-block .day.current-day { background-color: transparent; border: 2px solid #418ad0; }
 
@@ -669,8 +673,6 @@ body:not(.logged-in).woocommerce-login .woocommerce, body:not(.logged-in).woocom
 .plan-template-default.parent-plan-page { background-color: white; }
 
 .plan-template-default #main.parent-plan { max-width: 1140px; margin-right: auto; margin-left: auto; }
-
-@media (min-width: 768px) { .plan-template-default #main.parent-plan .plan-content { margin-bottom: 2.4rem; } }
 
 .plan-template-default #main.parent-plan > .post-wrapper > .plan { clear: both; }
 

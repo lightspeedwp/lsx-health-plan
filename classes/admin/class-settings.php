@@ -501,7 +501,7 @@ class Settings {
 				array(
 					'id'            => 'settings_exercise_endpoints_closing',
 					'type'          => 'tab_closing',
-					'before_row'    => '<p style="margin-top:20px; font-style: italic;">If you need to translate the exercise URL endpoints, do so below.</p>',
+					'before_row'    => '<p style="margin-top:20px; font-style: italic;">If you need to translate the exercise URL slugs, do so below.</p>',
 				)
 			);
 		}

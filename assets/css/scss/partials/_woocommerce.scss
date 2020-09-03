@@ -260,6 +260,8 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 .post-type-archive-plan {
 	.woocommerce-notices-wrapper {
 		margin-top: 4.25rem;
+		padding-left: 5px;
+		padding-right: 5px;
 		&:empty {
 			display: none;
 		}
