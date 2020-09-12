@@ -219,6 +219,8 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 			max-width: 1140px;
 			display: flex;
 			justify-content: space-between;
+			margin-left: auto;
+			margin-right: auto;
 		}
 		@include media('<=phone') {
 			padding: 0 2rem;
@@ -234,7 +236,9 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 			min-width: 50%;
 			@extend .box-shadow;
 			@media (min-width: 768px) {
-				max-width: 540px;
+				&:not(.col-md-12) {
+					max-width: 540px;
+				}
 				min-width: auto;
 				width: 50%;
 			}

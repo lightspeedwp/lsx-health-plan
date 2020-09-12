@@ -402,7 +402,9 @@ article.type-workout {
 					padding: 2rem 1rem 3rem;
 					margin: 0;
 					.eating-column {
-						border-right: 3px solid rgba(65, 138, 208, 0.1);
+						@include media('>=tablet') {
+							border-right: 3px solid rgba(65, 138, 208, 0.1);
+						}
 						&:last-child {
 							border: none;
 						}
@@ -579,6 +581,7 @@ article.type-workout {
 		}
 	}
 	.back-plan-btn {
+		margin-top: 4.25rem;
 		@include media('<custom') {
 			margin-top: 2.4rem;
 			.btn {
@@ -1466,6 +1469,10 @@ article.type-workout {
 						.recipe-feature-img {
 							width: 100px;
 							min-width: 100px;
+							display: flex;
+							img {
+								object-fit: cover;
+							}
 						}
 						.recipe-box {
 							display: flex;

@@ -537,10 +537,10 @@ body:not(.woocommerce-edit-account) {
 			.week-row-inner {
 				.week-meals-recipes-box {
 					.week-meals-recipes-box-inner {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
+						display: inline-flex;
 						flex-wrap: wrap;
+						gap: 0 5rem;
+						align-items: center;
 						@include media('<=phone') {
 							justify-content: end;
 						}
