@@ -96,7 +96,6 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				<?php
 			}
 
-			lsx_entry_after();
 		}
 		wp_reset_postdata();
 	}

@@ -17,7 +17,6 @@ $args = array(
 
 $plan_id      = get_the_ID();
 $has_sections = \lsx_health_plan\functions\plan\has_sections( $plan_id );
-$has_parent   = wp_get_post_parent_id( $plan_id );
 $restricted   = false;
 $is_section   = get_query_var( 'section', false );
 
@@ -26,18 +25,13 @@ $plan = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
 
 $connected_members  = get_post_meta( get_the_ID(), ( $plan . '_connected_team_member' ), true );
 $connected_articles = get_post_meta( get_the_ID(), ( $plan . '_connected_articles' ), true );
-$small_description = get_post_meta( get_the_ID(), ( $plan . '_short_description' ), true );
+$small_description  = get_post_meta( get_the_ID(), ( $plan . '_short_description' ), true );
 
-if ( ! empty( $has_sections ) ) {
+if ( ! empty( $has_sections ) && empty( $is_section ) ) {
 	$plan_type_class = 'parent-plan';
-	if ( 0 !== $has_parent ) {
-		$plan_type_class = 'parent-sub-plan';
-	}
-} else {
-	$plan_type_class = 'unique-plan';
-	if ( 0 !== $has_parent ) {
-		$plan_type_class = 'child-plan-' . $has_parent;
-	}
+}
+if ( ! empty( $has_sections ) && ! empty( $is_section ) ) {
+	$plan_type_class = 'child-plan';
 }
 
 // Get the plan restrictions.
@@ -58,9 +52,11 @@ if ( false === $restricted ) {
 		<?php lsx_content_top(); ?>
 
 		<div class="post-wrapper">
-			<div class="plan-content">
-				<?php the_content(); ?>
-			</div>
+			<?php if ( ! empty( $has_sections ) && empty( $is_section ) ) { ?>
+				<div class="plan-content">
+					<?php the_content(); ?>
+				</div>
+			<?php } ?>
 
 			<?php
 			if ( ! empty( $has_sections ) ) {

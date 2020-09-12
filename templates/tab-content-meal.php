@@ -50,7 +50,9 @@ $connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_article
 </article><!-- #post-## -->
 
 <div  class="back-plan-btn">
-	<a class="btn border-btn" href="/<?php echo $archive_meals; ?>"><?php esc_html_e( 'Back to meals', 'lsx-health-plan' ); ?></a>
+	<?php if ( is_single() && is_singular( 'meal' ) ) { ?>
+		<a class="btn border-btn" href="/<?php echo $archive_meals; ?>"><?php esc_html_e( 'Back to meals', 'lsx-health-plan' ); ?></a>
+	<?php } ?>
 
 	<?php
 	// Shoping list
@@ -68,7 +70,3 @@ $connected_articles = get_post_meta( get_the_ID(), ( $meal . '_connected_article
 if ( ! empty( $connected_articles ) ) {
 	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
 }
-?>
-
-<?php
-lsx_entry_after();

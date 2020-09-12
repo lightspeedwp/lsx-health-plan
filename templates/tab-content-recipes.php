@@ -80,4 +80,3 @@
 </article><!-- #post-## -->
 
 <?php
-lsx_entry_after();

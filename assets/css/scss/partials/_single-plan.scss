@@ -579,8 +579,8 @@ article.type-workout {
 		}
 	}
 	.back-plan-btn {
-		margin-top: 2.4rem;
-		@include media('<=phone') {
+		@include media('<custom') {
+			margin-top: 2.4rem;
 			.btn {
 				width: 100%;
 				margin-bottom: 2.4rem;

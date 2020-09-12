@@ -51,7 +51,6 @@ if ( '' !== $section_key && '' === $endpoint && \lsx_health_plan\functions\plan\
 		</article><!-- #post-## -->
 
 		<?php
-		lsx_entry_after();
 	}
 }
 ?>
