@@ -53,7 +53,7 @@ Before logging a ticket with support, please make sure you have the latest versi
 
 Your WordPress website needs to be running PHP version 7.0 or higher in order to make use of the LSX Health Plan plugin.
 
-If you still require help with the LSX Health Plan Plugin, please log any bug issues you are having on the [Github Issues](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/) page, or send an email to [support@lsdev.biz](support@lsdev.biz).
+If you still require help with the LSX Health Plan Plugin, please log any bug issues you are having on the [Github Issues](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/) page, or send an email to [support@lsdev.biz](mailto:support@lsdev.biz).
 
 == Contributing to the LSX Health Plan plugin ==
 
