@@ -1095,6 +1095,7 @@ function lsx_hp_single_related( $related_content, $post_type_text ) {
 			<div class="col-xs-12">
 				<div class="lsx-related-posts-wrapper">
 					<?php
+					$i = 0;
 					foreach ( $related_content as $article ) {
 						$post_title      = get_the_title( $article );
 						$post_categories = wp_get_post_categories( $article );
@@ -1141,7 +1142,9 @@ function lsx_hp_single_related( $related_content, $post_type_text ) {
 							</div>
 						</article>
 
-					<?php } ?>
+					<?php
+					if (++$i === 3) break;
+					} ?>
 				</div>
 			</div>
 		</div>
