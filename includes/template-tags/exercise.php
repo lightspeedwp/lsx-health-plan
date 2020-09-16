@@ -78,7 +78,7 @@ function lsx_health_plan_workout_exercise_alt_button( $m, $group, $echo = true, 
 
 		$modal_body  = '';
 
-		if ( '' !== $alt_image ) {
+		if ( '' !== $alt_image && ! empty( $alt_image ) ) {
 			$modal_body .= '<div class="modal-image"/><img alt="thumbnail" loading="lazy" class="aligncenter wp-post-image" src="' . $alt_image . '"></div>';
 		} else {
 			if ( $lsx_hp->frontend->gallery->has_gallery( $exercise_id ) ) {
