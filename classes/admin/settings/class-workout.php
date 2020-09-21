@@ -82,6 +82,7 @@ class Workout {
 		}
 		$cmb->add_field(
 			array(
+				'before_row'  => '<h4><b><u>Layout Options</u></b></h4>',
 				'id'          => 'workout_tab_layout',
 				'type'        => 'select',
 				'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),

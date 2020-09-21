@@ -30,6 +30,7 @@ class LSX_Team {
 		add_action( 'cmb2_admin_init', array( $this, 'related_team_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'additional_single_team_metabox' ) );
 		add_action( 'lsx_entry_bottom', array( $this, 'hp_team_member_tabs' ) );
+		add_action( 'wp_head', array( $this, 'remove_archive_original_team_header' ), 99 );
 	}
 
 	/**
@@ -143,6 +144,12 @@ class LSX_Team {
 	public function hp_team_member_tabs() {
 		if ( is_single() && is_singular( 'team' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/team.php';
+		}
+	}
+
+	public function remove_archive_original_team_header() {
+		if (  is_single() && is_singular( 'team' ) ) {
+			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
 		}
 	}
 }

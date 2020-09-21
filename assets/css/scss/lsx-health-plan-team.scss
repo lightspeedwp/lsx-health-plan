@@ -1,5 +1,8 @@
 .single.single-team {
 	background: white;
+	.wrap.container {
+		padding-top: 8.4rem;
+	}
 	#primary {
 		.lsx-team-avatar {
 			border-radius: 0;
@@ -47,6 +50,21 @@
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+			#testimonials {
+				#lsx-testimonials-slider {
+					.slick-track {
+						display: flex;
+					}
+					.lsx-testimonials-slot.slick-slide {
+						&:first-child {
+							margin-left: 0;
+						}
+						&:last-child {
+							margin-right: 1px;
 						}
 					}
 				}

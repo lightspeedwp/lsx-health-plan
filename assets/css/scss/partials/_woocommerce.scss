@@ -109,6 +109,14 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 	}
 }
 
+body:not(.logged-in).single-team {
+	.excerpt {
+		.woocommerce {
+			display: none;
+		}
+	}
+}
+
 // Banners
 
 .page-banner-wrap {

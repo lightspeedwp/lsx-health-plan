@@ -134,7 +134,7 @@ class Recipe {
 	}
 
 	/**
-	 * Register the Week taxonomy.
+	 * Register the Cuisine taxonomy.
 	 */
 	public function taxonomy_setup() {
 		$labels = array(

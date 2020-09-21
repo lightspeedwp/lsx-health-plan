@@ -105,7 +105,7 @@ class Meal {
 	}
 
 	/**
-	 * Register the Week taxonomy.
+	 * Register the Meal Type taxonomy.
 	 */
 	public function taxonomy_setup() {
 		$labels = array(
