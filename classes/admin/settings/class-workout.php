@@ -52,6 +52,36 @@ class Workout {
 	public function settings( $cmb ) {
 		$cmb->add_field(
 			array(
+				'name'        => __( 'Disable Workouts', 'lsx-health-plan' ),
+				'id'          => 'workout_disabled',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'default'     => 0,
+				'description' => __( 'Disable workout post type if you are wanting a minimal site.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Your Warm-up Intro', 'lsx-health-plan' ),
+				'id'      => 'warmup_intro',
+				'type'    => 'textarea_small',
+				'value'   => '',
+				'default' => __( "Don't forget your warm-up! It's a vital part of your daily workout routine.", 'lsx-health-plan' ),
+			)
+		);
+		if ( post_type_exists( 'workout' ) ) {
+			$cmb->add_field(
+				array(
+					'name'    => __( 'Your Workout Intro', 'lsx-health-plan' ),
+					'id'      => 'workout_intro',
+					'type'    => 'textarea_small',
+					'value'   => '',
+					'default' => __( "Let's do this! Smash your daily workout and reach your fitness goals.", 'lsx-health-plan' ),
+				)
+			);
+		}
+		$cmb->add_field(
+			array(
 				'id'          => 'workout_tab_layout',
 				'type'        => 'select',
 				'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),
@@ -118,9 +148,107 @@ class Workout {
 					'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
 					'full'    => __( 'Full Content', 'lsx-health-plan' ),
 				),
-				'default' => '',
+				'default'     => '',
 			)
 		);
+
+		$cmb->add_field(
+			array(
+				'before_row' => '<h4><b><u>URL Slug Options</u></b></h4><p style="font-style: italic;">If you need to translate the custom slug for this custom post type, do so below.</p>',
+				'name'       =>  __( 'Single Workout Endpoint', 'lsx-health-plan' ),
+				'id'         => 'endpoint_workout',
+				'type'       => 'input',
+				'value'      => '',
+				'default'    => 'workout',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Workouts Archive Endpoint', 'lsx-health-plan' ),
+				'id'      => 'endpoint_workout_archive',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'workouts',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Warm Up Endpoint', 'lsx-health-plan' ),
+				'id'      => 'endpoint_warm_up',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'warm-up',
+			)
+		);
+		
+		
+		$cmb->add_field(
+			array(
+				'before_row'  => '<h4><b><u>Default Options</u></b></h4>',
+				'name'        => __( 'Warm Up', 'lsx-health-plan' ),
+				'description' => __( 'Set a default warm up routine.', 'lsx-health-plan' ),
+				'limit'       => 1,
+				'id'          => 'plan_warmup',
+				'type'        => 'post_search_ajax',
+				'query_args'  => array(
+					'post_type'      => 'post',
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => __( 'Workout', 'lsx-health-plan' ),
+				'description' => __( 'Set a default workout routine.', 'lsx-health-plan' ),
+				'limit'       => 1,
+				'id'          => 'connected_workouts',
+				'type'        => 'post_search_ajax',
+				'query_args'  => array(
+					'post_type'      => 'workout',
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+		if ( function_exists( 'download_monitor' ) ) {
+			$page_url    = 'https://wordpress.org/plugins/download-monitor/';
+			$plugin_name = 'Download Monitor';
+			$description = sprintf(
+				/* translators: %s: The subscription info */
+				__( 'If you are using <a target="_blank" href="%1$s">%2$s</a> you can set a default download file for your meal here.', 'lsx-search' ),
+				$page_url,
+				$plugin_name
+			);
+			$cmb->add_field(
+				array(
+					'name'        => __( 'Default Warm Up PDF', 'lsx-health-plan' ),
+					'description' => $description,
+					'id'          => 'download_page',
+					'type'        => 'post_search_ajax',
+					'limit'       => 1,
+					'query_args'  => array(
+						'post_type'      => array( 'dlm_download' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'name'        => __( 'Default Workout PDF', 'lsx-health-plan' ),
+					'description' => $description,
+					'id'          => 'download_workout',
+					'type'        => 'post_search_ajax',
+					'limit'       => 1,
+					'query_args'  => array(
+						'post_type'      => array( 'dlm_download' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
 	}
 }
 Workout::get_instance();

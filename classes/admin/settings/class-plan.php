@@ -60,6 +60,84 @@ class Plan {
 				'description' => __( 'Toggle the display of the tab filters on the post type archive.', 'lsx-health-plan' ),
 			)
 		);
+
+		$cmb->add_field(
+			array(
+				'before_row'  => '<h4><b><u>URL Slug Options</u></b></h4><p style="font-style: italic;">If you need to translate the custom slug for this custom post type, do so below.</p>',
+				'name'        =>  __( 'My Plan Slug', 'lsx-health-plan' ),
+				'description' => __( 'This will be the slug url for redirecting users after login, use the login page slug.', 'lsx-health-plan' ),
+				'id'          => 'my_plan_slug',
+				'type'        => 'input',
+				'value'       => '',
+				'default'     => 'my-plan',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Single Plan Slug', 'lsx-health-plan' ),
+				'id'      => 'plan_single_slug',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'plan',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Plans Archive Endpoint', 'lsx-health-plan' ),
+				'id'      => 'endpoint_plan_archive',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'plans',
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'before_row' => '<h4><b><u>My Stats Options</u></b></h4>',
+				'name'       => __( 'Disable All Stats', 'lsx-health-plan' ),
+				'desc'       => 'Disable All Stats',
+				'id'         => 'disable_all_stats',
+				'type'       => 'checkbox',
+				'value'      => 1,
+				'default'    => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Weight', 'lsx-health-plan' ),
+				'id'      => 'disable_weight_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Height', 'lsx-health-plan' ),
+				'id'      => 'disable_height_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable Waist', 'lsx-health-plan' ),
+				'id'      => 'disable_waist_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => __( 'Disable BMI', 'lsx-health-plan' ),
+				'id'      => 'disable_bmi_checkbox',
+				'type'    => 'checkbox',
+				'value'   => 1,
+				'default' => 0,
+			)
+		);
 	}
 }
 Plan::get_instance();

@@ -1098,6 +1098,8 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .single-plan:not(.logged-in) .single-plan-inner > .plan, .archive-plan:not(.logged-in) .single-plan-inner > .plan, .lsx-exercises-shortcode:not(.logged-in) .single-plan-inner > .plan, .single-workout:not(.logged-in) .single-plan-inner > .plan, .single-meal:not(.logged-in) .single-plan-inner > .plan { opacity: 0.3; pointer-events: none; }
 
+.single-plan .back-plan-btn { margin-top: 0; }
+
 .single-plan .status-plan-buttons { padding: 15px; margin-top: 3rem; }
 
 @media (max-width: 768px) { .single-plan .status-plan-buttons.main-plan-btn .border-btn { width: 100%; } }

@@ -52,10 +52,69 @@ class Exercise {
 	public function settings( $cmb ) {
 		$cmb->add_field(
 			array(
+				'name'        => __( 'Exercises', 'lsx-health-plan' ),
+				'id'          => 'exercise_enabled',
+				'type'        => 'checkbox',
+				'value'       => 1,
+				'default'     => 0,
+				'description' => __( 'Enabling the exercise post type will automatically replace the Video post type.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
 				'id'          => 'exercise_archive_description',
 				'type'        => 'wysiwyg',
 				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
 				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
+				'options'     => array(
+					'textarea_rows' => get_option('default_post_edit_rows', 6),
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'before_row' => '<h4><b><u>URL Slug Options</u></b></h4><p style="font-style: italic;">If you need to translate the custom slug for this custom post type, do so below.</p>',
+				'name'       =>  __( 'Single Exercise Slug', 'lsx-health-plan' ),
+				'id'         => 'endpoint_exercise_single',
+				'type'       => 'input',
+				'value'      => '',
+				'default'    => 'exercise',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Archive Exercise Slug', 'lsx-health-plan' ),
+				'id'      => 'endpoint_exercise_archive',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'exercises',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Exercise Type Slug', 'lsx-health-plan' ),
+				'id'      => 'endpoint_exercise_type',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'exercise-type',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Equipment Slug', 'lsx-health-plan' ),
+				'id'      => 'endpoint_exercise_equipment',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'equipment',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    =>  __( 'Muscle Group Slug', 'lsx-health-plan' ),
+				'id'      => 'endpoint_exercise_musclegroup',
+				'type'    => 'input',
+				'value'   => '',
+				'default' => 'muscle-group',
 			)
 		);
 	}
