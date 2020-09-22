@@ -86,7 +86,7 @@ class Recipe {
 		$cmb->add_field(
 			array(
 				'before_row' => '<h4><b><u>URL Slug Options</u></b></h4><p style="font-style: italic;">If you need to translate the custom slug for this custom post type, do so below.</p>',
-				'name'       =>  __( 'Recipes Endpoint', 'lsx-health-plan' ),
+				'name'       =>  __( 'Recipes Slug', 'lsx-health-plan' ),
 				'id'         => 'endpoint_recipe',
 				'type'       => 'input',
 				'value'      => '',
@@ -130,6 +130,7 @@ class Recipe {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
+					'after_row'   => __( '<p style="font-style: italic;">If you have changed any URL slugs, please remember re-save your permalinks in Settings > Permalinks.</p>', 'lsx-health-plan' ),
 				)
 			);
 		}

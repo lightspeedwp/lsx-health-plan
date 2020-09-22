@@ -110,11 +110,12 @@ class Exercise {
 		);
 		$cmb->add_field(
 			array(
-				'name'    =>  __( 'Muscle Group Slug', 'lsx-health-plan' ),
-				'id'      => 'endpoint_exercise_musclegroup',
-				'type'    => 'input',
-				'value'   => '',
-				'default' => 'muscle-group',
+				'name'      =>  __( 'Muscle Group Slug', 'lsx-health-plan' ),
+				'id'        => 'endpoint_exercise_musclegroup',
+				'type'      => 'input',
+				'value'     => '',
+				'default'   => 'muscle-group',
+				'after_row' => __( '<p style="font-style: italic;">If you have changed any URL slugs, please remember re-save your permalinks in Settings > Permalinks.</p>', 'lsx-health-plan' ),
 			)
 		);
 	}

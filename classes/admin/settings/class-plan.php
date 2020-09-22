@@ -83,7 +83,7 @@ class Plan {
 		);
 		$cmb->add_field(
 			array(
-				'name'    =>  __( 'Plans Archive Endpoint', 'lsx-health-plan' ),
+				'name'    =>  __( 'Plans Archive Slug', 'lsx-health-plan' ),
 				'id'      => 'endpoint_plan_archive',
 				'type'    => 'input',
 				'value'   => '',
@@ -131,11 +131,12 @@ class Plan {
 		);
 		$cmb->add_field(
 			array(
-				'name'    => __( 'Disable BMI', 'lsx-health-plan' ),
-				'id'      => 'disable_bmi_checkbox',
-				'type'    => 'checkbox',
-				'value'   => 1,
-				'default' => 0,
+				'name'      => __( 'Disable BMI', 'lsx-health-plan' ),
+				'id'        => 'disable_bmi_checkbox',
+				'type'      => 'checkbox',
+				'value'     => 1,
+				'default'   => 0,
+				'after_row' => __( '<p style="font-style: italic;">If you have changed any URL slugs, please remember re-save your permalinks in Settings > Permalinks.</p>', 'lsx-health-plan' ),
 			)
 		);
 	}

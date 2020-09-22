@@ -156,7 +156,7 @@ class Workout {
 		$cmb->add_field(
 			array(
 				'before_row' => '<h4><b><u>URL Slug Options</u></b></h4><p style="font-style: italic;">If you need to translate the custom slug for this custom post type, do so below.</p>',
-				'name'       =>  __( 'Single Workout Endpoint', 'lsx-health-plan' ),
+				'name'       =>  __( 'Single Workout Slug', 'lsx-health-plan' ),
 				'id'         => 'endpoint_workout',
 				'type'       => 'input',
 				'value'      => '',
@@ -165,7 +165,7 @@ class Workout {
 		);
 		$cmb->add_field(
 			array(
-				'name'    =>  __( 'Workouts Archive Endpoint', 'lsx-health-plan' ),
+				'name'    =>  __( 'Workouts Archive Slug', 'lsx-health-plan' ),
 				'id'      => 'endpoint_workout_archive',
 				'type'    => 'input',
 				'value'   => '',
@@ -174,7 +174,7 @@ class Workout {
 		);
 		$cmb->add_field(
 			array(
-				'name'    =>  __( 'Warm Up Endpoint', 'lsx-health-plan' ),
+				'name'    =>  __( 'Warm Up Slug', 'lsx-health-plan' ),
 				'id'      => 'endpoint_warm_up',
 				'type'    => 'input',
 				'value'   => '',
@@ -247,6 +247,7 @@ class Workout {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
+					'after_row'   => __( '<p style="font-style: italic;">If you have changed any URL slugs, please remember re-save your permalinks in Settings > Permalinks.</p>', 'lsx-health-plan' ),
 				)
 			);
 		}
