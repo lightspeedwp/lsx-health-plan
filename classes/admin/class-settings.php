@@ -148,6 +148,46 @@ class Settings {
 				)
 			);
 		}
+
+
+		if ( \lsx_health_plan\functions\get_option( 'workout_disabled' ) ) {
+			$cmb->add_field(
+				array(
+					'name'        => __( 'Disable Workouts', 'lsx-health-plan' ),
+					'id'          => 'workout_disabled',
+					'type'        => 'checkbox',
+					'value'       => 1,
+					'default'     => 0,
+					'description' => __( 'Disable workout post type if you are wanting a minimal site.', 'lsx-health-plan' ),
+				)
+			);
+		}
+
+		if ( \lsx_health_plan\functions\get_option( 'recipe_disabled' ) ) {
+			$cmb->add_field(
+				array(
+					'name'        => __( 'Disable Recipes', 'lsx-health-plan' ),
+					'id'          => 'recipe_disabled',
+					'type'        => 'checkbox',
+					'value'       => 1,
+					'default'     => 0,
+					'description' => __( 'Disable recipe post type if you are wanting a minimal site.', 'lsx-health-plan' ),
+				)
+			);
+		}
+
+		if ( \lsx_health_plan\functions\get_option( 'meal_disabled' ) ) {
+			$cmb->add_field(
+				array(
+					'name'        => __( 'Disable Meals', 'lsx-health-plan' ),
+					'id'          => 'meal_disabled',
+					'type'        => 'checkbox',
+					'value'       => 1,
+					'default'     => 0,
+					'description' => __( 'Disable meal post type if you are wanting a minimal site.', 'lsx-health-plan' ),
+				)
+			);
+		}
 		
 
 		$cmb->add_field(
