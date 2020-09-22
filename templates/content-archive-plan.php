@@ -115,7 +115,7 @@ $featured      = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
 
 			<?php
 			$button_link  = get_permalink();
-			$button_text  = __( 'View', 'lsx-health-plan' );
+			$button_text  = __( 'Sign Up', 'lsx-health-plan' );
 			$button_class = '';
 
 			if ( true === $restricted ) {
