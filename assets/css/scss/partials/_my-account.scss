@@ -578,8 +578,10 @@ body:not(.woocommerce-edit-account) {
 				&.week-downloads-view-on {
 					display: flex;
 					justify-content: space-between;
+					margin: 0 -4rem;
 					@media (max-width: 1024px) {
 						flex-direction: column;
+						margin: 0;
 					}
 					.week-meals-recipes-box {
 						padding-right: 5px;

@@ -474,7 +474,7 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-50',
 				)
 			);
 		}
@@ -495,7 +495,7 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-50',
 				)
 			);
 		}
@@ -515,7 +515,7 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-33',
+					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-50',
 				)
 			);
 		}

@@ -515,12 +515,12 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 
 				// Determine if there are any weekly downloads.
 				$week_downloads_view = '';
-				/*if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
+				if ( isset( $args['show_downloads'] ) && false !== $args['show_downloads'] ) {
 					$weekly_downloads = \lsx_health_plan\functions\get_weekly_downloads( $group_key );
 					if ( ! empty( $weekly_downloads ) ) {
 						$week_downloads_view = 'week-downloads-view-on';
 					}
-				}*/
+				}
 				?>
 				<div class="daily-plan-block week-grid">
 					<a href="#group-<?php echo esc_attr( $group_key ); ?>" data-toggle="collapse" class="week-title"><?php echo esc_attr( $group_title ); ?></a>
@@ -529,7 +529,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 							<div class="week-meals-recipes-box">
 
 								<?php if ( ! empty( $week_downloads_view ) ) { ?>
-									<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Daily Plan', 'lsx-health-plan' ); ?></h3>
+									<h3 class="title"><?php lsx_get_svg_icon( 'daily-plan.svg' ); ?><?php echo esc_html_e( 'Plan', 'lsx-health-plan' ); ?></h3>
 								<?php } ?>
 
 								<div class="week-meals-recipes-box-inner">
@@ -557,7 +557,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 							</div>
 							<?php
 							if ( ! empty( $week_downloads_view ) ) {
-								//lsx_health_plan_weekly_downloads( $weekly_downloads );
+								lsx_health_plan_weekly_downloads( $weekly_downloads );
 							}
 							?>
 						</div>

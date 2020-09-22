@@ -105,7 +105,7 @@ class Workout {
 					'single' => __( 'Single', 'lsx-health-plan' ),
 					'modal'  => __( 'Modal', 'lsx-health-plan' ),
 				),
-				'default' => 'modal',
+				'default' => '',
 			)
 		);
 		$cmb->add_field(

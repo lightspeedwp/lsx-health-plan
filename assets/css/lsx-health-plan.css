@@ -556,9 +556,9 @@ body:not(.logged-in).single-team .excerpt .woocommerce { display: none; }
 
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day .plan-content { font-family: 'Noto Sans', sans-serif; font-weight: 300; text-transform: uppercase; }
 
-.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+.daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; margin: 0 -4rem; }
 
-@media (max-width: 1024px) { .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { -ms-flex-direction: column; flex-direction: column; } }
+@media (max-width: 1024px) { .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on { -ms-flex-direction: column; flex-direction: column; margin: 0; } }
 
 .daily-plan-block.week-grid .week-row .week-row-inner.week-downloads-view-on .week-meals-recipes-box { padding-right: 5px; -ms-flex-positive: 1; flex-grow: 1; }
 
