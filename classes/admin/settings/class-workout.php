@@ -101,7 +101,7 @@ class Workout {
 				'name'        => __( 'Workout Tab Link', 'lsx-health-plan' ),
 				'description' => __( 'Choose to show the excerpt, full content or nothing.', 'lsx-health-plan' ),
 				'options'     => array(
-					''       => __( 'None', 'lsx-health-plan' ),
+					'none'   => __( 'None', 'lsx-health-plan' ),
 					'single' => __( 'Single', 'lsx-health-plan' ),
 					'modal'  => __( 'Modal', 'lsx-health-plan' ),
 				),
