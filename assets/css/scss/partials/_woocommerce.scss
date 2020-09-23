@@ -109,7 +109,7 @@ body:not(.logged-in).gutenberg-compatible-template.using-gutenberg.content-restr
 	}
 }
 
-body:not(.logged-in).single-team {
+body:not(.logged-in) {
 	.excerpt {
 		.woocommerce {
 			display: none;
