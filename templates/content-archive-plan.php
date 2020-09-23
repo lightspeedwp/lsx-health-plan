@@ -98,7 +98,9 @@ $featured      = get_post_meta( get_the_ID(), 'plan_featured_plan', true );
 			?>
 			<?php
 			if ( false !== $linked_product ) {
+				echo '<div class="plan-price">';
 				echo wp_kses_post( $linked_product->get_price_html() );
+				echo '</div>';
 			}
 			?>
 			<div class="excerpt">

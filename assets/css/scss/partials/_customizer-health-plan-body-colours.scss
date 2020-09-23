@@ -369,6 +369,22 @@
 		.single-plan-section-title {
 			@extend .svg;
 		}
+		.content-box {
+			.plan-meta {
+				span {
+					a:not(.btn) {
+						&:hover {
+							color: $hover;
+						}
+					}
+				}
+			}
+		}
+	}
+	.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span a {
+		&:hover {
+			color: $hover;
+		}
 	}
 	.single.single-team {
 		#primary {

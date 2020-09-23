@@ -240,16 +240,19 @@ function lsx_health_plan_my_profile_box() {
 					$disable_stats = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
 					if ( 'on' !== $disable_stats ) {
 
-						$is_weight_disabled  = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
-						$is_height_disabled  = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
-						$is_waist_disabled   = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
-						$is_bmi_disabled = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
+						$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
+						$is_height_disabled = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
+						$is_waist_disabled  = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
+						$is_bmi_disabled    = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
 
 						$weight = get_user_meta( get_current_user_id(), 'weight', true );
-						$waist = get_user_meta( get_current_user_id(), 'waist', true );
+						$waist  = get_user_meta( get_current_user_id(), 'waist', true );
 						$height = get_user_meta( get_current_user_id(), 'height', true );
-
-						$height_m = $height / 100;
+						
+						$height_m = 0;
+						if ( is_numeric( $height) ) {
+							$height_m = $height / 100;
+						}
 
 						if ( 1 < $weight && 1 < $height_m ) {
 							$bmi = $weight / ( $height_m * $height_m );

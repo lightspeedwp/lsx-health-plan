@@ -453,7 +453,9 @@ body:not(.logged-in).single-team .excerpt .woocommerce { display: none; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta img + span { margin-left: 5px; }
 
-.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span { color: #919191; font-size: 13px; }
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span { font-size: 13px; }
+
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span a { color: #919191; }
 
 @media (max-width: 768px) { .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta { margin-bottom: 2.4rem; } }
 
@@ -1014,7 +1016,17 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .single-plan .content-box .plan-meta img + span, .archive-plan .content-box .plan-meta img + span, .lsx-exercises-shortcode .content-box .plan-meta img + span, .single-workout .content-box .plan-meta img + span, .single-meal .content-box .plan-meta img + span { margin-left: 5px; }
 
-.single-plan .content-box .plan-meta span, .archive-plan .content-box .plan-meta span, .lsx-exercises-shortcode .content-box .plan-meta span, .single-workout .content-box .plan-meta span, .single-meal .content-box .plan-meta span { color: #919191; font-size: 13px; }
+.single-plan .content-box .plan-meta span, .archive-plan .content-box .plan-meta span, .lsx-exercises-shortcode .content-box .plan-meta span, .single-workout .content-box .plan-meta span, .single-meal .content-box .plan-meta span { font-size: 13px; }
+
+.single-plan .content-box .plan-meta span a:not(.btn), .archive-plan .content-box .plan-meta span a:not(.btn), .lsx-exercises-shortcode .content-box .plan-meta span a:not(.btn), .single-workout .content-box .plan-meta span a:not(.btn), .single-meal .content-box .plan-meta span a:not(.btn) { color: #919191; }
+
+.single-plan .content-box .plan-meta span a:not(.btn):last-child span, .archive-plan .content-box .plan-meta span a:not(.btn):last-child span, .lsx-exercises-shortcode .content-box .plan-meta span a:not(.btn):last-child span, .single-workout .content-box .plan-meta span a:not(.btn):last-child span, .single-meal .content-box .plan-meta span a:not(.btn):last-child span { display: none; }
+
+.single-plan .content-box .plan-price, .archive-plan .content-box .plan-price, .lsx-exercises-shortcode .content-box .plan-price, .single-workout .content-box .plan-price, .single-meal .content-box .plan-price { display: -ms-flexbox; display: flex; }
+
+.single-plan .content-box .plan-price del, .archive-plan .content-box .plan-price del, .lsx-exercises-shortcode .content-box .plan-price del, .single-workout .content-box .plan-price del, .single-meal .content-box .plan-price del { margin-right: 5px; -webkit-text-decoration-color: #30bb00; text-decoration-color: #30bb00; opacity: 0.5; }
+
+.single-plan .content-box .plan-price ins, .archive-plan .content-box .plan-price ins, .lsx-exercises-shortcode .content-box .plan-price ins, .single-workout .content-box .plan-price ins, .single-meal .content-box .plan-price ins { -webkit-text-decoration-color: #30bb00; text-decoration-color: #30bb00; }
 
 .single-plan .content-box .amount, .archive-plan .content-box .amount, .lsx-exercises-shortcode .content-box .amount, .single-workout .content-box .amount, .single-meal .content-box .amount { color: #30bb00; font-size: 18px; margin-top: 9px; display: block; }
 
@@ -1492,6 +1504,10 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link { border-color: #418AD0; color: #418AD0; }
 
 .single-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .archive-plan .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .lsx-exercises-shortcode .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover, .single-workout .single-plan-inner.workout-content .workout-instructions .single-plan-inner-buttons .complete-plan-btn .download-link:hover { background-color: #418AD0; }
+
+.single-plan .content-box .plan-meta span a:not(.btn):hover, .archive-plan .content-box .plan-meta span a:not(.btn):hover, .lsx-exercises-shortcode .content-box .plan-meta span a:not(.btn):hover, .single-workout .content-box .plan-meta span a:not(.btn):hover { color: #F7AE00; }
+
+.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span a:hover { color: #F7AE00; }
 
 .single.single-team #primary .lsx-team-socials > li > a { border: 1px solid #418AD0; background: transparent; }
 

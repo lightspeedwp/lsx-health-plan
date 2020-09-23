@@ -305,8 +305,10 @@ body:not(.woocommerce-edit-account) {
 							}
 						}
 						span {
-							color: #919191;
 							font-size: 13px;
+							a {
+								color: #919191;
+							}
 						}
 						@include media('<=phone') {
 							margin-bottom: 2.4rem;

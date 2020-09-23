@@ -968,8 +968,26 @@ article.type-workout {
 				}
 			}
 			span {
-				color: #919191;
 				font-size: 13px;
+				a:not(.btn) {
+					color: #919191;
+					&:last-child {
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		.plan-price {
+			display: flex;
+			del {
+				margin-right: 5px;
+				text-decoration-color: #30bb00;
+				opacity: 0.5;
+			}
+			ins {
+				text-decoration-color: #30bb00;
 			}
 		}
 		.amount {

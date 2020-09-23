@@ -341,15 +341,22 @@ function hp_get_plan_type_meta( $post ) {
 
 	$term_obj_list = get_the_terms( $post->ID, 'plan-type' );
 	if ( false !== $term_obj_list ) {
-		$terms_string  = join( ' & ', wp_list_pluck( $term_obj_list, 'name' ) );
-		$terms_ids     = wp_list_pluck( $term_obj_list, 'term_id' );
-
+		$terms_string = '';
+		$terms_ids    = wp_list_pluck( $term_obj_list, 'term_id' );
+		
+		foreach ( $term_obj_list as $term ) {
+			$term_link = get_term_link( $term );
+			$term_name = '<a href="' . $term_link . '">' .$term->name . '<span>, </span></a>';
+			
+			$terms_string .= $term_name;
+		}
+		
 		foreach ( $terms_ids as $terms_id ) {
 			$term_thumbnail_id = get_term_meta( $terms_id, 'thumbnail', true );
 			$img               = wp_get_attachment_image_src( $term_thumbnail_id, 'thumbnail' );
 			if ( ! empty( $img ) ) {
-				$image_url         = $img[0];
-				$img               = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
+				$image_url = $img[0];
+				$img       = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
 			}
 
 			$plan_meta .= $img;
