@@ -1437,6 +1437,18 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-plan .wrap.container .archive-header .archive-title, .single-plan .wrap.container .archive-header .archive-title, .single .wrap.container .archive-header .archive-title, .archive .wrap.container .archive-header .archive-title { font-weight: bold; }
 
+.warmup-container .sets .set-box.set.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; }
+
+@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content { padding: 30px 20px; display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: end; -ms-flex-pack: justify; justify-content: space-between; } }
+
+@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content .the-content { padding-left: 4rem; } }
+
+.warmup-container .sets .set-box.set.entry-content .the-content #hp-connected-members { padding: 0; }
+
+.warmup-container .sets .set-box.set.entry-content #lsx-tips-shortcode { margin-top: 0; width: 100%; }
+
+@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content #lsx-tips-shortcode { max-width: 350px; } }
+
 article.type-plan .entry-content .workout-content .sets .set-box.set, article.type-meal .entry-content .workout-content .sets .set-box.set, article.type-workout .entry-content .workout-content .sets .set-box.set { background: white; }
 
 article.type-plan .entry-content .workout-content .sets .set-box.set.entry-content, article.type-meal .entry-content .workout-content .sets .set-box.set.entry-content, article.type-workout .entry-content .workout-content .sets .set-box.set.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; }
