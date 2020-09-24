@@ -464,16 +464,15 @@ function get_progress( $plan_id = false ) {
  * @return void
  */
 function hp_back_archive_link() {
-
-	$post_type = 'exercise';
-	if ( is_tax( 'recipe-cuisine' ) || is_tax( 'recipe-type' ) ) {
-		$post_type = 'recipe';
-	}
+	global $wp_taxonomies;
+	
+	$post_type = get_queried_object()->taxonomy;
+	$post_type = $wp_taxonomies[$post_type]->object_type;
 
 	if ( is_tax() ) {
 		?>
 		<div class="archive-category-title hp-archive-category-title">
-			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type ) . 's'; ?></a>
+			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type[0] ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type[0] ) . 's'; ?></a>
 		</div>
 		<?php
 	}

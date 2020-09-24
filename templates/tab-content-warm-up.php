@@ -40,33 +40,18 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
+					<?php
+						the_content();
+					?>
 					<div class="entry-content">
 						<div class="single-plan-inner warmup-content">
 							<div class="single-plan-section-title warmup-plan title-lined">
 								<?php lsx_get_svg_icon( 'warm.svg' ); ?>
 								<h2><?php esc_html_e( 'Warm Up', 'lsx-health-plan' ); ?></h2>
 							</div>
-						<?php
-							the_content();
-							wp_link_pages( array(
-								'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-								'after'       => '</div></div>',
-								'link_before' => '<span>',
-								'link_after'  => '</span>',
-							) );
-						?>
 						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
-					<?php if ( null === $shortcode_args ) { ?>
-						<div class="tip-row extras-box">
-							<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
-								<div class="tip-right">
-									<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
-								</div>
-							<?php } ?>
-						</div>
-					<?php } ?>
 				</article><!-- #post-## -->
 				<?php
 				lsx_health_plan_workout_sets();

@@ -203,7 +203,7 @@
 					display: flex;
 					padding: 1rem 3rem;
 					align-items: center;
-					margin-bottom: 3rem;
+					margin-bottom: 0;
 					h2 {
 						margin: 0;
 					}
@@ -610,6 +610,7 @@ article.type-workout {
 	.sets {
 		.set-box.set {
 			padding: 3rem;
+			margin-bottom: 0;
 		}
 		.set-title {
 			font-family: 'Noto Sans';

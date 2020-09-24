@@ -23,18 +23,10 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 	<div class="entry-meta">
 		<?php lsx_post_meta_single_bottom(); ?>
 	</div><!-- .entry-meta -->
-
+	<?php
+		the_content();
+	?>
 	<div class="entry-content">
-		<?php
-			wp_link_pages(
-				array(
-					'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-					'after'       => '</div></div>',
-					'link_before' => '<span>',
-					'link_after'  => '</span>',
-				)
-			);
-		?>
 		<div class="single-plan-inner workout-content">
 			<?php
 			if ( is_singular( 'workout' ) ) { ?>

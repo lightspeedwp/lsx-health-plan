@@ -736,7 +736,7 @@ body:not(.logged-in) .excerpt .woocommerce { display: none; }
 
 .warmup-container article .entry-content .warmup-content > *:last-child { margin-bottom: 0; }
 
-.warmup-container article .entry-content .warmup-content .single-plan-section-title { display: -ms-flexbox; display: flex; padding: 1rem 3rem; -ms-flex-align: center; align-items: center; margin-bottom: 3rem; }
+.warmup-container article .entry-content .warmup-content .single-plan-section-title { display: -ms-flexbox; display: flex; padding: 1rem 3rem; -ms-flex-align: center; align-items: center; margin-bottom: 0; }
 
 .warmup-container article .entry-content .warmup-content .single-plan-section-title h2 { margin: 0; }
 
@@ -888,7 +888,7 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .single-plan .btn-full, .archive-plan .btn-full, .lsx-exercises-shortcode .btn-full, .single-workout .btn-full, .single-meal .btn-full { width: 100%; }
 
-.single-plan .sets .set-box.set, .archive-plan .sets .set-box.set, .lsx-exercises-shortcode .sets .set-box.set, .single-workout .sets .set-box.set, .single-meal .sets .set-box.set { padding: 3rem; }
+.single-plan .sets .set-box.set, .archive-plan .sets .set-box.set, .lsx-exercises-shortcode .sets .set-box.set, .single-workout .sets .set-box.set, .single-meal .sets .set-box.set { padding: 3rem; margin-bottom: 0; }
 
 .single-plan .sets .set-title, .archive-plan .sets .set-title, .lsx-exercises-shortcode .sets .set-title, .single-workout .sets .set-title, .single-meal .sets .set-title { font-family: 'Noto Sans'; text-transform: uppercase; color: #418ad0; }
 
