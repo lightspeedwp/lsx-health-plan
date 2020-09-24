@@ -24,7 +24,9 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 		<?php lsx_post_meta_single_bottom(); ?>
 	</div><!-- .entry-meta -->
 	<?php
+	if ( is_singular( 'workout' ) ) {
 		the_content();
+	}
 	?>
 	<div class="entry-content">
 		<div class="single-plan-inner workout-content">

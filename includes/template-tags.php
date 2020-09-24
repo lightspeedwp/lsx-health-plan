@@ -944,6 +944,21 @@ function lsx_health_plan_workout_sets() {
 }
 
 /**
+ * This will detect and include the Warmup sets loop.
+ *
+ * @param [type] $connected_workouts
+ * @return void
+ */
+function lsx_health_plan_warmup_sets( $connected_workouts ) {
+	
+	$template_path = LSX_HEALTH_PLAN_PATH . 'templates/partials/workout-sets.php';
+	$template_path = apply_filters( 'lsx_health_plan_workout_set_template_path', $template_path );
+	if ( '' !== $template_path && ! empty( $template_path ) ) {
+		include $template_path;
+	}
+}
+
+/**
  * Outputs the recipes connected to the meal plan.
  *
  * @param array $args

@@ -40,9 +40,6 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
-					<?php
-						the_content();
-					?>
 					<div class="entry-content">
 						<div class="single-plan-inner warmup-content">
 							<div class="single-plan-section-title warmup-plan title-lined">
@@ -54,7 +51,7 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 					<?php lsx_entry_bottom(); ?>
 				</article><!-- #post-## -->
 				<?php
-				lsx_health_plan_workout_sets();
+				lsx_health_plan_warmup_sets( $connected_workouts );
 			} else {
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
