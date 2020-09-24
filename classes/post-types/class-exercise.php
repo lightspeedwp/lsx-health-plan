@@ -288,7 +288,11 @@ class Exercise {
 			array(
 				'name'    => __( 'Grid Columns', 'lsx-health-plan' ),
 				'id'      => $this->slug . '_gallery_columns',
-				'type'    => 'text',
+				'type'    => 'select',
+				'options' => array(
+					'3' => __( '2 Columns', 'lsx-health-plan' ),
+					'4' => __( '3 Columns', 'lsx-health-plan' ),
+				),
 				'default' => '1',
 			)
 		);

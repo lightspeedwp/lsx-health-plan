@@ -47,6 +47,7 @@ function lsx_health_plan_has_meal( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
+	echo \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
 	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
 }
 
