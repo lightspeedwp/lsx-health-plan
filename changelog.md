@@ -4,19 +4,49 @@
 
 ### Added
 
-- Extend the current single recipe post type to display additional fields.
-- Added placeholder image for recipes.
-- Added in a connections box to allows news posts and pages to be attached to workouts.
-- Added in a setting to allow the translation of the `plan` single slug.
-- Added in the exercise post type.
-- Added the exercise shortcode `lsx_health_plan_items`.
 - Added support for the cover block on the Edit My Account page.
-- Added support and styling for a Grid and List views on the workout tab.
-- Added a "side" field for exercises that displays left, right or nothing if left blank.
 - Refactored the post type class locations.
 - Added in settings to control the link destination, the content display and the columns of the grid layout.
-- Added a template for the single workout pages.
 - Added support for LSX color customizer.
+- A "Connected Plans" FacetWP source was added which creates a connection to meals, recipes, workouts and exercises.
+- Added default WP 5.5 lazy loading.
+- Added support for multiple plans.
+- Added support for multiple subscriptions.
+
+#### Plans
+
+- Added in a setting to allow the translation of the `plan` single slug.
+- Added tips for single plans.
+- Updated layout.
+
+#### Workouts
+
+- Added a template for the single workout pages.
+- Added in a connections box to allows news posts and pages to be attached to workouts.
+- Added in settings to control the link destination, the content display and the columns of the grid layout.
+- Added support and styling for a Grid and List views on the workout tab.
+- Added tips for single workouts.
+- Updated layout.
+
+#### Exercises
+
+- Added in the exercise post type which connects to the workouts, this replaces the "video" post type.
+- Added a "side" field for exercises that displays left, right or nothing if left blank.
+- Added the exercise shortcode `lsx_health_plan_items`.
+- Added tips for single exercises.
+- Updated layout.
+
+#### Meal Plans
+
+- Added in a field to connected additional recipes for breakfast, lunch and dinner.
+- Updated layout.
+
+#### Recipes
+
+- Extend the current single recipe post type to display additional fields.
+- Added placeholder image for recipes.
+- Added tips for single recipes.
+- Updated layout.
 
 ### Updated
 
@@ -35,6 +65,13 @@
 ### Removed
 
 - "View Cart" Message removed on Checkout.
+
+### Security
+
+- Updating dependencies to prevent vulnerabilities.
+- Updating PHPCS options for better code and meeting WordPress coding standards.
+- General testing to ensure compatibility with latest WordPress version (5.5).
+- General testing to ensure compatibility with latest LSX Theme version (2.9).
 
 ## [[1.3.2]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.2) - 2020-07-20
 

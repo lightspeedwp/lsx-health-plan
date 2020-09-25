@@ -16,6 +16,13 @@ $protein       = get_post_meta( get_the_ID(), 'recipe_protein', true );
 $carbohydrates = get_post_meta( get_the_ID(), 'recipe_carbohydrates', true );
 $fibre         = get_post_meta( get_the_ID(), 'recipe_fibre', true );
 $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
+
+
+// Getting translated endpoint.
+$recipe = \lsx_health_plan\functions\get_option( 'endpoint_recipe_single', 'recipe' );
+
+$connected_members  = get_post_meta( get_the_ID(), ( $recipe . '_connected_team_member' ), true );
+$connected_articles = get_post_meta( get_the_ID(), ( $recipe . '_connected_articles' ), true );
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -29,56 +36,9 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 	</div><!-- .entry-meta -->
 
 	<div id="single-recipe" class="entry-content">
-		<h2 class="title-lined"><span class="recipe-prefix"><?php esc_html_e( 'Recipe:', 'lsx-health-plan' ); ?></span> <?php the_title(); ?></h2>
-		<div class="row">
-			<div class="col-md-6 recipe-image lsx-hp-shadow">
-				<?php
-				$featured_image = get_the_post_thumbnail();
-				if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-					the_post_thumbnail( 'large', array(
-						'class' => 'aligncenter',
-					) );
-				} else {
-					?>
-					<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
-					<?php
-				}
-				?>
-				<?php if ( ( ! empty( $prep_time ) ) || ( ! empty( $cooking_time ) ) || ( ! empty( $serves ) ) || ( ! empty( $portion ) ) || ( ! empty( $energy ) ) || ( ! empty( $protein ) ) || ( ! empty( $carbohydrates ) ) || ( ! empty( $fibre ) ) || ( ! empty( $fat ) ) ) { ?>
-				<div class="recipe-data">
-					<?php lsx_health_plan_recipe_data(); ?>
-				</div>
-				<?php } ?>
-			</div>
-			<div class="col-md-6 recipe-content">
-				<?php the_content(); ?>
-				<div  class="back-plan-btn">
-				<?php
-				if ( function_exists( 'wc_get_page_id' ) ) {
-					?>
-					<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
-					<?php
-				}
-				?>
-				</div>
-			</div>
-		</div>
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-				'after'       => '</div></div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
-			<div class="post-tags-wrapper">
-				<?php lsx_content_post_tags(); ?>
+		<h2 class="title-lined"><?php the_title(); ?>
+		<?php if ( class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
+			<div class="post-sharing-wrapper">
 
 				<?php
 				if ( class_exists( 'LSX_Sharing' ) ) {
@@ -95,11 +55,54 @@ $fat           = get_post_meta( get_the_ID(), 'recipe_fat', true );
 				}
 				?>
 		<?php endif ?>
-	</footer><!-- .footer-meta -->
+		</h2>
+		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'recipe' ) ); ?>
+		<div class="row">
+			<div class="col-md-6 recipe-image lsx-hp-shadow">
+				<?php
+				$featured_image = get_the_post_thumbnail();
+				if ( ! empty( $featured_image ) && '' !== $featured_image ) {
+					the_post_thumbnail( 'large', array(
+						'class' => 'aligncenter',
+					) );
+				} else {
+					?>
+					<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+					<?php
+				}
+				?>
+				<?php if ( ( ! empty( $prep_time ) ) || ( ! empty( $cooking_time ) ) || ( ! empty( $serves ) ) || ( ! empty( $portion ) ) || ( ! empty( $energy ) ) || ( ! empty( $protein ) ) || ( ! empty( $carbohydrates ) ) || ( ! empty( $fibre ) ) || ( ! empty( $fat ) ) ) { ?>
+				<div class="recipe-data">
+					<?php lsx_health_plan_recipe_data(); ?>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="col-md-6 recipe-content">
+				<?php the_content(); ?>
+				<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block]' ); ?>
+				<div class="back-plan-btn">
+				<?php
+				if ( function_exists( 'wc_get_page_id' ) ) {
+					?>
+					<a class="btn" href="<?php echo wp_kses_post( get_permalink( wc_get_page_id( 'myaccount' ) ) ); ?>"><?php esc_html_e( 'Back To My Plan', 'lsx-health-plan' ); ?></a>
+					<?php
+				}
+				?>
+				</div>
+			</div>
+		</div>
+
+	</div><!-- .entry-content -->
 
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
+
+<?php
+if ( ! empty( $connected_articles ) ) {
+	lsx_hp_single_related( $connected_articles, __( 'Related articles', 'lsx-health-plan' ) );
+}
+?>
 
 <?php
 lsx_entry_after();

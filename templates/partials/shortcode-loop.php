@@ -55,7 +55,7 @@ if ( isset( $taxonomy ) && ( '' !== $taxonomy ) && isset( $term ) && ( '' !== $t
 $exercises = new WP_Query( $query_array );
 ?>
 
-<div id="lsx-exercises-shortcode" class="daily-plan-block layout-<?php echo esc_html( $args['layout'] ); ?> columns-<?php echo esc_html( $args['columns'] ); ?>">
+<div id="lsx-exercises-shortcode" class="daily-plan-block layout-<?php echo esc_html( $args['layout'] ); ?> columns-<?php echo esc_html( $args['columns'] ); ?> shortcode-type-<?php echo esc_html( $args['post_type'] ); ?>">
 	<div class="lsx-exercises-shortcode" >
 		<?php
 		if ( $exercises->have_posts() ) {

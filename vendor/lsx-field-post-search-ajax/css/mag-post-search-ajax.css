@@ -7,7 +7,7 @@
 .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
 
 input.cmb-post-search-ajax { width: 30em; }
-.cmb-post-search-ajax-results { width: 30em; padding: 0 1px; box-sizing: border-box; margin-bottom: 5px; }
+.cmb-post-search-ajax-results { width: 100%; padding: 0 1px; box-sizing: border-box; margin-bottom: 5px; }
 .cmb-post-search-ajax-results li { margin: 0; border-bottom: 1px solid #f4f4f4; padding: 7px 5px; background: #fff; }
 .cmb-post-search-ajax-results li:last-child { border-bottom: none; }
 .cmb-post-search-ajax-results li span.hndl { font-size: 13px; line-height: 16px; color: #ccc; margin: 0 8px 0 0; height: 16px; cursor: s-resize; }

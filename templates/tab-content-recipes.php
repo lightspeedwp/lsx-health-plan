@@ -26,11 +26,11 @@
 				'link_after'  => '</span>',
 			) );
 		?>
-		<div class="single-plan-section-title recipes-plan">
-			<?php lsx_get_svg_icon( 'recipes.svg' ); ?>
-			<h2 class="title-lined"><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
-		</div>
 		<div class="single-plan-inner recipes-content">
+			<div class="single-plan-section-title recipes-plan title-lined">
+				<?php lsx_get_svg_icon( 'recipes.svg' ); ?>
+				<h2><?php esc_html_e( 'Recipes', 'lsx-health-plan' ); ?> <span class="blue-title"><?php the_title(); ?></span></h2>
+			</div>
 			<div class="recipes">
 			<div class="row eating-row">
 			<?php
@@ -75,31 +75,8 @@
 		</div>
 	</div><!-- .entry-content -->
 
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
-			<div class="post-tags-wrapper">
-				<?php lsx_content_post_tags(); ?>
-
-				<?php
-				if ( class_exists( 'LSX_Sharing' ) ) {
-					lsx_content_sharing();
-				} else {
-					if ( function_exists( 'sharing_display' ) ) {
-						sharing_display( '', true );
-					}
-
-					if ( class_exists( 'Jetpack_Likes' ) ) {
-						$custom_likes = new Jetpack_Likes();
-						echo wp_kses_post( $custom_likes->post_likes( '' ) );
-					}
-				}
-				?>
-		<?php endif ?>
-	</footer><!-- .footer-meta -->
-
 	<?php lsx_entry_bottom(); ?>
 
 </article><!-- #post-## -->
 
 <?php
-lsx_entry_after();

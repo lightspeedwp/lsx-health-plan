@@ -23,6 +23,9 @@ function has_attached_post( $post_id = '', $meta_key = '', $single = true ) {
 	}
 	$items = get_post_meta( $post_id, $meta_key, $single );
 	if ( '' !== $items && false !== $items && 0 !== $items ) {
+		if ( ! is_array( $items ) ) {
+			$items = array( $items );
+		}
 		$items = check_posts_exist( $items );
 		if ( ! empty( $items ) ) {
 			$has_post = true;
@@ -285,14 +288,15 @@ function get_video_url( $embed ) {
  * @param array $post_ids
  * @return boolean
  */
-function is_week_complete( $term_id = false, $post_ids = array() ) {
+function is_week_complete( $term_id = false, $section_keys = array(), $group_title = '' ) {
 	$return = false;
-	if ( ! empty( $post_ids ) ) {
-		foreach ( $post_ids as &$pid ) {
-			$pid = 'day_' . $pid . '_complete';
+	if ( ! empty( $section_keys ) ) {
+		$group_count = count( $section_keys );
+		foreach ( $section_keys as &$pid ) {
+			$pid = 'day_' . \lsx_health_plan\functions\plan\generate_section_id( $pid ) . '_complete';
 		}
-		$days_complete = get_meta_amounts( $post_ids );
-		if ( 7 === $days_complete || '7' === $days_complete ) {
+		$days_complete = get_meta_amounts( $section_keys );
+		if ( (int) $group_count === (int) $days_complete ) {
 			$return = true;
 		}
 	}
@@ -327,6 +331,44 @@ function get_meta_amounts( $post_ids = array() ) {
 }
 
 /**
+ * Get the taxonomy plans type meta.
+ *
+ * @param [type] $post
+ * @return void
+ */
+function hp_get_plan_type_meta( $post ) {
+	$plan_meta = '';
+
+	$term_obj_list = get_the_terms( $post->ID, 'plan-type' );
+	if ( false !== $term_obj_list ) {
+		$terms_string = '';
+		$terms_ids    = wp_list_pluck( $term_obj_list, 'term_id' );
+		
+		foreach ( $term_obj_list as $term ) {
+			$term_link = get_term_link( $term );
+			$term_name = '<a href="' . $term_link . '">' .$term->name . '<span>, </span></a>';
+			
+			$terms_string .= $term_name;
+		}
+		
+		foreach ( $terms_ids as $terms_id ) {
+			$term_thumbnail_id = get_term_meta( $terms_id, 'thumbnail', true );
+			$img               = wp_get_attachment_image_src( $term_thumbnail_id, 'thumbnail' );
+			if ( ! empty( $img ) ) {
+				$image_url = $img[0];
+				$img       = '<img loading="lazy" alt="thumbnail" style="width:24px; height: auto;" class="attachment-responsive wp-post-image lsx-responsive" src="' . esc_url( $image_url ) . '" />';
+			}
+
+			$plan_meta .= $img;
+		}
+
+		$plan_meta = '<div class="plan-meta">' . $plan_meta . '<span>' . $terms_string . '</span></div>';
+	}
+
+	return $plan_meta;
+}
+
+/**
  * Limit media library access
  */
 function set_only_author( $wp_query ) {
@@ -346,8 +388,7 @@ add_action( 'pre_get_posts', '\lsx_health_plan\functions\set_only_author' );
  */
 function hp_excerpt( $post_id ) {
 	if ( ! has_excerpt( $post_id ) ) {
-		$content = wp_trim_words( get_the_content( $post_id ), 20 );
-		$content = '<p>' . $content . '</p>';
+		$content = wp_trim_words( get_post_field( 'post_content', $post_id ), 10 );
 	} else {
 		$content = get_the_excerpt( $post_id );
 	}
@@ -361,6 +402,7 @@ function hp_excerpt( $post_id ) {
  * @return void
  */
 function column_class( $columns = '3' ) {
+	$cols  = '';
 	$cols .= '5' === $columns ? '15' : 12 / $columns;
 	return $cols;
 }
@@ -388,4 +430,67 @@ function get_exercises_by_workout( $workout = '' ) {
 		$i++;
 	}
 	return $exercises;
+}
+
+
+/**
+ * Gets the current users progress on a plan.
+ *
+ * @param  int $plan_id
+ * @return int
+ */
+function get_progress( $plan_id = false ) {
+	$progress = 0;
+	$complete = array();
+	$count    = 0;
+	if ( false !== $plan_id &&  \lsx_health_plan\functions\plan\has_sections( $plan_id ) ) {
+		$sections = \lsx_health_plan\functions\plan\get_sections();
+		$all_count = count( $sections );
+		foreach ( $sections as $section_key => $section_values ) {
+			if ( lsx_health_plan_is_day_complete( $plan_id, $section_values['title'] ) ) {
+				$complete[] = true;
+			}
+		}
+		$progress = (int) count( $complete ) / (int) $all_count * 100;
+	}
+	return $progress;
+}
+
+
+
+/**
+ * Link to back to archive for taxonomy pages
+ *
+ * @return void
+ */
+function hp_back_archive_link() {
+	global $wp_taxonomies;
+	
+	$post_type = get_queried_object()->taxonomy;
+	$post_type = $wp_taxonomies[$post_type]->object_type;
+
+	if ( is_tax() ) {
+		?>
+		<div class="archive-category-title hp-archive-category-title">
+			<a class="back-to-blog" href="<?php echo ( esc_url( get_post_type_archive_link( $post_type[0] ) ) ); ?>"><?php echo esc_html__( 'Back To ', 'lsx' ) . esc_html( $post_type[0] ) . 's'; ?></a>
+		</div>
+		<?php
+	}
+}
+add_action( 'lsx_content_wrap_before', '\lsx_health_plan\functions\hp_back_archive_link', 20 );
+
+/**
+ * Returns an array.
+ *
+ * @param  mixed $item
+ * @return array
+ */
+function prep_array( $item ) {
+	if ( ! is_array( $item ) ) {
+		$item = explode( ',', $item );
+		if ( ! is_array( $item ) ) {
+			$item = array( $item );
+		}
+	}
+	return $item;
 }

@@ -1,4 +1,4 @@
-@mixin customizer-health-plan-link-colour ($color: #418AD0, $hover: #F7AE00) {
+@mixin customizer-health-plan-link-colour($color: #418ad0, $hover: #f7ae00) {
 	&,
 	&:active,
 	&:visited {
@@ -11,8 +11,14 @@
 		color: $hover;
 	}
 }
-@mixin customizer-health-plan-body-colours($bg: #F6F6F6, $breaker: #DADDDF, $color: #4A4A4A, $link: #418AD0, $hover: #F7AE00, $small: #919191) {
-
+@mixin customizer-health-plan-body-colours(
+	$bg: #f6f6f6,
+	$breaker: #dadddf,
+	$color: #4a4a4a,
+	$link: #418ad0,
+	$hover: #f7ae00,
+	$small: #919191
+) {
 	.svg {
 		svg {
 			> g {
@@ -49,30 +55,187 @@
 	}
 
 	.title-lined {
-		border-bottom: 2px solid $breaker; 
+		border-bottom: 5px solid $link;
+		width: 100%;
 		@extend .svg;
 	}
 
-	.blue-title, .content-area h2.blue-title {
+	.blue-title,
+	.content-area h2.blue-title {
 		color: $link;
 	}
- 
-	#account-nav {
+
+	#account-nav,
+	#type-nav {
 		.nav.nav-pills {
-			@media (max-width:600px) {
+			@media (max-width: 600px) {
 				&::-webkit-scrollbar-thumb {
 					background-color: $link;
 				}
 			}
 			li {
 				a {
+					border: 1px solid #dddddd;
 					&::after {
-						color: $link;
+						color: $gray_medium;
 					}
 				}
-				&.active, &:hover {
+				&.active,
+				&:hover {
 					a {
-						background: $link;
+						color: $link;
+						&::after {
+							color: $link;
+						}
+						background: white;
+						border: 1px solid $link;
+					}
+				}
+			}
+		}
+	}
+	.archive-plan,
+	.single-plan {
+		.content-box {
+			h3.plan {
+				a,
+				a:visited {
+					&:hover {
+						color: $hover;
+					}
+				}
+			}
+		}
+	}
+
+	.plans-products-wrapper {
+		.plan-product {
+			.title {
+				a,
+				a:visited {
+					&:hover {
+						color: $hover;
+					}
+				}
+			}
+		}
+	}
+
+	.post-type-archive-plan,
+	.single-plan,
+	.single,
+	.archive {
+		.wrap.container {
+			.archive-header {
+				background-color: $link;
+				background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
+				.archive-title {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.warmup-container {
+		.sets {
+			.set-box {
+				&.set {
+					&.entry-content {
+						margin-bottom: 0;
+						padding: 20px;
+						margin-bottom: 0;
+						display: block;
+						@include media('>=tablet') {
+							padding: 20px 30px;
+							display: flex;
+							align-items: end;
+							justify-content: space-between;
+						}
+						.the-content {
+							@include media('>=tablet') {
+								padding-right: 4rem;
+							}
+							#hp-connected-members {
+								padding: 0;
+							}
+						}
+						#lsx-tips-shortcode {
+							margin-top: 0;
+							width: 100%;
+							@include media('>=tablet') {
+								max-width: 350px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	article.type-plan,
+	article.type-meal,
+	article.type-workout {
+		.entry-content {
+			.workout-content {
+				.sets {
+					.set-box {
+						&.set {
+							background: white;
+							&.entry-content {
+								margin-bottom: 0;
+								padding: 20px;
+								margin-bottom: 0;
+								display: block;
+								@include media('>=tablet') {
+									padding: 20px 30px;
+									display: flex;
+									align-items: end;
+									justify-content: space-between;
+								}
+							}
+
+							.the-content {
+								@include media('>=tablet') {
+									padding-right: 4rem;
+								}
+								#hp-connected-members {
+									padding: 0;
+								}
+							}
+							#lsx-tips-shortcode {
+								margin-top: 0;
+								width: 100%;
+								@include media('>=tablet') {
+									max-width: 350px;
+								}
+							}
+							&:nth-child(even) {
+								background: lighten($link, 42%);
+							}
+							.btn {
+								width: auto;
+								height: auto;
+							}
+						}
+					}
+				}
+			}
+			.meals {
+				.eating-row {
+					background: lighten($link, 42%);
+				}
+			}
+		}
+	}
+	.warmup-container {
+		.sets {
+			.set-box {
+				&.set {
+					background: white;
+					&:nth-child(even) {
+						background: lighten($link, 42%);
+					}
+					.btn {
+						width: auto;
+						height: auto;
 					}
 				}
 			}
@@ -109,6 +272,9 @@
 								&:not(.completed) {
 									border-color: $link;
 									background: rgba($link, 0.5);
+									.plan-content {
+										color: $link;
+									}
 								}
 								&:hover {
 									&:not(.completed) {
@@ -123,13 +289,11 @@
 		}
 	}
 
-	.my-profile-block {
-		.profile-navigation {
-			.profile-photo {
-				img {
-					border-color: $link;
-				}
-			}
+	.my-profile-block,
+	.archive-header {
+		background: linear-gradient(213.95deg, $link 0%, darken($link, 20%) 100%);
+		.title-lined {
+			border-bottom: 5px solid $link;
 		}
 	}
 
@@ -143,8 +307,10 @@
 		}
 	}
 
-
-	.single-plan, .archive-plan, .lsx-exercises-shortcode, .single-workout {
+	.single-plan,
+	.archive-plan,
+	.lsx-exercises-shortcode,
+	.single-workout {
 		.extra-title {
 			span {
 				color: $link;
@@ -153,11 +319,15 @@
 		.sets {
 			.set-title {
 				color: $link;
+				font-weight: bold;
 			}
-			.set-content, .set-table, .set-list, .set-grid {
+			.set-content,
+			.set-table,
+			.set-list,
+			.set-grid {
 				color: $color;
 			}
-			
+
 			.set-table {
 				.workout-table {
 					tr {
@@ -165,7 +335,7 @@
 							border-bottom: 2px solid $link;
 						}
 						td {
-							&.video-button-item  {
+							&.video-button-item {
 								button {
 									.fa {
 										font-size: 40px;
@@ -187,6 +357,9 @@
 				.workout-list,
 				.workout-grid {
 					article {
+						.exercise-counter {
+							color: $link;
+						}
 						.title {
 							h3 {
 								a {
@@ -197,6 +370,14 @@
 											color: $link;
 										}
 									}
+								}
+							}
+						}
+						.reps-container {
+							.btn-simple {
+								background-color: $link;
+								&:hover {
+									background-color: $hover;
 								}
 							}
 						}
@@ -225,18 +406,176 @@
 		.single-plan-section-title {
 			@extend .svg;
 		}
+		.content-box {
+			.plan-meta {
+				span {
+					a:not(.btn) {
+						&:hover {
+							color: $hover;
+						}
+					}
+				}
+			}
+		}
+	}
+	.all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .plan-meta span a {
+		&:hover {
+			color: $hover;
+		}
+	}
+	.single.single-team {
+		#primary {
+			.lsx-team-socials {
+				> li {
+					> a {
+						border: 1px solid $link;
+						background: transparent;
+						i {
+							color: $link;
+						}
+						&:hover {
+							border: 1px solid $hover;
+							i {
+								color: $hover;
+							}
+						}
+					}
+				}
+			}
+			.lsx-team-job-title {
+				color: $small;
+			}
+			.entry-tabs,
+			.hp-entry-tabs {
+				.nav-tabs {
+					> li {
+						&.active {
+							> a {
+								background-color: transparent;
+								color: $link;
+								border: 1px solid $link;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#main {
+		.lsx-sharing-content {
+			.lsx-sharing-button {
+				a {
+					background: transparent;
+					color: $link;
+					border: 1px solid $link;
+					width: 25px;
+					height: 25px;
+					&:hover {
+						color: $hover;
+						border: 1px solid $hover;
+					}
+				}
+			}
+		}
+	}
+	// Single Recipe
+	#single-recipe,
+	#single-exercise {
+		.recipe-data {
+			.recipe-table {
+				tbody {
+					tr {
+						td {
+							&:first-child {
+								&:before {
+									font-family: FontAwesome;
+									margin-right: 5px;
+									color: $link;
+									font-size: 12px;
+								}
+							}
+						}
+					}
+					.serves {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f0c0';
+								}
+							}
+						}
+					}
+					.prep-time {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f017';
+								}
+							}
+						}
+					}
+					.cooking-time {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f0f5';
+								}
+							}
+						}
+					}
+					.portion-size {
+						td {
+							&:first-child {
+								&:before {
+									content: '\f200';
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
-	#lsx-tips-shortcode {
-		.lsx-tips-shortcode {
-			.diet-tip-wrapper {
-				&.quick-tip {
-					h3 {
-						color: $link;
+	#lsx-hp-related {
+		.lsx-related-posts-content {
+			.col-xs-12 {
+				.lsx-related-posts-wrapper {
+					.lsx-slot {
+						.entry-layout {
+							.entry-layout-content {
+								.entry-header {
+									.entry-meta {
+										.post-categories {
+											color: $small;
+											a {
+												color: $small;
+											}
+										}
+									}
+									.entry-title {
+										a {
+											color: $color;
+										}
+									}
+								}
+							}
+						}
 					}
-					.tipimage .tip-thumbnail img {
-						border-color: $link;
-					}
+				}
+			}
+		}
+	}
+	#hp-connected-members {
+		p {
+			color: $small;
+			.lsx-team-roles {
+				color: $small;
+			}
+			.lsx-team-name {
+				color: $link;
+				&:hover {
+					color: $hover;
 				}
 			}
 		}

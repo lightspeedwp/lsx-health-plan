@@ -37,13 +37,40 @@ $modal_args = array(
 	'modal_content' => $modal_content_setting,
 );
 
+$counter = 1;
+
 if ( ! empty( $groups ) ) {
 	?>
 	<div class="set-grid">
 		<div class="workout-grid row">
 			<?php
 			foreach ( $groups as $group ) {
-				if ( isset( $group['connected_exercises'] ) ) {
+				$connected_exercise = false;
+				if ( isset( $group['connected_exercises'] ) && '' !== $group['connected_exercises'] ) {
+					$connected_exercise = true;
+				}
+
+				if ( ! $connected_exercise ) {
+					$group['connected_exercises'] = '';
+				}
+				$alt_title_value = $group['alt_title'] ?? '';
+				if ( ( $connected_exercise ) || ( ( ! $connected_exercise ) && $alt_title_value ) ) {
+
+					$alt_title = '';
+					if ( isset( $group['alt_title'] ) && '' !== $group['alt_title'] ) {
+						$alt_title = '<span class="alt-title">' . esc_html( $group['alt_title'] ) . '</span>';
+					}
+
+					$alt_description = '';
+					if ( isset( $group['alt_description'] ) && '' !== $group['alt_description'] ) {
+						$alt_description = '<span class="alt-description">' . esc_html( $group['alt_description'] ) . '</span>';
+					}
+
+					$alt_image = '';
+					if ( isset( $group['exercise_alt_thumbnail'] ) && '' !== $group['exercise_alt_thumbnail'] ) {
+						$alt_image = $group['exercise_alt_thumbnail'];
+					}
+
 					$reps = '';
 					if ( isset( $group['reps'] ) && '' !== $group['reps'] ) {
 						$reps = '<span class="reps">' . esc_html( $group['reps'] ) . '</span>';
@@ -60,10 +87,18 @@ if ( ! empty( $groups ) ) {
 							break;
 
 						case 'modal':
-							$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
-							$link_close = '</a>';
-							// We call the button to register the modal, but we do not output it.
-							lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							if ( ( '' !== $alt_title ) || ( '' !== $alt_description ) || ( '' !== $alt_image ) ) {
+								$link_html  = '<a class="alt-modal" data-toggle="modal" href="#workout-alt-exercise-modal-' . $group['connected_exercises'] . '">';
+								$link_close = '</a>';
+								// We call the button to register the alt modal, but we do not output it.
+								lsx_health_plan_workout_exercise_alt_button( $group['connected_exercises'], $group, false, $modal_args, $alt_title, $alt_description, $alt_image );
+							} else {
+								$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+								$link_close = '</a>';
+								// We call the button to register the modal, but we do not output it.
+								lsx_health_plan_workout_exercise_button( $group['connected_exercises'], $group, false, $modal_args );
+							}
+
 							break;
 
 						case 'none':
@@ -82,27 +117,63 @@ if ( ! empty( $groups ) ) {
 										'class' => 'aligncenter',
 									);
 									$featured_image = get_the_post_thumbnail( $group['connected_exercises'], 'medium', $thumbnail_args );
+									if ( $alt_image ) {
+										$featured_image = '<img alt="thumbnail" loading="lazy" class="aligncenter wp-post-image" src="' . $alt_image . '">';
+									}
 									if ( ! empty( $featured_image ) && '' !== $featured_image ) {
 										echo wp_kses_post( $featured_image );
 									} else {
 										?>
-										<img src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
+										<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __DIR__ ) . '../assets/images/placeholder.jpg' ); ?>">
 										<?php
 									}
 									?>
 								<?php echo wp_kses_post( $link_close ); ?>
 							</div>
 							<div class="content-box exercise-content-box white-bg">
-								<h3 class="title-lined <?php echo esc_html( $class_excerpt ); ?>">
+								<h3 class="content-box-title <?php echo esc_html( $class_excerpt ); ?>">
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											
+											if ( '' !== $alt_title ) {
+												$exercise_title = '<span class="exercise-counter">' . $counter . '.</span>' . $alt_title;
+											} else {
+												$exercise_title = '<span class="exercise-counter">' . $counter . '.</span>' . $exercise_title;
+											}
 											echo wp_kses_post( $exercise_title );
 											?>
 										</a>
 									<?php echo wp_kses_post( $link_close ); ?>
 								</h3>
-								<div class="reps-container">
+								<?php
+								if ( '' !== $content_setting ) {
+									?>
+									<p class="lsx-exercises-excerpt">
+										<?php
+										if ( 'excerpt' === $content_setting ) {
+											$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
+
+											if ( '' !== $alt_description ) {
+												$excerpt = $alt_description;
+											}
+											echo wp_kses_post( $excerpt );
+										}
+										if ( 'full' === $content_setting ) {
+											echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
+										}
+										?>
+									</p>
+									<?php
+								}
+								?>
+								<?php
+								$repsclass = '';
+								if ( '' !== $reps ) {
+									$repsclass = 'have-reps';
+								}
+								?>
+								<div class="reps-container <?php echo esc_html( $repsclass ); ?>">
 									<?php
 									if ( '' !== $reps ) {
 									?>
@@ -110,37 +181,16 @@ if ( ! empty( $groups ) ) {
 									<?php
 									}
 									?>
-									<?php if ( '' !== $link_html ) { ?>
+									<?php if ( ( '' !== $link_html ) && ( $connected_exercise ) ) { ?>
 										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn-simple" ', $link_html ) ); ?>
-										<?php esc_html_e( 'How to do it?', 'lsx-health-plan' ); ?>
 										<?php echo wp_kses_post( $link_close ); ?>
 									<?php } ?>
 								</div>
-								<?php
-								if ( '' !== $content_setting ) {
-									if ( 'excerpt' === $content_setting ) {
-										$excerpt = \lsx_health_plan\functions\hp_excerpt( $group['connected_exercises'] );
-										?>
-											<p class="lsx-exercises-excerpt"><?php echo wp_kses_post( $excerpt ); ?></p>
-										<?php
-									}
-									if ( 'full' === $content_setting ) {
-										echo wp_kses_post( get_the_content( null, null, $group['connected_exercises'] ) );
-									}
-
-									if ( '' !== $link_html ) {
-										?>
-										<?php echo wp_kses_post( str_replace( '<a', '<a class="btn border-btn" ', $link_html ) ); ?>
-										<?php esc_html_e( 'View exercise', 'lsx-health-plan' ); ?>
-										<?php echo wp_kses_post( $link_close ); ?>
-										<?php
-									}
-								}
-								?>
 							</div>
 						</article>
 					</div>
 					<?php
+					$counter ++;
 				}
 			}
 			?>

@@ -29,15 +29,15 @@ class Workout {
 	public $slug = 'workout';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'init', array( $this, 'recipe_type_taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'workout_connections' ), 15 );
-		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 8, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
 		// Template Redirects.
@@ -63,18 +63,18 @@ class Workout {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Workout', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Workouts', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Workouts', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Workout', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All Workouts', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
-			'parent_item_colon'  => '',
+			'parent_item_colon'  => esc_html__( 'Parent:', 'lsx-health-plan' ),
 			'menu_name'          => esc_html__( 'Workouts', 'lsx-health-plan' ),
 		);
 		$args = array(
@@ -90,7 +90,7 @@ class Workout {
 				'slug' => \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' ),
 			),
 			'capability_type'    => 'page',
-			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', false ),
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', 'workouts' ),
 			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
@@ -98,9 +98,43 @@ class Workout {
 				'thumbnail',
 				'editor',
 				'excerpt',
+				'page-attributes',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'workout', $args );
+	}
+
+	/**
+	 * Register the Type taxonomy.
+	 */
+	public function recipe_type_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Workout Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Workout Type', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Workout Types', 'lsx-health-plan' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'workout-type',
+			),
+		);
+
+		register_taxonomy( 'workout-type', array( 'workout' ), $args );
 	}
 
 	/**
@@ -148,7 +182,49 @@ class Workout {
 	/**
 	 * Define the metabox and field configurations.
 	 */
+	public function featured_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox_workout',
+				'title'        => __( 'Featured Workout', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Workout', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable a featured workout' ),
+				'id'         => $this->slug . '_featured_workout',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
 	public function details_metaboxes() {
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $this->slug . '_details_metabox',
+			'title'        => __( 'Workout Details', 'lsx-health-plan' ),
+			'object_types' => array( $this->slug ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true,
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Workout Short Description', 'lsx-health-plan' ),
+			'id'   => $this->slug . '_short_description',
+			'type' => 'textarea_small',
+			'desc' => __( 'Add a small description for this workout (optional)', 'lsx-health-plan' ),
+		) );
+
 		$workout_sections = apply_filters( 'lsx_health_plan_workout_sections_amount', 6 );
 		if ( false !== $workout_sections && null !== $workout_sections ) {
 			$i = 1;
@@ -192,6 +268,7 @@ class Workout {
 							'add_button'    => esc_html__( 'Add New', 'lsx-health-plan' ),
 							'remove_button' => esc_html__( 'Delete', 'lsx-health-plan' ),
 							'sortable'      => true,
+							'closed'        => true, // true to have the groups closed by default
 						),
 					)
 				);
@@ -256,170 +333,52 @@ class Workout {
 				$cmb_group->add_group_field(
 					$group_field_id,
 					array(
+						'name' => esc_html__( 'Exercise title (Optional)', 'lsx-health-plan' ),
+						'id'   => 'alt_title',
+						'type' => 'text',
+					)
+				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
+						'name' => esc_html__( 'Exercise Description (Optional)', 'lsx-health-plan' ),
+						'id'   => 'alt_description',
+						'type' => 'textarea_small',
+					)
+				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
 						'name' => esc_html__( 'Reps / Time / Distance', 'lsx-health-plan' ),
 						'id'   => 'reps',
 						'type' => 'text',
 						// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 					)
 				);
+				$cmb_group->add_group_field(
+					$group_field_id,
+					array(
+						'name'         => __( 'Exercise Image (Optional)', 'lsx-health-plan' ),
+						'id'           => 'exercise_alt_thumbnail',
+						'type'         => 'file',
+						'text'         => array(
+							'add_upload_file_text' => __( 'Add File', 'lsx-health-plan' ),
+						),
+						'desc'         => __( 'Upload an image 300px x 300px in size.', 'lsx-health-plan' ),
+						'query_args'   => array(
+							'type' => array(
+								'image/gif',
+								'image/jpeg',
+								'image/png',
+							),
+						),
+						'preview_size' => 'thumbnail',
+						'classes'      => 'lsx-field-col lsx-field-add-field  lsx-field-col-25',
+					)
+				);
+
 				$i++;
 			};
-		}
-	}
-
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function workout_connections() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => $this->slug . '_workout_connections_metabox',
-				'title'        => __( 'Workouts', 'lsx-health-plan' ),
-				'desc'         => __( 'Start typing to search for your workouts', 'lsx-health-plan' ),
-				'object_types' => array( 'plan' ),
-				'context'      => 'normal',
-				'priority'     => 'high',
-				'show_names'   => true,
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Workouts', 'lsx-health-plan' ),
-				'id'         => 'connected_workouts',
-				'desc'       => __( 'Connect the workout that applies to this day plan using the field provided.', 'lsx-health-plan' ),
-				'type'       => 'post_search_ajax',
-				'limit'      => 15,
-				'sortable'   => true,
-				'query_args' => array(
-					'post_type'      => array( 'workout' ),
-					'post_status'    => array( 'publish' ),
-					'posts_per_page' => -1,
-				),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Pre Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'pre_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-			)
-		);
-		$cmb->add_field(
-			array(
-				'name'       => __( 'Post Workout Snack', 'lsx-health-plan' ),
-				'id'         => 'post_workout_snack',
-				'type'       => 'wysiwyg',
-				'show_on_cb' => 'cmb2_hide_if_no_cats',
-				'options'    => array(
-					'textarea_rows' => 5,
-				),
-			)
-		);
-	}
-
-	/**
-	 * Registers the lsx_search_settings
-	 *
-	 * @param object $cmb new_cmb2_box().
-	 * @return void
-	 */
-	public function register_settings( $cmb ) {
-		if ( false !== \lsx_health_plan\functions\get_option( 'exercise_enabled', false ) ) {
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_settings_title',
-					'type'        => 'title',
-					'name'        => __( 'Workout Settings', 'lsx-health-plan' ),
-					'description' => __( 'Choose the layout, content and link settings for your exercises.', 'lsx-health-plan' ),
-				)
-			);
-
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_tab_layout',
-					'type'        => 'select',
-					'name'        => __( 'Workout Tab Layout', 'lsx-health-plan' ),
-					'description' => __( 'Choose the layout for the workouts.', 'lsx-health-plan' ),
-					'options'     => array(
-						'table' => __( 'Table', 'lsx-health-plan' ),
-						'list'  => __( 'List', 'lsx-health-plan' ),
-						'grid'  => __( 'Grid', 'lsx-health-plan' ),
-					),
-				)
-			);
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_tab_link',
-					'type'        => 'select',
-					'name'        => __( 'Workout Tab Link', 'lsx-health-plan' ),
-					'description' => __( 'Choose to show the excerpt, full content or nothing.', 'lsx-health-plan' ),
-					'options'     => array(
-						''       => __( 'None', 'lsx-health-plan' ),
-						'single' => __( 'Single', 'lsx-health-plan' ),
-						'modal'  => __( 'Modal', 'lsx-health-plan' ),
-					),
-					'default' => 'modal',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_tab_modal_content',
-					'type'        => 'select',
-					'name'        => __( 'Modal Content', 'lsx-health-plan' ),
-					'description' => __( 'Choose to show the excerpt, full content or nothing. For the modal content only', 'lsx-health-plan' ),
-					'options'     => array(
-						''        => __( 'None', 'lsx-health-plan' ),
-						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
-						'full'    => __( 'Full Content', 'lsx-health-plan' ),
-					),
-					'default' => '',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_tab_columns',
-					'type'        => 'select',
-					'name'        => __( 'Grid Columns', 'lsx-health-plan' ),
-					'description' => __( 'If you are displaying a grid, set the amount of columns you want to use.', 'lsx-health-plan' ),
-					'options'     => array(
-						'12' => __( '1', 'lsx-health-plan' ),
-						'6'  => __( '2', 'lsx-health-plan' ),
-						'4'  => __( '3', 'lsx-health-plan' ),
-						'3'  => __( '4', 'lsx-health-plan' ),
-						'2'  => __( '6', 'lsx-health-plan' ),
-					),
-					'default' => '4',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'id'          => 'workout_tab_content',
-					'type'        => 'select',
-					'name'        => __( 'Grid Content', 'lsx-health-plan' ),
-					'description' => __( 'Choose to show the excerpt, full content or nothing. For the grid layout only', 'lsx-health-plan' ),
-					'options'     => array(
-						''        => __( 'None', 'lsx-health-plan' ),
-						'excerpt' => __( 'Excerpt', 'lsx-health-plan' ),
-						'full'    => __( 'Full Content', 'lsx-health-plan' ),
-					),
-					'default' => '',
-				)
-			);
-
-			do_action( 'lsx_hp_workout_settings_page', $cmb );
-
-			$cmb->add_field(
-				array(
-					'id'   => 'settings_workouts_closing',
-					'type' => 'tab_closing',
-				)
-			);
 		}
 	}
 }

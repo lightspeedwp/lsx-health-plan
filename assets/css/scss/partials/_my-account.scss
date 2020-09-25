@@ -1,51 +1,58 @@
 // Account
+.gutenberg-compatible-template.using-gutenberg .entry-content {
+	div.woocommerce-message {
+		max-width: 1140px;
+		width: 100%;
+		margin-top: 43px;
+		@media (min-width: 768px) and (max-width: 1140px) {
+			margin-left: 30px;
+			margin-right: 30px;
+		}
+	}
+}
 
-#account-nav {
-	margin-bottom: 15px;
+#account-nav,
+#type-nav {
+	max-width: 1140px;
+	width: 100%;
+	margin-top: 45px;
+	margin-bottom: 30px;
+	@media (min-width: 601px) and (max-width: 1140px) {
+		padding-left: 0;
+		padding-right: 0;
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
+	@media (max-width: 600px) {
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
 	.nav.nav-pills {
-		@media (max-width:600px) {
+		@media (max-width: 600px) {
 			width: 100vw;
 			margin-left: -15px;
-			//margin-top: -44px;
-    		height: 100%;
+			height: 100%;
 			display: flex;
 			overflow-x: auto;
 			-webkit-overflow-scrolling: touch;
 			overflow-scrolling: touch;
 			scroll-snap-type: x mandatory;
 			scroll-behavior: smooth;
-			box-shadow: 0px 3px 7px rgba(155, 155, 155, 0.4);
-			&::-webkit-scrollbar {
-				width: 1px;
-				height: 5px;
-				background-color: $white ;
-			}
-			&::-webkit-scrollbar-thumb {
-				background-color: $blue;
-			}
 		}
 		li {
-			margin-right: 15px;
-			@media (max-width:600px) {
-				//width: 100%;
+			margin-right: 2px;
+			@media (max-width: 600px) {
 				margin: 0;
-				width: 40%;
+				width: 33.333%;
 				flex-shrink: 0;
 				height: 100%;
 				scroll-snap-align: start;
 				display: flex;
 				padding-right: 2px;
+				margin-top: 1px;
 				&:not(.active) {
 					a {
 						opacity: 0.7;
-					}
-				}
-			}
-			&.active {
-				a{
-					&::after {
-						color: white;
-						opacity: 1;
 					}
 				}
 			}
@@ -53,21 +60,21 @@
 				border-radius: 0;
 				background: $white;
 				font-family: 'Noto Sans', sans-serif;
-				font-weight: bold;
 				font-size: 15px;
-				color: $gray;
-				padding: 15px;
+				color: $gray_medium;
+				padding: 13px;
 				display: flex;
 				min-width: 200px;
 				display: flex;
 				justify-content: space-between;
-				@media (max-width:600px) {
+				@media (max-width: 600px) {
 					font-size: 13px;
 					width: 100%;
-					padding: 15px;
+					padding: 5px;
 					flex-direction: column;
 					text-align: center;
 					min-width: auto;
+					line-height: 25px;
 				}
 				&::after {
 					content: '';
@@ -79,26 +86,19 @@
 					background-repeat: no-repeat;
 					background-position: center;
 					font-family: FontAwesome;
-					font-size: 25px;
+					font-size: 15px;
 					position: relative;
-					bottom: 7px;
 					color: $blue;
 					opacity: 0.5;
-					@media (max-width:600px) {
+					@media (max-width: 600px) {
 						width: 100%;
 						height: 20px;
-						margin: 5px 0 0 0;
-					}
-				}
-				&:hover {
-					&::after {
-						opacity: 1;
-						color: white;
+						margin: 0 0 5px 0;
 					}
 				}
 				&.my-plan-tab {
 					&::after {
-						content: '\f0e4';
+						content: '\f0e7';
 					}
 				}
 				&.account-details-tab {
@@ -111,11 +111,12 @@
 						content: '\f090';
 					}
 				}
-				@media (max-width:334px) {
+				@media (max-width: 334px) {
 					font-size: 11px;
 				}
 			}
-			&.active, &:hover {
+			&.active,
+			&:hover {
 				a {
 					background: $blue;
 					color: $white;
@@ -124,67 +125,259 @@
 		}
 	}
 }
-
-.my-profile-block {
-	background: $white;    
-	
-	max-width: 900px;
-	margin: 0 auto;
-	@media (min-width:900px) {
-		display: flex;
-		padding: 35px 20px 20px;
+#type-nav {
+	margin-top: 0;
+}
+body:not(.woocommerce-edit-account) {
+	#account-nav {
+		@media (min-width: 768px) and (max-width: 1140px) {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
 	}
+}
+
+.my-plan-shortcode {
+	.breadcrumbs-container {
+		z-index: 5;
+	}
+	.entry-content {
+		&:first-child {
+			& .my-profile-block {
+				margin-top: -70px;
+			}
+		}
+	}
+}
+.my-profile-block {
+	overflow: initial !important;
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		min-height: 200px;
+		@media (max-width: 768px) {
+			min-height: 250px;
+		}
+		.wp-block-cover__inner-container {
+			@media (max-width: 768px) {
+				padding: 10rem 3rem 3rem;
+				min-height: 250px;
+				flex-direction: row;
+			}
+			@media (max-width: 600px) {
+				flex-direction: column;
+				align-items: end;
+			}
+			> h2 {
+				margin: 0;
+				font-size: 42px;
+				font-weight: bold;
+			}
+		}
+	}
+	> .wp-block-cover__inner-container {
+		display: flex;
+		justify-content: space-between;
+		max-width: 1140px;
+		align-items: center;
+		padding: 7rem 0 2rem;
+		@media (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+	#dashboard-card {
+		max-width: 400px;
+		margin: 0;
+		position: relative;
+		display: flex;
+		@media (max-width: 768px) {
+			max-width: 600px;
+			top: 0;
+			width: 100%;
+			padding: 2rem;
+			justify-content: flex-end;
+		}
+		@media (max-width: 600px) {
+			justify-content: end;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
 	.profile-navigation {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		@media (max-width:900px) {
+		margin: 0;
+		margin-right: 20px;
+		@media (max-width: 900px) {
 			margin-bottom: 20px;
 		}
-		@media (min-width: 900px) {
-			margin-right: 20px;
+		@media (max-width: 768px) {
+			margin-right: 15px;
 		}
 		.profile-photo {
 			img {
 				border-radius: 100px;
-				border: 2px solid $blue;
-				height: 180px;
-				margin-bottom: 20px;
-				width: 180px;
+				border: 4px solid white;
+				min-height: 95px;
+				min-width: 95px;
+				width: 95px;
+				height: 95px;
 				object-fit: cover;
-			}
-		}
-		.edit-profile {
-			.btn.btn-green {
-				background-color: $green;
-				box-shadow: 2px 2px 0 0 $dark_green;
-				color: $white;
 			}
 		}
 	}
 	.profile-details {
 		width: 100%;
-		h1 {
-			font-size: 30px;
-			text-transform: capitalize;
+		background: $white;
+		padding: 1.5rem;
+		min-width: 230px;
+		height: fit-content;
+		@extend .lsx-hp-shadow;
+		display: flex;
+		flex-direction: column;
+		@media (max-width: 768px) {
+			min-width: auto;
 		}
-		.table.personal-information {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 16px;
-			thead {
-				background-color: $light_gray;
+		> div {
+			display: flex;
+			flex-direction: column;
+			span {
+				color: #333333;
+				line-height: 28px;
 			}
-			tr {
-				th, td {
-					border: none;
-				}
-				td {
-					font-weight: 300;
-				}
-				strong {
-					font-weight: 500;
+		}
+		h1 {
+			text-transform: capitalize;
+			color: #434343;
+			font-size: 20px;
+			line-height: 24px;
+			padding-bottom: 7px;
+			margin-bottom: 7px;
+			margin-left: 0;
+			width: 100%;
+		}
+		.edit-profile {
+			align-self: flex-end;
+			text-transform: uppercase;
+			font-weight: bold;
+			margin-top: -2.5rem;
+		}
+		.title-lined {
+			+ .edit-profile {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.all-plans-block {
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		max-width: 1140px;
+		width: 100%;
+		margin-top: 2.4rem;
+		margin-bottom: 2.4rem;
+		@media (min-width: 768px) and (max-width: 1140px) {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+	> .row {
+		display: flex;
+		flex-wrap: wrap;
+		> .col-xs-12 {
+			margin-bottom: 3rem;
+			article.lsx-slot {
+				background-color: white;
+				.content-box {
+					padding: 2rem 1.5rem;
+					h3.plan {
+						margin-bottom: 8px;
+						a {
+							color: $gray;
+						}
+					}
+					.plan-meta {
+						img {
+							margin-right: 5px;
+							+ span {
+								margin-left: 5px;
+							}
+						}
+						span {
+							font-size: 13px;
+							a {
+								color: #919191;
+							}
+						}
+						@include media('<=phone') {
+							margin-bottom: 2.4rem;
+						}
+					}
+					.hp-plan-price,
+					.amount {
+						color: #30bb00;
+						font-size: 18px;
+						margin-top: 9px;
+						display: block;
+					}
+					.excerpt {
+						margin-top: 10px;
+						@include media('<=phone') {
+							display: none;
+						}
+					}
+					.moretag {
+						display: none;
+					}
 				}
 			}
+		}
+	}
+}
+
+.progress {
+	position: relative;
+	span {
+		position: absolute;
+		left: 8px;
+		bottom: 6px;
+		font-size: 10px;
+		font-weight: bold;
+		color: white;
+	}
+	progress[value] {
+		appearance: none;
+		width: 100%;
+		height: 20px;
+		&::-webkit-progress-bar {
+			background-color: white;
+			border-radius: 10px;
+			border: 1px solid #dddddd;
+		}
+		&::-webkit-progress-value {
+			border-radius: 10px;
+			background-color: transparent;
+		}
+		&.less-progress {
+			&::-webkit-progress-value {
+				background-color: #c32d37;
+			}
+		}
+		&.half-progress {
+			&::-webkit-progress-value {
+				background-color: #ff7a18;
+			}
+		}
+		&.completed-progress {
+			&::-webkit-progress-value {
+				background-color: #30bb00;
+			}
+		}
+	}
+	progress[value='0'] {
+		+ span {
+			color: black;
 		}
 	}
 }
@@ -202,7 +395,7 @@
 		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 			display: flex;
 		}
-		@media (max-width:600px) {
+		@media (max-width: 600px) {
 			grid-template-columns: repeat(4, 23%);
 			grid-template-rows: 80px;
 		}
@@ -226,14 +419,14 @@
 				color: $white;
 			}
 		}
-		@media (max-width:768px) {
+		@media (max-width: 768px) {
 			.daily-plan-block {
 				&.week-grid {
 					.week-row {
 						.week-row-inner {
 							justify-content: flex-start;
 							.day {
-									margin-right: 12px;
+								margin-right: 12px;
 							}
 						}
 					}
@@ -250,11 +443,11 @@
 					}
 				}
 			}
-		}		
-		@media (min-width:900px) {
+		}
+		@media (min-width: 900px) {
 			max-width: 120px;
 		}
-		@media (max-width:600px) {
+		@media (max-width: 600px) {
 			height: 80px;
 			margin-bottom: 0;
 		}
@@ -270,8 +463,8 @@
 				&:before {
 					content: '\f05d';
 					font-family: FontAwesome;
-					font-size: 82px;
-					color: #dcdcdc;
+					font-size: 70px;
+					color: #f1f1f1;
 					font-weight: 300;
 				}
 			}
@@ -281,7 +474,7 @@
 			border: 2px solid $blue;
 			.plan-content {
 				display: flex;
-    			flex-direction: column;
+				flex-direction: column;
 				&:before {
 					content: url(/wp-content/plugins/lsx-health-plan/assets/images/hourglass.svg);
 					height: 40px;
@@ -320,22 +513,23 @@
 			justify-content: space-between;
 			transition: none;
 			&.week-title {
-				&:hover, &:focus {
+				&:hover,
+				&:focus {
 					color: $blue;
 				}
 				&:after {
-					content: "\f0d7";
+					content: '\f0d7';
 					font-family: 'FontAwesome';
 				}
-				&[aria-expanded="true"] {
+				&[aria-expanded='true'] {
 					&:after {
-						content: "\f0d8";
+						content: '\f0d8';
 						font-family: 'FontAwesome';
 					}
 				}
-				&[aria-expanded="false"] {
+				&[aria-expanded='false'] {
 					&:after {
-						content: "\f0d7";
+						content: '\f0d7';
 						font-family: 'FontAwesome';
 					}
 				}
@@ -345,10 +539,13 @@
 			.week-row-inner {
 				.week-meals-recipes-box {
 					.week-meals-recipes-box-inner {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
+						display: inline-flex;
 						flex-wrap: wrap;
+						gap: 0 5rem;
+						align-items: center;
+						@include media('<=phone') {
+							justify-content: end;
+						}
 						.day {
 							background: none;
 							&:not(.completed) {
@@ -369,6 +566,9 @@
 									}
 								}
 							}
+							@include media('<=phone') {
+								margin-right: 1rem;
+							}
 							.plan-content {
 								font-family: 'Noto Sans', sans-serif;
 								font-weight: 300;
@@ -380,8 +580,10 @@
 				&.week-downloads-view-on {
 					display: flex;
 					justify-content: space-between;
-					@media (max-width:1024px) {
+					margin: 0 -4rem;
+					@media (max-width: 1024px) {
 						flex-direction: column;
+						margin: 0;
 					}
 					.week-meals-recipes-box {
 						padding-right: 5px;
@@ -402,8 +604,8 @@
 										font-size: 0;
 										&:before {
 											font-size: 50px;
-											color: #F1F1F1;
-											@media (max-width:1024px) {
+											color: #f1f1f1;
+											@media (max-width: 1024px) {
 												font-size: 66px;
 											}
 										}
@@ -452,26 +654,38 @@
 	}
 }
 
-#edit-account-tab {   
-	padding: 35px 20px 20px;
+#edit-account-tab {
 	max-width: 1140px;
-    width: 100%;
+	width: 100%;
 	margin: 20px auto 140px;
-	@media (max-width:600px) {
+	@media (min-width: 601px) and (max-width: 1140px) {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
+	@media (max-width: 600px) {
 		padding: 0 10px 20px;
 		margin-top: 0px;
+		margin-bottom: 30px;
 		#account-nav {
 			.nav-pills {
 				margin-left: -25px;
 			}
 		}
 	}
-	.edit-account-section, .stat-section {
+	#account-nav {
+		@media (min-width: 769px) and (max-width: 1140px) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	.edit-account-section,
+	.stat-section {
 		width: 100%;
-		padding: 30px;
-		background: $white; 
-		.title-lined, .woocommerce {
-			max-width: 800px;
+		.title-lined,
+		.woocommerce {
+			max-width: 900px;
 			margin-left: 0;
 		}
 		.woocommerce {
@@ -479,14 +693,32 @@
 				width: 100%;
 			}
 			.woocommerce-EditAccountForm {
-				label, span em {
+				label,
+				span em {
 					font-weight: 300;
 				}
 				label {
 					word-break: break-word;
 				}
 				p:last-child {
-					margin-top:20px;
+					margin-top: 20px;
+				}
+				fieldset {
+					legend {
+						display: none;
+					}
+				}
+			}
+		}
+		.my-stats-wrap {
+			display: flex;
+			@media (max-width: 767px) {
+				flex-direction: column;
+			}
+			.description {
+				width: 30%;
+				@media (max-width: 767px) {
+					width: 100%;
 				}
 			}
 		}
@@ -496,20 +728,54 @@
 		.my-stats {
 			display: flex;
 			flex-wrap: wrap;
-
-			p:last-child {
-				margin-top:0px !important;
+			width: 70%;
+			@media (max-width: 767px) {
+				width: 100%;
 			}
-
-			.form-row{
-				&:first-child, &:nth-child(2), &:nth-child(3){
-					margin-bottom: 20px;
-					color: $blue;
-					font-size: 22px;
-				}
+			p:last-child {
+				margin-top: 0px !important;
+			}
+			.form-row {
 				padding-right: 15px !important;
 				flex-grow: 1;
-				width: 33.333%;
+				width: 50%;
+				max-width: 240px;
+				margin-left: 0;
+				@media (max-width: 767px) {
+					width: 100%;
+					max-width: 100%;
+				}
+				&.calculate-bmi {
+					.btn,
+					.btn:active,
+					.btn:visited {
+						width: 100%;
+						color: #f7941d;
+						border-color: #f7941d;
+						background-color: transparent;
+						&:hover {
+							background-color: #f7941d;
+							color: white;
+						}
+					}
+				}
+			}
+		}
+		.description {
+			margin-top: -43px;
+			@media (max-width: 767px) {
+				margin-top: 0;
+			}
+			.bmi-total {
+				font-size: 14px;
+				border: 2px solid #30bb00;
+				color: #30bb00;
+				width: 100%;
+				margin-bottom: 0;
+				cursor: auto;
+				&:hover {
+					background: transparent;
+				}
 			}
 		}
 		.wpua-edit-container {
@@ -521,7 +787,7 @@
 				font-size: 30px;
 				padding-bottom: 20px;
 				margin-bottom: 20px;
-				border-bottom: 2px solid $blue;
+				border-bottom: 5px solid $blue;
 			}
 			p.tagline {
 				font-family: 'Noto Sans', sans-serif;
@@ -563,7 +829,8 @@
 					margin-bottom: 15px;
 				}
 			}
-			#wpua-thumbnail-existing, #wpua-images-existing span {
+			#wpua-thumbnail-existing,
+			#wpua-images-existing span {
 				display: none;
 			}
 		}
@@ -572,7 +839,12 @@
 
 // Normalize styles for the media uploader for profile images.
 #__wp-uploader-id-2 {
-	h1, .h1, h2, .h2, h3, .h3,
+	h1,
+	.h1,
+	h2,
+	.h2,
+	h3,
+	.h3,
 	.media-frame-title h1,
 	.image-details h2,
 	.media-sidebar h2 {

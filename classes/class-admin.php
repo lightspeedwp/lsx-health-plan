@@ -49,7 +49,7 @@ class Admin {
 	public $settings_theme;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_classes();
@@ -58,7 +58,14 @@ class Admin {
 		add_filter( 'cmb2_override_meta_save', array( $this, 'save_previous_values' ), 20, 4 );
 		add_filter( 'cmb2_override_meta_remove', array( $this, 'save_previous_values' ), 20, 4 );
 		add_action( 'cmb2_save_field', array( $this, 'post_relations' ), 20, 4 );
+		add_action( 'cmb2_save_field', array( $this, 'create_query_fields' ), 20, 4 );
 		add_action( 'before_delete_post', array( $this, 'delete_post_meta_connections' ), 20, 1 );
+		add_action( 'cmb2_save_post_fields', array( $this, 'extract_plan_fields' ), 10, 4 );
+
+		//add_action( 'cmb2_save_post_fields', array( $this, 'debugger_for_cmb2' ), 10, 4 );
+
+		// Customizer.
+		add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 	}
 
 	/**
@@ -346,5 +353,112 @@ class Admin {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Saves the serialized post ids in singular custom fields so they are easily queried using WP_Query
+	 *
+	 * @return    void
+	 */
+	public function create_query_fields( $field_id, $updated, $action, $cmb2 ) {
+		// If the connections are empty then skip this function.
+		$search_fields = array(
+			'plan_product',
+		);
+		if ( ! in_array( $field_id, $search_fields ) ) {
+			return;
+		}
+
+		// If the field has been updated.
+		if ( isset( $cmb2->data_to_save['ID'] ) && isset( $cmb2->data_to_save[ $field_id . '_results' ] ) && ! empty( $cmb2->data_to_save[ $field_id . '_results' ] ) ) {
+			delete_post_meta( $cmb2->data_to_save['ID'], '_' . $field_id . '_id' );
+			foreach ( $cmb2->data_to_save[ $field_id . '_results' ] as $temp ) {
+				add_post_meta( $cmb2->data_to_save['ID'], '_' . $field_id . '_id', $temp, false );
+			}
+		}
+	}
+
+	/**
+	 * Extract the plan fields so they save to an indexable array.
+	 *
+	 * @param [type] $object_id
+	 * @param [type] $cmb_id
+	 * @param [type] $updated
+	 * @param [type] $cmb2
+	 * @return void
+	 */
+	public function extract_plan_fields( $object_id, $cmb_id, $updated, $cmb2 ) {
+		if ( 'plan_sections_metabox' === $cmb_id ) {
+			// Check if our fields are available, and cycle through them.
+			if ( isset( $cmb2->data_to_save['plan_sections'] ) && ! empty( $cmb2->data_to_save['plan_sections'] ) ) {
+				$fields_to_save = array();
+				// Run through each row of fields.
+				foreach ( $cmb2->data_to_save['plan_sections'] as $field_index => $fields ) {
+					// Run through each field in that section.
+					foreach ( $fields as $field_key => $field_value ) {
+						$stored_values_key = 'plan_sections_' . $field_index . '_' . $field_key . '_store';
+						if ( isset( $cmb2->data_to_save[ $stored_values_key ] ) && ! empty( $cmb2->data_to_save[ $stored_values_key ] ) ) {
+							$stored_values = $cmb2->data_to_save[ $stored_values_key ];
+							$stored_values = explode( ',', $stored_values );
+							foreach ( $stored_values as $id_to_save ) {
+								$fields_to_save[ $field_key ][] = $id_to_save;
+							}
+						}
+					}
+				}
+				$this->save_field_array( $object_id, $fields_to_save );
+			}
+		}
+	}
+
+	/**
+	 * Runs through the supplied array and saved the fields to the current Object.
+	 *
+	 * @param integer $object_id
+	 * @param array   $fields_to_save
+	 * @return void
+	 */
+	public function save_field_array( $object_id = 0, $fields_to_save = array() ) {
+
+		// Run through the fields and save the meta items.
+		if ( ! empty( $fields_to_save ) ) {
+			foreach ( $fields_to_save as $field_key => $field_values ) {
+				delete_post_meta( $object_id, $field_key );
+
+				$field_values = array_unique( $field_values );
+				foreach ( $field_values as $field_value ) {
+					add_post_meta( $object_id, $field_key, $field_value, false );
+				}
+			}
+		}
+	}
+
+	public function debugger_for_cmb2( $object_id, $cmb_id, $updated, $cmb2 ) {
+		if ( 'workout_section_6_metabox' === $cmb_id ) {
+			die();
+		}
+	}
+
+	/**
+	 * Handle body colours that might be change by LSX Customizer.
+	 */
+	public function customizer_body_colours_handler( $css, $colors ) {
+		$css .= '
+			@import "' . LSX_HEALTH_PLAN_PATH . '/assets/css/scss/partials/customizer-health-plan-body-colours";
+
+			/**
+			 * LSX Customizer - Body (LSX Health Plan)
+			 */
+			@include customizer-health-plan-body-colours (
+				$bg: 		' . $colors['background_color'] . ',
+				$breaker: 	' . $colors['body_line_color'] . ',
+				$color:    	' . $colors['body_text_color'] . ',
+				$link:    	' . $colors['body_link_color'] . ',
+				$hover:    	' . $colors['body_link_hover_color'] . ',
+				$small:    	' . $colors['body_text_small_color'] . '
+			);
+		';
+
+		return $css;
 	}
 }

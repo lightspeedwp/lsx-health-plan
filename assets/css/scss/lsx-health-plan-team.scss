@@ -1,0 +1,74 @@
+.single.single-team {
+	background: white;
+	.wrap.container {
+		padding-top: 8.4rem;
+	}
+	#primary {
+		.lsx-team-avatar {
+			border-radius: 0;
+		}
+		.lsx-team-name {
+			font-weight: bold;
+		}
+		.lsx-team-job-title {
+			font-family: 'Noto Sans', sans-serif;
+		}
+		.lsx-team-socials-header {
+			display: none;
+		}
+		.entry-tabs,
+		.hp-entry-tabs {
+			.nav-tabs {
+				max-width: 1100px;
+				margin-left: auto;
+				margin-right: auto;
+				> li {
+					@media (min-width: 768px) {
+						max-width: 33.3%;
+					}
+					> a {
+						background-color: transparent;
+						color: #999999;
+						border: 1px solid #dddddd;
+					}
+				}
+			}
+			#experience {
+				padding: 2rem;
+			}
+			#featured-plans {
+				.all-plans-block {
+					> .row {
+						> .col-xs-12 {
+							article.lsx-slot {
+								box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
+								.content-box {
+									.btn {
+										width: 100%;
+										padding: 10px;
+										height: 100%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			#testimonials {
+				#lsx-testimonials-slider {
+					.slick-track {
+						display: flex;
+					}
+					.lsx-testimonials-slot.slick-slide {
+						&:first-child {
+							margin-left: 0;
+						}
+						&:last-child {
+							margin-right: 1px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

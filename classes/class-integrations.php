@@ -54,13 +54,25 @@ class Integrations {
 	public $wp_user_avatar = false;
 
 	/**
-	 * Contructor
+	 * Holds class instance
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      object \lsx_health_plan\classes\FacetWP()
+	 */
+	public $facetwp = false;
+
+	/**
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'cmb2_post_search_ajax' ) );
 		add_action( 'init', array( $this, 'download_monitor_init' ) );
 		add_action( 'init', array( $this, 'woocommerce_init' ) );
 		add_action( 'init', array( $this, 'wp_user_avatar_init' ) );
+		add_action( 'init', array( $this, 'facetwp_init' ) );
+		add_action( 'init', array( $this, 'lsx_team_init' ) );
+		add_action( 'init', array( $this, 'lsx_article_init' ) );
 	}
 
 	/**
@@ -85,7 +97,9 @@ class Integrations {
 	 */
 	public function cmb2_post_search_ajax() {
 		require_once LSX_HEALTH_PLAN_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php';
-		$this->cmb2_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();
+		if ( method_exists( 'MAG_CMB2_Field_Post_Search_Ajax', 'get_instance' ) ) {
+			$this->cmb2_post_search_ajax = \MAG_CMB2_Field_Post_Search_Ajax::get_instance();
+		}
 	}
 
 	/**
@@ -121,6 +135,42 @@ class Integrations {
 		if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
 			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-wp-user-avatar.php';
 			$this->wp_user_avatar = WP_User_Avatar::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the FacetWP Indexer Filters.
+	 *
+	 * @return void
+	 */
+	public function facetwp_init() {
+		if ( class_exists( 'FacetWP' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-facetwp.php';
+			$this->facetwp = FacetWP::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the LSX Team Integration.
+	 *
+	 * @return void
+	 */
+	public function lsx_team_init() {
+		if ( class_exists( 'LSX_Team' ) ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-lsx-team.php';
+			$this->team = LSX_Team::get_instance();
+		}
+	}
+
+	/**
+	 * Includes the Blog Integration.
+	 *
+	 * @return void
+	 */
+	public function lsx_article_init() {
+		if ( wp_count_posts()->publish > 0 ) {
+			require_once LSX_HEALTH_PLAN_PATH . 'classes/integrations/class-articles.php';
+			$this->article = Articles::get_instance();
 		}
 	}
 }

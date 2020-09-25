@@ -13,7 +13,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		/**
 		 * Current version number
 		 */
-		const VERSION = '1.0.0';
+		const VERSION = '1.0.1';
 
 		/**
 		 * The url which is used to load local resources
@@ -21,6 +21,15 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		 * @var string
 		 */
 		protected static $url = '';
+
+		/**
+		 * Holds class instance
+		 *
+		 * @since 1.0.0
+		 *
+		 * @var      object \MAG_CMB2_Field_Post_Search_Ajax
+		 */
+		protected static $instance = null;
 
 		/**
 		 * Initialize the plugin by hooking into CMB2
@@ -32,6 +41,21 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		}
 
 		/**
+		 * Return an instance of this class.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return    object \MAG_CMB2_Field_Post_Search_Ajax    A single instance of this class.
+		 */
+		public static function get_instance() {
+			// If the single instance hasn't been set, set it now.
+			if ( null === self::$instance ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+		}
+
+		/**
 		 * Render field
 		 */
 		public function render( $field, $value, $object_id, $object_type, $field_type ) {	
@@ -39,9 +63,12 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 			$field_name = $field->_name();
 
 			if ( $field->args( 'limit' ) > 1 ) {
-
 				echo '<ul class="cmb-post-search-ajax-results" id="' . $field_name . '_results">';
 				if ( isset( $value ) && ! empty( $value ) ) {
+
+					if ( ! is_array( $value ) ) {
+						$value = explode( ',', $value );
+					}
 					if ( ! is_array( $value ) ) {
 						$value = array( $value );
 					}
@@ -55,9 +82,13 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 							$title = $user->display_name;
 						} else {
 							$guid  = get_edit_post_link( $val );
-							$title = get_the_title( $val );
+							$title = get_the_title( $val ) . ' - ' . '#' . $val;
 							if ( 'trash' === get_post_status( $val ) ) {
 								$li_css = 'display:none;';
+							}
+							$post_parent = wp_get_post_parent_id( $val );
+							if ( 0 !== $post_parent && false !== $post_parent ) {
+								$title = get_the_title( $post_parent ) . ' -> ' . $title;
 							}
 						}
 						echo '<li style="' . $li_css . '">' . $handle . '<input type="hidden" name="' . $field_name . '_results[]" value="' . $val . '"><a href="' . $guid . '" target="_blank" class="edit-link">' . $title . '</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>';
@@ -65,6 +96,22 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 				}
 				echo '</ul>';
 				$field_value = '';
+				if ( isset( $field->group ) ) {
+					$store_name = str_replace( '][', '_', $field_name );
+					$store_name = str_replace( ']', '', $store_name );
+					$store_name = str_replace( '[', '_', $store_name );
+
+					echo $field_type->input(
+						array(
+							'type'  => 'hidden',
+							'id'    => $field_name . '_store',
+							'name'  => $store_name . '_store',
+							'class' => 'cmb-post-search-ajax-store',
+							'value' => implode( ',', $value ),
+							'desc'  => false,
+						)
+					);
+				}
 			} else {
 				if ( is_array( $value ) ) {
 					$value = $value[0];
@@ -132,12 +179,12 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 
 			// IF the field is in a repeatable group, then get the info from the post data.
 			if ( isset( $field_args['render_row_cb'][0]->group ) && ! empty( $field_args['render_row_cb'][0]->group ) ) {
-				$new_index = '';
-
+				$new_index    = '';
 				$data_to_save = $field_args['render_row_cb'][0]->group->args['render_row_cb'][0]->data_to_save;
 				$oid          = $field_args['_name'];
 				$iid          = $field_args['_id'];
 				$oid          = explode( '[', $oid );
+
 				if ( is_array( $oid ) ) {
 					$oid = $oid[0];
 				}
@@ -150,21 +197,51 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					}
 				}
 
+				if ( isset( $field_args['render_row_cb'][0]->group->index ) ) {
+					$new_index = $field_args['render_row_cb'][0]->group->index;
+				}
+
 				if ( '' !== $new_index ) {
 					$new_index = $oid . '_' . $new_index . '_' . $iid . '_store';
-
 					if ( ! empty( $data_to_save[ $new_index ] ) ) {
 						$value = $data_to_save[ $new_index ];
 					}
 				} else {
 					$value = false;
 				}
+
+				print_r( '<pre>' );
+				print_r( 'FID' . $fid );
+				print_r( '</pre>' );
+	
+				print_r( '<pre>' );
+				print_r( 'OID' . $oid );
+				print_r( '</pre>' );
+	
+				print_r( '<pre>' );
+				print_r( 'IID' . $iid );
+				print_r( '</pre>' );
+
+				print_r( '<pre>' );
+				print_r( $new_index );
+				print_r( '</pre>' );
+	
+				print_r( '<pre>' );
+				print_r( $data_to_save );
+				print_r( '</pre>' );
+
 			} else if ( ! empty( $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ] ) ) {
 				$value = $field_args['render_row_cb'][0]->data_to_save[ $fid . '_results' ];
+			} else if ( ! empty( $field_args['render_row_cb'][0]->data_to_save[ $fid . '_store' ] ) ) {
+				$value = $field_args['render_row_cb'][0]->data_to_save[ $fid . '_store' ];
 			} else {
 				$value = false;
 			}
-
+			print_r( '<pre>' );
+			print_r( 'Value' );
+			print_r( $value );
+			print_r( '</pre>' );
+			
 			return $value;
 		}
 
@@ -200,8 +277,8 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 		 */
 		public function setup_admin_scripts() {
 
-			wp_register_script( 'jquery-autocomplete', self::url( 'js/jquery.autocomplete.min.js' ), array( 'jquery' ), self::VERSION );
-			wp_register_script( 'mag-post-search-ajax', self::url( 'js/mag-post-search-ajax.js' ), array( 'jquery', 'jquery-autocomplete', 'jquery-ui-sortable' ), self::VERSION );
+			wp_register_script( 'jquery-devautocomplete', self::url( 'js/jquery.autocomplete.min.js' ), array( 'jquery' ), self::VERSION );
+			wp_register_script( 'mag-post-search-ajax', self::url( 'js/mag-post-search-ajax.js' ), array( 'jquery', 'jquery-devautocomplete', 'jquery-ui-sortable' ), self::VERSION );
 			wp_localize_script( 'mag-post-search-ajax', 'psa', array(
 				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
 				'nonce'		=> wp_create_nonce( 'mag_cmb_post_search_ajax_get_results' )
@@ -244,8 +321,15 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					if ( $results->have_posts() ) :
 						while ( $results->have_posts() ) : $results->the_post();
 							// Define filter "mag_cmb_post_search_ajax_result" to allow customize ajax results.
+
+							$title       = get_the_title() . ' - ' . '#' . get_the_ID();
+							$post_parent = wp_get_post_parent_id( get_the_ID() );
+							if ( 0 !== $post_parent && false !== $post_parent ) {
+								$title = get_the_title( $post_parent ) . ' -> ' . $title;
+							}
+
 							$datas[] = apply_filters( 'mag_cmb_post_search_ajax_result', array(
-								'value' => get_the_title() . ' - ' . '#' . get_the_ID(),
+								'value' => $title,
 								'data'	=> get_the_ID(),
 								'guid'	=> get_edit_post_link(),
 							) );

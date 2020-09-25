@@ -1,37 +1,53 @@
-.plan_page_lsx_hp_help #wpbody h1 { line-height: 51px; margin-bottom: 20px; }
+.plan_page_help #wpbody .enrich > * { text-align: left; }
 
-.plan_page_lsx_hp_help #wpbody .version { background-color: #fff; border-radius: 3px; color: #337ab7; font-size: 30%; font-weight: 700; padding: 5px 10px; }
+@media (min-width: 992px) { .plan_page_help #wpbody .wrap.about-wrap > .row { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
+  .plan_page_help #wpbody .col-md-8 { width: 66.66667%; }
+  .plan_page_help #wpbody .col-md-4 { width: 30.33333%; } }
 
-.plan_page_lsx_hp_help #wpbody .review { float: right; margin-bottom: 20px; max-width: 360px; }
+.plan_page_help #wpbody h1 { line-height: 51px; margin-bottom: 20px; }
 
-.plan_page_lsx_hp_help #wpbody .review p { font-size: 13px; }
+.plan_page_help #wpbody .version { background-color: #fff; border-radius: 3px; color: #337ab7; font-size: 30%; font-weight: 700; padding: 5px 10px; }
 
-.plan_page_lsx_hp_help #wpbody .box { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 40px; padding: 25px 30px; position: relative; }
+.plan_page_help #wpbody .review { float: right; margin-bottom: 20px; max-width: 360px; }
 
-.plan_page_lsx_hp_help #wpbody .box h2 { font-size: 17px; font-weight: 700; margin-top: 40px; text-align: left; }
+.plan_page_help #wpbody .review p { font-size: 13px; }
 
-.plan_page_lsx_hp_help #wpbody .box h2:first-child { margin-top: 0; }
+.plan_page_help #wpbody .box { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 40px; padding: 25px 30px; position: relative; }
 
-.plan_page_lsx_hp_help #wpbody .box p, .plan_page_lsx_hp_help #wpbody .box ul { font-size: 13px; }
+.plan_page_help #wpbody .box h2 { font-size: 17px; font-weight: 700; margin-top: 40px; text-align: left; }
 
-.plan_page_lsx_hp_help #wpbody .box p:last-child, .plan_page_lsx_hp_help #wpbody .box ul:last-child { margin-bottom: 0; }
+.plan_page_help #wpbody .box h2:first-child { margin-top: 0; }
 
-.plan_page_lsx_hp_help #wpbody .box .more-button { padding: 1em 0 0 0; border-top: 1px solid #eee; clear: both; text-align: right; }
+.plan_page_help #wpbody .box p, .plan_page_help #wpbody .box ul { font-size: 13px; }
 
-.plan_page_lsx_hp_help #wpbody .box .price { color: #45B964; }
+.plan_page_help #wpbody .box p:last-child, .plan_page_help #wpbody .box ul:last-child { margin-bottom: 0; }
 
-.plan_page_lsx_hp_help #wpbody .box:before { content: "\f324"; display: block; position: absolute; top: 30px; right: 30px; font-size: 1.618em; font-family: 'Dashicons'; font-weight: 400; -webkit-font-smoothing: antialiased; }
+.plan_page_help #wpbody .box .more-button { padding: 1em 0 0 0; border-top: 1px solid #eee; clear: both; text-align: right; }
 
-.plan_page_lsx_hp_help #wpbody .box.news h3 { color: #999; font-size: 13px; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
+.plan_page_help #wpbody .box .price { color: #45b964; }
 
-.plan_page_lsx_hp_help #wpbody .box.news ul { margin-top: 0; }
+.plan_page_help #wpbody .box:before { content: '\f324'; display: block; position: absolute; top: 30px; right: 30px; font-size: 1.618em; font-family: 'Dashicons'; font-weight: 400; -webkit-font-smoothing: antialiased; }
 
-.plan_page_lsx_hp_help #wpbody .box.news .date { color: #999; text-transform: uppercase; font-size: 11px; }
+.plan_page_help #wpbody .box.news h3 { color: #999; font-size: 13px; margin-top: 10px; margin-bottom: 5px; text-transform: uppercase; }
 
-.plan_page_lsx_hp_help #wpbody .box-clean { padding-top: 20px; }
+.plan_page_help #wpbody .box.news ul { margin-top: 0; }
 
-.plan_page_lsx_hp_help #wpbody .box-clean a { font-weight: 700; text-decoration: none; }
+.plan_page_help #wpbody .box.news .date { color: #999; text-transform: uppercase; font-size: 11px; }
 
-.plan_page_lsx_hp_help #wpbody .box-clean p:last-child { margin-bottom: 0; }
+.plan_page_help #wpbody .box.support:before { content: '\f107'; }
+
+.plan_page_help #wpbody .box.documentation:before { content: '\f123'; }
+
+.plan_page_help #wpbody .box.info:before { content: '\f534'; }
+
+.plan_page_help #wpbody .box.premium:before { content: '\f313'; }
+
+.plan_page_help #wpbody .box.news:before { content: '\f319'; }
+
+.plan_page_help #wpbody .box-clean { padding-top: 20px; }
+
+.plan_page_help #wpbody .box-clean a { font-weight: 700; text-decoration: none; }
+
+.plan_page_help #wpbody .box-clean p:last-child { margin-bottom: 0; }
 
 /*# sourceMappingURL=maps/help.css.map */

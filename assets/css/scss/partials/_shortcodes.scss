@@ -137,68 +137,6 @@
 	}
 }
 
-#lsx-tips-shortcode {
-	.lsx-tips-shortcode {
-		@media (min-width: 782px) {
-			max-width: 600px;
-		}
-		@media (min-width: 992px) {
-			max-width: 240px;
-		}
-		@media (min-width: 1200px) {
-			max-width: 300px;
-		}
-		.diet-tip-wrapper {
-			&.quick-tip {
-				margin: 0;
-				h3 {
-					color: $blue;
-					text-transform: uppercase;
-					font-weight: bold;
-				}
-				h4 {
-					font-family: 'Noto Sans';
-					font-size: 16px;
-					text-transform: uppercase;
-					margin: 0;
-					font-weight: 600;
-				}
-				.tip-item {
-					font-size: 16px;
-				}
-				.tipimage {
-					.tip-thumbnail {
-						background: none;
-						border: none;
-						img {
-							border-radius: 50%;
-							border: 2px solid $blue;
-							height: 120px;
-							width: 120px;
-						}
-					}
-				}
-			}
-		}
-		.slick-dots {
-			li {
-				button {
-					width: 5px;
-					height: 18px;
-					background-color: transparent;
-					border: 2px solid #cdd0d7;
-					border-radius: 50%;
-				}
-				&.slick-active {
-					button {
-						background-color: #cdd0d7;
-					}
-				}
-			}
-		}
-	}
-}
-
 .slick-slider {
 	@media (max-width: 782px) {
 		width: 100%;
@@ -239,6 +177,88 @@
 	}
 }
 
+#lsx-tips-shortcode {
+	margin-top: 3rem;
+	justify-content: flex-end;
+	background: white;
+	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.24);
+	@include media('>=tablet') {
+		width: 380px;
+		min-width: 350px;
+	}
+	.lsx-tips-shortcode {
+		width: 100%;
+		.diet-tip-wrapper {
+			.col-xs-2 {
+				padding: 0;
+				svg {
+					width: 30px;
+				}
+			}
+			.col-xs-10 {
+				padding-left: 5px;
+			}
+			&.quick-tip {
+				margin: 0;
+				background: white;
+				padding: 1rem 2rem;
+				.row {
+					margin: 0;
+				}
+				h3 {
+					color: $gray;
+					font-family: 'Noto Sans';
+					font-size: 15px;
+					font-weight: bold;
+					margin-bottom: 5px;
+				}
+				p {
+					color: #919191;
+					font-size: 13px;
+					margin: 0;
+				}
+			}
+		}
+		&.slick-slider {
+			button {
+				&.slick-arrow {
+					border: none;
+					color: #dddddd;
+					&.slick-next {
+						right: -1rem;
+					}
+					&.slick-prev {
+						left: 0;
+					}
+				}
+			}
+			.slick-dots {
+				margin-top: 0;
+				margin-bottom: 8px;
+				> li {
+					padding: 0 3px;
+					> button {
+						border-color: #dddddd;
+						width: 9px;
+						height: 9px;
+						border-radius: 50%;
+						padding: 0;
+						background: #dddddd;
+					}
+					&.slick-active {
+						> button {
+							background: #919191;
+						}
+					}
+				}
+			}
+		}
+	}
+	body.single & {
+		margin-bottom: 2rem;
+	}
+}
+
 .lsx-hp-widget-items {
 	&.slick-slider {
 		background-color: white;
@@ -263,8 +283,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin: 0;
-		padding: 1rem;
 		justify-content: center;
+		@include media('>=tablet') {
+			padding: 1rem;
+		}
 		> .col-xs-12 {
 			padding: 1rem;
 			img {
@@ -278,17 +300,33 @@
 					object-fit: cover;
 				}
 			}
-			&:first-child {
-				width: 100%;
-				img {
-					max-height: 320px;
-					object-fit: cover;
+		}
+		&:first-child {
+			> .col-xs-12 {
+				&:first-child {
+					width: 100%;
+					img {
+						max-height: 320px;
+						object-fit: cover;
+					}
+				}
+				&:only-child {
+					padding: 0;
+					margin: -1rem;
+					@include media('>=tablet') {
+						width: 490px;
+					}
 				}
 			}
-			&:only-child {
-				padding: 0;
-				margin: -1rem;
-				width: 490px;
+		}
+		&:not(:first-child) {
+			justify-content: left;
+			padding-top: 0;
+			> .col-sm-4 {
+				width: 50%;
+			}
+			> .col-sm-3 {
+				width: 33.33%;
 			}
 		}
 	}
@@ -303,6 +341,11 @@
 		flex-wrap: wrap;
 		> .col-xs-12 {
 			margin-bottom: 3rem;
+			&:first-child {
+				&:last-child {
+					width: 100%;
+				}
+			}
 		}
 		&.layout-grid {
 			@include media('>=tablet') {
@@ -310,6 +353,13 @@
 				column-gap: 1rem;
 				row-gap: 1rem;
 				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+		.has-content-none {
+			.exercise-content-box {
+				.title-lined {
+					border-bottom: none;
+				}
 			}
 		}
 		.lsx-slot {
@@ -430,5 +480,106 @@
 				width: 100%;
 			}
 		}
+	}
+}
+
+#lsx-hp-related {
+	.lsx-related-posts {
+		&.lsx-related-posts-title {
+			.col-xs-12 {
+				text-align: center;
+				h2 {
+					font-weight: bold;
+				}
+			}
+		}
+		&.lsx-related-posts-content {
+			.col-xs-12 {
+				.lsx-related-posts-wrapper {
+					align-items: flex-start;
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: flex-start;
+					margin-left: -15px;
+					margin-right: -15px;
+					.lsx-slot {
+						width: 100%;
+						padding-left: 15px;
+						padding-right: 15px;
+						@include media('>tablet') {
+							width: 33.33%;
+							margin: 0;
+						}
+						.entry-layout {
+							.entry-layout-content {
+								.entry-header {
+									.entry-image {
+										img {
+											width: 100%;
+											max-height: 170px;
+											object-fit: cover;
+										}
+									}
+									.entry-meta {
+										padding: 15px 15px 0 15px;
+										.post-categories {
+											a {
+												font-size: 13px;
+											}
+										}
+									}
+									.entry-title {
+										padding: 10px 15px;
+										margin: 0;
+										line-height: 22px;
+										a {
+											font-size: 18px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	body.single-plan &,
+	body.single-workout &,
+	body.single-meal & {
+		margin-top: 4.25rem;
+		.lsx-related-posts {
+			&.lsx-related-posts-title {
+				.col-xs-12 {
+					text-align: left;
+					.lsx-related-posts-headline {
+						font-size: 22px;
+					}
+				}
+			}
+		}
+	}
+}
+
+#hp-connected-members {
+	display: flex;
+	margin-bottom: 1rem;
+	p {
+		margin-right: 3rem;
+		margin-bottom: 1rem;
+		line-height: 6px;
+		@include media('<=tablet') {
+			margin-top: 3rem;
+		}
+		.lsx-team-roles {
+			text-transform: uppercase;
+			font-size: 13px;
+		}
+		.lsx-team-name {
+			font-size: 13px;
+		}
+	}
+	body.single-meal & {
+		padding: 0 20px;
 	}
 }

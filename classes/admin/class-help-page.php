@@ -29,7 +29,7 @@ class Help_Page {
 	protected $screen_id = 'lsx_hp_help';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
@@ -66,7 +66,7 @@ class Help_Page {
 	 */
 	public function assets( $hook_suffix ) {
 		if ( 'plan_page_help' === $hook_suffix ) {
-			wp_enqueue_style( 'lsx-hp-help-screen', get_template_directory_uri() . '/assets/css/admin/help.css', array(), LSX_VERSION );
+			wp_enqueue_style( 'lsx-hp-help-screen', LSX_HEALTH_PLAN_URL . 'assets/css/help.css', array(), LSX_HEALTH_PLAN_VER );
 			wp_style_add_data( 'lsx-hp-help-screen', 'rtl', 'replace' );
 		}
 	}
@@ -116,9 +116,9 @@ class Help_Page {
 	 */
 	public function header() {
 		?>
-		<div class="box enrich">
-			<h2><?php esc_html_e( 'Built to enrich your WordPress experience.', 'lsx-health-plan' ); ?></h2>
-			<p><?php esc_html_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis feugiat consectetur. Integer mollis ex lacus, sed ultrices felis mollis vitae.', 'lsx-health-plan' ); ?></p>
+		<div class="enrich">
+			<h2><?php esc_html_e( 'LightSpeed’s LSX Health Plugin', 'lsx-health-plan' ); ?></h2>
+			<p><?php esc_html_e( "Thank you for using the LSX Health plugin. All of us here at LightSpeed appreciate your ongoing support and we can't wait to see what people create with the plugin. We're committed to ensuring you have all the help you need to make the most of the plugin.", 'lsx-health-plan' ); ?></p>
 		</div>
 		<?php
 	}
@@ -130,29 +130,7 @@ class Help_Page {
 	 * @subpackage hp-help-page
 	 */
 	public function body() {
-		?>
-		<div>
-			<ul>
-				<li>Getting started: Setup a new Health Plan site from scratch.</li>
-				<li>Settings overview: A thorough walkthrough of The Health Plan site configuration options and the settings that are available to you.</li>
-				<li>Features overview: A complete look at the features you can expect to see right out of the box as well as how to use them.</li>
-				<li>Plans (Parent Post Type)</li>
-				<li>Weeks (Global Taxonomy)</li>
-				<li>Tips (Global Post type connected to all other post types)</li>
-				<li>Workouts (Plans Child Post Type)</li>
-				<li>Exercises (Workouts Child Post Type)</li>
-				<li>Exercise Types (Exercises Taxonomy)</li>
-				<li>Equipment (Exercises Taxonomy)</li>
-				<li>Muscle Group (Exercises Taxonomy)</li>
-				<li>Meals (Plans Child Post Type)</li>
-				<li>Recipes (Meal Plans Child Post Type)</li>
-				<li>Types (Recipes Taxonomy)</li>
-				<li>Cuisines (Recipes Taxonomy)</li>
-				<li>Shortcodes: Insert content blocks for any content type.</li>
-				<li>Using stylesheets and page templates: An overview of the default templates and styles that are included in the plugin, as well as how to change them.</li>
-			</ul>
-		</div>
-		<?php
+		include LSX_HEALTH_PLAN_PATH . 'templates/partials/help.php';
 	}
 
 	/**

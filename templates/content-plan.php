@@ -4,6 +4,9 @@
  *
  * @package lsx-health-plan
  */
+
+global $shortcode_args;
+
 ?>
 
 <?php lsx_entry_before(); ?>
@@ -17,6 +20,7 @@
 	</div><!-- .entry-meta -->
 
 	<div class="entry-content">
+		<div class="overview">
 		<?php
 			the_content();
 
@@ -27,29 +31,17 @@
 				'link_after'  => '</span>',
 			) );
 		?>
+		</div>
 	</div><!-- .entry-content -->
-
-	<footer class="footer-meta clearfix">
-		<?php if ( has_tag() || class_exists( 'LSX_Sharing' ) || ( function_exists( 'sharing_display' ) || class_exists( 'Jetpack_Likes' ) ) ) : ?>
-			<div class="post-tags-wrapper">
-				<?php lsx_content_post_tags(); ?>
-
-				<?php
-				if ( class_exists( 'LSX_Sharing' ) ) {
-					lsx_content_sharing();
-				} else {
-					if ( function_exists( 'sharing_display' ) ) {
-						sharing_display( '', true );
-					}
-
-					if ( class_exists( 'Jetpack_Likes' ) ) {
-						$custom_likes = new Jetpack_Likes();
-						echo wp_kses_post( $custom_likes->post_likes( '' ) );
-					}
-				}
-				?>
-		<?php endif ?>
-	</footer><!-- .footer-meta -->
+	<?php if ( null === $shortcode_args ) { ?>
+		<?php if ( post_type_exists( 'tip' ) && lsx_health_plan_has_tips() ) { ?>
+			<div class="tip-row extras-box">
+				<div class="tip-right">
+					<?php echo do_shortcode( '[lsx_health_plan_featured_tips_block' ); ?>
+				</div>
+			</div>
+		<?php } ?>
+	<?php } ?>
 
 	<?php lsx_entry_bottom(); ?>
 

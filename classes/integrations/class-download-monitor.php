@@ -2,7 +2,7 @@
 namespace lsx_health_plan\classes;
 
 /**
- * Contains the downlaods functions post type
+ * Contains the downloads functions post type
  *
  * @package lsx-health-plan
  */
@@ -27,7 +27,7 @@ class Download_Monitor {
 	public $slug = 'download';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'cmb2_admin_init', array( $this, 'downloads_post_type_metaboxes' ), 5 );

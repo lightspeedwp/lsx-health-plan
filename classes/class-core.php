@@ -43,7 +43,7 @@ class Core {
 	public $scpo_engine;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		$this->load_includes();
@@ -94,10 +94,14 @@ class Core {
 	 */
 	private function load_includes() {
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions/triggers.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions/recipes.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/functions/plan.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/conditionals.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/exercise.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/gallery.php';
+		require_once LSX_HEALTH_PLAN_PATH . '/includes/template-tags/plan.php';
 		require_once LSX_HEALTH_PLAN_PATH . '/includes/shortcodes.php';
 	}
 

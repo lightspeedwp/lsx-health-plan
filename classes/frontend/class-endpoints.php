@@ -1,5 +1,5 @@
 <?php
-namespace lsx_health_plan\classes;
+namespace lsx_health_plan\classes\frontend;
 
 /**
  * Contains the endpoints
@@ -13,12 +13,12 @@ class Endpoints {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\Endpoints()
+	 * @var      object \lsx_health_plan\classes\frontend\Endpoints()
 	 */
 	protected static $instance = null;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'setup' ) );
@@ -29,7 +29,7 @@ class Endpoints {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\Endpoints()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\frontend\Endpoints()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -52,13 +52,18 @@ class Endpoints {
 	public function add_rewrite_rules() {
 		// Here is where we add in the rewrite rules above the normal WP ones.
 		add_rewrite_tag( '%endpoint%', '([^&]+)' );
+		add_rewrite_tag( '%section%', '([^&]+)' );
+
+		// Plan Sections.
+		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/?$', 'index.php?plan=$matches[1]&section=$matches[2]', 'top' );
 
 		// Warm up.
 		$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
 		if ( false === $warm_up ) {
 			$warm_up = 'warm-up';
 		}
-		add_rewrite_rule( 'plan/([^/]+)/' . $warm_up . '/?$', 'index.php?plan=$matches[1]&endpoint=warm-up', 'top' );
+
+		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $warm_up . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=warm-up', 'top' );
 
 		// Workout.
 		if ( post_type_exists( 'workout' ) ) {
@@ -67,7 +72,7 @@ class Endpoints {
 				$workout = 'workout';
 			}
 		}
-		add_rewrite_rule( 'plan/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&endpoint=workout', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=workout', 'top' );
 
 		// Meal.
 		if ( post_type_exists( 'meal' ) ) {
@@ -76,7 +81,7 @@ class Endpoints {
 				$meal = 'meal';
 			}
 		}
-		add_rewrite_rule( 'plan/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&endpoint=meal', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=meal', 'top' );
 
 		// Recipe.
 		if ( post_type_exists( 'recipe' ) ) {
@@ -85,6 +90,6 @@ class Endpoints {
 				$recipe = 'recipes';
 			}
 		}
-		add_rewrite_rule( 'plan/([^/]+)/' . $recipe . '/?$', 'index.php?plan=$matches[1]&endpoint=recipes', 'top' );
+		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $recipe . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=recipes', 'top' );
 	}
 }

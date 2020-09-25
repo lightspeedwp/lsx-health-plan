@@ -12,7 +12,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 		if ( ! empty( $type ) ) {
 		?>
 			<tr class="types">
-				<td><?php esc_html_e( 'Type:', 'lsx-health-plan' ); ?>&nbsp</td>
+				<td><?php esc_html_e( 'Type:', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $type );
@@ -26,7 +26,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 		if ( ! empty( $muscle_group ) ) {
 		?>
 			<tr class="muscle-group">
-				<td><?php esc_html_e( 'Muscle Group:', 'lsx-health-plan' ); ?>&nbsp</td>
+				<td><?php esc_html_e( 'Muscle Group:', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $muscle_group );
@@ -40,7 +40,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 		if ( ! empty( $equipment ) ) {
 		?>
 			<tr class="equipment">
-				<td><?php esc_html_e( 'Equipment:', 'lsx-health-plan' ); ?>&nbsp</td>
+				<td><?php esc_html_e( 'Equipment:', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $equipment );

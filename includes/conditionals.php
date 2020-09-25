@@ -31,7 +31,19 @@ function lsx_health_plan_has_workout( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' );
+	$has_workouts = false;
+
+	$section_key = get_query_var( 'section', false );
+	if ( false !== $section_key ) {
+		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
+		if ( isset( $section_info['connected_workouts'] ) && ! empty( $section_info['connected_workouts'] ) ) {
+			$has_workouts = true;
+		}
+	} elseif ( \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' ) ) {
+		$has_workouts = true;
+	}
+
+	return $has_workouts;
 }
 
 /**
@@ -47,6 +59,7 @@ function lsx_health_plan_has_meal( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
+
 	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_meals' );
 }
 
@@ -123,14 +136,6 @@ function lsx_health_plan_has_video( $post_id = '' ) {
  */
 function lsx_health_plan_user_has_purchase() {
 	$valid_order = false;
-	$product_id  = \lsx_health_plan\functions\get_option( 'membership_product', false );
-
-	if ( is_user_logged_in() && false !== $product_id ) {
-		$current_user = wp_get_current_user();
-		if ( wc_customer_bought_product( $current_user->user_email, $current_user->ID, $product_id ) ) {
-			$valid_order = true;
-		}
-	}
 	return $valid_order;
 }
 
@@ -161,18 +166,23 @@ function lsx_health_plan_is_current_tab( $needle = '' ) {
  * @param string $post_id
  * @return boolean
  */
-function lsx_health_plan_is_day_complete( $post_id = '' ) {
+function lsx_health_plan_is_day_complete( $post_id = '', $section_key = '' ) {
 	$is_complete = false;
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	if ( is_user_logged_in() ) {
-		$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $post_id . '_complete', true );
-		if ( false !== $is_day_complete && '' !== $is_day_complete ) {
-			$is_complete = true;
-		}
+	$key             = \lsx_health_plan\functions\plan\generate_section_id( $section_key );
+	$is_day_complete = get_user_meta( get_current_user_id(), 'day_' . $key . '_complete', true );
+	if ( false !== $is_day_complete && '' !== $is_day_complete ) {
+		$is_complete = true;
 	}
+
 	return $is_complete;
+}
+
+function lsx_health_plan_is_plan_complete() {
+	$complete = false;
+	return $complete;
 }
 
 /**
@@ -203,7 +213,8 @@ function lsx_health_plan_has_tips( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	$connected_tips = get_post_meta( get_the_ID(), 'connected_tips', true );
+	$post_type      = get_post_type( $post_id );
+	$connected_tips = get_post_meta( get_the_ID(), $post_type . '_connected_tips', true );
 	$connected_tips = \lsx_health_plan\functions\check_posts_exist( $connected_tips );
 	if ( ! empty( $connected_tips ) ) {
 		$has_tips = true;

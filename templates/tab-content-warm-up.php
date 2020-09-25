@@ -4,7 +4,7 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts;
+global $group_name, $connected_workouts, $shortcode_args;
 
 $warm_up = get_post_meta( get_the_ID(), 'plan_warmup', true );
 if ( false === $warm_up || '' === $warm_up ) {
@@ -13,6 +13,10 @@ if ( false === $warm_up || '' === $warm_up ) {
 		$warm_up = $options['plan_warmup'];
 	}
 }
+
+?>
+<div class="warmup-container">
+<?php
 
 if ( false !== $warm_up && '' !== $warm_up ) {
 	if ( ! is_array( $warm_up ) ) {
@@ -37,25 +41,27 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
 					<div class="entry-content">
-						<?php
-							the_content();
-							wp_link_pages( array(
-								'before'      => '<div class="lsx-postnav-wrapper"><div class="lsx-postnav">',
-								'after'       => '</div></div>',
-								'link_before' => '<span>',
-								'link_after'  => '</span>',
-							) );
-						?>
+						<div class="single-plan-inner warmup-content">
+							<div class="single-plan-section-title warmup-plan title-lined">
+								<?php lsx_get_svg_icon( 'warm.svg' ); ?>
+								<h2><?php esc_html_e( 'Warm Up', 'lsx-health-plan' ); ?></h2>
+							</div>
+						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
 				</article><!-- #post-## -->
 				<?php
-				lsx_health_plan_workout_sets();
+				lsx_health_plan_warmup_sets( $connected_workouts );
 			} else {
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<?php lsx_entry_top(); ?>
 					<div class="entry-content">
+						<div class="single-plan-inner warmup-content">
+							<div class="single-plan-section-title warmup-plan title-lined">
+								<?php lsx_get_svg_icon( 'warm.svg' ); ?>
+								<h2><?php esc_html_e( 'Warm Up', 'lsx-health-plan' ); ?></h2>
+							</div>
 						<?php
 							the_content();
 							wp_link_pages( array(
@@ -65,14 +71,17 @@ if ( false !== $warm_up && '' !== $warm_up ) {
 								'link_after'  => '</span>',
 							) );
 						?>
+						</div>
 					</div><!-- .entry-content -->
 					<?php lsx_entry_bottom(); ?>
 				</article><!-- #post-## -->
 				<?php
 			}
 
-			lsx_entry_after();
 		}
 		wp_reset_postdata();
 	}
 }
+?>
+</div>
+<?php

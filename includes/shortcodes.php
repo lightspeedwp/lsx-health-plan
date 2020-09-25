@@ -47,6 +47,19 @@ function my_profile_box() {
 }
 
 /**
+ * Outputs all the plans on the frontpage.
+ *
+ * @return void
+ */
+function all_plans_box( $args = array() ) {
+
+	ob_start();
+	echo lsx_health_plan_all_plans_block(); // WPCS: XSS OK.
+	$content = ob_get_clean();
+	return $content;
+}
+
+/**
  * Outputs the my profile box on the frontpage.
  *
  * @return void
@@ -55,11 +68,12 @@ function day_plan_box( $args = array() ) {
 	$defaults = array(
 		'week_view'      => false,
 		'show_downloads' => false,
+		'plan'           => '',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	ob_start();
 	if ( false === $args['week_view'] ) {
-		echo lsx_health_plan_day_plan_block(); // WPCS: XSS OK.
+		echo lsx_health_plan_day_plan_block( $args ); // WPCS: XSS OK.
 	} else {
 		echo lsx_health_plan_week_plan_block( $args ); // WPCS: XSS OK.
 	}

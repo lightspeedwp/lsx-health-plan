@@ -27,7 +27,7 @@ class Video {
 	public $slug = 'video';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
@@ -56,13 +56,13 @@ class Video {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Video', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Videos', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Videos', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Video', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All Videos', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
@@ -87,6 +87,7 @@ class Video {
 			'supports'           => array(
 				'title',
 				'editor',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'video', $args );

@@ -27,16 +27,21 @@ class Meal {
 	public $slug = 'meal';
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-
-		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
-
+		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'meal_connections' ), 15 );
+
+		// Template Redirects.
+		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
+		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
 	/**
@@ -64,12 +69,12 @@ class Meal {
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All Meals', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
-			'parent_item_colon'  => '',
+			'parent_item_colon'  => esc_html__( 'Parent:', 'lsx-health-plan' ),
 			'menu_name'          => esc_html__( 'Meals', 'lsx-health-plan' ),
 		);
 		$args   = array(
@@ -81,16 +86,53 @@ class Meal {
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-carrot',
 			'query_var'          => true,
-			'rewrite'            => false,
-			'capability_type'    => 'post',
-			'has_archive'        => false,
-			'hierarchical'       => false,
+			'rewrite'            => array(
+				'slug' => \lsx_health_plan\functions\get_option( 'meal_single_slug', 'meal' ),
+			),
+			'capability_type'    => 'page',
+			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_meal_archive', 'meals' ),
+			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array(
 				'title',
+				'editor',
+				'thumbnail',
+				'page-attributes',
+				'custom-fields',
 			),
 		);
 		register_post_type( 'meal', $args );
+	}
+
+	/**
+	 * Register the Meal Type taxonomy.
+	 */
+	public function taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Meal Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Meal Types', 'taxonomy singular name', 'lsx-health-plan' ),
+			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
+			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
+			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
+			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
+			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
+			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
+			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
+			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
+			'menu_name'         => esc_html__( 'Meal Types', 'lsx-health-plan' ),
+		);
+		$args   = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_in_menu'      => 'edit.php?post_type=meal',
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'meal-type',
+			),
+		);
+		register_taxonomy( 'meal-type', array( $this->slug ), $args );
 	}
 
 	/**
@@ -114,6 +156,44 @@ class Meal {
 		$connections['meal']['connected_plans'] = 'connected_meals';
 		$connections['plan']['connected_meals'] = 'connected_plans';
 		return $connections;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type meal.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'meal' ) ) {
+			$title = __( 'Meals', 'lsx-health-plan' );
+		}
+		return $title;
+	}
+
+	/**
+	 * Define the metabox and field configurations.
+	 */
+	public function featured_metabox() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_featured_metabox_meal',
+				'title'        => __( 'Featured Meal', 'lsx-health-plan' ),
+				'object_types' => array( $this->slug ), // Post type
+				'context'      => 'side',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Featured Meal', 'lsx-health-plan' ),
+				'desc'       => __( 'Enable a featured meal' ),
+				'id'         => $this->slug . '_featured_meal',
+				'type'       => 'checkbox',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+			)
+		);
 	}
 
 	/**
@@ -150,6 +230,14 @@ class Meal {
 			'priority'     => 'high',
 			'show_names'   => true,
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Meal Short Description', 'lsx-health-plan' ),
+			'id'   => $this->slug . '_short_description',
+			'type' => 'textarea_small',
+			'desc' => __( 'Add a small description for this meal (optional)', 'lsx-health-plan' ),
+		) );
+
 		$cmb->add_field( array(
 			'name'       => __( 'Pre Breakfast Snack', 'lsx-health-plan' ),
 			'id'         => $this->slug . '_pre_breakfast_snack',
@@ -168,105 +256,142 @@ class Meal {
 				'textarea_rows' => 5,
 			),
 		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Breakfast Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_breakfast_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Pre Lunch Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_pre_lunch_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Lunch', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_lunch',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Lunch Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_lunch_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Pre Dinner Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_pre_dinner_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Dinner', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_dinner',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-		$cmb->add_field( array(
-			'name'       => __( 'Post Dinner Snack', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_dinner_snack',
-			'type'       => 'wysiwyg',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-			'options'    => array(
-				'textarea_rows' => 5,
-			),
-		) );
-	}
 
-	/**
-	 * Registers the workout connections on the plan post type.
-	 *
-	 * @return void
-	 */
-	public function meal_connections() {
-		$cmb = new_cmb2_box( array(
-			'id'           => $this->slug . '_meals_connections_metabox',
-			'title'        => __( 'Meal Plan', 'lsx-health-plan' ),
-			'object_types' => array( 'plan' ), // Post type
-			'context'      => 'normal',
-			'priority'     => 'high',
-			'show_names'   => true,
-		) );
-		/*$cmb->add_field( array(
-			'name'       => __( 'Box Description', 'lsx-health-plan' ),
-			'id'         => $this->slug . '_box_description',
-			'desc'			=> __( 'This description displays on the single plan page.', 'lsx-health-plan' ),
-			'type'       => 'textarea_small',
-			'show_on_cb' => 'cmb2_hide_if_no_cats',
-		) );*/
-		$cmb->add_field( array(
-			'name'       => __( 'Meals', 'lsx-health-plan' ),
-			'desc'       => __( 'Connect the meal that applies to this day plan using the field provided.', 'lsx-health-plan' ),
-			'id'         => 'connected_meals',
-			'type'       => 'post_search_ajax',
-			// Optional :
-			'limit'      => 15, // Limit selection to X items only (default 1)
-			'sortable'   => true, // Allow selected items to be sortable (default false)
-			'query_args' => array(
-				'post_type'      => array( $this->slug ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => -1,
-			),
-		) );
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Breakfast Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_breakfast_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Breakfast Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for breakfast.', 'lsx-health-plan' ),
+					'id'         => 'breakfast_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Pre Lunch Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_pre_lunch_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Lunch', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_lunch',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Lunch Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_lunch_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Lunch Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for lunch.', 'lsx-health-plan' ),
+					'id'         => 'lunch_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
+
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Pre Dinner Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_pre_dinner_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Dinner', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_dinner',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Post Dinner Snack', 'lsx-health-plan' ),
+				'id'         => $this->slug . '_dinner_snack',
+				'type'       => 'wysiwyg',
+				'show_on_cb' => 'cmb2_hide_if_no_cats',
+				'options'    => array(
+					'textarea_rows' => 5,
+				),
+			)
+		);
+
+		if ( post_type_exists( 'recipe' ) ) {
+			$cmb->add_field(
+				array(
+					'name'       => __( 'Dinner Recipes', 'lsx-health-plan' ),
+					'desc'       => __( 'Connect additional recipes options for dinner.', 'lsx-health-plan' ),
+					'id'         => 'dinner_recipes',
+					'type'       => 'post_search_ajax',
+					// Optional :
+					'limit'      => 15,  // Limit selection to X items only (default 1)
+					'sortable'   => true, // Allow selected items to be sortable (default false)
+					'query_args' => array(
+						'post_type'      => array( 'recipe' ),
+						'post_status'    => array( 'publish' ),
+						'posts_per_page' => -1,
+					),
+				)
+			);
+		}
 	}
 }

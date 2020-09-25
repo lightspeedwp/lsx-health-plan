@@ -22,8 +22,9 @@ if ( null !== $shortcode_args ) {
 
 <div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
 	<article class="lsx-slot box-shadow">
-		<span class="recipe-type"><?php echo esc_html( lsx_health_plan_recipe_type() ); ?></span>
 		<?php lsx_entry_top(); ?>
+
+		<?php lsx_hp_recipe_plan_meta(); ?>
 
 		<div class="recipe-feature-img">
 			<a href="<?php echo esc_url( get_permalink() ); ?>">
@@ -35,7 +36,7 @@ if ( null !== $shortcode_args ) {
 				) );
 			} else {
 				?>
-				<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+				<img loading="lazy" class="placeholder" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 				<?php
 			}
 			?>
@@ -43,8 +44,10 @@ if ( null !== $shortcode_args ) {
 		</div>
 		<div class="content-box white-bg">
 			<?php lsx_health_plan_recipe_data(); ?>
-			<h3 class="recipe-title"><?php the_title(); ?></h3>
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'View Recipe', 'lsx-health-plan' ); ?></a>
+			<a class="recipe-title-link" href="<?php echo esc_url( get_permalink() ); ?>">
+				<?php the_title( '<h3 class="recipe-title">', '</h3>' ); ?>
+			</a>
+			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'See Recipe', 'lsx-health-plan' ); ?></a>
 		</div>
 		<?php lsx_entry_bottom(); ?>
 	</article>

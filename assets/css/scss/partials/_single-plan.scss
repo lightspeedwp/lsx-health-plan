@@ -5,14 +5,39 @@
 	.content-area,
 	.widget-area {
 		margin-top: 4.5rem;
-		@media (max-width: 768px) {
-			margin-top: 8.5rem;
+	}
+}
+.single {
+	.content-area {
+		margin-top: 4.25rem;
+	}
+}
+.plan-template-default {
+	&.parent-plan-page {
+		background-color: white;
+	}
+	#main {
+		&.parent-plan {
+			max-width: 1140px;
+			margin-left: auto;
+			margin-right: auto;
+			// .plan-content {
+			// 	@include media('>=phone') {
+			// 		margin-bottom: 2.4rem;
+			// 	}
+			// }
+			> .post-wrapper {
+				> .plan {
+					clear: both;
+				}
+			}
 		}
 	}
 }
 
 #single-plan-nav {
 	margin-bottom: 15px;
+	clear: both;
 	.nav.nav-pills {
 		@media (max-width: 600px) {
 			width: 100vw;
@@ -163,6 +188,293 @@
 	}
 }
 
+.warmup-container {
+	article {
+		.entry-content {
+			padding: 0 0 3rem 0;
+			.warmup-content {
+				> * {
+					padding: 1rem 3rem;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+				.single-plan-section-title {
+					display: flex;
+					padding: 1rem 3rem;
+					align-items: center;
+					margin-bottom: 0;
+					h2 {
+						margin: 0;
+					}
+					svg {
+						margin-right: 15px;
+					}
+				}
+				.workout-instructions {
+					padding: 1rem 3rem 0;
+					.content-intro {
+						p {
+							margin: 0;
+						}
+					}
+				}
+				.sets {
+					.set-box {
+						&.set {
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+article.type-plan,
+article.type-meal,
+article.type-workout {
+	.entry-content {
+		padding: 0;
+		clear: both;
+		.overview {
+			padding: 3rem;
+		}
+		.workout-content,
+		.recipes-content,
+		.meal-content,
+		.main-plan-content {
+			.single-plan-section-title {
+				display: flex;
+				padding: 1rem 3rem;
+				align-items: center;
+				h2 {
+					margin: 0;
+				}
+				svg {
+					margin-right: 15px;
+				}
+
+				.lsx-sharing-content {
+					margin-left: auto;
+				}
+			}
+			.workout-instructions {
+				padding: 1rem 3rem 0;
+				.content-intro {
+					p {
+						margin: 0;
+					}
+				}
+				> .row {
+					> .col-md-12 {
+						display: flex;
+						@media (max-width: 767px) {
+							flex-direction: column;
+						}
+						.content-intro {
+							width: 100%;
+							@media (min-width: 768px) {
+								width: 63%;
+								padding-right: 1rem;
+							}
+						}
+						.tip-row {
+							width: 100%;
+							margin-bottom: 3rem;
+							@media (min-width: 768px) {
+								width: 37%;
+							}
+							#lsx-tips-shortcode {
+								margin-top: 0;
+							}
+						}
+					}
+				}
+			}
+			.sets {
+				.set-box {
+					&.set {
+						margin: 0;
+					}
+					&.entry-content {
+						display: flex;
+						align-items: end;
+						#lsx-tips-shortcode {
+							min-width: 330px;
+						}
+					}
+				}
+			}
+		}
+		.main-plan-content {
+			.plan {
+				.set-box {
+					background: white;
+					padding: 0px 8px 0 8px;
+					margin-bottom: 0;
+					@include media('>=tablet') {
+						padding: 30px 20px 0 20px;
+						display: flex;
+						align-items: end;
+						justify-content: space-between;
+					}
+				}
+				.plan-top-content {
+					width: 100%;
+				}
+				#hp-connected-members {
+					padding-top: 2rem;
+				}
+				@include media('>=tablet') {
+					.the-content {
+						padding-right: 4rem;
+					}
+					#hp-connected-members {
+						padding: 0;
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+						margin-left: 50px;
+					}
+				}
+				.my-plan-title {
+					padding: 20px 20px 0;
+					font-weight: bold;
+					margin-bottom: 0;
+				}
+				.the-plan-content {
+					padding: 20px;
+					.progress {
+						margin-top: 1rem;
+						margin-bottom: 3rem;
+						display: block;
+					}
+					.daily-plan-block {
+						&.week-grid {
+							.week-row {
+								@include media('>=tablet') {
+									padding: 0 4rem;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.meal-content {
+			.meals {
+				.set-box {
+					background: white;
+					padding: 0px 8px 0 8px;
+					margin-bottom: 0;
+					@include media('>=tablet') {
+						padding: 30px 20px 0 20px;
+						display: flex;
+						align-items: end;
+						justify-content: space-between;
+					}
+					.the-content {
+						@include media('>=tablet') {
+							padding-right: 4rem;
+						}
+						#hp-connected-members {
+							padding: 0;
+						}
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+						width: 100%;
+						@include media('>=tablet') {
+							max-width: 345px;
+						}
+					}
+				}
+				.meals-section-title {
+					padding: 40px 20px 0;
+					font-weight: bold;
+				}
+				// .btn-shopping {
+				// 	margin: 0 2rem 3rem;
+				// 	@media (max-width: 767px) {
+				// 		width: 95%;
+				// 		margin-top: 5rem;
+				// 	}
+				// 	@media (min-width: 1024px) {
+				// 		float: right;
+				// 		position: relative;
+				// 		top: -6.5rem;
+				// 		margin-right: 2rem;
+				// 		margin-bottom: -6.5rem;
+				// 	}
+				// }
+				.eating-row {
+					padding: 2rem 1rem 3rem;
+					margin: 0;
+					.eating-column {
+						@include media('>=tablet') {
+							border-right: 3px solid rgba(65, 138, 208, 0.1);
+						}
+						&:last-child {
+							border: none;
+						}
+						.content-box {
+							background: transparent;
+							padding-top: 0;
+							padding-bottom: 0;
+							.eating-title {
+								margin-bottom: 10px;
+							}
+						}
+						.recipes {
+							margin: 0 15px;
+							.row.eating-row {
+								padding: 0;
+							}
+							.recipe-column {
+								background: white;
+							}
+							tr {
+								display: flex;
+								&:before {
+									font-family: FontAwesome;
+									margin-right: 5px;
+									color: $blue;
+									font-size: 12px;
+								}
+							}
+							.serves {
+								&:before {
+									content: '\f0f5';
+								}
+							}
+							.prep-time {
+								&:before {
+									content: '\f017';
+								}
+							}
+							.cooking-time,
+							.portion-size {
+								display: none;
+							}
+						}
+					}
+				}
+				.set-box.entry-content {
+					+ .eating-row {
+						margin: 3rem 0 0 0;
+					}
+				}
+			}
+		}
+		.workout-content {
+			.single-plan-section-title {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
 .my-plan-container {
 	.lsx-container-content {
 		padding: 10px 2em;
@@ -211,14 +523,54 @@
 	}
 }
 
-.archive-plan {
+.archive-plan,
+.all-plans-block {
 	.row {
 		display: flex;
 		flex-wrap: wrap;
+		.lsx-slot {
+			.plan-feature-img {
+				.featured-plan {
+					position: absolute;
+					margin: 1rem;
+				}
+				img {
+					width: 100%;
+					height: 180px;
+					max-height: 180px;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+}
+.post-type-archive-workout {
+	.row {
+		.lsx-slot {
+			.workout-feature-img {
+				.featured-workout {
+					position: absolute;
+					margin: 1rem;
+				}
+			}
+		}
+	}
+}
+.post-type-archive-meal {
+	.row {
+		.lsx-slot {
+			.meal-feature-img {
+				.featured-meal {
+					position: absolute;
+					margin: 1rem;
+				}
+			}
+		}
 	}
 }
 .post-type-archive-recipe,
-.tax-recipe-type {
+.tax-recipe-type,
+.tax-recipe-cuisine {
 	.bottom-single-recipe {
 		margin-top: 4.25rem;
 		margin-bottom: -8.4rem;
@@ -228,13 +580,29 @@
 .single-plan,
 .archive-plan,
 .lsx-exercises-shortcode,
-.single-workout {
+.single-workout,
+.single-meal {
 	.entry-content,
 	.tab-content-plan {
 		background: $white;
-		padding: 25px 40px;
+		padding: 0;
 		@media (max-width: 992px) {
 			padding: 15px 10px;
+		}
+	}
+	.back-plan-btn {
+		margin-top: 4.25rem;
+		@include media('<custom') {
+			margin-top: 2.4rem;
+			.btn {
+				width: 100%;
+				margin-bottom: 2.4rem;
+			}
+		}
+		.btn-shopping {
+			@include media('>phone') {
+				margin-left: 2rem;
+			}
 		}
 	}
 	.extra-title {
@@ -244,14 +612,15 @@
 		}
 	}
 	.box-shadow {
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
+		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.24);
 	}
 	.btn-full {
 		width: 100%;
 	}
 	.sets {
 		.set-box.set {
-			padding: 20px 15px 10px;
+			padding: 3rem;
+			margin-bottom: 0;
 		}
 		.set-title {
 			font-family: 'Noto Sans';
@@ -306,6 +675,8 @@
 					h3 {
 						margin-top: 15px;
 						margin-bottom: 15px;
+						flex-direction: column;
+						display: flex;
 						@include media('<=phone') {
 							margin-top: 0;
 						}
@@ -365,6 +736,8 @@
 								img {
 									@include media('>=tablet') {
 										max-width: 120px;
+										max-height: 130px;
+										object-fit: cover;
 									}
 								}
 							}
@@ -380,11 +753,57 @@
 						}
 					}
 				}
+				&.longer-list {
+					@media (min-width: 1080px) {
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: space-between;
+						.lsx-slot {
+							width: 49%;
+							> .row {
+								height: 100%;
+								.col-md-2 {
+									width: 27%;
+									height: 100%;
+									.exercise-feature-img {
+										height: 100%;
+										img {
+											max-width: 100px;
+											//height: fill-available;
+											object-fit: cover;
+											max-height: 120px;
+										}
+									}
+								}
+								.col-md-10 {
+									width: 70%;
+									padding-right: 1rem;
+									h3 {
+										flex-direction: column;
+										display: flex;
+									}
+								}
+							}
+							.btn {
+								font-size: 0;
+								border: 0;
+								padding: 0;
+								&:after {
+									font-size: 9rem;
+									margin: 0;
+									font-weight: 300;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 		.set-grid {
 			.workout-grid {
 				padding: 0 10px;
+				display: flex;
+				flex-wrap: wrap;
 				> .col-md-4 {
 					padding: 5px;
 					@include media('<=phone') {
@@ -392,25 +811,58 @@
 					}
 				}
 				article {
+					display: flex;
 					.exercise-feature-img {
-						@include media('<=phone') {
-							display: none;
+						width: 40%;
+						@include media('>=tablet') {
+							width: 30%;
+						}
+						img {
+							height: auto;
+							object-fit: cover;
+							max-height: 120px;
 						}
 						@include media('>=tablet') {
 							img {
-								//max-height: 250px;
 								width: 100%;
+								min-height: 100px;
+								height: 100%;
 								object-fit: cover;
 							}
 						}
 					}
-					.title-lined {
-						margin-top: 0;
+					.exercise-content-box {
+						width: 60%;
+						@include media('>=tablet') {
+							width: 70%;
+						}
+						margin: 0;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-around;
+						h3 {
+							font-size: 15px;
+							margin: 0;
+							display: flex;
+							flex-direction: row;
+						}
+						a {
+							display: flex;
+							flex-direction: row;
+						}
+						.exercise-counter {
+							font-size: 15px;
+							font-weight: bold;
+							margin-right: 5px;
+						}
 					}
 					.reps-container {
 						display: flex;
-						justify-content: space-between;
+						justify-content: flex-end;
 						align-items: center;
+						&.have-reps {
+							justify-content: space-between;
+						}
 						.reps {
 							margin: 0;
 						}
@@ -418,12 +870,24 @@
 							text-transform: uppercase;
 							font-size: 14px;
 							font-weight: bold;
+							border-radius: 50%;
+							width: 36px;
+							height: 36px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
 							&:after {
-								content: '\f105';
+								content: '\f0da';
 								font-family: FontAwesome;
-								margin-left: 5px;
+								color: white;
+								font-size: 22px;
+								margin-left: 3px;
 							}
 						}
+					}
+					.lsx-exercises-excerpt {
+						margin: 0;
+						font-size: 13px;
 					}
 					.btn {
 						width: 100%;
@@ -505,6 +969,63 @@
 		margin: 0 0 30px;
 		background: $light_gray;
 		padding: 12px 16px;
+		h3.plan {
+			margin-bottom: 8px;
+			a,
+			a:visited {
+				color: $gray;
+			}
+		}
+		.plan-meta {
+			img {
+				margin-right: 5px;
+				+ span {
+					margin-left: 5px;
+				}
+			}
+			span {
+				font-size: 13px;
+				a:not(.btn) {
+					color: #919191;
+					&:last-child {
+						span {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		.plan-price {
+			display: flex;
+			del {
+				margin-right: 5px;
+				text-decoration-color: #30bb00;
+				opacity: 0.5;
+			}
+			ins {
+				text-decoration-color: #30bb00;
+			}
+		}
+		.amount {
+			color: #30bb00;
+			font-size: 18px;
+			margin-top: 9px;
+			display: block;
+		}
+		.excerpt {
+			margin-top: 10px;
+			.moretag {
+				display: none;
+			}
+		}
+		.btn {
+			width: 100%;
+			padding: 10px;
+			height: 40px;
+			&.btn-disabled {
+				opacity: 0.4;
+			}
+		}
 	}
 	.blue-title {
 		font-weight: bold;
@@ -522,7 +1043,9 @@
 	}
 	.single-plan-inner {
 		&.workout-content {
-			max-width: 1000px;
+			max-width: 1140px;
+			margin-left: auto;
+			margin-right: auto;
 			.workout-instructions {
 				padding-left: 10px;
 				padding-right: 10px;
@@ -578,6 +1101,11 @@
 		}
 		.eating-row {
 			.eating-column {
+				padding: 0;
+				.content-box {
+					margin-bottom: 0;
+				}
+
 				.content-box {
 					.eating-title,
 					h3 {
@@ -588,11 +1116,6 @@
 				}
 			}
 		}
-		// .extras-box {
-		// 	@media (max-width:992px) {
-		// 		padding: 10px 15px;
-		// 	}
-		// }
 		.tip-row {
 			@media (min-width: 992px) {
 				display: flex;
@@ -616,16 +1139,48 @@
 				}
 			}
 		}
-		&.recipes-content {
+		.recipes {
+			.eating-row {
+				padding: 0 2rem 3rem;
+			}
 			.recipe-column {
+				.recipe-feature-img {
+					width: 100px;
+					min-width: 100px;
+				}
+				.recipe-box {
+					display: flex;
+					margin-bottom: 2rem;
+					.recipe-content {
+						padding: 12px 15px;
+					}
+				}
 				.recipe-title {
-					font-size: 22px;
-					font-family: 'Noto Sans', sans-serif;
+					font-size: 16px;
+					line-height: 19px;
+					margin-bottom: 10px;
 				}
 				.recipe-table {
 					width: 100%;
-					margin-bottom: 25px;
+					margin-bottom: 0;
 					table-layout: fixed;
+					tbody {
+						display: flex;
+					}
+					tr {
+						margin-right: 10px;
+						td {
+							color: #919191;
+							font-size: 13px;
+							&:first-child {
+								display: none;
+							}
+						}
+						&.cooking-time,
+						&.portion-size {
+							display: none;
+						}
+					}
 				}
 				.btn {
 					margin-bottom: 25px;
@@ -651,11 +1206,55 @@
 			}
 		}
 	}
+	&:not(.logged-in) {
+		.single-plan-inner {
+			> .plan {
+				opacity: 0.3;
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.single-plan {
+	.back-plan-btn {
+		margin-top: 0;
+	}
+	.status-plan-buttons {
+		padding: 15px;
+		margin-top: 3rem;
+		&.main-plan-btn {
+			.border-btn {
+				@include media('<=phone') {
+					width: 100%;
+				}
+				&:before {
+					content: '\f104';
+					font-family: 'FontAwesome';
+					margin-right: 1rem;
+				}
+			}
+		}
+	}
+}
+
+.single-workout {
+	.entry-content {
+		padding: 0;
+	}
 }
 
 #lsx-exercises-shortcode {
+	.reps {
+		font-size: 13px;
+		line-height: 15px;
+	}
 	.btn-simple {
-		display: none;
+		width: 16px;
+		height: 16px;
+		&:after {
+			font-size: 10px;
+		}
 	}
 }
 
@@ -664,7 +1263,8 @@
 		display: none;
 	}
 	.modal-content {
-		padding: 40px;
+		padding: 10px !important;
+		border-width: 2px !important;
 	}
 	.modal-title {
 		margin-bottom: 25px;
@@ -675,6 +1275,30 @@
 		}
 	}
 	.modal-body {
+		.recipe {
+			#single-recipe {
+				background: transparent;
+				padding: 0;
+				.recipe-image,
+				.recipe-content {
+					width: 100%;
+					max-width: 100%;
+					padding: 0 1rem;
+					margin: 1rem 0;
+				}
+				.recipe-image {
+					padding: 0;
+					box-shadow: none;
+					img {
+						max-height: 280px;
+						object-fit: cover;
+					}
+					.recipe-data {
+						background: transparent;
+					}
+				}
+			}
+		}
 		.exercise-modal {
 			&.title-lined {
 				padding-bottom: 15px;
@@ -712,105 +1336,23 @@
 
 .post-type-archive-recipe,
 .tax-recipe-type,
+.tax-recipe-cuisine,
 .post-type-archive-exercise,
 .tax-exercise-type,
 .tax-muscle-group,
 .tax-equipment {
-	.archive-plan {
-		.row {
-			.col-md-4 {
-				.lsx-slot {
-					position: relative;
-				}
-				.recipe-type {
-					position: absolute;
-					right: 10px;
-					top: 15px;
-					font-size: 13px;
-					background: white;
-					padding: 5px 10px;
-					font-weight: bold;
-					border-radius: 1px;
-				}
-				.recipe-feature-img,
-				.exercise-feature-img {
-					img {
-						width: 100%;
-					}
-				}
-				.content-box {
-					//min-height: 290px;
-					display: flex;
-					flex-direction: column;
-					justify-content: space-between;
-					padding: 10px 15px 0;
-					table:not(.exercise-table) {
-						flex-grow: 2;
-						display: flex;
-						margin-bottom: 10px;
-						tbody {
-							display: flex;
-						}
-						td,
-						th {
-							vertical-align: top;
-						}
-						tr {
-							display: flex;
-							margin-right: 10px;
-							&:before {
-								font-family: FontAwesome;
-								margin-right: 5px;
-								color: $blue;
-							}
-							td {
-								&:first-child {
-									display: none;
-								}
-							}
-						}
-						.serves {
-							&:before {
-								content: '\f0f5';
-							}
-						}
-						.prep-time {
-							&:before {
-								content: '\f017';
-							}
-						}
-						.cooking-time,
-						.portion-size {
-							display: none;
-						}
-					}
-					.recipe-title,
-					.exercise-title {
-						margin-bottom: 15px;
-					}
-					a {
-						margin-bottom: 15px;
-						&:after {
-							content: '\f105';
-							font-family: FontAwesome;
-							margin-left: 2rem;
-							color: $blue;
-						}
-					}
-					&.exercise-content-box {
-						.exercise-table {
-							font-size: 13px;
-							color: #919191;
-							a {
-								&:after {
-									content: none;
-								}
-							}
-						}
-					}
+	.archive-header-wrapper {
+		.archive-header {
+			.lsx-hp-archive-description {
+				color: white;
+				font-size: 18px;
+				.description-wrapper {
+					margin-top: 5px;
 				}
 			}
 		}
+	}
+	.archive-plan {
 		&.exercise-archive-plan {
 			.lsx-slot {
 				.title-lined {
@@ -834,7 +1376,6 @@
 			}
 		}
 	}
-
 	.lsx-hp-archive-description {
 		margin-left: auto;
 		margin-right: auto;
@@ -851,7 +1392,14 @@
 			}
 		}
 	}
-
+	a.border-btn {
+		&:after {
+			content: '\f105';
+			font-family: FontAwesome;
+			margin-left: 2rem;
+			color: $blue;
+		}
+	}
 	&.lsx-search-enabled {
 		.archive-plan {
 			.content-box {
@@ -861,12 +1409,264 @@
 	}
 }
 
-.post-type-archive-exercise {
-	.archive-plan {
-		.row {
-			.lsx-slot {
-				.title-lined {
+#lsx-exercises-shortcode.shortcode-type-meal {
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		width: 100%;
+		max-width: 80%;
+	}
+	.meals {
+		.set-box {
+			background: white;
+			padding: 0px 8px 0 8px;
+			margin-bottom: 0;
+			@include media('>=tablet') {
+				padding: 30px 20px 0 20px;
+				display: flex;
+				align-items: end;
+				justify-content: space-between;
+			}
+			.the-content {
+				@include media('>=tablet') {
+					padding-right: 4rem;
+				}
+				#hp-connected-members {
+					padding: 0;
+				}
+			}
+			#lsx-tips-shortcode {
+				margin-top: 0;
+				width: 100%;
+				@include media('>=tablet') {
+					max-width: 345px;
+				}
+			}
+		}
+		.eating-row {
+			padding: 2rem 1rem 3rem;
+			margin: 0;
+			.eating-column {
+				border-right: 3px solid rgba(65, 138, 208, 0.1);
+				&:last-child {
 					border: none;
+				}
+				.content-box {
+					background: transparent;
+					padding-top: 0;
+					padding-bottom: 0;
+					.eating-title {
+						margin-bottom: 10px;
+					}
+				}
+				.recipes {
+					margin: 0 15px;
+					.row.eating-row {
+						padding: 0;
+					}
+					.recipe-column {
+						background: white;
+					}
+					tr {
+						display: flex;
+						&:before {
+							font-family: FontAwesome;
+							margin-right: 5px;
+							color: $blue;
+							font-size: 12px;
+						}
+					}
+					.serves {
+						&:before {
+							content: '\f0f5';
+						}
+					}
+					.prep-time {
+						&:before {
+							content: '\f017';
+						}
+					}
+					.cooking-time,
+					.portion-size {
+						display: none;
+					}
+				}
+				.recipes {
+					.eating-row {
+						padding: 0 2rem 3rem;
+					}
+					.recipe-column {
+						.recipe-feature-img {
+							width: 100px;
+							min-width: 100px;
+							display: flex;
+							img {
+								object-fit: cover;
+							}
+						}
+						.recipe-box {
+							display: flex;
+							margin-bottom: 2rem;
+							.recipe-content {
+								padding: 12px 15px;
+							}
+						}
+						.recipe-title {
+							font-size: 16px;
+							line-height: 19px;
+							margin-bottom: 10px;
+						}
+						.recipe-table {
+							width: 100%;
+							margin-bottom: 0;
+							table-layout: fixed;
+							tbody {
+								display: flex;
+							}
+							tr {
+								margin-right: 10px;
+								td {
+									color: #919191;
+									font-size: 13px;
+									&:first-child {
+										display: none;
+									}
+								}
+								&.cooking-time,
+								&.portion-size {
+									display: none;
+								}
+							}
+						}
+						.btn {
+							margin-bottom: 25px;
+						}
+					}
+				}
+			}
+		}
+		.set-box.entry-content {
+			+ .eating-row {
+				margin: 3rem 0 0 0;
+			}
+		}
+	}
+}
+
+.post-type-archive-recipe,
+.post-type-archive-exercise,
+.tax-recipe-type,
+.tax-recipe-cuisine,
+#lsx-exercises-shortcode.shortcode-type-recipe {
+	.lsx-slot {
+		position: relative;
+	}
+	.recipe-type {
+		position: absolute;
+		right: 10px;
+		top: 15px;
+		font-size: 13px;
+		background: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		border-radius: 1px;
+		&.recipe-parent {
+			background: linear-gradient(270deg, #418ad0 0%, #2a5781 100%);
+			color: white;
+		}
+	}
+	.recipe-feature-img,
+	.exercise-feature-img {
+		img {
+			width: 100%;
+			height: 250px;
+			max-height: 250px;
+			object-fit: cover;
+		}
+	}
+	.content-box {
+		//min-height: 290px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 10px 15px 0;
+		table:not(.exercise-table) {
+			flex-grow: 2;
+			display: flex;
+			margin-bottom: 10px;
+			tbody {
+				display: flex;
+			}
+			td,
+			th {
+				vertical-align: top;
+			}
+			tr {
+				display: flex;
+				margin-right: 10px;
+				&:before {
+					font-family: FontAwesome;
+					margin-right: 5px;
+					color: $blue;
+				}
+				td {
+					&:first-child {
+						display: none;
+					}
+				}
+			}
+			.serves {
+				&:before {
+					content: '\f0f5';
+				}
+			}
+			.prep-time {
+				&:before {
+					content: '\f017';
+				}
+			}
+			.cooking-time,
+			.portion-size {
+				display: none;
+			}
+		}
+		.recipe-title-link {
+			margin: 0;
+			&::after {
+				content: none;
+			}
+		}
+		.recipe-title,
+		.exercise-title {
+			margin-bottom: 15px;
+		}
+		a {
+			margin-bottom: 15px;
+			&.btn {
+				&:after {
+					content: '\f105';
+					font-family: FontAwesome;
+					margin-left: 5px;
+					color: $blue;
+				}
+			}
+		}
+		&.exercise-content-box {
+			.exercise-table {
+				font-size: 13px;
+				color: #919191;
+				a {
+					text-transform: capitalize;
+					&:after {
+						content: none;
+					}
+				}
+			}
+		}
+	}
+	.col-md-3 {
+		.content-box {
+			table:not(.exercise-table) {
+				tbody {
+					display: block;
 				}
 			}
 		}
@@ -909,5 +1709,14 @@
 				display: none;
 			}
 		}
+	}
+}
+
+.archive {
+	.archive-header-wrapper.banner-archive {
+		float: none;
+	}
+	.hp-archive-category-title {
+		margin-top: 4.25rem;
 	}
 }

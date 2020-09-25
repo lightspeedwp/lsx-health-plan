@@ -21,7 +21,7 @@ var mag_ajax_js = Object.create( null );
 				fid = fid.replace( "]", "" );
 				fid = fid.replace( "[", "_" );
 
-				var storeReplace = $(this).parents('.cmb-row.cmb-type-post-search-ajax');
+				var storeReplace = $(this).closest('.cmb-row.cmb-type-post-search-ajax');
 				console.log('====== CMBROW =======');
 				console.log(storeReplace);
 				console.log(name);
@@ -29,10 +29,32 @@ var mag_ajax_js = Object.create( null );
 				if ( storeReplace.hasClass( 'cmb-repeat-group-field' ) ) {
 					console.log('====== hasClass =======');
 					console.log(storeReplace);
-					var fieldReplace = undefined;
+					var fieldReplace     = undefined;
+					var searchReplace    = undefined;
+					var emptyResultsList = false;
+					var searchID         = false;
+
+					// Replace the ajax search input ID.
+					searchReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax');
+					if ( 0 < searchReplace.length ) {
+						searchID = searchReplace.attr('name');
+						searchReplace.attr('ID', searchID );
+					}
+
+					// Run through the store fields and replace the results list.
 					fieldReplace = storeReplace.find( '.cmb-td' ).find('input.cmb-post-search-ajax-store');
+					console.log(fieldReplace);
 					if ( 0 < fieldReplace.length ) {
 						fieldReplace.attr('name',fid + '_store');
+						console.log('store replaced');
+
+						if ( false !== searchID ) {
+							fieldReplace.attr('id',searchID + '_store');
+						}
+					}
+
+					if ( '' === fieldReplace.val() ) {
+						storeReplace.find( '.cmb-post-search-ajax-results' ).empty();
 					}
 				}
 	
@@ -90,9 +112,9 @@ var mag_ajax_js = Object.create( null );
 						console.log('====== suggestion =======');
 						console.log(suggestion);
 
-						console.log($(this).parents('.cmb-row').hasClass('cmb-repeat-group-field'));
-						console.log($(this).parents('.cmb-row').hasClass('lsx-field-connect-field'));
-						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).parents('.cmb-row').hasClass('lsx-field-connect-field') ) {
+						console.log($(this).closest('.cmb-row').hasClass('cmb-repeat-group-field'));
+						console.log($(this).closest('.cmb-row').hasClass('lsx-field-connect-field'));
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && $(this).closest('.cmb-row').hasClass('lsx-field-connect-field') ) {
 							name = original;
 						}
 						console.log('====== Original =======');
@@ -104,8 +126,7 @@ var mag_ajax_js = Object.create( null );
 						var sortable = $(this).attr('data-sortable');
 						if ( limit > 1 ) {
 							var handle = (sortable == 1) ? '<span class="hndl"></span>' : '';
-
-							$(this).parents('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
+							$(this).closest('.cmb-row').find( '.cmb-post-search-ajax-results' ).append('<li>'+handle+'<input type="hidden" name="'+lid+'[]" value="'+suggestion.data+'"><a href="'+suggestion.guid+'" target="_blank" class="edit-link">'+suggestion.value+'</a><a class="remover"><span class="dashicons dashicons-no"></span><span class="dashicons dashicons-dismiss"></span></a></li>');
 
 							$(this).val('');
 							if ( limit === $('input#'+name + '_results li').length ){
@@ -113,19 +134,25 @@ var mag_ajax_js = Object.create( null );
 							} else {
 								$(this).focus();
 							}
+
+							mag_ajax_js.populateStoreField( $(this), name );
+
 						} else {
-							$('input#'+name).val( suggestion.data );
+							$( 'input#'+name ).val( suggestion.data );
+							$( 'input[name="'+name + '_store"]' ).val( suggestion.data );
+							console.log('limit store' + limit);
+							console.log($( 'input#'+name + '_store' ));
 						}
 
-						if ( $(this).parents('.cmb-row').hasClass('cmb-repeat-group-field') && limit <= 1 ) {
+						if ( $(this).closest('.cmb-row').hasClass('cmb-repeat-group-field') && limit > 1 ) {
 							console.log('cmb-group');
+							console.log( groupName );
 							groupName = groupName.replace( "][", "_" );
 							groupName = groupName.replace( "]", "" );
 							groupName = groupName.replace( "[", "_" );
-							console.log( groupName );
-							$( 'input[name='+groupName+'_store]' ).val( suggestion.data );
+							
+							mag_ajax_js.populateStoreField( $(this), groupName );
 						}
-	
 					}
 				});			
 			
@@ -153,13 +180,45 @@ var mag_ajax_js = Object.create( null );
 		);
 	};
 
+	mag_ajax_js.populateStoreField = function( ele, name ) {
+		console.log(name);
+
+		if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results').length ) {
+			var resultValues = ele.closest('.cmb-row').find( '.cmb-post-search-ajax-results li input' ).map( function(){return $(this).val();} ).get();
+		} else if ( 0 < ele.closest('.cmb-row').find( '.cmb-post-search-ajax-store').length ) {
+			var resultValues = ele.closest('.cmb-row').find( 'input#'+name + '_store' ).map( function(){return $(this).val();} ).get();
+		}
+		console.log(resultValues);
+		console.log(name);
+		if ( 0 === resultValues.length ) {
+			$( 'input[name='+name+'_store]' ).val( '' );
+		} else {
+			$( 'input[name='+name+'_store]' ).val( resultValues.join(',') );
+		}
+	};
+
 	mag_ajax_js.watch_remove_click = function() {
 		$('.cmb-post-search-ajax-results').on( 'click', 'a.remover', function(){
-			$(this).parent('li').fadeOut( 400, function(){ 
-				var iid = $(this).parents('ul').attr('id').replace('_results', '');
+			$(this).parent('li').fadeOut( 0, function(){ 
+				var iid     = $(this).parent('ul').attr('id').replace('_results', '');
+				var cmb_row = $(this).closest('.cmb-row');
+
+				console.log( iid );
 				$(this).remove(); 
 				$('#' + iid).removeProp( 'disabled' );
 				$('#' + iid).devbridgeAutocomplete('clearCache');
+
+				if ( cmb_row.hasClass('cmb-repeat-group-field') ) {				
+					var groupName = $(this).find('input').attr('name').replace('_results[]', '');
+					groupName = groupName.replace( "][", "_" );
+					groupName = groupName.replace( "]", "" );
+					groupName = groupName.replace( "[", "_" );
+					console.log( groupName );
+					console.log( cmb_row );
+					mag_ajax_js.populateStoreField( cmb_row, groupName );
+				} else {
+					mag_ajax_js.populateStoreField( cmb_row, iid );
+				}
 			});
 		});
 	};

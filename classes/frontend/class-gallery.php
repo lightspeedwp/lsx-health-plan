@@ -65,7 +65,7 @@ class Gallery {
 	public $args = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 	}
@@ -93,19 +93,18 @@ class Gallery {
 	 * @return boolean
 	 */
 	public function has_gallery( $item_id = '', $post_type = '' ) {
-		$this->gallery     = array();
-		$this->has_gallery = false;
 		if ( '' === $item_id ) {
 			$this->item_id = get_the_ID();
 		} else {
 			$this->item_id = $item_id;
 		}
-
+		$this->has_gallery = false;
 		if ( '' === $post_type ) {
 			$this->post_type = get_post_type( $this->item_id );
 		}
 		$gallery = get_post_meta( $this->item_id, $this->post_type . '_gallery', true );
-		if ( ! empty( $gallery ) ) {
+
+		if ( ! empty( $gallery ) && ( '' !== $gallery ) ) {
 			$this->gallery     = $gallery;
 			$this->has_gallery = true;
 			wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/src/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
@@ -170,7 +169,9 @@ class Gallery {
 				$this->loop_start();
 
 				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
-					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
+					$size         = apply_filters( 'lsx_hp_exercise_gallery_size', 'full' );
+					$thumbnail    = wp_get_attachment_image( $gallery['exercise_gallery_image_id'], $size );
+					$this->html[] = $thumbnail;
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
 					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {

@@ -25,7 +25,7 @@ class Modals {
 	public $modals = array();
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	public function __construct() {
 		add_action( 'wp_footer', array( $this, 'output_modals' ) );
