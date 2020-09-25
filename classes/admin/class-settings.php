@@ -81,7 +81,7 @@ class Settings {
 	private function load_classes() {
 
 		$this->post_types = array(
-			'plan',
+			'my-plans',
 			'workout',
 			'exercise',
 			'meal',
@@ -120,23 +120,6 @@ class Settings {
 	 * @return void
 	 */
 	public function general_settings( $cmb ) {
-		if ( function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
-			$cmb->add_field(
-				array(
-					'name'       => __( 'Membership Product', 'lsx-health-plan' ),
-					'id'         => 'membership_product',
-					'type'       => 'post_search_ajax',
-					'limit'      => 1,
-					'sortable'   => false,
-					'query_args' => array(
-						'post_type'      => array( 'product' ),
-						'post_status'    => array( 'publish' ),
-						'posts_per_page' => -1,
-					),
-				)
-			);
-		}
-
 		$cmb->add_field(
 			array(
 				'name'        => __( 'Exercises', 'lsx-health-plan' ),
@@ -246,6 +229,19 @@ class Settings {
 
 		foreach ( $this->post_types as $post_type ) {
 			switch ( $post_type ) {
+				case 'my-plans':
+					$page_url    = get_post_type_archive_link( 'plan' );
+					$description = sprintf(
+						/* translators: %s: The subscription info */
+						__( 'Control the settings for your <a target="_blank" href="%1$s">%2$s</a> pages.', 'lsx-search' ),
+						$page_url,
+						__( 'plan', 'lsx-health-plan' )
+					);
+					$tabs[ $post_type ] = array(
+						'title' => __( 'My Plans', 'lsx-health-plan' ),
+						'desc'  => $description,
+					);
+					break;
 				default:
 					//if ( ! in_array( $post_type, \lsx\search\includes\get_restricted_post_types() ) ) {
 						$temp_post_type = get_post_type_object( $post_type );

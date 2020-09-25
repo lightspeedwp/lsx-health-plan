@@ -152,7 +152,6 @@ class Meal {
 				)
 			);
 		}
-		
 	}
 }
 Meal::get_instance();

@@ -8,7 +8,7 @@
 namespace lsx_health_plan\classes\admin;
 
 /**
- * Contains the settings for each post type \lsx_health_plan\classes\admin\Plan().
+ * Contains the settings for each post type \lsx_health_plan\classes\admin\My_Plans().
  */
 class Plan {
 
@@ -17,7 +17,7 @@ class Plan {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_health_plan\classes\admin\Plan()
+	 * @var      object \lsx_health_plan\classes\admin\My_Plans()
 	 */
 	protected static $instance = null;
 
@@ -25,7 +25,7 @@ class Plan {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_hp_settings_page_plan_top', array( $this, 'settings' ), 1, 1 );
+		add_action( 'lsx_hp_settings_page_my-plans_top', array( $this, 'settings' ), 1, 1 );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Plan {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_health_plan\classes\admin\Plan()    A single instance of this class.
+	 * @return    object \lsx_health_plan\classes\admin\My_Plans()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -67,11 +67,23 @@ class Plan {
 				'name'        =>  __( 'My Plan Slug', 'lsx-health-plan' ),
 				'description' => __( 'This will be the slug url for redirecting users after login, use the login page slug.', 'lsx-health-plan' ),
 				'id'          => 'my_plan_slug',
-				'type'        => 'input',
-				'value'       => '',
+				'type'        => 'select',
 				'default'     => 'my-plan',
+				'options'     => $this->get_page_options(),
 			)
 		);
+
+		$cmb->add_field(
+			array(
+				'before_row'  => '<h4><b><u>Default Options</u></b></h4>',
+				'name'        => __( 'Recipe', 'lsx-health-plan' ),
+				'description' => __( 'Set a default recipe.', 'lsx-health-plan' ),
+				'limit'       => 1,
+				'id'          => 'connected_recipes',
+				'type'        => 'post_search_ajax',
+			)
+		);
+
 		$cmb->add_field(
 			array(
 				'name'    =>  __( 'Single Plan Slug', 'lsx-health-plan' ),
@@ -139,6 +151,28 @@ class Plan {
 				'after_row' => __( '<p style="font-style: italic;">If you have changed any URL slugs, please remember re-save your permalinks in Settings > Permalinks.</p>', 'lsx-health-plan' ),
 			)
 		);
+	}
+
+	public function get_page_options() {
+		$query_args = array(
+			'post_type'      => 'page',
+			'post_status'    => array( 'publish' ),
+			'posts_per_page' => -1,
+			'orderby'        => 'title',
+			'fields'         => array( 'ids' ),
+		);
+		$options = array(
+			'' => __( 'Select a page', 'lsx-health-plan' ),
+		);
+		$page_query = new \WP_Query( $query_args );
+		if ( $page_query->have_posts() ) {
+			foreach ( $page_query->posts as $pid ) {
+				$title       = get_the_title( $pid );
+				$key         = sanitize_title( $title );
+				$options[ $key ] = $title;
+			}
+		}
+		return $options;
 	}
 }
 Plan::get_instance();
