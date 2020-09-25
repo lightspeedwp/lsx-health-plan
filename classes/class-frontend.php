@@ -113,15 +113,5 @@ class Frontend {
 		if ( ! is_user_logged_in() || ! function_exists( 'wc_get_page_id' ) || is_home() ) {
 			return;
 		}
-		if ( lsx_health_plan_user_has_purchase() && ( is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) ) ) ) {
-			wp_redirect( get_permalink( wc_get_page_id( 'myaccount' ) ) );
-			die;
-		}
-
-		$product_id = \lsx_health_plan\functions\get_option( 'membership_product', false );
-		if ( false !== $product_id && is_single( $product_id ) ) {
-			wp_redirect( home_url() );
-			wp_die();
-		}
 	}
 }
