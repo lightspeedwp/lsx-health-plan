@@ -94,7 +94,7 @@ class Exercise {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => false,
+			'show_in_menu'       => 'edit.php?post_type=workout-pseudo',
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-universal-access',
 			'query_var'          => true,
