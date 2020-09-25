@@ -807,12 +807,6 @@ article.type-workout {
 						@include media('>=tablet') {
 							width: 30%;
 						}
-						.exercise-counter {
-							position: absolute;
-							font-size: 15px;
-							font-weight: bold;
-							margin-left: 5px;
-						}
 						img {
 							height: auto;
 							object-fit: cover;
@@ -839,6 +833,17 @@ article.type-workout {
 						h3 {
 							font-size: 15px;
 							margin: 0;
+							display: flex;
+							flex-direction: row;
+						}
+						a {
+							display: flex;
+							flex-direction: row;
+						}
+						.exercise-counter {
+							font-size: 15px;
+							font-weight: bold;
+							margin-right: 5px;
 						}
 					}
 					.reps-container {

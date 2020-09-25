@@ -111,7 +111,6 @@ if ( ! empty( $groups ) ) {
 					<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_setting ); ?>">
 						<article class="lsx-slot box-shadow">
 							<div class="exercise-feature-img">
-								<span class="exercise-counter"><?php echo esc_html( $counter ); ?>.</span>
 								<?php echo wp_kses_post( $link_html ); ?>
 									<?php
 									$thumbnail_args = array(
@@ -136,8 +135,11 @@ if ( ! empty( $groups ) ) {
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
 											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											
 											if ( '' !== $alt_title ) {
-												$exercise_title = $alt_title;
+												$exercise_title = '<span class="exercise-counter">' . $counter . '.</span>' . $alt_title;
+											} else {
+												$exercise_title = '<span class="exercise-counter">' . $counter . '.</span>' . $exercise_title;
 											}
 											echo wp_kses_post( $exercise_title );
 											?>
