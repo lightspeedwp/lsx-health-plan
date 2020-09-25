@@ -549,11 +549,19 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 									if ( lsx_health_plan_is_day_complete( $args['plan'], $section_args['title'] ) ) {
 										$completed_class = 'completed';
 									}
-									?>
-									<a href="<?php echo esc_attr( \lsx_health_plan\functions\plan\get_permalink( $args['plan'], $section_args['title'] ) ); ?>" class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
-										<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
-									</a>
-									<?php
+									if ( $section_args['rest_day_enabled'] ) {
+										?>
+										<a href="#" class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
+											<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
+										</a>
+										<?php
+									} else {
+										?>
+										<a href="<?php echo esc_attr( \lsx_health_plan\functions\plan\get_permalink( $args['plan'], $section_args['title'] ) ); ?>" class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
+											<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
+										</a>
+										<?php
+									}
 								}
 								?>
 								</div>
