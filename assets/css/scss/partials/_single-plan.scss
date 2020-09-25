@@ -212,7 +212,12 @@
 					}
 				}
 				.workout-instructions {
-					padding: 1rem 3rem;
+					padding: 1rem 3rem 0;
+					.content-intro {
+						p {
+							margin: 0;
+						}
+					}
 				}
 				.sets {
 					.set-box {
@@ -255,7 +260,12 @@ article.type-workout {
 				}
 			}
 			.workout-instructions {
-				padding: 1rem 3rem;
+				padding: 1rem 3rem 0;
+				.content-intro {
+					p {
+						margin: 0;
+					}
+				}
 				> .row {
 					> .col-md-12 {
 						display: flex;
