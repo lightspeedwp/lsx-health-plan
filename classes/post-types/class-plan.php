@@ -477,6 +477,18 @@ class Plan {
 					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-50',
 				)
 			);
+			$cmb->add_group_field(
+				$group,
+				array(
+					'name'        => __( 'Rest day', 'lsx-health-plan' ),
+					'id'          => 'rest_day_enabled',
+					'type'        => 'checkbox',
+					'value'       => 1,
+					'default'     => 0,
+					'description' => __( 'Enabling the rest day will add an item called "Rest" with no links.', 'lsx-health-plan' ),
+					'classes'    => 'lsx-field-col lsx-field-add-field',
+				)
+			);
 		}
 
 		if ( post_type_exists( 'meal' ) ) {
