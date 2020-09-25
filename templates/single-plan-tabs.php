@@ -6,9 +6,16 @@
 */
 
 $plan_link       = get_permalink();
-$current_section = get_query_var( 'section' );
+$current_section = get_query_var( 'section', false );
 if ( '' !== $current_section ) {
 	$plan_link = \lsx_health_plan\functions\plan\get_permalink( get_the_ID(), $current_section );
+}
+
+if ( false !== $current_section ) {
+	$section_info = \lsx_health_plan\functions\plan\get_section_info( $current_section );
+	if ( isset( $section_info['rest_day_enabled'] ) && ! empty( $section_info['rest_day_enabled'] ) ) {
+		return;
+	}
 }
 
 ?>

@@ -98,7 +98,7 @@ class Plan {
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
-			'parent_item_colon'  => '',
+			'parent_item_colon'  => esc_html__( 'Parent:', 'lsx-health-plan' ),
 			'menu_name'          => esc_html__( 'Plans', 'lsx-health-plan' ),
 		);
 		$args   = array(

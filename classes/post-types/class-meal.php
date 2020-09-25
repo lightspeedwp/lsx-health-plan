@@ -74,7 +74,7 @@ class Meal {
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-health-plan' ),
-			'parent_item_colon'  => '',
+			'parent_item_colon'  => esc_html__( 'Parent:', 'lsx-health-plan' ),
 			'menu_name'          => esc_html__( 'Meals', 'lsx-health-plan' ),
 		);
 		$args   = array(
@@ -89,7 +89,7 @@ class Meal {
 			'rewrite'            => array(
 				'slug' => \lsx_health_plan\functions\get_option( 'meal_single_slug', 'meal' ),
 			),
-			'capability_type'    => 'post',
+			'capability_type'    => 'page',
 			'has_archive'        => \lsx_health_plan\functions\get_option( 'endpoint_meal_archive', 'meals' ),
 			'hierarchical'       => true,
 			'menu_position'      => null,
