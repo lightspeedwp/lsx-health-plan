@@ -11,9 +11,9 @@ if ( '' !== $current_section ) {
 	$plan_link = \lsx_health_plan\functions\plan\get_permalink( get_the_ID(), $current_section );
 }
 
-if ( false !== $current_section ) {
+if ( false !== $current_section && \lsx_health_plan\functions\plan\has_sections() ) {
 	$section_info = \lsx_health_plan\functions\plan\get_section_info( $current_section );
-	if ( isset( $section_info['rest_day_enabled'] ) && ! empty( $section_info['rest_day_enabled'] ) ) {
+	if ( empty( $section_info ) || ( isset( $section_info['rest_day_enabled'] ) && ! empty( $section_info['rest_day_enabled'] ) ) ) {
 		return;
 	}
 }
