@@ -1493,6 +1493,8 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:not(.completed) { border-color: #418AD0; background: rgba(65, 138, 208, 0.5); }
 
+.daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:not(.completed) .plan-content { color: #418AD0; }
+
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:hover:not(.completed) { background: #418AD0; }
 
 .my-profile-block, .archive-header { background: linear-gradient(213.95deg, #418AD0 0%, #225789 100%); }

@@ -272,6 +272,9 @@
 								&:not(.completed) {
 									border-color: $link;
 									background: rgba($link, 0.5);
+									.plan-content {
+										color: $link;
+									}
 								}
 								&:hover {
 									&:not(.completed) {

@@ -549,7 +549,7 @@ function lsx_health_plan_week_plan_block( $args = array() ) {
 									if ( lsx_health_plan_is_day_complete( $args['plan'], $section_args['title'] ) ) {
 										$completed_class = 'completed';
 									}
-									if ( $section_args['rest_day_enabled'] ) {
+									if ( $section_args['rest_day_enabled'] && ! $section_args['connected_meals'] ) {
 										?>
 										<span class="day id-<?php echo esc_attr( $section_key + 1 ); ?> <?php echo esc_attr( $completed_class ); ?>">
 											<div class="plan-content"><?php echo esc_attr( $section_args['title'] ); ?></div>
