@@ -88,7 +88,6 @@ if ( false === $restricted ) {
 												<span><?php echo esc_html( $small_description ); ?></span>
 											</div>
 											<?php
-											
 										}
 										?>
 										</div>

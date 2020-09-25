@@ -31,7 +31,19 @@ function lsx_health_plan_has_workout( $post_id = '' ) {
 	if ( '' === $post_id ) {
 		$post_id = get_the_ID();
 	}
-	return \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' );
+	$has_workouts = false;
+
+	$section_key = get_query_var( 'section', false );
+	if ( false !== $section_key ) {
+		$section_info = \lsx_health_plan\functions\plan\get_section_info( $section_key );
+		if ( isset( $section_info['connected_workouts'] ) && ! empty( $section_info['connected_workouts'] ) ) {
+			$has_workouts = true;
+		}
+	} elseif ( \lsx_health_plan\functions\has_attached_post( $post_id, 'connected_workouts' ) ) {
+		$has_workouts = true;
+	}
+
+	return $has_workouts;
 }
 
 /**
