@@ -975,7 +975,7 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .single-plan .sets .set-grid .workout-grid article .exercise-content-box h3, .archive-plan .sets .set-grid .workout-grid article .exercise-content-box h3, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-content-box h3, .single-workout .sets .set-grid .workout-grid article .exercise-content-box h3, .single-meal .sets .set-grid .workout-grid article .exercise-content-box h3 { font-size: 15px; margin: 0; display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; }
 
-.single-plan .sets .set-grid .workout-grid article .exercise-content-box a, .archive-plan .sets .set-grid .workout-grid article .exercise-content-box a, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-content-box a, .single-workout .sets .set-grid .workout-grid article .exercise-content-box a, .single-meal .sets .set-grid .workout-grid article .exercise-content-box a { display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; }
+.single-plan .sets .set-grid .workout-grid article .exercise-content-box a, .archive-plan .sets .set-grid .workout-grid article .exercise-content-box a, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-content-box a, .single-workout .sets .set-grid .workout-grid article .exercise-content-box a, .single-meal .sets .set-grid .workout-grid article .exercise-content-box a { display: initial; }
 
 .single-plan .sets .set-grid .workout-grid article .exercise-content-box .exercise-counter, .archive-plan .sets .set-grid .workout-grid article .exercise-content-box .exercise-counter, .lsx-exercises-shortcode .sets .set-grid .workout-grid article .exercise-content-box .exercise-counter, .single-workout .sets .set-grid .workout-grid article .exercise-content-box .exercise-counter, .single-meal .sets .set-grid .workout-grid article .exercise-content-box .exercise-counter { font-size: 15px; font-weight: bold; margin-right: 5px; }
 
@@ -1449,17 +1449,17 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .post-type-archive-plan .wrap.container .archive-header .archive-title, .single-plan .wrap.container .archive-header .archive-title, .single .wrap.container .archive-header .archive-title, .archive .wrap.container .archive-header .archive-title { font-weight: bold; }
 
-.warmup-container .sets .set-box.set.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; }
+.warmup-container .short-desc.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; background: white; }
 
-@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content { padding: 20px 30px; display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: end; -ms-flex-pack: justify; justify-content: space-between; } }
+@media (min-width: 992px) { .warmup-container .short-desc.entry-content { padding: 20px 30px; display: -ms-flexbox; display: flex; -ms-flex-align: end; align-items: end; -ms-flex-pack: justify; justify-content: space-between; } }
 
-@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content .the-content { padding-right: 4rem; } }
+@media (min-width: 992px) { .warmup-container .short-desc .the-content { padding-right: 4rem; } }
 
-.warmup-container .sets .set-box.set.entry-content .the-content #hp-connected-members { padding: 0; }
+.warmup-container .short-desc .the-content #hp-connected-members { padding: 0; }
 
-.warmup-container .sets .set-box.set.entry-content #lsx-tips-shortcode { margin-top: 0; width: 100%; }
+.warmup-container .short-desc #lsx-tips-shortcode { margin-top: 0; width: 100%; }
 
-@media (min-width: 992px) { .warmup-container .sets .set-box.set.entry-content #lsx-tips-shortcode { max-width: 350px; } }
+@media (min-width: 992px) { .warmup-container .short-desc #lsx-tips-shortcode { max-width: 350px; } }
 
 article.type-plan .entry-content .workout-content .short-desc.entry-content, article.type-meal .entry-content .workout-content .short-desc.entry-content, article.type-workout .entry-content .workout-content .short-desc.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; background: white; }
 

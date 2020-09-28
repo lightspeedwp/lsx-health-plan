@@ -101,7 +101,7 @@ function lsx_health_plan_workout_exercise_alt_button( $m, $group, $echo = true, 
 			$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 		}
 		if ( ! empty( $muscle_group ) ) {
-			$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
+			$modal_body .= '<span class="muscle-terms">Muscle: ' . $muscle_group . '</span>';
 		}
 		$modal_body .= '</div>';
 		if ( '' !== $args['modal_content'] ) {
@@ -176,7 +176,7 @@ function lsx_health_plan_workout_exercise_button( $m, $group, $echo = true, $arg
 			$modal_body .= '<span class="equipment-terms">' . __( 'Equipment', 'lsx-health-plan' ) . ': ' . $equipment_group . '</span>';
 		}
 		if ( ! empty( $muscle_group ) ) {
-			$modal_body .= '<span class="muscle-terms">' . __( 'Muscle Group', 'lsx-health-plan' ) . ': ' . $muscle_group . '</span>';
+			$modal_body .= '<span class="muscle-terms">' . __( 'Muscle', 'lsx-health-plan' ) . ': ' . $muscle_group . '</span>';
 		}
 		$modal_body .= '</div>';
 		if ( '' !== $args['modal_content'] ) {
@@ -228,7 +228,7 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
 		$modal_body .= '<span class="equipment-terms">Equipment: ' . $equipment_group . '</span>';
 	}
 	if ( ! empty( $muscle_group ) ) {
-		$modal_body .= '<span class="muscle-terms">Muscle Group: ' . $muscle_group . '</span>';
+		$modal_body .= '<span class="muscle-terms">Muscle: ' . $muscle_group . '</span>';
 	}
 	$modal_body .= '</div>';
 	$modal_body .= $content;
