@@ -1,6 +1,6 @@
 .plan_page_help #wpbody .enrich > * { text-align: right; }
 
-@media (min-width: 992px) { .plan_page_help #wpbody .wrap.about-wrap > .row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+@media (min-width: 992px) { .plan_page_help #wpbody .wrap.about-wrap > .row { display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; }
   .plan_page_help #wpbody .col-md-8 { width: 66.66667%; }
   .plan_page_help #wpbody .col-md-4 { width: 30.33333%; } }
 

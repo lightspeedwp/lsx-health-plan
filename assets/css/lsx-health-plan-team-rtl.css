@@ -18,11 +18,11 @@
 
 .single.single-team #primary .entry-tabs #experience, .single.single-team #primary .hp-entry-tabs #experience { padding: 2rem; }
 
-.single.single-team #primary .entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot, .single.single-team #primary .hp-entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot { -webkit-box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
+.single.single-team #primary .entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot, .single.single-team #primary .hp-entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot { box-shadow: -1px 1px 3px 0 rgba(0, 0, 0, 0.24); }
 
 .single.single-team #primary .entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .btn, .single.single-team #primary .hp-entry-tabs #featured-plans .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .btn { width: 100%; padding: 10px; height: 100%; }
 
-.single.single-team #primary .entry-tabs #testimonials #lsx-testimonials-slider .slick-track, .single.single-team #primary .hp-entry-tabs #testimonials #lsx-testimonials-slider .slick-track { display: -webkit-box; display: -ms-flexbox; display: flex; }
+.single.single-team #primary .entry-tabs #testimonials #lsx-testimonials-slider .slick-track, .single.single-team #primary .hp-entry-tabs #testimonials #lsx-testimonials-slider .slick-track { display: -ms-flexbox; display: flex; }
 
 .single.single-team #primary .entry-tabs #testimonials #lsx-testimonials-slider .lsx-testimonials-slot.slick-slide:first-child, .single.single-team #primary .hp-entry-tabs #testimonials #lsx-testimonials-slider .lsx-testimonials-slot.slick-slide:first-child { margin-right: 0; }
 

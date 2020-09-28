@@ -26,7 +26,7 @@ $muscle_group = lsx_health_plan_muscle_group_equipment();
 		if ( ! empty( $muscle_group ) ) {
 		?>
 			<tr class="muscle-group">
-				<td><?php esc_html_e( 'Muscle Group:', 'lsx-health-plan' ); ?>&nbsp;</td>
+				<td><?php esc_html_e( 'Muscle:', 'lsx-health-plan' ); ?>&nbsp;</td>
 				<td>
 				<?php
 					echo wp_kses_post( $muscle_group );

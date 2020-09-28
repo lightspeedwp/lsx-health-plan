@@ -131,7 +131,7 @@ if ( ! empty( $groups ) ) {
 									<h3>
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
-											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											$exercise_title = lsx_health_plan_exercise_title( '', '', false, false, $group['connected_exercises'] );
 											if ( '' !== $alt_title ) {
 												$exercise_title = $alt_title;
 											}

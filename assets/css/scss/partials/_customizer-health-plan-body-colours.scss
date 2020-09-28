@@ -136,36 +136,34 @@
 		}
 	}
 	.warmup-container {
-		.sets {
-			.set-box {
-				&.set {
-					&.entry-content {
-						margin-bottom: 0;
-						padding: 20px;
-						margin-bottom: 0;
-						display: block;
-						@include media('>=tablet') {
-							padding: 20px 30px;
-							display: flex;
-							align-items: end;
-							justify-content: space-between;
-						}
-						.the-content {
-							@include media('>=tablet') {
-								padding-right: 4rem;
-							}
-							#hp-connected-members {
-								padding: 0;
-							}
-						}
-						#lsx-tips-shortcode {
-							margin-top: 0;
-							width: 100%;
-							@include media('>=tablet') {
-								max-width: 350px;
-							}
-						}
-					}
+		.short-desc {
+			&.entry-content {
+				margin-bottom: 0;
+				padding: 20px;
+				margin-bottom: 0;
+				display: block;
+				background: white;
+				@include media('>=tablet') {
+					padding: 20px 30px;
+					display: flex;
+					align-items: end;
+					justify-content: space-between;
+				}
+			}
+
+			.the-content {
+				@include media('>=tablet') {
+					padding-right: 4rem;
+				}
+				#hp-connected-members {
+					padding: 0;
+				}
+			}
+			#lsx-tips-shortcode {
+				margin-top: 0;
+				width: 100%;
+				@include media('>=tablet') {
+					max-width: 350px;
 				}
 			}
 		}
@@ -175,39 +173,42 @@
 	article.type-workout {
 		.entry-content {
 			.workout-content {
+				.short-desc {
+					&.entry-content {
+						margin-bottom: 0;
+						padding: 20px;
+						margin-bottom: 0;
+						display: block;
+						background: white;
+						@include media('>=tablet') {
+							padding: 20px 30px;
+							display: flex;
+							align-items: end;
+							justify-content: space-between;
+						}
+					}
+
+					.the-content {
+						@include media('>=tablet') {
+							padding-right: 4rem;
+						}
+						#hp-connected-members {
+							padding: 0;
+						}
+					}
+					#lsx-tips-shortcode {
+						margin-top: 0;
+						width: 100%;
+						@include media('>=tablet') {
+							max-width: 350px;
+						}
+					}
+				}
 				.sets {
 					.set-box {
 						&.set {
 							background: white;
-							&.entry-content {
-								margin-bottom: 0;
-								padding: 20px;
-								margin-bottom: 0;
-								display: block;
-								@include media('>=tablet') {
-									padding: 20px 30px;
-									display: flex;
-									align-items: end;
-									justify-content: space-between;
-								}
-							}
-
-							.the-content {
-								@include media('>=tablet') {
-									padding-right: 4rem;
-								}
-								#hp-connected-members {
-									padding: 0;
-								}
-							}
-							#lsx-tips-shortcode {
-								margin-top: 0;
-								width: 100%;
-								@include media('>=tablet') {
-									max-width: 350px;
-								}
-							}
-							&:nth-child(even) {
+							&:nth-child(odd) {
 								background: lighten($link, 42%);
 							}
 							.btn {
@@ -230,7 +231,7 @@
 			.set-box {
 				&.set {
 					background: white;
-					&:nth-child(even) {
+					&:nth-child(odd) {
 						background: lighten($link, 42%);
 					}
 					.btn {
@@ -306,7 +307,22 @@
 			}
 		}
 	}
-
+	.archive-plan {
+		&.exercise-archive-plan {
+			.lsx-slot {
+				.title-lined {
+					.exercise-title {
+						a {
+							color: $color;
+							&:hover {
+								color: $hover;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.single-plan,
 	.archive-plan,
 	.lsx-exercises-shortcode,

@@ -96,7 +96,7 @@ if ( ! empty( $groups ) ) {
 				$table_header[] = '<th class="center-mobile">' . __( 'Equipment', 'lsx-health-plan' ) . '</th>';
 			}
 			if ( isset( $table_headers['muscle'] ) ) {
-				$table_header[] = '<th class="center-mobile">' . __( 'Muscle Group', 'lsx-health-plan' ) . '</th>';
+				$table_header[] = '<th class="center-mobile">' . __( 'Muscle', 'lsx-health-plan' ) . '</th>';
 			}
 			if ( isset( $table_headers['video'] ) ) {
 				$table_header[] = '<th class="center-mobile">' . __( 'How To', 'lsx-health-plan' ) . '</th>';

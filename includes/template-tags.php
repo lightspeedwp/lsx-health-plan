@@ -845,7 +845,7 @@ function lsx_health_plan_workout_main_content() {
 
 	$content = '';
 	if ( $small_description || $connected_members || lsx_health_plan_has_tips() ) {
-		$content .= '<div class="set-box set content-box entry-content">';
+		$content .= '<div class="short-desc set-box set content-box entry-content">';
 		$content .= '<div class="the-content">';
 		$content .= lsx_hp_member_connected( $connected_members, $workout );
 		$content .= '<span>' . $small_description . '</span>';
