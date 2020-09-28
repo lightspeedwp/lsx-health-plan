@@ -45,23 +45,7 @@ $connected_articles = get_post_meta( get_the_ID(), ( $workout . '_connected_arti
 					<h2><?php esc_html_e( 'My Workout', 'lsx-health-plan' ); ?></h2>
 				</div>
 			<?php } ?>
-			<?php
-			if ( lsx_health_plan_has_warmup() && ( ! is_singular( 'workout' ) ) ) {
-				?>
-				<div class="workout-instructions">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="content-intro">
-								<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
-								<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<?php
-			}
-			?>
-
+			<?php lsx_health_plan_workout_box(); ?>
 			<?php lsx_health_plan_workout_sets(); ?>
 		</div>
 	</div><!-- .entry-content -->

@@ -6,37 +6,6 @@
  */
 
 /**
- * Outputs the warmup box on the single plan page.
-*
-* @return void
-*/
-function lsx_health_plan_warmup_box() {
-	?>
-	<div class="col-md-4" >
-		<div class="lsx-health-plan-box">
-			<h3 class="title warm-up-title title-lined"><?php esc_html_e( 'Your Warm-up', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'warm.svg' ); ?></h3>
-			<div class="spacer"></div>
-			<?php
-			$intro_text = \lsx_health_plan\functions\get_option( 'warmup_intro', false );
-			if ( false !== $intro_text ) {
-				?>
-				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ); ?></p>
-				</div>
-				<?php
-			}
-			$warm_up = \lsx_health_plan\functions\get_option( 'endpoint_warm_up', false );
-			if ( false === $warm_up ) {
-				$warm_up = 'warm-up';
-			}
-			?>
-			<a href="<?php the_permalink(); ?><?php echo esc_attr( $warm_up ); ?>/" class="btn"><?php esc_html_e( 'Start your warm-up', 'lsx-health-plan' ); ?></a>
-		</div>
-	</div>
-<?php
-}
-
-/**
  * Outputs the workout box on the single plan page.
 *
 * @return void
@@ -45,26 +14,27 @@ function lsx_health_plan_workout_box() {
 	if ( ! post_type_exists( 'workout' ) ) {
 		return;
 	}
+	$intro_text = \lsx_health_plan\functions\get_option( 'workout_intro', false );
 	?>
-	<div class="col-md-4" >
-		<div class="lsx-health-plan-box">
-			<h3 class="title work-out-title title-lined"><?php esc_html_e( 'Your Workout', 'lsx-health-plan' ); ?><?php lsx_get_svg_icon( 'work.svg' ); ?></h3>
-			<div class="spacer"></div>
+	<div class="workout-instructions">
+		<div class="row">
+			<div class="col-md-12">
 			<?php
-			$intro_text = \lsx_health_plan\functions\get_option( 'workout_intro', false );
 			if ( false !== $intro_text ) {
 				?>
 				<div class="excerpt">
-					<p><?php echo wp_kses_post( $intro_text ); ?></p>
+					<p><?php echo wp_kses_post( wpautop( $intro_text ) ); ?></p>
 				</div>
 				<?php
-			}
-			$workout = \lsx_health_plan\functions\get_option( 'endpoint_workout', false );
-			if ( false === $workout ) {
-				$workout = 'workout';
-			}
-			?>
-			<a href="<?php the_permalink(); ?><?php echo esc_attr( $workout ); ?>/" class="btn"><?php esc_html_e( 'Start your workout', 'lsx-health-plan' ); ?></a>
+			} else {
+				?>
+				<div class="content-intro">
+					<h3><?php esc_html_e( "Don't forget your warm up!", 'lsx-health-plan' ); ?></h3>
+					<p><?php esc_html_e( 'Be sure to do the warm-up before every workout session.', 'lsx-health-plan' ); ?></p>
+				</div>
+				<?php
+			} ?>
+			</div>
 		</div>
 	</div>
 <?php

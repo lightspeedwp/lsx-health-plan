@@ -60,23 +60,17 @@ class Workout {
 				'description' => __( 'Disable workout post type if you are wanting a minimal site.', 'lsx-health-plan' ),
 			)
 		);
-		$cmb->add_field(
-			array(
-				'name'    => __( 'Your Warm-up Intro', 'lsx-health-plan' ),
-				'id'      => 'warmup_intro',
-				'type'    => 'textarea_small',
-				'value'   => '',
-				'default' => __( "Don't forget your warm-up! It's a vital part of your daily workout routine.", 'lsx-health-plan' ),
-			)
-		);
 		if ( post_type_exists( 'workout' ) ) {
 			$cmb->add_field(
 				array(
 					'name'    => __( 'Your Workout Intro', 'lsx-health-plan' ),
 					'id'      => 'workout_intro',
-					'type'    => 'textarea_small',
+					'type'    => 'wysiwyg',
 					'value'   => '',
 					'default' => __( "Let's do this! Smash your daily workout and reach your fitness goals.", 'lsx-health-plan' ),
+					'options'     => array(
+						'textarea_rows' => get_option('default_post_edit_rows', 6),
+					),
 				)
 			);
 		}
