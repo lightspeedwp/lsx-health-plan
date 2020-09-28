@@ -41,6 +41,12 @@ body:not(.logged-in).woocommerce-account.my-plan {
 		padding: 10px 40px;
 	}
 }
+body.woocommerce-order-received {
+	.wc-social-login,
+	.woocommerce-info {
+		display: none;
+	}
+}
 
 // Edit Account
 body.woocommerce-account.woocommerce-edit-account {

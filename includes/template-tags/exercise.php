@@ -245,16 +245,23 @@ function lsx_health_plan_shortcode_exercise_button( $m, $content = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_health_plan_exercise_title( $before = '', $after = '', $echo = true, $exercise_id = false ) {
+function lsx_health_plan_exercise_title( $before = '', $after = '', $url = true, $echo = true, $exercise_id = false ) {
 	if ( false === $exercise_id ) {
 		$exercise_id = get_the_ID();
 	}
+	$link  = get_the_permalink( $exercise_id );
 	$title = get_the_title( $exercise_id );
 	$side  = get_post_meta( $exercise_id, 'exercise_side', true );
 	if ( '' !== $side ) {
 		$title .= ' - ' . ucwords( $side );
 	}
-	$title = apply_filters( 'lsx_health_plan_exercise_title', $before . $title . $after, $title, $before, $after, $exercise_id );
+	$link_before = '';
+	$link_after  = '';
+	if ( true === $url ) {
+		$link_before = '<a href="' . $link . '">';
+		$link_after  = '</a>';
+	}
+	$title = apply_filters( 'lsx_health_plan_exercise_title', $before . $link_before  . $title . $link_after . $after, $title, $before, $after, $exercise_id );
 	if ( true === $echo ) {
 		echo wp_kses_post( $title );
 	} else {
