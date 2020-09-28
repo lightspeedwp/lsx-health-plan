@@ -134,7 +134,7 @@ if ( ! empty( $groups ) ) {
 								<h3 class="content-box-title <?php echo esc_html( $class_excerpt ); ?>">
 									<?php echo wp_kses_post( $link_html ); ?>
 											<?php
-											$exercise_title = lsx_health_plan_exercise_title( '', '', false, $group['connected_exercises'] );
+											$exercise_title = lsx_health_plan_exercise_title( '', '', false, false, $group['connected_exercises'] );
 											
 											if ( '' !== $alt_title ) {
 												$exercise_title = '<span class="exercise-counter">' . $counter . '.</span>' . $alt_title;

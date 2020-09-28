@@ -53,7 +53,7 @@ endif;
 					?>
 			<?php endif ?>
 
-			<?php lsx_health_plan_exercise_title( '<h2>', '</h2>' ); ?>
+			<?php lsx_health_plan_exercise_title( '<h2>', '</h2>', false ); ?>
 		</div>
 		<?php echo wp_kses_post( lsx_hp_member_connected( $connected_members, 'exercise' ) ); ?>
 		<div class="row">

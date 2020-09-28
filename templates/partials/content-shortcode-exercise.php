@@ -38,7 +38,7 @@ $featured_image = get_the_post_thumbnail_url( $post_id, $image_size );
 		}
 		?>
 
-		<?php lsx_health_plan_exercise_title( '<h4 class="lsx-exercises-title">', '</h4>' ); ?>
+		<?php lsx_health_plan_exercise_title( '<h4 class="lsx-exercises-title">', '</h4>', false ); ?>
 		<?php if ( isset( $description ) && ( 'none' !== $description ) ) { ?>
 			<?php
 			if ( 'excerpt' === $description ) {
