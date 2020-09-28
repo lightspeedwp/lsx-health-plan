@@ -333,7 +333,7 @@ body:not(.logged-in) .excerpt .woocommerce { display: none; }
 
 #payment.woocommerce-checkout-payment .form-row.place-order button#place_order:hover { background-color: #ce9100; }
 
-.page.login #footer-cta, .page.login #footer-widgets, .page.content-restricted #footer-cta, .page.content-restricted #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .tax-recipe-cuisine #footer-cta, .tax-recipe-cuisine #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
+.page.login #footer-cta, .page.login #footer-widgets, .recipe-template-default #footer-cta, .recipe-template-default #footer-widgets, .post-type-archive-recipe #footer-cta, .post-type-archive-recipe #footer-widgets, .tax-recipe-type #footer-cta, .tax-recipe-type #footer-widgets, .tax-recipe-cuisine #footer-cta, .tax-recipe-cuisine #footer-widgets, .my-plan #footer-cta, .my-plan #footer-widgets, .single-plan #footer-cta, .single-plan #footer-widgets { display: none; }
 
 @media (min-width: 992px) { .content-area .plans-products-wrapper { max-width: 1140px; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; margin-right: auto; margin-left: auto; } }
 
@@ -1445,9 +1445,9 @@ article.type-plan .entry-content .workout-content .single-plan-section-title, ar
 
 .plans-products-wrapper .plan-product .title a:hover, .plans-products-wrapper .plan-product .title a:visited:hover { color: #F7AE00; }
 
-.post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header, .single .wrap.container .archive-header, .archive .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
+.post-type-archive-plan .wrap.container .archive-header, .single-plan .wrap.container .archive-header, .single:not(.single-post) .wrap.container .archive-header, .archive .wrap.container .archive-header { background-color: #418AD0; background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
 
-.post-type-archive-plan .wrap.container .archive-header .archive-title, .single-plan .wrap.container .archive-header .archive-title, .single .wrap.container .archive-header .archive-title, .archive .wrap.container .archive-header .archive-title { font-weight: bold; }
+.post-type-archive-plan .wrap.container .archive-header .archive-title, .single-plan .wrap.container .archive-header .archive-title, .single:not(.single-post) .wrap.container .archive-header .archive-title, .archive .wrap.container .archive-header .archive-title { font-weight: bold; }
 
 .warmup-container .short-desc.entry-content { margin-bottom: 0; padding: 20px; margin-bottom: 0; display: block; background: white; }
 
@@ -1497,9 +1497,9 @@ article.type-plan .entry-content .meals .eating-row, article.type-meal .entry-co
 
 .daily-plan-block.week-grid .week-row .week-row-inner .week-meals-recipes-box .week-meals-recipes-box-inner .day:hover:not(.completed) { background: #418AD0; }
 
-.my-profile-block, .archive-header { background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
+.my-profile-block, body:not(.single-post) .archive-header { background: linear-gradient(-213.95deg, #418AD0 0%, #225789 100%); }
 
-.my-profile-block .title-lined, .archive-header .title-lined { border-bottom: 5px solid #418AD0; }
+.my-profile-block .title-lined, body:not(.single-post) .archive-header .title-lined { border-bottom: 5px solid #418AD0; }
 
 #lsx-exercises-shortcode .lsx-exercises-shortcode .lsx-exercises-item:before { background-image: linear-gradient(-120deg, #418AD0, #418AD0); }
 

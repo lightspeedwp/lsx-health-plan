@@ -474,7 +474,7 @@ class Plan {
 						'post_status'    => array( 'publish' ),
 						'posts_per_page' => -1,
 					),
-					'classes'    => 'lsx-field-col lsx-field-add-field  lsx-field-col-50',
+					'classes'    => 'lsx-field-col lsx-field-add-field lsx-field-col-50',
 				)
 			);
 			$cmb->add_group_field(
@@ -486,7 +486,7 @@ class Plan {
 					'value'       => 1,
 					'default'     => 0,
 					'description' => __( 'Enabling the rest day will add an item called "Rest" with no links.', 'lsx-health-plan' ),
-					'classes'    => 'lsx-field-col lsx-field-add-field',
+					'classes'     => 'lsx-field-col lsx-field-add-field lsx-field-col-50',
 				)
 			);
 		}
