@@ -17,7 +17,7 @@ $link_html       = '';
 $link_close      = '';
 $linked_product  = false;
 $restricted      = '';
-if ( \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
+if ( function_exists( 'lsx_health_plan\functions\woocommerce\plan_has_products' ) && \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
 	$products       = \lsx_health_plan\functions\woocommerce\get_plan_products();
 	$linked_product = wc_get_product( $products[0] );
 	$product        = $linked_product;

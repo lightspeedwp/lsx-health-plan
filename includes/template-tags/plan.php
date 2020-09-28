@@ -32,7 +32,7 @@ function lsx_hp_plan_archive_filters() {
  */
 function lsx_hp_plan_get_classes() {
 	$classes = 'filter-free';
-	if ( \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
+	if ( function_exists( 'lsx_health_plan\functions\woocommerce\plan_has_products' ) && \lsx_health_plan\functions\woocommerce\plan_has_products() ) {
 		$products       = \lsx_health_plan\functions\woocommerce\get_plan_products();
 		$linked_product = wc_get_product( $products[0] );
 		$price          = $linked_product->get_price( 'raw' );
