@@ -681,7 +681,7 @@ body:not(.logged-in) .excerpt .woocommerce { display: none; }
 
 .plan-template-default .content-area, .plan-template-default .widget-area, .recipe-template-default .content-area, .recipe-template-default .widget-area { margin-top: 4.5rem; }
 
-.single .content-area { margin-top: 4.25rem; }
+.single:not(.single-post) .content-area { margin-top: 4.25rem; }
 
 .plan-template-default.parent-plan-page { background-color: white; }
 
