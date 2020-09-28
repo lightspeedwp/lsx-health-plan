@@ -216,7 +216,7 @@ class Gallery {
 	public function before_loop() {
 		if ( 'slider' === $this->args['layout'] ) {
 			$this->carousel_id = wp_rand( 20, 20000 );
-			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows {$this->args['css_class']} ' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
+			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows {$this->args['css_class']} ' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": 1, \"slidesToScroll\": 1'>";
 		} else {
 			$this->html[] = "<div class='lsx-hp-widget-items widget-item-grid-layout'>";
 		}
