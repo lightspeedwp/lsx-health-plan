@@ -111,9 +111,10 @@ class Plans {
 	 * restriction functionality elsewhere.
 	 */
 	public function disable_parent_plan_restrictions() {
-		if ( '' === $this->screen ) {
+		if ( '' === $this->screen || ! function_exists( 'wc_memberships' ) ) {
 			return;
 		}
+
 		$restrictions = wc_memberships()->get_restrictions_instance()->get_posts_restrictions_instance();
 		remove_action( 'wp', array( $restrictions, 'handle_restriction_modes' ) );
 	}
@@ -123,7 +124,7 @@ class Plans {
 	 * restriction functionality elsewhere.
 	 */
 	public function child_plan_redirect_restrictions() {
-		if ( ! is_singular( 'plan' ) || 'child_plan' !== $this->screen || ! function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
+		if ( ! function_exists( 'wc_memberships' ) || ! is_singular( 'plan' ) || 'child_plan' !== $this->screen || ! function_exists( 'wc_memberships_is_post_content_restricted' ) ) {
 			return;
 		}
 		$restricted = wc_memberships_is_post_content_restricted() && ! current_user_can( 'wc_memberships_view_restricted_post_content', get_the_ID() );
