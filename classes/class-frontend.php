@@ -58,7 +58,6 @@ class Frontend {
 	public function __construct() {
 		if ( ! is_admin() ) {
 			$this->load_classes();
-			add_action( 'template_redirect', array( $this, 'redirect' ) );
 		}	
 	}
 
@@ -103,16 +102,6 @@ class Frontend {
 		$this->template_redirects = frontend\Template_Redirects::get_instance();
 	}
 
-	/**
-	 * Redirect the user from the cart or checkout page if they have purchased the product already.
-	 *
-	 * @return void
-	 */
-	public function redirect() {
-		if ( ! is_user_logged_in() || ! function_exists( 'wc_get_page_id' ) || is_home() ) {
-			return;
-		}
-	}
 	/**
 	 * Remove the "Archives:" from the post type recipes.
 	 *
