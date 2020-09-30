@@ -99,7 +99,6 @@ class Tip {
 			'supports'           => array(
 				'title',
 				'editor',
-				'thumbnail',
 				'custom-fields',
 			),
 		);
