@@ -10,8 +10,9 @@ get_header(); ?>
 <?php lsx_content_wrap_before(); ?>
 
 <?php
-	$page_id  = get_the_ID();
-	$redirect = '/content-restricted/?r=' . $page_id . '&wcm_redirect_to=archive&wcm_redirect_id=' . $page_id;
+	$restricted = false;
+	$page_id    = get_the_ID();
+	$redirect   = '/content-restricted/?r=' . $page_id . '&wcm_redirect_to=archive&wcm_redirect_id=' . $page_id;
 ?>
 
 	<div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
@@ -20,7 +21,7 @@ get_header(); ?>
 
 		<!-- Begining restricted content -->
 		<?php
-		if ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) {
+		if ( ! function_exists( 'wc_memberships_view_restricted_post_content' ) || ( current_user_can( 'wc_memberships_view_restricted_post_content', $post_id ) ) ) {
 			?>
 			<main id="main" role="main">
 
