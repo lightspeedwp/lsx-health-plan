@@ -41,6 +41,7 @@ class Meal {
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 
+		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
@@ -392,6 +393,17 @@ class Meal {
 					),
 				)
 			);
+		}
+	}
+	/**
+	 * Set the post type archive to show the parent plans only.
+	 *
+	 * @param object $wp_query
+	 * @return array
+	 */
+	public function set_parent_only( $wp_query ) {
+		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'meal' ) || $wp_query->is_tax( array( 'meal-type' ) ) ) ) {
+			$wp_query->set( 'post_parent', '0' );
 		}
 	}
 }

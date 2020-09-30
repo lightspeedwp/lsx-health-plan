@@ -34,13 +34,14 @@ class Workout {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
-		add_action( 'init', array( $this, 'recipe_type_taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'workout_type_taxonomy_setup' ) );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ), 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 
 		// Template Redirects.
+		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 	}
 
@@ -108,7 +109,7 @@ class Workout {
 	/**
 	 * Register the Type taxonomy.
 	 */
-	public function recipe_type_taxonomy_setup() {
+	public function workout_type_taxonomy_setup() {
 		$labels = array(
 			'name'              => esc_html_x( 'Workout Type', 'taxonomy general name', 'lsx-health-plan' ),
 			'singular_name'     => esc_html_x( 'Workout Type', 'taxonomy singular name', 'lsx-health-plan' ),
@@ -379,6 +380,17 @@ class Workout {
 
 				$i++;
 			};
+		}
+	}
+	/**
+	 * Set the post type archive to show the parent plans only.
+	 *
+	 * @param object $wp_query
+	 * @return array
+	 */
+	public function set_parent_only( $wp_query ) {
+		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'workout' ) || $wp_query->is_tax( array( 'workout-type' ) ) ) ) {
+			$wp_query->set( 'post_parent', '0' );
 		}
 	}
 }
