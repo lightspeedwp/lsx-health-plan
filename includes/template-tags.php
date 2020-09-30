@@ -171,13 +171,19 @@ function lsx_health_plan_my_profile_tabs() {
 			}
 			?>
 			"><a class="my-plan-tab" href="<?php the_permalink(); ?>"><?php esc_html_e( 'My Plans', 'lsx-health-plan' ); ?></a></li>
-			<li class="
 			<?php
-			if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {
-				echo esc_attr( 'active' );
+			if ( function_exists( 'WC' ) ) {
+				?>
+				<li class="
+				<?php
+				if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'edit-account' ) ) {
+					echo esc_attr( 'active' );
+				}
+				?>
+				"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
+				<?php
 			}
 			?>
-			"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
 			<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
 		</ul>
 	</div>
@@ -208,7 +214,7 @@ function lsx_health_plan_my_profile_box() {
 					<h1 class="title-lined has-text-color"><?php echo esc_html( $current_user->display_name ); ?></h1>
 					<?php
 					$disable_stats = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
-					if ( 'on' !== $disable_stats ) {
+					if ( 'on' !== $disable_stats && function_exists( 'WC' ) ) {
 
 						$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
 						$is_height_disabled = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
@@ -218,9 +224,9 @@ function lsx_health_plan_my_profile_box() {
 						$weight = get_user_meta( get_current_user_id(), 'weight', true );
 						$waist  = get_user_meta( get_current_user_id(), 'waist', true );
 						$height = get_user_meta( get_current_user_id(), 'height', true );
-						
+
 						$height_m = 0;
-						if ( is_numeric( $height) ) {
+						if ( is_numeric( $height ) ) {
 							$height_m = $height / 100;
 						}
 
@@ -272,17 +278,23 @@ function lsx_health_plan_my_profile_box() {
 						</div>
 					<?php
 					}
-					?>
-					<div class="edit-profile">
-						<?php
-						if ( function_exists( 'wc_get_page_id' ) ) {
-							$url_id = wc_get_page_id( 'myaccount' );
-						} else {
-							$url_id = '';
-						}
+
+					// Only display the edit account link if woocommerce is active.
+					if ( function_exists( 'WC' ) ) {
 						?>
-						<a href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
-					</div>
+						<div class="edit-profile">
+							<?php
+							if ( function_exists( 'wc_get_page_id' ) ) {
+								$url_id = wc_get_page_id( 'myaccount' );
+							} else {
+								$url_id = '';
+							}
+							?>
+							<a href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
+						</div>
+						<?php
+					}
+					?>
 				</div>
 			</section>
 		</div>
@@ -306,20 +318,22 @@ function lsx_health_plan_all_plans_block() {
 		'post_parent'    => 0,
 	);
 
-	$product_ids = \lsx_health_plan\functions\woocommerce\get_membership_products();
-	if ( ! empty( $product_ids ) ) {
-		$args['meta_query'] = array(
-			'relation' => 'OR',
-			array(
-				'key'     => '_plan_product_id',
-				'value'   => $product_ids,
-				'compare' => 'IN',
-			),
-			array(
-				'key'     => '_plan_product_id',
-				'compare' => 'NOT EXISTS',
-			),
-		);
+	if ( function_exists( '\lsx_health_plan\functions\woocommerce\get_membership_products' ) ) {
+		$product_ids = \lsx_health_plan\functions\woocommerce\get_membership_products();
+		if ( ! empty( $product_ids ) ) {
+			$args['meta_query'] = array(
+				'relation' => 'OR',
+				array(
+					'key'     => '_plan_product_id',
+					'value'   => $product_ids,
+					'compare' => 'IN',
+				),
+				array(
+					'key'     => '_plan_product_id',
+					'compare' => 'NOT EXISTS',
+				),
+			);
+		}
 	}
 
 	$the_query = new WP_Query( $args );
