@@ -43,6 +43,10 @@ class Workout {
 		// Template Redirects.
 		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
+
+		//Breadcrumbs
+		add_filter( 'wpseo_breadcrumb_links', array( $this, 'workout_breadcrumb_filter' ), 30, 1 );
+		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'workout_breadcrumb_filter' ), 30, 1 );
 	}
 
 	/**
@@ -392,5 +396,75 @@ class Workout {
 		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'workout' ) || $wp_query->is_tax( array( 'workout-type' ) ) ) ) {
 			$wp_query->set( 'post_parent', '0' );
 		}
+	}
+
+	/**
+	 * Holds the array for the single workout breadcrumbs.
+	 *
+	 * @var array $crumbs
+	 * @return array
+	 */
+	public function workout_breadcrumb_filter( $crumbs ) {
+		$workout  = \lsx_health_plan\functions\get_option( 'endpoint_workout', 'workout' );
+		$workouts = \lsx_health_plan\functions\get_option( 'endpoint_workout_archive', 'workout' );
+
+		if ( is_singular( 'workout' ) ) {	
+			$workout_name  = get_the_title();
+			$url           = get_post_type_archive_link( $workout );
+			$term_obj_list = get_the_terms( get_the_ID(), 'workout-type' );
+			$workout_type  = $term_obj_list[0]->name;
+			if ( empty( $workout_type ) ) {
+				$workout_type = __( 'Workout', 'lsx-health-plan' );
+			}
+			$workout_type_url = get_term_link( $term_obj_list[0]->term_id );
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $workouts,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $workout_type,
+					1 => $workout_type_url,
+				);
+				$new_crumbs[3] = array(
+					0 => $workout_name,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $workouts,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $workout_type,
+					'url'  => $workout_type_url,
+				);
+				$new_crumbs[3] = array(
+					'text' => $workout_name,
+				);
+			}
+			$crumbs = $new_crumbs;
+
+		}
+		if ( is_post_type_archive( 'workout' ) ) {
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $workouts,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $workouts,
+				);
+			}
+			$crumbs = $new_crumbs;
+		}
+		return $crumbs;
 	}
 }

@@ -52,6 +52,9 @@ class Recipe {
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_filter( 'lsx_display_global_header_description', array( $this, 'disable_global_header_description' ), 100 );
+
+		//Breadcrumbs
+		add_filter( 'wpseo_breadcrumb_links', array( $this, 'recipes_breadcrumb_filter' ), 30, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'recipes_breadcrumb_filter' ), 30, 1 );
 
 		// Backend Actions and Filters.
@@ -239,6 +242,9 @@ class Recipe {
 		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
 			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
 		}
+		if ( is_singular( 'recipe' ) || is_singular( 'exercise' ) ) {
+			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
+		}
 		if ( ! is_post_type_archive() ) {
 			add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
 		}
@@ -296,31 +302,79 @@ class Recipe {
 			$term_obj_list   = get_the_terms( get_the_ID(), 'recipe-type' );
 			$recipe_type     = $term_obj_list[0]->name;
 			$recipe_type_url = get_term_link( $term_obj_list[0]->term_id );
-		
-			$crumbs[1] = array(
-				0 => $recipes,
-				1 => $url,
-			);
-			$crumbs[2] = array(
-				0 => $recipe_type,
-				1 => $recipe_type_url,
-			);
-			$crumbs[3] = array(
-				0 => $recipe_name,
-			);
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $recipes,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $recipe_type,
+					1 => $recipe_type_url,
+				);
+				$new_crumbs[3] = array(
+					0 => $recipe_name,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $recipes,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $recipe_type,
+					'url'  => $recipe_type_url,
+				);
+				$new_crumbs[3] = array(
+					'text' => $recipe_name,
+				);
+			}
+			$crumbs = $new_crumbs;
 		}
 		if ( is_tax( 'recipe-type' ) || is_tax( 'recipe-cuisine' ) ) {
 			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
 
 			$single_term_title = str_replace( '-', ' ', $term->taxonomy ) . ': ' . $term->name;
 
-			$crumbs[1] = array(
-				0 => $recipes,
-				1 => $url,
-			);
-			$crumbs[2] = array(
-				0 => $single_term_title,
-			);
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $recipes,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $single_term_title,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $recipes,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $single_term_title,
+				);
+			}
+			$crumbs = $new_crumbs;
+		}
+		if ( is_post_type_archive( 'recipe' ) ) {
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $recipes,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $recipes,
+				);
+			}
+			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
 	}

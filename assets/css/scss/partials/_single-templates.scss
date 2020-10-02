@@ -2,8 +2,8 @@
 
 .single-recipe,
 .single-exercise {
-	.content-area {
-		margin-top: 4.25rem;
+	#primary.content-area {
+		margin-top: $lsx-large-gap;
 	}
 }
 

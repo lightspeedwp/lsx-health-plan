@@ -200,103 +200,113 @@ function lsx_health_plan_my_profile_box() {
 	<div class="lsx-health-plan my-profile-block wp-block-cover alignfull">
 		<div class="wp-block-cover__inner-container">
 			<h2><?php esc_html_e( 'My Dashboard', 'lsx-health-plan' ); ?></h2>
-			<section id="dashboard-card">
-				<div class="profile-navigation">
-					<div class="profile-photo">
-					<?php
-						global $current_user;
-						get_current_user();
-						echo get_avatar( $current_user->ID, 240 );
-						?>
-					</div>
-				</div>
-				<div class="profile-details">
-					<h1 class="title-lined has-text-color"><?php echo esc_html( $current_user->display_name ); ?></h1>
-					<?php
-					$disable_stats = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
-					if ( 'on' !== $disable_stats && function_exists( 'WC' ) ) {
-
-						$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
-						$is_height_disabled = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
-						$is_waist_disabled  = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
-						$is_bmi_disabled    = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
-
-						$weight = get_user_meta( get_current_user_id(), 'weight', true );
-						$waist  = get_user_meta( get_current_user_id(), 'waist', true );
-						$height = get_user_meta( get_current_user_id(), 'height', true );
-
-						$height_m = 0;
-						if ( is_numeric( $height ) ) {
-							$height_m = $height / 100;
-						}
-
-						if ( 1 < $weight && 1 < $height_m ) {
-							$bmi = $weight / ( $height_m * $height_m );
-							$bmi = number_format( $bmi, 1 );
-						} else {
-							$bmi = __( 'Add more data', 'lsx-health-plan' );
-						}
-
-						?>
-
-						<div>
-							<?php if ( 'on' !== $is_weight_disabled ) { ?>
-								<span><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong>
-								<?php
-								if ( '' !== $weight ) {
-									echo wp_kses_post( $weight . ' kg' );
-								} else {
-									echo '/';
-								}
-								?>
-								</span>
-							<?php }
-							if ( 'on' !== $is_waist_disabled ) {
-								?>
-								<span><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong>
-								<?php
-								if ( '' !== $waist ) {
-									echo wp_kses_post( $waist . ' cm' );
-								} else {
-									echo '/';
-								}
-								?>
-								</span>
-							<?php }
-							if ( 'on' !== $is_bmi_disabled ) {
-								?>
-								<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong>
-								<?php
-								if ( '' !== $bmi ) {
-									echo wp_kses_post( $bmi );
-								} else {
-									echo '/';
-								}
-								?>
-								</span>
-							<?php } ?>
-						</div>
-					<?php
-					}
-
-					// Only display the edit account link if woocommerce is active.
-					if ( function_exists( 'WC' ) ) {
-						?>
-						<div class="edit-profile">
+			<?php if ( function_exists( 'WC' ) || class_exists( 'WP_User_Avatar_Setup' ) ) { ?>
+				<section id="dashboard-card">
+					<?php if ( function_exists( 'WC' ) || class_exists( 'WP_User_Avatar_Setup' ) ) { ?>
+						<div class="profile-navigation">
+							<div class="profile-photo">
 							<?php
-							if ( function_exists( 'wc_get_page_id' ) ) {
-								$url_id = wc_get_page_id( 'myaccount' );
-							} else {
-								$url_id = '';
+								global $current_user;
+								if ( function_exists( 'WC' ) ) {
+									get_current_user();
+								}
+								if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
+									echo get_avatar( $current_user->ID, 240 );
+								}
+								?>
+							</div>
+						</div>
+					<?php } ?>
+					<?php if ( function_exists( 'WC' ) ) { ?>
+						<div class="profile-details">
+							<h1 class="title-lined has-text-color"><?php echo esc_html( $current_user->display_name ); ?></h1>
+							<?php
+							$disable_stats = \lsx_health_plan\functions\get_option( 'disable_all_stats', false );
+							if ( 'on' !== $disable_stats && function_exists( 'WC' ) ) {
+
+								$is_weight_disabled = \lsx_health_plan\functions\get_option( 'disable_weight_checkbox', false );
+								$is_height_disabled = \lsx_health_plan\functions\get_option( 'disable_height_checkbox', false );
+								$is_waist_disabled  = \lsx_health_plan\functions\get_option( 'disable_waist_checkbox', false );
+								$is_bmi_disabled    = \lsx_health_plan\functions\get_option( 'disable_bmi_checkbox', false );
+
+								$weight = get_user_meta( get_current_user_id(), 'weight', true );
+								$waist  = get_user_meta( get_current_user_id(), 'waist', true );
+								$height = get_user_meta( get_current_user_id(), 'height', true );
+
+								$height_m = 0;
+								if ( is_numeric( $height ) ) {
+									$height_m = $height / 100;
+								}
+
+								if ( 1 < $weight && 1 < $height_m ) {
+									$bmi = $weight / ( $height_m * $height_m );
+									$bmi = number_format( $bmi, 1 );
+								} else {
+									$bmi = __( 'Add more data', 'lsx-health-plan' );
+								}
+
+								?>
+
+								<div>
+									<?php if ( 'on' !== $is_weight_disabled ) { ?>
+										<span><strong><?php esc_html_e( 'Weight:', 'lsx-health-plan' ); ?></strong>
+										<?php
+										if ( '' !== $weight ) {
+											echo wp_kses_post( $weight . ' kg' );
+										} else {
+											echo '/';
+										}
+										?>
+										</span>
+									<?php }
+									if ( 'on' !== $is_waist_disabled ) {
+										?>
+										<span><strong><?php esc_html_e( 'Waist:', 'lsx-health-plan' ); ?></strong>
+										<?php
+										if ( '' !== $waist ) {
+											echo wp_kses_post( $waist . ' cm' );
+										} else {
+											echo '/';
+										}
+										?>
+										</span>
+									<?php }
+									if ( 'on' !== $is_bmi_disabled ) {
+										?>
+										<span><strong><?php esc_html_e( 'BMI:', 'lsx-health-plan' ); ?></strong>
+										<?php
+										if ( '' !== $bmi ) {
+											echo wp_kses_post( $bmi );
+										} else {
+											echo '/';
+										}
+										?>
+										</span>
+									<?php } ?>
+								</div>
+							<?php
+							}
+
+							// Only display the edit account link if woocommerce is active.
+							if ( function_exists( 'WC' ) ) {
+								?>
+								<div class="edit-profile">
+									<?php
+									if ( function_exists( 'wc_get_page_id' ) ) {
+										$url_id = wc_get_page_id( 'myaccount' );
+									} else {
+										$url_id = '';
+									}
+									?>
+									<a href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
+								</div>
+								<?php
 							}
 							?>
-							<a href="<?php echo esc_url( get_permalink( $url_id ) ); ?>edit-account/"><?php esc_html_e( 'Edit', 'lsx-health-plan' ); ?></a>
 						</div>
-						<?php
-					}
-					?>
-				</div>
-			</section>
+					<?php } ?>
+				</section>
+			<?php } ?>
 		</div>
 	</div>
 	<?php

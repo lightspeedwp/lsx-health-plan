@@ -43,6 +43,10 @@ class Meal {
 
 		add_action( 'pre_get_posts', array( $this, 'set_parent_only' ), 10, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+
+		//Breadcrumbs
+		add_filter( 'wpseo_breadcrumb_links', array( $this, 'meal_breadcrumb_filter' ), 30, 1 );
+		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'meal_breadcrumb_filter' ), 30, 1 );
 	}
 
 	/**
@@ -405,5 +409,76 @@ class Meal {
 		if ( ! is_admin() && $wp_query->is_main_query() && ( $wp_query->is_post_type_archive( 'meal' ) || $wp_query->is_tax( array( 'meal-type' ) ) ) ) {
 			$wp_query->set( 'post_parent', '0' );
 		}
+	}
+
+
+	/**
+	 * Holds the array for the single meal breadcrumbs.
+	 *
+	 * @var array $crumbs
+	 * @return array
+	 */
+	public function meal_breadcrumb_filter( $crumbs ) {
+		$meal  = \lsx_health_plan\functions\get_option( 'endpoint_meal', 'meal' );
+		$meals = \lsx_health_plan\functions\get_option( 'endpoint_meal_archive', 'meal' );
+
+		if ( is_singular( 'meal' ) ) {	
+			$meal_name     = get_the_title();
+			$url           = get_post_type_archive_link( $meal );
+			$term_obj_list = get_the_terms( get_the_ID(), 'meal-type' );
+			$meal_type     = $term_obj_list[0]->name;
+			if ( empty( $meal_type ) ) {
+				$meal_type = __( 'Meal', 'lsx-health-plan' );
+			}
+			$meal_type_url = get_term_link( $term_obj_list[0]->term_id );
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $meals,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $meal_type,
+					1 => $meal_type_url,
+				);
+				$new_crumbs[3] = array(
+					0 => $meal_name,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $meals,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $meal_type,
+					'url'  => $meal_type_url,
+				);
+				$new_crumbs[3] = array(
+					'text' => $meal_name,
+				);
+			}
+			$crumbs = $new_crumbs;
+
+		}
+		if ( is_post_type_archive( 'meal' ) ) {
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $meals,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $meals,
+				);
+			}
+			$crumbs = $new_crumbs;
+		}
+		return $crumbs;
 	}
 }

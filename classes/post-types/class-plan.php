@@ -64,6 +64,7 @@ class Plan {
 		add_filter( 'lsx_hp_disable_plan_archive_filters', '\lsx_health_plan\functions\plan\is_filters_disabled', 10, 1 );
 
 		//Breadcrumbs
+		add_filter( 'wpseo_breadcrumb_links', array( $this, 'plan_breadcrumb_filter' ), 30, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'plan_breadcrumb_filter' ), 30, 1 );
 		
 	}
@@ -540,26 +541,62 @@ class Plan {
 	 * @return array
 	 */
 	public function plan_breadcrumb_filter( $crumbs ) {
-		if ( is_singular( 'plan' ) ) {
-			$plan          = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
-			$plans         = \lsx_health_plan\functions\get_option( 'endpoint_plan_archive', 'plan' );	
+		$plan  = \lsx_health_plan\functions\get_option( 'endpoint_plan', 'plan' );
+		$plans = \lsx_health_plan\functions\get_option( 'endpoint_plan_archive', 'plan' );
+
+		if ( is_singular( 'plan' ) ) {	
 			$plan_name     = get_the_title();
 			$url           = get_post_type_archive_link( $plan );
 			$term_obj_list = get_the_terms( get_the_ID(), 'plan-type' );
 			$plan_type     = $term_obj_list[0]->name;
 			$plan_type_url = get_term_link( $term_obj_list[0]->term_id );
-		
-			$crumbs[1] = array(
-				0 => $plans,
-				1 => $url,
-			);
-			$crumbs[2] = array(
-				0 => $plan_type,
-				1 => $plan_type_url,
-			);
-			$crumbs[3] = array(
-				0 => $plan_name,
-			);
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $plans,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $plan_type,
+					1 => $plan_type_url,
+				);
+				$new_crumbs[3] = array(
+					0 => $plan_name,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $plans,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $plan_type,
+					'url'  => $plan_type_url,
+				);
+				$new_crumbs[3] = array(
+					'text' => $plan_name,
+				);
+			}
+			$crumbs = $new_crumbs;
+
+		}
+		if ( is_post_type_archive( 'plan' ) ) {
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $plans,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $plans,
+				);
+			}
+			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
 	}
