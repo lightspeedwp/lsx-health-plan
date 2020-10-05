@@ -74,7 +74,7 @@ class Plans {
 	 * Define the product metabox on the plan post type
 	 */
 	public function set_screen() {
-		if ( is_singular( 'plan' ) ) {
+		if ( is_singular( array( 'plan' ) ) ) {
 			$section = get_query_var( 'section' );
 			if ( ! empty( $section ) ) {
 				$this->screen = 'child_plan';
@@ -86,7 +86,15 @@ class Plans {
 				$this->product_ids = $product_ids;
 			}
 		}
-		if ( is_post_type_archive( 'plan' ) ) {
+		if ( is_singular( array( 'workout', 'meal' ) ) ) {
+			$parent_id = wp_get_post_parent_id( get_the_ID() );
+			if ( 0 === $parent_id || false === $parent_id ) {
+				$this->screen = 'parent_plan';
+			} else {
+				$this->screen = 'child_plan';
+			}
+		}
+		if ( is_post_type_archive( array( 'plan', 'workout', 'meal' ) ) || is_tax( array( 'plan-type', 'workout-type', 'meal-type' ) ) ) {
 			$this->screen = 'plan_archive';
 		}
 	}

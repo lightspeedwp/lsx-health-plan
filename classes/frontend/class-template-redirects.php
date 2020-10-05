@@ -24,6 +24,7 @@ class Template_Redirects {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+		add_action( 'wp', array( $this, 'redirect_restrictions' ), 99 );
 	}
 
 	/**
@@ -84,5 +85,30 @@ class Template_Redirects {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Disable WC Memberships restrictions for plan parents. We add our own custom
+	 * restriction functionality elsewhere.
+	 */
+	public function redirect_restrictions() {
+		if ( function_exists( 'WC' ) && ! is_user_logged_in() ) {
+			if ( is_post_type_archive( array( 'recipe', 'exercise' ) )
+				|| is_tax( array( 'recipe-type', 'recipe-cuisine', 'exercise-type', 'equipment', 'muscle-group' ) )
+				|| is_single( 'recipe', 'exercise' ) ) {
+
+				$redirect = \lsx_health_plan\functions\get_option( 'my_plan_slug', '/' );
+				if ( function_exists( 'wc_memberships' ) ) {
+					$restriction_mode = wc_memberships()->get_restrictions_instance()->get_restriction_mode();
+					if ( 'redirect' === $restriction_mode ) {
+						$page_id = wc_memberships()->get_restrictions_instance()->get_restricted_content_redirect_page_id();
+						$redirect = get_permalink( $page_id );
+					}
+				}
+
+				wp_redirect( $redirect );
+				exit;
+			}
+		}
 	}
 }
