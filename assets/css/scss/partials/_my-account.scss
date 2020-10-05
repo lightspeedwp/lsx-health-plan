@@ -144,7 +144,7 @@ body:not(.woocommerce-edit-account) {
 	.entry-content {
 		&:first-child {
 			& .my-profile-block {
-				margin-top: -70px;
+				margin-top: -84px;
 			}
 		}
 	}
@@ -502,7 +502,8 @@ body:not(.woocommerce-edit-account) {
 		display: flex;
 		flex-direction: column;
 		transition: none;
-		a {
+		a,
+		span {
 			background: #e9ecee;
 			margin-bottom: 10px;
 			font-size: 28px;

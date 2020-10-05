@@ -49,6 +49,7 @@ class Exercise {
 			add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 
 			//Breadcrumbs
+			add_filter( 'wpseo_breadcrumb_links', array( $this, 'exercise_breadcrumb_filter' ), 30, 1 );
 			add_filter( 'woocommerce_get_breadcrumb', array( $this, 'exercise_breadcrumb_filter' ), 30, 1 );
 
 		}
@@ -408,31 +409,81 @@ class Exercise {
 			$term_obj_list     = get_the_terms( get_the_ID(), 'exercise-type' );
 			$exercise_type     = $term_obj_list[0]->name;
 			$exercise_type_url = get_term_link( $term_obj_list[0]->term_id );
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $exercises,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $exercise_type,
+					1 => $exercise_type_url,
+				);
+				$new_crumbs[3] = array(
+					0 => $exercise_name,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $exercises,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $exercise_type,
+					'url'  => $exercise_type_url,
+				);
+				$new_crumbs[3] = array(
+					'text' => $exercise_name,
+				);
+			}
+			$crumbs = $new_crumbs;
 		
-			$crumbs[1] = array(
-				0 => $exercises,
-				1 => $url,
-			);
-			$crumbs[2] = array(
-				0 => $exercise_type,
-				1 => $exercise_type_url,
-			);
-			$crumbs[3] = array(
-				0 => $exercise_name,
-			);
 		}
 		if ( is_tax( 'exercise-type' ) || is_tax( 'muscle-group' ) || is_tax( 'equipment' ) ) {
 			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
 
 			$single_term_title = str_replace( '-', ' ', $term->taxonomy ) . ': ' . $term->name;
 
-			$crumbs[1] = array(
-				0 => $exercises,
-				1 => $url,
-			);
-			$crumbs[2] = array(
-				0 => $single_term_title,
-			);
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $exercises,
+					1 => $url,
+				);
+				$new_crumbs[2] = array(
+					0 => $single_term_title,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $exercises,
+					'url'  => $url,
+				);
+				$new_crumbs[2] = array(
+					'text' => $single_term_title,
+				);
+			}
+			$crumbs = $new_crumbs;
+
+		}
+		if ( is_post_type_archive( 'exercise' ) ) {
+
+			$new_crumbs    = array();
+			$new_crumbs[0] = $crumbs[0];
+
+			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+				$new_crumbs[1] = array(
+					0 => $exercises,
+				);
+			} else {
+				$new_crumbs[1] = array(
+					'text' => $exercises,
+				);
+			}
+			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
 	}
