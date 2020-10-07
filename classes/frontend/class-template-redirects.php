@@ -93,8 +93,8 @@ class Template_Redirects {
 	 */
 	public function redirect_restrictions() {
 		if ( function_exists( 'WC' ) && ! is_user_logged_in() ) {
-			if ( is_post_type_archive( array( 'recipe', 'exercise' ) )
-				|| is_tax( array( 'recipe-type', 'recipe-cuisine', 'exercise-type', 'equipment', 'muscle-group' ) )
+			if ( is_post_type_archive( array( 'recipe', 'exercise', 'meal', 'workout' ) )
+				|| is_tax( array( 'meal-type', 'workout-type', 'recipe-type', 'recipe-cuisine', 'exercise-type', 'equipment', 'muscle-group' ) )
 				|| is_single( 'recipe', 'exercise' ) ) {
 
 				$redirect = \lsx_health_plan\functions\get_option( 'my_plan_slug', '/' );
