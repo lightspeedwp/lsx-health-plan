@@ -448,7 +448,7 @@ function get_progress( $plan_id = false ) {
 		$all_count = count( $sections );
 		$rest_days = 0;
 		foreach ( $sections as $section_key => $section_values ) {
-			if ( false !== $section_values['rest_day_enabled'] ) {
+			if ( false !== $section_values['rest_day_enabled'] && ! $section_values['connected_meals'] ) {
 				$rest_days++;
 			} else if ( lsx_health_plan_is_day_complete( $plan_id, $section_values['title'] ) ) {
 				$complete[] = true;
