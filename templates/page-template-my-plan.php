@@ -62,7 +62,11 @@ get_header(); ?>
 						} else if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 							echo do_shortcode( '[woocommerce_my_account]' );
 						} else {
-							the_content();
+							if ( ! function_exists( 'is_wc_endpoint_url' ) || ( function_exists( 'is_wc_endpoint_url' ) && is_user_logged_in() ) ) {
+								the_content();
+							} else {
+								echo do_shortcode( '[woocommerce_my_account]' );
+							}
 						}
 						?>
 					</div><!-- .entry-content -->
