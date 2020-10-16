@@ -31,6 +31,10 @@ class Checkout {
 		// Cart Messages.
 		add_action( 'lsx_content_wrap_before', array( $this, 'cart_notices' ) );
 		add_filter( 'wc_add_to_cart_message_html', array( $this, 'add_to_cart_message' ), 10, 3 );
+
+		// Thank you page links.
+		add_filter( 'woocommerce_memberships_thank_you_message', array( $this, 'memberships_thank_you_links' ), 10, 3 );
+		return (string) apply_filters( 'woocommerce_memberships_thank_you_message', $message, $order_id, $memberships );
 	}
 
 	/**
@@ -111,6 +115,22 @@ class Checkout {
 			} else {
 				$message = sprintf( '<a href="%s" tabindex="1" class="btn button wc-forward">%s</a> %s', esc_url( wc_get_cart_url() ), esc_html__( 'View cart', 'lsx-health-plan' ), $title );
 			}
+		}
+		return $message;
+	}
+
+	/**
+	 * Replaces the links on the thank you page.
+	 *
+	 * @param string $message
+	 * @param int $order_id
+	 * @param object $memberships
+	 * @return string
+	 */
+	public function memberships_thank_you_links( $message, $order_id, $memberships ) {
+		$plan_slug = \lsx_health_plan\functions\get_option( 'my_plan_slug', false );
+		if ( false !== $plan_slug && '' !== $plan_slug ) {
+			$message = preg_replace( '/<a(.*)href="([^"]*)"(.*)>/', '<a$1href="' . home_url( $plan_slug ) . '"$3>', $message );
 		}
 		return $message;
 	}
