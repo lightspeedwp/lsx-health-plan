@@ -50,7 +50,7 @@ get_header(); ?>
 									}
 								}
 							} else {
-								$my_plan_string = esc_html__( 'My Plan', 'lsx-health-plan' );
+								$my_plan_string = esc_html__( 'My Dashboard', 'lsx-health-plan' );
 								echo wp_kses_post( '<div class="lsx-health-plan my-profile-block wp-block-cover alignfull"><div class="wp-block-cover__inner-container"><h2>' . $my_plan_string . '</h2></div></div>' );
 							}
 
