@@ -113,5 +113,6 @@ if ( ! empty( $groups ) ) {
 				<?php echo wp_kses_post( implode( '', $table_body ) ); ?>
 			</tbody>
 		</table>
+	</div>
 	<?php
 }
