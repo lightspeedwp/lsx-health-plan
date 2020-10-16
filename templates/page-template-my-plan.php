@@ -54,8 +54,10 @@ get_header(); ?>
 								echo wp_kses_post( '<div class="lsx-health-plan my-profile-block wp-block-cover alignfull"><div class="wp-block-cover__inner-container"><h2>' . $my_plan_string . '</h2></div></div>' );
 							}
 
-							$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
-							$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
+							if ( is_user_logged_in() ) {
+								$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
+								$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
+							}
 							echo do_shortcode( '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">' . $my_profile_string . '</h2><p>' . $my_profile_tagline . '</p>[woocommerce_my_account]</div></div>' );
 						} else if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 							echo do_shortcode( '[woocommerce_my_account]' );

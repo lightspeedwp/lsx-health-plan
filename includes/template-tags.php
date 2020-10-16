@@ -183,8 +183,12 @@ function lsx_health_plan_my_profile_tabs() {
 				"><a class="account-details-tab" href="<?php the_permalink(); ?>edit-account/"><?php esc_html_e( 'Account Details', 'lsx-health-plan' ); ?></a></li>
 				<?php
 			}
+			if ( is_user_logged_in() ) {
+				?>
+					<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
+				<?php
+			}
 			?>
-			<li class=""><a class="logout-tab" href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>"><?php esc_html_e( 'Logout', 'lsx-health-plan' ); ?></a></li>
 		</ul>
 	</div>
 	<?php
