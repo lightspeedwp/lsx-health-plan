@@ -200,7 +200,7 @@ function lsx_health_plan_my_profile_box() {
 	<div class="lsx-health-plan my-profile-block wp-block-cover alignfull">
 		<div class="wp-block-cover__inner-container">
 			<h2><?php esc_html_e( 'My Dashboard', 'lsx-health-plan' ); ?></h2>
-			<?php if ( function_exists( 'WC' ) || class_exists( 'WP_User_Avatar_Setup' ) ) { ?>
+			<?php if ( ( function_exists( 'WC' ) || class_exists( 'WP_User_Avatar_Setup' ) ) && is_user_logged_in() ) { ?>
 				<section id="dashboard-card">
 					<?php if ( function_exists( 'WC' ) || class_exists( 'WP_User_Avatar_Setup' ) ) { ?>
 						<div class="profile-navigation">
