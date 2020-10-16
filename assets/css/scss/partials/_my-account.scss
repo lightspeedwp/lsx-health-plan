@@ -340,6 +340,12 @@ body:not(.woocommerce-edit-account) {
 		}
 	}
 }
+.title-lined {
+	&.my-plan {
+		max-width: 900px;
+		margin-left: 0;
+	}
+}
 
 .progress {
 	position: relative;

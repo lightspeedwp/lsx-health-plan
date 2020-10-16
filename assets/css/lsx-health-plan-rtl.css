@@ -477,6 +477,8 @@ body:not(.logged-in) .excerpt .woocommerce { display: none; }
 
 .all-plans-block > .row > .col-xs-12 article.lsx-slot .content-box .moretag { display: none; }
 
+.title-lined.my-plan { max-width: 900px; margin-right: 0; }
+
 .progress { position: relative; }
 
 .progress span { position: absolute; right: 8px; bottom: 6px; font-size: 10px; font-weight: bold; color: white; }

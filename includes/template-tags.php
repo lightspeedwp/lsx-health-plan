@@ -325,6 +325,12 @@ function lsx_health_plan_all_plans_block() {
 	global $post, $product;
 
 	// If this is the my plan page, and the user is logged out, show to WC login.
+	$plan_slug = \lsx_health_plan\functions\get_option( 'my_plan_slug', false );
+	if ( function_exists( 'is_wc_endpoint_url' ) && false !== $plan_slug && is_page( $plan_slug ) ) {
+		echo wp_kses_post( '<h2 class="title-lined my-plan"></h2>' );
+		echo do_shortcode( '[woocommerce_my_account]' );
+		return;
+	}
 
 	$args = array(
 		'orderby'        => 'menu_order',
