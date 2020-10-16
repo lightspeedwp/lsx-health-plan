@@ -136,6 +136,11 @@ body:not(.woocommerce-edit-account) {
 		}
 	}
 }
+#account-nav {
+	ul.nav {
+		margin-left:0px;
+	}
+}
 
 .my-plan-shortcode {
 	.breadcrumbs-container {
