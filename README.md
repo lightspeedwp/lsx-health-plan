@@ -1,9 +1,9 @@
-<h1 align="center"><a href="https://lsx-demo.lsdev.biz/"><img src="https://www.lsdev.biz/wp-content/uploads/2019/05/LSXHLogo.svg" alt="Health"></a></h1>
+<h1 align="center"><a href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/wp-content/uploads/2019/05/LSXHLogo.svg" alt="Health"></a></h1>
 
 <p align="center">
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a>
   <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built gulp.js"></a> 
-  <img src="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan.svg?branch=master">
+  <a href="https://travis-ci.org/github/lightspeeddevelopment/lsx-health-plan"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan.svg?branch=master">
   <a href="https://lsx.lsdev.biz/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
 </p>
 
