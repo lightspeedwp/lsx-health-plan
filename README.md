@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/wp-content/uploads/2019/05/LSXHLogo.svg" alt="Health"></a></h1>
+<h1 align="center"><a href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img width="300px;"  src="https://www.lsdev.biz/wp-content/uploads/2019/05/LSXHLogo.svg" alt="Health"></a></h1>
 
 <p align="center">
   <a href="https://www.lsdev.biz/lsx/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX Theme"></a>
