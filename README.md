@@ -1,5 +1,5 @@
-<a align="center" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-banner-1544x500-1.png" alt="Health"></a>
-  
+<p align="center"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-banner-1544x500-1.png" alt="LSX Health"></a>
+</p>
 <h1 align="left">LSX Business Directory</h1>
 
 <p align="left">
@@ -48,59 +48,7 @@ Activate [WooCommerce](https://woocommerce.com/), then use the WordPress Customi
 * WooCommerce Ready 
 * Translation Ready
 
-### LSX Extension
-
-LSX Customizer is plugin extends the [LSX Theme](https://lsdev.biz/lsx/) and the WordPress customiser. Update your site colours and structure for WordPress pages & posts without code or hassle.
-
-### LSX Blocks
-
-WordPress Block Editor Supported, use the customizer to define colours to use within the block editor primary, secondary and tertiary colour palettes. Check out our [release post](https://www.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
-
-### WooCommerce Supported
-
-
-
-## Download
-
-[Click here to download](https://downloads.wordpress.org/plugins/lsx-customizer.zip) the latest release package of LSX Customizer for WordPress & the LSX Theme.
-
-## Showcase
-
-* [LSX + LSX Extensions + WooCommerce](https://lsx-demo.lsdev.biz/)
-* [LSX + LSX Tour Operator Plugin + Wetu Importer](https://tour-operator-demo.lsdev.biz/)
-* [LSX + LSX Tour Operator Plugin & Extensions + Wetu Importer](https://to-demo.lsdev.biz/)
-* [LSX + LSX Business Directory Extension + WooCommerce + WooCommerce Memberships](https://lsx-business-directory.lsdev.biz/)
-* [LSX + WooCommerce + Sensei + Paid Courses](https://lsx-sensei-demo.lsdev.biz/)
-* [LSX + WooCommerce](https://lsx-woocommerce-demo.lsdev.biz/)
-
-## Documentation 
-
-Comprehensive [documentation](https://www.lsdev.biz/lsx/documentation/lsx-extensions/lsx-customiser/) is available on LightSpeed's LSX product site.
-
-## Support
-
-[LightSpeed](https://www.lsdev.biz/) offers [premium support](https://www.lsdev.biz/contact/), contact us for more information.
-
-If you are experiencing issues with the LSX Customizer Plugin & have experience with Github, please log any bug issues you are having on the [LSX Customizer Github Issues](https://github.com/lightspeeddevelopment/lsx-customizer/issues/) page.
-
-You can also send an email to our Support Team at [support@lsdev.biz](mailto:support@lsdev.biz) if you have a request for the LightSpeed Development team.
-
-## Contributing
-
-If you're a developer who's spotted a bug issue and have a fix, or simply have functionality you think would extend our core plugin, we are always happy to accept your contribution! Visit the [LSX Health Plan Plugin on Github](https://github.com/lightspeeddevelopment/lsx-health-plan/) and submit a Pull Request with your updates.
-
-
-## License
-
-This theme, like WordPress, is licensed under the GPL. Use it to make something cool, have fun, and share what you've learned with others.
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-LSX Health Plan plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions.
-
-Features include a Day plan with the following components:
+LSX Health Plan plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. Content Types:
 
 - Workouts
 - Meal plans
@@ -110,7 +58,11 @@ Features include a Day plan with the following components:
 - Daily tips
 - Exercise videos / giphys
 
+### LSX Blocks
+
 The _LSX Health Plan_ is a fully Gutenberg compatible [WordPress](https://wordpress.org) plugin, powered by the latest software.
+
+WordPress Block Editor Supported, use the customizer to define colours to use within the block editor primary, secondary and tertiary colour palettes. Check out our [release post](https://www.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
 
 ## Works with the LSX Theme
 
@@ -126,19 +78,47 @@ The LSX Health Plan is designed for [LSX Theme](https://lsx.lsdev.biz/), improvi
 - Activate the plugin.
 - That's it!
 
+### WooCommerce Integration
+
+* Sell health plans via woocommerce.
+
+## Download
+
+[Click here to download](https://downloads.wordpress.org/plugins/lsx-customizer.zip) the latest release package of LSX Customizer for WordPress & the LSX Theme.
+
+## Showcase
+
+* [LSX + LSX Extensions + WooCommerce](https://lsx-demo.lsdev.biz/)
+* [LSX + LSX Tour Operator Plugin + Wetu Importer](https://tour-operator-demo.lsdev.biz/)
+* [LSX + LSX Tour Operator Plugin & Extensions + Wetu Importer](https://to-demo.lsdev.biz/)
+* [LSX + LSX Business Directory Extension + WooCommerce + WooCommerce Memberships](https://lsx-business-directory.lsdev.biz/)
+* [LSX + WooCommerce + Sensei + Paid Courses](https://lsx-sensei-demo.lsdev.biz/)
+* [LSX + WooCommerce](https://lsx-woocommerce-demo.lsdev.biz/)
+
 ## Documentation
 
 [LSX Health Plan Documentation](https://lsx.lsdev.biz/documentation/lsx-health-plan/) has everything you need to use the plugin.
 
-## Help & Support
+## Support
 
-Before logging a ticket with support, please make sure you have the latest version of WordPress installed.
-
-Your WordPress website needs to be running PHP version 7.0 or higher in order to make use of the LSX Health Plan plugin.
+[LightSpeed](https://www.lsdev.biz/) offers [premium support](https://www.lsdev.biz/contact/), contact us for more information.
 
 If you still require help with the LSX Health Plan Plugin, please log any bug issues you are having on the [Github Issues](https://github.com/lightspeeddevelopment/lsx-health-plan/issues) page, or send an email to [support@lsdev.biz](mailto:support@lsdev.biz).
 
-## Contributing to the LSX Health Plan plugin
+You can also send an email to our Support Team at [support@lsdev.biz](mailto:support@lsdev.biz) if you have a request for the LightSpeed Development team.
+
+## Contributing
+
+If you're a developer who's spotted a bug issue and have a fix, or simply have functionality you think would extend our core plugin, we are always happy to accept your contribution! Visit the [LSX Health Plan Plugin on Github](https://github.com/lightspeeddevelopment/lsx-health-plan/) and submit a Pull Request with your updates.
+
+
+## License
+
+This theme, like WordPress, is licensed under the GPL. Use it to make something cool, have fun, and share what you've learned with others.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 
 
