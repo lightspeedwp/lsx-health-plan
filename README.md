@@ -1,4 +1,4 @@
-<p align="center"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-banner-1544x500-1.png" alt="LSX Health"></a>
+<p align="left"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-banner-1544x500-1.png" alt="LSX Health"></a>
 </p>
 <h1 align="left">LSX Business Directory</h1>
 
@@ -8,7 +8,6 @@
   <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built gulp.js"></a> 
 </p>
 <p align="left">
-  <a href="https://travis-ci.org/github/lightspeeddevelopment/lsx-health-plan"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan.svg?branch=master">
   <a href="https://codeclimate.com/github/lightspeeddevelopment/lsx-health-plan/"><img src="https://codeclimate.com/github/lightspeeddevelopment/lsx-health-plan/badges/gpa.svg" alt="Code Climate"></a>
   <a href="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-health-plan/?branch=master"><img src="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-health-plan/badges/quality-score.png?b=master" alt="Scrutinizer"></a>
   <a href="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan/"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-health-plan.svg?branch=master" alt="Build Status"></a>
@@ -17,7 +16,7 @@
 
 <br>
 
-<p align="center">
+<p align="left">
 	<a href="#key-features">Key Features</a>
 	&nbsp;|&nbsp;
 	<a href="#download">Download</a>
