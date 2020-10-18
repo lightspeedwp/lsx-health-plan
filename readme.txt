@@ -9,12 +9,16 @@ Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-== Description ==
-Global health trends are towards working out at home, market your idea of a healthy lifestyle to a wider audience.
 
-LSX Health & Fitness plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. Browser our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works. 
+This plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. 
+
+== Description ==
+
+Browser our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works. 
 
 The LSX Health Plan plugin has been designed to work with the LSX theme, and adds the ability to display a fully integrated eating and workout plan on your website. We’re firm believers in open source – that’s why the LSX Theme and the LSX Health Plan plugin are free, and that won’t change. We consistently maintain and update this plugin to ensure compatibility with latest WordPress versions. 
+
+Global health trends are towards working out at home, market your idea of a healthy lifestyle to a wider audience.
 
 = Health Plans =
 
