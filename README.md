@@ -18,8 +18,6 @@
 	<a href="#license">License</a>
 </p>
 
-<br>
-
 <p align="left">
   <a href="https://www.lsdev.biz/lsx/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX Theme"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a>
