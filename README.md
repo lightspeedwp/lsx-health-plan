@@ -1,4 +1,4 @@
-<p align="left"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-banner-1544x500-1.png" alt="LSX Health"></a>
+<p align="left"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-plan-banner-1544x500-1.png" alt="LSX Health"></a>
 </p>
 <h1 align="left">LSX Business Directory</h1>
 
@@ -34,7 +34,9 @@
 
 <br>
 
-Welcome to the LSX Customizer repository on GitHub. Here you can browse the source, look at open issues and keep track of development. We recommend all developers to follow LightSpeed's [blog](https://www.lsdev.biz/tag/release-posts/) to stay up to date about everything happening with the LSX Theme & extensions.
+
+The LSX Health Plan is designed for [LSX Theme](https://lsdev.biz/lsx/), improving internal linking, website SEO and user experience!
+
 
 ## Key Features
 
@@ -63,10 +65,6 @@ The _LSX Health Plan_ is a fully Gutenberg compatible [WordPress](https://wordpr
 
 WordPress Block Editor Supported, use the customizer to define colours to use within the block editor primary, secondary and tertiary colour palettes. Check out our [release post](https://www.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
 
-## Works with the LSX Theme
-
-The LSX Health Plan is designed for [LSX Theme](https://lsx.lsdev.biz/), improving internal linking, website SEO and user experience!
-
 ## Getting started with LSX Health Plan
 
 - Login to the backend of your Wordpress website.
@@ -83,11 +81,12 @@ The LSX Health Plan is designed for [LSX Theme](https://lsx.lsdev.biz/), improvi
 
 ## Download
 
-[Click here to download](https://downloads.wordpress.org/plugins/lsx-customizer.zip) the latest release package of LSX Customizer for WordPress & the LSX Theme.
+[Click here to download](https://downloads.wordpress.org/plugins/lsx-health-plan.zip) the latest release package of LSX Customizer for WordPress & the LSX Theme.
 
 ## Showcase
 
 * [LSX + LSX Extensions + WooCommerce](https://lsx-demo.lsdev.biz/)
+* [LSX + LSX Health Plugin + WooCommerce](https://lsx-health-plan.lsdev.biz/)
 * [LSX + LSX Tour Operator Plugin + Wetu Importer](https://tour-operator-demo.lsdev.biz/)
 * [LSX + LSX Tour Operator Plugin & Extensions + Wetu Importer](https://to-demo.lsdev.biz/)
 * [LSX + LSX Business Directory Extension + WooCommerce + WooCommerce Memberships](https://lsx-business-directory.lsdev.biz/)
@@ -96,7 +95,7 @@ The LSX Health Plan is designed for [LSX Theme](https://lsx.lsdev.biz/), improvi
 
 ## Documentation
 
-[LSX Health Plan Documentation](https://lsx.lsdev.biz/documentation/lsx-health-plan/) has everything you need to use the plugin.
+[LSX Health Plan Documentation](https://lsdev.biz/lsx/documentation/lsx-health-plan/) has everything you need to use the plugin.
 
 ## Support
 
@@ -126,6 +125,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
   <a href="https://www.lsdev.biz/contact/"><img src="https://www.lsdev.biz/wp-content/uploads/2020/02/work-with-lightspeed.png" width="850" alt="Work with us at LightSpeed"></a>
 </p>
 <p align="center">
+  Copyright © 2020 LightSpeed WordPress Development. All Rights Reserved.
+</p>
+<p align="center">
   <a href="https://www.lsdev.biz">LightSpeed's Company Website</a> &nbsp;&middot;&nbsp;
   <a href="https://www.lsdev.biz/lsx/">LSX Product Website</a>
 </p>
@@ -134,7 +136,5 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
   <a href="https://facebook.com/lightspeedwordpressdevelopment">Facebook</a> &nbsp;&middot;&nbsp;
   <a href="https://twitter.com/lightspeedwp">Twitter</a>
 </p>
-<p align="center">
-  Copyright © 2020 LightSpeed WordPress Development. All Rights Reserved.
-</p>
+
 
