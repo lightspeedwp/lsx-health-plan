@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="77px" height="77px" viewBox="0 0 77 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-completed</title>
-    <g id="My-Plan---Desktop-+-Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="My-Account/Dashboard----Multi-plan" transform="translate(-688.000000, -1001.000000)">
-            <g id="icon-completed" transform="translate(690.000000, 1003.000000)">
-                <circle id="Oval" stroke="#30BB00" stroke-width="2.4" fill="#FFFFFF" cx="36.5" cy="36.5" r="36.5"></circle>
-                <g id="Group-4" transform="translate(16.000000, 12.000000)" fill="#30BB00" fill-rule="nonzero">
-                    <g id="Group" transform="translate(0.076190, 0.000000)">
-                        <path d="M39.2,19.84 C39.2,8.87288889 30.4344444,0 19.6,0 C8.76555556,0 0,8.87288889 0,19.84 C0,27.1697778 3.94722222,33.5902222 9.8,37.0071111 L9.8,49.6 L19.6,44.64 L29.4,49.6 L29.4,37.0071111 C35.2527778,33.5902222 39.2,27.1697778 39.2,19.84 Z M19.6,34.72 C11.4877778,34.72 4.9,28.0515556 4.9,19.84 C4.9,11.6284444 11.4877778,4.96 19.6,4.96 C27.7122222,4.96 34.3,11.6284444 34.3,19.84 C34.3,28.0515556 27.7122222,34.72 19.6,34.72 Z" id="Shape"></path>
-                        <polygon id="Path" points="19.0283333 21.4382222 13.6111111 17.7733333 10.8888889 21.9066667 20.1716667 28.1617778 28.91 16.368 24.99 13.392"></polygon>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="77" version="1.1" viewBox="0 0 77 77"><title>icon-completed</title><g id="My-Plan---Desktop-+-Mobile" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="My-Account/Dashboard----Multi-plan" transform="translate(-688.000000, -1001.000000)"><g id="icon-completed" transform="translate(690.000000, 1003.000000)"><circle id="Oval" cx="36.5" cy="36.5" r="36.5" fill="#FFF" stroke="#30BB00" stroke-width="2.4"/><g id="Group-4" fill="#30BB00" fill-rule="nonzero" transform="translate(16.000000, 12.000000)"><g id="Group" transform="translate(0.076190, 0.000000)"><path id="Shape" d="M39.2,19.84 C39.2,8.87288889 30.4344444,0 19.6,0 C8.76555556,0 0,8.87288889 0,19.84 C0,27.1697778 3.94722222,33.5902222 9.8,37.0071111 L9.8,49.6 L19.6,44.64 L29.4,49.6 L29.4,37.0071111 C35.2527778,33.5902222 39.2,27.1697778 39.2,19.84 Z M19.6,34.72 C11.4877778,34.72 4.9,28.0515556 4.9,19.84 C4.9,11.6284444 11.4877778,4.96 19.6,4.96 C27.7122222,4.96 34.3,11.6284444 34.3,19.84 C34.3,28.0515556 27.7122222,34.72 19.6,34.72 Z"/><polygon id="Path" points="19.028 21.438 13.611 17.773 10.889 21.907 20.172 28.162 28.91 16.368 24.99 13.392"/></g></g></g></g></g></svg>
