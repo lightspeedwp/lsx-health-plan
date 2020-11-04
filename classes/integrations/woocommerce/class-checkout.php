@@ -34,7 +34,6 @@ class Checkout {
 
 		// Thank you page links.
 		add_filter( 'woocommerce_memberships_thank_you_message', array( $this, 'memberships_thank_you_links' ), 10, 3 );
-		return (string) apply_filters( 'woocommerce_memberships_thank_you_message', $message, $order_id, $memberships );
 	}
 
 	/**
