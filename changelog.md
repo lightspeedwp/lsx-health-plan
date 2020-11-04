@@ -1,6 +1,6 @@
 # Change log
 
-## V 2.0.0
+## [V 2.0.0](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.0) - 2020-11-04
 
 ### New Features
 
@@ -150,8 +150,25 @@
 - WooCommerce Plugin Integration [#154](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/154)
 - Single Plan "Add to Cart" or "Signup Now" Button
 
+## [[1.3.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.0) - 2020-05-31
 
-## [[1.3.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/untagged-5ce7408d3f5c6aaeda32) - 2020-02-20
+### Added
+- New checkout page with simplified design.
+- Adding new `lsx-hp-simple-checkout` body class if its the checkout page.
+
+### Fixed
+- Adding in Fix to translate breadcrumbs if endpoints where translated.
+- Fixed issue `Undefined variable: intro_text`.
+- Fixed issue `Undefined variable: post_id`.
+- Fixed banner for the Lost Password page.
+- Fixed the login/logout links on the tab and menu.
+
+### Security
+- Updating dependencies to prevent vulnerabilities.
+- General testing to ensure compatibility with latest WordPress version (5.4).
+- General testing to ensure compatibility with latest LSX Theme version (2.7).
+
+## [[1.3.0]](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/1.3.0) - 2020-02-20
 
 ### Added
 
