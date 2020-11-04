@@ -3,22 +3,24 @@ Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusver
 Donate link: https://lsdev.biz/lsx/donate/
 Tags: lsx, exercises, workouts, meals, recipe, fitness
 Requires at least: 5.0
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Requires PHP: 7.0
 Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 
-This plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. 
+Easily market your exercise or eating plans on your WordPress website with LSX Health. Or create a combined eating and exercise health plan.
 
 == Description ==
 
-Browser our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works. 
+Global health trends are towards working out at home, market your idea of a healthy lifestyle to a wider audience.
 
 The LSX Health Plan plugin has been designed to work with the LSX theme, and adds the ability to display a fully integrated eating and workout plan on your website. We’re firm believers in open source – that’s why the LSX Theme and the LSX Health Plan plugin are free, and that won’t change. We consistently maintain and update this plugin to ensure compatibility with latest WordPress versions. 
 
-Global health trends are towards working out at home, market your idea of a healthy lifestyle to a wider audience.
+This plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. 
+
+Browse our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works. 
 
 = Health Plans =
 
@@ -54,14 +56,19 @@ Global health trends are towards working out at home, market your idea of a heal
 * Categorise Workout posts by "Workout Type" category.
 * Categorise Exercise posts by "Exercise Type", "Muscle Group" & "Equipment" categories.
 
-= Integrates with WooCommerce =
+= Free Companion Theme = 
 
-* Install *WooCommerce* and enable profile tabs that display personal information and your avatar.  
-* We recommend *WooCommerce Memberships Extension* for more advanced content restrictions on Health Plan content.
-* Trainers and Dieticians can create a membership site and monetise their intellectual property by selling Workout & Meal Plans online.
-* Create a WooCommerce virtual product or a membership product using WooCommerce Memberships, then connect the product to the a plan post and start selling easily.
+LSX Team is built to show off the best of the WordPress block editor, but it requires the free LSX theme in the WordPress theme repository as the perfect companion for LSX Blocks - https://wordpress.org/themes/lsx/
 
-= Extensions =
+= Block Editor Support = 
+
+The LSX theme is full compatible with the WordPress block editor. This means you can now make use of the drag-and-drop page builder when creating new pages and posts. 
+
+[LSX Blocks](https://lsdev.biz/lsx/extensions/blocks) is an extension with blocks designed to display perfectly with the LSX theme. The blocks plugin extends various WordPress core blocks to be more flexible with the WordPress theme. 
+
+The combination of LSX Theme & LSX Blocks gives you a true page builder experience using the WordPress Gutenberg block editor.
+
+= Free LSX Extensions =
 
 The LSX Health Plan plugin is designed to work with the [LSX Theme](https://www.lsdev.biz/lsx/extensions/search/), our theme allows you to display your Health Plan content beautifully. 
 
@@ -76,21 +83,18 @@ Easily extend your Health Plan website by searching for the LSX extensions below
 * Customizer your blog's appearance with the [LSX Blog Customizer](https://www.lsdev.biz/lsx/extensions/blog-customizer/)
 * Build impressive mega menus with ease when you install [LSX Mega Menus](https://www.lsdev.biz/lsx/extensions/mega-menus/)
 
-= Block Editor Compatible Plugin =
-The *LSX Health Plan* is a fully Block Editor compatible WordPress plugin, currently there are no built in blocks, only shortcodes that work within the editor. Extend block editor styling and use blo
+= Integrates with WooCommerce =
 
-= Getting started with LSX Health Plan =
-
-* Login to the backend of your WordPress website.
-* Navigate to the "Plugins" and select "Add New".
-* Enter "LSX Health Plan" into the search field.
-* Click "Install Now"  when you find the plugin.
-* Click Activate once the installation is complete.
-* That's it!
+* Install *WooCommerce* and enable profile tabs that display personal information and your avatar.  
+* We recommend *WooCommerce Memberships Extension* for more advanced content restrictions on Health Plan content.
+* Trainers and Dieticians can create a membership site and monetise their intellectual property by selling Workout & Meal Plans online.
+* Create a WooCommerce virtual product or a membership product using WooCommerce Memberships, then connect the product to the a plan post and start selling easily.
 
 = Documentation =
 
-[LSX Health Plan Documentation](https://lsdev.biz/lsx/documentation/health-plan/) has everything you need to use the plugin.
+* [LSX Health Plan Documentation](https://www.lsdev.biz/lsx/documentation/lsx-health/) has everything you need to use the plugin.
+* [LSX Theme](https://lsdev.biz/lsx/documentation/lsx-theme/)
+* [LSX Blocks](https://www.lsdev.biz/lsx/documentation/lsx-blocks/)
 
 = Support =
 
@@ -133,7 +137,7 @@ A daily plan layout:
 A weekly plan layout, with collapsible rows:
 [lsx_health_plan_day_plan_block week_view="true"]
 
-[Find more shortcodes here](https://lsdev.biz/lsx/documentation/lsx-health-plan/shortcodes)
+[Find more shortcodes here](https://www.lsdev.biz/lsx/documentation/lsx-health/shortcodes/)
 
 = Do I have to activate WooCommerce to use this plugin? =
 
@@ -141,17 +145,18 @@ No, but if you want to enable a profile page and sell your plans online then Woo
 
 == Screenshots ==
 
-1. Back-end Gutenberg block selection
-2. Block Settings Screenshot - Recommend LSX Container
-3. Block Usage Screenshot 1
-4. Block Usage Screenshot 2
-5. Block Usage Screenshot 3
-
+1. Single meal plan that is in progress
+2. My Dashboard > Account Details
+3. Exercises archive template
+4. Meals archive template
+5. My Dashboard with a view of my active & completed plans
+6. The main plans archive, this is where customers can purchase plans.
+7. Single Recipe template
+8. Recipes archive template
+9. Single workout plan that is in progress
+10. Meal & workout plan with 4 weeks
+11. Workouts archive template
 
 == Changelog == 
 
 [Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/lsx-health-plan/blob/master/changelog.md).
-
-== Upgrade Notice == 
-
-
