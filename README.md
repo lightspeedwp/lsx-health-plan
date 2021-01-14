@@ -1,6 +1,6 @@
 <p align="center"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/health-plan/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/10/lsx-health-plan-banner-1544x500-1.png" alt="LSX Health"></a>
 </p>
-<h1 align="center">LSX Business Directory</h1>
+<h1 align="center">LSX Health Plan</h1>
 
 <p align="center">
 	<a href="#key-features">Key Features</a>
@@ -94,7 +94,7 @@ WordPress Block Editor Supported, use the customizer to define colours to use wi
 
 ## Documentation
 
-[LSX Health Plan Documentation](https://lsdev.biz/lsx/documentation/lsx-health-plan/) has everything you need to use the plugin.
+[LSX Health Plan Documentation](https://www.lsdev.biz/lsx/documentation/lsx-health/getting-started-with-lsx-health/) has everything you need to use the plugin.
 
 ## Support
 

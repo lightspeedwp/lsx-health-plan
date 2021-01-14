@@ -1,6 +1,14 @@
 # Change log
 
-## [V 2.0.0](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.0) - 2020-11-04
+## [2.0.1](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.1) - 2021-01-15
+
+### Updated
+- Documentation and Support links / text.
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (5.6)
+
+## [2.0.0](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.0) - 2020-11-04
 
 ### New Features
 

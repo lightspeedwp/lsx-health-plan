@@ -1,6 +1,6 @@
 {
   "name": "lsx-health-plan",
-  "version": "1.3.2",
+  "version": "2.0.1",
   "description": "LSX Health Plan for building LSX theme extensions",
   "main": "gulpfile.js",
   "scripts": {
