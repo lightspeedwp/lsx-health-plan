@@ -92,7 +92,7 @@ Easily extend your Health Plan website by searching for the LSX extensions below
 
 = Documentation =
 
-* [LSX Health Plan Documentation](https://www.lsdev.biz/lsx/documentation/lsx-health/) has everything you need to use the plugin.
+* [LSX Health Plan Documentation](https://www.lsdev.biz/lsx/documentation/lsx-health/getting-started/) has everything you need to use the plugin.
 * [LSX Theme](https://lsdev.biz/lsx/documentation/lsx-theme/)
 * [LSX Blocks](https://www.lsdev.biz/lsx/documentation/lsx-blocks/)
 
