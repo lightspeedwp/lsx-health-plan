@@ -3,7 +3,7 @@ Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusver
 Donate link: https://lsdev.biz/lsx/donate/
 Tags: lsx, exercises, workouts, meals, recipe, fitness
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 6.0
 Requires PHP: 7.0
 Stable tag: 2.0.1
 License: GPLv3 or later
@@ -16,11 +16,11 @@ Easily market your exercise or eating plans on your WordPress website with LSX H
 
 Global health trends are towards working out at home, market your idea of a healthy lifestyle to a wider audience.
 
-The LSX Health Plan plugin has been designed to work with the LSX theme, and adds the ability to display a fully integrated eating and workout plan on your website. We’re firm believers in open source – that’s why the LSX Theme and the LSX Health Plan plugin are free, and that won’t change. We consistently maintain and update this plugin to ensure compatibility with latest WordPress versions. 
+The LSX Health Plan plugin has been designed to work with the LSX theme, and adds the ability to display a fully integrated eating and workout plan on your website. We’re firm believers in open source – that’s why the LSX Theme and the LSX Health Plan plugin are free, and that won’t change. We consistently maintain and update this plugin to ensure compatibility with latest WordPress versions.
 
-This plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. 
+This plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions.
 
-Browse our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works. 
+Browse our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to see how the plugin works.
 
 = Health Plans =
 
@@ -36,7 +36,7 @@ Browse our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to s
 * Categorise plan posts by "Plan Type" category.
 * Plans posts have two layouts for weekly and daily plans, these layouts useful for different types if content.
 * Connect tips to your plan posts, reuse tip content easily on other plans if needed.
-* Intuitive settings page for configuring the LSX Health Plan plugin. 
+* Intuitive settings page for configuring the LSX Health Plan plugin.
 
 = Meal Plans =
 
@@ -56,26 +56,26 @@ Browse our [LSX Health Plan demo site] (https://lsx-health-plan.lsdev.biz/) to s
 * Categorise Workout posts by "Workout Type" category.
 * Categorise Exercise posts by "Exercise Type", "Muscle Group" & "Equipment" categories.
 
-= Free Companion Theme = 
+= Free Companion Theme =
 
 LSX Team is built to show off the best of the WordPress block editor, but it requires the free LSX theme in the WordPress theme repository as the perfect companion for LSX Blocks - https://wordpress.org/themes/lsx/
 
-= Block Editor Support = 
+= Block Editor Support =
 
-The LSX theme is full compatible with the WordPress block editor. This means you can now make use of the drag-and-drop page builder when creating new pages and posts. 
+The LSX theme is full compatible with the WordPress block editor. This means you can now make use of the drag-and-drop page builder when creating new pages and posts.
 
-[LSX Blocks](https://lsdev.biz/lsx/extensions/blocks) is an extension with blocks designed to display perfectly with the LSX theme. The blocks plugin extends various WordPress core blocks to be more flexible with the WordPress theme. 
+[LSX Blocks](https://lsdev.biz/lsx/extensions/blocks) is an extension with blocks designed to display perfectly with the LSX theme. The blocks plugin extends various WordPress core blocks to be more flexible with the WordPress theme.
 
 The combination of LSX Theme & LSX Blocks gives you a true page builder experience using the WordPress Gutenberg block editor.
 
 = Free LSX Extensions =
 
-The LSX Health Plan plugin is designed to work with the [LSX Theme](https://www.lsdev.biz/lsx/extensions/search/), our theme allows you to display your Health Plan content beautifully. 
+The LSX Health Plan plugin is designed to work with the [LSX Theme](https://www.lsdev.biz/lsx/extensions/search/), our theme allows you to display your Health Plan content beautifully.
 
 Easily extend your Health Plan website by searching for the LSX extensions below via "Add Plugins" in your WordPress backend:
 
 * Help your users shared your health plan content with [LSX Sharing](https://lsdev.biz/lsx/extensions/sharing/)
-* Add filters to all archive pages with FacetWP and [LSX Search](https://www.lsdev.biz/lsx/extensions/search/) 
+* Add filters to all archive pages with FacetWP and [LSX Search](https://www.lsdev.biz/lsx/extensions/search/)
 * Add customer testimonials and display them using [LSX Testimonials](https://www.lsdev.biz/lsx/extensions/testimonials/)
 * Connect trainers to workouts and dieticians to meal plans using [LSX Team](https://www.lsdev.biz/lsx/extensions/team/)
 * Add educational exercise instruction videos using [LSX Videos](https://www.lsdev.biz/lsx/extensions/videos/)
@@ -85,7 +85,7 @@ Easily extend your Health Plan website by searching for the LSX extensions below
 
 = Integrates with WooCommerce =
 
-* Install *WooCommerce* and enable profile tabs that display personal information and your avatar.  
+* Install *WooCommerce* and enable profile tabs that display personal information and your avatar.
 * We recommend *WooCommerce Memberships Extension* for more advanced content restrictions on Health Plan content.
 * Trainers and Dieticians can create a membership site and monetise their intellectual property by selling Workout & Meal Plans online.
 * Create a WooCommerce virtual product or a membership product using WooCommerce Memberships, then connect the product to the a plan post and start selling easily.
@@ -117,7 +117,7 @@ Yes! You can add as many types of workouts and connect exercises as you want.
 Yes! You can add as many types of meal plans and connect recipes as you want.
 
 = Does it work on mobile? =
-Yes! We designed all the LSX Health Plan templates using Mobile First approach. These templates are fully responsive within the LSX theme and will display effectively on smartphones and tablets. 
+Yes! We designed all the LSX Health Plan templates using Mobile First approach. These templates are fully responsive within the LSX theme and will display effectively on smartphones and tablets.
 
 = I’ve installed the plugin, now what? =
 
@@ -157,6 +157,6 @@ No, but if you want to enable a profile page and sell your plans online then Woo
 10. Meal & workout plan with 4 weeks
 11. Workouts archive template
 
-== Changelog == 
+== Changelog ==
 
 [Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/lsx-health-plan/blob/master/changelog.md).

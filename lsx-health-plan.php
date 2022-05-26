@@ -4,7 +4,7 @@
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-health-plan
  * Description:	LSX Health Plan extension adds a meal and workout plan, with recipes.
  * Author:		LightSpeed
- * Version: 	2.0.1
+ * Version: 	2.0.2
  * Author URI: 	https://www.lsdev.biz/
  * License: 	GPL3
  * Text Domain: lsx-health-plan

@@ -1,5 +1,10 @@
 # Change log
 
+## [2.0.2](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.2) - 2022-05-26
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (6.0)
+
 ## [2.0.1](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.1) - 2021-01-15
 
 ### Updated
@@ -14,8 +19,8 @@
 
 - WooCommerce Memberships Integration
 - New Plans templates
-- New Workouts templates 
-- New Exercises templates 
+- New Workouts templates
+- New Exercises templates
 - New Meals templates
 - New Recipe templates
 - Various Shortcodes
@@ -68,16 +73,16 @@
 
 ### Settings
 
-- Migrate settings to use CMB2 
+- Migrate settings to use CMB2
 - Move the settings under Plans menu in WP-Admin
 - Remove the LSX Search settings
 - Move the search & filtering options to the LSX Search extension settings page
 
-### My Plans 
+### My Plans
 
 - My Plans Dashboard [#137](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/137)
-- My Plans Account Details 
-- Add a section to "My Plans Account Details" for "My Stats" with a BMI Calculator 
+- My Plans Account Details
+- Add a section to "My Plans Account Details" for "My Stats" with a BMI Calculator
 - Add a progress bar to the active plan and grey out inactive plans
 - My Plan Weeks order not working [#131](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/131)
 - My Plan - Title / URL Enhancements [#90](https://github.com/lightspeeddevelopment/lsx-health-plan/issues/90)
