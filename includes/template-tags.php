@@ -213,6 +213,7 @@ function lsx_health_plan_my_profile_box() {
 								global $current_user;
 								if ( function_exists( 'WC' ) ) {
 									get_current_user();
+									echo get_avatar( $current_user->ID, 240 );
 								}
 								if ( class_exists( 'WP_User_Avatar_Setup' ) ) {
 									echo get_avatar( $current_user->ID, 240 );
