@@ -62,7 +62,6 @@ class Endpoints {
 		if ( false === $warm_up ) {
 			$warm_up = 'warm-up';
 		}
-
 		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $warm_up . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=warm-up', 'top' );
 
 		// Workout.
@@ -82,7 +81,6 @@ class Endpoints {
 			}
 			add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=meal', 'top' );
 		}
-		
 
 		// Recipe.
 		if ( post_type_exists( 'recipe' ) ) {
