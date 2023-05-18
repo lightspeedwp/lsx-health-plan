@@ -71,17 +71,18 @@ class Endpoints {
 			if ( false === $workout ) {
 				$workout = 'workout';
 			}
+			add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=workout', 'top' );
 		}
-		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $workout . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=workout', 'top' );
-
+		
 		// Meal.
 		if ( post_type_exists( 'meal' ) ) {
 			$meal = \lsx_health_plan\functions\get_option( 'endpoint_meal', false );
 			if ( false === $meal ) {
 				$meal = 'meal';
 			}
+			add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=meal', 'top' );
 		}
-		add_rewrite_rule( 'plan/([^/]+)/([^/]+)/' . $meal . '/?$', 'index.php?plan=$matches[1]&section=$matches[2]&endpoint=meal', 'top' );
+		
 
 		// Recipe.
 		if ( post_type_exists( 'recipe' ) ) {
