@@ -548,8 +548,13 @@ class Plan {
 			$plan_name     = get_the_title();
 			$url           = get_post_type_archive_link( $plan );
 			$term_obj_list = get_the_terms( get_the_ID(), 'plan-type' );
-			$plan_type     = $term_obj_list[0]->name;
-			$plan_type_url = get_term_link( $term_obj_list[0]->term_id );
+			if ( false !== $term_obj_list ) {
+				$plan_type     = $term_obj_list[0]->name;
+				$plan_type_url = get_term_link( $term_obj_list[0]->term_id );
+			} else {
+				$plan_type     = '';
+				$plan_type_url = '';
+			}
 
 			$new_crumbs    = array();
 			$new_crumbs[0] = $crumbs[0];

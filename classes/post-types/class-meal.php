@@ -427,10 +427,13 @@ class Meal {
 			$url           = get_post_type_archive_link( $meal );
 			$term_obj_list = get_the_terms( get_the_ID(), 'meal-type' );
 			$meal_type     = $term_obj_list[0]->name;
-			if ( empty( $meal_type ) ) {
+			if ( false !== $term_obj_list ) {
+				$meal_type     = $term_obj_list[0]->name;
+				$meal_type_url = get_term_link( $term_obj_list[0]->term_id );
+			} else {
 				$meal_type = __( 'Meal', 'lsx-health-plan' );
+				$meal_type_url = '';
 			}
-			$meal_type_url = get_term_link( $term_obj_list[0]->term_id );
 
 			$new_crumbs    = array();
 			$new_crumbs[0] = $crumbs[0];

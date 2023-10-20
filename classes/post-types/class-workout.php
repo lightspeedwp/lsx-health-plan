@@ -413,10 +413,13 @@ class Workout {
 			$url           = get_post_type_archive_link( $workout );
 			$term_obj_list = get_the_terms( get_the_ID(), 'workout-type' );
 			$workout_type  = $term_obj_list[0]->name;
-			if ( empty( $workout_type ) ) {
+			if ( false !== $term_obj_list ) {
+				$workout_type     = $term_obj_list[0]->name;
+				$workout_type_url = get_term_link( $term_obj_list[0]->term_id );
+			} else {
 				$workout_type = __( 'Workout', 'lsx-health-plan' );
+				$workout_type_url = '';
 			}
-			$workout_type_url = get_term_link( $term_obj_list[0]->term_id );
 
 			$new_crumbs    = array();
 			$new_crumbs[0] = $crumbs[0];

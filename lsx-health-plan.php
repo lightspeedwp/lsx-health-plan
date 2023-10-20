@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_HEALTH_PLAN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_HEALTH_PLAN_CORE', __FILE__ );
 define( 'LSX_HEALTH_PLAN_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_HEALTH_PLAN_VER', '2.0.1' );
+define( 'LSX_HEALTH_PLAN_VER', '2.0.2' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
