@@ -65,7 +65,7 @@ class Gallery {
 	public $args = array();
 
 	/**
-	 * Constructor
+	 * Contructor
 	 */
 	public function __construct() {
 	}
@@ -98,13 +98,12 @@ class Gallery {
 		} else {
 			$this->item_id = $item_id;
 		}
-		$this->has_gallery = false;
+
 		if ( '' === $post_type ) {
 			$this->post_type = get_post_type( $this->item_id );
 		}
 		$gallery = get_post_meta( $this->item_id, $this->post_type . '_gallery', true );
-
-		if ( ! empty( $gallery ) && ( '' !== $gallery ) ) {
+		if ( ! empty( $gallery ) ) {
 			$this->gallery     = $gallery;
 			$this->has_gallery = true;
 			wp_enqueue_script( 'slick', LSX_HEALTH_PLAN_URL . 'assets/js/src/slick.min.js', array( 'jquery' ), LSX_HEALTH_PLAN_VER, true );
@@ -169,9 +168,7 @@ class Gallery {
 				$this->loop_start();
 
 				if ( isset( $gallery['exercise_gallery_image_id'] ) && ! empty( $gallery['exercise_gallery_image_id'] ) ) {
-					$size         = apply_filters( 'lsx_hp_exercise_gallery_size', 'full' );
-					$thumbnail    = wp_get_attachment_image( $gallery['exercise_gallery_image_id'], $size );
-					$this->html[] = $thumbnail;
+					$this->html[] = '<img alt="' . get_the_title( $gallery['exercise_gallery_image_id'] ) . '" src="' . $gallery['exercise_gallery_image'] . '" />';
 				} elseif ( isset( $gallery['exercise_gallery_external'] ) && ! empty( $gallery['exercise_gallery_external'] ) ) {
 					$this->html[] = $gallery['exercise_gallery_external']; // WPCS: XSS OK.
 				} elseif ( isset( $gallery['exercise_gallery_embed'] ) && ! empty( $gallery['exercise_gallery_embed'] ) ) {
@@ -216,7 +213,7 @@ class Gallery {
 	public function before_loop() {
 		if ( 'slider' === $this->args['layout'] ) {
 			$this->carousel_id = wp_rand( 20, 20000 );
-			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows {$this->args['css_class']} ' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": 1, \"slidesToScroll\": 1'>";
+			$this->html[]      = "<div class='lsx-hp-widget-items slick-slider slick-dotted slick-has-arrows {$this->args['css_class']} ' data-interval='{$this->args['interval']}' data-slick='{ \"slidesToShow\": {$this->args['columns']}, \"slidesToScroll\": {$this->args['columns']} }'>";
 		} else {
 			$this->html[] = "<div class='lsx-hp-widget-items widget-item-grid-layout'>";
 		}

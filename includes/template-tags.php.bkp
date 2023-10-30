@@ -1,0 +1,69 @@
+<?php
+/**
+ * Eetplan vir Baba Child Template Tags.
+ *
+ * @package eetplan-lsx-child
+ */
+
+/**
+ * Weekly Must Ready Content.
+ *
+ * @return void
+ */
+function eetplan_lsx_child_weekly_must_read( $term = false ) {
+
+	$terms                = get_the_terms( get_the_ID(), 'week' );
+	$taxonomy_term        = $terms[0]->term_id;
+	$taxonomy_description = $terms[0]->description;
+	$thumbnail_id         = get_term_meta( $taxonomy_term, 'eetplan_lsx_child_thumbnail', true );
+	$image_preview        = wp_get_attachment_image_src( $thumbnail_id, 'eetplan_lsx_child-thumbnail' );
+
+	if ( is_array( $image_preview ) ) {
+		$image_preview = '<img src="' . $image_preview[0] . '" width="' . $image_preview[1] . '" height="' . $image_preview[2] . '" class="alignnone wp-image-' . $thumbnail_id . '" />';
+	}
+	?>
+		<div class="weekly-must-read">
+			<h2 class="title-lined"><?php esc_html_e( 'Weekly Must-Read', 'eetplan_lsx_child_thumbnail' ); ?></h2>
+			<div class="must-read-container">
+				<?php if ( ! empty( $image_preview ) ) { ?>
+				<div class="lsx-to-archive-thumb must-read-img">
+					<?php echo wp_kses_post( $image_preview ); ?>
+				</div>
+<?php } ?>
+				<div class="must-read-desc">
+					<?php echo wp_kses_post( $taxonomy_description ); ?>
+				</div>
+			</div>
+		</div>
+
+	<?php
+
+}
+
+/**
+ * Checks to see if it the first day of the week.
+ *
+ * @return boolean
+ */
+function eetplan_lsx_child_is_first_day() {
+	$first_day = false;
+	$mondays   = array(
+		1,
+		8,
+		15,
+		22,
+		29,
+		36,
+		43,
+		50,
+		57,
+		64,
+		71,
+		78,
+	);
+	$name      = get_post( get_the_ID() );
+	if ( ! empty( $name ) && isset( $name->menu_order ) && in_array( (int) $name->menu_order, $mondays ) ) {
+		$first_day = true;
+	}
+	return $first_day;
+}

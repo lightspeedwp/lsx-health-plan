@@ -5,13 +5,12 @@
  * @package lsx-health-plan
  */
 global $shortcode_args;
-
 ?>
 
 <?php lsx_entry_before(); ?>
 
 <?php
-$content_setting = 'excerpt';
+$content_setting = '';
 $column_class    = '4';
 $link_html       = '';
 $link_close      = '';
@@ -32,7 +31,7 @@ if ( null !== $shortcode_args ) {
 				break;
 
 			case 'modal':
-				$link_html  = '<a class="btn border-btn" data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
+				$link_html  = '<a data-toggle="modal" href="#workout-exercise-modal-' . $group['connected_exercises'] . '">';
 				$link_close = '</a>';
 				$modal_content_setting = \lsx_health_plan\functions\get_option( 'workout_tab_modal_content', 'excerpt' );
 				$modal_args = array(
@@ -53,10 +52,9 @@ if ( null !== $shortcode_args ) {
 		$content_setting = $shortcode_args['description'];
 	}
 }
-
 ?>
 
-<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?> has-content-<?php echo esc_attr( $content_setting ); ?>">
+<div class="col-xs-12 col-sm-6 col-md-<?php echo esc_attr( $column_class ); ?>">
 	<article class="lsx-slot box-shadow">
 		<?php lsx_entry_top(); ?>
 
@@ -65,12 +63,12 @@ if ( null !== $shortcode_args ) {
 			<?php
 			$featured_image = get_the_post_thumbnail();
 			if ( ! empty( $featured_image ) && '' !== $featured_image ) {
-				the_post_thumbnail( 'lsx-thumbnail-square', array(
+				the_post_thumbnail( 'medium', array(
 					'class' => 'aligncenter',
 				) );
 			} else {
 				?>
-				<img loading="lazy" src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
+				<img src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) . '../assets/images/placeholder.jpg' ); ?>">
 				<?php
 			}
 			?>
@@ -90,9 +88,6 @@ if ( null !== $shortcode_args ) {
 					$content = apply_filters( 'the_excerpt', get_the_excerpt() );
 				}
 				echo wp_kses_post( $content );
-			}
-			if ( '' !== $content_setting && 'full' === $content_setting ) {
-				the_content();
 			}
 			?>
 			<a href="<?php echo esc_url( get_permalink() ); ?>" class="btn border-btn"><?php esc_html_e( 'See exercise', 'lsx-health-plan' ); ?></a>

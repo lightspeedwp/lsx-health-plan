@@ -36,30 +36,26 @@ class Recipe {
 	public $labels = array();
 
 	/**
-	 * Constructor
+	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
-		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 
 		// Frontend Actions and Filters.
-		add_action( 'wp_head', array( $this, 'remove_archive_original_header' ), 99 );
-		add_action( 'lsx_content_wrap_before', array( $this, 'hp_lsx_archive_header' ) );
-
+		add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
 		add_filter( 'lsx_health_plan_archive_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_filter( 'lsx_display_global_header_description', array( $this, 'disable_global_header_description' ), 100 );
-
-		//Breadcrumbs
-		add_filter( 'wpseo_breadcrumb_links', array( $this, 'recipes_breadcrumb_filter' ), 30, 1 );
 		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'recipes_breadcrumb_filter' ), 30, 1 );
 
 		// Backend Actions and Filters.
 		add_action( 'cmb2_admin_init', array( $this, 'featured_metabox' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'recipes_connections' ), 5 );
+		add_action( 'lsx_hp_settings_page', array( $this, 'register_settings' ), 9, 1 );
 	}
 
 	/**
@@ -85,13 +81,13 @@ class Recipe {
 	 */
 	public function register_post_type() {
 		$this->labels = array(
-			'name'               => esc_html__( 'Recipes', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Recipe', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Recipe', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Recipes', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All Recipes', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
@@ -104,7 +100,7 @@ class Recipe {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => 'edit.php?post_type=meal-pseudo',
+			'show_in_menu'       => true,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-editor-ul',
 			'query_var'          => true,
@@ -119,56 +115,18 @@ class Recipe {
 				'title',
 				'editor',
 				'thumbnail',
-				'custom-fields',
 			),
 		);
 		register_post_type( 'recipe', $args );
 	}
 
 	/**
-	 * Registers the Recipes under the Meals Post type menu.
-	 *
-	 * @return void
-	 */
-	public function register_menus() {
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Recipes', 'lsx-health-plan' ), esc_html__( 'Recipes', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=recipe' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Recipe Types', 'lsx-health-plan' ), esc_html__( 'Recipe Types', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-type&post_type=recipe' );
-		add_submenu_page( 'edit.php?post_type=meal', esc_html__( 'Cuisines', 'lsx-health-plan' ), esc_html__( 'Cuisines', 'lsx-health-plan' ), 'edit_posts', 'edit-tags.php?taxonomy=recipe-cuisine&post_type=recipe' );
-	}
-
-	/**
-	 * Register the Cuisine taxonomy.
+	 * Register the Week taxonomy.
 	 */
 	public function taxonomy_setup() {
 		$labels = array(
-			'name'              => esc_html_x( 'Cuisine', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Cuisines', 'taxonomy singular name', 'lsx-health-plan' ),
-			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
-			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
-			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
-			'parent_item_colon' => esc_html__( 'Parent:', 'lsx-health-plan' ),
-			'edit_item'         => esc_html__( 'Edit', 'lsx-health-plan' ),
-			'update_item'       => esc_html__( 'Update', 'lsx-health-plan' ),
-			'add_new_item'      => esc_html__( 'Add New', 'lsx-health-plan' ),
-			'new_item_name'     => esc_html__( 'New Name', 'lsx-health-plan' ),
-			'menu_name'         => esc_html__( 'Cuisines', 'lsx-health-plan' ),
-		);
-		$args   = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'show_in_menu'      => 'edit.php?post_type=meal',
-			'query_var'         => true,
-			'rewrite'           => array(
-				'slug' => 'recipe-cuisine',
-			),
-		);
-		register_taxonomy( 'recipe-cuisine', array( $this->slug ), $args );
-
-		$labels = array(
-			'name'              => esc_html_x( 'Recipe Type', 'taxonomy general name', 'lsx-health-plan' ),
-			'singular_name'     => esc_html_x( 'Recipe Types', 'taxonomy singular name', 'lsx-health-plan' ),
+			'name'              => esc_html_x( 'Type', 'taxonomy general name', 'lsx-health-plan' ),
+			'singular_name'     => esc_html_x( 'Types', 'taxonomy singular name', 'lsx-health-plan' ),
 			'search_items'      => esc_html__( 'Search', 'lsx-health-plan' ),
 			'all_items'         => esc_html__( 'All', 'lsx-health-plan' ),
 			'parent_item'       => esc_html__( 'Parent', 'lsx-health-plan' ),
@@ -183,7 +141,6 @@ class Recipe {
 			'hierarchical'      => true,
 			'labels'            => $labels,
 			'show_ui'           => true,
-			'show_in_menu'      => 'edit.php?post_type=meal',
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
@@ -238,41 +195,6 @@ class Recipe {
 		return $title;
 	}
 
-	public function remove_archive_original_header() {
-		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
-			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
-		}
-		if ( is_singular( 'recipe' ) || is_singular( 'exercise' ) ) {
-			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
-		}
-		if ( ! is_post_type_archive() ) {
-			add_action( 'lsx_content_wrap_before', 'lsx_health_plan_recipe_archive_description', 11 );
-		}
-	}
-
-	public function hp_lsx_archive_header() {
-		if ( is_post_type_archive( 'recipe' ) || is_post_type_archive( 'exercise' ) ) {
-		?>
-			<div class="archive-header-wrapper banner-archive">
-				<?php lsx_global_header_inner_bottom(); ?>
-				<header class="archive-header">
-					<h1 class="archive-title">
-						<?php if ( has_post_format() && ! is_category() && ! is_tag() && ! is_date() && ! is_tax( 'post_format' ) ) { ?>
-							<?php the_archive_title( esc_html__( 'Type:', 'lsx' ) ); ?>
-						<?php } else { ?>
-							<?php echo wp_kses_post( apply_filters( 'lsx_global_header_title', get_the_archive_title() ) ); ?>
-						<?php } ?>
-					</h1>
-
-					<?php
-					lsx_health_plan_recipe_archive_description();
-					?>
-				</header>
-			</div>
-		<?php
-		}
-	}
-
 	/**
 	 * Disables the global header description
 	 *
@@ -293,88 +215,20 @@ class Recipe {
 	 * @return array
 	 */
 	public function recipes_breadcrumb_filter( $crumbs ) {
-		$recipe  = \lsx_health_plan\functions\get_option( 'endpoint_recipe', 'recipe' );
-		$recipes = \lsx_health_plan\functions\get_option( 'endpoint_recipe_archive', 'recipes' );
-		$url     = get_post_type_archive_link( 'recipe' );
-
-		if ( is_singular( 'recipe' ) ) {
-			$recipe_name     = get_the_title();
-			$term_obj_list   = get_the_terms( get_the_ID(), 'recipe-type' );
-			$recipe_type     = $term_obj_list[0]->name;
-			$recipe_type_url = get_term_link( $term_obj_list[0]->term_id );
-
-			$new_crumbs    = array();
-			$new_crumbs[0] = $crumbs[0];
-
+		if ( is_tax( 'recipe-type' ) ) {
+			$text = $this->labels['singular_name'];
+			$url  = get_post_type_archive_link( 'recipe' );
 			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-				$new_crumbs[1] = array(
-					0 => $recipes,
+				$crumbs[1] = array(
+					0 => $text,
 					1 => $url,
 				);
-				$new_crumbs[2] = array(
-					0 => $recipe_type,
-					1 => $recipe_type_url,
-				);
-				$new_crumbs[3] = array(
-					0 => $recipe_name,
-				);
 			} else {
-				$new_crumbs[1] = array(
-					'text' => $recipes,
+				$crumbs[1] = array(
+					'text' => $text,
 					'url'  => $url,
 				);
-				$new_crumbs[2] = array(
-					'text' => $recipe_type,
-					'url'  => $recipe_type_url,
-				);
-				$new_crumbs[3] = array(
-					'text' => $recipe_name,
-				);
 			}
-			$crumbs = $new_crumbs;
-		}
-		if ( is_tax( 'recipe-type' ) || is_tax( 'recipe-cuisine' ) ) {
-			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
-
-			$single_term_title = str_replace( '-', ' ', $term->taxonomy ) . ': ' . $term->name;
-
-			$new_crumbs    = array();
-			$new_crumbs[0] = $crumbs[0];
-
-			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-				$new_crumbs[1] = array(
-					0 => $recipes,
-					1 => $url,
-				);
-				$new_crumbs[2] = array(
-					0 => $single_term_title,
-				);
-			} else {
-				$new_crumbs[1] = array(
-					'text' => $recipes,
-					'url'  => $url,
-				);
-				$new_crumbs[2] = array(
-					'text' => $single_term_title,
-				);
-			}
-			$crumbs = $new_crumbs;
-		}
-		if ( is_post_type_archive( 'recipe' ) ) {
-
-			$new_crumbs    = array();
-			$new_crumbs[0] = $crumbs[0];
-
-			if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-				$new_crumbs[1] = array(
-					0 => $recipes,
-				);
-			} else {
-				$new_crumbs[1] = array(
-					'text' => $recipes,
-				);
-			}
-			$crumbs = $new_crumbs;
 		}
 		return $crumbs;
 	}
@@ -513,5 +367,65 @@ class Recipe {
 				'show_on_cb' => 'cmb2_hide_if_no_cats',
 			)
 		);
+	}
+
+	/**
+	 * Registers the workout connections on the plan post type.
+	 *
+	 * @return void
+	 */
+	public function recipes_connections() {
+		$cmb = new_cmb2_box(
+			array(
+				'id'           => $this->slug . '_recipes_connections_metabox',
+				'title'        => __( 'Recipes', 'lsx-health-plan' ),
+				'object_types' => array( 'plan' ), // Post type
+				'context'      => 'normal',
+				'priority'     => 'high',
+				'show_names'   => true,
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'       => __( 'Recipes', 'lsx-health-plan' ),
+				'desc'       => __( 'Connect the recipes that apply to this day plan using the field provided.', 'lsx-health-plan' ),
+				'id'         => 'connected_recipes',
+				'type'       => 'post_search_ajax',
+				// Optional :
+				'limit'      => 15,  // Limit selection to X items only (default 1)
+				'sortable'   => true, // Allow selected items to be sortable (default false)
+				'query_args' => array(
+					'post_type'      => array( $this->slug ),
+					'post_status'    => array( 'publish' ),
+					'posts_per_page' => -1,
+				),
+			)
+		);
+	}
+
+	/**
+	 * Registers the lsx_search_settings
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function register_settings( $cmb ) {
+		$cmb->add_field(
+			array(
+				'id'          => 'recipe_archive_settings_title',
+				'type'        => 'title',
+				'name'        => __( 'Recipes Archive', 'lsx-health-plan' ),
+				'description' => __( 'All of the settings relating to the recipes post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'id'          => 'recipe_archive_description',
+				'type'        => 'wysiwyg',
+				'name'        => __( 'Archive Description', 'lsx-health-plan' ),
+				'description' => __( 'This will show up on the post type archive.', 'lsx-health-plan' ),
+			)
+		);
+		do_action( 'lsx_hp_recipe_settings_page', $cmb );
 	}
 }

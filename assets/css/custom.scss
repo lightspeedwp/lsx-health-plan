@@ -1,0 +1,1985 @@
+/**
+ * Eetplan vir Baba Child styles
+ *
+ * @package 	eetplan-lsx-child
+ */
+
+// ---------- Mixins ----------
+
+@mixin bp($point) {
+	@if $point == lg-desktop {
+		@media (min-width: 1200px) { @content; }
+	  }
+	@if $point == desktop {
+	  @media (min-width: 1025px) { @content; }
+	}
+	@else if $point == tablet {
+	  @media (max-width: 1024px) { @content; }
+	}
+	@else if $point == phone {
+	  @media (max-width: 600px)  { @content; }
+	}
+}
+@media (max-width: 1024px) and (min-width: 992px) {
+	.hidden-md:not(.facetwp-item) {
+		display: block !important;
+	}
+	.facetwp-item-wrap > .hidden-md {
+		display: none !important;
+	}
+}
+@media (max-width: 1199px) and (min-width: 1025px) {
+	.hidden-md:not(.facetwp-item){
+		display: none !important;
+	}
+}
+@media (max-width: 1024px) and (min-width: 992px) {
+	.hidden-mid {
+		display: none !important;
+	}
+}
+
+
+// ---------- Placeholders: Global ----------
+
+
+%clear-div {
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: "";
+		clear: both;
+		height: 0;
+	}
+}
+
+
+// ---------- Styles ----------
+
+//Variables
+$white: #ffffff;
+$light-gray: #f6f6f6;
+$dark-gray: #3E444F;
+$btn-gray: #DDDDDD;
+$pink: #FF0553;
+$dark-pink: #A30033;
+$yellow: #FFED5D;
+$dark-yellow: #BDAC23;
+$light-blue: #04E2FF;
+$dark-blue: #008FA2;
+$accent: #FFFF00;
+$heading: #222222;
+$font: #4a4a4a;
+
+
+//Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
+
+// @font-face {
+// 	font-family: 'Montserrat-Bold';
+// 	src: url('Montserrat-Bold');
+// 	src: local('Montserrat-Bold'), url('/wp-content/themes/eetplan-lsx-child/assets/fonts/Montserrat-Bold.ttf') format('ttf');
+// }
+$mont-bold: 'Montserrat-Bold';
+
+// @font-face {
+// 	font-family: 'Montserrat-Medium';
+// 	src: url('Montserrat-Medium');
+// 	src: local('Montserrat-Medium'), url('/wp-content/themes/eetplan-lsx-child/assets/fonts/Montserrat-Medium.ttf') format('ttf');
+// }
+$mont-medium: 'Montserrat-Medium';
+
+// @font-face {
+// 	font-family: 'Montserrat-Regular';
+// 	src: url('Montserrat-Regular');
+// 	src: local('Montserrat-Regular'), url('/wp-content/themes/eetplan-lsx-child/assets/fonts/Montserrat-Regular.ttf') format('ttf');
+// }
+$mont-regular: 'Montserrat-Regular';
+
+$open: 'Open Sans';
+$mont: 'Montserrat';
+
+body {
+	font-family: $open, sans-serif;
+	color: $font;
+}
+
+h1, #primary.content-area h1 {
+	font-family: $mont, sans-serif;
+	font-weight: bold !important;
+	font-size: 40px;
+	color: $heading;
+}
+
+h2, h3, h4, h5, h6, #primary.content-area h2, #primary.content-area h3, #primary.content-area h4, #primary.content-area h5, #primary.content-area h6, .widget-area h2, .content-area h3, .widget-area h3, .modal-content h3 {
+	font-family: $mont, sans-serif;
+	font-weight: 500;
+	color: $heading;
+}
+
+h2, #primary.content-area h2 {
+	font-size: 30px;
+	line-height: 37px;
+}
+h3, #primary.content-area h3 {
+	font-size: 22px;
+	line-height: 27px;
+}
+h4, #primary.content-area h4,
+h5, #primary.content-area h5 {
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.title-lined {
+	border-bottom: 2px solid $pink;
+	padding-bottom: 10px;
+}
+
+//Helpers
+.btn,
+.button,
+.lsx-button,
+.woocommerce-page #main button.button,
+.woocommerce-page #main input.button {
+	border-radius: 0;
+	&:hover {
+		box-shadow: none !important;
+	}
+}
+.pink-btn {
+	background-color: $pink;
+    color: #ffffff;
+    box-shadow: none;
+    border-radius: 50px !important;
+	&:hover {
+		background-color: $dark-pink;
+		color: white;
+	}
+}
+.blue-btn {
+	background-color: $dark-blue;
+    color: #ffffff;
+    box-shadow: none;
+    border-radius: 50px !important;
+	&:hover {
+		background-color: #266B83;
+		color: white;
+	}
+}
+.wpforms-submit-container {
+	button {
+		@extend .blue-btn;
+	}
+}
+#payment.woocommerce-checkout-payment {
+	.form-row.place-order {
+		button#place_order {
+			@extend .blue-btn;
+		}
+	}
+}
+.woocommerce .woocommerce-form-login .woocommerce-form-login__submit {
+	@extend .blue-btn;
+}
+.gray-btn {
+	background-color: $btn-gray;
+	color: black;
+	&:hover {
+		background-color: black;
+		color: white;
+	}
+}
+.white-column {
+	background-color: white;
+}
+.white {
+	color: white !important;
+}
+.lsx-special-p {
+	font-family: $mont;
+	line-height: 27px;
+} 
+.lsx-list {
+	padding-left: 0rem;
+	list-style-type: none;
+	padding-right: 2rem;
+	font-family: $mont;
+	font-weight: 500;
+	li {
+		font-size: 16px;
+		line-height: 24px;
+		margin-bottom: 15px;
+		display: flex;
+		max-width: 560px;
+		font-weight: 300;
+		&:before {
+			content: '\f111';
+			display: inline-block;
+			font: normal normal normal 14px/1 "FontAwesome";
+			font-size: inherit;
+			color: $dark-blue;
+			margin-right: 1em;
+			padding-top: 5px;
+		}
+	}
+	&.lsx-list-red {
+		li {
+			&:before {
+				color: $dark-blue;
+			}
+		}
+	}
+}
+.lsx-block-accordion {
+	details {
+		.lsx-accordion-title,
+		.lsx-accordion-text {
+			padding: 15px 30px;
+		}
+		.lsx-accordion-title {
+			display: block;
+		}
+		summary {
+			font-size: 15px !important;
+			font-weight: normal !important;
+			&:before {
+				color: #418AD0;
+				position: absolute;
+				right: 1rem;
+			}
+			strong {
+				color: #418AD0;
+			}
+		}
+		.lsx-accordion-text {
+			p {
+				strong {
+					color: #418AD0;
+				}
+			}
+		}
+	}
+}
+.centered-div {
+	display: flex;
+	align-items: center;
+}
+.search-form .submit-button .search-submit {
+	background-color: $pink;
+	box-shadow: 1px 1px 0 0 black !important;
+	&:before {
+		color: white;
+	}
+}
+#loginform .woocommerce-LostPassword a, .loginform .woocommerce-LostPassword a, .woocommerce form.login .woocommerce-LostPassword a, .woocommerce form.register .woocommerce-LostPassword a, .logged-out .woocommerce .woocommerce-LostPassword a {
+	color: $pink;
+}
+
+//Header
+.header-wrap {
+	#masthead {
+		.navbar-header {
+			.custom-logo-link {
+				> img {
+					min-height: 108px;
+					margin: 5px;
+					margin-top: 18px;
+					margin-bottom: 15px;
+				}
+				@include bp(tablet) {
+					width: 100%;
+					text-align: center;
+					> img {
+						min-height: 90px;
+					}
+				}
+			}
+		}
+		.primary-navbar {
+			> .nav {
+				justify-content: flex-end;
+				> .menu-item,
+				> .menu-item.active {
+					> a {
+						font-size: 16px;
+						text-transform: uppercase;
+						font-weight: 600;
+					}
+				}
+				.menu-item {
+					ul.dropdown-menu {
+						li {
+							a {
+								&:hover {
+									color: black;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.breadcrumbs-container {
+		a {
+			color: $font !important;
+			&:not(.btn) {
+				color: $white;
+				&:hover {
+					color: $dark-blue !important;
+				}
+			}
+		}
+	}
+}
+body:not(.logged-in) {
+	#masthead {
+		.primary-navbar {
+			>.nav {
+				.menu-item-has-children {
+					>.dropdown-menu {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Homepage
+.home {
+	#primary {
+		#main {
+			.entry-content {
+				@include bp(phone) {
+					font-size: 32px;
+					.main-home-section {
+						min-height: 200px !important;
+					}
+					.main-home-section-mobile {
+						.lsx-container-content {
+							padding: 1em 2em;
+							.wp-block-buttons {
+								.wp-block-button {
+									margin: 0;
+									   width: 100%;
+								}
+							}
+						}
+					}
+				}
+				@include bp(tablet) {
+					.main-home-section {
+						min-height: 300px !important;
+					}
+				}
+				.main-home-section {
+					.wp-block-lsx-blocks-lsx-container {
+						.lsx-container-content {
+							.wp-block-columns {
+								.wp-block-column {
+									.wp-block-lsx-blocks-lsx-container {
+										background-color: #ffffffcc !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//Home LOSE IT EXAMPLE
+.page {
+	&.home {
+		.wp-block-lsx-blocks-lsx-banner-box {
+			@include bp(desktop) {
+				margin-bottom: 0;
+			}
+			.lsx-banner-content-wrap {
+				.header-headings {
+					display: none;
+					@include bp(desktop) {
+						display: block;
+					}
+				}
+				.page-header {
+					@include bp(desktop) {
+						@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+							padding-top: 0 !important;
+						}
+					}
+				}
+			}
+			&:after {
+				content: '';
+				background-image: url(../images/six-icon.svg);
+				width: 64px;
+				height: 64px;
+				position: absolute;
+				z-index: 999;
+				bottom: -3rem;
+				left: calc(50vw - 44px);
+				background-size: contain;
+				@include bp(tablet) {
+					display: none;
+				}
+			}
+		}
+		#primary.content-area {
+			h1 {
+				@include bp(phone) {
+					font-size: 32px;
+				}
+			}
+		}
+	}
+	.wp-block-lsx-blocks-lsx-banner-box {
+		&.big-banner {
+			.lsx-banner-column {
+				.lsx-banner-image-wrap{
+					&:empty {
+						min-height: 300px;
+					}
+				}
+			}
+		}
+		.lsx-banner-column {
+			.lsx-banner-image-wrap{
+				@include bp(phone) {
+					min-height: 160px;
+					img {
+						min-height: 160px;
+					}
+				}
+			}
+		}
+		.lsx-banner-content-wrap {
+			@include bp(phone) {
+				padding-top: 8.4rem !important;
+				.header-headings {
+					.page-header {
+						h2 {
+							font-family: $mont !important;
+							font-weight: bold !important;
+						}
+					}
+				}
+			}
+			.header-headings {
+				@include bp(desktop) {
+					max-width: 600px;
+					.lsx-banner-logo:not(:empty) {
+						.lsx-banner-logo-img {
+							max-width: 100%;
+						}
+					}
+					.page-header {
+						@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+							padding-top: 4rem;
+						}
+						.lsx-banner-name {
+							font-size: 40px !important;
+							font-family: $mont, sans-serif !important;
+							font-weight: bold !important;
+							margin-top: 12px !important;
+							line-height: 49px !important;
+						}
+					}
+					.lsx-banner-title {
+						font-size: 20px !important;
+						font-weight: 300;
+						line-height: 30px;
+						margin-bottom: 23px;
+					}
+				}
+			}
+		}
+	}
+	.home-containers-info {
+		.lsx-container-inside {
+			.lsx-container-content {
+				max-width: 100% !important;
+				@media (max-width:900px) {
+					padding: 0;
+				}
+				@include bp(phone) {
+					padding: 0 5rem;
+				}
+				.wp-block-columns {
+					.wp-block-column {
+						padding: 1rem;
+						@include bp(phone) {
+							padding: 0;
+						}
+						.wp-block-image {
+							margin: -1rem;
+							@include bp(phone) {
+								margin: 0;
+								img {
+									width: 100%;
+								}
+							}
+						}
+						@include bp(desktop) {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							padding: 4rem;
+							@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+								max-height: 440px;
+								.wp-block-image {
+									img {
+										max-height: 440px;
+									}
+								}
+							}
+							.wp-block-image {
+								margin: -4rem;
+							}
+						}
+						* {
+							margin-left: 0;
+							margin-right: 0;
+						}
+						p {
+							max-width: 518px;
+							font-size: 18px;
+							font-weight: 300;
+						}
+						ul {
+							font-weight: 300;
+						}
+					}
+					&.home-first-column {
+						.wp-block-column {
+							@include bp(phone) {
+								&:nth-of-type(2) {
+									padding: 4rem;
+								}
+							}
+							h2 {
+								font-weight: 700 !important;
+							}
+						}
+					}
+					&.home-second-column {
+						@include bp(phone) {
+							display: flex;
+							flex-direction: column-reverse;
+						}
+						.wp-block-column {
+							&:first-of-type {
+								max-width: 620px;
+								margin-left: auto;
+								padding-left: 14rem;
+							}
+							&:nth-of-type(2) {
+								@include bp(tablet) {
+									padding-right: 0;
+									.wp-block-image {
+										margin-right: 0px;
+										margin-left: 0;
+									}
+								}
+							}
+							h2 {
+								font-weight: 700 !important;
+							}
+							@include bp(phone) {
+								display: flex;
+								flex-direction: column;
+								&:nth-of-type(1) {
+									margin-left: 0;
+									padding: 4rem;
+									padding-left: 4rem;
+								}
+							}
+							@include bp(tablet) {
+								&:nth-of-type(1) {
+									padding-left: 4rem;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.cta-home-container {
+		@include bp(phone) {
+			.lsx-container-content {
+				padding: 1em 2em;
+				.wp-block-columns {
+					.wp-block-column {
+						.wp-block-buttons {
+							width: 100%;
+							.wp-block-button {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+		}
+		@include bp(tablet) {
+			padding-left: 2% !important;
+			padding-right: 2% !important;
+		}
+		.wp-block-image:not(.alignfull) {
+			@include bp(desktop) {
+				// max-width: 275px !important;
+				// margin-left: 0 !important;
+				min-height: 414px;
+				min-width: 368px;
+			}
+		}
+		.cta-text-column {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-left: 13rem !important;
+			padding-top: 3%;
+			@include bp(phone) {
+				margin-left: 0rem !important;
+			}
+			@include bp(tablet) {
+				margin-left: 0rem !important;
+			}
+			p {
+				margin-left: 0;
+			}
+		}
+		h2 {
+			font-weight: 700 !important;
+		}
+		p {
+			font-size: 22px;
+			margin-left: 0;
+		}
+		.has-medium-font-size,
+		.white {
+			font-size: 24px !important;
+			font-weight: 600;
+			color: black;
+			line-height: 30px !important;
+			font-family: $mont, sans-serif;
+			font-weight: 500;
+		}
+		.white {
+			color: white !important;
+			max-width: 660px;
+			margin-left: 0;
+		}
+		.wp-block-columns {
+			@include bp(tablet) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.wp-block-column {
+					* {
+						text-align: center;
+					}
+					p {
+						font-size: 18px;
+					}
+					.lsx-button {
+						font-size: 14px;
+						min-width: 300px;
+					}
+				}
+			}
+		}
+	}
+	.home-bottom-cta {
+		@include bp(phone) {
+			.lsx-container-inside {
+				.lsx-container-content {
+					padding: 1em 2em;
+				}
+			}
+		}
+	}
+	.got-covered {
+		.wp-block-columns {
+			.wp-block-column {
+				max-width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+				.wp-block-image img {
+					min-width: 75px;
+				}
+			}
+		}
+	}
+}
+#lsx-banner {
+	.page-banner-wrap {
+		.page-banner {
+			.page-header {
+				.page-title {
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+// Contact
+.contact {
+	#primary {
+		#main {
+			.entry-content {
+				.wp-block-lsx-blocks-lsx-container {
+					.lsx-container-inside {
+						.lsx-title {
+							&:after {
+								background-color: #FF0553;
+								width: 100%;
+								height: 2px;
+								margin-top: 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//Content
+.content-area {
+	a,
+	a:visited,
+	a:active {
+		&:not(.btn) {
+			color: $pink;
+			&:hover {
+				color: black;
+			}
+		}
+	}
+}
+.lsx-title {
+	&:after {
+		background-color: $pink;
+		margin: 1.4rem auto 0;
+		width: 120px;
+	}
+	
+}
+//Recipes Archive
+.post-type-archive-recipe,
+.tax-recipe-type {
+	#facetwp-top {
+		.facetwp-sort-select {
+			&::-ms-expand {
+				display: none !important;
+			}
+			-webkit-appearance: none !important;
+			-moz-appearance: none !important;
+			-o-appearance: none !important;
+		}
+	}
+	.archive-plan {
+		@media not all and (min-resolution:.001dpcm)
+		{ @supports (-webkit-appearance:none) {
+			@media (max-width: 991px) {
+				.col-sm-6 {
+					width: 49%;
+				}
+			}
+			@media (min-width: 992px) {
+				.col-md-4 {
+					width: 32.23%;
+				}
+			}
+			
+			}
+		}
+		.lsx-slot {
+			.content-box {
+				padding-top: 10px !important;
+				padding-bottom: 15px !important;
+				.recipe-title,
+				.recipe-table {
+					margin-bottom: 15px;
+				}
+				.recipe-table {
+					color: #9b9b9b;
+					margin: 0;
+					.serves {
+						&:before {
+							color: $pink;
+						}
+					}
+				}
+				.recipe-title {
+					margin-bottom: 10px;
+				}
+				.border-btn,
+				.border-btn:active,
+				.border-btn:visited {
+					border: 2px solid $pink;
+					color: $pink;
+					font-size: 0;
+					padding: 10px;
+					height: auto;
+					white-space: pre-line;
+					&:before {
+						content: "Ingredients & Recipes >";
+						font-size: 14px;
+					}
+					&:hover {
+						background: $pink;
+						color: white;
+					}
+				}
+			}
+		}
+	}
+	// #recipes-cta {
+	// 	background-color: white;
+	// 	padding: 8rem;
+	// 	.row {
+	// 		max-width: 1200px;
+	// 		display: flex;
+	// 		align-items: center;
+	// 		margin-left: auto;
+	// 		margin-right: auto;
+	// 		@include bp(tablet) {
+	// 			flex-direction: column;
+	// 		}
+	// 		.col-md-8 {
+	// 			h3 {
+	// 				font-size: 24px;
+	// 				font-family: $open;
+	// 				font-weight: 600;
+	// 				margin-bottom: 3rem;
+	// 				max-width: 600px;
+	// 			}
+	// 			h4 {
+	// 				font-weight: 200;
+	// 				font-family: $open;
+	// 				font-size: 20px;
+	// 				max-width: 600px;
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+	.archive {
+		.facetwp-sidebar.widget-area + .content-area {
+			width: 70%;
+		}
+	}
+}
+
+// Single Plan
+.single-plan,
+.archive-plan {
+	.blue-title {
+		color: $pink;
+	}
+	.status-plan-buttons {
+		clear: both;
+		.single-plan-inner-buttons {
+			padding: 10px 0;
+		}
+	}
+}
+.single-plan {
+	.lsx-hp-archive-description {
+		@include bp(phone) {
+			display: none;
+		}
+	}.archive-header-wrapper {
+		.archive-header {
+			.archive-title {
+				text-transform: uppercase;
+			}
+		}
+	}
+	article.recipe {
+		&.recipe-type-no-serves {
+			#single-recipe {
+				.recipe-content {
+					.recipe-data {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.single-plan-inner-buttons {
+		.complete-plan-btn {
+			.btn {
+				@extend .pink-btn;
+			}
+		}
+		.back-plan-btn {
+			.btn {
+				@extend .blue-btn;
+			}
+		}
+	}
+	.row.tab-content-plan {
+		display: none;
+		padding-bottom: 8rem;
+		@include bp(phone) {
+			padding-bottom: 2.4rem;
+		}
+	}
+	.weekly-must-read {
+		width: 100%;
+		.must-read-container {
+			display: flex;
+			@include bp(phone) {
+				flex-direction: column;
+			}
+			.must-read-img {
+				min-width: 30%;
+				@include bp(phone) {
+					min-width: 100%;
+					margin-bottom: 2rem;
+				}
+				img {
+					width: 100%;
+					padding-right: 2rem;
+					@include bp(phone) {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+	#single-recipe {
+		margin-bottom: 0;
+		>.row {
+			@media (max-width:767px) {
+				margin-right: 0;
+			}
+			.recipe-image {
+				padding-right: 3.5rem;
+				margin-bottom: 8rem;
+				@media (max-width:767px) {
+					padding-right: 0;
+					margin-bottom: 2.4rem;
+				}
+			}
+			.recipe-content {
+				margin-bottom: 10px;
+				.recipe-data {
+					max-width: 150px;
+				}
+			}
+		}
+	}
+}
+.single-recipe {
+	#single-recipe {
+		.recipe-image {
+			.recipe-data {
+				tbody {
+					td:first-child {
+						color: $pink;
+					}
+				}
+			}
+		}
+		.recipe-content {
+			margin-bottom: 2.4rem;
+			.back-plan-btn {
+				.btn {
+					box-shadow: none;
+					border-radius: 50px;
+				}
+			}
+		}
+	}
+}
+.plan-template-default {
+	.content-area {
+		margin-bottom: 2.4rem;;
+	}
+}
+.plan-template-default, .post-type-archive, .single-recipe, .woocommerce-lost-password {
+	.wrap.container {
+		.content {
+			.archive-header-wrapper {
+				.archive-header {
+					@include bp(phone) {
+						padding: 0;
+					}
+					background-image: url(../../assets/images/my-plan-banner.jpg);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: auto;
+					min-height: 200px;
+					padding: 50px 9999rem 50px;
+					h1.archive-title {
+						color: $heading;
+						font-size: 40px;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+	}
+}
+
+.woocommerce-lost-password {
+	.wrap.container {
+		.content {
+			.archive-header-wrapper {
+				width: 100% !important;
+				@media (max-width: 767px) {
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
+				@include bp(tablet) {
+					width: 100vw !important;
+				}
+			}
+			#primary {
+				#main {
+					article {
+						@include bp(tablet) {
+							margin: 0;
+						}
+						@include bp(phone) {
+							width: 95% !important;
+						}
+						.entry-content {
+							.woocommerce {
+								margin-top: 25px;
+								margin-bottom: 25px;
+								form.woocommerce-ResetPassword {
+									p.woocommerce-form-row {
+										.woocommerce-Button {
+											@include bp(phone) {
+												width: 100%;
+											}
+											border-radius: 50px;
+											box-shadow: none;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.post-type-archive {
+	#secondary {
+		.facetwp-facet {
+			.facetwp-item {
+				.search-form {
+					.input-group {
+						.submit-button {
+							.search-submit {
+								background-color: $pink;
+								color: $white;
+								&:hover {
+									background-color: $dark-pink;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#primary {
+		#main {
+			#facetwp-top {
+				.row {
+					.col-xs-12 {
+						.facetwp-sort {
+							.facetwp-sort-select {
+								border-color: #DADDDF;
+							}
+						}
+					}
+				}
+			}
+			.facetwp-template {
+				.post-wrapper {
+					.col-xs-12.col-sm-6.col-md-4 {
+						.lsx-slot {
+							.content-box {
+								a.btn {
+									border: 2px solid #008FA2;
+									color: #008FA2;
+									font-size: 0;
+									padding: 10px;
+									height: auto;
+									white-space: pre-line;
+									border-radius: 50px;
+									&:hover {
+										background-color: $dark-blue;
+										color: $white;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.my-plan {
+	.wrap.container {
+		#primary {
+			#main {
+				.entry-content {
+					.my-plan-container {
+						.lsx-container-content {
+							@include bp(phone) {
+								padding: 1em 2.5em;
+								.wp-block-lsx-blocks-lsx-container {
+									.lsx-container-content {
+										padding: 10px;
+										.lsx-health-plan {
+											.profile-navigation {
+												.edit-profile {
+													width: 100%;
+													.btn.btn-green {
+														width: 100%;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					#edit-account-tab {
+						@include bp(phone) {
+							padding: 0 auto 20px;
+							margin-top: 2%;
+						}
+						@include bp(tablet) {
+							padding: 50px 9% 20px;
+						}
+						.edit-account-section {
+							@include bp(phone) {
+								padding: 10px;
+							}
+							.title-lined {
+								font-weight: 700;
+							}
+							.woocommerce {
+								.woocommerce-MyAccount-content {
+									.woocommerce-EditAccountForm {
+										.my-stats {
+											display: flex;
+											flex-direction: column;
+											justify-content: flex-start;
+											.form-row  {
+												@include bp(phone) {
+													width: 100%;
+												}
+												width: 60%;
+												margin-left: 0;
+												label {
+													color: #222222;
+													font-weight: 500;
+													font-size: 16px;
+													span {
+														display: none;
+													}
+												}
+											}
+											#go_ouderdom_field {
+												&:before {
+													font-size: 22px !important;
+													content: 'Baba';
+													font-family: $mont, sans-serif;
+													font-weight: 500;
+													color: $pink;
+													position: relative;
+													background-repeat: no-repeat;
+													padding-left: 0;
+												}
+											}
+											.form-label {
+												display: none;
+											}
+										}
+										p {
+											.woocommerce-Button {
+												@include bp(phone) {
+													width: 100%;
+												}
+												background-color: $dark-blue;
+												color: #ffffff;
+												box-shadow: none;
+												border-radius: 50px !important;
+												min-height: 48px;
+												&:hover {
+													background-color: #266B83;
+													color: white;
+												}
+											}
+										}
+									}
+									.wpua-edit {
+										.wpua-edit-container {
+											h3 {
+												font-weight: 700;
+											}
+											#wpua-add-button-existing {
+												.button {
+													@include bp(phone) {
+														width: 100%;
+													}
+													background-color: #2d2d2d;
+													box-shadow: none;
+													color: #ffffff;
+													border-radius: 50px;
+													min-height: 48px;
+													padding: 10px 30px;
+													&:hover {
+														background-color: #000000;
+													}
+												}
+											}
+										}
+										.submit {
+											.button {
+												@include bp(phone) {
+													width: 100%;
+												}
+												box-shadow: none;
+												border-radius: 50px;
+												min-height: 48px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//My Account
+#account-nav,
+#single-plan-nav {
+	.nav.nav-pills {
+		@include bp(phone) {
+			display: flex;
+			flex-direction: column !important;
+			&::-webkit-scrollbar-thumb {
+				background-color: $dark-pink !important;
+			}
+		}
+		@include bp(tablet) {
+			display: flex;
+			flex-direction: row;
+			&::-webkit-scrollbar-thumb {
+				background-color: $dark-pink !important;
+			}
+		}
+		li {
+			@include bp(phone) {
+				width: auto;
+				width: 100%;
+				flex-grow: 1;
+				padding-right: 5px;
+				padding-left: 10px;
+			}
+			@media not all and (min-resolution:.001dpcm)
+			{ @supports (-webkit-appearance:none) {
+				@include bp(phone) {
+					width: 33.33%;
+				}
+			}
+			}
+			&.active, &:hover {
+				a {
+					background-color: $pink !important;
+					svg {
+						g {
+							circle, path {
+								fill: $white !important;
+								stroke: $white !important;
+							}
+						}
+					}
+				}
+				
+			}
+			a {
+				font-family: $mont;
+				font-weight: 500;
+				font-size: 16px;
+				color: #000000;
+				font-weight: 500;
+				align-items: center;
+				padding: 5px 15px;
+				height: 55px;
+				@include bp(phone) {
+					font-size: 15px;
+					line-height: 15px;
+					font-weight: 700;
+					padding: 5px;
+					padding-top: 8px;
+					opacity: 1 !important;
+					color: black;
+					height: 60px;
+				}
+				&.meal-plan-tab {
+					display: none;
+				}
+				&::after {
+					color: #FF0553 !important;
+				}
+				svg {
+					top: 0 !important;
+					@include bp(phone) {
+						height: 25px;
+						margin-bottom: 3px;
+					}
+					g {
+						fill: #FF0553;
+					}
+				}
+				@include bp(tablet) {
+					&.my-plan-tab,
+					&.account-details-tab,
+					&.logout-tab {
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-start;
+						&:after {
+							font-size: 20px;
+							bottom: 0;
+							margin: 0;
+							display: flex;
+							justify-content: flex-end;
+							margin-left: 60px;
+						}
+					}
+				}
+				@include bp(phone) {
+					&.my-plan-tab,
+					&.account-details-tab,
+					&.logout-tab {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						&:after {
+							display: flex;
+    						justify-content: flex-end;
+							width: 60%;
+							font-size: 20px;
+							bottom: 0;
+							margin-right: 15px;
+							margin-left: 0;
+						}
+					}
+				}
+			}
+			a.middagete-tab {
+				svg {
+					g {
+						circle {
+							fill: $white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.lsx:not(.single-post):not(.page-has-banner) .wrap .archive-header-wrapper .archive-header {
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+	.lsx:not(.single-post):not(.page-has-banner) .wrap .archive-header-wrapper .archive-header {
+		padding-top: 70px;
+		padding-bottom: 30px;
+	}
+}
+
+.woocommerce-lost-password {
+	&.woocommerce-page.page-has-banner.lsx {
+		.wrap.container {
+			@media (min-width: 768px) {
+				width: 1170px;
+				padding-right: 15px;
+				padding-left: 15px;
+			}
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.archive-header-wrapper {
+			display: block !important;
+			@media (max-width:767px) {
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+			.archive-header {
+				align-items: center;
+				display: flex;
+				flex-flow: column wrap;
+				justify-content: center;
+				margin: 0 -9999rem;
+				padding: 10px 9999rem;
+				text-align: center;
+				max-width: initial;
+				@media (min-width:320px) {
+					padding: 100px 9999rem 50px;
+				}
+				@media (min-width: 768px) {
+					.archive-title {
+						max-width: 70%;
+						margin-left: auto;
+						margin-right: auto;
+					}
+				}
+				@media (max-width:767px) {
+					padding: 50px 20px 50px;
+					margin: 50px 0 0;
+				}
+			}
+		}
+		#primary {
+			margin-top: 4.5rem;
+			margin-bottom: 4.5rem;
+		}
+	}
+}
+#edit-account-tab {
+	.edit-account-section {
+		.my-stats {
+			.form-row {
+				&:first-child,
+				&:nth-child(2),
+				&:nth-child(3) {
+					color: $pink;
+				}
+				&#fitness_start_field,
+				&#fitness_goal_field,
+				&#fitness_end_field {
+					display: none;
+				}
+			}
+		}
+		.wpua-edit-container {
+			h3 {
+				border-bottom: 2px solid $pink;
+				padding-bottom: 10px;
+			}
+		}
+	}
+}
+#primary.content-area {
+	.my-profile-block {
+		.profile-navigation {
+			.profile-photo {
+				img {
+					border: 5px solid $dark-blue;
+				}
+			}
+		}
+		.profile-details {
+			h1 {
+				font-family: $mont;
+				font-weight: 500;
+				font-size: 30px;
+				padding-bottom: 13px;
+			}
+		}
+		.personal-information {
+			strong {
+				font-size: 15px;
+				color: #333333;
+			}
+			tbody {
+				tr {
+					td {
+						font-family: $open;
+						font-size: 15px;
+						font-weight: 400;
+					}
+					&:nth-child(3) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+//Checkout
+.checkout {
+	.header-wrap {
+		#masthead {
+			.container {
+				.checkout-navbar {
+					.nav {
+						li {
+							a {
+								text-transform: uppercase;
+								font-family: $mont;
+								font-weight: 500;
+								color: #000000;
+								&:hover {
+									color: $dark-blue;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#primary {
+		#main {
+			.entry-content {
+				padding-top: 50px;
+				.checkout-header-wrapper {
+					display: none;
+				}
+				.wp-block-lsx-blocks-lsx-container {
+					.lsx-container-content {
+						.woocommerce {
+							form.woocommerce-checkout {
+								.col2-set {
+									.col-1 {
+										.woocommerce-billing-fields {
+											h3 {
+												font-weight: 700;
+											}
+											.woocommerce-billing-fields__field-wrapper {
+												.form-row {
+													label {
+														.required {
+															color: #4A4A4A;
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								#order_review_heading {
+									font-weight: 700;
+								}
+								.woocommerce-checkout-review-order {
+									.woocommerce-checkout-payment {
+										.form-row {
+											.button {
+												@extend .pink-btn;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.woocommerce-order-received {
+	#primary {
+		#main {
+			article {
+				.entry-content {
+					.wp-block-lsx-blocks-lsx-container {
+						padding-bottom: 4% !important;
+						.lsx-container-content {
+							max-width: 915px !important;
+							h2#meal-plan {
+								font-size: 0 !important;
+								&:after {
+									font-size: 40px !important;
+									content: 'Dankie!';
+									font-family: $mont, sans-serif;
+									font-weight: 700;
+									color: #222222;
+								}
+							}
+							.woocommerce {
+								.woocommerce-info {
+									display: none;
+								}
+								.woocommerce-order {
+									.woocommerce-order-overview {
+										padding-left: 0;
+										@media (max-width: 767px) {
+											display: flex;
+											justify-content: space-between;
+											flex-direction: column;
+											li {
+												margin-bottom: 10px;
+												line-height: 2;
+												border-right: 0px;
+												padding-right: 2em;
+												margin-left: 0px;
+												padding-left: 0;
+												list-style-type: none;
+											}
+										}
+										@media (min-width: 768px) and (max-width: 900px) {
+											li {
+												margin-bottom: 10px;
+											}
+										}
+									}
+									.woocommerce-bacs-bank-details {
+										.wc-bacs-bank-details-heading {
+											font-weight: 700;
+										}
+										.wc-bacs-bank-details-account-name {
+											font-size: 15px;
+										}
+										.wc-bacs-bank-details {
+											padding-left: 0;
+											@media (max-width: 767px) {
+												display: flex;
+												justify-content: space-between;
+												flex-direction: column;
+												li {
+													margin-bottom: 10px;
+													line-height: 2;
+													border-right: 0px;
+													padding-right: 2em;
+													margin-left: 0px;
+													padding-left: 0;
+													list-style-type: none;
+												}
+											}
+										}
+									}
+									.woocommerce-order-details {
+										.woocommerce-order-details__title {
+											font-weight: 700;
+										}
+									}
+									.woocommerce-customer-details {
+										.woocommerce-column__title {
+											font-weight: 700;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//Login
+.login {
+	#primary {
+		#main {
+			.entry-content {
+				.wp-block-lsx-blocks-lsx-container {
+					.lsx-container-content {
+						.woocommerce {
+							h2 {
+								font-weight: 700;
+							}
+							.woocommerce-form {
+								.form-row {
+									.woocommerce-button {
+										border-radius: 3px !important;
+										background-color: #418AD0;
+										box-shadow: 2px 2px 0 0 #27639D;
+										color: #fff;
+										min-height: 48px;
+    									padding: 10px 46px;
+										&:hover {
+											border-radius: 3px !important;
+											background-color: #27639D;
+											box-shadow: 2px 2px 0 0 #418AD0 !important;
+											color: #fff;										
+										}
+									}
+								}
+								.woocommerce-LostPassword {
+									a {
+										color: $dark-blue;
+										&:hover {
+											color: $dark-pink
+										}
+									}
+								}
+								.wc-social-login {
+									&:before {
+										font-weight: 700;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//Restricted content page
+.content-restricted:not(.logged-in) {
+	#primary {
+		.wp-block-lsx-blocks-lsx-container {
+			padding-left: 0% !important;
+			padding-right: 0% !important;
+			width: 100%;
+			max-width: 95%;
+		}
+	}
+}
+
+// Shortcodes
+.menu-my-account {
+	@include bp(phone) {
+		padding-left: 1% !important;
+		padding-right: 1% !important;
+	}
+	@media (min-width: 901px) and (max-width: 1120px) {
+		.lsx-container-content {
+			padding-left: 5rem;
+			padding-right: 5rem;
+		}
+	}
+}
+.daily-plan-block {
+	.week-meals-recipes-box {
+		.title {
+			font-size: 0 !important;
+			&:after {
+				font-size: 18px !important;
+				content: 'Eetplan & resepte';
+				font-family: $mont, sans-serif;
+				font-weight: 500;
+				color: #222222;
+				background-image: url(../images/eetplan-meal-icon.svg);
+				position: absolute;
+				background-repeat: no-repeat;
+				padding-left: 4rem;
+			}
+		}
+		svg {
+			g {
+				display: none;
+				fill: $pink !important;
+				stroke: $pink !important;
+			}
+		}
+	}
+	.week-download-box {
+		svg {
+			g {
+				stroke: $pink !important;
+			}
+		}
+		li {
+			color: $pink;
+			@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+				line-height: 10px !important;
+				.download-link {
+					line-height: 15px !important;
+					position: relative;
+					bottom: 1rem;
+				}
+			 }
+		}
+	}
+	&.week-grid {
+		a.week-title,
+		a.week-title:hover,
+		a.week-title:focus {
+			font-family: $mont, sans-serif;
+			font-weight: bold !important;
+			font-size: 28px;
+			color: $heading;
+		}
+		a.week-title {
+			&::after {
+				color: $pink;
+			}
+		}
+		.week-row {
+			.week-row-inner {
+				.week-meals-recipes-box {
+					.week-meals-recipes-box-inner {
+						padding: 0 2rem;
+						margin-left: auto;
+						margin-right: auto;
+						.day {
+							&:not(.completed) {
+								border: 4px solid $btn-gray;
+								background: $pink;
+								margin-right: 0px !important;
+								.plan-content {
+									color: white;
+									font-family: $open;
+									font-weight: 800 !important;
+								}
+							}
+							&:hover {
+								&:not(.completed) {
+									background: $dark-pink;
+								}	
+							}
+						}
+					}
+				}
+				&.week-downloads-view-on {
+					.week-download-box {
+						@media (min-width:1025px) {
+							max-width: 290px;
+							width: 290px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.my-profile-block {
+	.profile-navigation {
+		.edit-profile {
+			.btn.btn-green {
+				background-color: #2D2D2D;
+				color: #ffffff;
+				box-shadow: none;
+				border-radius: 50px !important;
+				&:hover {
+					background-color: #000000;
+				}
+			}
+		}
+	}
+}
+
+//Pagination
+.content-area {
+	.lsx-pagination {
+		>.page-numbers {
+			border-color: black;
+			color: black;
+			&:not(.dots)+.page-numbers:not(.dots) {
+				color: black;
+			}
+			&.current,
+			&:hover {
+				background-color: black;
+			}
+			&.next,
+			&.prev {
+				border-color: black;
+				color: black;
+				&:before {
+					border-color: black;
+					color: black;
+				}
+			}
+		}
+	}
+}
+
+//Footer
+#footer-widgets {
+	.row {
+		@include bp(tablet) {
+			text-align: center;
+		}
+		.widget_text {
+			&:first-of-type {
+				@include bp(desktop) {
+					width: 80%;
+				}
+			}
+			@include bp(tablet) {
+				width: 100%;
+			}
+		}
+	}
+	.widget-title {
+		font-family: $mont;
+		font-weight: 800;
+		font-size: 22px;
+		line-height: 24px;
+		color: #000000;
+	}
+	.textwidget {
+		a:not(.btn):not(button) {
+			&:hover {
+				color: $pink;
+			}
+		}
+		i {
+			color: $yellow;
+			&:hover {
+				color: $pink;
+			}
+		}
+	}
+}
+
+#colophon {
+	.container {
+		>.row {
+			@include bp(tablet) {
+				>.col-sm-12 {
+					.credit {
+						text-align: center;
+					}
+					#menu-footer-menu {
+						flex-direction: column;
+						text-align: center;
+						li {
+							&::after {
+								content: none;
+							}
+						}
+					}
+				}
+			}
+			#menu-footer-menu {
+				li {
+					&.menu-images-gallo-images-getty-images {
+						a {
+							cursor: not-allowed;
+							pointer-events: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

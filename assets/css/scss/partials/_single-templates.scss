@@ -1,12 +1,4 @@
 // Single Recipe
-
-.single-recipe,
-.single-exercise {
-	#primary.content-area {
-		margin-top: $lsx-large-gap;
-	}
-}
-
 #single-recipe,
 #single-exercise {
 	margin-bottom: -8.4rem;
@@ -14,45 +6,19 @@
 		margin-right: 0;
 		margin-left: 0;
 	}
-	.title-lined {
-		display: flex;
-		justify-content: space-between;
-		font-weight: 700;
-		@include media('<=phone') {
-			flex-direction: column-reverse;
-		}
-		.lsx-sharing-content {
-			@include media('<=phone') {
-				margin-bottom: 1rem;
-			}
-			p {
-				margin: 0;
-			}
-		}
-	}
-	#hp-connected-members {
-		p {
-			@include media('<=tablet') {
-				margin-bottom: 2rem;
-			}
-		}
-	}
 	.recipe-image,
 	.exercise-image {
 		width: 100%;
 		padding: 0;
 		margin-bottom: 4.25rem;
-		@include media('<=tablet') {
-			max-width: 490px;
-		}
 		img {
 			width: 100%;
 		}
 		@media (min-width: 992px) {
-			max-width: 440px;
+			max-width: 440px;	
 		}
 		@media (min-width: 1200px) {
-			max-width: 490px;
+			max-width: 490px;	
 		}
 		.recipe-table,
 		.exercise-table {
@@ -74,35 +40,23 @@
 					display: grid;
 					grid-template-columns: 60% 40%;
 				}
-				@media (max-width: 600px) {
-					display: block;
+				@media (max-width:600px) {
+					display:block;
 				}
 			}
 		}
 	}
 	.recipe-content,
 	.exercise-content {
-		margin-bottom: 60px;
+		margin-bottom: 8.5rem;
 		float: right;
-		@include media('<=tablet') {
-			padding-left: 0;
-			padding-right: 0;
-		}
-		@include media('>=tablet') {
+		@media (min-width: 992px) {
 			margin-right: 2rem;
 		}
 		@media (max-width: 600px) {
 			.back-plan-btn {
 				margin-top: 4.25rem;
 				.btn {
-					width: 100%;
-				}
-			}
-		}
-		.back-plan-btn {
-			@include media('>=tablet') {
-				width: 380px;
-				a {
 					width: 100%;
 				}
 			}
@@ -119,12 +73,6 @@
 				display: flex;
 			}
 			.recipe-table {
-				width: 50%;
-				&:first-child {
-					&:last-child {
-						width: 100%;
-					}
-				}
 				&:only-child {
 					tbody {
 						tr {
@@ -135,18 +83,18 @@
 				&:nth-child(2) {
 					margin-top: 2rem;
 				}
-				@include media('>=custom') {
+				@include media('>=custom') { 
 					&:nth-child(2) {
 						margin-top: 0;
-						border-left: 1px solid #dddddd;
+						border-left: 1px solid #DDDDDD;
 						margin-left: -10px;
-						th,
-						td {
+						th, td {
 							padding-left: 10px;
 						}
 					}
 				}
 			}
+			
 		}
 	}
 	.bottom-single-recipe {
@@ -160,19 +108,25 @@
 #single-exercise {
 	.exercise-title-section {
 		padding-bottom: 0;
-		margin-bottom: 2.4rem;
+		margin-bottom: 4.24rem;
 		&.sharing-enabled {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			@include media('>=tablet') {
+			align-items: center;
+			@include media('>=tablet') { 
 				flex-direction: row-reverse;
-				align-items: center;
 			}
 		}
 		h2 {
 			margin-bottom: 10px;
-			font-weight: 700;
+		}
+		.lsx-sharing-content {
+			>p {
+				@include media('>=tablet') { 
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 	.exercise-image {
@@ -193,6 +147,11 @@
 	.lsx-hp-widget-items.slick-slider {
 		+ .exercise-data {
 			padding-top: 0;
+		}
+	}
+	.back-plan-btn {
+		@include media('>=tablet') { 
+			margin-top: 8.4rem;
 		}
 	}
 }

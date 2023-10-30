@@ -1,0 +1,76 @@
+<?php
+/**
+* Template used to display single planf top nav.
+*
+* @package lsx-health-plan
+*/
+
+global $connected_recipe;
+$endpoint = get_query_var( 'endpoint' );
+if ( '' === $endpoint && ! eetplan_lsx_child_is_first_day() ) {
+	$endpoint = 'breakfast';
+}
+$nav_tabs          = array();
+$connected_recipe  = array();
+$connected_recipes = get_post_meta( get_the_ID(), 'connected_recipes', true );
+
+if ( ! empty( $connected_recipes ) ) {
+	$connected_recipes = \lsx_health_plan\functions\check_posts_exist( $connected_recipes );
+	foreach ( $connected_recipes as $recipe_id ) {
+		$this_recipe_types = wp_get_post_terms( $recipe_id, 'recipe-type', array( 'fields' => 'id=>slug' ) );
+		if ( ! is_wp_error( $this_recipe_types ) && ! empty( $this_recipe_types ) ) {
+			if ( in_array( 'breakfast', $this_recipe_types ) ) {
+				$nav_tabs[] = 'breakfast';
+			}
+			if ( in_array( 'lunch', $this_recipe_types ) ) {
+				$nav_tabs[] = 'lunch';
+			}
+			if ( in_array( 'dinner', $this_recipe_types ) ) {
+				$nav_tabs[] = 'dinner';
+			}
+
+			if ( in_array( $endpoint, $this_recipe_types ) ) {
+				$connected_recipe[] = $recipe_id;
+			}
+		}
+	}
+}
+?>
+<div id="single-plan-nav">
+	<ul class="nav nav-pills">
+		<?php
+			if ( eetplan_lsx_child_is_first_day() ) {
+				if ( ( '' === $endpoint || 'breakfast' === $endpoint ) && ! eetplan_lsx_child_is_first_day() ) {
+					$extra_class = 'active';
+				} else {
+					$extra_class = '';
+				}
+			?>
+			<li class="<?php lsx_health_plan_nav_class( '' ); ?>"><a class="overview-tab" href="<?php the_permalink(); ?>"><?php require get_stylesheet_directory() . '/assets/images/must-read.svg'; ?> <?php esc_html_e( 'Weekly Must-Read', 'lsx-health-plan' ); ?></a></li>
+		<?php } ?>
+
+		<?php
+		if ( in_array( 'breakfast', $nav_tabs ) ) {
+			if ( ( 'breakfast' === $endpoint ) || ( '' === $endpoint || 'breakfast' === $endpoint ) && ! eetplan_lsx_child_is_first_day() ) {
+				$extra_class = 'active';
+			} else {
+				$extra_class = '';
+			}
+			?>
+			<li class="<?php echo esc_attr( $extra_class ); ?>">
+				<a class="breakfast-tab" href="<?php the_permalink(); ?>breakfast/">
+					<?php require get_stylesheet_directory() . '/assets/images/breakfast.svg'; ?> <?php esc_html_e( 'Breakfast', 'lsx-health-plan' ); ?>
+				</a>
+			</li>
+		<?php } ?>
+
+		<?php if ( in_array( 'lunch', $nav_tabs ) ) { ?>
+			<li class="<?php lsx_health_plan_nav_class( 'lunch' ); ?>"><a class="lunch-tab" href="<?php the_permalink(); ?>lunch/"><?php require get_stylesheet_directory() . '/assets/images/dinner.svg'; ?> <?php esc_html_e( 'Lunch', 'lsx-health-plan' ); ?></a></li>
+		<?php } ?>
+
+		<?php if ( in_array( 'dinner', $nav_tabs ) ) { ?>
+			<li class="<?php lsx_health_plan_nav_class( 'dinner' ); ?>"><a class="dinner-tab" href="<?php the_permalink(); ?>dinner/"><?php require get_stylesheet_directory() . '/assets/images/dinner.svg'; ?> <?php esc_html_e( 'Dinner', 'lsx-health-plan' ); ?></a></li>
+		<?php } ?>
+	</ul>
+</div>
+<?php

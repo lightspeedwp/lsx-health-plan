@@ -4,14 +4,14 @@
  *
  * @package lsx-health-plan
  */
-global $group_name, $connected_workouts, $shortcode_args;
+global $group_name, $connected_workouts,$shortcode_args;
 
 // Check for any shortcode overrides.
 if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	$connected_workouts = array( get_the_ID() );
 }
 ?>
-<div class="sets-wrapper">
+<div class="sets">
 	<?php
 	if ( empty( $connected_workouts ) || null === $connected_workouts ) {
 		$connected_workouts = get_post_meta( get_the_ID(), 'connected_workouts', true );
@@ -36,12 +36,8 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 	if ( $workouts->have_posts() ) {
 		while ( $workouts->have_posts() ) {
 			$workouts->the_post();
-			// Brings the workout post content first.
-			echo wp_kses_post( lsx_health_plan_workout_main_content() );
-
 			$i               = 1;
 			$section_counter = 6;
-			echo '<div class="sets">';
 			while ( $i <= $section_counter ) {
 
 				$workout_section = 'workout_section_' . ( $i ) . '_title';
@@ -69,7 +65,6 @@ if ( null !== $shortcode_args && isset( $shortcode_args['include'] ) ) {
 				<?php
 				$i++;
 			}
-			echo '</div>';
 		}
 		?>
 	<?php } ?>

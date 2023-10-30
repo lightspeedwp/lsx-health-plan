@@ -41,7 +41,8 @@ get_header(); ?>
 										echo wp_kses_post( $block['innerHTML'] );
 									}
 								}
-							} elseif ( in_array( 'has-block-cover', $classes ) ) {
+							}
+							if ( in_array( 'has-block-cover', $classes ) ) {
 								$blocks = parse_blocks( get_the_content() );
 								foreach ( $blocks as $block ) {
 									//print( '<pre>' . print_r( $block, true ) . '</pre>' );
@@ -49,15 +50,10 @@ get_header(); ?>
 										echo wp_kses_post( render_block( $block ) );
 									}
 								}
-							} else {
-								$my_plan_string = esc_html__( 'My Dashboard', 'lsx-health-plan' );
-								echo wp_kses_post( '<div class="lsx-health-plan my-profile-block wp-block-cover alignfull"><div class="wp-block-cover__inner-container"><h2>' . $my_plan_string . '</h2></div></div>' );
 							}
 
-							if ( is_user_logged_in() ) {
-								$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
-								$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
-							}
+							$my_profile_string  = esc_html__( 'My Profile', 'lsx-health-plan' );
+							$my_profile_tagline = esc_html__( 'Update your details below', 'lsx-health-plan' );
 							echo do_shortcode( '<div id="edit-account-tab">[lsx_health_plan_my_profile_tabs]<div class="edit-account-section"><h2 class="title-lined">' . $my_profile_string . '</h2><p>' . $my_profile_tagline . '</p>[woocommerce_my_account]</div></div>' );
 						} else if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'lost-password' ) ) {
 							echo do_shortcode( '[woocommerce_my_account]' );

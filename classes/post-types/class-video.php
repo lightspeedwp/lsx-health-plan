@@ -27,11 +27,10 @@ class Video {
 	public $slug = 'video';
 
 	/**
-	 * Constructor
+	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'admin_menu', array( $this, 'register_menus' ) );
 		add_filter( 'lsx_health_plan_single_template', array( $this, 'enable_post_type' ), 10, 1 );
 		add_filter( 'lsx_health_plan_connections', array( $this, 'enable_connections' ), 10, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'details_metaboxes' ) );
@@ -56,13 +55,13 @@ class Video {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html__( 'Videos', 'lsx-health-plan' ),
-			'singular_name'      => esc_html__( 'Video', 'lsx-health-plan' ),
+			'name'               => esc_html__( 'Video', 'lsx-health-plan' ),
+			'singular_name'      => esc_html__( 'Videos', 'lsx-health-plan' ),
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-health-plan' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-health-plan' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-health-plan' ),
 			'new_item'           => esc_html__( 'New', 'lsx-health-plan' ),
-			'all_items'          => esc_html__( 'All Videos', 'lsx-health-plan' ),
+			'all_items'          => esc_html__( 'All', 'lsx-health-plan' ),
 			'view_item'          => esc_html__( 'View', 'lsx-health-plan' ),
 			'search_items'       => esc_html__( 'Search', 'lsx-health-plan' ),
 			'not_found'          => esc_html__( 'None found', 'lsx-health-plan' ),
@@ -75,7 +74,7 @@ class Video {
 			'public'             => true,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => false,
+			'show_in_menu'       => true,
 			'show_in_rest'       => true,
 			'menu_icon'          => 'dashicons-format-video',
 			'query_var'          => true,
@@ -87,19 +86,9 @@ class Video {
 			'supports'           => array(
 				'title',
 				'editor',
-				'custom-fields',
 			),
 		);
 		register_post_type( 'video', $args );
-	}
-
-	/**
-	 * Registers the Recipes under the Meals Post type menu.
-	 *
-	 * @return void
-	 */
-	public function register_menus() {
-		add_submenu_page( 'edit.php?post_type=workout', esc_html__( 'Videos', 'lsx-health-plan' ), esc_html__( 'Videos', 'lsx-health-plan' ), 'edit_posts', 'edit.php?post_type=video' );
 	}
 
 	/**
