@@ -1,5 +1,11 @@
 # Change log
 
+## [2.0.1](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.1) - IN DEV
+
+### Fixed
+- Issues with the week plan video modals.
+- A compatability issue with an upgraded Ajax search field.
+
 ## [2.0.2](https://github.com/lightspeeddevelopment/lsx-health-plan/releases/tag/2.0.2) - 2022-05-26
 
 ### Security
