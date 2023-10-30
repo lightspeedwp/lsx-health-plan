@@ -100,6 +100,12 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 					$store_name = str_replace( '][', '_', $field_name );
 					$store_name = str_replace( ']', '', $store_name );
 					$store_name = str_replace( '[', '_', $store_name );
+					
+					if ( is_array( $value ) ) {
+						$to_save = implode( ',', $value );
+					} else {
+						$to_save = $value;
+					}
 
 					echo $field_type->input(
 						array(
@@ -107,7 +113,7 @@ if ( ! class_exists( 'MAG_CMB2_Field_Post_Search_Ajax' ) ) {
 							'id'    => $field_name . '_store',
 							'name'  => $store_name . '_store',
 							'class' => 'cmb-post-search-ajax-store',
-							'value' => implode( ',', $value ),
+							'value' => $to_save,
 							'desc'  => false,
 						)
 					);
