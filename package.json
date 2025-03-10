@@ -46,7 +46,7 @@
     "minimatch": "^10.0.1",
     "minimist": "^1.2.5",
     "natives": "^1.1.6",
-    "shelljs": "^0.8.4",
+    "shelljs": "^0.9.1",
     "tar": "^7.0.0"
   }
 }
