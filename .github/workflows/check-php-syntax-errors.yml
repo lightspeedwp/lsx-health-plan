@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
+      with:
+        persist-credentials: false
     - name: Checking PHP syntax error
-      uses: overtrue/phplint@master
+      uses: overtrue/phplint@9.7.2
       with:
         path: .
         options: --exclude=*.log
